@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-802.1Q</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_8021q, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"802.1Q",
+					"",
+					"",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("802.1Q 首部字段说明","i1");
+					document.writeln("<br />");
+					createProtocolStructT0(
+						"1000",
+						"320",
+						"1693",
+						"802.1Q/802.1Q"
+					);
+
+					words = `
+						协议类型（Protocol Type）
+						由于是802.1Q帧，固定为0x8100
+
+						优先机（Priority）
+						由3bit构成，用于QOS
+
+						标准格式指示（CFI）
+						由1bit构成，一般为0
+
+						VLAN ID
+						由12bit构成，取值范围0~4095，除全0全1外，不同厂商的设备还有几个ID不能使用
+
+					`;
+					createProtocolExplainT0(words, -326.8);
+
+				createInstruT0("802.1Q 实例","i2");
+					createInstruT1("实例为ping报文，vlan id 为10，如下所示");
+						document.writeln("<br />");
+						createConfigImgT1("802.1Q/802.1Q_packet");
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/cisco.ico" />
+	<title>思科-传统企业网-ISE 2.1</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_ise21, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("建议开局配置","i2");
+					createInstruT1("适当取消密码限制策略<br />","i2-1");
+						createConfigImgT1("ISE21/i2_1$1~2");
+
+					createInstruT1("取消异常客户端挂起功能<br />","i2-2");
+						createConfigImgT1("ISE21/i2_2$1~2");
+
+				createInstruT0("域与证书的配置","i3");
+					createInstruT1("加入域","i3-1");
+						createInstruT2("加入域的前提条件：");
+						createInstruT2("　　ISE与网络连接正常，域名能够正常DNS解析");
+						createInstruT2("　　ISE时间与域的时间相差不能超过5分钟");
+
+						createConfigImgT2("ISE21/i3_1$1~7");
+
+					createInstruT1("根据需要提取域中的某个组，以及组内用户的用户名、密码","i3-2");
+						createInstruT2("提取组");
+						createConfigImgT2("ISE21/i3_2$1~2");
+
+						createInstruT2("提取用户名");
+						createConfigImgT2("ISE21/i3_2$3~4");
+
+					createInstruT1("ISE申请个人证书<br />","i3-3");
+						createConfigImgT1("ISE21/i3_3$1~5");
+
+					createInstruT1("ISE导入根证书<br />","i3-4");
+						createConfigImgT1("ISE21/i3_4$1~2");
+
+					createInstruT1("ISE导入个证书<br />","i3-5");
+						createConfigImgT1("ISE21/i3_5$1~3");
+
+				createInstruT0("NAD（network access device）配置","i4");
+					createInstruT1("NDG（network device groups）配置<br />","i4-1");
+						createConfigImgT1("ISE21/i4_1$1~7");
+
+					createInstruT1("NDG（network device）配置<br />","i4-2");
+						createConfigImgT1("ISE21/i4_2$1~5");
+
+				createInstruT0("Tacacs+设备管理","i5");
+					createInstruT1("启用Tacacs+功能<br />","i5-1");
+						createConfigImgT1("ISE21/i5_1$1~3");
+
+					createInstruT1("ND配置Tacacs<br />","i5-2");
+						createConfigImgT1("ISE21/i5_2$1");
+
+				createInstruT0("配置认证策略","i7");
+					createInstruT1("认证策略结构<br />","i7-1");
+						createConfigImgT1("ISE21/i7_1$1~2");
+
+					createInstruT1("配置认证条件","i7-2");
+						createInstruT2("创建简单条件","i7-2-1");
+							createConfigImgT2("ISE21/i7_2_1$1~3");
+
+						createInstruT2("创建复合条件","i7-2-2");
+							createConfigImgT2("ISE21/i7_2_2$1");
+
+					createInstruT1("配置允许协议","i7-3");
+						createInstruT2("对认证的协议进行限制，一般不建议修改，默认策略基本包含全部有关协议<br />");
+							createConfigImgT2("ISE21/i7_3$1~2");
+
+					createInstruT1("配置认证身份源<br />","i7-4");
+						createConfigImgT1("ISE21/i7_4$1~3");
+
+				createInstruT0("配置授权策略","i8");
+					createInstruT1("授权策略结构<br />","i8-1");
+						createConfigImgT1("ISE21/i8_1$1~2");
+
+					createInstruT1("配置本地组","i8-2");
+						createInstruT2("配置本地用户组","i8-2-1");
+							createInstruT3("创建本地组","i8-2-1-1");
+								createConfigImgT3("ISE21/i8_2_1_1$1~3");
+
+							createInstruT3("创建本地用户","i8-2-1-2");
+								createConfigImgT3("ISE21/i8_2_1_2$1~3");
+
+						createInstruT2("配置本地终端组","i8-2-2");
+							createInstruT3("创建终端组","i8-2-2-1");
+								createConfigImgT3("ISE21/i8_2_2_1$1~3");
+
+							createInstruT3("创建终端","i8-2-2-2");
+								createConfigImgT3("ISE21/i8_2_2_2$1~4");
+
+					createInstruT1("配置授权条件","i8-3");
+						createInstruT2("创建简单条件","i8-3-1");
+							createConfigImgT2("ISE21/i7_2_1$1");
+							createConfigImgT2("ISE21/i8_3_1$1~2");
+
+						createInstruT2("创建复合条件","i8-3-2");
+							createConfigImgT2("ISE21/i8_3_2$1");
+
+						createInstruT2("创建时间条件","i8-3-3");
+							createConfigImgT2("ISE21/i8_3_3$1~2");
+
+					createInstruT1("配置授权权限","i8-4");
+						createInstruT2("创建Download ACL","i8-4-1");
+							createConfigImgT2("ISE21/i7_3$1");
+							createConfigImgT2("ISE21/i8_4_1$1~2");
+
+						createInstruT2("创建授权权限","i8-4-2");
+							createConfigImgT2("ISE21/i8_4_2$1~2");
+
+				createInstruT0("MAB","i9");
+					createInstruT1("配置认证策略，采用默认的即可<br />","i9-1");
+						createConfigImgT1("ISE21/i9_1$1");
+
+					createInstruT1("配置授权策略","i9-2");
+						createInstruT2("配置好MAB设备的mac地址，并属于相应组，再配置好授权权限，最后，将几者结合成授权策略即可","i9-2");
+							createConfigImgT2("ISE21/i9_2$1");
+
+				createInstruT0("有线802.1x","i10");
+					createInstruT1("PEAP","i10-1");
+						createInstruT2("配置认证协议，只允许 PEAP（可选）","i10-1-1");
+							createConfigImgT2("ISE21/i10_1_1$1");
+
+						createInstruT2("根据需要，配置认证策略","i10-1-2");
+							createConfigImgT2("ISE21/i10_1_2$1");
+
+						createInstruT2("根据需要，配置授权策略","i10-1-3");
+							createConfigImgT2("ISE21/i10_1_3$1~3");
+
+						createInstruT2("配置授权条件，已通过机器认证（限PEAP）","i10-1-4");
+							createConfigImgT2("ISE21/i10_1_4$1~3");
+
+					createInstruT1("EAP-TLS","i10-2");
+						createInstruT2("配置认证协议，只允许 EAP-TLS（可选）","i10-2-1");
+							createConfigImgT2("ISE21/i10_2_1$1");
+
+						createInstruT2("配置证书认证的配置文件","i10-2-2");
+						createInstruT2("　单纯使用证书，只能做认证，需要从证书中提取相应信息，以进行授权");
+							createConfigImgT2("ISE21/i3_1$1");
+							createConfigImgT2("ISE21/i10_2_2$2~3");
+
+						createInstruT2("根据需要，配置认证策略","i10-2-3");
+							createConfigImgT2("ISE21/i10_2_3$1");
+
+						createInstruT2("根据需要，配置授权策略","i10-2-4");
+							createConfigImgT2("ISE21/i10_1_3$1~3");
+
+				createInstruT0("无线802.1x","i11");
+					createInstruT1("WLC配置","i11-1");
+						createInstruT2("两种模式前期的准备","i11-1-1");
+							createInstruT3("配置认证授权及审计服务器","i11-1-1-1");
+								createConfigImgT3("ISE21/i11_1_1_1$1~4");
+
+							createInstruT3("配置WLAN","i11-1-1-2");
+								createConfigImgT3("ISE21/i11_1_1_2$1~3");
+
+						createInstruT2("Local模式配置","i11-1-2");
+							createInstruT3("配置所需的ACL","i11-1-2-1");
+								createConfigImgT3("ISE21/i11_1_2_1$1~3");
+
+							createInstruT3("配置所需的dy interface（ISE将此dy interface授权给用户）","i11-1-2-2");
+								createConfigImgT3("ISE21/i11_1_2_2$1~3");
+
+						createInstruT2("FlexConnect模式配置","i11-1-3");
+							createInstruT3("将AP切换为FlexConnect模式","i11-1-3-1");
+								createConfigImgT3("WLC_AireOS/i11-2-1$2");
+
+							createInstruT3("将WLAN切换为FlexConnect模式","i11-1-3-2");
+								createConfigImgT3("WLC_AireOS/i11-2-2$2");
+
+							createInstruT3("配置vlan与WLAN的关联","i11-1-3-3");
+								createConfigImgT3("WLC_AireOS/i11-2-3$2~5");
+
+							createInstruT3("配置所需的FlexConnect ACL","i11-1-3-4");
+								createConfigImgT3("ISE21/i11_1_3_4$1~3");
+
+							createInstruT3("创建FlexConnect Group，并关联AP（使用默认的group也可，演示新创建的方法）","i11-1-3-5");
+								createConfigImgT3("ISE21/i11_1_3_5$1~7");
+
+							createInstruT3("将可能被授权的vlan关联到FlexConnect Group","i11-1-3-6");
+								createConfigImgT3("ISE21/i11_1_3_6$1~2");
+
+							createInstruT3("将FlexConnect ACL关联到FlexConnect Group","i11-1-3-7");
+								createConfigImgT3("ISE21/i11_1_3_7$1~2");
+
+					createInstruT1("ISE配置","i11-2");
+						createInstruT2("对于无线，授权的ACL位WLC，对应属性不同，其余配置与有线基本相同");
+							createConfigImgT2("ISE21/i11_2_1$1");
+
+				createInstruT0("中心网页认证（认证网页位于ISE）","i12");
+					createInstruT1("前期准备","i12-1");
+						createInstruT2("创建列表，放行通过认证前允许的流量","i12-1-1");
+							createConfigImgT2("ISE21/i7_3$1");
+							createConfigImgT2("ISE21/i8_4_1$1");
+							createConfigImgT2("ISE21/i12_1_1$3");
+
+						createInstruT2("配置授权权限","i12-1-2");
+							createConfigImgT2("ISE21/i7_3$1");
+							createConfigImgT2("ISE21/i8_4_2$1");
+							createConfigImgT2("ISE21/i12_1_2$3");
+
+						createInstruT2("配置用于认证的网页","i12-1-3");
+							createConfigImgT2("ISE21/i12_1_3$1~4");
+
+						createInstruT2("确证MAB的认证策略","i12-1-4");
+							createConfigImgT2("ISE21/i12_1_4$1");
+
+						createInstruT2("修改授权策略，将授权失败的用户引导向网页认证","i12-1-5");
+							createConfigImgT2("ISE21/i12_1_5$1~2");
+
+					createInstruT1("有线中心网页认证","i12-2");
+						createInstruT2("配置授权策略，使通过网页认证的客户可以访问网络");
+							createConfigImgT2("ISE21/i12_2$1");
+
+					createInstruT1("无线中心网页认证","i12-3");
+						createInstruT2("WLC配置","i12-3-1");
+							createInstruT3("配置WLAN","i12-3-1-1");
+								createConfigImgT3("ISE21/i12_3_1_1$1~5");
+
+							createInstruT3("配置WEB-REDIRECT列表（local与flexconnect均为此内容）","i12-3-1-2");
+								createConfigImgT3("ISE21/i12_3_1_2$1");
+
+							createInstruT3("其余配置","i12-3-1-3");
+								createInstruAllTopT3("与无线802.1x同理，需要配置通过授权后的列表，FlexConnect时需要将有关列表调用到FlexConnect Group，参考无线802.1x部分");
+
+						createInstruT2("<br />ISE配置","i12-3-2");
+							createInstruT3("‘网页认证不支持授权vlan。，对于列表与无线802.1x同理，无线与有线授权列表方式不同","i12-3-2");
+								createConfigImgT3("ISE21/i12_3_2$1");
+
+				createInstruT0("设备识别","i13");
+					createInstruT1("启用设备识别功能<br />","i13-1");
+						createConfigImgT1("ISE21/i13_1$1~6");
+
+					createInstruT1("启用重认证功能<br />","i13-2");
+						createConfigImgT1("ISE21/i13_2$1~2");
+
+					createInstruT1("自定义条件<br />","i13-3");
+						createConfigImgT1("ISE21/i13_3$1~3");
+
+					createInstruT1("自定义规则<br />","i13-4");
+						createConfigImgT1("ISE21/i13_4$1~3");
+
+					createInstruT1("查看识别结果<br />","i13-5");
+						createConfigImgT1("ISE21/i13_5$1~2");
+            </script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

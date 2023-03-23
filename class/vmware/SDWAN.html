@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../img/vmware.ico" />
+	<title>vmware-SDWAN</title>
+
+	<script src="../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(sdwan, '../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("初始化配置","i1");
+					createInstruT1("登录地址<br />","i1-1");
+						instruArr = new Array();
+						instruArr[0]=createCmdSpan("https://“202.100.100.1。‘/operator。");
+						instruArr[1]=createCmdInstruSpan("“202.100.100.1。","VCO的管理地址（域名）");
+						createCmdInstruT1(instruArr,"vmware");
+
+					createInstruT1("明确VCO地址<br />","i1-2");
+						createConfigImgT1("SDWAN/i1_2$1~3");
+
+					createInstruT1("配置邮件相关参数（可选）<br />","i1-3");
+						createConfigImgT1("SDWAN/i1_3$1");
+
+				createInstruT0("添加VCG","i2");
+					createInstruT1("添加VCG<br />","i2-1");
+						createConfigImgT1("SDWAN/i2_1$1~3");
+
+					createInstruT1("激活VCG，通过VCG的命令行配置<br />","i2-2");
+						instruArr[0]=createLinuxCmd("sudo -i");
+						instruArr[1]=createLinuxCmd("cd /opt/vc/bin/");
+						instruArr[2]=createLinuxCmd("./activate.py -i -s “202.100.100.1。 “G8RL-MGKL-GEJK-BVUV。");
+						instruArr[3]=createCmdInstruSpan("“202.100.100.1。","VCO地址");
+						instruArr[4]=createCmdInstruSpan("“G8RL-MGKL-GEJK-BVUV。","激活序列号");
+						createCmdInstruT1(instruArr,"vmware");
+						createConfigImgT1("SDWAN/i2_2$1");
+
+					createInstruT1("激活后状态<br />","i2-3");
+						createConfigImgT1("SDWAN/i2_3$1");
+
+				createInstruT0("创建操作员配置文件","i3");
+					createInstruT1("创建操作员配置文件<br />","i3-1");
+						createConfigImgT1("SDWAN/i3_1$1~3");
+
+					createInstruT1("创建客户<br />","i3-2");
+						createConfigImgT1("SDWAN/i3_2$1~5");
+
+				createInstruT0("Edge的各类准备","i4");
+					createInstruT1("创建集群<br />","i4-1");
+						createConfigImgT1("SDWAN/i3_2$1~5");
+
+					createInstruT1("创建各种Edge的配置文件","i4-2");
+						createInstruT2("Hub类型","i4-2-1");
+							createConfigImgT2("SDWAN/i4_2_1$1~3");
+
+						createInstruT2("Branch类型","i4-2-2");
+							createConfigImgT2("SDWAN/i4_2_1$1");
+							createConfigImgT2("SDWAN/i4_2_2$1~5");
+
+						createInstruT2("Edge使用OSPF的预定义","i4-2-3");
+							createConfigImgT2("SDWAN/i4_2_3$1");
+
+					createInstruT1("初始化Edge（通过Edge管理接口配置）<br />","i4-3");
+						createConfigImgT1("SDWAN/i4_3$1~5");
+
+				createInstruT0("添加Edge","i5");
+					createInstruT1("添加Edge<br />","i5-1");
+						createConfigImgT1("SDWAN/i5_1$1~4");
+
+					createInstruT1("激活Edge<br />","i5-2");
+						createConfigImgT1("SDWAN/i5_2$1~3");
+
+					createInstruT1("激活后状态<br />","i5-3");
+						createConfigImgT1("SDWAN/i5_3$1");
+
+				createInstruT0("Edge基础配置","i6");
+					createInstruT1("接口配置<br />","i6-1");
+						createConfigImgT1("SDWAN/i6_1$1~2");
+
+					createInstruT1("WAN配置<br />","i6-2");
+						createConfigImgT1("SDWAN/i6_2$1~8");
+
+					createInstruT1("路由配置","i6-2");
+						createInstruT2("静态路由","i6-3-1");
+							createConfigImgT2("SDWAN/i6_3_1$1");
+
+						createInstruT2("OSPF（接口配置，需要在Edge的配置文件中预定义）","i6-3-2");
+							createConfigImgT2("SDWAN/i6_3_2$1~3");
+
+						createInstruT2("BGP","i6-3-3");
+							createConfigImgT2("SDWAN/i6_3_3$1~8");
+
+					createInstruT1("集群 / HA 配置","i6-4");
+						createInstruT2("配置集群","i6-4-1");
+							createConfigImgT2("SDWAN/i6_4_1$1~2");
+
+						createInstruT2("配置HA（推荐在添加HA类型的Edge时配置）","i6-4-2");
+							createConfigImgT2("SDWAN/i6_4_2$1");
+
+				createInstruT0("NVS","i7");
+					createInstruT1("创建NVS<br />","i7-1");
+						createConfigImgT1("SDWAN/i7_1$1~4");
+
+					createInstruT1("Edge关联NVS（配置文件中关联）<br />","i7-2");
+						createConfigImgT1("SDWAN/i7_2$1");
+
+					createInstruT1("查看NVS状态<br />","i7-3");
+						createConfigImgT1("SDWAN/i7_3$1");
+
+				createInstruT0("Segment","i8");
+					createInstruT1("创建Segment<br />","i8-1");
+						createConfigImgT1("SDWAN/i8_1$1~2");
+
+					createInstruT1("配置文件关联Segment<br />","i8-2");
+						createConfigImgT1("SDWAN/i8_2$1~5");
+
+					createInstruT1("接口关联Segment<br />","i8-3");
+						createConfigImgT1("SDWAN/i8_3$1");
+
+				createInstruT0("调整流量路径<br />","i9");
+					createConfigImgT0("SDWAN/i10_2$5");
+					createConfigImgT0("SDWAN/i9$1~2");
+
+				createInstruT0("BackHaul","i10");
+					createInstruT1("站点直接通过本地出口连接互联网","i10-1");
+						createInstruT2("配置VCG","i10-1-1");
+							createConfigImgT2("SDWAN/i10_1_1$1~6");
+
+						createInstruT2("配置Edge","i10-1-2");
+							createConfigImgT2("SDWAN/i10_1_2$1~4");
+
+					createInstruT1("分支通过overlay到hub，再从hub连接互联网<br />","i10-2");
+						createConfigImgT1("SDWAN/i10_2$1~10");
+
+				createInstruT0("防火墙","i11");
+					createInstruT1("创建Segment<br />","i11-1");
+						createConfigImgT1("SDWAN/i11_1$1~3");
+
+					createInstruT1("配置服务对象<br />","i11-2");
+						createConfigImgT1("SDWAN/i11_2$1~3");
+
+					createInstruT1("配置防火墙策略<br />","i11-3");
+						createConfigImgT1("SDWAN/i11_3$1~3");
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../'));
+	</script>
+</body>
+</html>

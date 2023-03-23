@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/k8s.ico" />
+	<title>容器-k8s-基本操作</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_orchestration, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("资源限制","i1");
+					createInstruAllTopT1("资源限制位置ds或dp配置文件中，容器的下一级")
+					createInstruAllTopT1("共两种类型 requests（保证），limits（限制）")
+					createInstruAllTopT1("cpu还支持毫核限制，1=1000m，内存为常规的方式")
+					yaml = `
+						apiVersion: apps/v1
+						kind: Deployment
+						metadata:
+							name: itachi-pod-dp
+						spec:
+							replicas: 1
+							selector:
+								matchLabels:
+									app: itachi-pod-dp-label
+							template:
+								metadata:
+									labels:
+										app: itachi-pod-dp-label
+								spec:
+									containers:
+									- name: container-1-itachi
+										image: vitachi/up_flask
+										ports:
+										- containerPort: 10080
+										resources: # 资源限制部分
+											requests:
+												cpu: 4
+												memory: 2Gi
+											limits:
+												cpu: 4
+												memory: 2Gi
+					`;
+					createYAMLT1(yaml);
+
+				createInstruT0("亲和与反亲和","i2");
+					createInstruT1("准备配置亲和","i2-4");
+						createInstruT2("查看相关信息","i2-4-1");
+							createInstruT3("查看节点");
+								cmd = `
+									kubectl get node
+									# 以下为输出
+									NAME       STATUS   ROLES    AGE     VERSION
+									node01     Ready    node     7d14h   v1.18.9
+									node02     Ready    node     7d14h   v1.18.9
+									node03     Ready    node     7d14h   v1.18.9
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("查看节点标签");
+								cmd = `
+									kubectl get node node01 --show-labels
+									# 以下为输出，为了查看方便，调整了格式
+									NAME     STATUS   ROLES   AGE     VERSION   LABELS
+									node01   Ready    node    7d14h   v1.18.9   beta.kubernetes.io/arch=amd64,
+																				beta.kubernetes.io/os=linux,
+																				kubernetes.io/arch=amd64,
+																				kubernetes.io/hostname=node01,
+																				kubernetes.io/os=linux,
+																				node-role.kubernetes.io/node=,
+																				rack=1
+								`;
+								createLinuxTxtT3(cmd);
+
+						createInstruT2("亲和命令","i2-4-2");
+							createInstruT3("亲和调度");
+								yaml = `
+									# 必须和 pod / node 高度在一起
+									requiredDuringSchedulingIgnoredDuringExecution:
+									# 优先和 pod / node 高度在一起
+									preferredDuringSchedulingIgnoredDuringExecution:
+								`;
+								createYAMLT3(yaml);
+
+							createInstruT3("匹配逻辑");
+								yaml = `
+									In: label的值在列表中
+									NotIn: label的值不在列表中
+									Exists: 存在某个label
+									DoesNotExist: 不存在某个label
+									Gt: label的值大于某个值（比较字符串）
+									Lt: label的值小于某个值（比较字符串）
+								`;
+								createYAMLT3(yaml);
+
+					createInstruT1("节点亲和","i2-1");
+						createInstruT2("方法一：配置节点选择","i2-1-1");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: itachi-pod-dp
+								spec:
+									replicas: 1
+									selector:
+										matchLabels:
+											app: itachi-pod-dp-label
+									template:
+										metadata:
+											labels:
+												app: itachi-pod-dp-label
+										spec:
+											containers:
+											- name: container-1-itachi
+												image: vitachi/up_flask
+												ports:
+												- containerPort: 10080
+											nodeSelector: # 节点选择
+												kubernetes.io/hostname: node01
+							`;
+							createYAMLT2(yaml);
+
+						createInstruT2("方法二：配置亲和","i2-1-2");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: itachi-pod-dp
+								spec:
+									replicas: 1
+									selector:
+										matchLabels:
+											app: itachi-pod-dp-label
+									template:
+										metadata:
+											labels:
+												app: itachi-pod-dp-label
+										spec:
+											containers:
+											- name: container-1-itachi
+												image: vitachi/up_flask
+												ports:
+												- containerPort: 10080
+											affinity:  # 配置亲和
+												nodeAffinity:
+													requiredDuringSchedulingIgnoredDuringExecution:
+														nodeSelectorTerms:
+															- matchExpressions:
+																- key: kubernetes.io/hostname
+																	operator: In
+																	values:
+																		- node01
+							`;
+							createYAMLT2(yaml);
+
+					createInstruT1("pod亲和","i2-2");
+						createInstruT2("创建起始pod（后续pod和该pod亲和）","i2-2-1");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: itachi-pod-dp
+								spec:
+									replicas: 1
+									selector:
+										matchLabels:
+											app:  itachi-pod-dp-label
+											uchihaAffinity: itachi	# 必须与下面新加的键值相同
+									template:
+										metadata:
+											labels:
+												app: itachi-pod-dp-label
+												uchihaAffinity: itachi	# 增加用于亲和的键值，可任意配置
+										spec:
+											containers:
+											- name: container-1-itachi
+												image: vitachi/up_flask
+												ports:
+												- containerPort: 10080
+							`;
+							createYAMLT2(yaml);
+
+						createInstruT2("创建后续pod","i2-2-2");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: sasuke-pod-dp
+								spec:
+									replicas: 2
+									selector:
+										matchLabels:
+											app: sasuke-pod-dp-label
+									template:
+										metadata:
+											labels:
+												app: sasuke-pod-dp-label
+										spec:
+											containers:
+											- name: container-2-sasuke
+												image: vitachi/up_flask
+												ports:
+												- containerPort: 10080
+											affinity: # 配置亲和
+												podAffinity: # 亲和
+													requiredDuringSchedulingIgnoredDuringExecution:
+													- labelSelector:
+															matchExpressions:
+															- key: uchihaAffinity # 起始pod的键
+																operator: In
+																values:
+																- itachi
+														topologyKey: rack # 节点上任意一个标签的键即可
+							`;
+							createYAMLT2(yaml);
+
+					createInstruT1("pod反亲和","i2-3");
+						createInstruT2("反亲和配置与亲和基本一致，只需要在后续pod的亲和配置修改为反亲和","i2-3");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: sasuke-pod-dp
+								spec:
+									replicas: 2
+									selector:
+										matchLabels:
+											app: sasuke-pod-dp-label
+									template:
+										metadata:
+											labels:
+												app: sasuke-pod-dp-label
+										spec:
+											containers:
+											- name: container-2-sasuke
+												image: vitachi/up_flask
+												ports:
+												- containerPort: 10080
+											affinity: # 配置亲和
+												podAntiAffinity: # 反亲和
+													requiredDuringSchedulingIgnoredDuringExecution:
+													- labelSelector:
+															matchExpressions:
+															- key: uchihaAffinity # 起始pod的键
+																operator: In
+																values:
+																- itachi
+														topologyKey: rack # 节点上任意一个标签的键即可
+							`;
+							createYAMLT2(yaml);
+
+				createInstruT0("污点","i3");
+					createInstruT1("创建污点","i3-1");
+						createInstruT2("配置文件方式","i3-1-1");
+							yaml = `
+								apiVersion: v1
+								kind: Node
+								metadata:
+								  name: node01 # 污点生效的节点名
+								spec:
+									taints:
+										- key: disk # 污点键
+											value: ssd  # 污点值
+											effect: NoSchedule # 不调度，只影响新加入的pod，不处理原有pod
+										effect: NoExecute # 不执行，新加或原有pod均受影响
+							`;
+							createYAMLT2(yaml);
+
+						createInstruT2("命令行方式","i3-1-2");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("kubectl taint nodes “node01。” 。“disk。”=。“ssd。”:。“NoSchedule。");
+							instruArr[1] = createCmdInstruSpan("“node01。","污点生效的节点名");
+							instruArr[2] = createCmdInstruSpan("“disk。","污点键");
+							instruArr[3] = createCmdInstruSpan("“ssd。","污点值");
+							instruArr[4] = createCmdInstruSpan("“NoSchedule。","污点效果");
+							createCmdInstruT2(instruArr,"k8s");
+
+					createInstruT1("查看污点<br />","i3-2");
+						instruArr = null;
+						instruArr = new Array();
+						instruArr[0] = createCmdSpan("kubectl get node “node01。 -o json | jq '.spec.taints'");
+						instruArr[1] = createCmdInstruSpan("“node01。","查看污点的节点名");
+						createCmdInstruT1(instruArr,"k8s");
+
+					createInstruT1("删除污点<br />","i3-3");
+						instruArr[0] = createCmdSpan("kubectl taint nodes “node01。” 。“disk。”-。");
+						instruArr[1] = createCmdInstruSpan("“node01。","删除污点的节点名");
+						createCmdInstruT1(instruArr,"k8s");
+
+					createInstruT1("pod容忍污点","i3-4");
+						yaml = `
+							apiVersion: apps/v1
+							kind: Deployment
+							metadata:
+								name: itachi-pod-dp
+							spec:
+								replicas: 1
+								selector:
+									matchLabels:
+										app: itachi-pod-dp-label
+								template:
+									metadata:
+										labels:
+											app: itachi-pod-dp-label
+									spec:
+										containers:
+										- name: container-1-itachi
+											image: vitachi/up_flask
+											ports:
+											- containerPort: 10080
+										tolerations: # 容忍污点部分
+										- key: disk	# 容忍污点的键
+											operator: Equal # 容忍污点的键值效果相匹配才容忍，还可以为Exists，存在对应键即容忍
+											value: ssd # 容忍污点的值
+											effect: NoSchedule # 容忍污点的效果
+						`;
+						createYAMLT1(yaml);
+
+				createInstruT0("configmap","i5");
+					createInstruT1("创建configmap","i5-1");
+						instruArr[0] = createCmdSpan("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。");
+						instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
+						instruArr[2] = createCmdInstruSpan("“index.html。","configmap对应的文件");
+						createCmdInstruT1(instruArr,"k8s");
+
+					createInstruT1("查看configmap","i5-2");
+						createInstruT2("查看configmap列表","i5-2-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("kubectl get cm");
+							createCmdInstruT2(instruArr,"k8s");
+
+						createInstruT2("查看某个configmap内容","i5-2-2");
+							instruArr[0] = createCmdSpan("kubectl describe cm “configmap-nginx-html。");
+							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
+							createCmdInstruT2(instruArr,"k8s");
+
+					createInstruT1("修改configmap","i5-3");
+						createInstruT2("方法一：删除后重新建立","i5-3-1");
+							instruArr[0] = createCmdSpan("kubectl delete cm “configmap-nginx-html。");
+							instruArr[1] = createCmdSpan("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。");
+							instruArr[2] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
+							instruArr[3] = createCmdInstruSpan("“index.html。","configmap对应的文件");
+							createCmdInstruT2(instruArr,"k8s");
+
+						createInstruT2("方法二：直接修改","i5-3-2");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("kubectl edit cm “configmap-nginx-html。");
+							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
+							createCmdInstruT2(instruArr,"k8s");
+
+						createInstruT2("方法三：覆盖原始的configmap","i5-3-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("kubectl create configmap “configmap-nginx-html。 --from-file “index.html。 -o yaml --dry-run | kubectl apply -f -");
+							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
+							instruArr[2] = createCmdInstruSpan("“index.html。","configmap对应的文件");
+							createCmdInstruT2(instruArr,"k8s");
+
+					createInstruT1("pod中使用configmap","i5-4");
+						yaml = `
+							apiVersion: apps/v1
+							kind: Deployment
+							metadata:
+								name: itachi-pod-dp
+							spec:
+								replicas: 1
+								selector:
+									matchLabels:
+										app: itachi-pod-dp-label
+								template:
+									metadata:
+										labels:
+											app: itachi-pod-dp-label
+									spec:
+										containers:
+										- name: container-1-itachi
+											image: vitachi/up_flask
+											ports:
+											- containerPort: 10080
+											volumeMounts: # 挂载卷到容器
+												- name: vol-nginx-conf # 卷名
+													mountPath: /etc/nginx/nginx.conf # 卷挂载路径+文件名
+													subPath: nginx.conf # 文件名
+												- name: vol-nginx-html
+													mountPath: /itachi_nginx/html # 卷挂载路径，文件名采用原始文件名
+										volumes: # 通过卷的方式使用
+											- name: vol-nginx-conf # 卷名
+												configMap:
+													name: configmap-nginx-conf # configmap名
+											- name: vol-nginx-html
+												configMap:
+													name: configmap-nginx-html
+						`;
+						createYAMLT1(yaml);
+
+				createInstruT0("secret","i4");
+					createInstruT1("创建secret","i4-1");
+						createInstruT2("命令行创建","i4-1-1");
+							cmd = `
+								# 创建容器镜像仓库的认证
+								kubectl create secrets docker-registry harbor-auth-kubectl \\
+									--docker-server=harbor.itachi.com \\
+									--docker-username=admin \\
+									--docker-password=Cisc0123
+							`
+							createLinuxTxtT2(cmd)
+
+						createInstruT2("yaml文件方式创建","i4-1-2");
+							yaml = `
+								# yaml中数据需要为base64编码
+								# 镜像仓库的认证文件为：/root/.docker/config.json
+								# 可用 cat /root/.docker/config.json | base64 转化为base64编码
+								# 将base64编码放在 .dockerconfigjson:中（不换行）
+
+								apiVersion: v1
+								kind: Secret
+								metadata:
+									name: harbor-auth-yaml
+								data:
+									.dockerconfigjson: ewoJImF1dGhzIjogewoJCSJoYXJib3IuaXRhY2hpLmNvbSI6IHsKCQkJImF1dGgiOiAiWVdSdGFXNDZRMmx6WXpBeE1qTT0iCgkJfQoJfQp9
+								type: kubernetes.io/dockerconfigjson
+							`
+							createYAMLT2(yaml)
+
+					createInstruT1("查看secret列表","i4-2");
+						createInstruT2("查看secret列表","i4-2-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("kubectl get secrets");
+							createCmdInstruT2(instruArr,"k8s");
+
+					createInstruT1("pod中使用secret","i4-4");
+						yaml = `
+							apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: itachi-pod-dp
+								spec:
+									replicas: 1
+									selector:
+										matchLabels:
+											app: itachi-pod-dp-label
+									template:
+										metadata:
+											labels:
+												app: itachi-pod-dp-label
+										spec:
+											containers:
+											- name: container-1-itachi
+												image: harbor.itachi.com/private/up_flask # 私有镜像，无法直接下载
+												ports:
+												- containerPort: 10080
+											imagePullSecrets: # 私有镜像的认证
+												- name: harbor-auth-yaml # secret的名字，命令行或yaml方式生成均可
+						`;
+						createYAMLT1(yaml);
+
+				createInstruT0("存储","i6");
+					createInstruT1("分布式存储ceph","i6-1");
+						createInstruT2("所有 node 配置新的硬盘","i6-1-1");
+							cmd = `
+								lsblk -f
+								# 下面为输出，新加硬盘（sdb）无FSTYPE信息
+								NAME        FSTYPE      LABEL UUID                                   MOUNTPOINT
+								sda
+								├─sda1      ext4              0f30f559-4dc2-4780-8ade-84429a9a641e   /boot
+								└─sda2      LVM2_member       tGKQts-FElb-e23L-3Zhm-hW6Z-VY0D-tBReGy
+								  ├─cl-root xfs               ba590539-8425-43ed-9108-9ddf62a61c9d   /
+								  └─cl-swap swap              c6fe0169-8472-4b3b-a7bc-22cca65d40a6
+								sdb	### 无FSTYPE信息
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("安装ceph(任意一个master)","i6-1-2");
+							cmd = `
+								# 参考 https://github.com/rook/rook
+								#      https://github.com/rook/rook/tree/master/cluster/examples/kubernetes/ceph
+
+								kubectl apply -f common.yaml	<a href="yaml/orchestration/06_storage/operator.yaml" download="common.yaml">下载该文件</a>
+								kubectl apply -f operator.yaml	<a href="yaml/orchestration/06_storage/operator.yaml" download="operator.yaml">下载该文件</a>
+
+								# 安装后等待所有pod正常运行
+								kubectl get pod -n rook-ceph
+
+								# 下面为输出
+								NAME                                  READY   STATUS    RESTARTS   AGE
+								rook-ceph-operator-5dc456cdb6-wx9zc   1/1     Running   0          49s
+								rook-discover-4xc4x                   1/1     Running   0          44s
+								rook-discover-dxnfq                   1/1     Running   0          44s
+								rook-discover-l57sn                   1/1     Running   0          44s
+
+								kubectl apply -f cluster.yaml	<a href="yaml/orchestration/06_storage/operator.yaml" download="operator.yaml">下载该文件</a>
+
+								# 修改了原配置文件，定义了节点与硬盘
+								#   storage: # cluster level storage configuration and selection
+								#    useAllNodes: false
+								#    useAllDevices: false
+								#    #deviceFilter:
+								#    config:
+								#     nodes:
+								#    - name: "node01" # 节点名
+								#      devices:
+								#      - name: "sdb" # 设备名
+								#    - name: "node02"
+								#      devices:
+								#      - name: "sdb"
+								#    - name: "node03"
+								#      devices:
+								#      - name: "sdb"
+
+								# 安装后等待所有pod正常运行
+								kubectl get pod -n rook-ceph
+
+								# 下面为输出，共27个pod，等待时间较长
+								NAME                                               READY   STATUS      RESTARTS   AGE
+								csi-cephfsplugin-cghzt                             3/3     Running     3          11h
+								csi-cephfsplugin-provisioner-5bcd46f965-j4xkf      5/5     Running     6          11h
+								csi-cephfsplugin-provisioner-5bcd46f965-wcmpd      5/5     Running     5          11h
+								csi-cephfsplugin-th5zz                             3/3     Running     3          11h
+								csi-cephfsplugin-wpqcp                             3/3     Running     3          11h
+								csi-rbdplugin-bxrxz                                3/3     Running     3          11h
+								csi-rbdplugin-d9xn7                                3/3     Running     3          11h
+								csi-rbdplugin-fxm8g                                3/3     Running     3          11h
+								csi-rbdplugin-provisioner-5bcf44d764-f78c7         6/6     Running     6          11h
+								csi-rbdplugin-provisioner-5bcf44d764-fzx27         6/6     Running     6          11h
+								rook-ceph-crashcollector-node01-847476659d-hm5q7   1/1     Running     0          10h
+								rook-ceph-crashcollector-node02-84d8994fb5-dzljj   1/1     Running     0          10h
+								rook-ceph-crashcollector-node03-5f94d76464-ccpn9   1/1     Running     0          53s
+								rook-ceph-mgr-a-55d4fbfdb9-vds6j                   1/1     Running     0          3m36s
+								rook-ceph-mon-a-9c45ccfd7-rxzxc                    1/1     Running     1          11h
+								rook-ceph-mon-d-66d7cd798f-c56tp                   1/1     Running     1          10h
+								rook-ceph-mon-f-5dd575b55b-bgctv                   1/1     Running     1          10h
+								rook-ceph-operator-5dc456cdb6-wx9zc                1/1     Running     2          11h
+								rook-ceph-osd-0-77dfb7946d-vmct5                   1/1     Running     0          62s
+								rook-ceph-osd-1-76c5565699-4t7jm                   1/1     Running     0          53s
+								rook-ceph-osd-2-7bf6f85c68-dn2dw                   1/1     Running     0          57s
+								rook-ceph-osd-prepare-node01-44q27                 0/1     Completed   0          78s
+								rook-ceph-osd-prepare-node02-vvpsz                 0/1     Completed   0          76s
+								rook-ceph-osd-prepare-node03-vflwd                 0/1     Completed   0          72s
+								rook-discover-4xc4x                                1/1     Running     1          11h
+								rook-discover-dxnfq                                1/1     Running     1          11h
+								rook-discover-l57sn                                1/1     Running     1          11h
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("创建文件系统(任意一个master)","i6-1-3");
+							cmd = `
+								kubectl apply -f filesystem.yaml	<a href="yaml/orchestration/06_storage/filesystem.yaml" download="filesystem.yaml">下载该文件</a>
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("创建存储类(任意一个master)","i6-1-4");
+							cmd = `
+								kubectl apply -f storageclass.yaml	<a href="yaml/orchestration/06_storage/storageclass.yaml" download="storageclass.yaml">下载该文件</a>
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("创建pvc(任意一个master)","i6-1-5");
+							yaml = `
+								apiVersion: v1
+								kind: PersistentVolumeClaim
+								metadata:
+									name: itachi-pvc-share
+								spec:
+									accessModes:
+									- ReadWriteMany
+									resources:
+										requests:
+											storage: 1Gi
+									storageClassName: rook-cephfs # 对应storageclass中的名字
+							`;
+							createYAMLT2(yaml);
+
+						createInstruT2("等待pvc正常运行","i6-1-6");
+							cmd = `
+								kubectl get pvc
+								NAME               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+								itachi-pvc-share   Bound    pvc-6e6ec995-132a-459e-84c7-2e25d67c5222   1Gi        RWX            rook-cephfs    92s
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("创建pod","i6-1-7");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: itachi-pod
+								spec:
+									replicas: 1
+									selector:
+										matchLabels:
+											app: itachi-pod
+									template:
+										metadata:
+											labels:
+												app: itachi-pod
+										spec:
+											containers:
+											- name: container-1-itachi
+												image: harbor.itachi.com/public/up_flask
+												volumeMounts:
+													- name: pvc-vol
+														mountPath: /pvc
+											volumes:
+												- name: pvc-vol
+													persistentVolumeClaim:
+														claimName: itachi-pvc-share
+														readOnly: false
+							`;
+							createYAMLT2(yaml);
+
+					createInstruT1("空目录","i6-2");
+						yaml = `
+							apiVersion: apps/v1
+							kind: Deployment
+							metadata:
+								name: itachi-pod
+							spec:
+								replicas: 1
+								selector:
+									matchLabels:
+									app: itachi-pod
+								template:
+									metadata:
+										labels:
+											app: itachi-pod
+									spec:
+										containers:
+										- name: container-1-itachi
+											image: harbor.itachi.com/public/up_flask
+											volumeMounts: # 挂载卷到容器
+												- name: emptydir
+													mountPath: /emptydir
+										- name: container-1-itachi
+											image: harbor.itachi.com/public/up_flask
+											volumeMounts: # 挂载卷到容器
+												- name: emptydir
+													mountPath: /emptydir
+										volumes:
+											- name: emptydir
+												emptyDir: # 空目录类型的卷
+													# medium: "Memory" # 可以直接使用内存
+													sizeLimit: "300Mi" # 空目录大小
+						`;
+						createYAMLT1(yaml);
+
+					createInstruT1("NFS","i6-3");
+						createInstruT2("安装NFS程序(所有node)","i6-3-1");
+							cmd = `
+								yum install nfs-utils -y
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("部署 pv","i6-3-2");
+							yaml = `
+								apiVersion: v1
+								kind: PersistentVolume
+								metadata:
+									name: nfspv
+								spec:
+									capacity: # pv 的容量为10Gi
+										storage: 10Gi
+									accessModes: # 访问模式
+										- ReadWriteMany
+									persistentVolumeReclaimPolicy: Recycle # pv 的回收策略
+									storageClassName: mynfs # pv 的 class 为 mynfs，相当于为 pv 分类，pvc 将指定 class 申请 pv
+									nfs: # 指定 pv 为 nfs 服务器上对应的目录
+										path: /data/nfs-volume/nfs-test
+										server: dnsca
+							`;
+							createYAMLT2(yaml);
+
+						createInstruT2("部署 pvc","i6-3-3");
+							yaml = `
+								kind: PersistentVolumeClaim
+								apiVersion: v1
+								metadata:
+									name: nfspvc
+								spec:
+									accessModes: # 访问模式
+										- ReadWriteMany
+									resources: # pvc 的容量为1Gi
+										requests:
+											storage: 1Gi
+									storageClassName: mynfs # 对应 pv 的 storageClassName
+							`;
+							createYAMLT2(yaml);
+
+						createInstruT2("部署 pod","i6-3-4");
+							yaml = `
+								apiVersion: apps/v1
+								kind: Deployment
+								metadata:
+									name: itachi-pod
+								spec:
+									replicas: 1
+									selector:
+										matchLabels:
+											app: itachi-pod
+									template:
+										metadata:
+											labels:
+												app: itachi-pod
+										spec:
+											containers:
+											- name: container-1-itachi
+												image: harbor.itachi.com/public/up_flask
+												volumeMounts: # 挂载卷到容器
+													- name: nfsv
+														mountPath: /nfsv
+											volumes:
+												- name: nfsv
+													persistentVolumeClaim:
+														claimName: nfspvc
+							`;
+						createYAMLT2(yaml);
+
+
+			</script>
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-DNS</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+
+		.divProtocolExplain ul
+		{
+			list-style-type: none;
+			padding-left: 0;
+		}
+
+		.divProtocolExplain li
+		{
+			background-image: url("./config_img/icon.png");
+			background-repeat: no-repeat;
+			padding-left: 30px;
+			margin-top: 20px;
+		}
+
+		.divProtocolExplain li:nth-child(1)
+		{
+			margin-top: 0px;
+		}
+
+		.divProtocolExplain img
+		{
+			margin-top: 20px;
+			margin-bottom: 25px;
+		}
+
+		.divSJT1
+		{
+			margin-left: 50px;
+		}
+
+		/*.row .cell:nth-child(1)*/
+		/*{*/
+		/*	width: 120px;*/
+		/*}*/
+
+		.row .cell:nth-child(2)
+		{
+			width: 70px;
+			padding-left: 25px;
+		}
+
+		.row.header .cell:nth-child(2)
+		{
+			padding-left: inherit;
+		}
+
+		.row .cell:nth-child(3)
+		{
+			padding-left: 20px;
+		}
+
+		.row.header .cell:nth-child(3)
+		{
+			padding-left: inherit;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_dns, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"DNS",
+					"Domain Name System",
+					"域名系统",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("DNS相关介绍","i1");
+					createInstruT1("简单DNS解析过程","i1-1");
+
+						createConfigImgT0("DNS/DNS解析过程");
+						createInstruAllTopT1("以解释www.jd.com为例，不考虑复杂的别名、转发器之类过程");
+
+						createInstruAllTopT1("1、PC向配置的DNS服务器请求解析www.jd.com的IP地址");
+
+						createInstruAllTopT1("2、PC的DNS服务器无www.jd.com的记录，随机向一台根DNS服务器请求解析");
+
+						createInstruAllTopT1("3、根DNS服务器无记录，响应若干.com的授权DNS服务器地址");
+
+						createInstruAllTopT1("4、PC的DNS服务器随机向一台.com的授权DNS服务器请求解析");
+
+						createInstruAllTopT1("5、.com的授权DNS服务器无记录，响应若干jd.com的授权DNS服务器地址");
+
+						createInstruAllTopT1("6、PC的DNS服务器随机向一台jd.com的授权DNS服务器请求解析");
+
+						createInstruAllTopT1("7、jd.com的授权DNS服务器响应若干www.jd.com的IP地址");
+
+						createInstruAllTopT1("8、PC的DNS服务器随机向一台PC发送若干www.jd.com的IP地址");
+
+						document.writeln("<br /><br />");
+					createInstruT1("递归查询与迭代查询","i1-2");
+						createInstruAllTopT1("递归查询：直接由DNS服务器返回结果（即使该DNS服务器无对应项，由该DNS服务器向上级DNS服务器查询，最后得到结果，并向客户返回）");
+
+						createInstruAllTopT1("与递归查询对应的为迭代查询，当DNS服务器无对应项，告诉客户端应向哪个上级DNS服务器查询，该DNS服务器只返回上级DNS服务器地址，不返回结果");
+
+						createInstruAllTopT1("一般PC等非DNS服务器发送请求时均发送期望递归");
+
+						createInstruAllTopT1("当DNS服务器无对应解析项而需要向上级DNS服务器查询不发送期望递归，而采用迭代，因为上级DNS服务器一般不理会递归");
+
+						document.writeln("<br /><br />");
+					createInstruT1("DNS的上层协议问题","i1-3");
+						createInstruAllTopT1("DNS报文小于512字节，使用UDP，大于则使用TCP");
+
+						createInstruAllTopT1("一般的DNS报文较小，使用UDP，基于TCP的DNS一般用于不同DNS服务器间的数据同步（区域同步）");
+
+				createInstruT0("DNS报文格式","i2");
+					createInstruT1("DNS报文格式总览","i2-1");
+					createConfigImgT1("DNS/DNS");
+
+					createInstruT1("报文中域名表示方式","i2-2");
+						createInstruAllTopT1("下图即域名 www.jd.com 的表示方式，");
+						createInstruAllTopT1("每个格大小为8 bit，数字表示每个点前字母的数量，随后紧跟字母（以ASCII表示），当出现0时表示域名结束");
+
+						document.writeln("<br />");
+						createConfigImgT1("DNS/域名表示方式");
+
+
+					createInstruT1("查询 / 响应 报文中类型取值含义<br />","i2-3");
+					tHeader = [
+							"类型",
+							"编号",
+							"内容",
+						];
+						tBody = [
+							["A","1","主机名的IPv4地址"],
+							["NS","2","域名服务器"],
+							["CNAME","5","主机别名对应的规范名称"],
+							["SOA","6","区域内权威记录起始标示"],
+							["WKS","11","已知的服务"],
+							["PTR","12","IP地址反向解析"],
+							["HINFO","13","主机相关的追加信息"],
+							["MINFO","14","邮箱与邮件组信息"],
+							["MX","15","邮件交换（Mail Exchange）"],
+							["TXT","16","文本"],
+							["SIG","24","安全证书"],
+							["KEY","25","密钥"],
+							["GPOS","27","地址位置"],
+							["AAAA","28","主机名的IPv6地址"],
+							["NXT","30","下一代域名"],
+							["SRV","33","服务器选择"],
+							["*","255","所有缓存记录"]
+						];
+						createHLTableT1(500, tHeader, tBody);
+
+					document.writeln("<br /><br />");
+					createInstruT1("DNS报文头部字段说明","i2-4");
+						document.writeln("<br />");
+						createProtocolStructT1(
+							"820",
+							"300",
+							"2080",
+							"DNS/header",
+							"DNS_header"
+						);
+
+						words = `
+							标识（ID：Identification）
+							由16 bit构成，由客户端设置，对同一个请求，多次迭代中保持不变，但递归查询会改变
+
+							标志（Flags）
+							由16 bit构成，被划分为若干子字段，如下所示：<br /><ul><li>QR<br/>由1 bit构成，0表示查询，1表示应答</li><li>Opocde<br/>由4 bit构成，通常值为0，表示标准查询，值为1表示反向查询，值为2表示服务器状态请求</li><li>AA（authoritative answer）<br/>由1 bit构成，表示该DNS应答为对应的授权DNS服务器发送</li><li>TC（truncated）<br/>由1 bit构成，表示“可截断”的。使用UDP时，它表示当应答的总长度超过512字节时，只返回前512个字节<br/>当客户端收到这个字段时，会改用TCP与服务器进行DNS查询</li><li>RD（recursion desired）<br/>由1 bit构成，表示“期望递归”。即期望采用递归查询，在查询中设置，并在响应中返回。<br/>当DNS服务器无对应解析项而需要向上级DNS服务器查询不发送期望递归，而采用迭代，因为上级DNS服务器一般不理会递归</li><li>RA（recursion available）<br/>由1 bit构成，表示“可用递归”。如果DNS服务器支持递归查询，则在响应中将该比特设置为1。</li><li>0<br/>由3 bit构成，值为0</li><li>rcode<br/>由4 bit构成。通常的值为<br/>0：没有错误、3：域名错误。域名错误只有会从授权DNS服务器上返回，它表示在查询的域名不存在。</li></ul>
+
+							问题数（Questions）
+							由16 bit构成，表示之后的问题字段中的问题数量，通常为1，因为无论是请求还应答，都会携带这个问题
+
+							资源记录数（Answers）
+							由16 bit构成，表示之后的回答字段中的回答数量
+
+							授权资源记录数（Authority）
+							由16 bit构成，表示之后的授权字段中的授权资源数量
+
+							额外资源记录数（Additional）
+							由16 bit构成，表示之后的额外资源字段中的额外资源数量
+						`;
+						createProtocolExplainT0(words, -295, "DNS_header");
+
+					document.writeln("<br /><br />");
+					createInstruT1("DNS报文查询字段说明","i2-5");
+						document.writeln("<br />");
+						createProtocolStructT1(
+							"820",
+							"220",
+							"930",
+							"DNS/question",
+							"DNS_question"
+						);
+
+						document.writeln("<br />");
+						words = `
+							查询域名（Domain name）
+							即需要DNS解析的域名，长度根据域名长短而改变
+
+							类型（Type）
+							由16 bit构成，表示查询的类型
+
+							类（Class）
+							由16 bit构成，取值为1，表示Internet
+						`;
+						createProtocolExplainT0(words, -237.6, "DNS_question");
+
+					document.writeln("<br /><br />");
+					createInstruT1("DNS报文回答、授权、额外信息字段说明","i2-6");
+						document.writeln("<br />");
+						createProtocolStructT1(
+							"820",
+							"410",
+							"3060",
+							"DNS/other",
+							"DNS_other"
+						);
+
+						document.writeln("<br />");
+						words = `
+							查询域名（Domain name）
+							即需要DNS解析的域名，长度根据域名长短而改变
+
+							类型（Type）
+							由16 bit构成，表示查询的类型
+
+							类（Class）
+							由16 bit构成，取值为1，表示Internet
+
+							生成时间（Time to Live）
+							由32 bit构成，表示客户端缓存该回答的时间，单位 秒
+
+							资源数据长度（Data Length）
+							由16 bit构成，表示之后的资源数据长度，单位 字节
+
+							资源数据长度（Data Length）
+							长度可变，根据不同的响应类型，确定内容，如：A记录则为对应的IPv4地址
+						`;
+						createProtocolExplainT0(words, -440, "DNS_other");
+
+					createInstruT0("简单解析实例","i4");
+						document.writeln("<br />");
+						createConfigImgT0("DNS/DNS_packet$1~2");
+
+					createInstruT0("一个复杂的DNS解析实例","i5");
+						createInstruT1("DNS解析过程_图示","i5-1");
+							createConfigImgT1("DNS/复杂DNS解析过程");
+
+						createInstruT1("DNS解析过程_说明","i5-2");
+							createInstruAllTopT1("1：<span style='color: #BF8F00'>PC</span>向其<span style='color: #BF8F00'>DNS服务器</span>请求解析<span style='color: #63D8EE'>www.sina.com.cn</span>对应的IP地址");
+
+							createInstruAllTopT1("2：<span style='color: #BF8F00'>DNS服务器</span>无<span style='color: #63D8EE'>www.sina.com.cn</span>对应IP地址的信息，向<span style='color: #BF8F00'>根DNS服务器</span>对应IP地址");
+
+							createInstruAllTopT1("3：<span style='color: #BF8F00'>根DNS服务器</span>无<span style='color: #63D8EE'>www.sina.com.cn</span>对应IP地址的信息，向<span style='color: #BF8F00'>DNS服务器</span>若干<span style='color: #BF8F00'>.cn的授权DNS服务器</span>的IP地址");
+
+							createInstruAllTopT1("4：<span style='color: #BF8F00'>DNS服务器</span>向<span style='color: #BF8F00'>.cn的授权DNS服务器</span>请求解析<span style='color: #63D8EE'>www.sina.com.cn</span>对应的IP地址");
+
+							createInstruAllTopT1("5：<span style='color: #BF8F00'>.cn的授权DNS服务器</span>无<span style='color: #63D8EE'>www.sina.com.cn</span>对应IP地址的信息，向<span style='color: #BF8F00'>DNS服务器</span>若干<span style='color: #BF8F00'>.sina.com.cn的授权DNS服务器</span>的IP地址");
+
+							createInstruAllTopT1("6：<span style='color: #BF8F00'>DNS服务器</span>向<span style='color: #BF8F00'>.sina.com.cn的授权DNS服务器</span>请求解析<span style='color: #63D8EE'>www.sina.com.cn</span>对应的IP地址");
+
+							createInstruAllTopT1("7：<span style='color: #BF8F00'>.sina.com.cn的授权DNS服务器</span>向<span style='color: #BF8F00'>DNS服务器</span>发送响应：<span style='color: #63D8EE'>www.sina.com.cn</span>为别名，对应的域名为<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>，<span style='color: #F92672'>因为是授权DNS服务器应答，DNS标志中授权DNS服务器位被置1</span>");
+
+							createInstruAllTopT1("8：<span style='color: #BF8F00'>DNS服务器</span>无<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>对应IP地址的信息，向<span style='color: #BF8F00'>根DNS服务器</span>对应IP地址");
+
+							createInstruAllTopT1("9：<span style='color: #BF8F00'>根DNS服务器</span>无<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>对应IP地址的信息，向<span style='color: #BF8F00'>DNS服务器</span>若干<span style='color: #BF8F00'>.com的授权DNS服务器</span>的IP地址，<span style='color: #F92672'>因为.com的授权DNS服务器较多，使DNS报文会大于512字节，DNS标志中截断位被置1</span>");
+
+							createInstruAllTopT1("10~12：<span style='color: #F92672'>因DNS回应中截断位被置1，DNS服务器与根DNS服务器开始采用TCP进程通信</span>，先进行三次握手");
+
+							createInstruAllTopT1("13：<span style='color: #BF8F00'>DNS服务器</span>重新采用TCP向<span style='color: #BF8F00'>根DNS服务器</span>发送请求解析<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>对应IP地址的信息");
+
+							createInstruAllTopT1("14：<span style='color: #BF8F00'>根DNS服务器</span>对<span style='color: #BF8F00'>DNS服务器</span>的DNS的请求发送ACK");
+
+							createInstruAllTopT1("15：<span style='color: #BF8F00'>根DNS服务器</span>向<span style='color: #BF8F00'>DNS服务器</span>若干<span style='color: #BF8F00'>.com的授权DNS服务器</span>的IP地址");
+
+							createInstruAllTopT1("16：<span style='color: #BF8F00'>根DNS服务器</span>向<span style='color: #BF8F00'>DNS服务器</span>发送FIN");
+
+							createInstruAllTopT1("　　　17：<span style='color: #BF8F00'>DNS服务器</span>发送ACK，同时确认DNS回应信息及FIN");
+
+							createInstruAllTopT1("　　　19：<span style='color: #BF8F00'>DNS服务器</span>向<span style='color: #BF8F00'>DNS服务器</span>发送FIN");
+
+							createInstruAllTopT1("　　　24：<span style='color: #BF8F00'>根DNS服务器</span>发送ACK，同时FIN，与<span style='color: #BF8F00'>DNS服务器</span>的TCP DNS连接完全关闭");
+
+							createInstruAllTopT1("18：<span style='color: #BF8F00'>DNS服务器</span>向<span style='color: #BF8F00'>.com的授权DNS服务器</span>请求解析<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>对应的IP地址");
+
+							createInstruAllTopT1("20：<span style='color: #BF8F00'>.com的授权DNS服务器</span>无<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>对应IP地址的信息，向<span style='color: #BF8F00'>DNS服务器</span>若干<span style='color: #BF8F00'>.sinaedge.com的授权DNS服务器</span>的IP地址");
+
+							createInstruAllTopT1("21：<span style='color: #BF8F00'>DNS服务器</span>向<span style='color: #63D8EE'>.sinaedge.com的授权DNS服务器</span>请求解析<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>对应的IP地址");
+
+							createInstruAllTopT1("22：<span style='color: #BF8F00'>.sinaedge.com的授权DNS服务器</span>向<span style='color: #BF8F00'>DNS服务器</span>发送应答，告知域名对应的IP地址，<span style='color: #F92672'>因为是授权DNS服务器应答，DNS标志中授权DNS服务器位被置1</span>");
+
+							createInstruAllTopT1("23：<span style='color: #BF8F00'>DNS服务器</span>向<span style='color: #BF8F00'>PC</span>发送应答，告知<span style='color: #BF8F00'>PC</span>：<span style='color: #63D8EE'>www.sina.com.cn</span>为别名，对应域名为<span style='color: #63D8EE'>spool.grid.sinaedge.com</span>，对应IP地址为 125.39.59.91及125.39.59.92");
+
+			</script>
+
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+
+</body>
+</html>

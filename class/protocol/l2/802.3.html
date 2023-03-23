@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-802.3</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_8023, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"802.3",
+					"",
+					"",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("802.3 首部字段说明","i1");
+					document.writeln("<br />");
+					createProtocolStructT0(
+						"1100",
+						"210",
+						"2122",
+						"802.3/802.3"
+					);
+
+					words = `
+						目的MAC地址（Destination）
+						由6字节构成，表示目的MAC地址
+
+						源MAC地址（Source）
+						由6字节构成，表示源MAC地址
+
+						长度（Length）
+						由2字节构成，表示它后续的数据长度，但不包括FCS，单位字节
+
+						802.2 LLC
+						共3字节，每字节含义如下：<table class="tableProtocolExplain"><tr><td>第1字节</td><td>目的服务访问点<br />Destination Service Access Point，DSAP</td><td>固定值：0xAA</td></tr><tr><td>第2字节</td><td>源服务访问点<br />Source Service Access Point，SSAP</td><td>固定值：0xAA</td></tr><tr><td>第3字节</td><td>Ctrl字段</td><td>固定值：0x3</td></tr></table>
+
+						802.2 SNAP
+						共5字节，每字节含义如下：<table class="tableProtocolExplain"><tr><td>第1~3字节</td><td>组织机构代码<br />Organization Code</td><td>组织唯一标识符，与发送帧的设备相关</td></tr><tr><td>第4~5字节</td><td>协议类型<br />Protocol Type</td><td>功能与Ethernet II中的类型字段相同，<br />表示下一个首部属于哪个协议</td></tr></table>
+
+						数据部分（Data）
+						由38~1492字节构成，如果数据部分较小，小于38字节，需要填充0使数据部分达到最小的38字节
+
+						帧校验序列（FCS）
+						由4字节构成，对帧完整性的检查
+					`;
+					createProtocolExplainT0(words, -269);
+
+				createInstruT0("802.3 实例","i2");
+					createInstruT1("实例为CDP报文，如下所示");
+						document.writeln("<br />");
+						createConfigImgT1("802.3/802.3_packet");
+			</script>
+
+			<br /><br /><br /><br />
+
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

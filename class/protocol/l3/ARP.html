@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-ARP</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+
+		#tARP .row.header .cell
+		{
+			vertical-align: middle;
+		}
+
+		#tARP .row:nth-child(n+2) .cell:nth-child(n+2)
+		{
+			padding-left: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_arp, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"ARP",
+					"Address Resolution Protocol",
+					"地址解析协议",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("ARP 首部字段说明","i1");
+					document.writeln("<br />");
+					createProtocolStruct(
+						"1000",
+						"408",
+						"4071",
+						"ARP/ARP"
+					);
+
+					words = `
+						硬件类型（Hardware Type）
+						由16 bit构成，一般为1，表示以太网（Ethernet）
+
+						协议类型（Hardware Type）
+						由16 bit构成，一般为IPv4，以IPv4的协议号0x0800表示
+
+						硬件地址长度（Hardware Address Length）
+						由8 bit构成，单位为字节，因为mac地址为48bit，所以值为6（字节）
+
+						协议地址长度（Protocol Address Length）
+						由8 bit构成，单位为字节，因为IPv4地址为48bit，所以值为4（字节）
+
+						操作类型（Operation）
+						由16 bit构成，表示ARP类型，1 代表请求（Requset），2代表响应（Response）
+
+						发送方硬件地址（Sender Hardware Address）
+						由48 bit构成，表示发送方MAC地址
+
+						发送方协议地址（Sender Protocol Address）
+						由32 bit构成，表示发送方IPv4地址
+
+						目标硬件地址（Target Hardware Address）
+						由48 bit构成，表示目标MAC地址
+
+						目标协议地址（Target Protocol Address）
+						由32 bit构成，表示目标IPv4地址
+					`;
+					createProtocolExplain(words, -407);
+
+				createInstruT0("ARP 实例","i2");
+					createInstruT1("ARP请求&响应","i2-1");
+						createInstruAllTopT1("实例的情况如下：");
+						createInstruAllTopT1("设备A（PC），　IP地址为 192.168.1.30，　mac地址为 E0:3F:49:D9:D5:19，设备A获取网关的mac地址");
+						createInstruAllTopT1("设备B（网关），IP地址为 192.168.1.254，mac地址为 10:1B:54:D1:A1:A5");
+
+						createInstruT2("ARP请求阶段");
+							createInstruAllTopT2("设备A请求网关地址");
+							createInstruAllTopT2("　　源mac地址为自身mac地址，目的mac地址为广播");
+							createInstruAllTopT2("　　发送方硬件地址为自身mac地址，发送方协议地址为自身IP地址");
+							createInstruAllTopT2( "　　目标硬件地址为全0，目标协议地址为请求的IP地址，即网关IP地址");
+							document.writeln("<br />");
+							createConfigImgT2("ARP/arp_request");
+
+						createInstruT2("ARP响应阶段");
+							createInstruAllTopT2("设备B响应设备A的ARP请求");
+							createInstruAllTopT2("设备B接收到ARP请求后，发现是询问自己的mac地址，因此发送ARP响应报文");
+							createInstruAllTopT2("　　源mac地址为自身mac地址，目的mac为请求方（设备A）地址");
+							createInstruAllTopT2("　　发送方硬件地址为自身mac地址，发送方协议地址为自身IP地址");
+							createInstruAllTopT2("　　目标硬件地址为为请求方（设备A）地址，目标协议地址为请求方（设备A）的IP地址");
+							document.writeln("<br />");
+							createConfigImgT2("ARP/arp_response");
+
+					createInstruT1("免费ARP","i2-2");
+						createInstruT2("一般用于 检测地址冲突 或 存在冗余设备时，发生切换后，更新mac地址表");
+							createInstruAllTopT2("源mac地址为检测地址冲突设备（切换为活动设备）的mac地址，目的mac地址为广播");
+							createInstruAllTopT2("发送方硬件地址为自身mac地址，发送方协议地址为自身IP地址");
+							createInstruAllTopT2("发送方硬件地址为自身全0，发送方协议地址仍为自身IP地址");
+							document.writeln("<br />");
+							createInstruAllTopT2("如果存在地址冲突，冲突方会向检测方发送ARP响应");
+							createInstruAllTopT2("切换为活动设备后，根据接到到ARP报文的接口，下游的交换机更新mac地址表");
+							document.writeln("<br />");
+							createConfigImgT2("ARP/gratuitous_arp");
+
+				createInstruT0("各类ARP报文结构对应关系","i3");
+
+					document.writeln("<br />");
+					tHeader = [
+						"ARP类型",
+						"二层帧头中<br />源MAC地址",
+						"二层帧头中<br />目的MAC地址",
+						"ARP报文中<br />源MAC地址",
+						"ARP报文中<br />源IP地址",
+						"ARP报文中<br />目的MAC地址",
+						"ARP报文中<br />目的IP地址",
+					];
+					tBody = [
+						["ARP请求","请求方MAC地址","全1（广播）","请求方MAC地址","请求方IP地址","全0","请求被解析的IP"],
+						["ARP响应","响应方MAC地址","响应方MAC地址","响应方MAC地址","请求被解析的IP地址","请求方MAC地址","请求方IP地址"],
+						["免费ARP","发送方MAC地址","发送方MAC地址","发送方MAC地址","发送方IP地址","全0","发送方IP地址"],
+					];
+					createHLTableT0(1300, tHeader, tBody, "tARP");
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

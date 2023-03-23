@@ -1,0 +1,761 @@
+body, html
+{
+	/*font-size: 100%;*/
+	font-size: 1.03em;
+	padding: 0;
+	margin: 0;
+	background: #494A5F;
+	/*color: #D5D6E2;*/
+	color: #FFFFFF;
+	font-weight: 500;
+}
+
+.main-sidebar
+{
+	position: fixed;
+	top: 62px;
+	left: 0;
+	height: 100%;
+	min-height: 100%;
+	width: 350px;
+	z-index: 10;
+	background-color: #1C232F;
+	overflow: auto;
+}
+
+#divCommand
+{
+	position: relative;
+	margin-left: 380px;
+	margin-top: 24.5px;
+}
+
+.instruT0, .instruT1, .instruT2, .instruT3
+{
+	/*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Liberation Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, SimSun, "WenQuanYi Zen Hei Sharp", sans-serif;*/
+	/*font-weight: bold;*/
+}
+
+.instruT0, .instruT1, .instruT2, .instruT3,
+.cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
+.cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
+.cmdInstruAllTopImgT2, .cmdInstruAllTopImgT3
+{
+	display: block;
+	letter-spacing: 1px;
+}
+
+.instruT0
+{
+	color: #0080FF;
+	font-size: 35px;
+	/*padding-top: 10px;*/
+}
+
+.instruT1
+{
+	font-size: 26px;
+	margin-left: 30px;
+	margin-top: 20px;
+	color: #A6E22E;
+}
+
+.instruT2
+{
+	color: #FF6EFF;
+	font-size: 22px;
+	margin-left: 60px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.instruT3
+{
+	margin-left: 90px;
+	line-height: 60px;
+	color: #FD971F;
+	font-size: 20px;
+}
+
+.instruT2 + .instruT3
+{
+	margin-top: -20px;
+}
+
+.instruT1 a, .instruT2 a, .instruT3 a
+{
+	font-size: 80%;
+	font-weight: normal;
+	color: #AC80FF;
+}
+
+span .link
+{
+	color: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+.linuxCMD
+{
+	color: #FD971F;
+	margin-top: 5px;
+	font-size: 22px;
+}
+
+.linuxDivT1
+{
+	margin-left: 50px;
+	margin-top: 16px;
+	min-width: 1000px;
+}
+
+.linuxDivT2
+{
+	margin-left: 80px;
+	margin-top: 16px;
+	min-width: 970px;
+	max-width: 1350px;
+}
+
+.linuxDivT3
+{
+	margin-left: 110px;
+	margin-top: 16px;
+	min-width: 970px;
+}
+
+.linuxDivT1, .linuxDivT2, .linuxDivT3
+{
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 18px;
+	/*font-weight: bold;*/
+	background-color: #282923;
+	padding-top: 12px;
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-bottom: 12px;
+	width: fit-content;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	border-radius: 5px;
+	line-height: 1.6;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.linuxDivT1 + .linuxDivT1,
+.linuxDivT2 + .linuxDivT2
+{
+	margin-top: -20px;
+}
+
+.linuxDivT1 a, .linuxDivT2 a, .linuxDivT3 a
+{
+	color: #AC80FF;
+	font-weight: bold;
+}
+
+h4
+{
+	font-size: 22px;
+}
+
+.linuxPara
+{
+	color: #8000FF;
+}
+
+.cmd, .cmdInstru,
+.cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
+.cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
+.cmdInstruAllTopImgT2, .cmdInstruAllTopImgT3
+{
+	font-size: 20px;
+}
+
+.cmd
+{
+	line-height: 40px;
+	padding-left: 0;
+}
+
+.cmdInstru
+{
+	text-indent: 2em;
+	line-height: 33px;
+}
+
+/*.cmdInstruAllT1, .cmdInstruAllT2, .cmdInstruAllT3, */
+.cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3
+{
+	line-height: 40px;
+}
+
+.variable, .variableZN
+{
+	font-style: italic;
+	background: #829BA5;
+	padding-left: 2px;
+	padding-right: 3px;
+}
+
+.variableZN, .explainZN, .spanBold
+{
+	font-size: 22px;
+}
+
+.spanR
+{
+	color: #F92672;
+}
+
+.hwSysname
+{
+	font-size: 18px;
+}
+
+.spanBold
+{
+	font-weight: bold;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.spanInstruKeyword
+{
+	color: #F8F8F2;
+	margin-right: 2px;
+}
+
+.cmdTableT0, .cmdTableT1, .cmdTableT2, .cmdTableT3
+{
+	border-collapse: collapse;
+}
+
+.cmdTableT0
+{
+	margin-bottom: 30px;
+}
+
+.cmdTableT1
+{
+	margin-bottom: 30px;
+	margin-left: 40px;
+}
+
+.cmdTableT2
+{
+	margin-bottom: 50px;
+	margin-left: 70px;
+}
+
+.cmdTableT3
+{
+	margin-left: 100px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+.cmdInstruAllTopT1 + .cmdTableT1,
+.cmdInstruAllTopT2 + .cmdTableT2,
+.cmdInstruAllTopT3 + .cmdTableT3
+{
+	margin-top: 20px;
+}
+
+.instruImg
+{
+	/*margin-top: 20px;*/
+	/*margin-left: -30px;*/
+}
+
+.cmdInstruAllTopT2, .cmdInstruAllBottomT2
+{
+	margin-left: 80px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.cmdInstruAllTopT0
+{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.cmdInstruAllTopT1
+{
+	margin-left: 60px;
+	margin-top: 20px;
+	/*line-height: 40px;*/
+}
+
+.cmdInstruAllTopT3, .cmdInstruAllBottomT3
+{
+	margin-left: 110px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.cmdTableT3 + .cmdInstruAllTopT3
+{
+	margin-top: -20px;
+}
+
+.divConfigImgT2 + br + br + .cmdInstruAllTopT2
+{
+	margin-top: -20px;
+}
+
+.divConfigImgT3 + br + br + .cmdInstruAllTopT3
+{
+	margin-top: -20px;
+}
+
+.cmdTableT2 + .cmdInstruAllTopT2
+{
+	margin-top: -20px;
+}
+
+.linuxDivT1 + .cmdInstruAllTopT1
+{
+	margin-top: -20px;
+}
+
+.cmdInstruAllBottomT1
+{
+	margin-left: 60px;
+}
+
+.cmdInstruAllBottomT2
+{
+	margin-top: -50px;
+	margin-bottom: 50px;
+}
+
+.cmdInstruAllBottomT3
+{
+	margin-top: -60px;
+	margin-bottom: 50px;
+}
+
+.tdBrandC,
+.tdBrandH,
+.tdBrand3,
+.tdBrandVM,
+.tdBrandN,
+.tdBrandM,
+.tdBrandD,
+.tdBrandK,
+.tdBrandV,
+.tdBrandG,
+.tdBrandR
+{
+	width: 85px;
+	text-align: center;
+	padding-left: 0;
+	border-right: solid 3px #0080FF;
+}
+
+.imgBrand
+{
+	height: 30px;
+}
+
+td
+{
+	padding-left: 10px;
+}
+
+.divider
+{
+	height: 10px;
+}
+
+.tdcmdInstru1
+{
+	vertical-align: top;
+	width: 10px;
+	white-space: nowrap;
+}
+
+.tdcmdInstru2
+{
+	text-indent: 0;
+	word-wrap: break-word;
+	word-break: break-all;
+	padding-left: 0;
+}
+
+.divConfigImgT0
+{
+	margin-left: 20px;
+	/*display: flex;*/
+}
+
+.divConfigImgT1
+{
+	margin-left: 50px;
+	/*display: flex;*/
+}
+
+.divConfigImgT2
+{
+	margin-left: 80px;
+	/*display: flex;*/
+}
+
+.divConfigImgT3
+{
+	margin-left: 110px;
+	/*display: flex;*/
+}
+
+.cmdTableT2 + .divConfigImgT2,
+.cmdTableT3 + .divConfigImgT3
+{
+	margin-top: -30px;
+}
+
+.cmdInstruAllTopT1 + .divConfigImgT1,
+.cmdInstruAllTopT2 + .divConfigImgT2
+{
+	margin-top: 15px;
+}
+
+.linuxDivT1 + .divConfigImgT1,
+.linuxDivT3 + .divConfigImgT3
+{
+	margin-top: -20px;
+}
+
+.divConfigImgT2+ br + br +.divConfigImgT2
+{
+	margin-top: -25px;
+}
+
+.divLogo
+{
+	width: 85px;
+	flex: none;
+	text-align: center;
+	border-right: solid 3px #0080FF
+}
+
+.divLogo img
+{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 30px;
+}
+
+.list-group-item
+{
+	border: 0;
+	padding: 3px 10px 3px 5px;
+	display: inline;
+}
+
+.list-group-item:first-child
+{
+	border-top-left-radius: .3rem;
+	border-top-right-radius: .3rem;
+	border-bottom-left-radius: .3rem;
+	border-bottom-right-radius: .3rem
+}
+
+.breadcrumb-item
+{
+	font-size: 1.3em;
+}
+
+.breadcrumb-item li, .breadcrumb-item a
+{
+	color: #33CC33;
+}
+
+.breadcrumb-item+.breadcrumb-item::before
+{
+	content: '>';
+}
+
+.breadcrumb-item a:hover
+{
+	text-decoration: underline;
+	color: #0056B3;
+}
+
+.divExplainT2
+{
+	margin-left: 80px;
+}
+
+.divExplainT3
+{
+	margin-left: 100px;
+}
+
+.tableCMD tr td:nth-child(1)
+{
+	font-size: 24px;
+	border-left: solid 3px #0000FF;
+}
+
+.tableCMD tr td:nth-child(2)
+{
+	font-size: 20px;
+	/*font-weight: bold;*/
+}
+
+.tableCMD tr
+{
+	height: 50px;
+}
+
+.tableOption, .tableExplain
+{
+	border-collapse: collapse;
+	font-size: 20px;
+}
+
+.tableOption tr
+{
+	height: 50px;
+}
+
+.tableExplain tr
+{
+	height: 35px;
+}
+
+.tableOption td, .tableExplain th, .tableExplain td
+{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.tableOption th
+{
+	background-color: #D9D9D9;
+	text-align: center;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.tableOption tbody tr:nth-child(odd) td
+{
+	background-color: #F5F5F5;
+}
+
+.tableExplain tr td:nth-of-type(1)
+{
+	/*font-weight: bold;*/
+}
+
+.spanT
+{
+	color: #F92472;
+	font-size: 18px;
+	line-height: 1.6em;
+}
+
+.spanV
+{
+	color: #E7DB74;
+	font-size: 18px;
+	line-height: 1.6em;
+}
+
+.spanB
+{
+	color: #67D8EF;
+	font-size: 18px;
+	line-height: 1.6em;
+}
+
+.spanNum
+{
+	color: #AC80FF;
+}
+
+.spanZS, .divZS
+{
+	font-weight: bold;
+	font-size: 17px;
+	color: #74705D;
+	line-height: 1.6em;
+	/*font-family: Menlo,Monaco,Consolas,"Courier New",monospace;*/
+}
+
+.spanFGF
+{
+	/*font-weight: bold;*/
+	color: #F8F8F2;
+}
+
+.divFile
+{
+	background-color: #282923;
+	padding: 12px 18px 15px 15px;
+	min-width: 700px;
+	width: fit-content;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	margin-left: 20px;
+	border-radius: 5px
+}
+
+.sqlKeyword
+{
+	color: #79C4F0;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.sqlWord
+{
+	color: #FF6A6A;
+}
+
+body::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	background: #CFCFCF;
+}
+
+.divProtocolExplain
+{
+	margin-left: 20px;
+}
+
+.divProtocolExplain dl
+{
+	line-height: 40px;
+	font-size: 20px;
+}
+
+.divProtocolExplain dt
+{
+	color: #FFC000;
+}
+
+.divProtocolExplain dd
+{
+	/*color: #D5D6E2;*/
+	margin-left: 40px;
+	margin-bottom: 30px;
+}
+
+.divProtocolWord
+{
+	padding-top: 30px;
+	width: 100%;
+	background-color: #494A5F;
+	position: fixed;
+	text-align: center;
+	z-index: 5;
+	margin-top: 24.5px;
+}
+
+.protocolSX
+{
+	font-size: 70px;
+	text-align: right;
+	height: 100px;
+	line-height: 100px;
+}
+
+.protocolQC
+{
+	font-size: 25px;
+	padding-left: 15px;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.protocolZW
+{
+	font-size: 22px;
+	padding-left: 15px;
+	text-align: left;
+	vertical-align: top;
+}
+
+#protocolStructure
+{
+	margin-top: -10px;
+}
+
+.tableProtocolExplain
+{
+	/*color: #FFFFFF;*/
+	margin-left: 20px;
+	margin-top: 20px;
+	border: solid 2px #D5D6E2;
+	border-collapse: collapse;
+}
+
+.tableProtocolExplain th
+{
+	border: solid 2px #D5D6E2;
+	text-align: center;
+	line-height: 30px;
+}
+
+.tableProtocolExplain td
+{
+	border: solid 2px #D5D6E2;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	line-height: 30px;
+}
+
+.divSJT0
+{
+	margin-left: 15px;
+}
+
+.divSJT1
+{
+	margin-left: 70px;
+}
+
+.divSJT2
+{
+	margin-left: 80px;
+}
+
+.divSJT3
+{
+	margin-left: 110px;
+}
+
+.cmdInstruAllTopT1 + .divSJT1,
+.cmdInstruAllTopT2 + .divSJT2,
+.cmdInstruAllTopT3 + .divSJT3
+{
+	margin-top: 15px;
+}
+
+.cmdInstruAllTopT1 + .divSJT1,
+.cmdInstruAllTopT2 + .divSJT2,
+.cmdInstruAllTopT3 + .divSJT3
+{
+	margin-top: 15px;
+}
+
+.divConfigImgT2 + br + br + .divSJT2
+{
+	margin-top: -20px;
+}
+
+.spanY
+{
+	color: #FFFF00;
+}

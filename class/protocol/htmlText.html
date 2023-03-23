@@ -1,0 +1,66 @@
+<!-- 展示协议编写、全称、中文的html代码 -->
+<div style="display: inline-block">
+	<table>
+		<tr>
+			<td rowspan="2" class="protocolSX">ARP</td>
+			<td class="protocolQC">Address Resolution Protocol</td>
+		</tr>
+		<tr>
+			<td class="protocolZW">地址解析协议</td>
+		</tr>
+	</table>
+</div>
+
+
+<!-- 协议首部字段说明的html代码 -->
+<div id="i1" style="margin-top: 280px" class="divProtocolExplain">
+	<dl>
+		<div onmouseover="heightlightField(1,-187.5)" onmouseout="initProtocol()">
+			<dt class="fa fa-files-o">&nbsp;&nbsp;目的MAC地址（Destination）</dt>
+			<dd>由6字节构成，表示目的MAC地址</dd>
+		</div>
+		<div onmouseover="heightlightField(2,-187.5)" onmouseout="initProtocol()">
+			<dt class="fa fa-files-o">&nbsp;&nbsp;源MAC地址（Source）</dt>
+			<dd>由6字节构成，表示源MAC地址</dd>
+		</div>
+		<div onmouseover="heightlightField(3,-187.5)" onmouseout="initProtocol()">
+			<dt class="fa fa-files-o">&nbsp;&nbsp;协议类型（Protocol Type）</dt>
+			<dd>由2字节构成，表示下一个首部属于哪个协议</dd>
+		</div>
+		<div onmouseover="heightlightField(4,-187.5)" onmouseout="initProtocol()">
+			<dt class="fa fa-files-o">&nbsp;&nbsp;数据部分（Data）</dt>
+			<dd>由46~1500字节构成，如果数据部分较小（如ARP），小于46字节，需要填充0使数据部分达到最小的46字节</dd>
+		</div>
+		<div onmouseover="heightlightField(5,-187.5)" onmouseout="initProtocol()">
+			<dt class="fa fa-files-o">&nbsp;&nbsp;帧校验序列（FCS）</dt>
+			<dd>由4字节构成，对帧完整性的检查</dd><
+		</div>
+	</dl>
+</div>
+
+
+<!-- 美化的表格 -->
+<div class="protocolDivTable" style="width:550px">
+	<div class="table">
+		<div class="row header">
+			<div class="cell">操作码</div>
+			<div class="cell">含义</div>
+			<div class="cell">说明</div>
+		</div>
+		<div class="row">
+			<div class="cell">1</div>
+			<div class="cell">RRQ - Read request</div>
+			<div class="cell">下载文件请求报文</div>
+		</div>
+		<div class="row">
+			<div class="cell">2</div>
+			<div class="cell">WRQ - Write request</div>
+			<div class="cell">上传文件请求报文</div>
+		</div>
+		<div class="row">
+			<div class="cell">3</div>
+			<div class="cell">Data</div>
+			<div class="cell">文件传输报文</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset='UTF-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+	<link rel="shortcut icon" href="../../img/redhat.ico" />
+	<title>Linux-RedHat-基础服务</title>
+	<script src="../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../'));
+	</script>
+	<style type="text/css">
+		.HLTableS1, .HLTableS2
+		{
+			border-radius: 5px;
+		}
+
+		.treeview
+		{
+			white-space: nowrap;
+		}
+
+		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(3) .cmd,
+		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(5) .cmd,
+		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(7) .cmd
+		{
+			line-height: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_redhat_service, '../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruKeyT0("systemctl – 管理系统服务<br />","i1");
+					instruArr = new Array();
+					instruArr[0] = createLinuxCmd("systemctl “操作。 “服务。");
+					createCmdInstruT1(instruArr,"redhat");
+
+					createInstruAllTopT1("可选的操作如下：")
+					tBody = [
+						["start","启动服务"],
+						["stop","停止服务"],
+						["restart","重启服务"],
+						["enable","服务开机自启"],
+						["disable","关闭服务开机自启"],
+						["status","查看服务状态"],
+						["list-units --type=service","列举所有已启动服务"],
+					];
+					createHLTableT1(550, '', tBody, 'tSystemctl');
+
+					createInstruAllTopT1("<br />启动、开机启用docker");
+					createConfigImgT1("redhat_service/i1$1");
+
+					createInstruAllTopT1("查看docker状态");
+					createConfigImgT1("redhat_service/i1$2");
+
+					createInstruAllTopT1("查看所有已启动服务");
+					createConfigImgT1("redhat_service/i1$3");
+
+
+				createInstruT0("网络管理","i2");
+					createInstruT1("编辑网络参数","i2-1");
+						createInstruT2("编辑网络参数","i2-1-1");
+							createInstruAllTopT2("配置文件路径：/etc/sysconfig/network-scripts/ifcfg-ens160，其中 ens160 为网卡名");
+							cmd = `
+								TYPE=Ethernet
+								PROXY_METHOD=none
+								BROWSER_ONLY=no
+								BOOTPROTO=static						# IPv4地址配置方式，dhcp / static
+								DEFROUTE=yes
+								IPV4_FAILURE_FATAL=no
+								IPV6INIT=yes
+								IPV6_AUTOCONF=yes
+								IPV6_DEFROUTE=yes
+								IPV6_FAILURE_FATAL=no
+								NAME=ens160
+								UUID=ea74cf24-c2a2-ecee-3747-a2d76d46f93b
+								DEVICE=ens160
+								ONBOOT=yes									# 是否启用网卡
+
+								IPADDR=192.168.100.101			# IPv4地址
+								NETMASK=255.255.255.0		 	# IPv4子网掩码，前缀、子网掩码二选一
+								GATEWAY=192.168.100.1		 	# IPv4默认网关
+								DNS1=202.99.96.68				 	# IPv4 DNS
+								DNS2=8.8.8.8
+
+								IPV6ADDR=2001::100/64		 	# IPv6地址、前缀
+								IPV6_DEFAULTGW=2001::1			# IPv6默认网关
+								DNS3=2400::1								# IPv6 DNS
+								DNS4=2400::2
+							`;
+							createLinuxTxtT2(cmd);
+
+							createInstruAllTopT2("较高版本系统：文件配置后重启网卡，使配置生效");
+							// cmd = `
+							// 	nmcli connection reload ens160
+							// 	nmcli connection up ens160
+							// `;
+							// createLinuxTxtT2(cmd);
+							instruArr[0] = createLinuxCmd("nmcli connection reload “ens160。","3");
+							instruArr[1] = createLinuxCmd("nmcli connection up “ens160。","3");
+							instruArr[2] = createCmdInstruSpan("“ens160。","网卡名");
+							createCmdInstruT2(instruArr,"redhat");
+
+							createInstruAllTopT2("较低版本系统：文件配置后需要重启网络服务，使配置生效");
+							// cmd = `
+							// 	systemctl reload network
+							// `;
+							// createLinuxTxtT2(cmd);
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createLinuxCmd("systemctl reload network");
+							createCmdInstruT2(instruArr,"redhat");
+
+						createInstruKeyT2("nmtui – 图形化工具配置网络","i2-1-2");
+							createInstruAllTopT2("一个用命令行画的图形界面，操作不是很方便");
+
+							createInstruAllTopT2("使配置生效时，需要禁用，再启用网卡，基于该网卡的网络连接会中断");
+							// cmd = `
+							// 	nmtui
+							// `;
+							// createLinuxTxtT2(cmd);
+							instruArr[0] = createLinuxCmd("nmtui");
+							createCmdInstruT2(instruArr,"redhat");
+
+							createConfigImgT2("redhat_service/i2-1-2$1");
+
+						createInstruKeyT2("nmcli – 命令行工具配置网络","i2-1-3");
+							createInstruT3("配置地址");
+								createInstruAllTopT3("静态IPv4地址");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv4.addresses 192.168.100.111/34 ipv4.gateway 192.168.100.1 ipv4.dns 202.99.96.68,8.8.8.8
+								// 	nmcli connection modify ens192 ipv6.method manual
+								// `;
+								// createLinuxTxtT3(cmd);
+								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv4.addresses “192.168.100.11。/“24。 ipv4.gateway “192.168.100.1。 ipv4.dns “202.99.96.68,8.8.8.8。","3");
+								instruArr[1] = createCmdInstruSpan("“ens192。","网卡名");
+								instruArr[2] = createCmdInstruSpan("“192.168.100.11。/“24。","IP地址/子网掩码");
+								instruArr[3] = createCmdInstruSpan("“192.168.100.1。","默认网关");
+								instruArr[4] = createCmdInstruSpan("“202.99.96.68,8.8.8.8。","DNS服务器地址（多个）");
+								createCmdInstruT3(instruArr,"redhat");
+
+								createInstruAllTopT3("静态IPv6地址");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv6.addresses 2001:1::100/64 ipv6.gateway 2001:1::1 ipv6.dns 2400::1,2400::2
+								// 	nmcli connection modify ens192 ipv6.method manual
+								// `;
+								// createLinuxTxtT3(cmd);
+
+								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv6.addresses “2001:1::100。/“64。 ipv6.gateway “2001:1::1。 ipv6.dns “2400::1,2400::2。","3");
+								instruArr[2] = createCmdInstruSpan("“2001:1::100。/“64。","IP地址/子网掩码");
+								instruArr[3] = createCmdInstruSpan("“2001:1::1。","默认网关");
+								instruArr[4] = createCmdInstruSpan("“2400::1,2400::2。","DNS服务器地址（多个）");
+								createCmdInstruT3(instruArr,"redhat");
+
+							createInstruT3("修改IP地址配置方式");
+								// createInstruAllTopT3("IPv4地址采用静态方式配置，ens192为网卡名");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv4.method manual
+								// `;
+								// createLinuxTxtT3(cmd);
+								//
+								// createInstruAllTopT3("IPv4地址采用DHCP方式获得，ens192为网卡名");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv4.method auto
+								// `;
+								// createLinuxTxtT3(cmd);
+								createInstruAllTopT3("IPv4");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv4.method { manual | auto }" ,"3");
+								instruArr[1] = createCmdInstruSpan("“ens192。","网卡名");
+								instruArr[2] = createCmdInstruSpan("manual","静态方式配置");
+								instruArr[3] = createCmdInstruSpan("auto","DHCP方式获得");
+								createCmdInstruT3(instruArr,"redhat");
+
+								// createInstruAllTopT3("IPv6地址采用静态方式配置，ens192为网卡名");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv6.method manual
+								// `;
+								// createLinuxTxtT3(cmd);
+								//
+								// createInstruAllTopT3("IPv6地址采用自动获取（通过‘ICMPv6 RA引导。），ens192为网卡名");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv6.method auto
+								// `;
+								// createLinuxTxtT3(cmd);
+								//
+								// createInstruAllTopT3("IPv6地址‘仅采用DHCP。方式获得，ens192为网卡名");
+								// cmd = `
+								// 	nmcli connection modify ens192 ipv6.method dhcp
+								// `;
+								// createLinuxTxtT3(cmd);
+								createInstruAllTopT3("IPv6");
+								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv6.method { manual | auto | dhcp }" ,"3");
+								instruArr[2] = createCmdInstruSpan("manual","静态方式配置");
+								instruArr[3] = createCmdInstruSpan("auto","自动获取（通过‘ICMPv6 RA引导。）");
+								instruArr[4] = createCmdInstruSpan("dhcp","‘仅采用DHCP。方式获得");
+								createCmdInstruT3(instruArr,"redhat");
+
+
+							createInstruT3("使配置修改生效");
+								// cmd = `
+								// 	nmcli connection reload ens192
+								// 	nmcli connection up ens192
+								// `;
+								// createLinuxTxtT3(cmd);
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("nmcli connection reload “ens192。","3");
+								instruArr[1] = createLinuxCmd("nmcli connection up “ens192。","3");
+								instruArr[2] = createCmdInstruSpan("“ens192。","网卡名");
+								createCmdInstruT3(instruArr,"redhat");
+
+								createInstruAllTopT3("实测：动态地址变为静态地址，静态地址间改变IP地址，正常");
+
+								createInstruAllTopT3("静态地址变为动态地址时，原有静态地址不会失去，可按下面方法去掉");
+								// cmd = `
+								// 	nmcli connection delete ens192
+								// 	nmcli device up ens192
+								// `;
+								// createLinuxTxtT3(cmd);
+								instruArr[0] = createLinuxCmd("nmcli connection delete “ens192。","3");
+								instruArr[1] = createLinuxCmd("nmcli device up “ens192。","3");
+								createCmdInstruT3(instruArr,"redhat");
+
+
+
+				createInstruKeyT0("firewalld – 主机防火墙","i3");
+					createInstruAllTopT0("基于区域的普通防火墙，所有物理接口默认加入public区域，只控制入方向的4层的防火墙");
+					// createInstruAllTopT0("由于主机防火墙的定位，以及该防火墙的功能，没必须进行复杂的配置");
+					createInstruAllTopT0("防火墙规则分为 运行时生效 和 永久生效 两种，互不影响");
+
+					createInstruAllTopT0("该防火墙为服务，服务名为 firewalld");
+
+					// createInstruAllTopT0("一般只需要对服务或端口进行管理，其它的没有必要或没有意义");
+
+						createInstruT1("<br />普通规则","i3-1");
+							createInstruAllTopT1("对于某个端口（协议），允许即允许，阻止即阻止，不存在顺序问题");
+
+							createInstruAllTopT1("阻止某个端口（协议），不是明确阻止，只是没有允许的条目，通过默认的阻止所有阻止");
+
+							createInstruAllTopT1("对于已经定义好的名字端口（如：http -> 80/tcp），基于服务名的配置优先级高于基于端口配置");
+
+							createInstruAllTopT1("如果允许http，但阻止80/tcp，80/tcp流量 允许");
+
+							createInstruAllTopT1("如果阻止http，但允许80/tcp，80/tcp流量 允许");
+
+							createInstruT2("<br />允许/阻止某端口","i3-1-1");
+								instruArr[0] = createLinuxCmd("firewall-cmd --add-servic=“80/tcp。 [ --permanent ]");
+								instruArr[1] = createLinuxCmd("firewall-cmd --remove-servic=“80/tcp。 [ --permanent ]");
+								instruArr[2] = createCmdInstruSpan("--add-port","允许某端口");
+								instruArr[3] = createCmdInstruSpan("--remove-port","阻止某端口");
+								instruArr[4] = createCmdInstruSpan("“80/tcp。","端口号/协议");
+								instruArr[5] = createCmdInstruSpan("“80-85/tcp。","多个连接端口号/协议");
+								instruArr[6] = createCmdInstruSpan("--permanent","永久生效，省略则为 运行时生效");
+								createCmdInstruT2(instruArr,"redhat");
+
+								createConfigImgT2("redhat_service/i3-1-1$1~2");
+
+							createInstruT2("<br />允许/阻止某服务","i3-1-2");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("firewall-cmd --add-service=“http。 [ --permanent ]");
+								instruArr[1] = createLinuxCmd("firewall-cmd --remove-service=“http。 [ --permanent ]");
+								instruArr[2] = createCmdInstruSpan("--add-service","允许某服务");
+								instruArr[3] = createCmdInstruSpan("--remove-service","允许某服务");
+								instruArr[4] = createCmdInstruSpan("“http。","服务名，支持tab");
+								instruArr[5] = createCmdInstruSpan("--permanent","永久生效，省略则为 运行时生效");
+								createCmdInstruT2(instruArr,"redhat");
+
+								createConfigImgT2("redhat_service/i3-1-2$1~2");
+
+							createInstruT2("<br />允许/阻止某协议","i3-1-3");
+								instruArr[0] = createLinuxCmd("firewall-cmd --add-protocol=“ESP。 [ --permanent ]");
+								instruArr[1] = createLinuxCmd("firewall-cmd --remove-protocol=“ESP。 [ --permanent ]");
+								instruArr[2] = createCmdInstruSpan("--add-protocol","允许某协议");
+								instruArr[3] = createCmdInstruSpan("--remove-protocol","允许某协议");
+								instruArr[4] = createCmdInstruSpan("“ESP。","协议名或协议号");
+								instruArr[5] = createCmdInstruSpan("--permanent","永久生效，省略则为 运行时生效");
+								createCmdInstruT2(instruArr,"redhat");
+
+								createConfigImgT2("redhat_service/i3-1-3$1~2");
+
+						createInstruT1("<br />查询功能","i3-2");
+							createInstruT2("查看所有规则","i3-2-1");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("firewall-cmd --list-all [ --permanent ]");
+								instruArr[1] = createCmdInstruSpan("--permanent","永久生效规则，省略则为 运行时生效规则");
+								createCmdInstruT2(instruArr,"redhat");
+
+								createConfigImgT2("redhat_service/i3-2-1$1");
+
+							createInstruT2("<br />具体查看某个端口（服务、协议）是否开放","i3-2-2");
+								createInstruAllTopT2("yes为允许，no为阻止");
+								instruArr[0] = createLinuxCmd("firewall-cmd --query-port=“80/tcp。 [ --permanent ]");
+								instruArr[1] = createCmdSpan("　");
+								instruArr[2] = createLinuxCmd("firewall-cmd --query-service=“http。 [ --permanent ]");
+								instruArr[3] = createCmdSpan("　");
+								instruArr[4] = createLinuxCmd("firewall-cmd --query-protocol=“ESP。 [ --permanent ]");
+								instruArr[5] = createCmdSpan("　");
+								instruArr[6] = createCmdInstruSpan("--permanent","查询永久生效规则，省略则为 查询运行时生效规则");
+								createCmdInstruT2(instruArr,"redhat");
+
+								createConfigImgT2("redhat_service/i3-2-2$1");
+
+						createInstruT1("运行 / 永久 配置相互转化","i3-3");
+							createInstruT2("运行 --> 永久","i3-3-1");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("firewall-cmd --runtime-to-permanent");
+								createCmdInstruT2(instruArr,"redhat");
+								createConfigImgT2("redhat_service/i3-3-1$1");
+
+							createInstruT2("<br />永久 --> 运行","i3-3-2");
+								instruArr[0] = createLinuxCmd("firewall-cmd --reload");
+								createCmdInstruT2(instruArr,"redhat");
+								createConfigImgT2("redhat_service/i3-3-2$1");
+
+
+				createInstruT0("DHCP服务","i4");
+					createInstruT1("安装DHCP服务","i4-1");
+						createInstruAllTopT1("软件名为 dhcp-server，dhcpv4、dhcpv6均支持");
+						cmd = `
+							dnf install -y dhcp-server
+						`;
+						createLinuxTxtT1(cmd);
+
+					createInstruT1("配置DHCP服务","i4-2");
+						createInstruT2("DHCPv4","i4-2-1");
+							createInstruAllTopT2("配置文件路径：/etc/dhcp/dhcpd.conf");
+
+							createInstruAllTopT2("配置文件参考：");
+							cmd = `
+								#
+								# DHCP Server Configuration file.
+								#   see /usr/share/doc/dhcp-server/dhcpd.conf.example
+								#   see dhcpd.conf(5) man page
+								#
+
+								#  全局配置，每个地址池均包含的内容可以在全局中配置
+								ddns-update-style none;				 # 与DDNS服务相关的全局配置，如无DDNS服务，这样配置即可，也可以省略
+								ignore client-updates;				  # 与DDNS服务相关的全局配置，如无DDNS服务，这样配置即可，也可以省略
+								max-lease-time 3600;					# 租期
+								option domain-name "itachi.tech";	   # 域名
+								option domain-name-servers 8.8.8.8;	 # DNS服务器地址
+
+								subnet 192.168.100.0 netmask 255.255.255.0 {	# 与本地网卡相同的子网的地址池，必须，内容可以为空
+									range 192.168.100.181 192.168.100.200;	  # 分配地址范围，必须配置，不然不分配地址
+									option subnet-mask 255.255.255.0;		   # 子网掩码
+									option routers 192.168.100.254;			 # 默认网关
+									option domain-name "itachi.tech";		   # DNS服务器地址
+									option domain-name-servers 8.8.8.8;		 # DNS服务器地址
+									max-lease-time 3600;						# 租期，单位秒
+
+									host itachi {							   # 地址保留，itachi仅为名字，无特定含义
+										hardware ethernet 00:0c:29:28:36:27;	# 设备的MAC地址
+										fixed-address 192.168.100.222;		  # 设备分配的地址
+									}
+								}
+
+								subnet 192.168.10.0 netmask 255.255.255.0 {	 # 用于中继的地址池，配置方式与上面相同
+									range 192.168.10.181 192.168.10.200;
+									option routers 192.168.10.254;
+									option subnet-mask 255.255.255.0;
+									max-lease-time 60;
+								}
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("DHCPv6","i4-2-2");
+							createInstruAllTopT2("配置文件路径：/etc/dhcp/dhcpd6.conf");
+
+							createInstruAllTopT2("配置文件参考：");
+							cmd = `
+								#
+								# DHCPv6 Server Configuration file.
+								#   see /usr/share/doc/dhcp-server/dhcpd6.conf.example
+								#   see dhcpd.conf(5) man page
+								#
+
+								#  全局配置，每个地址池均包含的内容可以在全局中配置
+								default-lease-time 3600;							# 默认租期
+								max-lease-time 7200;								# 最大租期
+								option dhcp6.rapid-commit;					 	 # dhcpv6的rapid-commit模式
+								option dhcp6.name-servers 2400::1;			 	 # DNS服务器地址
+								option dhcp6.domain-search "itachi.tech";	 	  # 域名
+
+								subnet6 2001:100::/64 {						 	# 与本地网卡相同的子网的地址池，必须，内容可以为空
+									range6 2001:100::1001 2001:100::2000;	  	 # 分配地址范围，必须配置，不然不分配地址
+									default-lease-time 3600;						# 默认租期
+									max-lease-time 7200;							# 最大租期
+									option dhcp6.rapid-commit;				  	# dhcpv6的rapid-commit模式
+									option dhcp6.name-servers 2400::1;		 	 # DNS服务器地址
+									option dhcp6.domain-search "itachi.tech";   	# 域名
+
+									host itachi {								   # 地址保留，itachi仅为名字，无特定含义
+										hardware ethernet 00:0C:29:4E:2A:A3;		# 设备的MAC地址
+										fixed-address6 2001:100::ffff;			  # 设备分配的地址
+									}
+								}
+
+								subnet6 2001:110::/64 {							 # 用于中继的地址池，配置方式与上面相同
+									range6 2001:110::1001 2001:110::2000;
+								}
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("启动并开机启动DHCP服务","i4-3");
+						createInstruT2("DHCPv4","i4-3-1");
+							createInstruAllTopT2("对应服务名为 dhcpd，如果配置文件有错误，启动服务时会报错");
+							cmd = `
+								systemctl start dhcpd
+								systemctl enable dhcpd
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("DHCPv6","i4-3-2");
+							createInstruAllTopT2("默认情况下，DHCPv6服务端端口未开放（firewalld）");
+
+							createInstruAllTopT2("对应服务名为 dhcpd6，如果配置文件有错误，启动服务时会报错");
+
+							cmd = `
+								firewall-cmd --add-service=dhcpv6 --permanent
+								firewall-cmd --add-service=dhcpv6
+
+								systemctl start dhcpd6
+								systemctl enable dhcpd6
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("查看 / 管理地址分配","i4-4");
+						createInstruT2("DHCPv4","i4-4-1");
+							createInstruAllTopT2("配置文件位于 /var/lib/dhcpd/dhcpd.leases");
+							createConfigImgT2("redhat_service/i4-4-1$1")
+
+						createInstruT2("DHCPv6","i4-4-2");
+							createInstruAllTopT2("配置文件位于 /var/lib/dhcpd/dhcpd6.leases");
+							createConfigImgT2("redhat_service/i4-4-2$1");
+
+				createInstruT0("DNS服务","i5");
+					createInstruT1("安装DNS服务","i5-1");
+						createInstruAllTopT1("软件名为 bind-chroot");
+						cmd = `
+							dnf install -y bind-chroot
+						`;
+						createLinuxTxtT1(cmd);
+
+						createInstruAllTopT1("对应的服务名为 named，防火墙（firewalld）默认没有开放DNS服务");
+
+						cmd = `
+							systemctl start named
+							systemctl enable named
+
+							firewall-cmd --add-service=dns
+							firewall-cmd --add-service=dns --permanent
+						`;
+						createLinuxTxtT1(cmd);
+
+						createInstruAllTopT1("各个配置文件的位置及作用如下");
+
+						createInstruAllTopT1("主配置文件：<span class='sqlWord'>/etc/named.conf</span>，用于配置bind服务程序的运行/。");
+
+						createInstruAllTopT1("区域配置文件：<span class='sqlWord'>/etc/named.rfc1912.zones</span>，用来保存域名和IP地址对应关系的所在位置/。类似于图书的目录，对应着每个域和相应IP地址所在的具体位置，当需要查看或修改时，可根据这个位置找到相关文件/。");
+
+						createInstruAllTopT1("数据配置文件目录：<span class='sqlWord'>/var/named</span>，该目录用来保存域名和IP地址真实对应关系的数据配置文件/。");
+
+
+					createInstruT1("<br />配置主配置文件","i5-2");
+						createInstruAllTopT1("为了能够响应DNS请求，修改主配置文件（/etc/named.conf），将对应参数改为any");
+
+						cmd = `
+							sed -e "s/\\s*listen-on port 53.*/\\tlisten-on port 53 { any; };/" \\
+							    -e "s/\\s*listen-on-v6 port 53.*/\\tlisten-on-v6 port 53 { any; };/" \\
+							    -e "s/\\s*allow-query.*/\\tallow-query\\t{ any; };/" \\
+								-i /etc/named.conf
+						`;
+						createLinuxTxtT1(cmd);
+
+						createConfigImgT1("redhat_service/i5-2$1");
+
+					createInstruT1("配置转发器","i5-7");
+						createInstruAllTopT1("主配置文件（/etc/named.conf）中配置：<span class='sqlWord'>forwarders { 202.99.96.68; };</span>");
+						cmd = `
+							sed -i "/\\s*allow-query/a \\\\\\tforwarders { 202.99.96.68; };" /etc/named.conf
+						`;
+						createLinuxTxtT1(cmd);
+						createConfigImgT1("redhat_service/i5-7$1");
+
+					createInstruT1("配置正向解析","i5-3");
+						createInstruT2("配置区域配置文件","i5-3-1");
+							createInstruAllTopT2("配置区域配置文件 /etc/named.rfc1912.zones，新建正向解析区域");
+							createInstruAllTopT2("默认内容可全部全部删除");
+							cmd = `
+								zone "itachi.tech" IN { 		# 区域名 itachi.tech，也就是域名
+									type master;				# 主区域
+									file "itachi.tech.zone";	# 该区域的配置文件名 itachi.tech.zone，文件名为 域名.zone
+									allow-update { none; }; 	# 不允许更新
+								};
+        					`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("配置数据配置文件","i5-3-2");
+							createInstruAllTopT2("配置文件位于/var/named/，包含一个示例文件 named.localhost");
+							createInstruAllTopT2("复制示例文件，并根据需要进行修改，仅部分位置支持注释");
+
+							cmd = `
+								cd /var/named/
+								cp -a named.localhost itachi.tech.zone
+							`;
+							createLinuxTxtT2(cmd);
+
+							cmd = `
+								$TTL 1D	# 生命周期为1天，未修改
+								@	IN SOA	itachi.tech.	root.itachi.tech. (
+									# 授权信息	# DNS区域地址	# 域名管理员邮件（不要用@符号）
+																					0 ; serial		# 更新序列号，未修改
+																					1D ; refresh	  # 更新时间，未修改
+																					1H ; retry		# 重试延时，未修改
+																					1W ; expire	   # 失效时间，未修改
+																					3H ) ; minimum	# 无效解析记录缓存时间，未修改
+									    NS		   ns.itachi.tech.	 # 该域名的域名服务器记录 必须，对应的域名任意
+								ns	  A			192.168.110.10	  # NS记录对应的域名的A记录 必须
+								# 下面为根据需要配置的DNS记录
+
+								www	 A			192.168.110.20		# www.itachi.tech的A记录
+									    AAAA		 2001:110::20		  # www.itachi.tech的AAAA记录
+								mail	A			192.168.110.21		# mail.itachi.tech的A记录
+										MX		   192.168.110.21		# mail.itachi.tech的MX记录
+							`;
+							createLinuxTxtT2(cmd);
+
+
+					createInstruT1("配置反向解析（IPv4）","i5-4");
+						createInstruT2("配置区域配置文件","i5-4-1");
+							createInstruAllTopT2("配置区域配置文件 /etc/named.rfc1912.zones，新建反向解析区域");
+							createInstruAllTopT2("默认内容可全部全部删除");
+							cmd = `
+								zone "110.168.192.in-addr.arpa" IN {	# 反向解析的区域名，规则：IPv4地址的网络位反向 + .in-addr.arpa
+									type master;						# 主区域
+									file "192.168.110.arpa";			# 该区域的配置文件名 192.168.110.arpa
+									allow-update { none; }; 			# 不允许更新
+								};
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("配置数据配置文件","i5-4-2");
+							createInstruAllTopT2("配置文件位于/var/named/，包含一个示例文件 named.loopback");
+							createInstruAllTopT2("复制示例文件，并根据需要进行修改，仅部分位置支持注释");
+
+							cmd = `
+								cd /var/named/
+								cp -a named.loopback 192.168.110.arpa
+							`;
+							createLinuxTxtT2(cmd);
+
+							cmd = `
+								$TTL 1D	# 生命周期为1天，未修改
+								@	IN SOA	itachi.tech.	root.itachi.tech. (
+									# 授权信息	# DNS区域地址	# 域名管理员邮件（不要用@符号）
+																					0 ; serial		# 更新序列号，未修改
+																					1D ; refresh	  # 更新时间，未修改
+																					1H ; retry		# 重试延时，未修改
+																					1W ; expire	   # 失效时间，未修改
+																					3H ) ; minimum	# 无效解析记录缓存时间，未修改
+									    NS	  ns.itachi.tech.	 # 该域名的域名服务器记录 必须，对应的域名任意
+								# 下面为根据需要配置的DNS记录
+
+								20  	PTR 	www.itachi.tech.	 # www.itachi.tech.的反向解析记录
+								21  	PTR 	mail.itachi.tech.	# mail.itachi.tech.的反向解析记录
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("配置反向解析（IPv6）","i5-5");
+						createInstruT2("生成区域配置文件中的区域名","i5-5-1");
+							instruArr[0] = createLinuxCmd("dig -x “2001:110::。 ||| grep .ip6.arpa ");
+							instruArr[0] = instruArr[0] + createCmdSpan("| { read v6; echo ${v6: “33。: “40。}; }".replaceAll(" ", "&nbsp;&nbsp;"));
+							instruArr[1] = createCmdInstruSpan("“2001:110::。","反向解析的IPv6地址的网络位");
+							instruArr[2] = createCmdInstruSpan("“33。","64位网络位对应的取值，计算规则：网络位长度为n，取值为 2((128-n)/4) + 1，实质为截取字符串的起始位置");
+							instruArr[3] = createCmdInstruSpan("“40。","64位网络位对应的取值，计算规则：网络位长度为n，取值为 2(n/4) + 8，实质为截取字符串的长度");
+							createCmdInstruT2(instruArr,"redhat");
+							createConfigImgT2("redhat_service/i5-5-1$1");
+
+						createInstruT2("生成数据配置文件的IPv6地址","i5-5-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createLinuxCmd("dig -x “2001:110::20。 ||| grep .ip6.arpa ");
+							instruArr[0] = instruArr[0] + createCmdSpan("| { read v6; echo ${v6: 1}; }".replaceAll(" ", "&nbsp;&nbsp;"));
+							instruArr[1] = createCmdInstruSpan("“2001:110::20。","反向解析的IPv6地址");
+							createCmdInstruT2(instruArr,"redhat");
+							createConfigImgT2("redhat_service/i5-5-2$1");
+
+						createInstruT2("配置区域配置文件","i5-5-3");
+							createInstruAllTopT2("配置区域配置文件 /etc/named.rfc1912.zones，新建反向解析区域");
+							createInstruAllTopT2("默认内容可全部全部删除");
+							cmd = `
+								zone "0.0.0.0.0.0.0.0.0.1.1.0.1.0.0.2.ip6.arpa" IN {	# 反向解析的区域，规则在前面
+									type master;			   # 主区域
+									file "2001:110::.arpa";	# 该区域的配置文件名 2001:110::.arpa
+									allow-update { none; };	# 不允许更新
+								};
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("配置数据配置文件","i5-5-4");
+							createInstruAllTopT2("配置文件位于/var/named/，包含一个示例文件 named.loopback");
+							createInstruAllTopT2("复制示例文件，并根据需要进行修改，仅部分位置支持注释");
+
+							cmd = `
+								cd /var/named/
+								cp -a named.loopback 2001:110::.arpa
+							`;
+							createLinuxTxtT2(cmd);
+
+							cmd = `
+								$TTL 1D	# 生命周期为1天，未修改
+								@	IN SOA	itachi.tech.	root.itachi.tech. (
+									# 授权信息	# DNS区域地址	# 域名管理员邮件（不要用@符号）
+																					0 ; serial		# 更新序列号，未修改
+																					1D ; refresh	  # 更新时间，未修改
+																					1H ; retry		# 重试延时，未修改
+																					1W ; expire	   # 失效时间，未修改
+																					3H ) ; minimum	# 无效解析记录缓存时间，未修改
+									    NS	  ns.itachi.tech.	 # 该域名的域名服务器记录 必须，对应的域名任意
+								# 下面为根据需要配置的DNS记录
+
+								0.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.0.1.0.0.2.ip6.arpa. IN PTR	www.itachi.tech.
+								# 2001:110::20 对应的反向解析配置方法，域名前的内容可自动生成，方法在前面
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("配置主从DNS服务器","i5-6");
+						createInstruT2("基本配置（无加密）","i5-6-1");
+							createInstruT3("配置主服务器","i5-6-1-1");
+								createInstruAllTopT3("修改区域配置文件 /etc/named.rfc1912.zones，添加允许区域更新的主机");
+								cmd = `
+									zone "itachi.tech" IN {
+										type master;
+										file "itachi.tech.zone";
+										allow-update { 192.168.100.110; };	# 允许 192.168.100.110 进行更新
+									};
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("配置从服务器","i5-6-1-2");
+								createInstruAllTopT3("配置区域配置文件 /etc/named.rfc1912.zones，从主服务器接收数据");
+								cmd = `
+									zone "itachi.tech" IN {				# 区域名 itachi.tech
+										type slave;						# 从区域
+										masters { 192.168.100.100; };	  # 主DNS服务器地址
+										file "slaves/itachi.tech.zone";	# 存储接到到数据文件的文件名（位置）
+									};
+								`;
+								createLinuxTxtT3(cmd);
+
+						createInstruT2("加密传输","i5-6-2");
+							createInstruT3("配置主服务器","i5-6-2-1");
+								createInstruAllTopT3("在主配置文件 /etc/named.conf，添加随机密钥，transfer-key为密钥名");
+								cmd = `
+									tsig-keygen transfer-key | tee -a /etc/named.conf
+									# 以下为输出，在从服务器还要用到
+
+									key "transfer-key" {
+										algorithm hmac-sha256;
+										secret "s/TJOJgcO4qeXpFFE95TnaW2KKsnrD63vbjVIT7nOGg=";
+									};
+								`;
+								createLinuxTxtT3(cmd);
+
+								createInstruAllTopT3("修改主配置文件 /etc/named.conf，添加一行　<span class='sqlWord'>allow-transfer { key transfer-key; };</span>");
+								createInstruAllTopT3("使用密钥transfer-key进行加密传输");
+
+								cmd = `
+									sed -i "/\\s*allow-query/a \\\\\\tallow-transfer { key transfer-key; };" /etc/named.conf
+								`;
+								createLinuxTxtT3(cmd);
+
+								createConfigImgT3("redhat_service/i5-6-2-1$1");
+
+							createInstruT3("配置从服务器","i5-6-2-2");
+								createInstruAllTopT3("在主配置文件 /etc/named.conf，添加主服务器生成的密钥，并启用加密传输");
+								cmd = `
+									cat >>/etc/named.conf <<'EOF'
+
+									server 192.168.100.100 {	# 主服务器地址
+										keys { transfer-key; }; # 密钥名
+									};
+
+									key "transfer-key" {		# 密钥
+										algorithm hmac-sha256;
+										secret "s/TJOJgcO4qeXpFFE95TnaW2KKsnrD63vbjVIT7nOGg=";
+									};
+									EOF
+								`;
+								createLinuxTxtT3(cmd);
+
+
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../'));
+	</script>
+</body>
+</html>

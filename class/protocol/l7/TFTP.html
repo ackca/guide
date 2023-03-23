@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-TFTP</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_tftp, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"TFTP",
+					"Trivial File Transfer Protocol",
+					"简单文件传输协议",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("TFTP 协议简介","i1");
+					createInstruT1("什么是TFTP","i1-1");
+						createInstruAllTopT1("TFTP用于传输文件的简单协议，运行在UDP 69端口，TFTP被设计得小而简单，容易实施，但缺乏高级特性");
+
+						createInstruAllTopT1("TFTP只能上传或下载文件到服务器，不能列举、删除、重命令文件或目录，也无用户认证功能");
+
+						createInstruAllTopT1("在报文交互过程中，仅第一个报文，客户端使用随机高端口向服务端69号端口发送请求，服务端使用随机高端口向客户端发送响应，客户端端口不变，随后的报文交互仅使用这组随机高端口，不再变化");
+
+						createInstruAllTopT1("TFTP使用停止等待方式传送数据，以512字节为一块传送数据，每块数据设有编号，收到数据后，发送包含数据块编号的确认报文，收到确认后，再发送下一块数据。");
+
+						createInstruAllTopT1("除最后一块外，每块数据均为512字节，当数据小于512字节时，说明数据传输完成");
+
+						createInstruAllTopT1("TFTP使用停止等待方式解决了失序和丢包问题");
+
+					document.write("<br /><br />");
+					createInstruT1("TFTP 报文交互图解","i1-2");
+						document.write("<br />");
+						createConfigImgT1("TFTP/TFTP交互图解");
+
+					createInstruT1("TFTP 报文交互实例","i1-3");
+						createInstruAllTopT1("报文共同部分：42 = 14（以太网首部）+ 20（IP首部）+ 8（UDP首部）");
+						createInstruAllTopT1("Data报文：　　558 = 42 + 2（TFTP操作码：3）+ 2（TFTP块编号）+ 512（TFTP数据部分）");
+						createInstruAllTopT1("ACK报文：　　&nbsp;&nbsp;&nbsp;60 =  42 + 2（TFTP操作码：4）+ 2（TFTP块编号）+ 填充（以太网数据部分最小46字节）");
+						document.writeln("<br />");
+						createConfigImgT1("TFTP/TFTP交互实例");
+
+				createInstruT0("TFTP 不同类型报文","i2");
+					createInstruT1("TFTP 报文概述","i2-5");
+						createProtocolStructT1(
+							"800",
+							"465",
+							"465",
+							"TFTP/TFTP"
+						);
+
+						createInstruAllTopT1("除第一字段外，其余字段与第一字段有关");
+						createInstruAllTopT1("第一字段的取值与报文作用关系如下：");
+
+						document.writeln("<br />");
+						tHeader = [
+							"操作码",
+							"含义",
+							"说明",
+						];
+						tBody = [
+							["1","RRQ - Read request","下载文件请求报文"],
+							["2","WRQ - Write request","上传文件请求报文"],
+							["3","Data","文件传输报文"],
+							["4","ACK - Acknowledgment","确认报文"],
+							["5","Error","差错报文"],
+						];
+						createHLTableT1(550, tHeader, tBody);
+						document.writeln("<br />");
+
+					createInstruT1("RRQ / WRQ 报文","i2-1");
+						createInstruT2("RRQ / WRQ 报文结构","i2-1-1");
+							createProtocolStructT2(
+								"900",
+								"150",
+								"991",
+								"TFTP/TFTP12",
+								"protocolStructure1"
+							);
+							document.writeln("<br />");
+
+							words = `
+								操作码（Opcode）
+								由16 bit构成，表示报文类型<table class="tableProtocolExplain"><tr><th>&nbsp;操作码&nbsp;</th><th>含义</th><th>说明</th></tr><tr><td>1</td><td>RRQ - Read request</td><td>下载文件请求报文</td></tr><tr><td>2</td><td>WRQ - Write request</td><td>上传文件请求报文</td></tr></table>
+
+								文件名（Filename）
+								根据文件名的大小确定长度，表示下载（上传）的文件名
+
+								0
+								由8 bit构成，值为0，表示文件名终止
+
+								模式（Mode）
+								模式字段是一个ASCII码串netascii或octet（不区分大小写），长度根据值确定
+
+								0
+								由8 bit构成，值为0，表示模式终止
+							`;
+							createProtocolExplainT2(words, -162.7, 'protocolStructure1');
+
+						createInstruT2("RRQ / WRQ 报文实例","i2-1-2");
+							createConfigImgT2("TFTP/TFTP_read");
+							createConfigImgT2("TFTP/TFTP_write");
+
+					createInstruT1("DATA 报文","i2-2");
+						createInstruT2("DATA 报文结构","i2-2-1");
+							createProtocolStructT2(
+								"840",
+								"160",
+								"650",
+								"TFTP/TFTP3",
+								"protocolStructure2"
+							);
+							document.writeln("<br />");
+
+							words = `
+								操作码（Opcode）
+								由16 bit构成，表示报文类型，Data报文的值为3
+
+								块编号（Block Number）
+								16 bit构成，表示发送数据的编号，从1开始累计（0号为下载/上传的请求）
+
+								数据部分（Data）
+								根据TFTP的传输规则，除最后一块外，其余每块均为512字节，因此数据总分最大512字节
+							`;
+							createProtocolExplainT2(words, -160, 'protocolStructure2');
+
+						createInstruT2("DATA 报文实例","i2-2-2");
+							createConfigImgT2("TFTP/TFTP_data");
+
+					createInstruT1("ACK 报文","i2-3");
+						createInstruT2("ACK 报文结构","i2-3-1");
+							createProtocolStructT2(
+								"510",
+								"150",
+								"460",
+								"TFTP/TFTP4",
+								"protocolStructure3"
+							);
+							document.writeln("<br />");
+
+							words = `
+								操作码（Opcode）
+								由16 bit构成，表示报文类型，ACK报文的值为4
+
+								块编号（Block Number）
+								16 bit构成，表示被确认的数据的编号，如果为0，则确认客户端的下载/上传的请求
+							`;
+							createProtocolExplainT2(words, -143.2, 'protocolStructure3');
+
+						createInstruT2("ACK 报文实例","i2-3-2");
+							createConfigImgT2("TFTP/TFTP_ack");
+
+					createInstruT1("ERROR 报文","i2-4");
+						createInstruT2("ERROR 报文结构","i2-4-1");
+							createProtocolStructT2(
+								"900",
+								"150",
+								"794",
+								"TFTP/TFTP5",
+								"protocolStructure4"
+							);
+							document.writeln("<br />");
+
+							words = `
+								操作码（Opcode）
+								由16 bit构成，表示报文类型，ERROR报文的值为5
+
+								差错码（ErrorCode）
+								由16 bit构成，表示差错的编号，取值及对应含义如下<table class="tableProtocolExplain"><tr><td>　0　</td><td>Not defined, see error message (if any)</d></tr><tr><td>　1　</td><td>File not found</td></tr><tr><td>　2　</td><td>Access violation</td></tr><tr><td>　3　</td><td>Disk full or allocation exceeded</td></tr><tr><td>　4　</td><td>Illegal TFTP operation</td></tr><tr><td>　5　</td><td>Unknown transfer ID</td></tr><tr><td>　6　</td><td>File already exists</td></tr><tr><td>　7　</td><td>No such user</td></tr></table>
+
+								差错信息（Error Message）
+								表示差错信息，根据差错信息的大小确定长度
+
+								0
+								由8 bit构成，值为0，表示差错信息终止
+							`;
+							createProtocolExplainT2(words, -158, 'protocolStructure4');
+
+						createInstruT2("ERROR 报文实例","i2-4-2");
+					 		createConfigImgT2("TFTP/TFTP_error");
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

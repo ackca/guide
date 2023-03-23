@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<script src="js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/HLTable.css/g, 'protocol.css').replace(/rootpath/g, '.').replace(/<script src='tree.js'><\/script>/g, ''));
+		// HLTable.css与本页面专用的protocol.css冲突，替换，并去掉用于生成左侧导航的tree.js
+
+		// var tcp_protocol = {
+		// 	"FTP-Data(Active)":[20,1,0,'class/protocol/l7/FTP.html'],
+		// 	"FTP":[21,1,0,'class/protocol/l7/FTP.html'],
+		// 	"SSH / SCP / SFTP":[22,1,0,''],
+		// 	"telnet":[23,1,0,''],
+		// 	"SMTP":[25,1,0,''],
+		// 	"TACACS+":[49,1,0,''],
+		// 	"DNS":[53,1,0,'class/protocol/l7/DNS.html'],
+		// 	"HTTP":[80,1,0,''],
+		// 	"POP3":[110,1,0,''],
+		// 	"IMAP":[143,1,0,''],
+		// 	"BGP":[179,1,0,''],
+		// 	"LDAP":[389,1,0,''],
+		// 	"HTTPS(HTTP1/2)":[443,1,0,''],
+		// 	"SMTPS":['465（587）',1,0,''],
+		// 	"LDAPS":[636,1,0,''],
+		// 	"MSDP":[639,1,0,''],
+		// 	"LDP Session":[646,1,0,''],
+		// 	"Netconf":[830,1,0,''],
+		// 	"IMAPS":[993,1,0,''],
+		// 	"POP3S":[995,1,0,''],
+		// };
+		//
+		// var udp_protocol = {
+		// 	"DNS":[53,1,0,'class/protocol/l7/DNS.html'],
+		// 	"DHCPv4":[],
+		// 	"TFTP":[69,1,0,'class/protocol/l7/TFTP.html'],
+		// 	"NTP / SNTP":[123,1,0,'class/protocol/l7/NTP.html'],
+		// 	"SNMP":[],
+		// 	"HTTPS(HTTP3)":[443,1,0,''],
+		// 	"IKE":[500,1,0,''],
+		// 	"syslog":[514,1,0,'class/protocol/l7/syslog.html'],
+		// 	"RIP":[520,1,0,''],
+		// 	"DHCPv6":[],
+		// 	"LDP Discovery":[646,1,0,''],
+		// 	"GDOI(GETVPN)":[848,1,0,''],
+		// 	"Radius":[],
+		// 	"HSRP":[1985,1,0,''],
+		// 	"BFD":[3784,1,0,''],
+		// 	"IKE(NAT-T)":[4500,1,0,''],
+		// 	"VXLAN":[4789,1,0,'class/protocol/l7/VXLAN.html'],
+		// 	"CAPWAP":[],
+		// 	"Mobility Protocol":[16666,1,0,''],
+		// };
+		// for (dicKey in tcp_protocol) {
+		// 	console.log(tcp_protocol[dicKey][0])
+		// }
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<script type="text/javascript">
+				document.write(top_menu.replace(/rootpath/g, '.'))
+			</script>
+		</div>
+	</div>
+
+	<br /><br /><br />
+	
+	<div class='divProtocol'>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="l7tcp">
+					<a href='class/protocol/l4/TCP.html'>TCP</a>
+				</div>
+			</div>
+
+			<div class="col-lg-6">
+				<div class="l7udp">
+					<a href='class/protocol/l4/UDP.html'>UDP</a>
+				</div>
+			</div>
+		</div><br /><br />
+
+		<!-- 特定软件协议（开始）  -->
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>MS RDP：3389</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>PostgrepSQL DB: 5432</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>MS SQL Server：1433</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>Oracle DB：1521</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>MySQL DB：3306</div>
+			</div>
+		</div><br />
+
+		<!-- 特定软件协议（结束）  -->
+
+		<div class="row">
+			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+		</div><br />
+
+		<!-- 7层协议（开始）  -->
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>IMAPS：993</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>POP3S：995</div>
+			</div>
+			<div class="col-lg-2 offset-lg-2">
+				<div class='udp c1'><a href="class/protocol/l7/VXLAN.html">VXLAN：4789</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c2 two-row-l7'>
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="text-align: right">CAPWAP&nbsp;</td>
+							<td>Control：</td>
+							<td>5246</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Data：</td>
+							<td>5247</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c3'>Mobility Protocol：16666</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>MSDP：639</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>LDP Session：646</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>Netconf：830</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c1'>HSRP：1985</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c2'>BFD：3784</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c3'>IKE(NAT-T)：4500</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>HTTPS：443（HTTP1/2）</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>SMTPS：465（587）</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>LDAPS：636</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c1'>GDOI（GETVPN）：848</div>
+			</div>
+			<div class="col-lg-4">
+				<div class='udp c2 two-row-l7'>
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="text-align: right">Radius&nbsp;&nbsp;</td>
+							<td>Authentication/Authorization：</td>
+							<td>1812（1645）</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Accounting：</td>
+							<td>1813（1646）</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>IMAP：143</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>BGP：179</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>LDAP：389</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c1'>RIP：520</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c2 two-row-l7'>
+					<a href='class/protocol/l7/DHCPv6.html'>
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td style="text-align: right">DHCPv6&nbsp;&nbsp;</td>
+								<td>Server / Relay：</td>
+								<td>547</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Client：</td>
+								<td>546</td>
+							</tr>
+						</table>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c3'>LDP Discovery：646</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'><a href='class/protocol/l7/DNS.html'>DNS：53</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>HTTP：80</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>POP3：110</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c1'>HTTPS：443（HTTP3）</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c2'>IKE：500</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c3'><a href='class/protocol/l7/syslog.html'>syslog：514</a></div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'>telnet：23</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'>SMTP：25</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>TACACS+：49</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c1'><a href='class/protocol/l7/TFTP.html'>TFTP：69</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c2'><a href='class/protocol/l7/NTP.html'>NTP / SNTP：123</a></div>
+			</div>
+
+			<div class="col-lg-2">
+				<div class='udp c3 two-row-l7'>
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="text-align: right">SNMP&nbsp;&nbsp;</td>
+							<td style="width: 63px">Get/Set：</td>
+							<td>161</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Trap：</td>
+							<td>162</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class='tcp c1'><a href="class/protocol/l7/FTP.html">FTP-Data(Active)：20</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c2'><a href="class/protocol/l7/FTP.html">FTP：21</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class='tcp c3'>SSH / SCP / SFTP：22</div>
+			</div>
+			<div class="col-lg-2">
+				<div class='udp c1'><a href='class/protocol/l7/DNS.html'>DNS：53</a></div>
+			</div>
+			<div class="col-lg-3">
+				<div class='udp c2 two-row-l7'>
+					<a href='class/protocol/l7/DHCPv4.html'>
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td style="text-align: right">DHCPv4&nbsp;&nbsp;</td>
+								<td>Server（bootps）/ Relay：</td>
+								<td>67</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Client（bootpc）：</td>
+								<td>68</td>
+							</tr>
+						</table>
+					</a>
+				</div>
+			</div>
+		</div><br />
+
+		<!-- 7层协议（结束）  -->
+
+		<div class="row">
+			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+		</div><br />
+
+		<!-- 4层协议（开始）  -->
+
+		<div class="row">
+			<div class="col-lg-1">
+				<div class="l4 c1">EoIP：97</div>
+			</div>
+			<div class="col-lg-1">
+				<div class="l4 c4">PIM：103</div>
+			</div>
+			<div class="col-lg-1">
+				<div class="l4 c6">VRRP：112</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-1">
+				<div class="l4 c1"><a href='class/protocol/l4/ICMPv4.html'>ICMPv4：1</a></div>
+			</div>
+			<div class="col-lg-1">
+				<div class="l4 c4">IGMP：2</div>
+			</div>
+			<div class="col-lg-1">
+				<div class="l4 c6"><a href='class/protocol/l4/TCP.html'>TCP：6</a></div>
+			</div>
+			<div class="col-lg-1">
+				<div class="l4 c3"><a href='class/protocol/l4/UDP.html'>UDP：17</a></div>
+			</div>
+
+			<div class="col-lg-2">
+				<div class="l4 c5"><a href='class/protocol/l3/IPv6.html#i3'>IPv6 Fragment header：44</a></div>
+			</div>
+
+			<div class="col-lg-1">
+				<div class="l4 c2">GRE：47</div>
+			</div>
+
+			<div class="col-lg-1">
+				<div class="l4 c1">ESP：50</div>
+			</div>
+
+			<div class="col-lg-1">
+				<div class="l4 c4">AH：51</div>
+			</div>
+
+			<div class="col-lg-1">
+				<div class="l4 c6" style="font-size: 15px"><a href='class/protocol/l4/ICMPv6.html'>ICMPv6：58</a></div>
+			</div>
+
+			<div class="col-lg-1">
+				<div class="l4 c3">EIGRP：88</div>
+			</div>
+
+			<div class="col-lg-1">
+				<div class="l4 c5">OSPF：89</div>
+			</div>
+		</div><br />
+
+		<!-- 4层协议（结束）  -->
+
+		<div class="row">
+			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+		</div><br />
+
+		<!-- 3层协议（开始）  -->
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="l3 c1">ERSPAN：0x88be</div>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="l3 c1" style="margin-left: 0"><a href='class/protocol/l3/IPv4.html'>IPv4：0x0800</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class="l3 c4"><a href='class/protocol/l3/ARP.html'>ARP：0x0806</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class="l3 c6"><a href='class/protocol/l3/IPv6.html'>IPv6：0x08dd</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class="l3 c3"><a href='class/protocol/l2/802.1Q.html'>802.1Q：0x8100</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class="l3 c5 two-row-l3">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="text-align: right">MPLS&nbsp;&nbsp;</td>
+							<td>Unicast：</td>
+							<td>0x8847</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Multicast：</td>
+							<td>0x8848</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<div class="l3 c2 two-row-l3">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="text-align: right">PPPoE&nbsp;&nbsp;</td>
+							<td>Discovery：</td>
+							<td>0x8863</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Session：</td>
+							<td>0x8864</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div><br />
+
+		<!-- 3层协议（结束）  -->
+
+		<div class="row">
+			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+		</div><br />
+
+		<!-- 2层协议（开始）  -->
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="l2 c1"><a href='class/protocol/l2/ethernet.html'>Ethernet II</a></div>
+			</div>
+			<div class="col-lg-2">
+				<div class="l2 c4"><a href='class/protocol/l2/802.3.html'>802.3</a></div>
+			</div>
+		</div>
+
+		<!-- 2层协议（结束）  -->
+
+	</div><br />
+	<img src="img/jt.png" style="position: absolute; top: 180px; left: 50%; margin-left: -12px;"/>
+
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath/g, '.'));
+	</script>
+
+</body>
+</html>

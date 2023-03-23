@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-UDP</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_udp, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"UDP",
+					"User Datagram Protocol",
+					"用户数据报协议",
+				);
+			</script>
+		</div><br class="both"/>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("UDP 首部字段说明","i1");
+					document.writeln("<br />");
+					createProtocolStructT0(
+						"810",
+						"300",
+						"1875",
+						"UDP/UDP"
+					);
+
+					words = `
+						源端口号（Source Port）
+						由16 bit构成，表示发送端端口号<br />没有源端口号的时间该字段的值设置为0，可用于不需要返回的通信中
+
+						目的端口号（Destination Port）
+						由16 bit构成，表示接收端端口号
+
+						报文长度（Length）
+						由16 bit构成，表明UDP首部和数据的长度之和，单位为字节，最小为8，即UDP包只有头部，没有数据
+
+						校验和（Checksum）
+						由16 bit构成，为了提供可靠的UDP首部和数据而设计，计算时还要增加UDP伪首部进行计算，<br />是可选项，也可以不填（置0）
+
+						数据部分（Data）
+						UDP数据部分
+					`;
+					createProtocolExplainT0(words, -316.5);
+
+				createInstruT0("UDP 实例","i2");
+					createInstruT1("实例为tftp报文，如下所示<br />");
+						createConfigImgT1("UDP/UDP_packet");
+
+				createInstruT0("UDP 应用源目端口关系","i3");
+					createInstruAllTopT0("UDP应用源目端口关系复杂，存在多种情况");
+					createInstruAllTopT0("1、客户端端口随机，服务器端口固定，如：SNMP");
+					createInstruAllTopT0("2、客户端端口、服务器端口均固定，但不相同，如：DHCP");
+					createInstruAllTopT0("3、客户端端口、服务器端口均固定，且相同，如：IKE");
+					createInstruAllTopT0("4、特定协议，只由客户端发送到服务器，无响应，如：syslog");
+					document.writeln("<br />");
+					createConfigImgT0("UDP/UDP_port$1~4");
+
+				createInstruT0("UDP 伪首部<br />","i4");
+					createConfigImgT0("UDP/UDP伪首部");
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

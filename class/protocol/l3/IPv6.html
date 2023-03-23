@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-IPv6</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+
+		#tV6address .row:nth-child(4) .cell
+		{/*前缀与地址分隔线——上半*/
+			border-bottom: solid 2px #FF6A6A;
+		}
+
+		#tV6address .row:nth-child(5) .cell
+		{/*前缀与地址分隔线——下半*/
+			border-top: solid 2px #FF6A6A;
+		}
+
+		.row.header .cell:nth-child(1),
+		.row.header .cell:nth-child(2),
+		.row.header .cell:nth-child(3)
+		{
+			text-align: center;
+			padding-left: 0;
+		}
+
+		.row.header .cell:nth-child(1),
+		.row.header .cell:nth-child(2)
+		{
+			width: 220px;
+		}
+
+		.row .cell:nth-child(2)
+		{
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_ipv6, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"IPv6",
+					"Internet Protocol Version 6",
+					"网络之间互连的协议第六版",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				 createInstruT0("IPv6 首部字段说明","i1");
+					document.writeln("<br />");
+					createProtocolStructT0(
+						"1000",
+						"370",
+						"3896",
+						"IPv6/IPv6",
+					);
+
+					document.writeln("<br />");
+					words = `
+						版本（Version）
+						由4 bit构成，表示IP首部的版本号，IPv6的版本号即为6
+
+						流分类（Traffic Class）
+						由8 bit构成，用于QOS，相当于IPv4的TOS
+
+						流标签（Flow Lable）
+						由20 bit构成，流标签可用来标记特定流的报文，以便在网络层区分不同的报文。转发路径上的路由器可以根据流标签来区分流并进行处理。
+
+						负载长度（Payload Length）
+						由16bit构成，表示IPv6负载的总长度，单位 字节
+
+						下一个头部（Next Header）
+						由8 bit构成，表示IPv6头部的下一个头部属于哪个协议，如果有扩展头部，则为扩展头部编号
+
+						跳数限制（Hop Limit）
+						由8 bit构成，用于防环，相当用IPv4中的TTL
+
+						源地址（Source Address）
+						由128 bit构成，表示发送端的IPv6地址
+
+						目的地址（Destination Address）
+						由128 bit构成，表示接收端的IPv6地址
+
+						数据部分（Data）
+						IPv6数据部分
+					`;
+					createProtocolExplainT0(words, -391.3);
+
+				createInstruT0("常规IPv6报文实例实例","i2");
+					createInstruT1("实例为ping报文，如下所示");
+						document.writeln("<br />");
+						createConfigImgT1("IPv6/normal");
+
+				createInstruT0("IPv6 分片","i3");
+					createInstruT1("IPv6 分片头部","i3-5");
+						createInstruAllTopT1("为了分片，IPv6设计了分片头部，分片头部的大小（8字节）计算在IPv6的负载部分");
+						document.writeln("<br />");
+						createProtocolStructT1(
+							"700",
+							"250",
+							"1931",
+							"IPv6/IPv6_Fragment",
+							"protocolStructure1"
+						);
+
+						words = `
+							下一个头部（Next Header）
+							由8 bit构成，表示IPv6分片头部的下一个头部属于哪个协议，也就是分片前的IPv6报文的下一个头部
+
+							保留（Reserved）
+							由8 bit构成，保留字段，为0
+
+							片偏移（Fragment Offset）
+							由13 bit构成，用来标识被分片的每一个分段相对于原始数据的位置，第一个分片对应的值为0，单位为8字节
+
+							保留（Reserved）
+							由2 bit构成，保留字段，为0
+
+							更多分片（More Fragmnet）
+							由1 bit构成，表示是否为最后一个报文，0：最后一个分片的报文，1：分片中段的报文
+
+							标识（Identification）
+							由32 bit构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。
+						`;
+						createProtocolExplainT1(words, -274, 'protocolStructure1');
+
+					createInstruT1("IPv6 分片只在发送设备分片","i3-1");
+						createInstruAllTopT1("在设备的‘出方向。，如果IPv6报文大于MTU，则需要分片");
+						createInstruAllTopT1("与IPv4不同，‘IPv6只能在发送设备进行分片。，中间设备不进行分片");
+						createInstruAllTopT1("如果报文传输过程中需要分片，则发送端根据ICMPv6差错报文，重新发送分片后的报文");
+						document.writeln("<br />");
+
+					createInstruT1("起始报文","i3-2");
+						document.writeln("<br />");
+						createConfigImgT1("IPv6/fragmentation2$1~2");
+
+					createInstruT1("第一次分片，MTU 1350","i3-3");
+						createInstruAllTopT1("与IPv4分片的规则相同，除最后一片外，IPv6分片的数据部分必须是8字节的整数倍");
+						createInstruAllTopT1("因此IPv6数据部分最大为 1350-20-8=1302 字节，8的最大倍数为1296，第一片的数据部分 1296 字节");
+						createInstruAllTopT1("第二片的数据部分 1360-1296=64 字节");
+						document.writeln("<br />");
+						createConfigImgT1("IPv6/fragmentation3$1~2");
+
+					createInstruT1("第二次分片，MTU 1280","i3-4");
+						createInstruAllTopT1("规则不变，但仍由发送设备基于新的MTU重新分片");
+						createInstruAllTopT1("第一片数据部分最大 1280-40-8=1232 字节，恰好为8的倍数");
+						createInstruAllTopT1("第二片数据部分 1350-1232=128 字节");
+						document.writeln("<br />");
+						createConfigImgT1("IPv6/fragmentation4$1~2");
+
+				createInstruT0("IPv6特定用途地址（前缀）<br />","i4");
+					tHeader = [
+						"地址",
+						"名称",
+						"说明",
+					];
+					tBody = [
+						["33:33:FF/24","IPv6组播mac地址","地址的前24位，后24位为被请求节点的IPv6地址的后24位"],
+						["FE80::/64","链路本地地址","地址的前64位，后64位采用EUI-64生成"],
+						["FF02::1:FF/104","请求节点组播地址","地址的前104位，后24位为请求节点的mac地址的后24位"],
+						["FF02::1","所有节点","相当于IPv4的广播"],
+						["FF02::2","所有路由器",""],
+						["FF02::1:2","所有DHCP代理","所有DHCP服务器及中继代理监听的地址"],
+					];
+					createHLTableT0(1000, tHeader, tBody, "tV6address");
+
+				createInstruT0("IPv6特定地址的构成方式","i5");
+					createInstruT1("IPv6组播mac地址","i5-1");
+						createInstruAllTopT1("前24位固定为33:33:FF，后24位为对应的IPv6组播地址的后24位");
+
+					createInstruT1("<br /><br />请求节点组播地址（Solicited-Node Address)","i5-2");
+						createInstruAllTopT1("前104位固定为FF02::1:FF，后24位为被请求节点的IPv6地址的后24位");
+
+					createInstruT1("<br /><br />EUI-64算法","i5-3");
+						createInstruAllTopT1("共64位地址，其中前（后）24位后设备mac地址的前（后）24位，中间16位为FFFE");
+
+						createInstruAllTopT1("随后第7位取反（如果原始为0，则变为1，如果原始为1，则变为0）");
+
+					createInstruT1("<br /><br />链路本地地址（Link-local address）","i5-4");
+						createInstruAllTopT1("前64位固定为FE80::，后64位根据EUI-64计算得到");
+
+					createInstruT1("<br /><br />无状态自动配置地址（SLAAC-Stateless Address Configuration）","i5-5");
+						createInstruAllTopT1("前64位与路由器的IPv6地址前64位相同，后64位存在两种方式");
+
+						createInstruAllTopT1("　　第一种：采用EUI-64方式计算得到");
+
+						createInstruAllTopT1("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
+
+
+
+
+				createInstruT0("IPv6伪首部<br />","i6");
+					createConfigImgT0("IPv6/IPv6伪首部");
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

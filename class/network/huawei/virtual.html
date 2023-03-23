@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/huawei.ico" />
+	<title>华为--配置</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+		virtual = "V";
+		virtual = virtual + "P";
+		virtual = virtual + "N";
+		document.title = '华为' + virtual + '-配置';
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_virtual, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("L2L IPSec XNSY","i2");
+					createInstruT1("L2L IPsec XNSY","i2-1");
+						createInstruT2("配置IKE安全提议","i2-1-1");
+							createInstruT3("创建IKE安全提议");
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ike proposal “10。 ");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] encryption-algorithm { 3des-cbc | aes-cbc-128 | aes-cbc-256 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-algorithm { sha1 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置DH组号");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] dh { group1 | group2 | group5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置认证方式（默认即预共享密匙）");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-method pre-share");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IKE对等体","i2-1-2");
+							createInstruT3("创建IKE对等体（‘VRP V200R006之前配置。）");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。 { v1 | v2 }");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								instruArr[2] = createCmdInstruSpan("v1","IKEv1");
+								instruArr[3] = createCmdInstruSpan("v2","IKEv2");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("创建IKE对等体（‘VRP V200R006及之后配置。）");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。");
+								instruArr[2] = createCmdSpan("[R1-ike-peer-R2] undo version { 1 | 2 }");
+								instruArr[3] = createCmdInstruSpan(" 1 | 2 ","默认情况下为IKEv1和IKEv2，只使用某个则undo另一个");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE安全提议(也可以不配置，匹配默认的IKE安全提议)");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] ike-proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置预共享密匙");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置IKE方式（默认即为主模式）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] exchange-mode main");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置对端IP");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] remote-address “200.1.1.1。");
+								instruArr[1] = createCmdInstruSpan("“200.1.1.1。","对端IP地址");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec安全提议","i2-1-3");
+							createInstruT3("创建IPsec安全提议");
+								instruArr[0] = createCmdSpan("[R1] ipsec proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置IPsec封装协议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] transform { esp | ah | ah-esp }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置IPsec封装协议（默认即为tunnel模式）");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-pro] encapsulation-mode tunnel");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("使用ESP封装时，配置加密算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp encryption-algorithm  { 3des | aes-128 | des | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("使用ESP封装时，配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("使用AH封装时，配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] ah authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("定义感兴趣流量(用扩展ACL匹配)","i2-1-4");
+							instruArr[0] = createCmdSpan("[R1] acl number “3000。");
+							instruArr[1] = createCmdInstruSpan("“3000。。","ACL编号");
+							instruArr[2] = createCmdSpan("[R1-acl-adv-3000] rule 5 permit ip source “192.168.10.0 0.0.0.255。 destination “192.168.20.0 0.0.0.255。");
+							instruArr[3] = createCmdInstruSpan("“192.168.10.0 0.0.0.255。","本地");
+							instruArr[4] = createCmdInstruSpan("“192.168.20.0 0.0.0.255。","对端");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置IPsec策略","i2-1-5");
+							createInstruT3("创建IPsec策略");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec policy “ips_pol。 “10。 isakmp");
+								instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配感兴趣流量");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-isakmp-ips_pol-10] security acl “3000。");
+								instruArr[1] = createCmdInstruSpan("“3000。","表示感兴趣流量的ACL编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IPsec安全提议");
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-isakmp-ips_pol-10] proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE对等体");
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-isakmp-ips_pol-10] ike-peer “R2。");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置配置IPsec应用到接口（外网接口）","i2-1-6");
+							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/1] ipsec policy “ips_pol。");
+							instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+							createCmdInstruT2(instruArr,"huawei");
+
+				createInstruT0("动态L2L IPsec XNSY","i2-2")
+					createInstruT1("建立XNSY的两端一端静态公有地址，一端会变化的地址（公有私有均可）")
+					createInstruT1("因有NAT-T的问题，VRP V200R006 前后 配置区别较大：")
+						createInstruT2("‘V200R006之前的版本。：主动模式不支持NAT-T，需要使用主动模式，并明确启用NAT-T才能够建立连接");
+						createInstruT2("‘V200R006及之后的版本。：主动模式支持NAT-T，且NAT-T默认启用，无需明确配置")
+						createInstruT2("‘因主动模式安全性相对较差，如果变化端为动态公有地址，不涉及NAT-T，即使是V200R006之前的版本，也建议使用主模式。");
+
+					createInstruT1("VRP V200R006之前配置","i2-2-1")
+						createInstruT2("地址变化端：因对端是静态公有地址，将IKE模式改为主动模式，并明确启用NAT-T，其它与普通的L2L相同","i2-2-1-1");
+							createInstruT3("配置IKE对等体");
+								instruArr[0] = createCmdSpan("[R2] ike peer “R1。 v1");
+								instruArr[1] = createCmdInstruSpan("“R1。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("修改为主动模式");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R2-ike-peer-R1] exchange-mode aggressive");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("启用NAT-T");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R2-ike-peer-R1] nat traversal");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("<br />固定公网地址端","i2-2-1-2");
+
+						createInstruT2("配置IKE安全提议（‘完全同普通的L2L。）","i2-2-1-2-1");
+							createInstruT3("创建IKE安全提议");
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ike proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] encryption-algorithm { 3des-cbc | aes-cbc-128 | aes-cbc-256 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-algorithm { sha1 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置DH组号");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] dh { group1 | group2 | group5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IKE对等体（因无法得知对端IP，故不配置对端IP，其它同L2L）","i2-2-1-2-2");
+							createInstruT3("创建IKE对等体");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。 v1");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置IKE为主动模式");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] exchange-mode aggressive");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("启用NAT-T");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] nat traversal");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE安全提议");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] ike-proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置预共享密匙");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec安全提议（‘完全同普通的L2L。）","i2-2-1-2-3");
+							createInstruT3("创建IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp encryption-algorithm  { 3des | aes-128 | des | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec策略模板","i2-2-1-2-4");
+							createInstruT3("创建IPsec策略模板");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy-template “tem。 “10。");
+								instruArr[1] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE对等体");
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] ike-peer “R2。");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("创建IPsec策略，调用策略模版","i2-2-1-2-5");
+							instruArr[0] = createCmdSpan("[R1] ipsec policy ips_pol “10。 isakmp template “tem。");
+							instruArr[1] = createCmdInstruSpan("“10。","IPsec策略编号");
+							instruArr[2] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置配置IPsec应用到接口（外网接口）","i2-2-1-2-6");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/1] ipsec policy “ips_pol。");
+							instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("VRP V200R006及之后配置","i2-2-2")
+						createInstruT2("地址变化端：‘普通的L2L完全相同。","i2-2-2-1");
+
+						createInstruT2("<br />固定公网地址端","i2-2-2-2");
+
+						createInstruT2("配置IKE安全提议（‘完全同普通的L2L。）","i2-2-2-2-1");
+							createInstruT3("创建IKE安全提议");
+								instruArr[0] = createCmdSpan("[R1] ike proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] encryption-algorithm { 3des-cbc | aes-cbc-128 | aes-cbc-256 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-algorithm { sha1 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置DH组号");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] dh { group1 | group2 | group5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置认证方式（默认即预共享密匙）");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-method pre-share");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置IKE sa有效期");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] sa duration “43200。");
+								instruArr[1] = createCmdInstruSpan("“43200。","IKE sa有效期单位秒");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IKE对等体（因无法得知对端IP，故不配置对端IP，其它同L2L）","i2-2-2-2-2");
+							createInstruT3("创建IKE对等体");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								instruArr[2] = createCmdSpan("[R1-ike-peer-R2] undo version 2");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] ike-proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置预共享密匙");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec安全提议（‘完全同普通的L2L。）","i2-2-2-2-3");
+							createInstruT3("创建IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp encryption-algorithm  { 3des | aes-128 | des | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec策略模板","i2-2-2-2-4");
+							createInstruT3("创建IPsec策略模板");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy-template “tem。 “10。");
+								instruArr[1] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE对等体");
+								instruArr[0] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] ike-peer “R2。");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("创建IPsec策略，调用策略模版","i2-2-2-2-5");
+							instruArr[0] = createCmdSpan("[R1] ipsec policy ips_pol “10。 isakmp template “tem。");
+							instruArr[1] = createCmdInstruSpan("“10。","IPsec策略编号");
+							instruArr[2] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置配置IPsec应用到接口（外网接口）","i2-2-2-2-6");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/1] ipsec policy “ips_pol。");
+							instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("配置扩展功能","i2-3");
+						createInstruT2("原始报文信息预提取功能","i2-3-1");
+							createInstruT3("使用隧道模式时，QOS信息默认被丢弃，启用后，QOS被保留");
+
+							createInstruT3("普通IPSec策略方式");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy ips_pol 10 isakmp");
+								instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								instruArr[3] = createCmdSpan("[R1-ipsec-policy-isakmp-ips_pol-10] qos pre-classify");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("IPSec策略模版方式");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy-template “tem。 “10。");
+								instruArr[1] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								instruArr[3] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] qos pre-classify");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("反向路由注入（RRI）","i2-3-2");
+							createInstruT3("在配置了RRI设备上，如果有IPSec SA，就会产生一条Unr路由");
+							createInstruT3("路由的目的地是远端的通信点，下一跳是远端的加密点");
+							createInstruT3("静态模式时，路由一直存在，动态模式时，只有IPSec SA存在时才产生路由");
+
+							createInstruT3("普通IPSec策略方式");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy ips_pol 10 isakmp");
+								instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								instruArr[3] = createCmdSpan("[R1-ipsec-policy-isakmp-ips_pol-10] route inject { dynamic | static } [ preference “10。 ]");
+								instruArr[4] = createCmdInstruSpan("dynamic","动态模式");
+								instruArr[5] = createCmdInstruSpan("static","静态模式");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("IPSec策略模版方式（只支持动态模式）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec policy-template “tem。 “10。");
+								instruArr[1] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								instruArr[3] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] route inject dynamic [ preference “10。 ]");
+								instruArr[4] = createCmdInstruSpan("“10。","路由优先级，默认为10");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("修改IKE sa有效期","i2-3-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1] ike proposal “10。");
+							instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+							instruArr[2] = createCmdSpan("[R1-ike-proposal-10] sa duration “43200。");
+							instruArr[3] = createCmdInstruSpan("“43200。","IKE sa有效期单位秒");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("修改IPSec sa有效期","i2-3-4");
+							createInstruT3("全局配置","i2-3-4-1");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec sa global-duration { time-based “1800。 | traffic-based “1000000。 }");
+								instruArr[1] = createCmdInstruSpan("time-based “1800。","有效期基于时间，单位秒");
+								instruArr[2] = createCmdInstruSpan("traffic-based “1000000。","有效期基于传输数据的大小，单位KB");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("某个普通IPSec策略生效","i2-3-4-2");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy ips_pol 10 isakmp");
+								instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								instruArr[3] = createCmdSpan("[R1-ipsec-policy-isakmp-ips_pol-10] sa duration { time-based “1800。 | traffic-based “1000000。 }");
+								instruArr[4] = createCmdInstruSpan("time-based “1800。","有效期基于时间，单位秒");
+								instruArr[5] = createCmdInstruSpan("traffic-based “1000000。","有效期基于传输数据的大小，单位kb");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("某个IPSec策略模版生效","i2-3-4-3");
+								instruArr[0] = createCmdSpan("[R1] ipsec policy-template “tem。 “10。");
+								instruArr[1] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								instruArr[3] = createCmdSpan("[R1-ipsec-policy-templet-tem-10] sa duration { time-based “1800。 | traffic-based “1000000。 }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("NAT keepalive","i2-3-5");
+							createInstruT3("当IPSec设备在NAT之后时，定期发送数据，了保持NAT转换位一直存在");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ike nat-keepalive-timer interval “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","发送数据间隔，单位秒，默认启用，为20秒，可以不配置");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("死亡对等体检测(DPD)","i2-3-6");
+							createInstruT3("进入IKE对等体配置模式");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。 v1");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置DPD模式");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] dpd type { on-demand | periodic }");
+								instruArr[1] = createCmdInstruSpan("on-demand","按需型");
+								instruArr[2] = createCmdInstruSpan("periodic","周期型");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("修改DPD空闲定时器");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] dpd idle-time “20。");
+								instruArr[1] = createCmdInstruSpan("“20。","空闲时间，单位秒，默认30秒");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("修改DPD重传定时器");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] dpd retransmit-interval “5。");
+								instruArr[1] = createCmdInstruSpan("“5。","重传间隔，单位秒，默认15秒");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("修改DPD报文重传次数");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] dpd retry-limit  “5。");
+								instruArr[1] = createCmdInstruSpan("“5。","重传次数，默认3次");
+								createCmdInstruT3(instruArr,"huawei");
+
+				createInstruT0("Efficient XNSY","i3");
+					createInstruT1("Server端配置","i3-1");
+						createInstruT2("配置IP地址池","i3-1-1");
+							createInstruT3("创建IP地址池");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server] ip pool “exnsy_pool。");
+								instruArr[1] = createCmdInstruSpan("“exnsy_pool。","IP地址名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置用于分配的IP地址");
+								instruArr[0] = createCmdSpan("[Server-ip-pool-exnsy_pool] network “10.1.1.0。 [ mask { “24。 | “255.255.255.0。 } ]");
+								instruArr[1] = createCmdInstruSpan("“10.1.1.0。","IP地址名");
+								instruArr[2] = createCmdInstruSpan("“24。","子网掩码长度");
+								instruArr[3] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
+								instruArr[4] = createCmdInstruSpan("子网掩码省略则按主类处理，采用默认子网掩码");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置要推送的资源","i3-1-2");
+							createInstruT3("进入aaa视图");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server] aaa");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("创建业务方案");
+								instruArr[0] = createCmdSpan("[Server-aaa] service-scheme “exnsy。");
+								instruArr[1] = createCmdInstruSpan("“exnsy。","业务方案名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IP地址池");
+								instruArr[0] = createCmdSpan("[Server-aaa-service-exnsy] ip-pool “exnsy_pool。");
+								instruArr[1] = createCmdInstruSpan("“exnsy_pool。","IP地址名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置其它推送信息，如DNS服务器");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server-aaa-service-exnsy] “推送信息。");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IKE安全提议","i3-1-3");
+							createInstruT3("创建IKE安全提议");
+								instruArr[0] = createCmdSpan("[Server] ike proposal “10。 ");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr[0] = createCmdSpan("[Server-ike-proposal-10] encryption-algorithm 3des-cbc");
+								instruArr[1] = createCmdInstruSpan("‘使用IKEv1时，加密算法只能为3des-cbc。，IKEv2无限制");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[Server-ike-proposal-10] authentication-algorithm { sha1 | md5 }");
+								instruArr[1] = createCmdInstruSpan("‘使用IKEv1时，散列算法只能为sha1或md5。，IKEv2无限制");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置DH组号");
+								instruArr[0] = createCmdSpan("[Server-ike-proposal-10] dh group2");
+								instruArr[1] = createCmdInstruSpan("‘DH必须为group2。");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IKE对等体","i3-1-4");
+							createInstruT3("创建IKE对等体（‘VRP V200R006之前配置。）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server] ike peer “Client。 { v1 | v2 }");
+								instruArr[1] = createCmdInstruSpan("“Client。","IKE对等体名");
+								instruArr[2] = createCmdInstruSpan("v1","IKEv1");
+								instruArr[3] = createCmdInstruSpan("v2","IKEv2");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("创建IKE对等体（‘VRP V200R006及之后配置。）");
+								instruArr[0] = createCmdSpan("[Server] ike peer “Client。");
+								instruArr[2] = createCmdSpan("[Server-ike-peer-Client] undo version { 1 | 2 }");
+								instruArr[3] = createCmdInstruSpan(" 1 | 2 ","默认情况下为IKEv1和IKEv2，只使用某个则undo另一个");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置IKE方式");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server-ike-peer-Client] exchange-mode { main | aggressive }");
+								instruArr[1] = createCmdInstruSpan("‘使用IKEv1时，只能为主动模式。，IKEv2无限制");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server-ike-peer-Client] ike-proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置预共享密匙");
+								instruArr[0] = createCmdSpan("[Server-ike-peer-Client] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配业务方案");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server-ike-peer-Client] service-scheme “exnsy。");
+								instruArr[1] = createCmdInstruSpan("“exnsy。","业务方案");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec安全提议","i3-1-5");
+							createInstruT3("创建IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp encryption-algorithm  { 3des | aes-128 | des | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec策略模板","i3-1-6");
+							createInstruT3("创建IPsec策略模板");
+								instruArr[0] = createCmdSpan("[Server] ipsec policy-template “tem。 “10。");
+								instruArr[1] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+								instruArr[2] = createCmdInstruSpan("“10。","IPsec策略编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[Server-ipsec-policy-templet-tem-10] proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE对等体");
+								instruArr[0] = createCmdSpan("[Server-ipsec-policy-templet-tem-10] ike-peer “R2。");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("创建IPsec策略，调用策略模版","i3-1-7");
+							instruArr[0] = createCmdSpan("[Server] ipsec policy ips_pol “10。 isakmp template “tem。");
+							instruArr[1] = createCmdInstruSpan("“10。","IPsec策略编号");
+							instruArr[2] = createCmdInstruSpan("“tem。","IPsec策略模板名");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置配置IPsec应用到接口（外网接口）","i3-1-8");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[Server-GigabitEthernet0/0/1] ipsec policy “ips_pol。");
+							instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("Remote端配置","i3-2");
+						createInstruT2("定义感兴趣流量(用扩展ACL匹配)，client、network-auto-cfg无需配置","i3-2-1");
+							instruArr[0] = createCmdSpan("[R1] acl number “3000。");
+							instruArr[1] = createCmdInstruSpan("“3000。。","ACL编号");
+							instruArr[2] = createCmdSpan("[R1-acl-adv-3000] rule 5 permit ip source “192.168.10.0 0.0.0.255。 destination “192.168.20.0 0.0.0.255。");
+							instruArr[3] = createCmdInstruSpan("“192.168.10.0 0.0.0.255。","本地");
+							instruArr[4] = createCmdInstruSpan("“192.168.20.0 0.0.0.255。","对端");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置efficient xnsy策略","i3-2-2");
+							createInstruT3("配置模式");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec efficient-xnsy “exnsy。 mode { client | network | network-plus | network-auto-cfg }");
+								instruArr[1] = createCmdInstruSpan("“exnsy。","efficient-xnsy名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("network、network-plus模式匹配感兴趣流量");
+								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-xnsy-exnsy] security acl “3000。");
+								instruArr[1] = createCmdInstruSpan("“3000。","表示感兴趣流量的ACL编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置Server端地址");
+								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-xnsy-exnsy] remote-address “100.1.1.1。 { v1 | v2 }");
+								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","Server端IP地址");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置预共享密匙");
+								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-xnsy-exnsy] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("将efficient xnsy策略应用到接口（外网接口）","i3-2-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] ipsec efficient-xnsy “exnsy。");
+							instruArr[1] = createCmdInstruSpan("“exnsy。","efficient-xnsy名");
+							createCmdInstruT2(instruArr,"huawei");
+
+				createInstruT0("GRE over IPSec","i5");
+					createInstruT1("GRE相关设置","i5-1");
+						createInstruT2("创建Tunnel接口");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1] int Tunnel “0/0/0。");
+							instruArr[1] = createCmdInstruSpan("“0/0/0。","Tunnel接口号");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("将隧道协议设置为GRE");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] tunnel-protocol gre");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置GRE封装的源IP");
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] source { “100.1.1.1。 | “g0/0/0。 } ");
+							instruArr[1] = createCmdInstruSpan("“100.1.1.1。","源IP");
+							instruArr[2] = createCmdInstruSpan("“g0/0/0。","源接口，使用接口IP");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置GRE封装的目的IP");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] destination “200.1.1.1。");
+							instruArr[1] = createCmdInstruSpan("“200.1.1.1。","目的IP");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置Tunnel接口IP地址");
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ip address “10.1.1.1。 “255.255.255.0。");
+							instruArr[1] = createCmdInstruSpan("“10.1.1.1。","IP地址");
+							instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("启用校验和检测（可选，可单向配置）");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] gre checksum");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置GRE的标识符，链路两端需要相同（可选，明文）");
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] gre key “12345。");
+							instruArr[1] = createCmdInstruSpan("“12345。","标识符");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置GRE的keepalive（可选，可单向配置）");
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] keepalive [ period “2。 retry-times “5。 ]");
+							instruArr[1] = createCmdInstruSpan("“2。","发送keeyalive报文间隔，单位秒");
+							instruArr[2] = createCmdInstruSpan("“5。","keeyalive重传次数");
+							instruArr[3] = createCmdInstruSpan("省略时采用默认的间隔5秒，重传3次");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("配置IKE安全提议","i5-2");
+						createInstruT2("创建IKE安全提议");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1] ike proposal “10。 ");
+							instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置加密算法");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-ike-proposal-10] encryption-algorithm { 3des-cbc | aes-cbc-128 | aes-cbc-256 | … }");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置散列算法");
+							instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-algorithm { sha1 | md5 | … }");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置DH组号");
+							instruArr[0] = createCmdSpan("[R1-ike-proposal-10] dh { group1 | group2 | group5 | … }");
+							createCmdInstruT3(instruArr,"huawei");
+
+					createInstruT1("配置IKE对等体","i5-3");
+						createInstruT2("创建IKE对等体（‘VRP V200R006之前配置。）");
+							instruArr[0] = createCmdSpan("[R1] ike peer “R2。 { v1 | v2 }");
+							instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+							instruArr[2] = createCmdInstruSpan("v1","IKEv1");
+							instruArr[3] = createCmdInstruSpan("v2","IKEv2");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("创建IKE对等体（‘VRP V200R006及之后配置。）");
+							instruArr[0] = createCmdSpan("[R1] ike peer “R2。");
+							instruArr[2] = createCmdSpan("[R1-ike-peer-R2] undo version { 1 | 2 }");
+							instruArr[3] = createCmdInstruSpan(" 1 | 2 ","默认情况下为IKEv1和IKEv2，只使用某个则undo另一个");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("匹配IKE安全提议");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-ike-peer-R2] ike-proposal “10。");
+							instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置预共享密匙");
+							instruArr[0] = createCmdSpan("[R1-ike-peer-R2] pre-shared-key { cipher | simple } “huawei。");
+							instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+							instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+							instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("配置IPsec安全提议","i5-4");
+						createInstruT2("创建IPsec安全提议");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1] ipsec proposal “ips_pro。");
+							instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置为传输模式");
+							instruArr[0] = createCmdSpan("[R1-ipsec-proposal-pro] encapsulation-mode transport");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置加密算法");
+							instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp encryption-algorithm  { 3des | aes-128 | des | … }");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("配置散列算法");
+							instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("配置IPsec安全框架","i5-5");
+						createInstruT2("创建IPsec安全框架");
+							instruArr[0] = createCmdSpan("[R1] ipsec profile “ips-prof。");
+							instruArr[1] = createCmdInstruSpan("“ips-prof。","IPsec安全框架名");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("匹配IKE对等体");
+							instruArr[0] = createCmdSpan("[R1-ipsec-profile-ips-prof] ike-peer “R2。");
+							instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+							createCmdInstruT2(instruArr,"huawei");
+
+						createInstruT2("匹配IPsec安全提议");
+							instruArr[0] = createCmdSpan("[R1-ipsec-profile-ips-prof] proposal “ips-pro。");
+							instruArr[1] = createCmdInstruSpan("“ips-pro。","IPsec安全提议名");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("将IPsec安全框架应用到Tunnel接口<br />","i5-6");
+						instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ipsec profile “ips-prof。");
+						instruArr[1] = createCmdInstruSpan("“ips-prof。","IPsec安全框架名");
+						createCmdInstruT1(instruArr,"huawei");
+
+				createInstruT0("DSXNSY","i6");
+					createInstruT1("HUB配置","i6-1");
+						createInstruT2("配置mGRE","i6-1-1");
+							createInstruT3("创建Tunnel接口");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB] int Tunnel “0/0/0。");
+								instruArr[1] = createCmdInstruSpan("“0/0/0。","Tunnel接口号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("将隧道协议设置为GRE点到多点");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] tunnel-protocol gre p2mp");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置GRE封装的源IP");
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] source { “100.1.1.1。 | “g0/0/0。 } ");
+								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","源IP");
+								instruArr[2] = createCmdInstruSpan("“g0/0/0。","源接口，使用接口IP");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置Tunnel接口IP地址");
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] ip address “10.1.1.1。 “255.255.255.0。");
+								instruArr[1] = createCmdInstruSpan("“10.1.1.1。","IP地址");
+								instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] mtu 1400");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置NHRP","i6-1-2");
+							createInstruT3("动态接收组播映射");
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] nhrp entry multicast dynamic");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置nhrp认证（可选）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] nhrp authentication { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","认证密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","认证密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","认证密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置nhrp ID，所有HUB、SPOKE节点应一致（可选）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0][HUB-Tunnel0/0/0] nhrp network-id “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","nhrp ID");
+								createCmdInstruT3(instruArr,"huawei");
+
+					createInstruT1("SPOKE配置","i6-2");
+						createInstruT2("配置mGRE","i6-2-1");
+							createInstruT3("创建Tunnel接口");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[SPOKE] int Tunnel “0/0/0。");
+								instruArr[1] = createCmdInstruSpan("“0/0/0。","Tunnel接口号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("将隧道协议设置为GRE点到多点");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] tunnel-protocol gre p2mp");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置GRE封装的源IP");
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] source { “100.1.1.1。 | “g0/0/0。 } ");
+								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","源IP");
+								instruArr[2] = createCmdInstruSpan("“g0/0/0。","源接口，使用接口IP");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置Tunnel接口IP地址");
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] ip address “10.1.1.1。 “255.255.255.0。");
+								instruArr[1] = createCmdInstruSpan("“10.1.1.1。","IP地址");
+								instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] mtu 1400");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置NHRP","i6-2-2");
+							createInstruT3("手动配置到HUB节点的映射，有多个HUB则配置多个映射");
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] nhrp entry “172.16.1.1。 “13.1.1.1。 register");
+								instruArr[1] = createCmdInstruSpan("“172.16.1.1。","HUB节点的tunnel接口口IP");
+								instruArr[2] = createCmdInstruSpan("“13.1.1.1。","HUB节点的物理接口口IP");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置nhrp认证（可选）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] nhrp authentication { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","认证密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","认证密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","认证密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置nhrp ID，所有HUB、SPOKE节点应一致（可选）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0][HUB-Tunnel0/0/0] nhrp network-id “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","nhrp ID");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置SPOKE的注册时间（SPOKE动态地址时配置）");
+								instruArr[0] = createCmdSpan("[SPOKE1-Tunnel0/0/0] nhrp registration interval “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","注册时间，单位 秒");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置分支站点的超时时间（分支站点动态地址时配置）");
+								instruArr[0] = createCmdSpan("[SPOKE1-Tunnel0/0/0] nhrp entry holdtime seconds “30。");
+								instruArr[1] = createCmdInstruSpan("“30。","超时时间，单位 秒");
+								createCmdInstruT3(instruArr,"huawei");
+
+					createInstruT1("IPSec配置（不区分HUB、SPOKE，配置相同）","i6-3");
+						createInstruT2("配置IKE安全提议","i6-3-1");
+							createInstruT3("创建IKE安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ike proposal “10。 ");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] encryption-algorithm { 3des-cbc | aes-cbc-128 | aes-cbc-256 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] authentication-algorithm { sha1 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置DH组号");
+								instruArr[0] = createCmdSpan("[R1-ike-proposal-10] dh { group1 | group2 | group5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IKE对等体","i6-3-2");
+							createInstruT3("创建IKE对等体（‘VRP V200R006之前配置。）");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。 { v1 | v2 }");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								instruArr[2] = createCmdInstruSpan("v1","IKEv1");
+								instruArr[3] = createCmdInstruSpan("v2","IKEv2");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("创建IKE对等体（‘VRP V200R006及之后配置。）");
+								instruArr[0] = createCmdSpan("[R1] ike peer “R2。");
+								instruArr[2] = createCmdSpan("[R1-ike-peer-R2] undo version { 1 | 2 }");
+								instruArr[3] = createCmdInstruSpan(" 1 | 2 ","默认情况下为IKEv1和IKEv2，只使用某个则undo另一个");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] ike-proposal “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","ike安全提议编号");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置预共享密匙");
+								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
+								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
+								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec安全提议","i6-3-3");
+							createInstruT3("创建IPsec安全提议");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[R1] ipsec proposal “ips_pro。");
+								instruArr[1] = createCmdInstruSpan("“ips_pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置为传输模式");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-pro] encapsulation-mode transport");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置加密算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp encryption-algorithm  { 3des | aes-128 | des | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] esp authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("配置IPsec安全框架","i6-3-4");
+							createInstruT3("创建IPsec安全框架");
+								instruArr[0] = createCmdSpan("[R1] ipsec profile “ips-prof。");
+								instruArr[1] = createCmdInstruSpan("“ips-prof。","IPsec安全框架名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IKE对等体");
+								instruArr[0] = createCmdSpan("[R1-ipsec-profile-ips-prof] ike-peer “R2。");
+								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("匹配IPsec安全提议");
+								instruArr[0] = createCmdSpan("[R1-ipsec-profile-ips-prof] proposal “ips-pro。");
+								instruArr[1] = createCmdInstruSpan("“ips-pro。","IPsec安全提议名");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("将IPsec安全框架应用到Tunnel接口","i6-3-5");
+							instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ipsec profile “ips-prof。");
+							instruArr[1] = createCmdInstruSpan("“ips-prof。","IPsec安全框架名");
+							createCmdInstruT2(instruArr,"huawei");
+
+					createInstruT1("normal模式","i6-4");
+						createInstruT2("RIP","i6-4-1");
+							createInstruT3("‘HUB。节点：关闭水平分割");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB1-Tunnel0/0/0] undo rip split-horizon");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("OSPF","i6-4-2");
+							createInstruT3("‘所有。节点：OSPF网络类型为广播");
+								instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ospf network-type broadcast");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("‘SPOKE。节点：使其只能成为DROTHER，HUB节点则成为DR(BDR)");
+								instruArr[0] = createCmdSpan("[SPOKE1-Tunnel0/0/0] ospf dr-priority 0");
+								createCmdInstruT3(instruArr,"huawei");
+
+					createInstruT1("shortcut模式","i6-5");
+						createInstruT2("RIP","i6-5-1");
+							createInstruT3("‘HUB。节点：启用水平分割");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("[HUB1-Tunnel0/0/0] rip split-horizon");
+								createCmdInstruT3(instruArr,"huawei");
+
+						createInstruT2("OSPF","i6-5-2");
+							createInstruT3("‘所有。节点：OSPF网络类型为点到多点");
+								instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ospf network-type p2mp");
+								createCmdInstruT3(instruArr,"huawei");
+
+							createInstruT3("‘SPOKE。节点：使其只能成为DROTHER，HUB节点则成为DR(BDR)");
+								instruArr[0] = createCmdSpan("[SPOKE1-Tunnel0/0/0] ospf dr-priority 0");
+								createCmdInstruT3(instruArr,"huawei");
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

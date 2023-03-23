@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/mysql.ico" />
+	<title>NetDevOps-MySQL 8</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		.variable
+		{
+			background-color: #5A5D6F;
+		}
+
+		#tMySQL .row .cell:nth-child(2)
+		{
+			padding-left: 20px;
+		}
+
+		#tMySQL .row.header .cell:nth-child(2)
+		{
+			padding-left: 0;
+		}
+
+		.linuxDivT2, .divConfigImgT3
+		{
+			margin-top: -30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(mysql8, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("安装&初始化（CentOS yum在线）","i1");
+					createInstruT1("官网下载地址：<a class='link' href='https://dev.mysql.com/downloads/' target='_blank'>https://dev.mysql.com/downloads/</a><br />","i1-1");
+						createConfigImgT1("mysql8/i1_1$1");
+
+					createInstruT1("最新推荐版本安装","i1-2");
+						createInstruT2("获得yum源文件");
+							createConfigImgT2("mysql8/i1_2$1~2");
+
+						createInstruT2("添加yum源");
+							instruArr = new Array();
+							instruArr[0] = createSQLLinuxCmdSpan("wget https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm");
+							instruArr[1] = createSQLLinuxCmdSpan("rpm -ivh mysql80-community-release-el8-1.noarch.rpm");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("更新yum源");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLLinuxCmdSpan("yum clean all && yum makecache");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("安装MySQL");
+							instruArr[0] = createSQLLinuxCmdSpan("yum install -y mysql-server");
+							createCmdInstruT2(instruArr,"mysql");
+
+					createInstruT1("历史版本安装<br />","i1-3");
+						createConfigImgT1("mysql8/i1_3$1");
+
+					createInstruT1("初始化","i1-4");
+						createInstruT2("修改配置文件");
+							instruArr[0] = createSQLLinuxCmdSpan("vim /etc/my.cnf");
+							createCmdInstruT2(instruArr,"mysql");
+							cmd = `
+								[mysql]
+								port=3306
+
+								character-set-server=utf8mb4
+								collation-server=utf8mb4_general_ci
+
+								# 表名不区分大小写(启动前配置)
+								lower_case_table_names=1
+
+								# 设置日志时区和系统一致
+								log_timestamps=SYSTEM
+
+								[client]
+								default-character-set=utf8mb4
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("启动服务，并设置为开机启动");
+							instruArr[0] = createSQLLinuxCmdSpan("systemctl start mysqld");
+							instruArr[1] = createSQLLinuxCmdSpan("systemctl enable mysqld");
+							instruArr[2] = createSQLLinuxCmdSpan("systemctl daemon-reload");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("修改密码");
+							createInstruT3("查看初始随机密码");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createSQLLinuxCmdSpan("grep \"A temporary password\" /var/log/mysqld.log");
+								createCmdInstruT3(instruArr,"mysql");
+
+							createInstruT3("通过密码进入MySQL shell");
+								instruArr[0] = createSQLLinuxCmdSpan("mysql -u root -p");
+								createCmdInstruT3(instruArr,"mysql");
+
+							createInstruT3("修改密码");
+								instruArr = new Array();
+								instruArr[0] = createSQLCmdSpan("alter user 'root'@'localhost' identifity by '“Cisc0123!。';");
+								instruArr[1] = createSQLCmdInstruSpan("'“Cisc0123!。'","密码，有较高的复杂性要求");
+								createCmdInstruT3(instruArr,"mysql");
+
+				createInstruT0("安装&初始化（Docker版）","i4");
+						createInstruT2("docker run版","i4-1");
+							nbsp = "&nbsp;".repeat(18);
+							instruArr[0] = createCmdSpan("docker　run　--name　itachi　-p　3306:3306　-e　MYSQL_ROOT_PASSWORD=Cisc0123! \\");
+							instruArr[1] = createCmdSpan(nbsp + "--volume　/root/mysql-init:/docker-entrypoint-initdb.d \\");
+							instruArr[2] = createCmdSpan(nbsp + "--restart　always　-d　mysql \\");
+							instruArr[3] = createCmdSpan(nbsp + "--character-set-server=utf8mb4　--collation-server=utf8mb4_unicode_ci");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("docker-compose版<br />","i4-2");
+							yaml = `
+								version: "3.7"
+								services:
+									itachi_mysql:
+										image: mysql
+										ports:
+											- "3306:3306"
+										restart: always
+										environment:
+											MYSQL_ROOT_PASSWORD: Cisc0123!
+										volumes:
+											- /root/mysql-init:/docker-entrypoint-initdb.d
+										command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+							`;
+							createYAMLT2(yaml);
+
+				createInstruT0("使用mysql-client连接<br />","i5");
+					instruArr[0] = createCmdSpan("mysql -u“root。 -p -h“192.168.110.100。 --ssl-ca=“ca.pem。 --ssl-cert=“client-cert.pem。 --ssl-key=“client-key.pem。");
+					instruArr[1] = createSQLCmdInstruSpan("“root。","用户名");
+					instruArr[2] = createSQLCmdInstruSpan("“192.168.110.100。","mysql DB地址，和-h一起省略则为本地");
+					instruArr[3] = createSQLCmdInstruSpan("“ca.pem。","CA证书，特定的TLS连接时使用");
+					instruArr[4] = createSQLCmdInstruSpan("“client-cert.pem。","客户端证书，特定的TLS连接时使用");
+					instruArr[5] = createSQLCmdInstruSpan("“client-key。","客户端私钥，特定的TLS连接时使用");
+					createCmdInstruT0(instruArr,"mysql");
+
+				createInstruT0("权限管理","i2");
+					createInstruT1("管理连接地址","i2-1");
+						createInstruAllTopT1("存储连接地址的信息位于 mysql数据库中的user表 ，列user 为用户名，列host 为连接地址");
+
+						createInstruT2("切换到mysql数据库");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLCmdSpan("use mysql;");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("查看允许连接的地址（host列）");
+							instruArr = new Array();
+							instruArr[0] = createSQLCmdSpan("select user,host from {}user where user='“root。';");
+							instruArr[1] = createSQLCmdInstruSpan("'“root。'","查询的用户名");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("修改允许连接的地址");
+							instruArr[0] = createSQLCmdSpan("update {}user set host='“%。' where user='“root。';");
+							instruArr[1] = createSQLCmdInstruSpan("'“%。'","允许连接地址，% 表示所有，支持主机、子网、域名、通配符");
+							instruArr[2] = createSQLCmdInstruSpan("'“root。'","用户名");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("更新用户密码及加密规则（如果客户端不支持加密插件时配置）");
+							instruArr[0] = createSQLCmdSpan("alter user '“root。'@'“%。' identified with mysql_native_password by '“Cisc0123!。';");
+							instruArr[1] = createSQLCmdInstruSpan("'“root。'","用户名");
+							instruArr[2] = createSQLCmdInstruSpan("'“%。'","允许连接地址");
+							instruArr[3] = createSQLCmdInstruSpan("'“Cisc0123!。'","密码");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("刷新权限");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLCmdSpan("FLUSH PRIVILEGES;");
+							createCmdInstruT2(instruArr,"mysql");
+
+					createInstruT1("账户管理","i2-2");
+						createInstruT2("创建用户","i2-2-1");
+							instruArr[0] = createSQLCmdSpan("create user '“devnet。'@'“192.168.10.10。' identified by '“Cisc0123!。';");
+							instruArr[1] = createSQLCmdInstruSpan("'“devnet。'","用户名");
+							instruArr[2] = createSQLCmdInstruSpan("'“192.168.10.10。'","允许连接地址");
+							instruArr[3] = createSQLCmdInstruSpan("'“Cisc0123!。'","密码");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("修改用户密码","i2-2-2");
+							instruArr[0] = createSQLCmdSpan("set password for '“devnet。'@'“192.168.10.10。' = '“1234@Qwer。';");
+							instruArr[3] = createSQLCmdInstruSpan("'“1234@Qwer。'","新密码");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("删除用户","i2-2-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLCmdSpan("drop user '“devnet。'@'“192.168.10.10。';");
+							instruArr[1] = createSQLCmdInstruSpan("'“devnet。'","用户名");
+							instruArr[2] = createSQLCmdInstruSpan("'“192.168.10.10。'","允许连接地址");
+							createCmdInstruT2(instruArr,"mysql");
+
+					createInstruT1("使用TLS加密连接","i2-4");
+						createInstruT2("查看相关信息","i2-4-1");
+							createInstruT3("查看是否已经启用TLS");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createSQLCmdSpan("show variables like '%ssl%';");
+								createCmdInstruT3(instruArr,"mysql");
+								createConfigImgT3("mysql8/i2_4$1");
+
+							createInstruT3("自动生成的证书位置");
+								createInstruAllTopT3("/var/lib/mysql<br />");
+
+								tHeader = [
+									"文件名",
+									"描述",
+								];
+								tBody = [
+									["ca-key.pem","CA私钥"],
+									["ca.pem","自签名的CA证书"],
+									["client-key.pem","连接服务器提供的私钥"],
+									["client-cert.pem","连接服务器需要提供的证书"],
+									["server-key.pem","服务器端私钥"],
+									["server-client.pem","服务器端证书"],
+									["pulibc_key.pem","密钥对公钥"],
+									["private_key.pem","密钥对私钥"],
+								];
+								createHLTableT3(500, tHeader, tBody, "tMySQL");
+
+							createInstruT3("<br />查看是否启用全局加密，未启用则为可选加密");
+								instruArr[0] = createSQLCmdSpan("show variables like 'require_secure_transport';");
+								createCmdInstruT3(instruArr,"mysql");
+								createConfigImgT3("mysql8/i2_4$2");
+
+							createInstruT3("查看是使用的TLS版本");
+								instruArr[0] = createSQLCmdSpan("show variables like 'tls_version';");
+								createCmdInstruT3(instruArr,"mysql");
+								createConfigImgT3("mysql8/i2_4$3");
+
+						createInstruT2("启用TLS加密连接（需要重启mysql服务）","i2-4-2");
+							instruArr[0] = createSQLCmdSpan("set persist require_secure_transport=ON;");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("启用TLS加密连接（推荐，需要重启mysql服务）","i2-4-3");
+							instruArr[0] = createSQLCmdSpan("set persist tls_version='TLSv1.2,TLSv1.3';");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("更新加密规则，默认规则客户端可能不支持","i2-4-4");
+							instruArr[0] = createSQLCmdSpan("alter user '“root。'@'“%。' identified with mysql_native_password by '“Cisc0123!。';");
+							instruArr[1] = createSQLCmdInstruSpan("'“root。'","用户名");
+							instruArr[2] = createSQLCmdInstruSpan("'“%。'","允许连接地址");
+							instruArr[3] = createSQLCmdInstruSpan("'“Cisc0123!。'","密码");
+							createCmdInstruT2(instruArr,"mysql");
+
+					createInstruT1("权限管理","i2-3");//SHOW GRANTS FOR 'netdevops'@'192.168.10.10';
+						createInstruT2("授予权限","i2-3-1");
+							createInstruT3("语法（各种组合复杂，具体查看实例）","i2-3-1-1");
+								instruArr[0] = createSQLCmdSpan("grant priv_type [ (colums) ] [ , priv_type [ (colums) ] ] …");
+								instruArr[1] = createSQLCmdSpan("on [ object_type ] table1, table2, …");
+								instruArr[2] = createSQLCmdSpan("to user [ with option ];");
+								instruArr[3] = createSQLCmdInstruSpan("priv_type","表示权限类型，比如: select、update");
+								instruArr[4] = createSQLCmdInstruSpan("columns","表示权限作用于的列");
+								instruArr[5] = createSQLCmdInstruSpan("table1, … ","表示权限作用的表");
+								instruArr[6] = createSQLCmdInstruSpan("object_type","表示权限作用的对象，包括TALBE（表）、FUNCTION（函数）、PROCEDUCE（存储过程）");
+								instruArr[7] = createSQLCmdInstruSpan("user","格式为 '“username。'@'“hostname。'");
+								instruArr[8] = createSQLCmdInstruSpan("option","共有5个选项，包括：");
+								instruArr[9] = createCmdInstruSpan("　　　<span style='font-size:18px'>GRANT OPTION</span>：　　　　　　　　　　　　　　　　　&nbsp;&nbsp;被授权的用户可以将这些权限赋予别的用户");
+								instruArr[10] = createCmdInstruSpan("　　　<span style='font-size:18px'>MAX_QUERIES_PER_HOUR “count。</span>：　　　　　&nbsp;每小时可以执行查询次数");
+								instruArr[11] = createCmdInstruSpan("　　　<span style='font-size:18px'>MAX_UPDATES_PER_HOUR “count。</span>： 　　　&nbsp;&nbsp;&nbsp;每小时可以执行更新次数");
+								instruArr[12] = createCmdInstruSpan("　　　<span style='font-size:18px'>MAX_CONNECTIONS_PER_HOUR “count。</span>：&nbsp;每小时可以建立连接次数");
+								instruArr[13] = createCmdInstruSpan("　　　<span style='font-size:18px'>MAX_USER_CONNECTIONS “count。</span>：　　　　&nbsp;单个用户可以同时建立连接次数");
+								createCmdInstruT3(instruArr,"mysql");
+
+							createInstruT3("‘全局。授权，授权所有权限，信息在 mysql.user 表中");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createSQLCmdSpan("grant all on *.* to '“devnet。'@'“192.168.10.10。';");
+								instruArr[1] = createSQLCmdInstruSpan("'“devnet。'","用户名");
+								instruArr[2] = createSQLCmdInstruSpan("'“192.168.10.10。'","允许连接地址");
+								createCmdInstruT3(instruArr,"mysql");
+
+							createInstruT3("‘数据库。授权，授权某个数据库的所有权限，信息在 mysql.db 表中");
+								instruArr[0] = createSQLCmdSpan("grant all on “db_test。.* to '“devnet。'@'“192.168.10.10。';");
+								instruArr[1] = createSQLCmdInstruSpan("“db_test。","被授权的数据库");
+								instruArr[2] = createSQLCmdInstruSpan("'“devnet。'","用户名");
+								instruArr[3] = createSQLCmdInstruSpan("'“192.168.10.10。'","允许连接地址");
+								createCmdInstruT3(instruArr,"mysql");
+
+							createInstruT3("‘表。授权，授权某个表的所有权限，信息在 mysql.tables_priv 表中");
+								instruArr[0] = createSQLCmdSpan("grant all on “db_test。.“tables_priv。 to '“devnet。'@'“192.168.10.10。';");
+								instruArr[2] = createSQLCmdInstruSpan("“tables_priv。","被授权的表");
+								instruArr[3] = createSQLCmdInstruSpan("'“devnet。'","用户名");
+								instruArr[4] = createSQLCmdInstruSpan("'“192.168.10.10。'","允许连接地址");
+								createCmdInstruT3(instruArr,"mysql");
+
+							createInstruT3("‘列。授权，授权某个表的若干列的所有权限，信息在 mysql.tables_priv 表中");
+								instruArr[0] = createSQLCmdSpan("grant “select。(“col1, col2。), “update。(“col1, col2。) on “db_test。.“tables_priv。 to '“devnet。'@'“192.168.10.10。';");
+								instruArr[1] = createSQLCmdInstruSpan("“select。, “update。","权限类型，不支持ALL");
+								instruArr[2] = createSQLCmdInstruSpan("“col1, col2。","授权的列，对于相同列的不同权限，如实例所示需要分开写");
+								instruArr[3] = createSQLCmdInstruSpan("“db_test。","被授权的数据库");
+								instruArr[4] = createSQLCmdInstruSpan("“tables_priv。","被授权的表");
+								instruArr[5] = createSQLCmdInstruSpan("'“devnet。'","用户名");
+								instruArr[6] = createSQLCmdInstruSpan("'“192.168.10.10。'","允许连接地址");
+								createCmdInstruT3(instruArr,"mysql");
+
+				createInstruT0("备份与恢复","i3");
+					createInstruT1("使用MySQLdump命令备份","i3-1");
+						createInstruT2("备份某个数据库中的所有表","i3-1-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLLinuxCmdSpan("mysqldump -u “root。 -p “shop。 > “/shop.sql。");
+							instruArr[1] = createSQLCmdInstruSpan("“root。","有相关权限的用户");
+							instruArr[2] = createSQLCmdInstruSpan("“shop。","数据库名");
+							instruArr[3] = createSQLCmdInstruSpan("“/shop.sql。","备份文件的存储路径");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("备份某个数据库中的一张或多张表","i3-1-2");
+							instruArr[0] = createSQLLinuxCmdSpan("mysqldump -u “root。 -p “shop。 “product。[ “shopproduct。] ……> “/shop_tb.sql。");
+							instruArr[3] = createSQLCmdInstruSpan("“product。[ “shopproduct。]","备份的表名，至少一张表，多张表中间有空格");
+							instruArr[4] = createSQLCmdInstruSpan("“/shop_tb.sql。","备份文件的存储路径");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("备份多个数据库","i3-1-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLLinuxCmdSpan("mysqldump -u “root。 -p --databases “db_test。[ “shop。]…… > “/mul_db.sql。");
+							instruArr[1] = createSQLCmdInstruSpan("“root。","有相关权限的用户");
+							instruArr[2] = createSQLCmdInstruSpan("“db_test。[ “shop。]","备份的数据库名，至少一个，多个数据库中间有空格");
+							instruArr[3] = createSQLCmdInstruSpan("“/mul_db.sql。","备份文件的存储路径");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("备份所有数据库","i3-1-4");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createSQLLinuxCmdSpan("mysqldump -u root -p --all-databases > “/all_db.sql。");
+							instruArr[1] = createSQLCmdInstruSpan("“root。","有相关权限的用户");
+							instruArr[2] = createSQLCmdInstruSpan("“/all_db.sql。","备份文件的存储路径");
+							createCmdInstruT2(instruArr,"mysql");
+
+					createInstruT1("使用MySQLdump命令恢复","i3-2");
+						createInstruT2("恢复数据库，完全恢复到备份时状态","i3-2-1");
+							instruArr[0] = createSQLLinuxCmdSpan("mysql -u “root。 -p < “/mul_db.sql。");
+							instruArr[2] = createSQLCmdInstruSpan("“/mul_db.sql。","备份文件的存储路径");
+							createCmdInstruT2(instruArr,"mysql");
+
+						createInstruT2("恢复表，完全恢复到备份时状态","i3-2-2");
+							instruArr[0] = createSQLLinuxCmdSpan("mysql -u “root。 -p “shop。 < “/shop_tb.sql。");
+							instruArr[2] = createSQLCmdInstruSpan("“shop。","表所在数据库");
+							instruArr[3] = createSQLCmdInstruSpan("“/mul_db.sql。","备份文件的存储路径");
+							createCmdInstruT2(instruArr,"mysql");
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

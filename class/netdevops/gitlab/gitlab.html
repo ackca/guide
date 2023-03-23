@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/gitlab.ico" />
+	<title>NetDevOps-gitlab</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		.linuxDivT2, .divConfigImgT2, .divConfigImgT3
+		{
+			margin-top: -30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(gitlab, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("安装&初始化（Docker版）","i1");
+					createInstruT1("运行gitlab（docker-compose）","i1-1");
+						yaml = `
+							version: "3.7"
+							services:
+								itachi_gitlab:
+									container_name: itachi_gitlab
+									image: gitlab/gitlab-ce:14.1.5-ce.0
+									hostname: gitlab.itachi.tech
+									ports:
+										- "443:443"
+										- "80:80"
+										- "2222:22"
+									restart: always
+									volumes:
+										- /gitlab/config:/etc/gitlab
+										- /gitlab/logs:/var/log/gitlab
+										- /gitlab/data:/var/opt/gitlab
+									networks:
+								 		- itachi-network
+
+							networks:
+								itachi-network:
+									driver: bridge
+						`;
+						createYAMLT1(yaml);
+
+						createInstruT1("运行gitlab（docker-compose）","i1-2");
+							createInstruT2("修改配置文件，对应实际目录：‘/etc/gitlab/gitlab.rb。","i1-2-1");
+								createInstruAllTopT2("默认内容均为注释，直接添加下面内容即可<br />");
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("vim /gitlab/config/gitlab.rb");
+								createCmdInstruT2(instruArr,"gitlab");
+
+								cmd = `
+									external_url 'https://gitlab.itachi.tech'
+									nginx['enable'] = true
+									nginx['redirect_http_to_https'] = true    # http重定向到https
+									nginx['redirect_http_to_https_port'] = 80
+									nginx['redirect_http_to_https'] = true    # http重定向到https，使用http的访问会自动重定向到https；
+									nginx['redirect_http_to_https_port'] = 80
+								`;
+								createLinuxTxtT2(cmd);
+
+							createInstruT2("将证书放入对应目录中，对应实际目录：‘/etc/gitlab/ssl/ 。<br />","i1-2-2");
+								createConfigImgT2("gitlab/i1_2_2$1");
+
+							createInstruT2("重启gitlab<br />","i1-2-3");
+
+						createInstruT1("初始化","i1-3");
+							createInstruT2("用户名为root，查看初始密码，对应实际目录：‘/etc/gitlab/initial_root_password。","i1-3-1");
+								instruArr[0] = createLinuxCmd("cat /gitlab/config/initial_root_password");
+								createCmdInstruT2(instruArr,"gitlab");
+								createConfigImgT2("gitlab/i1_3_1$1");
+
+							createInstruT2("修改语言<br />","i1-3-2");
+								createConfigImgT2("gitlab/i1_3_2$1~2");
+
+							createInstruT2("修改密码<br />","i1-3-3");
+								createConfigImgT2("gitlab/i1_3_3$1~2");
+
+					createInstruT0("安装GitLab Runner","i2");
+						createInstruT1("安装介绍：<a class='link' href='https://docs.gitlab.com/runner/install/linux-repository.html' target='_blank'>https://docs.gitlab.com/runner/install/linux-repository.html</a>");
+
+						createInstruT1("配置仓库<br />");
+							instruArr[0] = createLinuxCmd("curl -L \"https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh\" | sudo bash");
+							createCmdInstruT1(instruArr,"gitlab");
+
+						createInstruT1("安装gitlab runner<br />");
+							instruArr[0] = createLinuxCmd("yum install -y gitlab-runner");
+							createCmdInstruT1(instruArr,"gitlab");
+
+					createInstruT0("Docker_DevOps","i3");
+						createInstruT1("项目注册Runner","i3-1");
+							cmd = `
+								gitlab-runner register
+
+								# 以下为交互内容
+								Runtime platform                                    arch=amd64 os=linux pid=10238 revision=e0218c92 version=14.3.2
+								Running in system-mode.
+
+								Enter the GitLab instance URL (for example, https://gitlab.com/):
+								https://gitlab.itachi.tech/		# 从gitlab获得的注册url
+								Enter the registration token:
+								ztNb1H6C1wPqv6xHfUE1					 # 从gitlab获得的注册token
+								Enter a description for the runner:
+								[localhost.localdomain]: build # runner的描述，非重要参数
+								Enter tags for the runner (comma-separated):
+								build												  # runner的tag，重要参数，与 CI/CD 相关
+								Registering runner... succeeded                     runner=ztNb1H6C
+								Enter an executor: docker-ssh+machine, kubernetes, custom, docker-ssh, shell, docker+machine, docker, parallels, ssh, virtualbox:
+								shell												  # docker的操作通过linux的cli即可
+								Runner registered successfully. Feel free to start it, but if it's running already the config should be automatically reloaded!
+							`;
+							createLinuxTxtT1(cmd);
+
+							createConfigImgT1("gitlab/i3_1$1~4");
+
+						createInstruT1(".gitlab-ci 参考 <a href='yaml/03_docker_devops/.gitlab-ci.yml' download='.gitlab-ci.yml'>下载该文件</a>","i3-2");
+							yaml = `
+								stages:
+									- docker_build_flask
+									- docker_build_nginx
+									- docker_build_mysql
+									- docker-compose_up
+
+								default:
+									before_script:
+										- sudo docker version
+										- sudo docker-compose --version
+
+								docker_build_flask:
+									stage: docker_build_flask
+									script:
+										- cd flask
+										- sudo docker build -t harbor.itachi.tech/itachi_web/itachi_flask .
+										- sudo docker push harbor.itachi.tech/itachi_web/itachi_flask
+									only:
+										- master
+									tags:
+										- build
+
+								docker_build_nginx:
+									stage: docker_build_nginx
+									script:
+										- cd nginx
+										- sudo docker build -t harbor.itachi.tech/itachi_web/itachi_nginx .
+										- sudo docker push harbor.itachi.tech/itachi_web/itachi_nginx
+									only:
+										- master
+									tags:
+										- build
+
+								docker_build_mysql:
+									stage: docker_build_mysql
+									script:
+										- cd mysql
+										- sudo docker build -t harbor.itachi.tech/itachi_web/itachi_mysql .
+										- sudo docker push harbor.itachi.tech/itachi_web/itachi_mysql
+									only:
+										- master
+									tags:
+										- build
+
+								docker-compose_up:
+									stage: docker-compose_up
+									script:
+										- sudo docker-compose pull
+										- sudo docker-compose up -d
+								#		 - sudo docker stack deploy itachi -c docker-compose.yml --resolve-image "always" --with-registry-auth
+								#			--resolve-image "always"：总是使用最新镜像
+								#			--with-registry-auth：	传递授权，只需此台宿主机有访问镜像仓库的授权，其它宿主机也可获得授权
+									only:
+										- master
+									tags:
+										- compose
+							`;
+							createYAMLT1(yaml);
+
+						createInstruT1("sudo 相关配置","i3-3");
+							createInstruT2("允许gitlab-runner使用sudo","i3-3-1");
+								createInstruAllTopT2("GitLab Runner使用gitlab-runner的用户使用shell，允许该用户使用sudo，并无需密码");
+
+								createInstruT3("使用 ‘visudo。 命令配置sudo，增加相应配置");
+									instruArr[0] = createCmdSpan("gitlab-runner ALL=(ALL:ALL) NOPASSWD:ALL");
+									createCmdInstruT3(instruArr,"gitlab");
+									createConfigImgT3("gitlab/i3_3_1$1~2");
+
+							createInstruT2("解决 ‘sudo: docker-compose：找不到命令。 问题","i3-3-2");
+								instruArr[0] = createLinuxCmd("cp -rf /usr/local/bin/docker-compose /usr/bin/docker-compose");
+								createCmdInstruT2(instruArr,"gitlab");
+								createConfigImgT2("gitlab/i3_3_2$1");
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

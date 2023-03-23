@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/cisco.ico" />
+	<title>思科-传统企业网-DEVNET-IOS-XE</title>
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_iosxe, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("Guest Shell","i1");
+						createInstruT2("创建vrf","i1-1");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("CSR(config)# vrf definition “guest_shell。");
+							instruArr[1] = createCmdInstruSpan("“guest_shell。","guest shell使用的vrf名");
+							instruArr[2] = createCmdSpan("CSR(config-vrf)# address-family ipv4");
+							instruArr[3] = createCmdSpan("CSR(config-vrf-af)# exit-address-family");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("guest shell网络配置","i1-2");
+							instruArr[0] = createCmdSpan("CSR(config)# iox");
+							instruArr[1] = createCmdSpan("CSR(config)# app-hosting appid guestshell");
+							instruArr[2] = createCmdSpan("CSR(config-app-hosting)# app-vnic gateway1 virtualportgroup 0 guest-interface 0");
+							instruArr[3] = createCmdSpan("CSR(config-app-hosting-gateway1)# guest-ipaddress “172.16.0.1。 netmask “255.255.255.0。");
+							instruArr[4] = createCmdInstruSpan("“172.16.0.1。 netmask “255.255.255.0。","guest shell的ip地址、子网掩码");
+							instruArr[5] = createCmdSpan("CSR(config-app-hosting-gateway1)# exit ");
+							instruArr[6] = createCmdSpan("CSR(config-app-hosting)# app-default-gateway “172.16.0.54。 guest-interface 0");
+							instruArr[7] = createCmdInstruSpan("“172.16.0.54。","guest shell的默认网关");
+							instruArr[8] = createCmdSpan("CSR(config-app-hosting)# name-server0 “114.114.114.114。");
+							instruArr[9] = createCmdInstruSpan("“114.114.114.114。","guest shell的DNS");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置VirtualPortGroup接口","i1-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("CSR(config)# interface VirtualPortGroup 0");
+							instruArr[1] = createCmdSpan("CSR(config-if)# vrf forwarding “guest_shell。");
+							instruArr[2] = createCmdInstruSpan("“guest_shell。","guest shell使用的vrf名");
+							instruArr[3] = createCmdSpan("CSR(config-if)# ip address “172.16.0.254 255.255.255.0。");
+							instruArr[4] = createCmdInstruSpan("“172.16.0.254 255.255.255.0。","guest shell容器对应的路由器中接口地址");
+							createCmdInstruT2(instruArr,"cisco");
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/vault.ico" />
+	<title>NetDevOps-Vault</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(vault, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("安装vault","i1");
+					createInstruT1("准备证书","i1-1");
+						createInstruT2("安装cfssl","i1-1-1");
+							cmd = `
+								wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -O /usr/bin/cfssl
+								wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -O /usr/bin/cfssl-json
+								wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64 -O /usr/bin/cfssl-certinfo
+								chmod +x /usr/bin/cfssl*
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("确认安装","i1-1-2");
+							cmd = `
+								which cfssl
+								# 下面为输出
+								/usr/bin/cfssl
+
+								which cfssl-json
+								# 下面为输出
+								/usr/bin/cfssl-json
+
+								which cfssl-certinfo
+								# 下面为输出
+								/usr/bin/cfssl-certinfo
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("准备根证书","i1-1-3");
+							cmd = `
+								mkdir -p /opt/certs
+
+								cat >/opt/certs/ca-csr.json <<EOF
+								{
+									"CN": "itachica",
+									"hosts": [
+									],
+									"key": {
+										"algo": "rsa",
+										"size": 4096
+									},
+									"names": [
+										{
+											"C": "CN",
+											"ST": "tj",
+											"L": "tj",
+											"O": "uchiha"
+										}
+									],
+									"ca": {
+										"expiry": "17520h"
+									}
+								}
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("初始化CA","i1-1-4");
+							cmd = `
+								cd /opt/certs/
+								cfssl gencert -initca ca-csr.json | cfssl-json -bare ca
+								# 下面为输出
+								2021/02/07 14:28:20 [INFO] generating a new CA key and certificate from CSR
+								2021/02/07 14:28:20 [INFO] generate received request
+								2021/02/07 14:28:20 [INFO] received CSR
+								2021/02/07 14:28:20 [INFO] generating key: rsa-4096
+								2021/02/07 14:28:24 [INFO] encoded CSR
+								2021/02/07 14:28:24 [INFO] signed certificate with serial number 574361734982557982192417515412895466935984323735
+
+								ll
+								# 下面为输出
+								总用量 16
+								-rw-r--r-- 1 root root 1712 2月   7 14:28 ca.csr
+								-rw-r--r-- 1 root root  267 2月   7 14:28 ca-csr.json
+								-rw------- 1 root root 3243 2月   7 14:28 ca-key.pem
+								-rw-r--r-- 1 root root 2013 2月   7 14:28 ca.pem
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("部署证书模板","i1-1-5");
+							cmd = `
+								cat >/opt/certs/ca-config.json <<EOF
+								{
+									"signing": {
+										"default": {
+											"expiry": "87600h"
+										},
+										"profiles": {
+											"server": {
+												"expiry": "175200h",
+												"usages": [
+													"signing",
+													"key encipherment",
+													"server auth"
+												]
+											},
+											"client": {
+												"expiry": "87600h",
+												"usages": [
+													"signing",
+													"key encipherment",
+													"client auth"
+												]
+											},
+											"peer": {
+												"expiry": "87600h",
+												"usages": [
+													"signing",
+													"key encipherment",
+													"server auth",
+													"client auth"
+												]
+											}
+										}
+									}
+								}
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("签署证书","i1-1-6");
+							cmd = `
+								# 192.168.110.100为安装vault的服务器地址
+
+								cat >/opt/certs/vault-csr.json <<EOF
+								{
+									"CN": "vault",
+									"hosts": [
+										"127.0.0.1",
+										"192.168.110.100"
+									],
+									"key": {
+										"algo": "rsa",
+										"size": 2048
+									},
+									"names": [
+										{
+											"C": "CN",
+											"ST": "tj",
+											"L": "tj",
+											"O": "uchiha"
+										}
+									]
+								}
+								EOF
+
+								cd /opt/certs/
+								cfssl gencert -ca=ca.pem \\
+											  -ca-key=ca-key.pem \\
+											  -config=ca-config.json \\
+											  -profile=server vault-csr.json \\
+											  |cfssl-json -bare vault
+
+								ll
+								# 以下为输出
+								总用量 36
+								-rw-r--r-- 1 root root  599 2月   7 14:38 ca-config.json
+								-rw-r--r-- 1 root root 1712 2月   7 14:28 ca.csr
+								-rw-r--r-- 1 root root  267 2月   7 14:28 ca-csr.json
+								-rw------- 1 root root 3243 2月   7 14:28 ca-key.pem
+								-rw-r--r-- 1 root root 2013 2月   7 14:28 ca.pem
+								-rw-r--r-- 1 root root  960 2月   7 14:39 vault.csr
+								-rw-r--r-- 1 root root  192 2月   7 14:38 vault-csr.json
+								-rw------- 1 root root 1679 2月   7 14:39 vault-key.pem
+								-rw-r--r-- 1 root root 1651 2月   7 14:39 vault.pem
+
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("安装vault（离线安装，在线很慢）","i1-2");
+						createInstruT2("下载离线程序，<a class='link' target='_blank' href='https://www.vaultproject.io/downloads'>https://www.vaultproject.io/downloads</a>","i1-2-1");
+
+						createInstruT2("将程序复制到 ‘/usr/bin/ 。，并添加执行权限","i1-2-2");
+							cmd = `
+								chmod +x /usr/bin/vault
+
+								# 测试
+								which vault
+								# 以下为输出
+								/usr/bin/vault
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("配置服务","i1-2-3");
+							cmd = `
+								cat >/usr/lib/systemd/system/vault.service <<EOF
+								[Unit]
+								Description="HashiCorp Vault - A tool for managing secrets"
+								Documentation=https://www.vaultproject.io/docs/
+								Requires=network-online.target
+								After=network-online.target
+								ConditionFileNotEmpty=/vault/config.hcl
+								StartLimitIntervalSec=60
+								StartLimitBurst=3
+
+								[Service]
+								ProtectSystem=full
+								ProtectHome=read-only
+								PrivateTmp=yes
+								PrivateDevices=yes
+								SecureBits=keep-caps
+								AmbientCapabilities=CAP_IPC_LOCK
+								CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+								NoNewPrivileges=yes
+								ExecStart=/usr/bin/vault server -config=/vault/config.hcl
+								ExecReload=/bin/kill --signal HUP $MAINPID
+								KillMode=process
+								KillSignal=SIGINT
+								Restart=on-failure
+								RestartSec=5
+								TimeoutStopSec=30
+								StartLimitInterval=60
+								StartLimitBurst=3
+								LimitNOFILE=65536
+								LimitMEMLOCK=infinity
+
+								[Install]
+								WantedBy=multi-user.target
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("创建配置文件","i1-2-4");
+							cmd = `
+								mkdir -p /vault/data
+								cd /vault
+
+								cat >/vault/config.hcl <<EOF
+								storage "raft" {
+								  path    = "/vault/data"
+								  node_id = "itachi-node1"
+								}
+
+								listener "tcp" {
+								  address     = "0.0.0.0:8200"
+								  tls_cert_file = "/opt/certs/vault.pem"
+								  tls_key_file = "/opt/certs/vault-key.pem"
+								  tls_disable = "false"
+								}
+
+								api_addr = "https://192.168.110.100:8200"
+								cluster_addr = "https://192.168.110.100:8201"
+								ui = true
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("添加环境变量","i1-2-5");
+							cmd = `
+								vim /etc/profile
+
+								# 添加两行配置，在第53行的export PATH USER LOGNAME MAIL HOSTNAME HISTSIZE HISTCONTROL，后面
+								export VAULT_ADDR="https://127.0.0.1:8200"
+								export VAULT_CACERT="/opt/certs/ca.pem"
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("启动并开机启动服务","i1-2-6");
+							cmd = `
+								systemctl daemon-reload
+								systemctl start vault
+								systemctl enable vault
+							`;
+							createLinuxTxtT2(cmd);
+
+				createInstruT0("初始化","i2");
+					cmd = `
+						vault operator init
+
+						# 以下为输出，为了安全，5个Unseal Key和Root Token为需要严格保密
+						Unseal Key 1: mSm5n5GyLHmTz31jJ5Om4EY6Yuf4Gmi1DTcHKAiqz5wx
+						Unseal Key 2: MUfjPZBhsbvZGydtEiqTBNHWkshvfqBbMfbt4XpMZES9
+						Unseal Key 3: bD0G4fqF2IKnYabGXNXTEt4oPwIQrTKH8U4gylBaevVC
+						Unseal Key 4: q0ofuyjSpQa6CCkyPgRmIgfyWBMrrziyhzAGdpFXSi50
+						Unseal Key 5: laZ24XAMfOKWtD1ZMCboMCJthQhiBRXbU0oTonoUldCI
+
+						Initial Root Token: s.aLI7r4at4lJepW6lY96h32ek
+
+						Vault initialized with 5 key shares and a key threshold of 3. Please securely
+						distribute the key shares printed above. When the Vault is re-sealed,
+						restarted, or stopped, you must supply at least 3 of these keys to unseal it
+						before it can start servicing requests.
+
+						Vault does not store the generated master key. Without at least 3 key to
+						reconstruct the master key, Vault will remain permanently sealed!
+
+						It is possible to generate new unseal keys, provided you have a quorum of
+						existing unseal keys shares. See "vault operator rekey" for more information.
+					`;
+					createLinuxTxtT1(cmd);
+
+				createInstruT0("解封数据库","i3");
+					cmd = `
+						# 解封命令为：vault operator unseal，需要重复操作3次，使用5个key中任意3个即可
+						# 第一次
+						vault operator unseal
+						Unseal Key (will be hidden):
+						Key                Value
+						---                -----
+						Seal Type          shamir
+						Initialized        true
+						Sealed             true
+						Total Shares       5
+						Threshold          3
+						Unseal Progress    1/3
+						Unseal Nonce       cd30dbbe-4cca-ac65-ae50-cc9bbd3b5dc2
+						Version            1.6.2
+						Storage Type       raft
+						HA Enabled         true
+
+						# 第二次
+						vault operator unseal
+						Unseal Key (will be hidden):
+						Key                Value
+						---                -----
+						Seal Type          shamir
+						Initialized        true
+						Sealed             true
+						Total Shares       5
+						Threshold          3
+						Unseal Progress    2/3
+						Unseal Nonce       cd30dbbe-4cca-ac65-ae50-cc9bbd3b5dc2
+						Version            1.6.2
+						Storage Type       raft
+						HA Enabled         true
+
+						# 第三次
+						vault operator unseal
+						Unseal Key (will be hidden):
+						Key                     Value
+						---                     -----
+						Seal Type               shamir
+						Initialized             true
+						Sealed                  false
+						Total Shares            5
+						Threshold               3
+						Version                 1.6.2
+						Storage Type            raft
+						Cluster Name            vault-cluster-3f839fab
+						Cluster ID              7c93a290-3d54-ac35-0894-f4fbebd76d16
+						HA Enabled              true
+						HA Cluster              n/a
+						HA Mode                 standby
+						Active Node Address     <none>
+						Raft Committed Index    24
+						Raft Applied Index      24
+					`;
+					createLinuxTxtT1(cmd);
+
+				createInstruT0("配置secret","i4");
+					createInstruT1("kv-v2类型（键值类型）","i4-1");
+						createInstruT2("切换令牌","i4-1-1");
+							createInstruAllTopT2("相当于登录一个有对应权限的用户");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("export VAULT_TOKEN=\"“s.aLI7r4at4lJepW6lY96h32ek。\"");
+							instruArr[1] = createCmdInstruSpan("“s.aLI7r4at4lJepW6lY96h32ek。","拥有相应权限的token。");
+							createCmdInstruT2(instruArr,"vault");
+
+						createInstruT2("存储secret组的配置","i4-1-2");
+							createInstruT3("创建组","i4-1-2-1");
+								instruArr[0] = createCmdSpan("vault secrets enable -path=“itachi。”/。 kv-v2");
+								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
+								createCmdInstruT3(instruArr,"vault");
+
+							createInstruT3("罗列组","i4-1-2-2");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("vault secrets list");
+								createCmdInstruT3(instruArr,"vault");
+
+							createInstruT3("删除组","i4-1-2-3");
+								instruArr[0] = createCmdSpan("vault secrets disable “itachi。”/。");
+								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
+								createCmdInstruT3(instruArr,"vault");
+
+						createInstruT2("secret的配置","i4-1-3");
+							createInstruT3("向组中添加secret","i4-1-3-1");
+								instruArr[0] = createCmdSpan("vault kv put　“itachi。”/。“router-auth。　“username。=“admin。　“password。=“Cisc0123。");
+								instruArr[2] = createCmdInstruSpan("“router-auth。","secret名");
+								instruArr[3] = createCmdInstruSpan("“username。","secret的键，多组键值间以空格分隔");
+								instruArr[4] = createCmdInstruSpan("“admin。","secret的值");
+								createCmdInstruT3(instruArr,"vault");
+
+							createInstruT3("获取secret","i4-1-3-2");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("vault kv get　“itachi。”/。“router-auth。");
+								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
+								instruArr[2] = createCmdInstruSpan("“router-auth。","secret名");
+								createCmdInstruT3(instruArr,"vault");
+
+							createInstruT3("获取secret中特定的键的值","i4-1-3-3");
+								instruArr[0] = createCmdSpan("vault kv get　”-。field=“username。　“itachi。”/。“router-auth。");
+								instruArr[1] = createCmdInstruSpan("“username。","键名");
+								instruArr[2] = createCmdInstruSpan("“itachi。","组名");
+								instruArr[3] = createCmdInstruSpan("“router-auth。","secret名");
+								createCmdInstruT3(instruArr,"vault");
+
+							createInstruT3("罗列secret","i4-1-3-4");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("vault kv list　“itachi。”/。");
+								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
+								createCmdInstruT3(instruArr,"vault");
+
+							createInstruT3("删除secret","i4-1-3-5");
+								instruArr[0] = createCmdSpan("vault kv delete　“itachi。”/。“router-auth。");
+								instruArr[2] = createCmdInstruSpan("“router-auth。","secret名");
+								createCmdInstruT3(instruArr,"vault");
+
+				createInstruT0("权限控制","i5");
+
+					createInstruT1("切换令牌","i5-1");
+						createInstruAllTopT1("相当于登录一个有对应权限的用户<br />");
+						instruArr = new Array();
+						instruArr[0] = createCmdSpan("export VAULT_TOKEN=\"“s.aLI7r4at4lJepW6lY96h32ek。\"");
+						instruArr[1] = createCmdInstruSpan("“s.aLI7r4at4lJepW6lY96h32ek。","拥有相应权限的token。");
+						createCmdInstruT1(instruArr,"vault");
+
+					createInstruT1("参考文档","i5-2");
+						createInstruAllTopT1("<a class='link' href='https://learn.hashicorp.com/tutorials/vault/getting-started-policies?in=vault/getting-started' target='_blank'>https://learn.hashicorp.com/tutorials/vault/getting-started-policies?in=vault/getting-started</a><br />")
+
+					createInstruT1("创建策略","i5-3");
+						cmd = `
+							vault policy write itachi-policy - << EOF
+
+							path "itachi/*" {
+							  capabilities = ["read"]
+							}
+							EOF
+						`;
+						createLinuxTxtT1(cmd);
+
+					createInstruT1("获得令牌","i5-4");
+						cmd = `
+							vault token create -policy=itachi-policy
+							# 下面为输出
+							Key                  Value
+							---                  -----
+							token                s.divhY0x20BB9Idcj9h21FNka
+							token_accessor       K7HUHlHg71QyarFQ78BrM6tY
+							token_duration       768h
+							token_renewable      true
+							token_policies       ["default" "itachi-policy"]
+							identity_policies    []
+							policies             ["default" "itachi-policy"]
+						`;
+						createLinuxTxtT1(cmd);
+
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

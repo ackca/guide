@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: itachi-dp-service # service的名字
+spec:
+  selector:
+    app: itachi-pod-dp-label # service选择的标签
+  ports:
+  - name: http
+    port: 10080 # 对外暴露的端口
+    protocol: TCP

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-FTP</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_ftp, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"FTP",
+					"File Transfer Protocol",
+					"文件传输协议",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("动态应用FTP","i1");
+					createInstruAllTopT0("FTP共使用两条信道，控制信道与数据信道，数据信息除用于传输数据外，还用于罗列目录");
+
+					createInstruAllTopT0("控制信息一直存在，数据信道每次使用后关闭，再次使用数据信道时，启用一条新的信道");
+
+					createInstruAllTopT0("控制信道使用TCP 21，数据信道与FTP使用的模式相关，模式共2种，分别为Passive（被动）、Active（主动）");
+
+					createInstruAllTopT0("被动（主动）指的是，服务器被动（主动）建立数据信道，但请求使用被动（主动）模式的为客户端");
+
+					createInstruAllTopT0("一般情况下，无论是FTP服务器还是客户端均支持这2种模式，默认使用Passive模式");
+
+				createInstruT0("FTP Passive（被动）模式详解","i2");
+					createInstruT1("综述","i2-1");
+						createInstruAllTopT1("被动模式，指的由‘客户端。主动向‘服务器。请求，使用被动模式，由‘服务器。提供数据信道的端口号");
+
+						createInstruAllTopT1("控制信道，由‘客户端。主动向‘服务器。发起，‘源端口号。为‘随机高端口。，‘目的端口号。为‘客户端提供的端口号。");
+
+						document.writeln("<br /><br /><br />");
+						createConfigImgT1("FTP/Passive_mode");
+
+					createInstruT1("基于IPv4","i2-2");
+						document.writeln("<br />");
+						createConfigImgT1("FTP/IPv4_Passive$1~2");
+
+					createInstruT1("基于IPv6","i2-3");
+						document.writeln("<br />");
+						createConfigImgT1("FTP/IPv6_Passive$1~2");
+
+				createInstruT0("FTP Active（主动）模式详解","i3");
+					createInstruT1("综述","i3-1");
+						createInstruAllTopT1("主动模式，指的由‘客户端。主动向‘服务器。请求，使用主动模式，向‘服务器。提供数据信道的端口号");
+
+						createInstruAllTopT1("控制信道，由‘服务器。主动向‘客户端。发起，‘源端口号。为‘20。，‘目的端口号。为‘客户端提供的端口号。");
+
+						document.writeln("<br /><br /><br />");
+						createConfigImgT1("FTP/Active_mode");
+
+					createInstruT1("基于IPv4","i3-2");
+						document.writeln("<br />");
+						createConfigImgT1("FTP/IPv4_Active$1~2");
+
+					createInstruT1("基于IPv6","i3-3");
+						document.writeln("<br />");
+						createConfigImgT1("FTP/IPv6_Active");
+
+
+				createInstruT0("FTP与NAT","i4");
+					createInstruAllTopT0("由于FTP为动态应用，新的信道的信息在FTP报文中有所体现");
+
+					createInstruAllTopT0("经过NAT设备时，需要内报文中的IP地址、端口信息进行修改，以便正常通过NAT设备及防火墙");
+
+				createInstruT0("SFTP与FTPS","i5");
+					createInstruAllTopT0("标准FTP为纯明文协议，为了提高安全性，产生了SFTP和FTPS两种密文协议");
+
+					createInstruAllTopT0("SFTP：FTP over SSH，端口号使用SSH的TCP 22，不再有第二信道，由SSH提供安全保障");
+
+					createInstruAllTopT0("FTPS：FTP over SSL，端口号的逻辑与普通FTP相同，由TLS提供安全保障，仍为动态应用");
+
+					createInstruAllTopT0("　　　　　&nbsp;由于IP地址、端口信息被加密，因此可能无法正常通过防火墙等安全设备，不推荐使用");
+
+					createInstruAllTopT0("　　　　　&nbsp;此外，FTPS还有显示加密与隐示加密两种，显示加密在报文交互过程时，客户端明确提出加密请求");
+
+					createInstruAllTopT0("　　　　　&nbsp;隐示加密则直接进行加密，无请求，而且控制信道改为TCP 990，数据信道逻辑不变");
+
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

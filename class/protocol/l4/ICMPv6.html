@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-ICMPv6</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+
+		/* -----ICMPv6 Type Code对应关系表格开始----- */
+		#tICMPv6Type .row:nth-child(n+2) .cell
+		{
+			border-right: solid 1px #A0A0A0;
+			border-bottom: solid 1px #A0A0A0;
+			background-color: #5A5D6F;
+		}
+
+		#tICMPv6Type .row:nth-child(n+2):hover .cell
+		{
+			background-color: #CBCFFF;
+		}
+
+		#tICMPv6Type .row:nth-child(n+2):hover .cell:nth-child(-n+2)
+		{
+			color: #8000FF;
+		}
+
+		#tICMPv6Type .row:nth-child(n+2) .cell:nth-child(1)
+		{
+			font-weight: bold;
+			color: #FFFF00;
+		}
+
+		#tICMPv6Type .row:nth-child(n+2) .cell:nth-child(2)
+		{
+			color: #FFFF00;
+		}
+
+		#tICMPv6Type .row:nth-child(2) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(3) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(4) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(5) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(6) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(7) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(8) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(11) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(12) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(14) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(15) > .cell:nth-child(1),
+		#tICMPv6Type .row:nth-child(16) > .cell:nth-child(1)
+		{
+			border-bottom-color: #5A5D6F;
+		}
+
+		#tICMPv6Type .row:last-child .cell
+		{
+			border-bottom: 0;
+		}
+
+		#tICMPv6Type .row:nth-child(2) > .cell:nth-child(2),
+		#tICMPv6Type .row:nth-child(11) > .cell:nth-child(2),
+		#tICMPv6Type .row:nth-child(14) > .cell:nth-child(2)
+		{
+			border-right: 0;
+		}
+
+		#tICMPv6Type .row .cell:nth-child(1)
+		{
+			padding-left: 0px;
+		}
+
+		#tICMPv6Type .row .cell
+		{
+			border-right: solid 1px #A0A0A0;
+		}
+
+		#tICMPv6Type .row.header .cell
+		{
+			border-right: 0;
+		}
+
+		#tICMPv6Type .row .cell
+		{
+			text-align: center;
+			width: 80px;
+		}
+
+		#tICMPv6Type .row .cell:nth-child(3)
+		{
+			width: auto;
+			border-right: 0;
+		}
+
+		#tICMPv6Type .row.header .cell:nth-child(1), #zwTable .row.header .cell:nth-child(1)
+		{
+			width: 110px;
+		}
+
+		#zwTable .row.header .cell:nth-child(2)
+		{
+			width: 80px;
+		}
+
+		#tICMPv6Type .row.header .cell:nth-child(3)
+		{
+			text-align: center;
+			padding-left: inherit;
+		}
+
+		#tICMPv6Type .row .cell:nth-child(3)
+		{
+			text-align: left;
+			padding-left: 10px;
+		}
+		/* -----ICMPv6 Type Code对应关系表格结束----- */
+		/* ---------------------------------------------------------------------- */
+		/* -----ICMPv6选项表格表格开始----- */
+		#tOptions .row.header .cell:nth-child(1)
+		{
+			width: 80px;
+		}
+
+		#tOptions .row.header .cell:nth-child(2)
+		{
+			width: 450px;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		#tOptions .row .cell:nth-child(1)
+		{
+			text-align: center;
+			padding-left: 0;
+		}
+
+		#tOptions .row .cell:nth-child(2)
+		{
+			text-align: left;
+			padding-left: 10px;
+		}
+		/* -----ICMPv6选项表格表格结束----- */
+		/* ---------------------------------------------------------------------- */
+		/* -----NA报文的标志位表格开始----- */
+		#tNAFlags
+		{
+			margin-top: 20px;
+		}
+
+		#tNAFlags .row.header .cell:nth-child(1)
+		{
+			width: 120px;
+		}
+
+		#tNAFlags .row.header .cell:nth-child(2)
+		{
+			width: 80px;
+		}
+
+		#tNAFlags .cell
+		{
+			border: 0;
+		}
+
+		#tNAFlags .row .cell:nth-child(2)
+		{
+			text-align: center;
+		}
+
+		#tNAFlags .row .cell:nth-child(3)
+		{
+			padding-left: 10px;
+		}
+		/* -----NA报文的标志位表格结束----- */
+
+		#zwTable
+		{
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+			border: 0;
+			overflow: hidden;
+			letter-spacing: 1px;
+		}
+
+		#zwTable, .divBG
+		{
+			position: fixed;
+			z-index: 10;
+			top: 162px;
+			left: 410px;
+			display: none;
+		}
+
+		#zwTable .cell
+		{
+			border-bottom: 0;
+		}
+
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// ------------------------- Type 1 选择器 开始  -----------------------------------
+			// 单元格长度51，行长度38
+			_c21 = "#tICMPv6Type .row:nth-child(2) .cell:nth-child(1), ";
+			_c22 = "#tICMPv6Type .row:nth-child(2) .cell:nth-child(2)";
+			_c2122 = "#tICMPv6Type .row:nth-child(2) .cell:nth-child(-n+2), ";
+			_r2 = "#tICMPv6Type .row:nth-child(2) .cell, ";
+
+			_c31 = "#tICMPv6Type .row:nth-child(3) .cell:nth-child(1), ";
+			_c32 = "#tICMPv6Type .row:nth-child(3) .cell:nth-child(2)";
+			_c3132 = "#tICMPv6Type .row:nth-child(3) .cell:nth-child(-n+2), ";
+			_r3 = "#tICMPv6Type .row:nth-child(3) .cell, ";
+
+			_c41 = "#tICMPv6Type .row:nth-child(4) .cell:nth-child(1), ";
+			_c42 = "#tICMPv6Type .row:nth-child(4) .cell:nth-child(2)";
+			_c4142 = "#tICMPv6Type .row:nth-child(4) .cell:nth-child(-n+2), ";
+			_r4 = "#tICMPv6Type .row:nth-child(4) .cell, ";
+
+			_c51 = "#tICMPv6Type .row:nth-child(5) .cell:nth-child(1), ";
+			_c52 = "#tICMPv6Type .row:nth-child(5) .cell:nth-child(2)";
+			_c5152 = "#tICMPv6Type .row:nth-child(5) .cell:nth-child(-n+2), ";
+			_r5 = "#tICMPv6Type .row:nth-child(5) .cell, ";
+
+			_c61 = "#tICMPv6Type .row:nth-child(6) .cell:nth-child(1), ";
+			_c62 = "#tICMPv6Type .row:nth-child(6) .cell:nth-child(2)";
+			_c6162 = "#tICMPv6Type .row:nth-child(6) .cell:nth-child(-n+2), ";
+			_r6 = "#tICMPv6Type .row:nth-child(6) .cell, ";
+
+			_c71 = "#tICMPv6Type .row:nth-child(7) .cell:nth-child(1), ";
+			_c72 = "#tICMPv6Type .row:nth-child(7) .cell:nth-child(2)";
+			_c7172 = "#tICMPv6Type .row:nth-child(7) .cell:nth-child(-n+2), ";
+			_r7 = "#tICMPv6Type .row:nth-child(7) .cell, ";
+
+			_c81 = "#tICMPv6Type .row:nth-child(8) .cell:nth-child(1), ";
+			_c82 = "#tICMPv6Type .row:nth-child(8) .cell:nth-child(2)";
+			_c8182 = "#tICMPv6Type .row:nth-child(8) .cell:nth-child(-n+2), ";
+			_r8 = "#tICMPv6Type .row:nth-child(8) .cell, ";
+
+			_c91 = "#tICMPv6Type .row:nth-child(9) .cell:nth-child(1), ";
+			_c92 = "#tICMPv6Type .row:nth-child(9) .cell:nth-child(2)";
+			_c9192 = "#tICMPv6Type .row:nth-child(9) .cell:nth-child(-n+2), ";
+			_r9 = "#tICMPv6Type .row:nth-child(9) .cell, ";
+
+			Type1_Col1 = _c21 + _c31 + _c41 + _c51 + _c61 + _c71 + _c81 + _c91.substr(0, 49);
+			Type1_Col12 = _c2122 + _c3132 + _c4142 + _c5152 + _c6162 + _c7172 + _c8182 + _c9192.substr(0, 52);
+			Type1_RowAll = _r2 + _r3 + _r4 + _r5 + _r6 + _r7 + _r8 + _r9.substr(0, 36);
+
+
+			// ------------------------- Type 1 选择器 结束 -----------------------------------
+			// ------------------------- Type 3 选择器 开始 -----------------------------------
+			// 单元格长度52，行长度39
+			_c111 = "#tICMPv6Type .row:nth-child(11) .cell:nth-child(1), ";
+			_c112 = "#tICMPv6Type .row:nth-child(11) .cell:nth-child(2)";
+			_c111112 = "#tICMPv6Type .row:nth-child(11) .cell:nth-child(-n+2), ";
+			_r11 = "#tICMPv6Type .row:nth-child(11) .cell, ";
+
+			_c121 = "#tICMPv6Type .row:nth-child(12) .cell:nth-child(1), ";
+			_c122 = "#tICMPv6Type .row:nth-child(12) .cell:nth-child(2)";
+			_c121122 = "#tICMPv6Type .row:nth-child(12) .cell:nth-child(-n+2), ";
+			_r12 = "#tICMPv6Type .row:nth-child(12) .cell, ";
+
+			_c131 = "#tICMPv6Type .row:nth-child(13) .cell:nth-child(1), ";
+			_c132 = "#tICMPv6Type .row:nth-child(13) .cell:nth-child(2)";
+			_c131132 = "#tICMPv6Type .row:nth-child(13) .cell:nth-child(-n+2), ";
+			_r13 = "#tICMPv6Type .row:nth-child(13) .cell, ";
+
+			Type3_Col1 = _c111 + _c121 + _c131.substr(0, 50);
+			Type3_Col12 = _c111112 + _c121122 + _c131132.substr(0, 53);
+			Type3_RowAll = _r11 + _r12 + _r13.substr(0, 37);
+
+			// ------------------------- Type 3 选择器 结束 -----------------------------------
+			// ------------------------- Type 4 选择器 开始 -----------------------------------
+			// 单元格长度52，行长度39
+			_c141 = "#tICMPv6Type .row:nth-child(14) .cell:nth-child(1), ";
+			_c142 = "#tICMPv6Type .row:nth-child(14) .cell:nth-child(2)";
+			_c141142 = "#tICMPv6Type .row:nth-child(14) .cell:nth-child(-n+2), ";
+			_r14 = "#tICMPv6Type .row:nth-child(14) .cell, ";
+
+			_c151 = "#tICMPv6Type .row:nth-child(15) .cell:nth-child(1), ";
+			_c152 = "#tICMPv6Type .row:nth-child(15) .cell:nth-child(2)";
+			_c151152 = "#tICMPv6Type .row:nth-child(15) .cell:nth-child(-n+2), ";
+			_r15 = "#tICMPv6Type .row:nth-child(15) .cell, ";
+
+			_c161 = "#tICMPv6Type .row:nth-child(16) .cell:nth-child(1), ";
+			_c162 = "#tICMPv6Type .row:nth-child(16) .cell:nth-child(2)";
+			_c161162 = "#tICMPv6Type .row:nth-child(16) .cell:nth-child(-n+2), ";
+			_r16 = "#tICMPv6Type .row:nth-child(16) .cell, ";
+
+			_c171 = "#tICMPv6Type .row:nth-child(17) .cell:nth-child(1), ";
+			_c172 = "#tICMPv6Type .row:nth-child(17) .cell:nth-child(2)";
+			_c171172 = "#tICMPv6Type .row:nth-child(17) .cell:nth-child(-n+2), ";
+			_r17 = "#tICMPv6Type .row:nth-child(17) .cell, ";
+
+			Type4_Col1 = _c141 + _c151 + _c161 + _c171.substr(0, 50);
+			Type4_Col12 = _c141142 + _c151152 + _c161162 + _c171172.substr(0, 53);
+			Type4_RowAll = _r14 + _r15 + _r16 + _r17.substr(0, 37);
+
+			// ------------------------- Type 4 选择器 结束 -----------------------------------
+
+			// ------------------------- Type 1 高亮 开始  -----------------------------------
+			// ------------------------- Type 1 第一行 -----------------------------------
+			$(Type1_Col1.replace(_c21, _r2)).mouseover(function (){
+				$(Type1_RowAll).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF");
+				$(Type1_Col12).css("color","#8000FF");
+			});
+			$(Type1_Col1.replace(_c21, _r2)).mouseleave(function (){
+				$(Type1_RowAll).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col12).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 0 -----------------------------------
+			$(_r3.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r3 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c32).css("color","#8000FF");
+			});
+			$(_r3.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r3 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c32).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 1 -----------------------------------
+			$(_r4.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r4 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c42).css("color","#8000FF");
+			});
+			$(_r4.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r4 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c42).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 2 -----------------------------------
+			$(_r5.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r5 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c52).css("color","#8000FF");
+			});
+			$(_r5.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r5 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c52).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 3 -----------------------------------
+			$(_r6.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r6 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c62).css("color","#8000FF");
+			});
+			$(_r6.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r6 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c62).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 4 -----------------------------------
+			$(_r7.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r7 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c72).css("color","#8000FF");
+			});
+			$(_r7.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r7 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c72).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 5 -----------------------------------
+			$(_r8.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r8 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c82).css("color","#8000FF");
+			});
+			$(_r8.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r8 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c82).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 Code 6 -----------------------------------
+			$(_r9.substr(0, 36)).mouseover(function (){
+				$(_r2 + _r9 + Type1_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type1_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c92).css("color","#8000FF");
+			});
+			$(_r9.substr(0, 36)).mouseleave(function (){
+				$(_r2 + _r9 + Type1_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type1_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c91.substr(0, 49)).css("border-bottom-color","#A0A0A0");
+				$(Type1_Col1).css("color","#FFFF00");
+				$(_c92).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 1 高亮 结束  -----------------------------------
+			// ------------------------- Type 3 高亮 开始  -----------------------------------
+			// ------------------------- Type 3 第一行 -----------------------------------
+			$(Type3_Col1.replace(_c111, _r11)).mouseover(function (){
+				$(Type3_RowAll).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type3_Col1).css("border-bottom-color","#CBCFFF");
+				$(Type3_Col12).css("color","#8000FF");
+			});
+			$(Type3_Col1.replace(_c111, _r11)).mouseleave(function (){
+				$(Type3_RowAll).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type3_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c131.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type3_Col12).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 3 Code 0 -----------------------------------
+			$(_r12.substr(0, 37)).mouseover(function (){
+				$(_r11 + _r12 + Type3_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type3_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c122).css("color","#8000FF");
+			});
+			$(_r12.substr(0, 37)).mouseleave(function (){
+				$(_r11 + _r12 + Type3_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type3_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c131.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type3_Col1).css("color","#FFFF00");
+				$(_c122).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 3 Code 1 -----------------------------------
+			$(_r13.substr(0, 37)).mouseover(function (){
+				$(_r11 + _r13 + Type3_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type3_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c132).css("color","#8000FF");
+			});
+			$(_r13.substr(0, 37)).mouseleave(function (){
+				$(_r11 + _r13 + Type3_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type3_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c131.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type3_Col1).css("color","#FFFF00");
+				$(_c132).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 3 高亮 结束  -----------------------------------
+			// ------------------------- Type 4 高亮 开始  -----------------------------------
+			// ------------------------- Type 4 第一行 -----------------------------------
+			$(Type4_Col1.replace(_c141, _r14)).mouseover(function (){
+				$(Type4_RowAll).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type4_Col1).css("border-bottom-color","#CBCFFF");
+				$(Type4_Col12).css("color","#8000FF");
+			});
+			$(Type4_Col1.replace(_c141, _r14)).mouseleave(function (){
+				$(Type4_RowAll).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type4_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c171.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type4_Col12).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 4 Code 0 -----------------------------------
+			$(_r15.substr(0, 37)).mouseover(function (){
+				$(_r14 + _r15 + Type4_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type4_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c152).css("color","#8000FF");
+			});
+			$(_r15.substr(0, 37)).mouseleave(function (){
+				$(_r14 + _r15 + Type4_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type4_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c171.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type4_Col1).css("color","#FFFF00");
+				$(_c152).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 4 Code 1 -----------------------------------
+			$(_r16.substr(0, 37)).mouseover(function (){
+				$(_r14 + _r16 + Type4_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type4_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c162).css("color","#8000FF");
+			});
+			$(_r16.substr(0, 37)).mouseleave(function (){
+				$(_r14 + _r16 + Type4_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type4_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c171.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type4_Col1).css("color","#FFFF00");
+				$(_c162).css("color","#FFFF00");
+			});
+
+			// ------------------------- Type 4 Code 2 -----------------------------------
+			$(_r17.substr(0, 37)).mouseover(function (){
+				$(_r14 + _r17 + Type4_Col1).css("background-color","#CBCFFF").css("color","#000000");
+				$(Type4_Col1).css("border-bottom-color","#CBCFFF").css("color","#8000FF");
+				$(_c172).css("color","#8000FF");
+			});
+			$(_r17.substr(0, 37)).mouseleave(function (){
+				$(_r14 + _r17 + Type4_Col1).css("background-color","#5A5D6F").css("color","#FFFFFF");
+				$(Type4_Col1).css("border-bottom-color","#5A5D6F");
+				$(_c171.substr(0, 50)).css("border-bottom-color","#A0A0A0");
+				$(Type4_Col1).css("color","#FFFF00");
+				$(_c172).css("color","#FFFF00");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_icmpv6, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"ICMPv6",
+					"Internet Control Message Protocol for IPv6",
+					"用于IPv6的互联网控制报文协议",
+				);
+			</script>
+		</div><br />
+
+		<div class="divBG" style="background-color: #494A5F;width: 600px;height: 10px"></div>
+
+		<div id="zwTable" class="protocolDivTable" style="width: 600px">
+			<div class="table">
+				<div class="row header">
+					<div class="cell">类型</div>
+					<div class="cell">代码</div>
+					<div class="cell">说明</div>
+				</div>
+			</div>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("ICMP 协议简介","i1");
+				 	createInstruAllTopT0("ICMP经常被认为是IP层的一个组成部分，它传递差错报文以及其他需要注意的信息，ICMP报文通常被IP层或更高层协议（TCP或UDP）使用，一些ICMP报文把差错报文返回给用户进程");
+					createInstruAllTopT0("ICMP主要用于两点：1、确认网络是否正常工作，2、遇到异常时进行问题诊断");
+
+				createInstruT0("ICMP 协议结构<br />","i2");
+					createProtocolStructT0(
+						"820",
+						"220",
+						"1120",
+						"ICMP/ICMP",
+					);
+
+					words = `
+						类型（Type）
+						由8 bit构成，用于区分不同类型的ICMP报文
+
+						代码（Code）
+						由8 bit构成，用于区分子不同类型的ICMP报文
+
+						校验和（Checksum）
+						由16 bit构成，计算ICMPv6首部和数据部分以及IPv6伪首部
+
+						与类型相关
+						与类型相关，不同类型的ICMP报文，格式不同
+						`;
+						createProtocolExplainT0(words, -225.5);
+
+				createInstruT0("ICMPv6 报文类型","i8");
+					createInstruAllTopT0("ICMPv6报文被分为 信息类报文（类型 128~255）和 差错报文（类型 0~127），具体如下：<br />");
+						tHeader = [
+							"类型",
+							"代码",
+							"说明",
+						];
+						tBody = [
+							["","","<b>目标不可达</b>"],
+							["","0","没有路由到达目的地"],
+							["","1","与目的地的通信由于管理被禁止"],
+							["1","2","超过了源地址的范围"],
+							["","3","地址不可达"],
+							["","4","端口不可达"],
+							["","5","源地址的入口/出口策略失败"],
+							["","6","拒绝路由到达目的地"],
+							["2","0","包太大"],
+							["","","<b>超时</b>"],
+							["3","0","传输过程中“ hop-limit”超时"],
+							["","1","分片重组超时"],
+							["","","<b>参数出错</b>"],
+							["4","0","参数错误"],
+							["","1","不可识别的Next Header类型"],
+							["","2","不可识别的IPv6选项"],
+							["100，101","0","私有实验用"],
+							["127","0","ICMPv6差错报文扩展保留"],
+							["128","0","回显请求"],
+							["129","0","回显应答"],
+							["133","0","路由请求"],
+							["134","0","路由通告"],
+							["135","0","邻居请求"],
+							["136","0","邻居通告"],
+							["137","0","重定向"],
+							["141","0","反向邻居发现请求"],
+							["142","0","反向邻居发现通告"],
+							["143","0","组播组播侦听报告版本2"],
+							["144","0","本地代理地址发现请求"],
+							["145","0","本地代理地址发现应答"],
+							["146","0","移动前缀请求"],
+							["147","0","移动前缀通告"],
+							["148","0","证书路径请求"],
+							["149","0","证书路径通告"],
+							["151","0","组播路由通告"],
+							["152","0","组播路由请求"],
+							["153","0","组播路由终止"],
+							["154","0","FMIPv6报文"],
+							["200，201","0","私有实验用"],
+							["255","0","ICMPv6消息报文扩展保留"],
+						];
+						createHLTableT0(600, tHeader, tBody, "tICMPv6Type");
+
+				createInstruT0("ICMPv6 选项","i5");
+					createInstruT1("ICMPv6 选项结构<br />","i5-1");
+						createProtocolStructT1(
+							"630",
+							"150",
+							"620",
+							"ICMPv6/option",
+							"option"
+						);
+
+						words = `
+							类型（Type）
+							由8 bit构成，用于区分不同类型的ICMPv6报文
+
+							长度（Length）
+							由8 bit构成，表示选项的总长度，单位 8字节
+
+							选项内容
+							与类型相关的选项内容
+							`;
+						createProtocolExplainT1(words, -157.2, "option");
+
+						createInstruAllTopT1("常见选项对应关系如下：<br />");
+
+						tHeader = [
+							"类型",
+							"含义",
+							"说明",
+						];
+						tBody = [
+							["1","源链路层地址（Source Link-layer Address）","即发送报文的源mac地址"],
+							["2","目标链路层地址（Target Link-layer Address）",""],
+							["3","前缀信息（Prefix Information）",""],
+							["5","最大传输单元（MTU）",""],
+							["25","递归的DNS服务器（Recursive DNS Server）","即DNS服务器"],
+							["31","DNS搜索列表（DNS Search List）","即域名"],
+						];
+						createHLTableT1(800, tHeader, tBody, "tOptions");
+
+				createInstruT0("回显请求/响应 报文（ping）","i3");
+					createInstruT1("回显请求/响应 报文结构<br />","i3-1");
+						createProtocolStructT1(
+							"820",
+							"290",
+							"2210",
+							"ICMP/ping",
+							"ping"
+						);
+
+						words = `
+							类型（Type）
+							由8 bit构成，ping请求（echo）报文取值为128，ping响应（echo-reply）报文取值为129
+
+							代码（Code）
+							由8 bit构成，ping请求与响应（echo / echo-reply）取值均为0
+
+							校验和（Checksum）
+							由16 bit构成，计算ICMPv6首部和数据以及IPv6伪头部
+
+							标识（ID：Identification）
+							由16 bit构成，在同一次的ping请求中，标识保持不变<br />当ping通过PAT时，标识被当作TCP/UDP的端口使用，实现地址复用
+
+							序列号（Sequence Number）
+							由16 bit构成，在同一次的ping请求中，序列号随着每个ping报文而增加
+
+							数据（Data）
+							数据部分
+						`;
+						createProtocolExplainT2(words, -316.5, "ping");
+
+					createInstruT1("回显请求/响应 报文实例","i3-2");
+						createInstruT2("ping请求报文（echo）","i3-2-1");
+							createConfigImgT2("ICMPv6/echo");
+
+						createInstruT2("ping响应报文（echo-reply）","i3-2-2");
+							createConfigImgT2("ICMPv6/echo-reply");
+
+						createInstruT2("多次ping，ID与SN关系","i3-2-3");
+							createConfigImgT2("ICMPv6/pingIDSN");
+
+				createInstruT0("IPv6邻居发现机制（ICMPv6 NS NA）","i4");
+					createInstruT1("IPv6邻居发现原理","i4-1");
+						createInstruAllTopT1("IPv6中没有广播，使用组播发现邻居，ICMPv6 NS报文，进行请求，ICMPv6 NA报文，进行响应");
+
+						createInstruAllTopT1("NS报文中，目的mac地址为被请求解析地址对应的IPv6组播地址");
+
+						createInstruAllTopT1("目的IP地址为 请求节点组播地址");
+
+						createInstruAllTopT1("请求解析的IP地址位于字段 目标地址");
+
+						createInstruAllTopT1("ICMPv6 NA为单播报文，解析得到的mac地址，在其选项 目标的链路层地址 的字段 目标地址<br /><br />");
+
+					createInstruT1("ICMPv6 NS报文","i4-2");
+						createInstruT2("NS，全称 Neighbor Solicitation，邻居发现，ICMPv6 Type 135 Code 0<br />");
+
+						createInstruT2("ICMPv6 NS 报文结构","i4-2-1");
+							createProtocolStructT2(
+								"940",
+								"360",
+								"1500",
+								"ICMPv6/ns",
+								"NS"
+							);
+
+							words = `
+								保留（Reserved）
+								由32 bit构成，保留为0
+
+								目标地址（Target Address）
+								由128 bit构成，表示请求解析的IPv6地址
+
+								ICMPv6选项，源链路层地址（Source Link-Layer Address）
+								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
+							`;
+							createProtocolExplainT2(words, -380.4, "NS");
+
+						createInstruT2("<br />ICMPv6 NS 报文实例","i4-2-2");
+							createConfigImgT2("ICMPv6/ns_packet");
+
+
+					createInstruT1("ICMPv6 NS报文","i4-3");
+						createInstruT2("NA，全称 Neighbor Advertisement，邻居通告，ICMPv6 Type 136 Code 0<br />");
+
+						createInstruT2("ICMPv6 NA 报文结构","i4-3-1");
+							createProtocolStructT2(
+								"950",
+								"360",
+								"1800",
+								"ICMPv6/na",
+								"NA"
+							);
+
+							words = `
+								标志（Flags）
+								由3 bit构成，每位的含义如下：<br /><div class="protocolDivTable" id="tNAFlags" style="width:700px"><div class="table"><div class="row header"><div class="cell">位置</div><div class="cell">字段</div><div class="cell">说明</div></div><div class="row"><div class="cell">第1个bit</div><div class="cell">R</div><div class="cell">路由器标记。当置1时，表示发送者是路由器。</div></div><div class="row"><div class="cell">第2个bit</div><div class="cell">S</div><div class="cell">请求标记。当置1时，表示通告被发送以响应NS。</div></div><div class="row"><div class="cell">第3个bit</div><div class="cell">O</div><div class="cell">替代标记。当置1时，表示通告中的信息替代缓存。</div></div></div></div>
+
+								保留（Reserved）
+								由29 bit构成，保留为0
+
+								目标地址（Target Address）
+								由128 bit构成，表示请求解析的IPv6地址
+
+								ICMPv6选项，源链路层地址（Source Link-Layer Address）
+								由64 bit构成，类型 2，长度 1，值为目标链路层地址，也就是解析到的mac地址
+							`;
+							createProtocolExplainT2(words, -363.8, "NA");
+
+						createInstruT2("<br />ICMPv6 NA 报文实例","i4-3-2");
+							createConfigImgT2("ICMPv6/na_packet");
+
+					createInstruT1("检测地址冲突","i4-4");
+						createInstruAllTopT1("与IPv4类似，发送被检测地址的NS报文，但源IPv6地址为 <b>::</b>");
+
+						createInstruAllTopT1("如果设备为路由器，同时还会向 FF02::1，发送被检测地址的NA报文<br />");
+
+						createConfigImgT1("ICMPv6/地址冲突$1~2");
+
+				createInstruT0("无状态自动配置机制（RS RA）","i6");
+					createInstruT1("IPv6地址自动配置原理","i6-1");
+						createInstruAllTopT1("IPv6地址前64位（前缀）为路由器的IPv6地址前64位，通过终端发送RS报文，并接收RA报文获得");
+
+						createInstruAllTopT1("RS报文的目的IP地址为 FF02::2，对应为所有路由器，即所有三层设备监听的组播地址");
+
+						createInstruAllTopT1("目的mac地址为FF02::2对应的IPv6组播mac地址，即33:33:FF:00:00:02");
+
+						createInstruAllTopT1("路由器回应的RA报文的类型3的选项中，包含路由器的前64位地址，以及有效期等其它必须信息");
+
+						createInstruAllTopT1("RA报文的目的IP地址为 FF02::1，对应为所有设备，类似于IPv4中的广播");
+
+						createInstruAllTopT1("目的mac地址为FF02::1对应的IPv6组播mac地址，即33:33:FF:00:00:01");
+
+						createInstruAllTopT1("终端发送RA报文，并接收RS报文获得路由器IP地址的前64位，后64位存在两种方式");
+
+						createInstruAllTopT1("　　第一种：采用EUI-64方式计算得到");
+
+						createInstruAllTopT1("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
+
+					createInstruT1("<br />ICMPv6 RS报文","i6-2");
+						createInstruT2("RS，全称 Router Solicitation，路由器发现，ICMPv6 Type 133 Code 0");
+
+						createInstruT2("ICMPv6 NS 报文结构","i6-2-1");
+							createProtocolStructT2(
+								"940",
+								"290",
+								"910",
+								"ICMPv6/rs",
+								"RS"
+							);
+
+							words = `
+								保留（Reserved）
+								由32 bit构成，保留为0
+
+								ICMPv6选项，源链路层地址（Source Link-Layer Address）
+								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
+							`;
+							createProtocolExplainT2(words, -309.6, "RS");
+
+						createInstruT2("<br />ICMPv6 RS 报文实例","i6-2-2");
+							createConfigImgT2("ICMPv6/rs_packet");
+
+				createInstruT0("ICMPv6差错报文（Type 0~127）","i7");
+					createInstruT1("差错报文说明","i7-1")
+						createInstruAllTopT1("ICMPv6错误报文的数据应尽可能的包含出错的报文，以确定出错的具体协议，但整个IPv6数据包的大小不能大于IPv6的最小MTU（1280）")
+
+						createInstruAllTopT1("为了防止引发广播风暴或其它问题，下列情况不会产生ICMP差错报文：")
+
+						createInstruAllTopT1("　　1、ICMPv6错误报文/。")
+
+						createInstruAllTopT1("　　2、ICMPv6重定向消息/。")
+
+						createInstruAllTopT1("　　3、目标为 IPv6 组播地址的分组，此规则有两个例外：")
+
+						createInstruAllTopT1("　　　　　(1) Packet Too Big 报文/。")
+
+						createInstruAllTopT1("　　　　　(2) 代码为 2 的 Parameter Problem Message 报文/。")
+
+						createInstruAllTopT1("　　4、作为链路层组播发送的分组（3、的例外也适用此）/。")
+
+						createInstruAllTopT1("　　5、作为链路层广播发送的分组（3、的例外也适用此）/。")
+
+						createInstruAllTopT1("　　6、一个分组，它的源地址不是唯一标识单一节点（如：组播地址）/。")
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+
+		$(window).scroll(function(){
+			if($(window).scrollTop() > 1160 && $(window).scrollTop() < 3260 ) {
+				$("#zwTable, .divBG").css("display","block");
+			}
+			else {
+				$("#zwTable, .divBG").css("display","none");
+			}
+		});
+	</script>
+</body>
+</html>

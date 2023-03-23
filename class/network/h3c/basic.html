@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/h3c.ico" />
+	<title>华三-通用配置</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_basic, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("网管协议","i3");
+					createInstruT1("SSH","i3-3");
+						createInstruT2("定义登录用的用户名");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1] local-user “admin。");
+							instruArr[1] = createCmdInstruSpan("“admin。","用户名");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("配置用户密码");
+							instruArr[0] = createCmdSpan("[R1-luser-manage-admin] password");
+							instruArr[1] = createCmdInstruSpan("回车后按提示输入两次密码");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("配置用户用于SSH");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1-luser-manage-admin] service-type ssh");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("配置用户角色");
+							instruArr[0] = createCmdSpan("[R1-luser-manage-admin] authorization-attribute user-role “network-admin。");
+							instruArr[1] = createCmdInstruSpan("“network-admin。","用户角色");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("生成SSH密钥");
+							instruArr[0] = createCmdSpan("[R1] public-key local create rsa");
+							instruArr[1] = createCmdInstruSpan("回车后会要求输入密钥长度，建议至少1024位");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("启用ssh远程登录，推荐只为允许SSH，不允许不安全的Telnet");
+							instruArr[0] = createCmdSpan("[R1] user-interface vty “0。 [ “4。 ]");
+							instruArr[1] = createCmdSpan("[R1-ui-vty0-4] authentication-mode scheme");
+							instruArr[2] = createCmdSpan("[R1-ui-vty0-4] protocol inbound ssh");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("启用SSH server功能，并配置用户的服务类型为STelnet，认证方式为密码认证");
+							instruArr[0] = createCmdSpan("[R1] ssh server enable");
+							instruArr[1] = createCmdSpan("[R1] ssh user “admin。 service-type stelnet authentication-type password");
+							instruArr[2] = createCmdInstruSpan("“admin。","用户名");
+							createCmdInstruT2(instruArr,"h3c");
+
+						createInstruT2("允许/不允许 ssh v1登录(v2已经允许)");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("[R1] [ undo ] ssh server compatible-ssh1x enable");
+							instruArr[1] = createCmdInstruSpan("undo为不允许");
+							createCmdInstruT2(instruArr,"h3c");
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-VXLAN</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_vxlan, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"VXLAN",
+					"Virtual eXtensible Local Area Network",
+					"虚拟扩展局域网",
+				);
+			</script>
+		</div><br />
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("VXLAN报文结构","i1");
+					document.writeln("<br />");
+					createProtocolStructT0(
+						"830",
+						"300",
+						"1780",
+						"VXLAN/VXLAN"
+					);
+
+					words = `
+						vxlan 标志（VXLAN Flags）
+						由8 bit构成，固定为 0x08
+
+						保留（Reserved）
+						由24 bit构成，值为 0
+
+						vxlan 网络标识（VNI：VXLAN Network ID）
+						由24 bit构成，即VXLAN ID值
+
+						保留（Reserved）
+						由8 bit构成，值为 0
+					`;
+					createProtocolExplainT0(words, -295.5);
+
+				createInstruT0("VXLAN 封装方式","i2");
+					document.writeln("<br />");
+					createConfigImgT0("VXLAN/VXLAN封装");
+
+				createInstruT0("VXLAN 实例","i3");
+					document.writeln("<br />");
+					createConfigImgT0("VXLAN/VXLAN_packet");
+
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

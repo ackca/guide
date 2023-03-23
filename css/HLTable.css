@@ -1,0 +1,113 @@
+.HLTableS1, .HLTableS2
+{
+    border-radius: 10px;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.table
+{
+    width: 100%;
+    display: table;
+    margin: 0;
+}
+
+.row
+{
+    display: table-row;
+    background-color: #5A5D6F;
+    width: 100% !important;
+}
+
+.row.header
+{
+    color: #A0A0A0;
+    background: #6C7AE0;
+}
+
+.row .cell
+{
+    display: table-cell;
+    font-family: Poppins-Regular;
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 1.2;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.row .cell:nth-child(1)
+{
+    padding-left: 20px;
+}
+
+.row.header .cell
+{
+    font-family: Poppins-Regular;
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 1.2;
+    font-weight: unset !important;
+
+    padding-top: 19px;
+    padding-bottom: 19px;
+    text-align: center;
+    padding-left: 0;
+}
+
+.row:hover
+{
+    background-color: #CBCFFF;
+    cursor: pointer;
+}
+
+.row:hover .cell
+{
+    color: #000000;
+}
+
+.row.header:hover
+{
+    background-color: #6C7AE0;
+}
+
+.row.header:hover .cell
+{
+    color: #FFFFFF;
+}
+
+.HLTableS1 .cell:nth-child(1),
+.HLTableS2 .row:nth-child(n+2) .cell:nth-child(1)
+{
+    font-weight: bold;
+    color: #FFFF00;
+}
+
+.HLTableS1 .row:hover .cell:nth-child(1),
+.HLTableS2 .row:nth-child(n+2):hover .cell:nth-child(1)
+{
+    color: #8000FF;
+}
+
+.HLTableS1 .row:nth-child(even),
+.HLTableS2 .row:nth-child(odd)
+{
+    background-color: #76798B;
+}
+
+.HLTableS1 .row:nth-child(even):hover,
+.HLTableS2 .row:nth-child(odd):hover
+{
+    background-color: #CBCFFF;
+}
+
+.HLTableS2 .row.header
+{
+    background-color: #6C7AE0;
+}
+
+.HLTableS2 .row.header:hover
+{
+    background-color: #6C7AE0;
+}

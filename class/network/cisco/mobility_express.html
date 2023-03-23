@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/cisco.ico" />
+	<title>思科-传统企业网-WLC-mobility express</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_mobility_express, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("AP模式切换","i1");
+						createInstruT2("Mobility-express模式的AP切换到普通瘦AP模式");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("ME-AP# ap-type capwap");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("普通瘦AP切换到Mobility-express模式");
+							instruArr[0] = createCmdSpan("AP# ap-type mobility-express “tftp://...。");
+							instruArr[1] = createCmdInstruSpan("“tftp://...。","提供Mobility-express固件的路径");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("清空配置","i2");
+						createInstruT2("AP的配置");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(Cisco Controller) > clear ap config “ME-AP。");
+							instruArr[1] = createCmdInstruSpan("“ME-AP。","AP名");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("WLC的配置");
+							instruArr[0] = createCmdSpan("(Cisco Controller) > clear config");
+							instruArr[1] = createCmdSpan("(Cisco Controller) > reset system");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("命令行模式切换","i3");
+						createInstruT2("WLC切换到AP");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(Cisco Controller) > apciscoshell");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("AP切换到WLC");
+							instruArr[0] = createCmdSpan("ME-AP> logout");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("配置AAA overload","i4");
+						createInstruT2("因为Mobility-express为Flexconnect模式，授权vlan时，需要额外配置");
+						createInstruT2("启用AAA overload");
+							instruArr[0] = createCmdSpan("(Cisco Controller) > config wlan disable “1。");
+							instruArr[1] = createCmdInstruSpan("“1。","WLAN的ID");
+							instruArr[2] = createCmdSpan("(Cisco Controller) > config wlan aaa-override enable “1。");
+							instruArr[3] = createCmdSpan("(Cisco Controller) > config wlan enable “1。");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("关联vlan");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(Cisco Controller) > config flexconnect group default-flexgroup vlan add “20。");
+							instruArr[1] = createCmdInstruSpan("“20。","被授权的vlan");
+							createCmdInstruT2(instruArr,"cisco");
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

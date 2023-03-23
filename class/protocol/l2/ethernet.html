@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-EthernetII</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_ethernet, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"Ethernet II",
+					"&nbsp;",
+					"以太网",
+				);
+			</script>
+		</div><br class="both"/>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("Etherne II 首部字段说明","i1");
+					document.writeln("<br />");
+					createProtocolStructT0(
+						"1000",
+						"174",
+						"1062",
+						"ethernet/ethernet"
+					);
+
+					words = `
+						目的MAC地址（Destination）
+						由6字节构成，表示目的MAC地址
+
+						源MAC地址（Source）
+						由6字节构成，表示源MAC地址
+
+						协议类型（Protocol Type）
+						由2字节构成，表示下一个首部属于哪个协议
+
+						数据部分（Data）
+						由46~1500字节构成，如果数据部分较小（如ARP），小于46字节，需要填充0使数据部分达到最小的46字节
+
+						帧校验序列（FCS）
+						由4字节构成，对帧完整性的检查
+					`;
+					createProtocolExplainT0(words, -173.5);
+
+				createInstruT0("Etherne II 实例","i2");
+					createInstruT1("实例为ping报文，如下所示");
+						document.writeln("<br />");
+						createConfigImgT1("ethernet/eth_packet");
+			</script>
+
+			<br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

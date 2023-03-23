@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/cisco.ico" />
+	<title>思科-数据中心网络-Nexus</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_nexus, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("与IOS的配置区别","i1");
+					createInstruT1("基本配置","i1-4");
+						createInstruT2("保存配置，‘不支持 wr。","i1-4-1");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus# copy running-config startup-config");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置多个接口，无需range","i1-4-2");
+							instruArr[0] = createCmdSpan("Nexus(config)# int “e1/1 - 2。");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("启用SVI，默认未启用","i1-4-3");
+							instruArr[0] = createCmdSpan("Nexus(config)# feature interface-vlan");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("生成树协议","i1-1");
+						createInstruT2("接口配置为快速端口","i1-1-1");
+							instruArr[0] = createCmdSpan("Nexus(config-if)# spanning-tree port type edge [ trunk ]");
+							instruArr[1] = createCmdInstruSpan("trunk","用于配置为trunk模式，连接拥有多个vlan的终端接口，如：服务器");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("HSRP","i1-2");
+						createInstruT2("需要通过feature启用");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus(config)# feature hsrp");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置时，在三层接口下，配置hsrp组");
+							instruArr[0] = createCmdSpan("Nexus(config-if)# hsrp “10。");
+							instruArr[1] = createCmdInstruSpan("“10。","hsrp组号");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("具体配置均在hsrp组中配置，命令格式为：与IOS中命令去掉 standby 组号 相同");
+							instruArr[0] = createCmdSpan("Nexus(config-if-hsrp)# priority “105。");
+							instruArr[1] = createCmdSpan("Nexus(config-if-hsrp)# preempt");
+							createCmdInstruT2(instruArr,"cisco");
+
+							instruArr[0] = createCmdSpan("SW1(config-if)# standby “10。 priority  “105。");
+							instruArr[1] = createCmdSpan("SW1(config-if)# standby “10。 preempt ");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("动态路由协议(IGP)","i1-3");
+						createInstruT2("在路由协议进程中无network命令，需要在接口宣告网络");
+							instruArr[0] = createCmdSpan("Nexus(config)# int “e1/1。");
+							instruArr[1] = createCmdSpan("Nexus(config-if)# ip router ospf “1。 area “0。");
+							instruArr[2] = createCmdSpan("Nexus(config-if)# ip router eigrp “1。");
+							instruArr[3] = createCmdSpan("Nexus(config-if)# ip router rip “1。");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("PIM","i1-5");
+						createInstruT2("静态RP时，环回接口需要配置pim","i1-5-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus(config-if)# ip pim sparse-mode");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("BGP","i1-6");
+						createInstruT2("nexus 中没有 peer group，使用 template 代替","i1-6-1");
+							createInstruT3("配置template");
+								instruArr[0] = createCmdSpan("Nexus(config)# router bgp “65101。");
+								instruArr[1] = createCmdSpan("Nexus(config-router)# template peer “leaf。");
+								instruArr[2] = createCmdInstruSpan("“leaf。","模板名");
+								instruArr[3] = createCmdSpan("Nexus(config-router-neighbor)# remote-as “65101。");
+								instruArr[4] = createCmdSpan("Nexus(config-router-neighbor)# update-source “loop 0。");
+								createCmdInstruT2(instruArr,"cisco");
+
+							createInstruT3("调用template");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("Nexus(config-router)# neighbor “10.3.3.3。");
+								instruArr[1] = createCmdSpan("Nexus(config-router-neighbor)# inherit peer “leaf。");
+								instruArr[2] = createCmdInstruSpan("“leaf。","模板名");
+								createCmdInstruT3(instruArr,"cisco");
+
+				createInstruT0("系统管理","i2");
+					createInstruT1("基本功能","i2-1");
+						createInstruT2("为管理接口IP配路由");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus(config)# vrf context management");
+							instruArr[1] = createCmdSpan("Nexus(config-vrf)# ip route “0.0.0.0/0 mgmt0 192.168.100.250。");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("复杂性密码要求");
+							createInstruT3("启用复杂性密码要求");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("Nexus(config)# password strength-check");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("查看状态");
+								instruArr[0] = createCmdSpan("Nexus# show password strength-check");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置接口MTU");
+							createInstruT3("system jumbomtu");
+								instruArr[0] = createCmdSpan("Nexus(config)# system jumbomtu “9200。");
+								instruArr[1] = createCmdInstruSpan("“9200。","1500~9216 间的任意偶数");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("二层接口");
+								instruArr[0] = createCmdSpan("Nexus(config-if)# mtu “9200。");
+								instruArr[1] = createCmdInstruSpan("“9200。","1500 或 system jumbomtu");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("三层接口");
+								instruArr[0] = createCmdSpan("Nexus(config-if)# mtu “9216。");
+								instruArr[1] = createCmdInstruSpan("“9216。","576~9216 间的任意偶数");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置电源冗余");
+							createInstruT3("配置电源冗余方式");
+								instruArr[0] = createCmdSpan("Nexus(config)# power redundancy-mode { redundant | ps-redundant | insrc-redundant | combined }");
+								instruArr[1] = createCmdInstruSpan("redundant","全冗余");
+								instruArr[2] = createCmdInstruSpan("ps-redundant","电源冗余");
+								instruArr[3] = createCmdInstruSpan("insrc-redundant","电网冗余");
+								instruArr[4] = createCmdInstruSpan("combined","无冗余");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("查看状态");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("Nexus# show environment power");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("接口指示灯闪烁");
+							instruArr[0] = createCmdSpan("Nexus(config-if)# beacon");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("checkpoint（类似于虚拟机的快照）","i2-2");
+						createInstruT2("以当前状态建立checkpoint");
+							instruArr[0] = createCmdSpan("Nexus# checkpoint “check。");
+							instruArr[1] = createCmdInstruSpan("“check。","checkpoint名");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("还原配置");
+							instruArr[0] = createCmdSpan("Nexus# rollback running-config checkpoint “check。");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("查看两个checkpoint区别");
+							instruArr[0] = createCmdSpan("Nexus# show diff rollback-patch checkpoint “check1。 checkpoint “check2。");
+							instruArr[1] = createCmdInstruSpan("“check1。 / “check2。","checkpoint名");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("将当前checkpoint以文件形式保存");
+							instruArr[0] = createCmdSpan("Nexus# checkpoint file “bootflash:///check。");
+							instruArr[1] = createCmdInstruSpan("“bootflash:///check。","文件路径");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("将文件形式checkpoint导出导入");
+							instruArr[0] = createCmdSpan("Nexus# copy “bootflash:///check。　“tftp://192.168.100.1/check。");
+							instruArr[1] = createCmdSpan("Nexus# copy “tftp://192.168.100.1/check。　“bootflash:///check。");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("还原配置（文件形式checkpoint）");
+							instruArr[0] = createCmdSpan("Nexus# rollback running-config file “bootflash:///check。");
+							instruArr[1] = createCmdInstruSpan("“bootflash:///check。","文件路径");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("VDC","i3");
+					createInstruT1("配置VDC","i3-1");
+						createInstruT2("创建（配置）VDC","i3-1-1");
+							instruArr[0] = createCmdSpan("N7K-admin(config)# vdc “N7K-VDC1。");
+							instruArr[1] = createCmdInstruSpan("“N7K-VDC1。","VDC名，如果不存在该VDC，先创建");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置关联模块类型","i3-1-2");
+							instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# limit-resource module-type “f2e。");
+							instruArr[1] = createCmdInstruSpan("“f2e。","模块类型");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("关联接口到VDC","i3-1-3");
+							instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# allocate interface “ethernet 1/1 - 4。");
+							instruArr[1] = createCmdInstruSpan("“ethernet 1/1 - 4。","接口名");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("限制资源消耗","i3-1-4");
+							createInstruT3("配置资源模版","i3-1-4-1");
+								instruArr[0] = createCmdSpan("N7K-admin(config)# vdc resource template “vdc-res。");
+								instruArr[1] = createCmdInstruSpan("“vdc-res。","资源模版名");
+								instruArr[2] = createCmdSpan("N7K-admin(config-vdc-template)# limit-resource “vrf minimum 10 maximum 20。");
+								instruArr[3] = createCmdSpan("N7K-admin(config-vdc-template)# limit-resource “vlan minimum 100 maximum 200。");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("关联资源模版到VDC","i3-1-4-2");
+								instruArr[0] = createCmdSpan("N7K-admin(config)# vdc “N7K-VDC1。");
+								instruArr[1] = createCmdInstruSpan("“N7K-VDC1。","关联的VDC名");
+								instruArr[2] = createCmdSpan("N7K-admin(config-vdc)# template “vdc-res。");
+								instruArr[3] = createCmdInstruSpan("“vdc-res。","资源模版名");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置CPU份额","i3-1-5");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# cpu-share “10。");
+							instruArr[1] = createCmdInstruSpan("“10。","CPU份额");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置VDC启动顺序","i3-1-6");
+							instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# boot-order “3。");
+							instruArr[1] = createCmdInstruSpan("“3。","启动顺序，越小越优先，最小为1");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置VDC高可用性（当VDC变为fail时的情况）","i3-1-7");
+							createInstruT3("单引擎情况","i3-1-7-1");
+								instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# ha-policy single-sup { bringdown | restart | reload }");
+								instruArr[1] = createCmdInstruSpan("bringdown","保持failed");
+								instruArr[2] = createCmdInstruSpan("restart","vdc重新启动");
+								instruArr[3] = createCmdInstruSpan("reload","引擎重新启动");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("双引擎","i3-1-7-2");
+								instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# ha-policy dual-sup { bringdown | restart | reload }");
+								instruArr[3] = createCmdInstruSpan("switchover","主备引擎切换，其它VDC也被切换");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("default VDC 转化为 admin VDC，不支持逆向操作","i3-1-8");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("N7K(config)# system admin-vdc migrate “N7K-VDC2。");
+							instruArr[1] = createCmdInstruSpan("“N7K-VDC2。","数据功能被分配到的新VDC");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("VDC间切换","i3-2");
+						createInstruT2("管理VDC 到 普通VDC","i3-2-1");
+							instruArr[0] = createCmdSpan("N7K-admin# switchto vdc “N7K-VDC1。");
+							instruArr[1] = createCmdInstruSpan("“N7K-VDC1。","普通VDC名");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("普通VDC 到 管理VDC","i3-2-2");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("N7K-VDC1# switchback");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("查看相关信息","i3-3");
+						createInstruT2("查看VDC的 基本信息","i3-3-1");
+							instruArr[0] = createCmdSpan("N7K-admin# show vdc [ “N7K-VDC1。 ]");
+							instruArr[1] = createCmdInstruSpan("“N7K-VDC1。","某个VDC");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("查看VDC的 成员接口信息","i3-3-2");
+							instruArr[0] = createCmdSpan("N7K-admin# show vdc [ “N7K-VDC1。 ] membership");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("查看VDC的 详细信息","i3-3-3");
+							instruArr[0] = createCmdSpan("N7K-admin# show vdc [ “N7K-VDC1。 ] detail");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("查看资源限制模版","i3-3-4");
+							instruArr[0] = createCmdSpan("N7K-admin# show vdc resource template [ “vdc-res。 ]");
+							instruArr[1] = createCmdInstruSpan("“vdc-res。","某个具体模版");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("FEX","i4");
+					createInstruT1("PortChannel方式","i4-1");
+						createInstruT2("激活FEX","i4-1-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus(config)# feature fex");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("创建FEX","i4-1-2");
+							instruArr[0] = createCmdSpan("Nexus(config)# fex “101。");
+							instruArr[1] = createCmdInstruSpan("“101。","FEX id");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("接口配置为fabric port","i4-1-3");
+							createInstruT3("相关接口加入port-channel，即使只有一个物理接口也需要加入port-channel","i4-1-3-1");
+							createInstruAllTopT3("默认为 mode on 模式，且只支持 mode on 模式");
+								instruArr[0] = createCmdSpan("Nexus(config-if)# channel-group “1。");
+								instruArr[1] = createCmdInstruSpan("“1。","port-channel id");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("port-channel接口配置为fabric port","i4-1-3-2");
+								instruArr[0] = createCmdSpan("Nexus(config)# int port-channel “1。");
+								instruArr[2] = createCmdSpan("Nexus(config-if)# switchport mode fex-fabric");
+								instruArr[3] = createCmdSpan("Nexus(config-if)# fex associate “101。");
+								instruArr[4] = createCmdInstruSpan("“101。","FEX id");
+								createCmdInstruT3(instruArr,"cisco");
+
+					createInstruT1("Staic Pinning方式","i4-2");
+						createInstruT2("激活FEX","i4-2-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus(config)# feature fex");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("FEX相关配置","i4-2-2");
+							createInstruT3("创建FEX","i4-2-2-1");
+								instruArr[0] = createCmdSpan("Nexus(config)# fex “101。");
+								instruArr[1] = createCmdInstruSpan("“101。","FEX id");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置max-links，与fabric链路数相同","i4-2-2-2");
+								instruArr[0] = createCmdSpan("Nexus(config-fex)# pinning max-links “2。");
+								instruArr[1] = createCmdInstruSpan("“2。","max-links数值");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("接口配置为fabric port","i4-2-3");
+							instruArr[0] = createCmdSpan("Nexus(config-if)# switchport mode fex-fabric");
+							instruArr[1] = createCmdSpan("Nexus(config-if)# fex associate “101。");
+							instruArr[2] = createCmdInstruSpan("“101。","FEX id");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("查看相关信息","i4-3");
+						createInstruT2("查看FEX信息","i4-3-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus# show fex [ “101。 ] detail");
+							instruArr[1] = createCmdInstruSpan("“101。","FEX id");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("查看fabric接口关联的fex接口","i4-3-2");
+							instruArr[0] = createCmdSpan("Nexus# show int “e1/20。 fex-intf");
+							instruArr[1] = createCmdInstruSpan("“e1/20。","fabric接口名，也可以port-channel接口");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("vPC","i5");
+						createInstruT2("激活vPC、LACP","i5-1");
+							instruArr[0] = createCmdSpan("Nexus(config)# feature vpc");
+							instruArr[1] = createCmdSpan("Nexus(config)# feature lacp");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置keepalive链路","i5-2");
+							instruArr[0] = createCmdSpan("Nexus(config)# vpc domain “1。");
+							instruArr[1] = createCmdInstruSpan("“1。","vPC id");
+							instruArr[2] = createCmdSpan("Nexus(config-vpc-domain)# peer-keepalive destination “192.0.2.2。 source “192.0.2.1。 [ vrf “default。 ]");
+							instruArr[3] = createCmdInstruSpan("“192.0.2.2。","对端IP");
+							instruArr[4] = createCmdInstruSpan("“192.0.2.1。","本地IP");
+							instruArr[5] = createCmdInstruSpan("vrf “default。","默认使用管理vrf");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置peer link链路（必须使用port-channel链路）","i5-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Nexus(config)# interface “e1/1 - 2。");
+							instruArr[1] = createCmdSpan("Nexus(config-if-range)# channel-group “1。 mode active");
+							instruArr[2] = createCmdSpan("Nexus(config-if-range)# int port-channel “1。");
+							instruArr[3] = createCmdSpan("Nexus(config-if)# vpc peer-link");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置基于vPC的port-channel","i5-4");
+							instruArr[0] = createCmdSpan("Nexus(config)# int “e1/4。");
+							instruArr[1] = createCmdSpan("Nexus(config-if)# channel-group “2。 mode active");
+							instruArr[2] = createCmdSpan("Nexus(config-if)# int port-channel “2。");
+							instruArr[3] = createCmdSpan("Nexus(config-if)# vpc “1。");
+							instruArr[4] = createCmdInstruSpan("“1。","vPC id");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("vxlan-single pod","i6");
+					createInstruT1("Spine节点","i6-1");
+						createInstruT2("启用EVPN控制平面","i6-1-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Spine1(config)# nv overlay evpn");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置MP-BGP，与所有Leaf节点建立基于evpn的邻居关系","i6-1-2");
+							createInstruAllTopT2("建立邻居关系的逻辑与普通IPv4地址族相同，地址族为l2vpn evpn");
+							createInstruAllTopT2("同时为了能够正常传递路由，Spine节点成为路由反射器<br />");
+							instruArr[0] = createCmdSpan("Spine1(config)# router bgp “65501。");
+							instruArr[1] = createCmdSpan("Spine1(config)# router-id “10.1.1.1。");
+							instruArr[2] = createCmdSpan("Spine1(config-router)# neighbor “10.3.3.3。");
+							instruArr[3] = createCmdSpan("SW3(config-router-neighbor)# remote-as “65501。");
+							instruArr[4] = createCmdSpan("SW3(config-router-neighbor)# update-source “loop 0。");
+							instruArr[5] = createCmdSpan("Spine1(config-router-neighbor)# address-family l2vpn evpn");
+							instruArr[6] = createCmdSpan("Spine1(config-router-neighbor-af)# send-community");
+							instruArr[7] = createCmdSpan("Spine1(config-router-neighbor-af)# send-community extended");
+							instruArr[8] = createCmdSpan("Spine1(config-router-neighbor-af)# route-reflector-client");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("Leaf节点","i6-2");
+						createInstruT2("启用EVPN控制平面","i6-2-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Leaf1(config)# nv overlay evpn");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("启用vxlan的VTEP功能","i6-2-2");
+							instruArr[0] = createCmdSpan("Leaf1(config)# feature nv overlay");
+							instruArr[1] = createCmdSpan("Leaf1(config)# feature vn-segment-vlan-based");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置MP-BGP，与所有Spine节点建立基于evpn的邻居关系","i6-2-3");
+							createInstruAllTopT2("建立邻居关系的逻辑与IPv4相同，地址族为l2vpn evpn");
+							createInstruAllTopT2("同时为了能够正常传递路由，Leaf节点成为路由反射器的客户端<br />");
+							instruArr[0] = createCmdSpan("Leaf1(config)# router bgp “65501。");
+							instruArr[1] = createCmdSpan("Leaf1(config)# router-id “10.3.3.3。");
+							instruArr[2] = createCmdSpan("Leaf1(config-router-neighbor)# neighbor “10.1.1.1。");
+							instruArr[3] = createCmdSpan("Leaf1(config-router-neighbor)# remote-as “65501。");
+							instruArr[4] = createCmdSpan("Leaf1(config-router-neighbor)# update-source “loop 0。");
+							instruArr[5] = createCmdSpan("Leaf1(config-router-neighbor)# address-family l2vpn evpn");
+							instruArr[6] = createCmdSpan("Leaf1(config-router-neighbor-af)# send-community");
+							instruArr[7] = createCmdSpan("Leaf1(config-router-neighbor-af)# send-community extended");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置任意网关的mac地址","i6-2-11");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Leaf1(config)# fabric forwarding anycast-gateway-mac “0000.2222.3333。");
+							instruArr[1] = createCmdInstruSpan("“0000.2222.3333。","任意网关的mac地址");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("调整配置，使ARP抑制能够启用（重启后生效）","i6-2-12");
+							instruArr[0] = createCmdSpan("Leaf1(config)# hardware access-list tcam region vpc-convergence 0");
+							instruArr[1] = createCmdSpan("Leaf1(config)# hardware access-list tcam region arp-ether 256");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置与‘2层。vni相关联的vlan","i6-2-4");
+							instruArr[0] = createCmdSpan("Leaf1(config)# vlan “100。");
+							instruArr[1] = createCmdSpan("Leaf1(config-vlan)# name “l2VNi1。");
+							instruArr[2] = createCmdSpan("Leaf1(config-vlan)# vn-segment “10100。");
+							instruArr[3] = createCmdInstruSpan("10100。","2层vni");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置与‘3层。vni相关联的vlan","i6-2-5");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Leaf1(config)# vlan “111。");
+							instruArr[1] = createCmdSpan("Leaf1(config-vlan)# name “l3VNi。");
+							instruArr[2] = createCmdSpan("Leaf1(config-vlan)# vn-segment “11111。");
+							instruArr[3] = createCmdInstruSpan("11111。","3层vni");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置租户，并与‘3层。vni相关联","i6-2-6");
+							instruArr[0] = createCmdSpan("Leaf1(config)# vrf context “T1。");
+							instruArr[1] = createCmdInstruSpan("“T1。","租户名");
+							instruArr[2] = createCmdSpan("Leaf1(config-vrf)# vni “11111。");
+							instruArr[3] = createCmdInstruSpan("“11111。","3层vni");
+							instruArr[4] = createCmdSpan("Leaf1(config-vrf)# rd auto");
+							instruArr[5] = createCmdSpan("Leaf1(config-vrf)# address-family ipv4 unicast");
+							instruArr[6] = createCmdSpan("Leaf1(config-vrf-af-ipv4)# route-target both auto");
+							instruArr[7] = createCmdSpan("Leaf1(config-vrf-af-ipv4)# route-target both auto evpn");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置与‘2层。vni对应的vlan接口","i6-2-7");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Leaf1(config)# int vlan “100。");
+							instruArr[1] = createCmdSpan("Leaf1(config-if)# no shutdown");
+							instruArr[2] = createCmdSpan("Leaf1(config-if)# vrf member “T1。");
+							instruArr[3] = createCmdInstruSpan("“T1。","与3层vni对应的vrf名");
+							instruArr[4] = createCmdSpan("Leaf1(config-if)# ip address “192.168.1.254/24。");
+							instruArr[5] = createCmdSpan("Leaf1(config-if)# fabric forwarding mode anycast-gateway");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置与‘3层。vni对应的vlan接口","i6-2-8");
+							instruArr[0] = createCmdSpan("Leaf1(config)# int vlan “111。");
+							instruArr[1] = createCmdSpan("Leaf1(config-if)# no shutdown");
+							instruArr[2] = createCmdSpan("Leaf1(config-if)# vrf member “T1。");
+							instruArr[3] = createCmdInstruSpan("“T1。","与3层vni对应的vrf名");
+							instruArr[4] = createCmdSpan("Leaf1(config-if)# ip forward");
+							instruArr[5] = createCmdSpan("Leaf1(config-if)# no ip redirects");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置nve接口","i6-2-9");
+							createInstruT3("基本配置","i6-2-9-1");
+								instruArr[0] = createCmdSpan("Leaf1(config)# int nve 1");
+								instruArr[1] = createCmdSpan("Leaf1(config-if-nve)# no shutdown");
+								instruArr[2] = createCmdSpan("Leaf1(config-if-nve)# host-reachability protocol bgp");
+								instruArr[3] = createCmdInstruSpan("host-reachability protocol bgp","控制平面使用BGP EVPN");
+								instruArr[4] = createCmdSpan("Leaf1(config-if-nve)# source-interface “loop 0。");
+								instruArr[5] = createCmdInstruSpan("“loop 0。","充当VTEP地址的环回接口");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("与‘2层。vni相关联","i6-2-9-2");
+								instruArr[0] = createCmdSpan("Leaf1(config-if-nve)# member vni “10100。");
+								instruArr[1] = createCmdInstruSpan("“10100。","2层vni");
+								instruArr[2] = createCmdSpan("Leaf1(config-if-nve-vni)# mcast-group “239.1.1.1。");
+								instruArr[3] = createCmdInstruSpan("“239.1.1.1。","该2层vni对应的组播地址");
+								instruArr[4] = createCmdSpan("Leaf1(config-if-nve-vni)# suppress-arp");
+								instruArr[5] = createCmdInstruSpan("suppress-arp","ARP抑制功能，根据需要启用");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("与‘3层。vni相关联","i6-2-9-3");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("Leaf1(config-if-nve)# member vni “11111。 associate-vrf");
+								instruArr[1] = createCmdInstruSpan("“11111。","3层vni");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("定义‘2层。vni的RD和RT，实现同vni的桥接","i6-2-10");
+							instruArr[0] = createCmdSpan("Leaf1(config)# evpn");
+							instruArr[1] = createCmdSpan("Leaf1(config-evpn)# vni “10100。 l2");
+							instruArr[2] = createCmdInstruSpan("“10100。","2层vni");
+							instruArr[3] = createCmdSpan("Leaf1(config-evpn-evi)# rd auto");
+							instruArr[4] = createCmdSpan("Leaf1(config-evpn-evi)# route-target both auto");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("vxlan — multi pod","i7");
+						createInstruT2("‘不同Pod间使用不同的AS。");
+						createInstruT2("配置route map","i7-1");
+							createInstruAllTopT3("EBGP默认会更改一跳，需要保持下一跳为本端Leaf的VTEP地址");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Spine1(config)# route-map mulpod permit 10");
+							instruArr[1] = createCmdSpan("Spine1(config-route-map)# set ip next-hop unchanged ");
+							createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("不同pod的spine建立BGP EVPN连接","i7-2");
+							instruArr[0] = createCmdSpan("Spine1(config)# router bgp “65501。");
+							instruArr[1] = createCmdSpan("Spine1(config-router)# neighbor “10.2.7.7。");
+							instruArr[2] = createCmdSpan("Spine1(config-router-neighbor)# remote-as “65502。");
+							instruArr[3] = createCmdSpan("Spine1(config-router-neighbor)# update-source “loop 0。");
+							instruArr[4] = createCmdSpan("Spine1(config-router-neighbor)# ebgp-multihop “5。");
+							instruArr[5] = createCmdSpan("Spine1(config-router-neighbor)# address-family l2vpn evpn");
+							instruArr[6] = createCmdSpan("Spine1(config-router-neighbor-af)# rewrite-evpn-rt-asn");
+							instruArr[7] = createCmdInstruSpan("rewrite-evpn-rt-asn","传出的rt修改为与对方相同");
+							instruArr[8] = createCmdSpan("Spine1(config-router-neighbor-af)# send-community");
+							instruArr[9] = createCmdSpan("Spine1(config-router-neighbor-af)# send-community extended");
+							instruArr[10] = createCmdSpan("Spine1(config-router-neighbor-af)# route-map “mulpod。 out");
+							instruArr[11] = createCmdInstruSpan("“mulpod。","令下一跳不改变的route map名");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("vxlan — multi site","i8");
+					createInstruT1("BGW间的各种接口推荐方式","i8-6");
+						createInstruAllTopT1("BGW间的 ‘BGP EVPN邻居接口。 、‘BGW与本DC建立连接的VTEP地址（PIP地址）。 、 ‘DC间VIP地址。");
+						createInstruAllTopT1("三者采用三组‘不同环回接口。，且本端需要与对端的三个接口可达，可以使用BGP IPv4宣告这三个地址");
+						createInstruAllTopT1("DC内 VIP地址、VTEP地址 需要可达<br /><br />");
+
+					createInstruT1("配置BGW的第一阶段","i8-1");
+						createInstruAllTopT1("与普通leaf配置大部分相同");
+						createInstruAllTopT1("因BGW设备一般不连接末端主机，因此 ‘二层vlan接口。、‘任意网关地址。 无需配置<br /><br />");
+
+					createInstruT1("配置MB-BGP","i8-2");
+						createInstruT2("配置route map","i8-2-1");
+							createInstruAllTopT2("EBGP默认会更改一跳，需要保持下一跳为本端的VTEP地址");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("BGW(config)# route-map “BGW。 permit 10");
+							instruArr[1] = createCmdSpan("BGW(config-route-map)# set ip next-hop unchanged ");
+							createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置BGP","i8-2-2");
+							createInstruAllTopT2("与 本DC的Spine 的邻居配置相同，与 对端DC的BGW 配置有所改变");
+
+							createInstruT3("配置保留所有RT属性","i8-2-2-1");
+								instruArr[0] = createCmdSpan("BGW(config-router)# address-family l2vpn evpn");
+								instruArr[1] = createCmdSpan("BGW(config-router-af)# retain route-target all");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置为BGW设备","i8-2-2-2");
+								instruArr[0] = createCmdSpan("BGW(config)# router bgp “65101。");
+								instruArr[1] = createCmdSpan("BGW(config-router)# neighbor “10.12.2.2。");
+								instruArr[2] = createCmdInstruSpan("“10.12.2.2。","对端BGW的EVPN地址族更新地址");
+								instruArr[3] = createCmdSpan("BGW(config-router-neighbor)# peer-type fabric-external");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("对端BGW的evpn地址族相关配置","i8-2-2-3");
+								instruArr[0] = createCmdSpan("BGW(config-router-neighbor)# address-family l2vpn evpn");
+								instruArr[1] = createCmdSpan("BGW(config-router-neighbor-af)# send-community both");
+								instruArr[2] = createCmdSpan("BGW(config-router-neighbor-af)# route-map “BGW。 out");
+								instruArr[3] = createCmdInstruSpan("“BGW。","下一跳不改的route-map名");
+								instruArr[4] = createCmdSpan("BGW(config-router-neighbor-af)# rewrite-evpn-rt-asn");
+								createCmdInstruT3(instruArr,"cisco");
+
+					createInstruT1("配置多站点<br />","i8-3");
+						instruArr = null;
+						instruArr = new Array();
+						instruArr[0] = createCmdSpan("BGW(config)# evpn multisite border-gateway “11。");
+						instruArr[1] = createCmdInstruSpan("“11。","站点id，不同站点不同");
+						instruArr[2] = createCmdSpan("BGW(config-evpn-msite-bgw)# delay-restore time “30。");
+						instruArr[3] = createCmdInstruSpan("“30。","站点延时启动时间，站点内部相关配置正常启动后，再启动站点间配置，适当调小");
+						createCmdInstruT1(instruArr,"cisco");
+
+					createInstruT1("配置NVE接口","i8-4");
+						createInstruT2("配置VIP地址","i8-4-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("BGW(config-if-nve)# multisite border-gateway interface “loop 100。");
+							instruArr[1] = createCmdInstruSpan("“loop 100。","VIP地址接口");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置单播复制","i8-4-1");
+							instruArr[0] = createCmdSpan("BGW(config-if-nve)# member vni “10100。");
+							instruArr[1] = createCmdInstruSpan("“10100。","二层vni");
+							instruArr[2] = createCmdSpan("BGW(config-if-nve-vni)# multisite ingress-replication");
+							createCmdInstruT2(instruArr,"cisco");
+
+					createInstruT1("配置物理接口","i8-5");
+						createInstruT2("连接 ‘对端DC。 接口配置","i8-5-1");
+							instruArr[0] = createCmdSpan("BGW(config-if)# int “e1/1。");
+							instruArr[1] = createCmdInstruSpan("“e1/1。","连接 对端DC 接口");
+							instruArr[2] = createCmdSpan("BGW(config-if)# evpn multisite dci-tracking");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("连接 ‘本端DC。 接口配置","i8-5-2");
+							instruArr[0] = createCmdSpan("BGW(config-if)# int “e1/2。");
+							instruArr[1] = createCmdInstruSpan("“e1/1。","连接 本端DC 接口");
+							instruArr[2] = createCmdSpan("BGW(config-if)# evpn multisite fabric-tracking");
+							createCmdInstruT2(instruArr,"cisco");
+
+				createInstruT0("vxlan — 不同租户间互通","i9");
+					createInstruT1("外接三层设备实现","i9-1");
+						createInstruT2("与三层设备相连通","i9-1-1");
+							createInstruAllTopT2("在leaf设备上，选择几个接口，分别属于需要互通的租户，与三层设备直连");
+							createInstruAllTopT2("根据需要使用合适的路由协议，在本设备上通过外接三层设备，实现租户互通");
+
+						createInstruT2("<br />将路由重分发至BGP","i9-1-2");
+							createInstruAllTopT2("在BGP的每个租户的IPv4地址族，重分发相关路由");
+
+					createInstruT1("<br /><br /><br />集中式路由泄漏","i9-2");
+						createInstruT2("新建用于连接外部的租户","i9-2-1");
+							createInstruAllTopT2("与常规租户配置相同，所有leaf配置");
+
+						createInstruT2("<br />BorderLeaf连接到外部","i9-2-2");
+							createInstruAllTopT2("BorderLeaf选择一个接口与外部连接，接口加入连接外部的vrf<br />");
+							instruArr[0] = createCmdSpan("BorderLeaf(config)# interface “e1/2。");
+							instruArr[1] = createCmdInstruSpan("“e1/2。","连接外部接口");
+							instruArr[2] = createCmdSpan("BorderLeaf(config-if)# vrf member “T2。");
+							instruArr[3] = createCmdInstruSpan("“T2。","连接外部的vrf");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("BGP和外部路由协议重分发（外部路由协议以OSPF为例），仅需在BorderLeaf配置","i9-2-3");
+							createInstruT3("配置 OSPF 重分发到 BGP 的route map","i9-2-3-1");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("BorderLeaf(config)# route-map “O2B。 permit “10。");
+								instruArr[1] = createCmdInstruSpan("“O2B。"," OSPF 重分发到 BGP 的route map");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置 BGP 重分发到 OSPF 的route map","i9-2-3-2");
+								instruArr[0] = createCmdSpan("BorderLeaf(config)# route-map “B2O。 permit “10。");
+								instruArr[1] = createCmdInstruSpan("“B2O。"," BGP 重分发到 OSPF 的route map");
+								instruArr[2] = createCmdSpan("BorderLeaf(config-route-map)# match route-type internal");
+								instruArr[3] = createCmdInstruSpan("internal","表示IBGP");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置 OSPF 重分发到 BGP","i9-2-3-3");
+								instruArr[0] = createCmdSpan("BorderLeaf(config)# router bgp “65201。");
+								instruArr[1] = createCmdSpan("BorderLeaf(config-router)# vrf “T2。");
+								instruArr[2] = createCmdInstruSpan("“T2。","连接外部的vrf");
+								instruArr[3] = createCmdSpan("BorderLeaf(config-router-vrf)# address-family ipv4 unicast");
+								instruArr[4] = createCmdSpan("BorderLeaf(config-router-vrf-af)# network 0.0.0.0/0");
+								instruArr[5] = createCmdSpan("BorderLeaf(config-router-vrf-af)# redistribute “ospf 1。 route-map “O2B。");
+								instruArr[6] = createCmdInstruSpan("“O2B。"," OSPF 重分发到 BGP 的route map");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置 BGP 重分发到 OSPF","i9-2-3-4");
+								instruArr[0] = createCmdSpan("BorderLeaf(config-router-vrf-af)# router “ospf 1。");
+								instruArr[1] = createCmdSpan("BorderLeaf(config-router)# vrf “T2。");
+								instruArr[2] = createCmdInstruSpan("“T2。","连接外部的vrf");
+								instruArr[3] = createCmdSpan("BorderLeaf(config-router-vrf)# redistribute bgp “65201。 route-map “B2O。");
+								instruArr[4] = createCmdInstruSpan("“B2O。"," BGP 重分发到 OSPF 的route map");
+								instruArr[5] = createCmdSpan("BorderLeaf(config-router-vrf)# summary-address “192.168.1.0/24。");
+								instruArr[6] = createCmdInstruSpan("“192.168.1.0/24。","BGP重分发的路由为主机路由，汇总为子网路由");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("租户间互通（所有leaf均配置）","i9-2-4");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("Leaf(config)# vrf context “T1。");
+							instruArr[1] = createCmdInstruSpan("“T1。","所有互通的租户均需要配置");
+							instruArr[2] = createCmdSpan("Leaf(config-vrf)# address-family ipv4 unicast");
+							instruArr[3] = createCmdSpan("Leaf(config-vrf-af-ipv4)# route-target both “65201。”:。“1221。");
+							instruArr[4] = createCmdInstruSpan("“65201。”:。“1221。","AS号”:。自定义值");
+							instruArr[5] = createCmdSpan("Leaf(config-vrf-af-ipv4)# route-target both “65201。”:。“1221。 evpn");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("同一leaf，租户间直接连通","i9-2-5");
+							createInstruT3("配置route map","i9-2-5-1");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("Leaf(config)# route-map “rm-hmm。 permit 10");
+								instruArr[1] = createCmdInstruSpan("“rm-hmm。","互相重分发的route map");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("不同租户间的 hmm 路由互相重分发","i9-2-5-2");
+								instruArr[0] = createCmdSpan("Leaf(config-route-map)# router bgp “65201");
+								instruArr[1] = createCmdSpan("Leaf(config-router)# vrf “T1");
+								instruArr[2] = createCmdInstruSpan("“T1。","所有互通的租户均需要配置");
+								instruArr[3] = createCmdSpan("Leaf(config-router-vrf)# address-family ipv4 unicast");
+								instruArr[4] = createCmdSpan("Leaf(config-router-vrf-af)# redistribute hmm route-map “rm-hmm。");
+								instruArr[5] = createCmdInstruSpan("“rm-hmm。","互相重分发的route map");
+								createCmdInstruT3(instruArr,"cisco");
+
+
+						document.write('<br /><br /><br /><br /><br /><br /><br /><br /><br />');
+						document.write('<br /><br /><br /><br /><br /><br /><br /><br /><br />');
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>
