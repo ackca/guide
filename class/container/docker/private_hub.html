@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/docker.ico" />
+	<title>容器-docker-私有镜像仓库搭建和使用</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		.divConfigImgT3
+		{
+			margin-top: -30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_private_hub, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("harbar","i2");
+					createInstruT1("安装harbar（需要docker-compose）","i2-1");
+						createInstruT2("配置docker采用http方式传访问harbar");
+						createInstruAllTopT2("默认https，无需此步，无可信证书时，使用https非常繁琐，建议使用http");
+							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133。\"],");
+								instruArr[1] = createCmdInstruSpan("“192.168.110.133。","harbar的url");
+								createCmdInstruT3(instruArr,"docker");
+								createConfigImgT3("private_hub/i2_1$1");
+
+							createInstruT3("重启相关服务");
+								instruArr[0] = createCmdSpan("systemctl daemon-reload");
+								instruArr[1] = createCmdSpan("systemctl restart docker");
+								createCmdInstruT3(instruArr,"docker");
+
+						createInstruT2("下载离线安装包，<a class='link' target='_blank' href='https://github.com/goharbor/harbor/releases/'>https://github.com/goharbor/harbor/releases/</a>");
+
+						createInstruT2("将安装包解压");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("tar -xvf harbor-offline-installer-v2.1.1.tgz -C /usr/local/");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("推荐操作：目录名添加版本号，再用软链接连回");
+							instruArr[0] = createCmdSpan("cd /usr/local");
+							instruArr[1] = createCmdSpan("mv harbor/ harbor-v2.1.1");
+							instruArr[2] = createCmdSpan("ln -s harbor-v2.1.1/ harbor");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("复制配置文件");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("cd /usr/local/harbor");
+							instruArr[1] = createCmdSpan("cp harbor.yml.tmpl harbor.yml");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("编辑配置文件");
+							createInstruT3("无可信https证书");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("vim harbor.yml");
+								createCmdInstruT3(instruArr,"docker");
+								createConfigImgT3("private_hub/i2_1$2");
+
+							createInstruT3("有可信https证书");
+								instruArr[0] = createCmdSpan("vim harbor.yml");
+								createCmdInstruT3(instruArr,"docker");
+								createConfigImgT3("private_hub/i2_1$3");
+
+						createInstruT2("安装&启动harbor");
+							instruArr[0] = createCmdSpan("./prepare");
+							instruArr[1] = createCmdSpan("./install.sh");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("重启系统后harbor无法自动启动，手动添加启动脚本");
+							createInstruT3("在启动文件（ ‘/etc/rc.d/rc.local。 ）增加两行命令");
+								instruArr[0] = createCmdSpan("cd /usr/local/harbor");
+								instruArr[1] = createCmdSpan("docker-compose up -d");
+								createCmdInstruT3(instruArr,"docker");
+
+							createInstruT3("增加执行权限");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("chmod +x /etc/rc.d/rc.local");
+								createCmdInstruT3(instruArr,"docker");
+
+						createInstruT2("安装完成后使用浏览器打开即可，默认用户名/密码：admin/Harobr12345<br /><br />");
+
+					createInstruT1("上传 / 下载镜像","i2-2");
+						createInstruT2("镜像的本地命令方式");
+							instruArr[0] = createCmdSpan("“192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。");
+							instruArr[1] = createCmdInstruSpan("“192.168.110.133。","harbor的url");
+							instruArr[2] = createCmdInstruSpan("“itachi。”","harbor中的项目名");
+							instruArr[3] = createCmdInstruSpan("“flask。","镜像名（标识）");
+							createCmdInstruT2(instruArr,"docker");
+							createConfigImgT2("private_hub/i2_2$1");
+
+						createInstruT2("上传 / 下载镜像");
+							createInstruT3("登录harbor");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("docker login “192.168.110.133。");
+								instruArr[1] = createCmdInstruSpan("“192.168.110.133。","harbor的url");
+								createCmdInstruT3(instruArr,"docker");
+
+							createInstruT3("上传 / 下载镜像");
+								instruArr[0] = createCmdSpan("docker { push | pull } “192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。");
+								instruArr[1] = createCmdInstruSpan("push | pull","上传 / 下载");
+								instruArr[2] = createCmdInstruSpan("“192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。","镜像名");
+								createCmdInstruT3(instruArr,"docker");
+
+				createInstruT0("docker-registry","i1");
+					createInstruT1("安装docker-registry","i1-1");
+						createInstruT2("配置docker采用http方式传访问registry的私有仓库（默认https）");
+							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133:5000。\"],");
+								instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。","私有仓库的url");
+								createCmdInstruT3(instruArr,"docker");
+								createConfigImgT3("private_hub/i1_1$1");
+
+							createInstruT3("重启相关服务");
+								instruArr[0] = createCmdSpan("systemctl daemon-reload");
+								instruArr[1] = createCmdSpan("systemctl restart docker");
+								createCmdInstruT3(instruArr,"docker");
+
+						createInstruT2("获取registry的镜像");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("docker pull registry");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("运行registry");
+							nbsp = "&nbsp;".repeat(19);
+							instruArr[0] = createCmdSpan("docker run -d -p 5000:5000 --name=registry --restart=always \\");
+							instruArr[1] = createCmdSpan(nbsp + "-v /docker-images:/var/lib/registry registry");
+							createCmdInstruT2(instruArr,"docker");
+
+					createInstruT1("查看仓库中镜像<br />","i1-2");
+						instruArr[0] = createCmdSpan("curl “192.168.110.133:5000。/v2/_catalog");
+						instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。","私有仓库的url");
+						createCmdInstruT1(instruArr,"docker");
+						createConfigImgT1("private_hub/i1_2$1");
+
+					createInstruT1("上传/下载镜像","i1-3");
+						createInstruT2("镜像的本地命令方式");
+							instruArr[0] = createCmdSpan("“192.168.110.133:5000。”/。“flask。");
+							instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。","私有仓库的url");
+							instruArr[2] = createCmdInstruSpan("“flask。","镜像名（标识）");
+							createCmdInstruT2(instruArr,"docker");
+							createConfigImgT2("private_hub/i1_3$1");
+
+						createInstruT2("上传 / 下载镜像");
+							instruArr[0] = createCmdSpan("docker { push | pull } “192.168.110.133:5000”/。flask。");
+							instruArr[1] = createCmdInstruSpan("push | pull","上传 / 下载");
+							instruArr[2] = createCmdInstruSpan("“192.168.110.133:5000”/。flask。","镜像名");
+							createCmdInstruT2(instruArr,"docker");
+
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

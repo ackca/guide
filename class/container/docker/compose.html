@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/docker.ico" />
+	<title>容器-docker-docker compose配置</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+	</script>
+	<style type="text/css">
+		.divConfigImgT2, .linuxDivT2, .linuxDivT3
+		{
+			margin-top: -30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(tree_compose, '../../../');
+		</script>
+
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("安装 docker-compose","i1");
+						createInstruT2("官方文档地址：<a class='link'  href='https://docs.docker.com/compose/install/' target='_blank'>https://docs.docker.com/compose/install/</a>");
+
+						createInstruT2("下载，软件版本参考官方文档");
+							createInstruT3("官方下载");
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("curl -L \"https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
+								createCmdInstruT3(instruArr,"docker");
+
+							createInstruT3("国内地址下载");
+								instruArr[0] = createCmdSpan("curl -L \"https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
+								createCmdInstruT3(instruArr,"docker");
+
+						createInstruT2("添加执行权限");
+							instruArr[0] = createCmdSpan("chmod +x /usr/local/bin/docker-compose");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("查看版本（检测安装是否成功）");
+							instruArr[0] = createCmdSpan("docker-compose version");
+							createCmdInstruT2(instruArr,"docker");
+							createConfigImgT2("compose/i1$1");
+
+				createInstruT0("docker-compose命令<br />","i2");
+					instruArr[0] = createCmdSpan("docker-compose　[ -f　docker-com.yml ]　[ -p　itachi ]　“操作命令。　[ “itachi_mysql。 ]");
+					instruArr[1] = createCmdInstruSpan("-f　“docker-com.yml。","指定配置文件，默认为当前目录的 docker-compose.yml 或 docker-compose.yaml");
+					instruArr[2] = createCmdInstruSpan("-p　“itachi。","指定项目名称，默认为当前目录下的项目");
+					instruArr[3] = createCmdInstruSpan("“itachi_mysql。","特定的容器名，默认为所有容器");
+					instruArr[4] = createCmdInstruSpan("操作命令包括","");
+					instruArr[5] = createCmdInstruSpan("　　运行","up，可用 -d 参数后台运行容器");
+					instruArr[6] = createCmdInstruSpan("　　结束","down，停止并删除容器，并删除网络等其它组件");
+					instruArr[7] = createCmdInstruSpan("　　查看配置文件","config");
+					instruArr[8] = createCmdInstruSpan("　　只构建项目所需镜像","build");
+					instruArr[9] = createCmdInstruSpan("　　只创建容器但不运行","create");
+					instruArr[10] = createCmdInstruSpan("　　启动 / 停止 / 重新启动","start / stop / restart");
+					instruArr[11] = createCmdInstruSpan("　　强制停止容器","kill");
+					instruArr[12] = createCmdInstruSpan("　　删除停止的容器","rm");
+					instruArr[13] = createCmdInstruSpan("　　查看容器状态","ps");
+					createCmdInstruT0(instruArr,"docker");
+
+				createInstruT0("yaml文件配置","i3");
+						createInstruKeyT2("version 声明配置文件版本","i3-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("版本配置方法：<a class='link' href='https://docs.docker.com/compose/compose-file/' target='_blank'>https://docs.docker.com/compose/compose-file/</a>");
+							createCmdInstruT2(instruArr,"docker");
+							yaml = `
+								version: "3.7"
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("services","i3-2");
+							instruArr[0] = createCmdSpan("即容器，在docker compose中容器称作 services");
+							instruArr[1] = createCmdSpan("services换行配置容器名（标识），但容器真正名称默认为 ‘项目名称_容器名称_序号。");
+							createCmdInstruT2(instruArr,"docker");
+							yaml = `
+								version: "3.7"
+								services:
+									itachi_centos:
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("container_name 配置容器名","i3-3");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("将容器名确定，而非上面的组合");
+							createCmdInstruT2(instruArr,"docker");
+							yaml = `
+								version: "3.7"
+								services:
+									itachi_centos:
+										container_name: itachi_centos
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("image 指定基础镜像<br />","i3-4")
+							yaml = `
+								version: "3.7"
+								services:
+									mysql:
+										image: mysql
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("build 构建镜像","i3-5");
+							createInstruT3("build配置Dockerfile文件的路径<br />");
+								yaml = `
+									version: "3.7"
+									services:
+										itachi_centos:
+											build: .
+								`;
+								createYAMLT3(yaml);
+
+							createInstruT3("Dockerfile文件非标准文件名，使用context配置路径，dockerfile配置文件名<br />");
+								yaml = `
+									version: "3.7"
+									services:
+										itachi_centos:
+											build: .
+												context: ../itachi
+												dockerfile: itachi_centos
+								`;
+								createYAMLT3(yaml);
+
+							createInstruT3("build和image同时配置时，image指定的镜像会覆盖Dockerfile中的镜像<br />");
+								yaml = `
+									version: "3.7"
+									services:
+										itachi_centos:
+											build: .
+												image: centos:7
+								`;
+								createYAMLT3(yaml);
+
+						createInstruKeyT2("environment 配置环境变量<br />","i3-6");
+							yaml = `
+								version: "3.7"
+								services:
+									itachi_centos:
+										image: mysql
+										environment:
+											MYSQL_ROOT_PASSWORD: Cisc0123!
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("ports 配置端口映射","i3-7");
+							createInstruT3("短语法格式，与docker run时配置端口映射相同，多行映射多个端口");
+								instruArr[0] = createCmdSpan("- [“10.0.0.1。]:“2222。:“22。[“/tcp。]");
+								instruArr[1] = createCmdInstruSpan("“10.0.0.1。","映射的宿主机IP，默认所有IP");
+								instruArr[2] = createCmdInstruSpan("“2222。:“22。[“/tcp。]","端口映射方式：宿主机端口:容器端口，默认 tcp");
+								instruArr[3] = createCmdInstruSpan("端口可以配置连接端口，如：5000-5010");
+								createCmdInstruT3(instruArr,"docker");
+
+								yaml = `
+									version: "3.7"
+									services:
+										itachi_centos:
+											image: centos
+											ports:
+												- "222:22"
+												- "5000-5010:5000-5010"
+								`;
+								createYAMLT3(yaml);
+
+							createInstruT3("长语法格式（从版本3.2开始支持），以键值的方式明确端口映射，可以省略一些参数");
+								createInstruAllTopT3("　‘target。：容器内的端口，‘published。：宿主机内的端口，‘protocol。：协议，tcp或udp");
+								createInstruAllTopT3("　‘mode。：容器内的端口<br /><br />");
+								yaml = `
+									version: "3.7"
+									services:
+										itachi_centos:
+											image: mysql
+											ports:
+												- target: 3306
+												  published: 3306
+												  protocol: 3306
+								`;
+								createYAMLT3(yaml);
+
+						createInstruKeyT2("networks 将容器加入特定网络，‘不存在的网络需要通过最高级networks命令新建。<br />","i3-8");
+							yaml = `
+								version: "3.7"
+								services:
+									itachi_centos:
+										image: centos
+										networks:
+											- uchiha	# 不存在的网络需要新建
+
+								networks:	# 新建网络
+									uchiha:
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("restart 配置容器重启方式<br />","i3-9");
+							yaml = `
+								restart: "no"						# 不重启，默认
+								restart: always					# 容器总是重启（实测手工停止不重启）
+								restart: on-failure			# 容器中出现错误则重启
+								restart: unless-stopped	# 容器停止（手工停止或其它方式）时不重启
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("depends_on 配置容器启动顺序，只是顺序，而不是一个正常启动后再启动下一个<br />","i3-10");
+							yaml = `
+								version: "3.7"
+								services:
+									itachi_nginx:
+										images: itachi/nginx
+										depends_on:
+											- itachi-mysql
+											- itachi-flask
+
+										itachi-flask:
+											images: itachi/flask
+											depends_on:
+											- itachi-mysql
+
+										itachi-mysql:
+											images: itachi/mysql
+							`;
+							createYAMLT2(yaml);
+
+						createInstruKeyT2("command 覆盖容器启动后默认执行的命令","i3-11");
+							createInstruT3("例如 mysql，使用docker run方式时，配置相应参数支持中文");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("");
+								instruArr[1] = createCmdSpan("docker run --name itachi -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Cisc0123! -d mysql<br />　　　　　 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci");
+								createCmdInstruT3(instruArr,"docker");
+
+								yaml = `
+									version: "3.7"
+									services:
+										mysql:
+											images: mysql
+											ports:
+												- "3306:3306"
+											environment:
+												MYSQL_ROOT_PASSWORD: Cisc0123!
+											command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+								`;
+								createYAMLT3(yaml);
+
+						createInstruKeyT2("secrets 将机密信息在配置文件中隐藏","i3-12");
+							createInstruT3("以mysql为例，不显示root密码<br />");
+								yaml = `
+									version: "3.7"
+									services:
+										db:
+											images: 192.168.110.133/itachi/mysql
+											environment:
+											# MYSQL_ROOT_PASSWORD_FILE，用于机密的指定root密码
+											# itachi-pass为secret名，所有secret信息均保存在容器的/run/secrets/目录下
+											MYSQL_ROOT_PASSWORD_FILE: /run/secrets/itachi-pass
+										secrets:
+											- itachi-pass # 声明itachi-pass为secret名
+
+									secrets: # 配置 secret
+										itachi-pass: # secret名
+											MYSQL_ROOT_PASSWORD: Cisc0123!
+												file: ./itachi-pass.txt # 指定某个文件中的内容为信息，单机的docker compose只支持这种方式',
+								`;
+								createYAMLT3(yaml);
+
+
+			</script>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

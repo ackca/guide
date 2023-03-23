@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: itachi-dp-ingress
+spec:
+  rules:
+  - host: itachi-dp.itachi.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: itachi-dp-service
+          servicePort: 10080
