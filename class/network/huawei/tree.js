@@ -335,7 +335,7 @@ tree_switch = {
 	},
 };
 
-tree_virtual = {
+tree_vpn = {
 	'i2': {
 		'L2L IPSec VPN': {
 			'i2-1': {

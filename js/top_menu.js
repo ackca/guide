@@ -67,7 +67,7 @@ top_menu = `
 				</div>
 			</div>
 			<div class="cat">
-				<div class="cat-box" data-cat="cisco">
+				<div class="cat-box" data-cat="network">
 					<div class="layout">
 						<div class="cat-group">
 							<h3 class="cat-tit">
@@ -115,8 +115,8 @@ top_menu = `
 									</div>
 									<div class="cat-item-sub">
 										<div class="cat-item-row">
-											<a href="rootpath/class/network/cisco/virtual_router.html">基于路由器</a>
-											<a href="rootpath/class/network/cisco/virtual_asa.html">基于ASA</a>
+											<a href="rootpath/class/network/cisco/vpn_router.html">基于路由器</a>
+											<a href="rootpath/class/network/cisco/vpn_asa.html">基于ASA</a>
 										</div>
 									</div>
 								</li>
@@ -176,6 +176,21 @@ top_menu = `
 								</li>
 							</ul>
 						</div>
+						<div class="cat-group">
+							<h3 class="cat-tit">
+								<div class="cat-ico">
+									<i class="ico-f5"></i>
+								</div>
+								<span>BIG-IP</span>
+							</h3>
+							<ul class="cat-list">
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/network/f5/ltm_basic.html">LTM原理</a>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -224,7 +239,7 @@ top_menu = `
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/huawei/virtual.html">VPN</a>
+										<a href="rootpath/class/network/huawei/vpn.html">VPN</a>
 									</div>
 								</li>
 							</ul>
@@ -282,35 +297,6 @@ top_menu = `
 									<i class="ico-vault"></i>
 								</div>
 								<span><a href="rootpath/class/netdevops/vault/vault.html">Vault</a></span>
-							</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="cat">
-				<div class="cat-box" data-cat="others">
-					<div class="layout">
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-f5"></i>
-								</div>
-								<span>BIG-IP</span>
-							</h3>
-							<ul class="cat-list">
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<a href="rootpath/class/network/f5/ltm_basic.html">LTM原理</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-nmap"></i>
-								</div>
-								<span><a href="rootpath/class/nmap/nmap.html">NMAP</a></span>
 							</h3>
 						</div>
 					</div>
@@ -454,9 +440,9 @@ top_menu = `
 								<a href="rootpath/index.html">协议</a>
 							</h2>
 						</li>
-						<li id="nav-header-cisco" class="top-cat hassub" data-cat="cisco">
+						<li id="nav-header-network" class="top-cat hassub" data-cat="network">
 							<h2>
-								<a href="javascript:void(0);">思科</a>
+								<a href="javascript:void(0);">网络</a>
 							</h2>
 						</li>
 						<li id="nav-header-china" class="top-cat hassub" data-cat="china">
@@ -464,11 +450,11 @@ top_menu = `
 								<a href="javascript:void(0);">国产</a>
 							</h2>
 						</li>
-						<li id="nav-header-others" class="top-cat hassub" data-cat="others">
-							<h2>
-								<a href="javascript:void(0);">其它</a>
-							</h2>
-						</li>
+						<li id="nav-header-nmap" class="top-cat">
+                            <h2>
+                                <a href="rootpath/class/nmap/nmap.html">NMAP</a>
+                            </h2>
+                        </li>
 						<li id="nav-header-vmware" class="top-cat hassub" data-cat="vmware">
 							<h2>
 								<a href="javascript:void(0);">VMware</a>

@@ -82,6 +82,11 @@ body, html
 	margin-top: -20px;
 }
 
+.instruT3 + .linuxDivT3
+{
+	margin-top: 0;
+}
+
 .instruT1 a, .instruT2 a, .instruT3 a
 {
 	font-size: 80%;

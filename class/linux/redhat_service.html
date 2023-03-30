@@ -701,6 +701,213 @@
 								`;
 								createLinuxTxtT3(cmd);
 
+				createInstruT0("证书服务","i6");
+					createInstruT1("初始化CA","i6-1");
+						createInstruT2("CFSSL介绍");
+							createInstruAllTopT2("<a class='link' href='https://blog.51cto.com/liuzhengwei521/2120535' target='_blank'>https://blog.51cto.com/liuzhengwei521/2120535</a><br />");
+
+						createInstruT2("下载安装cfssl");
+							createInstruAllTopT2("下载地址：<a class='link' href='https://github.com/cloudflare/cfssl/releases' target='_blank'>https://github.com/cloudflare/cfssl/releases</a>");
+							cmd = `
+								wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64 -O /usr/bin/cfssl
+
+								wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64 -O /usr/bin/cfssljson
+
+								wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl-certinfo_1.6.3_linux_amd64 -O /usr/bin/cfssl-certinfo
+
+								chmod +x /usr/bin/cfssl*
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("确认安装");
+							createInstruT3("cfssl的命令行工具");
+								cmd = `
+									which cfssl
+									# 下面为输出
+									/usr/bin/cfssl
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("cfssljson程序，从cfssl程序获取JSON输出，并将证书，密钥，CSR和bundle写入磁盘");
+								cmd = `
+									which cfssljson
+									# 下面为输出
+									/usr/bin/cfssljson
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("输出给定证书的证书信息");
+								cmd = `
+									which cfssl-certinfo
+									# 下面为输出
+									/usr/bin/cfssl-certinfo
+								`;
+								createLinuxTxtT3(cmd);
+
+						createInstruT2("自签名根证书(10年有效期)");
+							cmd = `
+								mkdir -p /opt/certs
+
+								cat >/opt/certs/ca-csr.json <<EOF
+								{
+									"CN": "itachica",
+									"hosts": [
+									],
+									"key": {
+										"algo": "rsa",
+										"size": 4096
+									},
+									"names": [
+										{
+											"C": "CN",
+											"ST": "tianjin",
+											"L": "tianjin",
+											"O": "itachi",
+											"OU": "itachica"
+										}
+									],
+									"ca": {
+										"expiry": "87600h"
+									}
+								}
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("初始化CA");
+							cmd = `
+								# cfssl gencert -initca ca-csr.json 输出文本(json)结果
+								# cfssljson -bare ca 把输出文本信息(json), 产生文件
+
+								cd /opt/certs/
+								cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+								# 以下是输出
+								2021/01/09 23:48:43 [INFO] generating a new CA key and certificate from CSR
+								2021/01/09 23:48:43 [INFO] generate received request
+								2021/01/09 23:48:43 [INFO] received CSR
+								2021/01/09 23:48:43 [INFO] generating key: rsa-4096
+								2021/01/09 23:48:46 [INFO] encoded CSR
+								2021/01/09 23:48:46 [INFO] signed certificate with serial number 246970798440184992149105239827901069071556381741
+
+								ll
+								# 以下是输出
+								总用量 16
+								-rw-r--r-- 1 root root 1700 1月   9 23:48 ca.csr       # 证书请求
+								-rw-r--r-- 1 root root  336 1月   9 23:45 ca-csr.json
+								-rw------- 1 root root 3243 1月   9 23:48 ca-key.pem   # 根的私钥
+								-rw-r--r-- 1 root root 2061 1月   9 23:48 ca.pem       # 根证书
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("查看证书信息");
+							cmd = `
+								cfssl-certinfo -cert ca.pem
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("配置证书模板");
+							cmd = `
+								# server 服务器证书
+								# client 客户证书
+								# peer   既扮演服务器, 也扮演客户, 例如:ETCD的节点
+
+								cat >/opt/certs/ca-config.json <<EOF
+								{
+									"signing": {
+										"default": {
+											"expiry": "87600h"
+										},
+										"profiles": {
+											"server": {
+												"expiry": "87600h",
+												"usages": [
+													"signing",
+													"key encipherment",
+													"server auth"
+												]
+											},
+											"client": {
+												"expiry": "87600h",
+												"usages": [
+													"signing",
+													"key encipherment",
+													"client auth"
+												]
+											},
+											"peer": {
+												"expiry": "87600h",
+												"usages": [
+													"signing",
+													"key encipherment",
+													"server auth",
+													"client auth"
+												]
+											}
+										}
+									}
+								}
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("申请证书","i6-2");
+						createInstruAllTopT1("以申请Web服务器证书为例")
+
+						createInstruT2("创建证书申请");
+							cmd = `
+								cat >/opt/certs/web.json <<EOF
+								{
+									"CN": "test.itachi.tech",
+									"hosts": [
+										"test.itachi.tech"
+									],
+									"key": {
+										"algo": "rsa",
+										"size": 2048
+									},
+									"names": [
+										{
+											"C": "CN",
+											"ST": "tianjin",
+											"L": "tianjin",
+											"O": "itachi",
+											"OU": "network"
+										}
+									]
+								}
+								EOF
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("申请证书");
+							cmd = `
+								cfssl gencert -ca=ca.pem -ca-key=ca-key.pem \\
+									-config=ca-config.json -profile=server \\
+									web.json | cfssljson -bare web-server
+
+								# ca.pem			根证书
+								# ca-key.pem		根证书私钥
+								# ca-config.json	证书模板配置文件
+								# server			证书类型
+								# web.json		  证书申请文件名
+								# web-server		得到的证书文件名
+
+								# 下面为输出
+								2023/03/30 16:50:41 [INFO] generate received request
+								2023/03/30 16:50:41 [INFO] received CSR
+								2023/03/30 16:50:41 [INFO] generating key: rsa-2048
+								2023/03/30 16:50:41 [INFO] encoded CSR
+								2023/03/30 16:50:41 [INFO] signed certificate with serial number 272845908368040715241949782944036322906758807569
+
+								ll | grep web
+
+								# 下面为输出
+								-rw-r--r--. 1 root root  323  3月 30 16:50 web.json
+								-rw-r--r--. 1 root root 1078  3月 30 16:50 web-server.csr		# 证书请求
+								-rw-------. 1 root root 1675  3月 30 16:50 web-server-key.pem	# 证书私钥
+								-rw-r--r--. 1 root root 1785  3月 30 16:50 web-server.pem		# 证书
+							`;
+							createLinuxTxtT2(cmd);
 
 
 			</script>

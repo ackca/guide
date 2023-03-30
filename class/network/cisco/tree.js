@@ -419,7 +419,7 @@ tree_asa = {
 	},
 };
 
-tree_virtual_router = {
+tree_vpn_router = {
 	"i1": {
 		"基于路由器的数字证书": {
 			"i1-1": "服务器端配置",
@@ -670,7 +670,7 @@ tree_virtual_router = {
 	},
 };
 
-tree_virtual_asa = {
+tree_vpn_asa = {
 	"i1": {
 		"L2L IPSec VPN": {
 			"i1-1": {

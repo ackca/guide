@@ -47,7 +47,8 @@ function createHLTable(tWidth, tHeader, tBody, divT, tID) {
 	for(i in tBody) {
 		htmlText = htmlText + "<div class='row'>";
 		for(j in tBody[i]) {
-			tbody = tBody[i][j].replace("会会会","会主动向");		// Gitee Pages屏蔽词
+			// tbody = tBody[i][j].replace("会会会","会主动向");		// Gitee Pages屏蔽词
+			tbody = tBody[i][j];
 
 			// if(j == 0) {
 			// 	var para = new RegExp("(^-[^ ]+)");
