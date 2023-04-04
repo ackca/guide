@@ -189,6 +189,11 @@ top_menu = `
 										<a href="rootpath/class/network/f5/ltm_basic.html">LTM原理</a>
 									</div>
 								</li>
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/network/f5/big-ip.html">设备配置</a>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>

@@ -704,7 +704,7 @@
 				createInstruT0("证书服务","i6");
 					createInstruT1("初始化CA","i6-1");
 						createInstruT2("CFSSL介绍");
-							createInstruAllTopT2("<a class='link' href='https://blog.51cto.com/liuzhengwei521/2120535' target='_blank'>https://blog.51cto.com/liuzhengwei521/2120535</a><br />");
+							createInstruAllTopT2("<a class='link' href='cfssl.mhtml' target='_blank'>https://blog.51cto.com/liuzhengwei521/2120535</a><br />");
 
 						createInstruT2("下载安装cfssl");
 							createInstruAllTopT2("下载地址：<a class='link' href='https://github.com/cloudflare/cfssl/releases' target='_blank'>https://github.com/cloudflare/cfssl/releases</a>");
@@ -880,6 +880,15 @@
 							createLinuxTxtT2(cmd);
 
 						createInstruT2("申请证书");
+							// instruArr = new Array();
+							// cfssl = `
+							// 	cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=server web.json | cfssljson -bare web-server
+							// `
+							// instruArr[0] = createLinuxCmd(cfssl);
+							// instruArr[1] = createCmdInstruSpan("“RHEL7。","输出内容");
+							// createCmdInstruT2(instruArr,"redhat");
+							// createConfigImgT2("redhat_basic/i1-1$1");
+
 							cmd = `
 								cfssl gencert -ca=ca.pem -ca-key=ca-key.pem \\
 									-config=ca-config.json -profile=server \\
