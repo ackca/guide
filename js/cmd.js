@@ -635,6 +635,10 @@ function createCmdInstru(instruArr, typeT, typeBrand) {
 			tdBrand = "tdBrandR";
 			imagepath = "../../img/";
 			break;
+
+		case "f5":
+			tdBrand = "tdBrandF";
+			break;
 	}
 
 	var htmlText = "<table class='cmdTable" + typeT + "'>"

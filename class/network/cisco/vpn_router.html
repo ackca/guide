@@ -170,7 +170,7 @@
 				createInstruT0("L2L IPsec XNSY，IKEv1","i2-1");
 					createInstruT1("两边配置除对端IP外一致");
 					createInstruT1("配置XNSY的设备如同时配置有NAT时，在NAT匹配ACL中需要先deny感兴趣流量");
-					createInstruT1("激活IKEv1（ISAKMP），默认激活<br />");
+					createInstruT1("激活IKEv1（ISAKMP），默认激活");
 						// instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# crypto isakmp enable");
@@ -204,7 +204,7 @@
 							instruArr[0] = createCmdSpan("R1(config-isakmp)# group { 1 | 2 | 5 }");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("定义IKEv1（ISAKMP）的预共享密钥，及对端IP<br />","i2-1-2");
+					createInstruT1("定义IKEv1（ISAKMP）的预共享密钥，及对端IP","i2-1-2");
 						instruArr[0] = createCmdSpan("R1(config)# crypto isakmp key [ 0 | 6 ] “cisco。 address “202.100.1.1。");
 						instruArr[1] = createCmdInstruSpan("0","密码在show crypto isakmp key可以显示(默认)");
 						instruArr[2] = createCmdInstruSpan("6","密码在show crypto isakmp key不可显示");
@@ -229,7 +229,7 @@
 							instruArr[1] = createCmdInstruSpan("默认即为tunnel可不配");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("定义感兴趣流量（用扩展ACL匹配）<br />","i2-1-4");
+					createInstruT1("定义感兴趣流量（用扩展ACL匹配）","i2-1-4");
 						instruArr[0] = createCmdSpan("R1(config)# access-list “100。 permit ip “10.1.1.0。 “0.0.0.255。  “192.168.1.0。 “0.0.0.255。");
 						instruArr[1] = createCmdInstruSpan("“100。","acl号");
 						instruArr[2] = createCmdInstruSpan("“10.1.1.0。 “0.0.0.255。","本地");
@@ -269,7 +269,7 @@
 							instruArr[0] = createCmdSpan("R1(config-crypto-map)# set pfs group { 1 | 2 | 5 }");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("将crypto map应用于接口（外网口）<br />","i2-1-6");
+					createInstruT1("将crypto map应用于接口（外网口）","i2-1-6");
 						instruArr[0] = createCmdSpan("R1(config-if)# crypto map “L2L。");
 						instruArr[1] = createCmdInstruSpan("“L2L。","crypto map名");;
 						createCmdInstruT1(instruArr,"cisco");
@@ -444,14 +444,14 @@
 							instruArr[1] = createCmdInstruSpan("“200.1.1.1。","对端IP");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置转换集<br />","i2-3-4");
+					createInstruT1("配置转换集","i2-3-4");
 						instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “tran。 “esp-aes。  “esp-sha-hmac。");
 						instruArr[1] = createCmdInstruSpan("“tran。","转换集名");
 						instruArr[2] = createCmdInstruSpan("“esp-aes。","加密算法");
 						instruArr[3] = createCmdInstruSpan("“esp-sha-hmac。","完整性校验算法");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("定义感兴趣流量<br />","i2-3-5");
+					createInstruT1("定义感兴趣流量","i2-3-5");
 						instruArr[0] = createCmdSpan("R1(config)# access-list “100。 permit ip “10.1.1.0。 “0.0.0.255。  “192.168.1.0。 “0.0.0.255。");
 						instruArr[1] = createCmdInstruSpan("“100。","acl号");
 						instruArr[2] = createCmdInstruSpan("“10.1.1.0。 “0.0.0.255。","本地");
@@ -589,7 +589,7 @@
 						createCmdInstruT1(instruArr,"cisco");
 
 
-					createInstruT1("配置感兴趣流量<br />","i2-4-6");
+					createInstruT1("配置感兴趣流量","i2-4-6");
 						instruArr[0] = createCmdSpan("R1(config)# access-list “100。 permit ip “10.1.1.0。 “0.0.0.255。  “192.168.1.0。 “0.0.0.255。");
 						instruArr[1] = createCmdInstruSpan("“100。","acl号");
 						instruArr[2] = createCmdInstruSpan("“10.1.1.0。 “0.0.0.255。","本地");
@@ -625,7 +625,7 @@
 							instruArr[1] = createCmdInstruSpan("“ikev2-profile。","profile名");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("将crypto map应用于接口<br />","i2-4-8");
+					createInstruT1("将crypto map应用于接口","i2-4-8");
 						instruArr[0] = createCmdSpan("R1(config-if)# crypto map “L2L。");
 						instruArr[1] = createCmdInstruSpan("“ikev2-map。","crypto map名");;
 						createCmdInstruT1(instruArr,"cisco");
@@ -1126,7 +1126,7 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 				createInstruT0("PPTP(Point to Point Tunneling Protocol)","i7");
-					createInstruT1("启用VPDN<br />","i7-1");
+					createInstruT1("启用VPDN","i7-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# vpdn enable");
@@ -1153,13 +1153,13 @@
 							instruArr[1] = createCmdInstruSpan("“1。","虚模板编号");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置用于认证的用户名密码<br />","i7-3");
+					createInstruT1("配置用于认证的用户名密码","i7-3");
 						instruArr[0] = createCmdSpan("R1(config)# username “pptpuser。 password “cisco。");
 						instruArr[1] = createCmdInstruSpan("“pptpuser。","用户名");
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置地址池<br />","i7-4");
+					createInstruT1("配置地址池","i7-4");
 						instruArr[0] = createCmdSpan("R1(config)# ip local pool “pptppool。 “10.0.0.100。 “10.0.0.200。");
 						instruArr[1] = createCmdInstruSpan("“pptppool。","地址池名");
 						instruArr[2] = createCmdInstruSpan("“10.0.0.100。","起始IP地址");
@@ -1194,7 +1194,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("L2TP（Layer 2 Tunneling Protocol） over IPSec","i8");
-					createInstruT1("启用VPDN<br />","i8-1");
+					createInstruT1("启用VPDN","i8-1");
 						instruArr[0] = createCmdSpan("R1(config)# vpdn enable");
 						createCmdInstruT2(instruArr,"cisco");
 
@@ -1228,13 +1228,13 @@
 							instruArr[0] = createCmdSpan("R1(config-vpdn)# no l2tp tunnel authentication");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置用于认证的用户名密码<br />","i8-3");
+					createInstruT1("配置用于认证的用户名密码","i8-3");
 						instruArr[0] = createCmdSpan("R1(config)# username “l2tpuser。 password “cisco。");
 						instruArr[1] = createCmdInstruSpan("“l2tpuser。","用户名");
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置地址池<br />","i8-4");
+					createInstruT1("配置地址池","i8-4");
 						instruArr[0] = createCmdSpan("R1(config)# ip local pool “l2tppool。 “10.0.0.100。 “10.0.0.200。");
 						instruArr[1] = createCmdInstruSpan("“l2tppool。","地址池名");
 						instruArr[2] = createCmdInstruSpan("“10.0.0.100。","起始IP地址");
@@ -2482,7 +2482,7 @@
 							instruArr[9] = createCmdInstruSpan("“linelogin。","认证策略名");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置用户名密码<br />","i13-3");
+					createInstruT1("配置用户名密码","i13-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# username “ssluser。 password “cisco。");
@@ -2490,7 +2490,7 @@
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置本地认证策略<br />","i13-4");
+					createInstruT1("配置本地认证策略","i13-4");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# aaa authentication login “sslxnsy。 local");

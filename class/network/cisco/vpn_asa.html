@@ -20,13 +20,13 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("L2L IPsec XNSY，IKEv1","i1-1");
-					createInstruT1("激活ikev1<br />","i1-1-1");
+					createInstruT1("激活ikev1","i1-1-1");
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
 						instruArr[1] = createCmdInstruSpan("“outside。","接口名");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("只有XNSY解密后的流量才能查询的路由（选配）<br />","i1-1-2");
+					createInstruT1("只有XNSY解密后的流量才能查询的路由（选配）","i1-1-2");
 						instruArr[0] = createCmdSpan("ASA(config)# route “inside。 “0。 “0。 “192.168.20.1。 ‘tunneled。");
 						instruArr[1] = createCmdInstruSpan("‘tunneled。","静态路由，通过加tunneled表示");
 						createCmdInstruT1(instruArr,"cisco");
@@ -100,7 +100,7 @@
 							instruArr[3] = createCmdInstruSpan("“ipsec-tran。","IPsec transform名");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("将 crypto map 应用于接口<br />","i1-1-8");
+					createInstruT1("将 crypto map 应用于接口","i1-1-8");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 interface “outside。");
@@ -108,7 +108,7 @@
 						instruArr[2] = createCmdInstruSpan("“outside。","应用到的接口名");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("当建立XNSY的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在<br />","i1-1-9");
+					createInstruT1("当建立XNSY的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在","i1-1-9");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto isakmp nat-traversal [ “10。 ]");
@@ -118,9 +118,9 @@
 				createInstruT0("动态 L2L IPsec XNSY，IKEv1","i1-2");
 					createInstruT1("地址变化端：因对端是静态公有地址，配置方式‘完全同普通的L2L。","i1-2-1");
 
-					createInstruT1("静态公有地址端","#i1-2-2");
+					createInstruT1("静态公有地址端","i1-2-2");
 						createInstruT2("配置 IKEv1（ISAKMP）策略，‘完全同普通的L2L。","i1-2-2-1");
-						createInstruT2("激活ikev1<br />");
+						createInstruT2("激活ikev1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
@@ -187,7 +187,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("L2L IPsec XNSY，IKEv2","i1-3");
-					createInstruT1("激活ikev2<br />","i1-3-1");
+					createInstruT1("激活ikev2","i1-3-1");
 						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev2 enable “outside。");
 						instruArr[1] = createCmdInstruSpan("“outside。","接口名");
 						createCmdInstruT1(instruArr,"cisco");
@@ -258,7 +258,7 @@
 							instruArr[1] = createCmdInstruSpan("“sha。","散列算法");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置感兴趣流量<br />","i1-3-5");
+					createInstruT1("配置感兴趣流量","i1-3-5");
 						instruArr[0] = createCmdSpan("ASA(config)# access-list 100 extended permit ip “192.168.20.0 255.255.255.0。  “192.168.10.0 255.255.255.0。");
 						instruArr[1] = createCmdInstruSpan("“192.168.20.0 255.255.255.0。","本地");
 						instruArr[2] = createCmdInstruSpan("“192.168.10.0 255.255.255.0。","对端");
@@ -282,7 +282,7 @@
 							instruArr[3] = createCmdInstruSpan("“ipsec-proposal。","ipsec-proposal名");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("在接口调用crypto map<br />","i1-3-7");
+					createInstruT1("在接口调用crypto map","i1-3-7");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto map “ikev2-map。 interface “outside。");
@@ -291,7 +291,7 @@
 						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("Easy XNSY","i2");
-					createInstruT1("激活ikev1<br />","i2-1");
+					createInstruT1("激活ikev1","i2-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
@@ -340,7 +340,7 @@
 							instruArr[3] = createCmdInstruSpan("“cisco。","预共享密钥");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置用户名密码<br />","i2-4");
+					createInstruT1("配置用户名密码","i2-4");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# username “admin。 password “cisco。");
@@ -348,28 +348,28 @@
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置转换集<br />","i2-5");
+					createInstruT1("配置转换集","i2-5");
 						instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev1 transform-set “tran。 “esp-3des。 “esp-md5-hmac。");
 						instruArr[1] = createCmdInstruSpan("“tran。","转换集名");
 						instruArr[2] = createCmdInstruSpan("“esp-3des。","加密策略");
 						instruArr[3] = createCmdInstruSpan("“esp-md5-hmac。","完整性校验策略");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置动态 crypto map<br />","i2-6");
+					createInstruT1("配置动态 crypto map","i2-6");
 						instruArr[0] = createCmdSpan("ASA(config)# crypto dynamic-map “dymap。 “1。 set ikev1 transform-set “tran。");
 						instruArr[1] = createCmdInstruSpan("“dymap。","动态crypto map名");
 						instruArr[2] = createCmdInstruSpan("“1。","编号");
 						instruArr[3] = createCmdInstruSpan("“tran。","转换集名");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置静态crypto map，并匹配静态map<br />","i2-7");
+					createInstruT1("配置静态crypto map，并匹配静态map","i2-7");
 						instruArr[0] = createCmdSpan("ASA(config)# crypto map “cmap。 “1000。 ipsec-isakmp dynamic “dymap。");
 						instruArr[1] = createCmdInstruSpan("“cmap。","静态crypto map名");
 						instruArr[2] = createCmdInstruSpan("“1000。","编号");
 						instruArr[3] = createCmdInstruSpan("“dymap。","动态crypto map名");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("将静态crypto应用到接口<br />","i2-8");
+					createInstruT1("将静态crypto应用到接口","i2-8");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto map “cmap。 interface “outside。");
@@ -378,14 +378,14 @@
 						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("L2TP over IPSec","i3");
-					createInstruT1("激活ikev1<br />","i3-1");
+					createInstruT1("激活ikev1","i3-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
 						instruArr[1] = createCmdInstruSpan("“outside。","接口名");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("将XNSY的识别方式设置为IP地址<br />","i3-2");
+					createInstruT1("将XNSY的识别方式设置为IP地址","i3-2");
 						instruArr[0] = createCmdSpan("ASA(config)# crypto isakmp identity address");
 						instruArr[1] = createCmdInstruSpan("默认为auto，但windows客户端并不和ASA协商，需要手工指定");
 						createCmdInstruT1(instruArr,"cisco");
@@ -432,7 +432,7 @@
 							instruArr[2] = createCmdInstruSpan("“outside。","接口名");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置IP地址池<br />","i3-4");
+					createInstruT1("配置IP地址池","i3-4");
 						instruArr[0] = createCmdSpan("ASA(config)# ip local pool “l2tppool。  “10.1.1.100。-“10.1.1.200。 [ mask “255.255.255.0。 ]");
 						instruArr[1] = createCmdInstruSpan("“l2tppool。","地址池名");
 						instruArr[2] = createCmdInstruSpan("“10.1.1.100。","起始IP地址");
@@ -440,7 +440,7 @@
 						instruArr[4] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置用户名密码<br />","i3-5");
+					createInstruT1("配置用户名密码","i3-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA(config)# username “l2tpuser。 password “cisco。 mschap");
@@ -473,7 +473,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("SSL XNSY","i4");
-					createInstruT1("配置登录用的用户名和密码<br />","i4-1");
+					createInstruT1("配置登录用的用户名和密码","i4-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# username “ssluser。 password “cisco。");
@@ -481,7 +481,7 @@
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("启用SSL XNSY<br />","i4-2");
+					createInstruT1("启用SSL XNSY","i4-2");
 						instruArr[0] = createCmdSpan("ASA(config)# webxnsy");
 						instruArr[1] = createCmdSpan("ASA(config-webxnsy)# enable “outside。");
 						instruArr[2] = createCmdInstruSpan("“outside。","拨入SSL XNSY的接口名");
@@ -673,13 +673,13 @@
 								instruArr[1] = createCmdInstruSpan("“30。","超时时间，单位分钟");
 								createCmdInstruT3(instruArr,"cisco");
 
-					createInstruT1("查看连接<br />","i4-5");
+					createInstruT1("查看连接","i4-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA# show xnsy-sessiondb [ webxnsy ]");
 						createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("关闭连接<br />","i4-6");
+					createInstruT1("关闭连接","i4-6");
 						instruArr[0] = createCmdSpan("ASA# xnsy-sessiondb logoff ……");
 						createCmdInstruT2(instruArr,"cisco");
 			</script>

@@ -225,7 +225,7 @@
 							instruArr[1] = createCmdInstruSpan("“10。","自治系统号");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("设置EIGRP末节特性：不接收查询，根据参数设置发送相应路由，可使用多个参数<br />","i5-3");
+					createInstruT1("设置EIGRP末节特性：不接收查询，根据参数设置发送相应路由，可使用多个参数","i5-3");
 							instruArr[0] = createCmdSpan("R1(config-router)# eigrp stub { connected | leak-map “lkName。 | receive-only | redistributed | static | summary | &lt;cr&gt; }");
 							instruArr[1] = createCmdInstruSpan("leak-map “lkName。","泄漏列表名，只发送泄漏列表匹配到的路由");
 							instruArr[2] = createCmdInstruSpan("receive-only","只接收不发送任何路由");
@@ -986,7 +986,7 @@
 							instruArr[1] = createCmdInstruSpan("“65002。","联邦内的EBGP对等体AS号");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("BGP认证<br />","i8-7");
+					createInstruT1("BGP认证","i8-7");
 						instruArr[0] = createCmdSpan("R1(config-router)# neighbor { “192.168.12.1。 | “IBGP。 } password “cisco。");
 						instruArr[1] = createCmdInstruSpan("“192.168.12.1。","对等体的IP");
 						instruArr[2] = createCmdInstruSpan("“IBGP。","对等体组名称");
@@ -1010,7 +1010,7 @@
 							instruArr[5] = createCmdInstruSpan("“ospf 1。","重分发到本路由协议的外部路由协议名，如果对应协议有路由进程号或AS号则需设置");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("前缀列表（prefix-list）<br />","i9-2");
+					createInstruT1("前缀列表（prefix-list）","i9-2");
 						instruArr[0] = createCmdSpan("R1(config)# ip prefix-list  “pre-list。  [ seq  “5。  ] { permit | deny }  “10.1.0.0。/“16。  [ ge  “24。  ] [ le  “32。  ]");
 						instruArr[1] = createCmdInstruSpan("“pre-list。","前缀列表名");
 						instruArr[2] = createCmdInstruSpan("“5。","列表条目序号，默认序号5、10、15……");
@@ -1020,7 +1020,7 @@
 						instruArr[6] = createCmdInstruSpan("“32。","le值");
 						createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("as-path访问列表<br />","i9-3");
+					createInstruT1("as-path访问列表","i9-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# ip as-path access-list “1。 { permit | deny } “.*。");
@@ -1361,7 +1361,7 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 				createInstruT0("组播","i15");
-					createInstruT1("启用组播路由<br />","i15-1");
+					createInstruT1("启用组播路由","i15-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# ip multicast-routing");

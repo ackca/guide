@@ -36,6 +36,10 @@
 			margin-top: 50px;
 		}
 
+		.lb
+		{
+			color: #A6E22E;
+		}
 
 	</style>
 </head>
@@ -54,17 +58,18 @@
 
 						createInstruT2("<br />Pool");
 							createInstruAllTopT2("一个或多个pool member的逻辑分组，‘一个pool代表一项应用。");
-							createInstruAllTopT2("pool member一般用IP:端口号标识，如：10.1.1.11:80");
+							createInstruAllTopT2("pool member一般用IP(域名):端口号标识，如：10.1.1.11:80");
 							createInstruAllTopT2("负载均衡方式在pool中配置");
 
 
 						createInstruT2("<br />Virtual Server");
-							createInstruAllTopT2("‘由IP地址和端口号组合而成，用于监听客户端的请求。，只有端口号，不区分TCP/UDP");
+							createInstruAllTopT2("‘由IP地址(域名)和端口号组合而成，用于监听客户端的请求。，只有端口号，不区分TCP/UDP，TCP/UDP在pool member中确定");
 							createInstruAllTopT2("通常会引导流量到后台的应用pool池，并将目的地址和端口号转换为pool member地址和端口（源地址和端口不变）");
 							createInstruAllTopT2("多个virtual server可以关联多个pool");
 
+
 				createInstruT0("<br />组网方案","i2");
-					createInstruT1("旁挂（单壁）部署","i2-1");
+					createInstruT1("旁挂（单臂）部署","i2-1");
 						createInstruT2("三角传输（nPath）模式","i2-1-1");
 							var txt = `
 								<div class="divConfigImgT2" id="npath">
@@ -113,7 +118,7 @@
 							var txt = `
 								<div class="divConfigImgT2" id="gw">
 									<div>
-										<img src="config_img/ltm_basic/GW.png">
+										<img src="config_img/ltm_basic/GW.png" />
 									</div>
 
 									<div>
@@ -128,6 +133,53 @@
 								</div>
 							`;
 							document.writeln(txt);
+
+				document.write("<br style='clear:both' /><br /><br />")
+				createInstruT0("负载均衡方式","i3");
+						createInstruT2("基于 Node / Member 区别","i3-1");
+							createInstruAllTopT2("一个节点可能向外提供多个服务");
+
+							createInstruAllTopT2("Node：　　&nbsp;考虑该节点的所有服务的情况");
+
+							createInstruAllTopT2("Member：只考虑某个节点的某项服务的情况");
+
+						createInstruT2("<br />Round Robin：<span class='lb'>轮巡</span>","i3-2");
+							createInstruAllTopT2("请求量很大、服务器性能相近时，应采用的办法，使用高级算法时，计算节点消耗过大");
+
+
+						createInstruT2("<br />Ratio(member/node)：<span class='lb'>比例</span>","i3-3");
+							createInstruAllTopT2("服务器有明显差距时使用");
+
+
+						createInstruT2("<br />Dynamic Ratio(member/node)：<span class='lb'>动态比例</span>","i3-4");
+							createInstruAllTopT2("需要在服务器安装LTM的插件，根据获取服务器的情况，计算节点");
+
+
+						createInstruT2("<br />Fastest(node/application)：<span class='lb'>最快速</span>","i3-5");
+							createInstruAllTopT2("计算的响应速度，服务器存在本地、远端两种时使用");
+
+
+						createInstruT2("<br />Least Connections(member/node)：<span class='lb'>最小连接</span>","i3-6");
+
+
+						createInstruT2("<br />Weighted Least Connections(node/node)：<span class='lb'>基于权重的最小连接</span>","i3-7");
+							createInstruAllTopT2("计算权重： 当前连接和连接限制的比重，越小，连接越多");
+
+
+						createInstruT2("<br />Ratio Least Connections(member/node)：<span class='lb'>基于比例的最小连接</span>","i3-8");
+							createInstruAllTopT2("计算权重： 当前连接和比例的比重，越小，连接越多，一般推荐方案");
+
+
+						createInstruT2("<br />Observed(member/node)","i3-9");
+							createInstruAllTopT2("根据上一秒的连接数，反向连接");
+
+
+						createInstruT2("<br />Predictive(member/node)","i3-10");
+							createInstruAllTopT2("私有方式，通过一定算法，计算向某个服务器连接");
+
+
+						createInstruT2("<br />Least Sessions：<span class='lb'>最小会话</span>","i3-11");
+
 			</script>
 			<div id="guide-icon">
 				<div>

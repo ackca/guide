@@ -100,13 +100,11 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("启用日志功能(默认不启用)");
-						document.writeln("<br />");
 						instruArr[0]=createCmdSpan("ASA(config)# logging enable");
 						instruArr[1]=createCmdInstruSpan("因为日志功能默认不启用，使用时还需设置将多少级的日志输出到某位置，配置方式同RS");
 						createCmdInstruT1(instruArr,"cisco");
 
 					createInstruT1("可以用ping测试的TCP/UDP端口号");
-						document.writeln("<br />");
 						instruArr[0]=createCmdSpan("ASA(config)# ping { tcp | udp } “192.168.1.1。  “80。");
 						instruArr[1]=createCmdInstruSpan("{ tcp | udp }","协议");
 						instruArr[2]=createCmdInstruSpan("“192.168.1.100。","IP地址");
@@ -115,7 +113,6 @@
 
 				createInstruT0("静态路由","i2");
 					createInstruT1("配置静态路由","i2-1");
-						document.writeln("<br />");
 						instruArr[0]=createCmdSpan("ASA(config)# route “inside。  “202.100.1.0。  “255.255.255.0。  “10.1.1.1。  [ “1。 ]");
 						instruArr[1]=createCmdInstruSpan("“inside。","出接口名");
 						instruArr[2]=createCmdInstruSpan("“202.100.1.0。","路由前缀");
@@ -322,13 +319,11 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("测试AAA用户");
-						document.writeln("<br />");
 						instruArr[0]=createCmdSpan("ASA# test aaa authentication “3a。");
 						instruArr[1]=createCmdInstruSpan("“3a。","aaa服务器名");
 						createCmdInstruT1(instruArr,"cisco");
 
 					createInstruT1("AAA认证");
-						document.writeln("<br />");
 						instruArr[0]=createCmdSpan("ASA(config)# aaa authentication “telnet。 console “3a。");
 						instruArr[1]=createCmdInstruSpan("“telnet。","被认证内容");
 						instruArr[2]=createCmdInstruSpan("“3a。","aaa服务器名");
@@ -563,23 +558,21 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 					createInstruT1("Twice NAT","i9-2");
-							document.writeln("<br />");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0]=createCmdSpan("ASA(config-network-object)# nat (“inside。,“outside。) [ after-auto ] [ “1。 ] source “规则1。　“规则2。　destination “规则3。　“规则4。");
-							instruArr[1]=createCmdInstruSpan("“inside。","被转换地址所在区域名");
-							instruArr[2]=createCmdInstruSpan("“outside。","转换后地址所在区域名");
-							instruArr[3]=createCmdInstruSpan("“1。","规则编号");
-							createCmdInstruT2(instruArr,"cisco");
+						instruArr = null;
+						instruArr = new Array();
+						instruArr[0]=createCmdSpan("ASA(config-network-object)# nat (“inside。,“outside。) [ after-auto ] [ “1。 ] source “规则1。　“规则2。　destination “规则3。　“规则4。");
+						instruArr[1]=createCmdInstruSpan("“inside。","被转换地址所在区域名");
+						instruArr[2]=createCmdInstruSpan("“outside。","转换后地址所在区域名");
+						instruArr[3]=createCmdInstruSpan("“1。","规则编号");
+						createCmdInstruT1(instruArr,"cisco");
 
 					createInstruT1("相关查看命令","i9-3");
-							document.writeln("<br />");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0]=createCmdSpan("ASA(config)# show xlate");
-							instruArr[1]=createCmdSpan("ASA(config)# show conn");
-							instruArr[2]=createCmdSpan("ASA(config)# show local-host");
-							createCmdInstruT2(instruArr,"cisco");
+						instruArr = null;
+						instruArr = new Array();
+						instruArr[0]=createCmdSpan("ASA(config)# show xlate");
+						instruArr[1]=createCmdSpan("ASA(config)# show conn");
+						instruArr[2]=createCmdSpan("ASA(config)# show local-host");
+						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("透明防火墙","i10");
 						createInstruT2("查看防火墙类型(路由：Router/透明：Transparent)");

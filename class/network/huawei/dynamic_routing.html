@@ -110,7 +110,7 @@
 							instruArr[6] = createCmdInstruSpan("“2。","增加跳数，匹配方式均省略则在该接口的对应方向所有路由均增加");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("控制路由更新<br />","i5-3");
+					createInstruT1("控制路由更新","i5-3");
 						instruArr[0] = createCmdSpan("[R1-rip-1] filter-policy { “2000。 | acl-name “acl_rip。 | ip-prefix “pre_rip。 } { import | export } [ “g0/0/0。 ]");
 						instruArr[1] = createCmdInstruSpan("“2000。","使用标准ACL匹配，标准ACL号");
 						instruArr[2] = createCmdInstruSpan("“acl_rip。","使用命名的ACL匹配，ACL名");
@@ -1030,7 +1030,7 @@
 							createCmdInstruT2(instruArr,"huawei");
 
 				createInstruT0("各种列表","i9");
-					createInstruT1("ip-prefix<br />","i9-2");
+					createInstruT1("ip-prefix","i9-2");
 						instruArr[0] = createCmdSpan("[R1] ip ip-prefix “pre。 [ index “10。 ] permit “128.0.0.0。 “2。 [ greater-equal “8。 ] [ less-equal “24。 ]");
 						instruArr[1] = createCmdInstruSpan("“pre。","ip-prefix名");
 						instruArr[2] = createCmdInstruSpan("“10。","ip-prefix中每个条目的编号");
@@ -1040,7 +1040,7 @@
 						instruArr[6] = createCmdInstruSpan("“24。","le值");
 						createCmdInstruT1(instruArr,"huawei");
 
-					createInstruT1("as-path-filter<br />","i9-4");
+					createInstruT1("as-path-filter","i9-4");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R1] ip as-path-filter { “10。 | “as_list。 } permit “^10。");
@@ -1370,7 +1370,7 @@
 								createCmdInstruT3(instruArr,"huawei");
 
 				createInstruT0("组播","i11");
-					createInstruT1("启用组播路由<br />","i11-1");
+					createInstruT1("启用组播路由","i11-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R1] multicast routing-enable");

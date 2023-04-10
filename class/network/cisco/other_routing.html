@@ -375,7 +375,7 @@
 								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("查看命令<br />","i2-1-6");
+						createInstruT2("查看命令","i2-1-6");
 							instruArr[0] = createCmdSpan("R1# show ip nat nvi translations");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -518,13 +518,13 @@
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("查看命令<br />","i2-2-6");
+						createInstruT2("查看命令","i2-2-6");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1# show ip nat translations");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("静态路由<br />","i3");
+				createInstruT0("静态路由","i3");
 					instruArr = new Array();
 					instruArr[0] = createCmdSpan("R1(config)# ip route “192.168.1.0。 “255.255.255.0。 { “f0/1。 | “192.168.2.1。 } [ “50。 ] [ permanent ]");
 					instruArr[1] = createCmdInstruSpan("“192.168.1.0。","路由前缀");
@@ -537,7 +537,7 @@
 					createInstruAllBottomT2("<br />出接口和下一跳建议同时写，而且必须先出接口后下一跳，如果不支持同时写，MA网络使用下一跳，P2P网段中使用出接口");
 
 				createInstruT0("策略路由（PBR）","i11");
-					createInstruT1("创建route-map<br />","i11-1");
+					createInstruT1("创建route-map","i11-1");
 						instruArr[0] = createCmdSpan("R1(config)# route-map “pbr。 [ permit | deny ] [ “10。 ]");
 						instruArr[1] = createCmdInstruSpan("“pbr。","route-map名");
 						instruArr[2] = createCmdInstruSpan("permit","match到数据包‘基于策略。进行路由转发，默认");
@@ -586,7 +586,7 @@
 							instruArr[0] = createCmdSpan("R1(config)# ip local policy route-map “pbr。");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("查看命令<br />","i11-5");
+					createInstruT1("查看命令","i11-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1# show route-map");
@@ -655,7 +655,7 @@
 							instruArr[3] = createCmdInstruSpan("“5。","track编号");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("单播反向路径转发（uRPF）<br />","i13");
+				createInstruT0("单播反向路径转发（uRPF）","i13");
 					instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
 					instruArr[1] = createCmdInstruSpan("“f0/0。","可能出现地址欺骗流量的流入网口");
 					instruArr[2] = createCmdSpan("R1(config-if)# ip verify unicast source reachable-via { rx | any } [ allow-default ] [ allow-self-ping ] [ “100。 ] ");

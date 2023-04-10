@@ -77,6 +77,16 @@ body, html
 	font-size: 20px;
 }
 
+.instruT0 + .divConfigImgT0,
+.instruT1 + .divConfigImgT1,
+.instruT1 + .cmdTableT1
+{
+	margin-top: 20px;
+}
+{
+	margin-top: 20px;
+}
+
 .instruT2 + .instruT3
 {
 	margin-top: -20px;
@@ -354,7 +364,8 @@ h4
 .tdBrandK,
 .tdBrandV,
 .tdBrandG,
-.tdBrandR
+.tdBrandR,
+.tdBrandF
 {
 	width: 85px;
 	text-align: center;

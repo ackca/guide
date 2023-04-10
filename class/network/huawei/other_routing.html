@@ -182,7 +182,7 @@
 
 				createInstruT0("网络地址转化(NAT)","i2");
 					createInstruT1("均在外网接口配置");
-					createInstruT1("一对一的转换(静态NAT)<br />","i2-1");
+					createInstruT1("一对一的转换(静态NAT)","i2-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat static global “60.1.1.2。 inside “192.168.10.1。");
@@ -206,7 +206,7 @@
 							instruArr[1] = createCmdInstruSpan("“2000。","acl号");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("服务器转换(将内网设备的某端口转换到外网设备的某端口)<br />","i2-3");
+					createInstruT1("服务器转换(将内网设备的某端口转换到外网设备的某端口)","i2-3");
 						instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat server protocol “tcp。 global “60.1.1.1。 “8088。 inside “192.168.10.1。 “80。");
 						instruArr[1] = createCmdInstruSpan("“tcp。","协议名");
 						instruArr[2] = createCmdInstruSpan("“60.1.1.1。","外网IP");
@@ -240,7 +240,7 @@
 							instruArr[2] = createCmdInstruSpan("“1。","地址池编号");
 							createCmdInstruT2(instruArr,"huawei");
 
-				createInstruT0("静态路由<br />","i4");
+				createInstruT0("静态路由","i4");
 					instruArr[0] = createCmdSpan("[R1] ip route-static “192.168.1.0。 { /“24。 |  “255.255.255.0。 } { “f0/1。 | “192.168.2.1。 } [ preference “50。 ] [ permanent ]");
 					instruArr[1] = createCmdInstruSpan("“192.168.1.0。","路由前缀");
 					instruArr[2] = createCmdInstruSpan("/“24。","路由掩码位数");
@@ -429,7 +429,7 @@
 							instruArr[2] = createCmdInstruSpan("“test。","测试名称");
 							createCmdInstruT2(instruArr,"huawei");
 
-				createInstruT0("单播反向路径转发(uRPF)<br />","i6");
+				createInstruT0("单播反向路径转发(uRPF)","i6");
 					instruArr[0] = createCmdSpan("[R1] int “g0/0/1。");
 					instruArr[1] = createCmdInstruSpan("“g0/0/1。","可能出现地址欺骗流量的流入网口");
 					instruArr[2] = createCmdSpan("[R1-GigabitEthernet0/0/1] urpf { loose | strict } [ allow-default-route ] [ acl “3000。 ]");

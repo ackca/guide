@@ -318,7 +318,7 @@
 							instruArr[3] = instruArr[1];
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("DHCP中继，需先启动DHCP服务<br />","i2-3");
+					createInstruT1("DHCP中继，需先启动DHCP服务","i2-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config-if)# ip helper-address “192.168.1.100。");
@@ -331,7 +331,7 @@
 					createInstruT1("DHCP Snooping，dhcp安全配置","i2-4");
 						createInstruT2("见交换机配置手册、局域网安全部分（<a href='catalyst.html#i10-2' style='color:#FF64FF;text-decoration:underline'>点击跳转</a>）");
 
-					createInstruT1("<br />接口获得DHCP的地址<br />","i2-5");
+					createInstruT1("<br />接口获得DHCP的地址","i2-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config-if)# ip address dhcp");
@@ -369,14 +369,14 @@
 							instruArr[2] = createCmdInstruSpan("rapid-commit","是否启用rapid-commit模式");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("DHCP中继<br />","i10-3");
+					createInstruT1("DHCP中继","i10-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config-if)# ipv6 dhcp relay destination “2001:110::2。");
 						instruArr[1] = createCmdInstruSpan("“2001:110::2。","DHCPv6服务器地址");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("<br />接口获得DHCP的地址<br />","i10-5");
+					createInstruT1("<br />接口获得DHCP的地址","i10-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config-if)# ipv6 address dhcp [ rapid-commit ]");
@@ -632,7 +632,6 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("查看NTP状态","i5-3");
-						document.writeln("<br />");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R2# show ntp status");

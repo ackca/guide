@@ -271,7 +271,7 @@
 							instruArr[2] = createCmdInstruSpan("discard","目的mac地址(包括广播)不在mac-address表中时，直接丢弃，在时，正常转发");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("设置err-down的自动处理(默认不处理)<br />");
+					createInstruT1("设置err-down的自动处理(默认不处理)");
 						instruArr[0] = createCmdSpan("[SW1] error-down auto-recovery cause “bpdu-protection。 interval “300。");
 						instruArr[1] = createCmdInstruSpan("“bpdu-protection。","引起err-down的原因");
 						instruArr[2] = createCmdInstruSpan("“300。","自动启用时间间隔");
@@ -555,7 +555,7 @@
 					createInstruT1("‘单向隔离。，A的报文不可以到达B，但B的报文可以达到A");
 					createInstruT1("‘不同于防火墙，B的报文可以达到A，但A的回包仍不能达到B。");
 
-					createInstruT1("启用端口隔离<br />");
+					createInstruT1("启用端口隔离");
 						instruArr[0] = createCmdSpan("[SW1] port-isolate mode { all | l2 }");
 						instruArr[1] = createCmdInstruSpan("all","三层三层均隔离");
 						instruArr[2] = createCmdInstruSpan("l2","仅二层隔离，三层可以互通");
