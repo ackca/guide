@@ -157,6 +157,7 @@ span .link
 	line-height: 1.6;
 	margin-top: 20px;
 	margin-bottom: 50px;
+	position: relative;
 }
 
 .linuxDivT1 + .linuxDivT1,
@@ -167,7 +168,7 @@ span .link
 
 .linuxDivT1 a, .linuxDivT2 a, .linuxDivT3 a
 {
-	color: #AC80FF;
+	color: #AE81FF;
 	font-weight: bold;
 }
 
@@ -434,7 +435,8 @@ td
 }
 
 .cmdInstruAllTopT1 + .divConfigImgT1,
-.cmdInstruAllTopT2 + .divConfigImgT2
+.cmdInstruAllTopT2 + .divConfigImgT2,
+.cmdInstruAllTopT3 + .divConfigImgT3
 {
 	margin-top: 15px;
 }
@@ -774,4 +776,26 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 .spanY
 {
 	color: #FFFF00;
+}
+
+.linuxCopy
+{
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	cursor: pointer;
+}
+
+.copysuccess
+{
+	position: absolute;
+	top: 25px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #494A5F;
+	font-size: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+	display: none;
 }

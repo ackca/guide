@@ -164,7 +164,8 @@ function createCmdT3(text) {
 function createLinuxTxt(cmds, cmdT) {
 	cmds = cmds.replace(/</g,'&lt;') //由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
 
-	htmlText = "<div class='linuxDiv" + cmdT + "'>"
+	htmlText = "<div class='linuxDiv" + cmdT + "'>" +
+		"<img src='../../../img/copy.png' onclick='linuxCopy(this)' class='linuxCopy' /><div class='copysuccess'><img src='../../../img/g.png' />&nbsp;复制成功</div>"
 	cmd_arr = cmds.split('\n')
 	subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
@@ -517,7 +518,7 @@ function createCmdSpan(cmd) {
 	// }
 	//------------------------疑似无用-------------------------------
 
-	var regFG = /([\w() -/[<&:~;]+[#>\$\]] )(.+)/;	// 思科华为各种模式前缀，如：R1(config-route)# [R1-FastEthernet0/0]
+	var regFG = /([\w() -/[<&:~;…]+[#>\$\]] )(.+)/;	// 思科华为各种模式前缀，如：R1(config-route)# [R1-FastEthernet0/0]
 	if(regFG.test(cmd)) {
 		cmd = cmd.replace(regFG,"<span style='color:#8AA4AF;font-size:18px'>$1</span><span class='cmd'>$2</span>");
 		return addSpan(cmd);
@@ -840,4 +841,19 @@ function splitBR(text) {
 	reg = new RegExp("(^(<br />)*)(.+?)((<br />)*$)");
 	br = text.match(reg);
 	return [br[1], br[3], br[4]];
+}
+
+function linuxCopy(element) {
+	txt = element.parentNode.innerHTML.replace('<a href="javascript:void(0)" onclick="linuxCopy(this)" class="linuxCopy">复制内容</a>', '');
+	txt = txt.replaceAll('<span>','').replaceAll('</span>','').replaceAll('<br />','\r\n').replaceAll('<br>','\r\n').replaceAll('&nbsp;',' ');
+	const textarea = document.createElement('textarea'); // 直接构建textarea  「注意：这里为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
+	textarea.value = txt; // 设置内容
+	document.body.appendChild(textarea); // 添加临时实例
+	textarea.select(); // 选择实例内容
+	document.execCommand('Copy'); // 执行复制
+	document.body.removeChild(textarea); // 删除临时实例
+
+	$(".copysuccess").fadeIn(500);
+	setTimeout(function() {$(".copysuccess").fadeOut(500)}, 1000)
+
 }
