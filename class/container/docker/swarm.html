@@ -36,6 +36,8 @@
 							createConfigImgT2("swarm/i1_2$1");
 
 						createInstruT2("根据提示，获得添加manager节点的命令");
+							instruArr = null;
+							instruArr = new Array();
 							instruArr[0] = createCmdSpan("docker swarm join-token manager");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i1_2$2");

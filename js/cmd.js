@@ -164,8 +164,13 @@ function createCmdT3(text) {
 function createLinuxTxt(cmds, cmdT) {
 	cmds = cmds.replace(/</g,'&lt;') //由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
 
+	url = window.location.href
+	url = url.substring(url.indexOf('/guide/class/'));
+	path = "../".repeat(url.split('/').length - 3);
+
 	htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<img src='../../../img/copy.png' onclick='linuxCopy(this)' class='linuxCopy' /><div class='copysuccess'><img src='../../../img/g.png' />&nbsp;复制成功</div>"
+		"<div class='divCopy' onclick='linuxCopy(this)'><img src='" + path + "img/copy.png' /></div>" +
+		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
 	cmd_arr = cmds.split('\n')
 	subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
@@ -350,10 +355,10 @@ function createYAML(cmds, cmdT) {
 			else {
 				type = cmd_arr[i].substring(0, index);
 				value = cmd_arr[i].substring(index + 1);
-				console.log('进来了')
-				console.log(i)
-				console.log(cmd_arr[i])
-				console.log('--------------------------------------------------')
+				// console.log('进来了')
+				// console.log(i)
+				// console.log(cmd_arr[i])
+				// console.log('--------------------------------------------------')
 				htmlText = htmlText + "<span class='spanT'>" + type + "</span><span class='spanV'><span class='spanFGF'>" + fgf + "</span>" + value + "</span>";
 			}
 		}
@@ -554,9 +559,9 @@ function addSpan(text) {
 											为了看着和配置时方便，配置时用一个中文空格，再转化为2个html的空格
 	*/
 
-	text = text.replace(/XNSY/g, "VPN");	// Gitee Pages屏蔽词
-	text = text.replace(/xnsy/g, "vpn");	// Gitee Pages屏蔽词
-	text = text.replace(/邻邻邻/g, "邻居");	// Gitee Pages屏蔽词
+	// text = text.replace(/XNSY/g, "VPN");	// Gitee Pages屏蔽词
+	// text = text.replace(/xnsy/g, "vpn");	// Gitee Pages屏蔽词
+	// text = text.replace(/邻邻邻/g, "邻居");	// Gitee Pages屏蔽词
 
 
 	var regVariable = new RegExp("“","g");
@@ -586,65 +591,25 @@ function addSpan(text) {
 
 function createCmdInstru(instruArr, typeT, typeBrand) {
 	//instruArr：命令说明集合，每行为数组中一项，每项中不同说明以中文<>分隔
-	var tdBrand = "";
 	var imagepath = "../../../img/";
 
 	switch(typeBrand) {
-		case "cisco":
-			tdBrand = "tdBrandC";
-			break;
-
-		case "huawei":
-			tdBrand = "tdBrandH";
-			break;
-
-		case "h3c":
-			tdBrand = "tdBrand3";
-			break;
-
 		case "vmware":
-			tdBrand = "tdBrandVM";
 			imagepath = "../../img/";
 			break;
 
 		case "nmap":
-			tdBrand = "tdBrandN";
 			imagepath = "../../img/";
-			break;
-
-		case "mysql":
-			tdBrand = "tdBrandM";
-			break;
-
-		case "docker":
-			tdBrand = "tdBrandD";
-			break;
-
-		case "k8s":
-			tdBrand = "tdBrandK";
-			break;
-
-		case "vault":
-			tdBrand = "tdBrandV";
-			break;
-
-		case "gitlab":
-			tdBrand = "tdBrandG";
 			break;
 
 		case "redhat":
-			tdBrand = "tdBrandR";
 			imagepath = "../../img/";
-			break;
-
-		case "f5":
-			tdBrand = "tdBrandF";
 			break;
 	}
 
 	var htmlText = "<table class='cmdTable" + typeT + "'>"
 
-	htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='" + tdBrand + "'>"
+	htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='tdCliLogo'>"
 			 + "<img src='" + imagepath + typeBrand + ".png' class='imgBrand' /></td></tr>"
 	htmlText = htmlText + "<tr><td colspan='2'>" + instruArr[0]+"</td></tr>";
 
@@ -694,16 +659,22 @@ function createCmdInstruT3(instruArr, typeBrand) {
 	createCmdInstru(instruArr, "T3", typeBrand)
 }
 
-function createConfigImg(imgNameList, typeT) {//, typeBrand) {
-	// htmlText = "<div class='divConfig" + typeT + "'><div class='divConfigImg'>";
+function createConfigImg(imgNameList, typeT) {
 	htmlText = "<div class='divConfigImg" + typeT + "'>";
 
 	if(imgNameList.indexOf('~') > 0) {
 		imgNameArr = imgNameList.split("~");
-		for(i = imgNameArr[0].substr(imgNameArr[0].length - 1); i <= imgNameArr[1]; i++) {
+		// console.log(imgNameArr)
+		// console.log(imgNameArr[0].substr(imgNameArr[0].length - 1) == 3)
+		// console.log(imgNameArr[1] == 11)
+		// console.log(3 <= 11)
+		// console.log(parseInt(imgNameArr[0].substr(imgNameArr[0].length - 1)) <= parseInt(imgNameArr[1]))
+		for(i = imgNameArr[0].substr(imgNameArr[0].length - 1); i <= parseInt(imgNameArr[1]); i++) {
+			// console.log('ooo')
 			eachName = imgNameArr[0].substr(0, imgNameArr[0].length - 1) + i;
+			// console.log(eachName)
 			htmlText = htmlText + "<img src='config_img/" + eachName + ".png' />";
-			if(i != imgNameArr[1]) {//除最后第一张，每二张图间空行
+			if(i != imgNameArr[1]) { //除最后第一张，每二张图间空行
 				htmlText = htmlText + "<br /><br />";
 			}
 		}
@@ -711,7 +682,7 @@ function createConfigImg(imgNameList, typeT) {//, typeBrand) {
 	else {
 		htmlText = htmlText + "<img src='config_img/" + imgNameList + ".png' />";
 	}
-	// htmlText = htmlText + "</div></div><br /><br />";
+
 	htmlText = htmlText + "</div><br /><br />";
 	document.write(htmlText);
 	
@@ -844,16 +815,21 @@ function splitBR(text) {
 }
 
 function linuxCopy(element) {
-	txt = element.parentNode.innerHTML.replace('<a href="javascript:void(0)" onclick="linuxCopy(this)" class="linuxCopy">复制内容</a>', '');
-	txt = txt.replaceAll('<span>','').replaceAll('</span>','').replaceAll('<br />','\r\n').replaceAll('<br>','\r\n').replaceAll('&nbsp;',' ');
-	const textarea = document.createElement('textarea'); // 直接构建textarea  「注意：这里为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
-	textarea.value = txt; // 设置内容
-	document.body.appendChild(textarea); // 添加临时实例
-	textarea.select(); // 选择实例内容
-	document.execCommand('Copy'); // 执行复制
-	document.body.removeChild(textarea); // 删除临时实例
+	txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
+	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
+	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ');
+	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
+	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
+	// \r\n：windows的换行
 
-	$(".copysuccess").fadeIn(500);
-	setTimeout(function() {$(".copysuccess").fadeOut(500)}, 1000)
+	const textarea = document.createElement('textarea');	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
+	textarea.value = txt;					// 设置内容
+	document.body.appendChild(textarea);	// 添加临时实例
+	textarea.select();						// 选择实例内容
+	document.execCommand('Copy');			// 执行复制
+	document.body.removeChild(textarea);	// 删除临时实例
+
+	$(element).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
+	setTimeout(function() { $(element).next().fadeOut(500) }, 1000)
 
 }

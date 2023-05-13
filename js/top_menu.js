@@ -138,8 +138,8 @@ top_menu = `
 									</div>
 									<div class="cat-item-sub">
 									    <a href="rootpath/class/network/cisco/ise_switch.html">交换机配置</a>
+									    <a href="rootpath/class/network/cisco/ise31.html">ISE 3.1</a>
 										<a href="rootpath/class/network/cisco/ise21.html">ISE 2.1</a>
-										<a href="rootpath/class/network/cisco/ise31.html">ISE 3.1</a>
 									</div>
 								</li>
 								<li class="cat-item">

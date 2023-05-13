@@ -1,11 +1,9 @@
 body, html
 {
-	/*font-size: 100%;*/
 	font-size: 1.03em;
 	padding: 0;
 	margin: 0;
 	background: #494A5F;
-	/*color: #D5D6E2;*/
 	color: #FFFFFF;
 	font-weight: 500;
 }
@@ -30,12 +28,6 @@ body, html
 	margin-top: 24.5px;
 }
 
-.instruT0, .instruT1, .instruT2, .instruT3
-{
-	/*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Liberation Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, SimSun, "WenQuanYi Zen Hei Sharp", sans-serif;*/
-	/*font-weight: bold;*/
-}
-
 .instruT0, .instruT1, .instruT2, .instruT3,
 .cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
 .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
@@ -49,7 +41,6 @@ body, html
 {
 	color: #0080FF;
 	font-size: 35px;
-	/*padding-top: 10px;*/
 }
 
 .instruT1
@@ -77,19 +68,16 @@ body, html
 	font-size: 20px;
 }
 
+.instruT2 + .instruT2
+{
+	margin-top: -10px;
+}
+
 .instruT0 + .divConfigImgT0,
 .instruT1 + .divConfigImgT1,
 .instruT1 + .cmdTableT1
 {
 	margin-top: 20px;
-}
-{
-	margin-top: 20px;
-}
-
-.instruT2 + .instruT3
-{
-	margin-top: -20px;
 }
 
 .instruT3 + .linuxDivT3
@@ -144,7 +132,6 @@ span .link
 {
 	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	font-size: 18px;
-	/*font-weight: bold;*/
 	background-color: #282923;
 	padding-top: 12px;
 	padding-left: 18px;
@@ -158,12 +145,6 @@ span .link
 	margin-top: 20px;
 	margin-bottom: 50px;
 	position: relative;
-}
-
-.linuxDivT1 + .linuxDivT1,
-.linuxDivT2 + .linuxDivT2
-{
-	margin-top: -20px;
 }
 
 .linuxDivT1 a, .linuxDivT2 a, .linuxDivT3 a
@@ -202,7 +183,6 @@ h4
 	line-height: 33px;
 }
 
-/*.cmdInstruAllT1, .cmdInstruAllT2, .cmdInstruAllT3, */
 .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3
 {
 	line-height: 40px;
@@ -280,12 +260,6 @@ h4
 	margin-top: 20px;
 }
 
-.instruImg
-{
-	/*margin-top: 20px;*/
-	/*margin-left: -30px;*/
-}
-
 .cmdInstruAllTopT2, .cmdInstruAllBottomT2
 {
 	margin-left: 80px;
@@ -313,27 +287,19 @@ h4
 	margin-bottom: 7px;
 }
 
-.cmdTableT3 + .cmdInstruAllTopT3
-{
-	margin-top: -20px;
-}
-
-.divConfigImgT2 + br + br + .cmdInstruAllTopT2
-{
-	margin-top: -20px;
-}
-
-.divConfigImgT3 + br + br + .cmdInstruAllTopT3
-{
-	margin-top: -20px;
-}
-
-.cmdTableT2 + .cmdInstruAllTopT2
-{
-	margin-top: -20px;
-}
-
-.linuxDivT1 + .cmdInstruAllTopT1
+.divConfigImgT2 + br + br + .divSJT2,
+.divConfigImgT1 + br + br + .divConfigImgT1,
+.divConfigImgT2 + br + br + .cmdInstruAllTopT2,
+.divConfigImgT3 + br + br + .cmdInstruAllTopT3,
+.cmdTableT2 + .cmdInstruAllTopT2,
+.cmdTableT3 + .cmdInstruAllTopT3,
+.linuxDivT1 + .cmdInstruAllTopT1,
+.linuxDivT1 + .linuxDivT1,
+.linuxDivT2 + .linuxDivT2,
+.linuxDivT2 + .divConfigImgT2,
+.linuxDivT1 + .divConfigImgT1,
+.linuxDivT3 + .divConfigImgT3,
+.instruT2 + .instruT3
 {
 	margin-top: -20px;
 }
@@ -355,18 +321,7 @@ h4
 	margin-bottom: 50px;
 }
 
-.tdBrandC,
-.tdBrandH,
-.tdBrand3,
-.tdBrandVM,
-.tdBrandN,
-.tdBrandM,
-.tdBrandD,
-.tdBrandK,
-.tdBrandV,
-.tdBrandG,
-.tdBrandR,
-.tdBrandF
+.tdCliLogo
 {
 	width: 85px;
 	text-align: center;
@@ -407,25 +362,21 @@ td
 .divConfigImgT0
 {
 	margin-left: 20px;
-	/*display: flex;*/
 }
 
 .divConfigImgT1
 {
 	margin-left: 50px;
-	/*display: flex;*/
 }
 
 .divConfigImgT2
 {
 	margin-left: 80px;
-	/*display: flex;*/
 }
 
 .divConfigImgT3
 {
 	margin-left: 110px;
-	/*display: flex;*/
 }
 
 .cmdTableT2 + .divConfigImgT2,
@@ -439,12 +390,6 @@ td
 .cmdInstruAllTopT3 + .divConfigImgT3
 {
 	margin-top: 15px;
-}
-
-.linuxDivT1 + .divConfigImgT1,
-.linuxDivT3 + .divConfigImgT3
-{
-	margin-top: -20px;
 }
 
 .divConfigImgT2+ br + br +.divConfigImgT2
@@ -523,7 +468,6 @@ td
 .tableCMD tr td:nth-child(2)
 {
 	font-size: 20px;
-	/*font-weight: bold;*/
 }
 
 .tableCMD tr
@@ -566,11 +510,6 @@ td
 	background-color: #F5F5F5;
 }
 
-.tableExplain tr td:nth-of-type(1)
-{
-	/*font-weight: bold;*/
-}
-
 .spanT
 {
 	color: #F92472;
@@ -603,12 +542,10 @@ td
 	font-size: 17px;
 	color: #74705D;
 	line-height: 1.6em;
-	/*font-family: Menlo,Monaco,Consolas,"Courier New",monospace;*/
 }
 
 .spanFGF
 {
-	/*font-weight: bold;*/
 	color: #F8F8F2;
 }
 
@@ -664,7 +601,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .divProtocolExplain dd
 {
-	/*color: #D5D6E2;*/
 	margin-left: 40px;
 	margin-bottom: 30px;
 }
@@ -711,7 +647,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .tableProtocolExplain
 {
-	/*color: #FFFFFF;*/
 	margin-left: 20px;
 	margin-top: 20px;
 	border: solid 2px #D5D6E2;
@@ -768,22 +703,31 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	margin-top: 15px;
 }
 
-.divConfigImgT2 + br + br + .divSJT2
-{
-	margin-top: -20px;
-}
-
 .spanY
 {
 	color: #FFFF00;
 }
 
-.linuxCopy
+.divCopy
 {
+
+	padding: 5px;
+	padding-top: 2px;
 	position: absolute;
-	top: 10px;
-	right: 15px;
+	top: 5px;
+	right: 5px;
 	cursor: pointer;
+	border-radius: 10px;
+}
+
+.divCopy:hover
+{
+	background-color: #4C5052;
+}
+
+.divCopy:active
+{
+	background-color: #5C6164;
 }
 
 .copysuccess
@@ -796,6 +740,8 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	font-size: 15px;
 	padding-left: 5px;
 	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	border-radius: 5px;
 	display: none;
 }
