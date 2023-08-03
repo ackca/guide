@@ -45,11 +45,10 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("ARP 首部字段说明","i1");
-					document.writeln("<br />");
 					createProtocolStruct(
-						"1000",
-						"408",
-						"4071",
+						"1038",
+						"510",
+						"5100",
 						"ARP/ARP"
 					);
 
@@ -81,7 +80,7 @@
 						目标协议地址（Target Protocol Address）
 						由32 bit构成，表示目标IPv4地址
 					`;
-					createProtocolExplain(words, -407);
+					createProtocolExplain(words, -510);
 
 				createInstruT0("ARP 实例","i2");
 					createInstruT1("ARP请求&响应","i2-1");

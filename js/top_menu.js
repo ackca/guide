@@ -46,7 +46,6 @@ top_menu = `
 											<a href="rootpath/class/protocol/l3/IPv4.html">IPv4</a>
 											<a href="rootpath/class/protocol/l3/ARP.html">ARP</a>
 											<a href="rootpath/class/protocol/l3/IPv6.html">IPv6</a>
-											<a href="rootpath/class/protocol/l2/802.1Q.html">802.1Q</a>
 										</div>
 									</div>
 								</li>
@@ -57,6 +56,7 @@ top_menu = `
 									<div class="cat-item-sub">
 										<div class="cat-item-row">
 											<a href="rootpath/class/protocol/l2/ethernet.html">Ethernet II</a>
+											<a href="rootpath/class/protocol/l2/802.1Q.html">802.1Q</a>
 											<a href="rootpath/class/protocol/l2/802.3.html">802.3</a>
 										</div>
 									</div>

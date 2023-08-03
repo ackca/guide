@@ -233,9 +233,39 @@
 							instruArr[0] = createCmdSpan("R1(config-if)# ipv6 nd managed-config-flag");
 							createCmdInstruT2(instruArr,"cisco");
 
+						createInstruT2("SLAAC模式（默认）");
+							cmd = `
+								!interface GigabitEthernet0/1
+								 no ipv6 nd prefix default no-autoconfig
+								 no ipv6 nd other-config-flag
+								 no ipv6 nd managed-config-flag
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("Stateless DHCP模式");
+							cmd = `
+								!interface GigabitEthernet0/1
+								 ipv6 nd prefix default no-autoconfig
+								 ipv6 nd other-config-flag
+								 no ipv6 nd managed-config-flag
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("Stateful DHCP模式");
+							cmd = `
+								!interface GigabitEthernet0/1
+								 ipv6 nd prefix default no-autoconfig
+								 no ipv6 nd other-config-flag
+								 ipv6 nd managed-config-flag
+							`;
+							createLinuxTxtT2(cmd);
+
+
 				createInstruT0("动态主机配置协议(DHCP)","i2");
 					createInstruT1("基本配置","i2-1");
 						createInstruT2("启动DHCP服务");
+							instruArr = null;
+							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)#  service dhcp");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -739,6 +769,8 @@
 
 					createInstruT1("申请者端配置","i11-1");
 						createInstruT2("配置域名");
+							instruArr = null;
+							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# ip domain name “cisco.com。");
 							instruArr[1] = createCmdInstruSpan("“cisco.com。","域名");
 							createCmdInstruT2(instruArr,"cisco");

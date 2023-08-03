@@ -38,6 +38,10 @@ $('#guide-icon, nav ~ ul li').click(function() {
 
 		$(".divStruct").animate({marginLeft: '50px'});
 
+		if(window.location.href.indexOf("ICMPv4.html") > 0 || window.location.href.indexOf("ICMPv6.html") > 0) {
+			 $("#zwTable, .divBG").animate({"left":"80px"});
+		}
+
 		if(window.location.href.indexOf("DHCPv6.html") > 0) {
 			 $("#tV6V4").animate({"width":"1400px"});
 		}
@@ -53,6 +57,10 @@ $('#guide-icon, nav ~ ul li').click(function() {
 		$("#divCommand").animate({marginLeft: '380px'}, move_divCommand);
 
 		$(".divStruct").animate({marginLeft: '380px'});
+
+		if(window.location.href.indexOf("ICMPv4.html") > 0 || window.location.href.indexOf("ICMPv6.html") > 0) {
+			 $("#zwTable, .divBG").animate({"left":"410px"});
+		}
 
 		if(window.location.href.indexOf("DHCPv6.html") > 0) {
 			 $("#tV6V4").animate({"width":"1100px"});

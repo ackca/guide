@@ -67,11 +67,10 @@
 						createInstruAllTopT1("<br /><br />在要求不高的环境中，直接使用 t<sub>3</sub> 即可/。");
 
 				createInstruT0("NTP报文结构","i2");
-					document.writeln("<br />");
 					createProtocolStructT0(
-						"850",
-						"690",
-						"11380",
+						"870",
+						"704",
+						"11264",
 						"NTP/NTP"
 					);
 
@@ -121,7 +120,7 @@
 						消息摘要（Message Digest）
 						如果NTP服务启用了认证，则包含该字段，表示用于认证的散列值，不同的散列算法，长度不同
 					`;
-					createProtocolExplainT0(words, -269);
+					createProtocolExplainT0(words, -704);
 
 				createInstruT0("NTP报文实例<br />","i3");
 					createConfigImgT0("NTP/NTP_packet$1~2");

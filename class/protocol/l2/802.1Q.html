@@ -35,11 +35,10 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("802.1Q 首部字段说明","i1");
-					document.writeln("<br />");
 					createProtocolStructT0(
-						"1000",
-						"320",
-						"1693",
+						"1450",
+						"566",
+						"2830",
 						"802.1Q/802.1Q"
 					);
 
@@ -48,16 +47,16 @@
 						由于是802.1Q帧，固定为0x8100
 
 						优先机（Priority）
-						由3bit构成，用于QOS
+						由3bits构成，用于QOS
 
 						标准格式指示（CFI）
 						由1bit构成，一般为0
 
 						VLAN ID
-						由12bit构成，取值范围0~4095，除全0全1外，不同厂商的设备还有几个ID不能使用
+						由12bits构成，取值范围0~4095，除全0全1外，不同厂商的设备还有几个ID不能使用
 
 					`;
-					createProtocolExplainT0(words, -326.8);
+					createProtocolExplainT0(words, -566);
 
 				createInstruT0("802.1Q 实例","i2");
 					createInstruT1("实例为ping报文，vlan id 为10，如下所示");

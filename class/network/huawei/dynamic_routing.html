@@ -88,7 +88,7 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1-rip-1] peer “192.168.12.2。");
-							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻邻邻IP地址");
+							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻居IP地址");
 							createCmdInstruT2(instruArr,"huawei");
 
 						createInstruT2("使用广播发送 RIP V2 的更新");
@@ -272,11 +272,11 @@
 							instruArr[5] = createCmdInstruSpan("　　p2p","点到点");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("指定OSPF邻邻邻地址，单向指定即可");
+						createInstruT2("指定OSPF邻居地址，单向指定即可");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1-ospf-1] peer “192.168.1.1。 [ dr-priority “10。 ]");
-							instruArr[1] = createCmdInstruSpan("“192.168.1.1。","邻邻邻地址");
+							instruArr[1] = createCmdInstruSpan("“192.168.1.1。","邻居地址");
 							instruArr[2] = createCmdInstruSpan("“10。","优先级");
 							createCmdInstruT2(instruArr,"huawei");
 
@@ -401,7 +401,7 @@
 							instruArr[0] = createCmdSpan("[R1] display ospf routing");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("查看OSPF邻邻邻信息");
+						createInstruT2("查看OSPF邻居信息");
 							instruArr[0] = createCmdSpan("[R1] display ospf peer [ brief ]");
 							createCmdInstruT2(instruArr,"huawei");
 
@@ -586,7 +586,7 @@
 							instruArr[6] = createCmdInstruSpan("level-1 | level-2","只对level-1或level-2的hello包做认证，默认两者均认证");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("区域认证(‘不影响邻邻邻关系，只影响level-1的路由。)");
+						createInstruT2("区域认证(‘不影响邻居关系，只影响level-1的路由。)");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1-isis-1] area-authentication-mode { { simple | md5 } [ cipher | plain ] “huawei。 | keychain “isis-key。 }");
@@ -597,7 +597,7 @@
 							instruArr[5] = createCmdInstruSpan("keychain “isis-key。","通过keychain，配置认证，keychain名");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("域(AS)认证(‘不影响邻邻邻关系，只影响level-2的路由。)");
+						createInstruT2("域(AS)认证(‘不影响邻居关系，只影响level-2的路由。)");
 							instruArr[0] = createCmdSpan("[R1-isis-1] domain-authentication-mode { { simple | md5 } [ cipher | plain ] “huawei。 | keychain “isis-key。 }");
 							createCmdInstruT2(instruArr,"huawei");
 
@@ -732,7 +732,7 @@
 							createCmdInstruT2(instruArr,"huawei");
 
 					createInstruT1("查看与重置命令","i8-8");
-						createInstruT2("查看邻邻邻表");
+						createInstruT2("查看邻居表");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] display bgp peer");
@@ -742,7 +742,7 @@
 							instruArr[0] = createCmdSpan("[R1] display bgp routing-table");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("查看向邻邻邻发送/接收的路由条目");
+						createInstruT2("查看向邻居发送/接收的路由条目");
 							instruArr[0] = createCmdSpan("[R1] display bgp routing-table peer “192.168.12.2。 { advertised-routes | received-routes }");
 							instruArr[1] = createCmdInstruSpan("“192.168.12.1。","对等体更新源地址");
 							instruArr[2] = createCmdInstruSpan("advertised-routes","发送的路由");
@@ -832,7 +832,7 @@
 								instruArr[2] = createCmdInstruSpan("“policyName。","route-policy名<br />通过 apply preferred-value { “优先数值。 } 修改");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("修改来自某一邻邻邻的‘全部。路由的preferred-value");
+							createInstruT3("修改来自某一邻居的‘全部。路由的preferred-value");
 								instruArr[0] = createCmdSpan("[R1-bgp] peer “2.2.2.2。 preferred-value “1。");
 								instruArr[2] = createCmdInstruSpan("“1。","优先数值");
 								createCmdInstruT3(instruArr,"huawei");
@@ -1068,7 +1068,7 @@
 							instruArr[1] = createCmdSpan("[R1-GigabitEthernet0/0/0] mpls ldp");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("由于特殊原因，lsr-id不可达时，配置使某接口地址建立邻邻邻");
+						createInstruT2("由于特殊原因，lsr-id不可达时，配置使某接口地址建立邻居");
 							instruArr[0] = createCmdSpan("[R1] int “g0/0。");
 							instruArr[1] = createCmdInstruSpan("“g0/0。","接口名");
 							instruArr[2] = createCmdSpan("[R1-GigabitEthernet0/0] mpls ldp transport-address interface");
@@ -1095,23 +1095,23 @@
 							instruArr[0] = createCmdSpan("[R1] mpls ldp");
 							instruArr[1] = createCmdSpan("[R1-mpls-ldp] { outbound | inbound } { peer “22.1.1.1。 | all | peer-group “ldp-group。 } fec ip-prefix “pre。");
 							instruArr[2] = createCmdInstruSpan("{ outbound | inbound }","控制发送或接收的标签");
-							instruArr[3] = createCmdInstruSpan("peer “22.1.1.1。","控制某个邻邻邻的标签");
-							instruArr[4] = createCmdInstruSpan("all","控制所有邻邻邻的标签");
-							instruArr[5] = createCmdInstruSpan("peer-group “ldp-group。","控制某个邻邻邻组的标签");
+							instruArr[3] = createCmdInstruSpan("peer “22.1.1.1。","控制某个邻居的标签");
+							instruArr[4] = createCmdInstruSpan("all","控制所有邻居的标签");
+							instruArr[5] = createCmdInstruSpan("peer-group “ldp-group。","控制某个邻居组的标签");
 							instruArr[6] = createCmdInstruSpan("“pre。","使用前缀列表匹配路由，前缀列表名");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("使用单播发现邻邻邻，双向配置");
+						createInstruT2("使用单播发现邻居，双向配置");
 							instruArr[0] = createCmdSpan("[R1] mpls ldp remote-peer “mpls_peer。")
-							instruArr[1] = createCmdInstruSpan("“mpls_peer。","邻邻邻名");
+							instruArr[1] = createCmdInstruSpan("“mpls_peer。","邻居名");
 							instruArr[2] = createCmdSpan("[R1-mpls-ldp-remote-mpls_peer] remote-ip “33.1.1.1。");
-							instruArr[3] = createCmdInstruSpan("“33.1.1.1。","邻邻邻的lsr-id");
+							instruArr[3] = createCmdInstruSpan("“33.1.1.1。","邻居的lsr-id");
 							createCmdInstruT2(instruArr,"huawei");
 
 						createInstruT2("配置认证");
 							instruArr[0] = createCmdSpan("[R1] mpls ldp");
 							instruArr[1] = createCmdSpan("[R1-mpls-ldp] md5-password cipher “22.1.1.1。 “huawei。");
-							instruArr[2] = createCmdInstruSpan("“22.1.1.1。","邻邻邻的lsr-id");
+							instruArr[2] = createCmdInstruSpan("“22.1.1.1。","邻居的lsr-id");
 							instruArr[3] = createCmdInstruSpan("“huawei。","认证密钥");
 							createCmdInstruT2(instruArr,"huawei");
 
@@ -1136,9 +1136,9 @@
 							instruArr[1] = createCmdInstruSpan("“44.1.1.1。","目的地址，‘华为默认只对32位路由分标签。");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("断开与邻邻邻的连接");
+						createInstruT2("断开与邻居的连接");
 							instruArr[0] = createCmdSpan("&lt;R1> reset mpls ldp { all | peer “44.1.1.1。 }")
-							instruArr[1] = createCmdInstruSpan("“44.1.1.1。","邻邻邻的lsr-id，或断开与所有邻邻邻的连接");
+							instruArr[1] = createCmdInstruSpan("“44.1.1.1。","邻居的lsr-id，或断开与所有邻居的连接");
 							createCmdInstruT2(instruArr,"huawei");
 
 					createInstruT1("配置vpn-instance","i10-2");
@@ -1235,7 +1235,7 @@
 							createCmdInstruT3(instruArr,"huawei");
 
 						createInstruT2("BGP","i10-4-5");
-							createInstruT3("使用BGP时，无需双向重分发，PE与CE建立邻邻邻即可");
+							createInstruT3("使用BGP时，无需双向重分发，PE与CE建立邻居即可");
 							createInstruT3("客户不同站点使用相同AS号时，因BGP防环机制，无接收路由");
 							createInstruT3("‘主动方案，PE配置。，对向CE端发送的路由生效，将客户路由的AS号改为PE的AS号");
 								instruArr[0] = createCmdSpan("[R1-bgp] ipv4-family vpn-instance VPN1");
@@ -1279,7 +1279,7 @@
 								instruArr[4] = createCmdInstruSpan("R2为域A的ASBR，g0/0与为域B连接的接口，AS-B-VPN为客户在域B中vpn-instance名");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("ASBR间建立BGP相应的vpn-instance地址族的邻邻邻");
+							createInstruT3("ASBR间建立BGP相应的vpn-instance地址族的邻居");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[R1-bgp] ipv4-family vpn-instance “AS-A-VPN。");
@@ -1294,7 +1294,7 @@
 								instruArr[0] = createCmdSpan("[R2-GigabitEthernet0/0] mpls");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("ASBR间建立BGPVPNv4邻邻邻");
+							createInstruT3("ASBR间建立BGPVPNv4邻居");
 								instruArr[0] = createCmdSpan("[R1-bgp] ipv4-family vpnv4");
 								instruArr[1] = createCmdSpan("[R1-bgp-af-vpnv4] peer “33.1.1.1。 enable");
 								instruArr[2] = createCmdInstruSpan("“33.1.1.1。","对端ASBR更新源地址");
@@ -1316,7 +1316,7 @@
 
 						createInstruT2("optionC","i10-6-3");
 							createInstruT3("不同AS内的vpn-instance的‘RT值需要匹配。");
-							createInstruT3("不同AS的PE间建立VPNv4邻邻邻");
+							createInstruT3("不同AS的PE间建立VPNv4邻居");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[R3-bgp] ipv4-family vpnv4");
@@ -1427,7 +1427,7 @@
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("配置MSDP","i11-3-3-2");
-								createInstruAllTopT3("在两个设备上，分别与对方建立MSDP邻邻邻");
+								createInstruAllTopT3("在两个设备上，分别与对方建立MSDP邻居");
 								instruArr[0] = createCmdSpan("[R1] msdp");
 								instruArr[1] = createCmdSpan("[R1-msdp] peer “33.1.1.1。 connect-interface “loop 1。");
 								instruArr[2] = createCmdInstruSpan("“33.1.1.1。","对端的更新源地址");

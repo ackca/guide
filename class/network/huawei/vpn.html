@@ -19,8 +19,8 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("L2L IPSec XNSY","i2");
-					createInstruT1("L2L IPsec XNSY","i2-1");
+				createInstruT0("L2L IPSec VPN","i2");
+					createInstruT1("L2L IPsec VPN","i2-1");
 						createInstruT2("配置IKE安全提议","i2-1-1");
 							createInstruT3("创建IKE安全提议");
 								instruArr = new Array();
@@ -154,8 +154,8 @@
 							instruArr[1] = createCmdInstruSpan("“ips_pol。","IPsec策略名");
 							createCmdInstruT2(instruArr,"huawei");
 
-				createInstruT0("动态L2L IPsec XNSY","i2-2")
-					createInstruT1("建立XNSY的两端一端静态公有地址，一端会变化的地址（公有私有均可）")
+				createInstruT0("动态L2L IPsec VPN","i2-2")
+					createInstruT1("建立VPN的两端一端静态公有地址，一端会变化的地址（公有私有均可）")
 					createInstruT1("因有NAT-T的问题，VRP V200R006 前后 配置区别较大：")
 						createInstruT2("‘V200R006之前的版本。：主动模式不支持NAT-T，需要使用主动模式，并明确启用NAT-T才能够建立连接");
 						createInstruT2("‘V200R006及之后的版本。：主动模式支持NAT-T，且NAT-T默认启用，无需明确配置")
@@ -501,18 +501,18 @@
 								instruArr[1] = createCmdInstruSpan("“5。","重传次数，默认3次");
 								createCmdInstruT3(instruArr,"huawei");
 
-				createInstruT0("Efficient XNSY","i3");
+				createInstruT0("Efficient VPN","i3");
 					createInstruT1("Server端配置","i3-1");
 						createInstruT2("配置IP地址池","i3-1-1");
 							createInstruT3("创建IP地址池");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("[Server] ip pool “exnsy_pool。");
-								instruArr[1] = createCmdInstruSpan("“exnsy_pool。","IP地址名");
+								instruArr[0] = createCmdSpan("[Server] ip pool “evpn_pool。");
+								instruArr[1] = createCmdInstruSpan("“evpn_pool。","IP地址名");
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("配置用于分配的IP地址");
-								instruArr[0] = createCmdSpan("[Server-ip-pool-exnsy_pool] network “10.1.1.0。 [ mask { “24。 | “255.255.255.0。 } ]");
+								instruArr[0] = createCmdSpan("[Server-ip-pool-evpn_pool] network “10.1.1.0。 [ mask { “24。 | “255.255.255.0。 } ]");
 								instruArr[1] = createCmdInstruSpan("“10.1.1.0。","IP地址名");
 								instruArr[2] = createCmdInstruSpan("“24。","子网掩码长度");
 								instruArr[3] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
@@ -527,19 +527,19 @@
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("创建业务方案");
-								instruArr[0] = createCmdSpan("[Server-aaa] service-scheme “exnsy。");
-								instruArr[1] = createCmdInstruSpan("“exnsy。","业务方案名");
+								instruArr[0] = createCmdSpan("[Server-aaa] service-scheme “evpn。");
+								instruArr[1] = createCmdInstruSpan("“evpn。","业务方案名");
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("匹配IP地址池");
-								instruArr[0] = createCmdSpan("[Server-aaa-service-exnsy] ip-pool “exnsy_pool。");
-								instruArr[1] = createCmdInstruSpan("“exnsy_pool。","IP地址名");
+								instruArr[0] = createCmdSpan("[Server-aaa-service-evpn] ip-pool “evpn_pool。");
+								instruArr[1] = createCmdInstruSpan("“evpn_pool。","IP地址名");
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("配置其它推送信息，如DNS服务器");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("[Server-aaa-service-exnsy] “推送信息。");
+								instruArr[0] = createCmdSpan("[Server-aaa-service-evpn] “推送信息。");
 								createCmdInstruT3(instruArr,"huawei");
 
 						createInstruT2("配置IKE安全提议","i3-1-3");
@@ -603,8 +603,8 @@
 							createInstruT3("匹配业务方案");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("[Server-ike-peer-Client] service-scheme “exnsy。");
-								instruArr[1] = createCmdInstruSpan("“exnsy。","业务方案");
+								instruArr[0] = createCmdSpan("[Server-ike-peer-Client] service-scheme “evpn。");
+								instruArr[1] = createCmdInstruSpan("“evpn。","业务方案");
 								createCmdInstruT3(instruArr,"huawei");
 
 						createInstruT2("配置IPsec安全提议","i3-1-5");
@@ -666,36 +666,36 @@
 							instruArr[4] = createCmdInstruSpan("“192.168.20.0 0.0.0.255。","对端");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("配置efficient xnsy策略","i3-2-2");
+						createInstruT2("配置efficient vpn策略","i3-2-2");
 							createInstruT3("配置模式");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("[R1] ipsec efficient-xnsy “exnsy。 mode { client | network | network-plus | network-auto-cfg }");
-								instruArr[1] = createCmdInstruSpan("“exnsy。","efficient-xnsy名");
+								instruArr[0] = createCmdSpan("[R1] ipsec efficient-vpn “evpn。 mode { client | network | network-plus | network-auto-cfg }");
+								instruArr[1] = createCmdInstruSpan("“evpn。","efficient-vpn名");
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("network、network-plus模式匹配感兴趣流量");
-								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-xnsy-exnsy] security acl “3000。");
+								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-vpn-evpn] security acl “3000。");
 								instruArr[1] = createCmdInstruSpan("“3000。","表示感兴趣流量的ACL编号");
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("配置Server端地址");
-								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-xnsy-exnsy] remote-address “100.1.1.1。 { v1 | v2 }");
+								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-vpn-evpn] remote-address “100.1.1.1。 { v1 | v2 }");
 								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","Server端IP地址");
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("配置预共享密匙");
-								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-xnsy-exnsy] pre-shared-key { cipher | simple } “huawei。");
+								instruArr[0] = createCmdSpan("[R1-ipsec-efficient-vpn-evpn] pre-shared-key { cipher | simple } “huawei。");
 								instruArr[1] = createCmdInstruSpan("cipher","预共享密匙明文显示");
 								instruArr[2] = createCmdInstruSpan("simple","预共享密匙密文显示");
 								instruArr[3] = createCmdInstruSpan("“huawei。","预共享密匙");
 								createCmdInstruT3(instruArr,"huawei");
 
-						createInstruT2("将efficient xnsy策略应用到接口（外网接口）","i3-2-3");
+						createInstruT2("将efficient vpn策略应用到接口（外网接口）","i3-2-3");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] ipsec efficient-xnsy “exnsy。");
-							instruArr[1] = createCmdInstruSpan("“exnsy。","efficient-xnsy名");
+							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] ipsec efficient-vpn “evpn。");
+							instruArr[1] = createCmdInstruSpan("“evpn。","efficient-vpn名");
 							createCmdInstruT2(instruArr,"huawei");
 
 				createInstruT0("GRE over IPSec","i5");
@@ -841,7 +841,7 @@
 						instruArr[1] = createCmdInstruSpan("“ips-prof。","IPsec安全框架名");
 						createCmdInstruT1(instruArr,"huawei");
 
-				createInstruT0("DSXNSY","i6");
+				createInstruT0("DSVPN","i6");
 					createInstruT1("HUB配置","i6-1");
 						createInstruT2("配置mGRE","i6-1-1");
 							createInstruT3("创建Tunnel接口");

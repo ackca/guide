@@ -73,7 +73,7 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “192.168.12.2。");
-							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻邻邻IP地址");
+							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻居IP地址");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("使用广播发送 RIP V2 的更新");
@@ -175,7 +175,7 @@
 							instruArr[1] = createCmdInstruSpan("“10。","自治系统号");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("显示邻邻邻列表");
+						createInstruT2("显示邻居列表");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1# show ip eigrp neighbors");
@@ -535,15 +535,15 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1# show ip ospf");
-							createCmdInstruT3(instruArr,"cisco");
+							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("查看邻邻邻关系");
+						createInstruT2("查看邻居关系");
 							instruArr[0] = createCmdSpan("R1# show ip ospf neighbor");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("查看某个邻邻邻具体信息");
+						createInstruT2("查看某个邻居具体信息");
 							instruArr[0] = createCmdSpan("R1# show ip ospf neighbor “2.2.2.2。");
-							instruArr[1] = createCmdInstruSpan("“2.2.2.2。","邻邻邻的Router ID");
+							instruArr[1] = createCmdInstruSpan("“2.2.2.2。","邻居的Router ID");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("查看拓扑数据库");
@@ -629,10 +629,10 @@
 							instruArr[2] = createCmdInstruSpan("“255.255.252.0。","汇总掩码");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("邻邻邻关系过虑，配置仅单向有效，‘需要双向配置。");
+						createInstruT2("邻居关系过虑，配置仅单向有效，‘需要双向配置。");
 							instruArr[0] = createCmdSpan("R1(config)# clns filter-set “isisFilter。 deny “49.0001.2222.2222.2222.00。");
 							instruArr[1] = createCmdInstruSpan("“isisFilter。","filter-set名");
-							instruArr[2] = createCmdInstruSpan("“49.0001.2222.2222.2222.00。","邻邻邻的NSAP地址");
+							instruArr[2] = createCmdInstruSpan("“49.0001.2222.2222.2222.00。","邻居的NSAP地址");
 							instruArr[3] = createCmdSpan("R1(config-if)# isis adjacency-filter “isisFilter。");
 							instruArr[4] = createCmdInstruSpan("“isisFilter。","filter-set名");
 							createCmdInstruT2(instruArr,"cisco");
@@ -647,7 +647,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("查看与清理","i7-2");
-						createInstruT2("查看邻邻邻");
+						createInstruT2("查看邻居");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1# show clns neighbors");
@@ -665,7 +665,7 @@
 							instruArr[0] = createCmdSpan("R1# show isis hostname");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("清理邻邻邻");
+						createInstruT2("清理邻居");
 							instruArr[0] = createCmdSpan("R1# clear isis *");
 							instruArr[1] = createCmdSpan("R1# clear clns neighbors");
 							createCmdInstruT2(instruArr,"cisco");
@@ -796,7 +796,7 @@
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “192.168.12.2。 unsuppress-map “mapName。");
-								instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻邻邻地址");
+								instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻居地址");
 								instruArr[2] = createCmdInstruSpan("“mapName。","route-map名，用于配置发送的路由");
 								createCmdInstruT2(instruArr,"cisco");
 
@@ -810,7 +810,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("查看与重置命令","i8-2");
-						createInstruT2("查看邻邻邻表");
+						createInstruT2("查看邻居表");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1# show ip bgp summary");
@@ -824,18 +824,18 @@
 							instruArr[0] = createCmdSpan("R1# show ip bgp rib-failure");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("查看向邻邻邻发送/接收的路由条目");
+						createInstruT2("查看向邻居发送/接收的路由条目");
 							instruArr[0] = createCmdSpan("R1# show ip bgp neighbors “192.168.12.2。 { advertised-routes | received-routes }");
-							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻邻邻IP地址");
+							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻居IP地址");
 							instruArr[2] = createCmdInstruSpan("advertised-routes","发送的路由");
 							instruArr[3] = createCmdInstruSpan("received-routes","接收的路由，默认并不会存储，通过下一条存储");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置路由器存储接收邻邻邻发送的路由信息");
+						createInstruT2("配置路由器存储接收邻居发送的路由信息");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “192.168.12.2。 soft-reconfiguration inbound");
-							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻邻邻IP地址");
+							instruArr[1] = createCmdInstruSpan("“192.168.12.2。","邻居IP地址");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("重置命令");
@@ -865,11 +865,11 @@
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-map “mapName。 in");
-								instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻邻邻IP地址");
+								instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻居IP地址");
 								instruArr[2] = createCmdInstruSpan("“mapName。","route-map名，通过set weight { 权重值 } 修改");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("修改来自某一邻邻邻的‘全部。路由的权重");
+							createInstruT3("修改来自某一邻居的‘全部。路由的权重");
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 weight “1。");
 								instruArr[2] = createCmdInstruSpan("“1。","权重值");
 								createCmdInstruT3(instruArr,"cisco");
@@ -877,7 +877,7 @@
 						createInstruT2("修改本地优先级（local preference）","i8-3-2");
 							createInstruT3("修改某一路由条目（‘出口路由器。的入方向设置）");
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-map mapName in");
-								instruArr[2] = createCmdInstruSpan("“mapName。","传送路由邻邻邻IP地 route-map名，通过set local-preference { 本地优先级值 } 修改");
+								instruArr[2] = createCmdInstruSpan("“mapName。","传送路由邻居IP地 route-map名，通过set local-preference { 本地优先级值 } 修改");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("修改‘本地产生（本地通告及重分发）。的及‘EBGP。路由");
@@ -890,7 +890,7 @@
 						createInstruT2("修改AS-Path","i8-3-3");
 							createInstruT3("修改as-patch");
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-map “mapName。 { in | out }");
-								instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻邻邻IP地址");
+								instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻居IP地址");
 								instruArr[2] = createCmdInstruSpan("“mapName。","route-map名，通过set as-path prepend { as-path列表 } 修改");
 								instruArr[3] = createCmdInstruSpan("为防止影响路由传递，as-path列表中可使用私有AS号，或重复在原as-path中已经存在的AS号");
 								instruArr[4] = createCmdInstruSpan("as-path从右到左看，out 出站添加，添加在右边，in 入站添加，添加在左边");
@@ -911,14 +911,14 @@
 
 						createInstruT2("修改起源属性（origin code）","i8-3-4");
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-map “mapName。 { in | out }");
-							instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻邻邻IP地址");
+							instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻居IP地址");
 							instruArr[2] = createCmdInstruSpan("“mapName。","route-map名，通过set origin { igp | egp | incomplete } 修改");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("修改多出口鉴别器属性（MED）","i8-3-5");
 							createInstruT3("修改MED，只能在发送EBGP路由的出方向配置");
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-map mapName out");
-								instruArr[2] = createCmdInstruSpan("“mapName。","传送路由邻邻邻IP地 route-map名，通过set metric { MED值 } 修改");
+								instruArr[2] = createCmdInstruSpan("“mapName。","传送路由邻居IP地 route-map名，通过set metric { MED值 } 修改");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("将MED设置为最大值（默认为最小值）");
@@ -927,7 +927,7 @@
 								instruArr[0] = createCmdSpan("R1(config-router)# bgp bestpath med missing-as-worst");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("比较相同路由MED，无论来源是否为AS相同的邻邻邻（默认只比较相同AS）");
+							createInstruT3("比较相同路由MED，无论来源是否为AS相同的邻居（默认只比较相同AS）");
 								instruArr[0] = createCmdSpan("R1(config-router)# bgp always-compare-med");
 								createCmdInstruT3(instruArr,"cisco");
 
@@ -957,11 +957,11 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("路由反射器 Router Reflector","i8-5");
-						createInstruT2("指定邻邻邻为Client，自己自动成为Server，路由属性不改变，客户端无需额外配置");
+						createInstruT2("指定邻居为Client，自己自动成为Server，路由属性不改变，客户端无需额外配置");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-reflector-client");
-							instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻邻邻IP地址");
+							instruArr[1] = createCmdInstruSpan("“2.2.2.2。","传送路由邻居IP地址");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置路由反射器的集群ID");
@@ -980,7 +980,7 @@
 							instruArr[1] = createCmdInstruSpan("“1。","向外通告的AS号");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("指定邻邻邻时联邦内部使用私有子AS号，联邦外部仍使用向外通告的公有AS号");
+						createInstruT2("指定邻居时联邦内部使用私有子AS号，联邦外部仍使用向外通告的公有AS号");
 						createInstruT2("声明为联邦内的EBGP邻接关系");
 							instruArr[0] = createCmdSpan("R1(config-router)# bgp confederation peers “65002。");
 							instruArr[1] = createCmdInstruSpan("“65002。","联邦内的EBGP对等体AS号");
@@ -1098,7 +1098,7 @@
 							instruArr[1] = createCmdInstruSpan("[ level-1 | level-2 ]","启用的接口类型，省略全部启用");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("由于特殊原因，LDP Route-ID不可达时，配置使某接口地址建立邻邻邻");
+						createInstruT2("由于特殊原因，LDP Route-ID不可达时，配置使某接口地址建立邻居");
 							instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
 							instruArr[1] = createCmdInstruSpan("“f0/0。","接口名");
 							instruArr[2] = createCmdSpan("R1(config-if)# mpls ldp discovery transport-address interface ");
@@ -1131,13 +1131,13 @@
 							createInstruT3("关闭默认的发送标签功能");
 								instruArr[0] = createCmdSpan("R1(config)# mpls ldp advertise-labels for “10。 to “20。");
 								instruArr[1] = createCmdInstruSpan("“10。","标准ACL，使用源匹配发送标签的路由");
-								instruArr[2] = createCmdInstruSpan("“20。","标准ACL，使用源匹配将标签发送到的邻邻邻");
+								instruArr[2] = createCmdInstruSpan("“20。","标准ACL，使用源匹配将标签发送到的邻居");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("使用单播发现邻邻邻，默认组播，双向配置")
+						createInstruT2("使用单播发现邻居，默认组播，双向配置")
 							createInstruT3("主动端配置，发送端")
 								instruArr[0] = createCmdSpan("R1(config)# mpls ldp neighbor “33.1.1.1。 targeted")
-								instruArr[1] = createCmdInstruSpan("“33.1.1.1。","邻邻邻的Route-ID")
+								instruArr[1] = createCmdInstruSpan("“33.1.1.1。","邻居的Route-ID")
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("被动端配置，响应端")
@@ -1153,7 +1153,7 @@
 
 						createInstruT2("查看/验证命令")
 							instruArr[0] = createCmdSpan("R1# show mpls ldp discovery");
-							instruArr[1] = createCmdInstruSpan("本条只能用于查看本端发现的邻邻邻，能否建立邻邻邻需要下一条确定");
+							instruArr[1] = createCmdInstruSpan("本条只能用于查看本端发现的邻居，能否建立邻居需要下一条确定");
 							instruArr[2] = createCmdSpan("R1# show mpls ldp neighbor");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -1168,16 +1168,16 @@
 							instruArr[1] = createCmdInstruSpan("“44.1.1.1/32。","目的地址，且‘子网掩码必须相同。");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("断开与邻邻邻的连接")
+						createInstruT2("断开与邻居的连接")
 							instruArr[0] = createCmdSpan("R1# clear mpls ldp neighbor { * | “44.1.1.1/32。} ");
-							instruArr[1] = createCmdInstruSpan("“44.1.1.1/32。","邻邻邻的Route-ID，*表示所有");
+							instruArr[1] = createCmdInstruSpan("“44.1.1.1/32。","邻居的Route-ID，*表示所有");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("配置VRF","i14-2");
 						createInstruT2("创建VRF");
 							createInstruT3("创建VRF");
-								instruArr[0] = createCmdSpan("R1(config)# ip vrf “XNSY1。");
-								instruArr[1] = createCmdInstruSpan("“XNSY1。","VRF名");
+								instruArr[0] = createCmdSpan("R1(config)# ip vrf “VPN1。");
+								instruArr[1] = createCmdInstruSpan("“VPN1。","VRF名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置RD值");
@@ -1187,21 +1187,21 @@
 
 							createInstruT3("配置RT值");
 								instruArr[0] = createCmdSpan("R1(config-vrf)# route-target [ export | import ] “100:1234。");
-								instruArr[1] = createCmdInstruSpan("[ export | import ]","省略则两个参数均配置<br />export : 更新XNSYv4的路由<br />import : 接收的XNSYv4的路由");
+								instruArr[1] = createCmdInstruSpan("[ export | import ]","省略则两个参数均配置<br />export : 更新VPNv4的路由<br />import : 接收的VPNv4的路由");
 								instruArr[2] = createCmdInstruSpan("“100:1234。","RT值，一般配置规则为 AS号 : n");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("接口加入VRF");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-if)# ip vrf forwarding “XNSY1。");
-							instruArr[1] = createCmdInstruSpan("“XNSY1。","vrf名，配置vrf后，接口的IP地址会被清除");
+							instruArr[0] = createCmdSpan("R1(config-if)# ip vrf forwarding “VPN1。");
+							instruArr[1] = createCmdInstruSpan("“VPN1。","vrf名，配置vrf后，接口的IP地址会被清除");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("相关查看命令");
-							instruArr[0] = createCmdSpan("R1# show ip vrf [ “XNSY1。 ] brief");
-							instruArr[1] = createCmdSpan("R1# show ip vrf [ “XNSY1。 ] interface");
-							instruArr[2] = createCmdInstruSpan("“XNSY1。","vrf名");
+							instruArr[0] = createCmdSpan("R1# show ip vrf [ “VPN1。 ] brief");
+							instruArr[1] = createCmdSpan("R1# show ip vrf [ “VPN1。 ] interface");
+							instruArr[2] = createCmdInstruSpan("“VPN1。","vrf名");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("配置MP-BGP","i14-3");
@@ -1213,39 +1213,39 @@
 							instruArr[2] = createCmdSpan("R1(config-router)# no bgp default ipv4-unicast");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("启用BGP XNSYv4对等体");
-							instruArr[0] = createCmdSpan("R1(config-router)# address-family xnsyv4");
+						createInstruT2("启用BGP VPNv4对等体");
+							instruArr[0] = createCmdSpan("R1(config-router)# address-family vpnv4");
 							instruArr[1] = createCmdSpan("R1(config-router-af)# neighbor “33.1.1.1。 activate");
 							instruArr[2] = createCmdInstruSpan("“33.1.1.1。","对等体地址");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("产生相应的VRF路由");
-							instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “XNSY1。");
-							instruArr[1] = createCmdInstruSpan("“XNSY1。","vrf名");
+							instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “VPN1。");
+							instruArr[1] = createCmdInstruSpan("“VPN1。","vrf名");
 							instruArr[2] = createCmdSpan("R1(config-router-af)# network ……");
 							instruArr[3] = createCmdSpan("R1(config-router-af)# redistribut ……");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置MPLS XNSY中客户路由协议","i14-4");
+					createInstruT1("配置MPLS VPN中客户路由协议","i14-4");
 						createInstruT2("静态路由","i14-4-1");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config)# ip route vrf “XNSY1。　“10.10.10.10。　“255.255.255.255。　“f0/1。　“10.1.10.10。");
-							instruArr[1] = createCmdInstruSpan("“XNSY1。","vrf名");
+							instruArr[0] = createCmdSpan("R1(config)# ip route vrf “VPN1。　“10.10.10.10。　“255.255.255.255。　“f0/1。　“10.1.10.10。");
+							instruArr[1] = createCmdInstruSpan("“VPN1。","vrf名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("RIP","i14-4-2");
 							instruArr[0] = createCmdSpan("R1(config)# router rip");
-							instruArr[1] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “XNSY1。");
-							instruArr[2] = createCmdInstruSpan("“XNSY1。","vrf名");
+							instruArr[1] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “VPN1。");
+							instruArr[2] = createCmdInstruSpan("“VPN1。","vrf名");
 							instruArr[3] = createCmdSpan("R1(config-router-af)# ……");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("EIGRP","i14-4-3");
 							instruArr[0] = createCmdSpan("R1(config)# router eigrp “100。");
-							instruArr[1] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “XNSY1。 autonomous-system “90。");
-							instruArr[2] = createCmdInstruSpan("“XNSY1。","vrf名");
-							instruArr[3] = createCmdInstruSpan("“90。","地址族的AS号，这个是与PE建邻邻邻的AS号，第一条命令中的AS号与此无关");
+							instruArr[1] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “VPN1。 autonomous-system “90。");
+							instruArr[2] = createCmdInstruSpan("“VPN1。","vrf名");
+							instruArr[3] = createCmdInstruSpan("“90。","地址族的AS号，这个是与PE建邻居的AS号，第一条命令中的AS号与此无关");
 							instruArr[4] = createCmdSpan("R1(config-router-af)# ……");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -1253,8 +1253,8 @@
 							createInstruT3("基本配置");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config)# router ospf “1。 vrf “XNSY1。");
-								instruArr[1] = createCmdInstruSpan("“XNSY1。","vrf名");
+								instruArr[0] = createCmdSpan("R1(config)# router ospf “1。 vrf “VPN1。");
+								instruArr[1] = createCmdInstruSpan("“VPN1。","vrf名");
 								instruArr[2] = createCmdSpan("R1(config-router)# ……");
 								createCmdInstruT3(instruArr,"cisco");
 								createInstruAllTopT3("默认情况下，远端的OSPF O类型路由为在本地为O IA路由");
@@ -1281,17 +1281,17 @@
 						createInstruT2("IS-IS","i14-4-5");
 							createInstruT3("无BGP重分发到IS-IS或IS-IS重分发到BGP，均默认只重分发level-2级别路由，根据需要调整level");
 							instruArr[0] = createCmdSpan("R4(config)# router isis");
-							instruArr[1] = createCmdSpan("R4(config-router)# vrf “XNSY1。");
-							instruArr[2] = createCmdInstruSpan("“XNSY1。","vrf名");
+							instruArr[1] = createCmdSpan("R4(config-router)# vrf “VPN1。");
+							instruArr[2] = createCmdInstruSpan("“VPN1。","vrf名");
 							instruArr[3] = createCmdSpan("R4(config-router)# ……");
 							createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("BGP","i14-4-6");
-							createInstruT3("使用BGP时，无需双向重分发，PE与CE建立邻邻邻即可");
+							createInstruT3("使用BGP时，无需双向重分发，PE与CE建立邻居即可");
 							createInstruT3("客户不同站点使用相同AS号时，因BGP防环机制，无接收路由");
 							createInstruT3("‘主动方案，PE配置。，对向CE端发送的路由生效，将客户路由的AS号改为PE的AS号");
-								instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “XNSY1。");
-								instruArr[1] = createCmdInstruSpan("“XNSY1。","客户所属的VRF名");
+								instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “VPN1。");
+								instruArr[1] = createCmdInstruSpan("“VPN1。","客户所属的VRF名");
 								instruArr[2] = createCmdSpan("R1(config-router-af)# neighbor “10.1.12.2。 as-override");
 								instruArr[3] = createCmdInstruSpan("“10.1.12.2。","PE的更新源地址");
 								createCmdInstruT3(instruArr,"cisco");
@@ -1332,31 +1332,31 @@
 							createInstruT3("应用SOO策略");
 								instruArr[0] = createCmdSpan("R1(config)# router bgp “100。");
 								instruArr[1] = createCmdInstruSpan("“100。","AS号");
-								instruArr[2] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “XNSY1。");
-								instruArr[3] = createCmdInstruSpan("“XNSY1。","客户的VRF名");
+								instruArr[2] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “VPN1。");
+								instruArr[3] = createCmdInstruSpan("“VPN1。","客户的VRF名");
 								instruArr[4] = createCmdSpan("R1(config-router-af)# neighbor “10.1.49.9。 route-map “SOO。 in");
 								instruArr[5] = createCmdInstruSpan("“10.1.49.9。","CE的更新源地址");
 								instruArr[6] = createCmdInstruSpan("“SOO。","SOO策略名");
 								createCmdInstruT3(instruArr,"cisco");
 
-					createInstruT1("域间MPLS XNSY解决方案","i14-6");
+					createInstruT1("域间MPLS VPN解决方案","i14-6");
 						createInstruT2("optionA","i14-6-1");
-							createInstruT3("不同AS间互为CE/PE(使用BGP转发路由)，AS间为IP转发，‘只适用于XNSY较少的情况。");
-							createInstruT3("各AS内部配置方式与普通域内MPLS XNSY相同，且不同AS内的vrf的‘RT值无需匹配。");
-							createInstruT3("ASBR间链路需要将接口加入对应的xnsy-instance");
+							createInstruT3("不同AS间互为CE/PE(使用BGP转发路由)，AS间为IP转发，‘只适用于VPN较少的情况。");
+							createInstruT3("各AS内部配置方式与普通域内MPLS VPN相同，且不同AS内的vrf的‘RT值无需匹配。");
+							createInstruT3("ASBR间链路需要将接口加入对应的vpn-instance");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-if)# ip vrf forwarding “AS-A-XNSY。");
-								instruArr[1] = createCmdInstruSpan("R1为域A的ASBR，接口为与域B连接的接口，AS-A-XNSY为客户在域A中vrf名");
+								instruArr[0] = createCmdSpan("R1(config-if)# ip vrf forwarding “AS-A-VPN。");
+								instruArr[1] = createCmdInstruSpan("R1为域A的ASBR，接口为与域B连接的接口，AS-A-VPN为客户在域A中vrf名");
 								instruArr[2] = createCmdSpan("　");
-								instruArr[3] = createCmdSpan("R2(config-if)# ip vrf forwarding “AS-B-XNSY。");
-								instruArr[4] = createCmdInstruSpan("R2为域A的ASBR，接口为与域B连接的接口，AS-B-XNSY为客户在域B中vrf名");
+								instruArr[3] = createCmdSpan("R2(config-if)# ip vrf forwarding “AS-B-VPN。");
+								instruArr[4] = createCmdInstruSpan("R2为域A的ASBR，接口为与域B连接的接口，AS-B-VPN为客户在域B中vrf名");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("ASBR间BGP的在相应的vrf地址族建立邻邻邻");
+							createInstruT3("ASBR间BGP的在相应的vrf地址族建立邻居");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “AS-A-XNSY。");
+								instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “AS-A-VPN。");
 								instruArr[1] = createCmdSpan("R1(config-router)# neighbor ……");
 								createCmdInstruT3(instruArr,"cisco");
 
@@ -1430,7 +1430,7 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置MSDP","i15-3-4-2");
-								createInstruAllTopT3("在两个设备上，分别与对方建立MSDP邻邻邻");
+								createInstruAllTopT3("在两个设备上，分别与对方建立MSDP邻居");
 								instruArr[0] = createCmdSpan("R1(config)# ip msdp peer “33.1.1.1。 connect-source “loop 1。");
 								instruArr[1] = createCmdInstruSpan("“33.1.1.1。","对端的更新源地址");
 								instruArr[2] = createCmdInstruSpan("“loop 1。","本端的更新源接口");

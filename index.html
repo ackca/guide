@@ -6,57 +6,10 @@
 	<title>协议</title>
 	<script src="js/js_css.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/HLTable.css/g, 'protocol.css').replace(/rootpath/g, '.').replace(/<script src='tree.js'><\/script>/g, ''));
+		document.write(head.replace(/HLTable.css/g, 'protocol-port.css').replace(/rootpath/g, '.').replace(/<script src='tree.js'><\/script>/g, ''));
 		// HLTable.css与本页面专用的protocol.css冲突，替换，并去掉用于生成左侧导航的tree.js
-
-		// var tcp_protocol = {
-		// 	"FTP-Data(Active)":[20,1,0,'class/protocol/l7/FTP.html'],
-		// 	"FTP":[21,1,0,'class/protocol/l7/FTP.html'],
-		// 	"SSH / SCP / SFTP":[22,1,0,''],
-		// 	"telnet":[23,1,0,''],
-		// 	"SMTP":[25,1,0,''],
-		// 	"TACACS+":[49,1,0,''],
-		// 	"DNS":[53,1,0,'class/protocol/l7/DNS.html'],
-		// 	"HTTP":[80,1,0,''],
-		// 	"POP3":[110,1,0,''],
-		// 	"IMAP":[143,1,0,''],
-		// 	"BGP":[179,1,0,''],
-		// 	"LDAP":[389,1,0,''],
-		// 	"HTTPS(HTTP1/2)":[443,1,0,''],
-		// 	"SMTPS":['465（587）',1,0,''],
-		// 	"LDAPS":[636,1,0,''],
-		// 	"MSDP":[639,1,0,''],
-		// 	"LDP Session":[646,1,0,''],
-		// 	"Netconf":[830,1,0,''],
-		// 	"IMAPS":[993,1,0,''],
-		// 	"POP3S":[995,1,0,''],
-		// };
-		//
-		// var udp_protocol = {
-		// 	"DNS":[53,1,0,'class/protocol/l7/DNS.html'],
-		// 	"DHCPv4":[],
-		// 	"TFTP":[69,1,0,'class/protocol/l7/TFTP.html'],
-		// 	"NTP / SNTP":[123,1,0,'class/protocol/l7/NTP.html'],
-		// 	"SNMP":[],
-		// 	"HTTPS(HTTP3)":[443,1,0,''],
-		// 	"IKE":[500,1,0,''],
-		// 	"syslog":[514,1,0,'class/protocol/l7/syslog.html'],
-		// 	"RIP":[520,1,0,''],
-		// 	"DHCPv6":[],
-		// 	"LDP Discovery":[646,1,0,''],
-		// 	"GDOI(GETVPN)":[848,1,0,''],
-		// 	"Radius":[],
-		// 	"HSRP":[1985,1,0,''],
-		// 	"BFD":[3784,1,0,''],
-		// 	"IKE(NAT-T)":[4500,1,0,''],
-		// 	"VXLAN":[4789,1,0,'class/protocol/l7/VXLAN.html'],
-		// 	"CAPWAP":[],
-		// 	"Mobility Protocol":[16666,1,0,''],
-		// };
-		// for (dicKey in tcp_protocol) {
-		// 	console.log(tcp_protocol[dicKey][0])
-		// }
 	</script>
+	<script src="js/protocol-port.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -84,375 +37,127 @@
 			</div>
 		</div><br /><br />
 
-		<!-- 特定软件协议（开始）  -->
+		<script type="text/javascript">
+			var ll = `
+				<div class="row">
+					<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+				</div><br />
+			`;
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>MS RDP：3389</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>PostgrepSQL DB: 5432</div>
-			</div>
-		</div><br />
+			// 协议名，
+			// 协议宽度，
+			// 协议行数，
+			// 一行协议编号（二行协议第一行），
+			// 二行协议第二行，
+			// 协议详细页面链接
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>MS SQL Server：1433</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>Oracle DB：1521</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>MySQL DB：3306</div>
-			</div>
-		</div><br />
+			var l3_protocol = [
+				["IPv4", 2, 1, '0x0800', '', 'class/protocol/l3/IPv4.html'],
+				["ARP", 2, 1, '0x0806', '', 'class/protocol/l3/ARP.html'],
+				["IPv6", 2, 1, '0x08dd', '', 'class/protocol/l3/IPv6.html'],
+				["802.1Q", 2, 1, '0x8100', '', 'class/protocol/l2/802.1Q.html'],
+				["MPLS", 2, 2, 'Unicast：0x8847', 'Multicast：0x8848', ''],
+				["PPPoE", 2, 2, 'Discovery：0x8863', 'Session：0x8864', ''],
+				["EAPoL", 2, 1, '0x888e', '', ''],
+				["ERSPAN", 2, 1, '0x88be', '', ''],
+				["MACSec&nbsp;(&nbsp;802.1ae&nbsp;)&nbsp;", 2, 1, '0x88e5', '', ''],
+			];
 
-		<!-- 特定软件协议（结束）  -->
+			var l4_protocol = [
+				["ICMPv4", 1, 1, '1', '', 'class/protocol/l4/ICMPv4.html'],
+				["IGMP", 1, 1, '2', '', ''],
+				["TCP", 1, 1, '6', '', 'class/protocol/l4/TCP.html'],
+				["UDP", 1, 1, '17', '', 'class/protocol/l4/UDP.html'],
+				["IPv6", 1, 1, '41', '', 'class/protocol/l3/IPv6.html'],
+				["IPv6 Fragment header", 2, 1, '44', '', 'class/protocol/l3/IPv6.html#i3'],
+				["GRE", 1, 1, '47', '', ''],
+				["ESP", 1, 1, '50', '', ''],
+				["AH", 1, 1, '51', '', ''],
+				["ICMPv6", 1, 1, '58', '', 'class/protocol/l4/ICMPv6.html'],
+				["EIGRP", 1, 1, '88', '', ''],
+				["OSPF", 1, 1, '89', '', ''],
+				["EoIP", 1, 1, '97', '', ''],
+				["PIM", 1, 1, '103', '', ''],
+				["VRRP", 1, 1, '112', '', ''],
+			];
 
-		<div class="row">
-			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
-		</div><br />
+			var tcp_protocol = [
+				["FTP-Data&nbsp;(&nbsp;Active&nbsp;)&nbsp;", 2, 1, '20', '', 'class/protocol/l7/FTP.html'],
+				["FTP", 2, 1, '21', '', 'class/protocol/l7/FTP.html'],
+				["SSH / SCP / SFTP", 2, 1, '22', '',''],
+				["telnet", 2, 1, '23', '',''],
+				["SMTP", 2, 1, '25', '',''],
+				["TACACS+", 2, 1, '49', '',''],
+				["DNS", 2, 1, '53', '', 'class/protocol/l7/DNS.html'],
+				["HTTP", 2, 1, '80', '',''],
+				["POP3", 2, 1, '110', '', ''],
+				["IMAP", 2, 1, '143', '', ''],
+				["BGP", 2, 1, '179', '', ''],
+				["LDAP", 2, 1, '389', '', ''],
+				["HTTPS&nbsp;(&nbsp;HTTP1/2&nbsp;)&nbsp;", 2, 1, '443', '', ''],
+				["SMTPS", 2, 1, '465（587）', '', ''],
+				["LDAPS", 2, 1, '636', '', ''],
+				["MSDP", 2, 1, '639', '', ''],
+				["LDP Session", 2, 1, '646', '', ,''],
+				["Netconf", 2, 1, '830', '', ''],
+				["IMAPS", 2, 1, '993', '', ''],
+				["POP3S", 2, 1, '995', '', ''],
+			];
 
-		<!-- 7层协议（开始）  -->
-		<div class="row">
-			<div class="col-lg-2 offset-lg-6">
-				<div class='udp c1 two-row-l7'>
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td style="text-align: right">CAPWAP&nbsp;</td>
-							<td>Control：</td>
-							<td>5246</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Data：</td>
-							<td>5247</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c2'>Mobility Protocol：16666</div>
-			</div>
-		</div><br />
+			var udp_protocol = [
+				["DNS", 2, 1, '53', '','class/protocol/l7/DNS.html'],
+				["DHCPv4", 3, 2, 'Server&nbsp;(&nbsp;bootps&nbsp;)&nbsp;/&nbsp;Relay：67', 'Client&nbsp;(&nbsp;bootpc&nbsp;)&nbsp;：68', 'class/protocol/l7/DHCPv4.html'],
+				["TFTP", 2, 1, '69', '', 'class/protocol/l7/TFTP.html'],
+				["NTP&nbsp;/&nbsp;SNTP", 2, 1, '123', '', 'class/protocol/l7/NTP.html'],
+				["SNMP", 2, 2, 'Get&nbsp;/&nbsp;Set：161', 'Trap：162', ''],
+				["HTTPS&nbsp;(&nbsp;HTTP3&nbsp;)&nbsp;", 2, 1, 443, '', ''],
+				["IKE", 2, 1, '500', '', ''],
+				["syslog", 2, 1, '514', '', 'class/protocol/l7/syslog.html'],
+				["RIP", 2, 1, '520', '', ''],
+				["DHCPv6", 2, 2, 'Server&nbsp;/&nbsp;Relay：547', 'Client：546', 'class/protocol/l7/DHCPv6.html'],
+				["LDP Discovery", 2, 1, '646', '', ''],
+				["GDOI&nbsp;(&nbsp;GETVPN&nbsp;)&nbsp;", 2, 1, '848', '', ''],
+				["Radius", 4, 2, 'Authentication&nbsp;/&nbsp;Authorization：1812&nbsp;(&nbsp;1645&nbsp;)&nbsp;', 'Accounting：1813&nbsp;(&nbsp;1646&nbsp;)&nbsp;', ''],
+				["HSRP", 2, 1, '1985', '', ''],
+				["RadSec&nbsp;(&nbsp;Radius over DTLS&nbsp;)&nbsp;", 3, 1, '2083', '', ''],
+				["BFD", 2, 1, '3784', '', ''],
+				["IKE&nbsp;(&nbsp;NAT-T&nbsp;)&nbsp;", 2, 1, '4500', '', ''],
+				["VXLAN", 2, 1, '4789', '', 'class/protocol/l7/VXLAN.html'],
+				["CAPWAP", 2, 2, 'Control：5246', 'Data：5247', ''],
+				["Mobility Protocol", 2, 1, '16666', '', ''],
+			];
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>IMAPS：993</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>POP3S：995</div>
-			</div>
-			<div class="col-lg-2 offset-lg-2">
-				<div class='udp c1'>BFD：3784</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c2'>IKE(NAT-T)：4500</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c3'><a href="class/protocol/l7/VXLAN.html">VXLAN：4789</a></div>
-			</div>
-		</div><br />
+			var tcp_application = [
+				["SQL Server DB", 2, 1, '1433', '',''],
+				["Oracle DB", 2, 1, '1521', '',''],
+				["MySQL DB", 2, 1, '3306', '',''],
+				["Microsoft RDP", 2, 1, '3389', '',''],
+				["PostgrepSQL DB", 2, 1, '5432', '',''],
+			];
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>MSDP：639</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>LDP Session：646</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>Netconf：830</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c1'>HSRP：1985</div>
-			</div>
-			<div class="col-lg-3">
-				<div class='udp c2'>RadSec（RADIUS over DTLS）：2083</div>
-			</div>
-		</div><br />
+			var udp_application = [
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>HTTPS：443（HTTP1/2）</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>SMTPS：465（587）</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>LDAPS：636</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c1'>GDOI（GETVPN）：848</div>
-			</div>
-			<div class="col-lg-4">
-				<div class='udp c2 two-row-l7'>
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td style="text-align: right">Radius&nbsp;&nbsp;</td>
-							<td>Authentication/Authorization：</td>
-							<td>1812（1645）</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Accounting：</td>
-							<td>1813（1646）</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div><br />
+			];
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>IMAP：143</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>BGP：179</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>LDAP：389</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c1'>RIP：520</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c2 two-row-l7'>
-					<a href='class/protocol/l7/DHCPv6.html'>
-						<table border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td style="text-align: right">DHCPv6&nbsp;&nbsp;</td>
-								<td>Server / Relay：</td>
-								<td>547</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>Client：</td>
-								<td>546</td>
-							</tr>
-						</table>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c3'>LDP Discovery：646</div>
-			</div>
-		</div><br />
+			createProtocol7(tcp_application, udp_application, 'app');
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'><a href='class/protocol/l7/DNS.html'>DNS：53</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>HTTP：80</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>POP3：110</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c1'>HTTPS：443（HTTP3）</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c2'>IKE：500</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c3'><a href='class/protocol/l7/syslog.html'>syslog：514</a></div>
-			</div>
-		</div><br />
+			document.writeln(ll);
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'>telnet：23</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'>SMTP：25</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>TACACS+：49</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c1'><a href='class/protocol/l7/TFTP.html'>TFTP：69</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c2'><a href='class/protocol/l7/NTP.html'>NTP / SNTP：123</a></div>
-			</div>
+			createProtocol7(tcp_protocol, udp_protocol, 'l7');
 
-			<div class="col-lg-2">
-				<div class='udp c3 two-row-l7'>
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td style="text-align: right">SNMP&nbsp;&nbsp;</td>
-							<td style="width: 63px">Get/Set：</td>
-							<td>161</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Trap：</td>
-							<td>162</td>
-						</tr>
-					</table>
-				</div>
-			</div>
+			document.writeln(ll);
 
-		</div><br />
+			createProtocol34(l4_protocol, 'l4');
 
-		<div class="row">
-			<div class="col-lg-2">
-				<div class='tcp c1'><a href="class/protocol/l7/FTP.html">FTP-Data(Active)：20</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c2'><a href="class/protocol/l7/FTP.html">FTP：21</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class='tcp c3'>SSH / SCP / SFTP：22</div>
-			</div>
-			<div class="col-lg-2">
-				<div class='udp c1'><a href='class/protocol/l7/DNS.html'>DNS：53</a></div>
-			</div>
-			<div class="col-lg-3">
-				<div class='udp c2 two-row-l7'>
-					<a href='class/protocol/l7/DHCPv4.html'>
-						<table border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td style="text-align: right">DHCPv4&nbsp;&nbsp;</td>
-								<td>Server（bootps）/ Relay：</td>
-								<td>67</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>Client（bootpc）：</td>
-								<td>68</td>
-							</tr>
-						</table>
-					</a>
-				</div>
-			</div>
-		</div><br />
+			document.writeln(ll);
 
-		<!-- 7层协议（结束）  -->
+			createProtocol34(l3_protocol, 'l3');
 
-		<div class="row">
-			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
-		</div><br />
-
-		<!-- 4层协议（开始）  -->
-
-		<div class="row">
-			<div class="col-lg-1">
-				<div class="l4 c1">EoIP：97</div>
-			</div>
-			<div class="col-lg-1">
-				<div class="l4 c4">PIM：103</div>
-			</div>
-			<div class="col-lg-1">
-				<div class="l4 c6">VRRP：112</div>
-			</div>
-		</div><br />
-
-		<div class="row">
-			<div class="col-lg-1">
-				<div class="l4 c1"><a href='class/protocol/l4/ICMPv4.html'>ICMPv4：1</a></div>
-			</div>
-			<div class="col-lg-1">
-				<div class="l4 c4">IGMP：2</div>
-			</div>
-			<div class="col-lg-1">
-				<div class="l4 c6"><a href='class/protocol/l4/TCP.html'>TCP：6</a></div>
-			</div>
-			<div class="col-lg-1">
-				<div class="l4 c3"><a href='class/protocol/l4/UDP.html'>UDP：17</a></div>
-			</div>
-
-			<div class="col-lg-2">
-				<div class="l4 c5"><a href='class/protocol/l3/IPv6.html#i3'>IPv6 Fragment header：44</a></div>
-			</div>
-
-			<div class="col-lg-1">
-				<div class="l4 c2">GRE：47</div>
-			</div>
-
-			<div class="col-lg-1">
-				<div class="l4 c1">ESP：50</div>
-			</div>
-
-			<div class="col-lg-1">
-				<div class="l4 c4">AH：51</div>
-			</div>
-
-			<div class="col-lg-1">
-				<div class="l4 c6" style="font-size: 15px"><a href='class/protocol/l4/ICMPv6.html'>ICMPv6：58</a></div>
-			</div>
-
-			<div class="col-lg-1">
-				<div class="l4 c3">EIGRP：88</div>
-			</div>
-
-			<div class="col-lg-1">
-				<div class="l4 c5">OSPF：89</div>
-			</div>
-		</div><br />
-
-		<!-- 4层协议（结束）  -->
-
-		<div class="row">
-			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
-		</div><br />
-
-		<!-- 3层协议（开始）  -->
-
-		<div class="row">
-			<div class="col-lg-2">
-				<div class="l3 c1">ERSPAN：0x88be</div>
-			</div>
-		</div><br />
-
-		<div class="row">
-			<div class="col-lg-2">
-				<div class="l3 c1" style="margin-left: 0"><a href='class/protocol/l3/IPv4.html'>IPv4：0x0800</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class="l3 c4"><a href='class/protocol/l3/ARP.html'>ARP：0x0806</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class="l3 c6"><a href='class/protocol/l3/IPv6.html'>IPv6：0x08dd</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class="l3 c3"><a href='class/protocol/l2/802.1Q.html'>802.1Q：0x8100</a></div>
-			</div>
-			<div class="col-lg-2">
-				<div class="l3 c5 two-row-l3">
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td style="text-align: right">MPLS&nbsp;&nbsp;</td>
-							<td>Unicast：</td>
-							<td>0x8847</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Multicast：</td>
-							<td>0x8848</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="l3 c2 two-row-l3">
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td style="text-align: right">PPPoE&nbsp;&nbsp;</td>
-							<td>Discovery：</td>
-							<td>0x8863</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Session：</td>
-							<td>0x8864</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div><br />
-
+			reverse_protocol('l3');
+			reverse_protocol('l4');
+			reverse_protocol('l7');
+			reverse_protocol('app');
+		</script>
 		<!-- 3层协议（结束）  -->
 
 		<div class="row">

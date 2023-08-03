@@ -75,11 +75,10 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("syslog 报文结构","i1");
-					document.writeln("<br />");
 					createProtocolStructT0(
 						"1060",
-						"220",
-						"730",
+						"230",
+						"690",
 						"syslog/syslog"
 					);
 
@@ -90,7 +89,7 @@
 						日志内容
                         由于syslog的协议规范制定比较晚，而且是推荐标准，所有实际的日志格式多样，基本只有PRI遵循规范
 					`;
-					createProtocolExplainT0(words, -246.5);
+					createProtocolExplainT0(words, -230);
 
 				createInstruT0("Facility取值对应关系","i2");
 					document.writeln("<br />");

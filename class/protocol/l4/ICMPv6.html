@@ -13,6 +13,7 @@
 		#divCommand
 		{
 			margin-top: 84.5px;
+			/*margin-top: 75px;*/
 		}
 
 		/* -----ICMPv6 Type Code对应关系表格开始----- */
@@ -169,6 +170,7 @@
 			border: 0;
 		}
 
+
 		#tNAFlags .row .cell:nth-child(2)
 		{
 			text-align: center;
@@ -179,6 +181,7 @@
 			padding-left: 10px;
 		}
 		/* -----NA报文的标志位表格结束----- */
+
 
 		#zwTable
 		{
@@ -552,11 +555,11 @@
 				 	createInstruAllTopT0("ICMP经常被认为是IP层的一个组成部分，它传递差错报文以及其他需要注意的信息，ICMP报文通常被IP层或更高层协议（TCP或UDP）使用，一些ICMP报文把差错报文返回给用户进程");
 					createInstruAllTopT0("ICMP主要用于两点：1、确认网络是否正常工作，2、遇到异常时进行问题诊断");
 
-				createInstruT0("ICMP 协议结构<br />","i2");
+				createInstruT0("ICMP 协议结构","i2");
 					createProtocolStructT0(
-						"820",
-						"220",
-						"1120",
+						"830",
+						"242",
+						"1210",
 						"ICMP/ICMP",
 					);
 
@@ -573,7 +576,7 @@
 						与类型相关
 						与类型相关，不同类型的ICMP报文，格式不同
 						`;
-						createProtocolExplainT0(words, -225.5);
+						createProtocolExplainT0(words, -242);
 
 				createInstruT0("ICMPv6 报文类型","i8");
 					createInstruAllTopT0("ICMPv6报文被分为 信息类报文（类型 128~255）和 差错报文（类型 0~127），具体如下：<br />");
@@ -629,9 +632,9 @@
 				createInstruT0("ICMPv6 选项","i5");
 					createInstruT1("ICMPv6 选项结构<br />","i5-1");
 						createProtocolStructT1(
-							"630",
-							"150",
-							"620",
+							"675",
+							"154",
+							"616",
 							"ICMPv6/option",
 							"option"
 						);
@@ -646,7 +649,7 @@
 							选项内容
 							与类型相关的选项内容
 							`;
-						createProtocolExplainT1(words, -157.2, "option");
+						createProtocolExplainT1(words, -154, "option");
 
 						createInstruAllTopT1("常见选项对应关系如下：<br />");
 
@@ -668,9 +671,9 @@
 				createInstruT0("回显请求/响应 报文（ping）","i3");
 					createInstruT1("回显请求/响应 报文结构<br />","i3-1");
 						createProtocolStructT1(
-							"820",
-							"290",
-							"2210",
+							"830",
+							"312",
+							"2184",
 							"ICMP/ping",
 							"ping"
 						);
@@ -694,7 +697,7 @@
 							数据（Data）
 							数据部分
 						`;
-						createProtocolExplainT2(words, -316.5, "ping");
+						createProtocolExplainT2(words, -312, "ping");
 
 					createInstruT1("回显请求/响应 报文实例","i3-2");
 						createInstruT2("ping请求报文（echo）","i3-2-1");
@@ -719,13 +722,13 @@
 						createInstruAllTopT1("ICMPv6 NA为单播报文，解析得到的mac地址，在其选项 目标的链路层地址 的字段 目标地址<br /><br />");
 
 					createInstruT1("ICMPv6 NS报文","i4-2");
-						createInstruT2("NS，全称 Neighbor Solicitation，邻居发现，ICMPv6 Type 135 Code 0<br />");
+						createInstruAllTopT1("NS，全称 Neighbor Solicitation，邻居发现，ICMPv6 Type 135 Code 0");
 
 						createInstruT2("ICMPv6 NS 报文结构","i4-2-1");
 							createProtocolStructT2(
-								"940",
-								"360",
-								"1500",
+								"958",
+								"374",
+								"1496",
 								"ICMPv6/ns",
 								"NS"
 							);
@@ -740,27 +743,27 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
-							createProtocolExplainT2(words, -380.4, "NS");
+							createProtocolExplainT2(words, -374, "NS");
 
 						createInstruT2("<br />ICMPv6 NS 报文实例","i4-2-2");
 							createConfigImgT2("ICMPv6/ns_packet");
 
 
-					createInstruT1("ICMPv6 NS报文","i4-3");
-						createInstruT2("NA，全称 Neighbor Advertisement，邻居通告，ICMPv6 Type 136 Code 0<br />");
+					createInstruT1("ICMPv6 NA报文","i4-3");
+						createInstruAllTopT1("NA，全称 Neighbor Advertisement，邻居通告，ICMPv6 Type 136 Code 0");
 
 						createInstruT2("ICMPv6 NA 报文结构","i4-3-1");
 							createProtocolStructT2(
-								"950",
-								"360",
-								"1800",
+								"958",
+								"374",
+								"1870",
 								"ICMPv6/na",
 								"NA"
 							);
 
 							words = `
 								标志（Flags）
-								由3 bit构成，每位的含义如下：<br /><div class="protocolDivTable" id="tNAFlags" style="width:700px"><div class="table"><div class="row header"><div class="cell">位置</div><div class="cell">字段</div><div class="cell">说明</div></div><div class="row"><div class="cell">第1个bit</div><div class="cell">R</div><div class="cell">路由器标记。当置1时，表示发送者是路由器。</div></div><div class="row"><div class="cell">第2个bit</div><div class="cell">S</div><div class="cell">请求标记。当置1时，表示通告被发送以响应NS。</div></div><div class="row"><div class="cell">第3个bit</div><div class="cell">O</div><div class="cell">替代标记。当置1时，表示通告中的信息替代缓存。</div></div></div></div>
+								由3 bit构成，每位的含义如下：<br /><div class="HLTableS2" id="tNAFlags" style="width:700px"><div class="table"><div class="row header"><div class="cell">位置</div><div class="cell">字段</div><div class="cell">说明</div></div><div class="row"><div class="cell">第1个bit</div><div class="cell">R</div><div class="cell">路由器标记。当置1时，表示发送者是路由器。</div></div><div class="row"><div class="cell">第2个bit</div><div class="cell">S</div><div class="cell">请求标记。当置1时，表示通告被发送以响应NS。</div></div><div class="row"><div class="cell">第3个bit</div><div class="cell">O</div><div class="cell">替代标记。当置1时，表示通告中的信息替代缓存。</div></div></div></div>
 
 								保留（Reserved）
 								由29 bit构成，保留为0
@@ -771,7 +774,7 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bit构成，类型 2，长度 1，值为目标链路层地址，也就是解析到的mac地址
 							`;
-							createProtocolExplainT2(words, -363.8, "NA");
+							createProtocolExplainT2(words, -374, "NA");
 
 						createInstruT2("<br />ICMPv6 NA 报文实例","i4-3-2");
 							createConfigImgT2("ICMPv6/na_packet");
@@ -804,13 +807,13 @@
 						createInstruAllTopT1("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
 
 					createInstruT1("<br />ICMPv6 RS报文","i6-2");
-						createInstruT2("RS，全称 Router Solicitation，路由器发现，ICMPv6 Type 133 Code 0");
+						createInstruAllTopT1("RS，全称 Router Solicitation，路由器发现，ICMPv6 Type 133 Code 0");
 
-						createInstruT2("ICMPv6 NS 报文结构","i6-2-1");
+						createInstruT2("ICMPv6 RS 报文结构","i6-2-1");
 							createProtocolStructT2(
-								"940",
-								"290",
-								"910",
+								"958",
+								"315",
+								"945",
 								"ICMPv6/rs",
 								"RS"
 							);
@@ -822,10 +825,33 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
-							createProtocolExplainT2(words, -309.6, "RS");
+							createProtocolExplainT2(words, -315, "RS");
 
 						createInstruT2("<br />ICMPv6 RS 报文实例","i6-2-2");
 							createConfigImgT2("ICMPv6/rs_packet");
+
+
+					createInstruT1("<br />ICMPv6 RA报文","i6-3");
+						createInstruAllTopT1("RA，全称 Router Advertisement，路由器通告，ICMPv6 Type 134 Code 0");
+
+						createInstruT2("ICMPv6 RS 报文结构","i6-3-1");
+							createProtocolStructT2(
+								"1530",
+								"731",
+								"12427",
+								"ICMPv6/ra",
+								"RA"
+							);
+
+							words = `
+								保留（Reserved）
+								由32 bit构成，保留为0
+
+								ICMPv6选项，源链路层地址（Source Link-Layer Address）
+								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
+							`;
+							createProtocolExplainT2(words, -731, "RA");
+
 
 				createInstruT0("ICMPv6差错报文（Type 0~127）","i7");
 					createInstruT1("差错报文说明","i7-1")

@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -17,6 +21,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol">
+		<strong id="close">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_ipv4, '../../../');
@@ -33,13 +41,13 @@
 		</div><br class="both"/>
 
 		<div id="divCommand">
+
 			<script type="text/javascript">
 				createInstruT0("IPv4首部字段说明","i1");
-					document.writeln("<br />");
 					createProtocolStructT0(
-						"1000",
-						"500",
-						"8080",
+						"1010",
+						"534",
+						"8010",
 						"IPv4/IPv4"
 					);
 
@@ -86,7 +94,7 @@
 						数据部分（Data）
 						IPv4数据部分
 					`;
-					createProtocolExplainT0(words, -540.5);
+					createProtocolExplainT0(words, -534);
 
 				createInstruT0("常规IPv4报文实例实例","i2");
 					createInstruT1("实例为ping报文，如下所示");
@@ -143,8 +151,8 @@
 					createInstruT1("IPv4选项结构","i4-1");
 						createProtocolStructT1(
 							"990",
-							"295",
-							"1540",
+							"309",
+							"1545",
 							"IPv4/options",
 							"protocolStructure1"
 						);
@@ -160,7 +168,7 @@
 							指针（ptr）
 							由8 bit构成，表示记录的位置，具体选项在详细说明
 						`;
-						createProtocolExplainT2(words, -305.8, 'protocolStructure1');
+						createProtocolExplainT2(words, -309, 'protocolStructure1');
 
 					createInstruT1("路径记录选项","i4-2");
 						createInstruAllTopT1("对于路径记录选项，PTR表示当前的IP地址记录位置");

@@ -19,9 +19,9 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("L2L IPsec XNSY，IKEv1","i2-1");
+				createInstruT0("L2L IPsec VPN，IKEv1","i2-1");
 					createInstruT1("两边配置除对端IP外一致");
-					createInstruT1("配置XNSY的设备如同时配置有NAT时，在NAT匹配ACL中需要先deny感兴趣流量");
+					createInstruT1("配置VPN的设备如同时配置有NAT时，在NAT匹配ACL中需要先deny感兴趣流量");
 					createInstruT1("激活IKEv1（ISAKMP），默认激活");
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# crypto isakmp enable");
@@ -156,8 +156,8 @@
 							instruArr[0] = createCmdSpan("R1# clear crypto sa");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("动态 L2L IPsec XNSY，IKEv1","i2-2");
-					createInstruT1("建立XNSY的两端一端静态公有地址，一端会变化的地址（公有私有均可）");
+				createInstruT0("动态 L2L IPsec VPN，IKEv1","i2-2");
+					createInstruT1("建立VPN的两端一端静态公有地址，一端会变化的地址（公有私有均可）");
 					createInstruT1("地址变化端：因对端是静态公有地址，配置方式‘完全同普通的L2L。");
 					createInstruT1("静态公有地址端");
 						createInstruT2("配置 IKEv1（ISAKMP） 策略，‘完全同普通的L2L。","i2-2-1");
@@ -235,8 +235,8 @@
 							instruArr[1] = createCmdInstruSpan("“smap。","静态crypto map名");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("profile版 L2L IPsec XNSY，IKEv1","i2-3");
-					createInstruT1("当设备中有复杂的策略，以及需要和Easy XNSY共存时的配置");
+				createInstruT0("profile版 L2L IPsec VPN，IKEv1","i2-3");
+					createInstruT1("当设备中有复杂的策略，以及需要和Easy VPN共存时的配置");
 
 					createInstruT1("配置isakmp策略，‘完全同普通的L2L。","i2-3-1");
 						createInstruT2("创建isakmp策略");
@@ -345,7 +345,7 @@
 						instruArr[1] = createCmdInstruSpan("“L2L。","crypto map名");
 						createCmdInstruT1(instruArr,"cisco");
 
-				createInstruT0("L2L IPsec XNSY，IKEv2","i2-4");
+				createInstruT0("L2L IPsec VPN，IKEv2","i2-4");
 					createInstruT1("配置IKEv2 proposal","i2-4-1");
 						createInstruT2("创建IKEv2 proposal");
 							instruArr = null;
@@ -499,14 +499,14 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 
-				createInstruT0("IPSec XNSY优化配置","i3");
+				createInstruT0("IPSec VPN优化配置","i3");
 						createInstruT2("激活NAT-T（默认激活）","i3-1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# crypto ipsec nat-transparency udp-encapsulation");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("当建立XNSY的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在","i3-2");
+						createInstruT2("当建立VPN的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在","i3-2");
 							instruArr[0] = createCmdSpan("R1(config)# crypto isakmp nat keepalive “10。");
 							instruArr[1] = createCmdInstruSpan("“10。","发送数据包间隔（单位s）");
 							createCmdInstruT2(instruArr,"cisco");
@@ -1018,7 +1018,7 @@
 						createCmdInstruT1(instruArr,"cisco");
 
 					createInstruT1("配置虚模板","i7-5");
-						createInstruT2("建立虚模板，拨入XNSY的用户采用模板中的配置");
+						createInstruT2("建立虚模板，拨入VPN的用户采用模板中的配置");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# interface virtual-template “1。");
@@ -1093,7 +1093,7 @@
 						createCmdInstruT1(instruArr,"cisco");
 
 					createInstruT1("配置虚模板","i8-5");
-						createInstruT2("建立虚模板，拨入XNSY的用户采用模板中的配置");
+						createInstruT2("建立虚模板，拨入VPN的用户采用模板中的配置");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# interface virtual-template “1。");
@@ -1179,7 +1179,7 @@
 							instruArr[3] = createCmdInstruSpan("“l2tp-map。","crypto map名");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("DMXNSY（Dynamic Multipoint XNSY）","i9");
+				createInstruT0("DMVPN（Dynamic Multipoint VPN）","i9");
 					createInstruT1("HUB节点（除IP地址、源IP地址外、映射其它HUB地址外，所有节点一致）","i9-1");
 						createInstruT2("配置mGRE");
 							createInstruT3("创建tunnel接口");
@@ -1357,7 +1357,7 @@
 							instruArr[1] = createCmdInstruSpan("0","密码在show crypto isakmp key可以显示(默认)");
 							instruArr[2] = createCmdInstruSpan("6","密码在show crypto isakmp key不可显示");
 							instruArr[3] = createCmdInstruSpan("“cisco。","预共享密钥");
-							instruArr[4] = createCmdInstruSpan("0.0.0.0 0.0.0.0","因DMXNSY支持动态地址，无法获取对端IP");
+							instruArr[4] = createCmdInstruSpan("0.0.0.0 0.0.0.0","因DMVPN支持动态地址，无法获取对端IP");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置 IPsec策略（转换集）","i17-6-3");
@@ -1452,19 +1452,19 @@
 							instruArr[2] = createCmdSpan("spoke(config-if)# ip nhrp shortcut");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("由于DMXNSY支持树状结构，第一层的SPOKE有可能是下一层的HUB，所以SPOKE也要配置nhrp转发，如果是最底层的纯Spoke，可以不配置");
+						createInstruT2("由于DMVPN支持树状结构，第一层的SPOKE有可能是下一层的HUB，所以SPOKE也要配置nhrp转发，如果是最底层的纯Spoke，可以不配置");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("spoke(config-if)# ip nhrp redirect");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("GETXNSY（Group Encrypted Transport XNSY）","i10");
+				createInstruT0("GETVPN（Group Encrypted Transport VPN）","i10");
 					createInstruT1("KS（Key Server）配置","i10-1");
 
 						createInstruT2("配置密钥","i10-1-1");
 							createInstruT3("产生密钥");
-								instruArr[0] = createCmdSpan("KS-1(config)# crypto key generate rsa label “GETXNSY-KEY。 modulus “1024。 [ exportable ]");
-								instruArr[1] = createCmdInstruSpan("“GETXNSY-KEY。","密钥名");
+								instruArr[0] = createCmdSpan("KS-1(config)# crypto key generate rsa label “GETVPN-KEY。 modulus “1024。 [ exportable ]");
+								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。","密钥名");
 								instruArr[2] = createCmdInstruSpan("“1024。","密钥长度，建立至少1024位");
 								instruArr[3] = createCmdInstruSpan("[ exportable ]","密钥可导出，方便KS有备份时使用，只有一个KS不建议可导出");
 								createCmdInstruT3(instruArr,"cisco");
@@ -1476,8 +1476,8 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("导出key");
-								instruArr[0] = createCmdSpan("KS-1(config)# crypto key export rsa “GETXNSY-KEY。 pem terminal “3des。 “cisco123。");
-								instruArr[1] = createCmdInstruSpan("“GETXNSY-KEY。","密钥名");
+								instruArr[0] = createCmdSpan("KS-1(config)# crypto key export rsa “GETVPN-KEY。 pem terminal “3des。 “cisco123。");
+								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。","密钥名");
 								instruArr[2] = createCmdInstruSpan("“3des。","加密算法");
 								instruArr[3] = createCmdInstruSpan("“cisco123。","加密密钥");
 								instruArr[4] = createCmdInstruSpan("明文的密钥太不安全，对密钥进行加密");
@@ -1486,16 +1486,16 @@
 							createInstruT3("导入key");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("KS-2(config)# crypto key import rsa “GETXNSY-KEY。 pem terminal “cisco123");
-								instruArr[1] = createCmdInstruSpan("“GETXNSY-KEY。","密钥名");
+								instruArr[0] = createCmdSpan("KS-2(config)# crypto key import rsa “GETVPN-KEY。 pem terminal “cisco123");
+								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。","密钥名");
 								instruArr[2] = createCmdInstruSpan("“3des。","加密算法");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("将可导出key转化为不可导出（单向）");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("KS-1(config)# crypto key move rsa “GETXNSY-KEY。 non-exportable");
-								instruArr[1] = createCmdInstruSpan("“GETXNSY-KEY。","密钥名");
+								instruArr[0] = createCmdSpan("KS-1(config)# crypto key move rsa “GETVPN-KEY。 non-exportable");
+								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。","密钥名");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("配置isakmp策略","i10-1-2");
@@ -1533,10 +1533,10 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置感兴趣流量","i10-1-4");
-							instruArr[0] = createCmdSpan("KS-1(config)# ip access-list extended “getxnsy-traffic。");
-							instruArr[1] = createCmdInstruSpan("“getxnsy-traffic。","acl名");
+							instruArr[0] = createCmdSpan("KS-1(config)# ip access-list extended “getvpn-traffic。");
+							instruArr[1] = createCmdInstruSpan("“getvpn-traffic。","acl名");
 							instruArr[2] = createCmdSpan("KS-1(config-ext-nacl)# permit ip “172.16.0.0。　“0.0.255.255。　“172.16.0.0。　“0.0.255.255。");
-							instruArr[3] = createCmdInstruSpan("因为GETXNSY使用在内网，正常情况下，内网IP是可归纳的，因此，假定需要加密之间的内网IP归纳为172.16.0.0/16，使用以上写法");
+							instruArr[3] = createCmdInstruSpan("因为GETVPN使用在内网，正常情况下，内网IP是可归纳的，因此，假定需要加密之间的内网IP归纳为172.16.0.0/16，使用以上写法");
 							instruArr[4] = createCmdInstruSpan("如果因为特殊原因，IP无法归纳，acl需要双向写，如需要加密的内网IP为 192.168.10.0/24 和10.0.0.0/24，则列表写成");
 							instruArr[5] = createCmdInstruSpan("KS-1(config-ext-nacl)# permit ip “192.168.10.0。　“0.0.0.255。　“10.0.0.0。　“0.0.0.255。");
 							instruArr[6] = createCmdInstruSpan("KS-1(config-ext-nacl)# permit ip “10.0.0.0。　“0.0.0.255。　“192.168.10.0。　“0.0.0.255。");
@@ -1599,8 +1599,8 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配使用的密钥");
-								instruArr[0] = createCmdSpan("KS-1(gdoi-local-server)# rekey authentication mypubkey rsa “GETXNSY-KEY。");
-								instruArr[1] = createCmdInstruSpan("“GETXNSY-KEY。","密钥名");
+								instruArr[0] = createCmdSpan("KS-1(gdoi-local-server)# rekey authentication mypubkey rsa “GETVPN-KEY。");
+								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。","密钥名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("加密策略（默认3DES），散列默认SHA（暂不支持更改）");
@@ -1649,8 +1649,8 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配感兴趣流量");
-								instruArr[0] = createCmdSpan("KS-1(gdoi-sa-ipsec)# match address ipv4 “getxnsy-traffic。");
-								instruArr[1] = createCmdInstruSpan("“getxnsy-traffic。","标记感兴趣流量的ACL");
+								instruArr[0] = createCmdSpan("KS-1(gdoi-sa-ipsec)# match address ipv4 “getvpn-traffic。");
+								instruArr[1] = createCmdInstruSpan("“getvpn-traffic。","标记感兴趣流量的ACL");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配profile");
@@ -1779,7 +1779,7 @@
 								instruArr[0] = createCmdSpan("GM# show crypto gdoi ipsec sa");
 								createCmdInstruT3(instruArr,"cisco");
 
-				createInstruT0("Easy XNSY","i11");
+				createInstruT0("Easy VPN","i11");
 					createInstruT1("Server端","i11-1");
 
 						createInstruT2("配置isakmap策略","i11-1-1");
@@ -1814,8 +1814,8 @@
 							createInstruT3("创建组");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("GW(config)# crypto isakmp client configuration group “EzXNSY-group。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-group。","组名");
+								instruArr[0] = createCmdSpan("GW(config)# crypto isakmp client configuration group “EzVPN-group。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-group。","组名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置预共享密钥");
@@ -1824,8 +1824,8 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置IP地址池");
-								instruArr[0] = createCmdSpan("GW(config-isakmp-group)# pool “EzXNSY-pool。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-pool。","IP地址池名");
+								instruArr[0] = createCmdSpan("GW(config-isakmp-group)# pool “EzVPN-pool。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-pool。","IP地址池名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("允许客户端保存密码");
@@ -1845,8 +1845,8 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置banner（软件客户端拨入的提示信息）");
-								instruArr[0] = createCmdSpan("GW(config-isakmp-group)#  banner ^“This is Easy XNSY connection。^");
-								instruArr[1] = createCmdInstruSpan("“This is Easy XNSY connection。","提示信息");
+								instruArr[0] = createCmdSpan("GW(config-isakmp-group)#  banner ^“This is Easy VPN connection。^");
+								instruArr[1] = createCmdInstruSpan("“This is Easy VPN connection。","提示信息");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("启用AAA，并配置线下保护","i11-1-3");
@@ -1873,8 +1873,8 @@
 							createInstruT3("创建本地认证策略");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("GW(config)# aaa authentication login “EzXNSY-xauth。 local");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-xauth。","认证策略名称");
+								instruArr[0] = createCmdSpan("GW(config)# aaa authentication login “EzVPN-xauth。 local");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-xauth。","认证策略名称");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置用户名密码");
@@ -1887,29 +1887,29 @@
 							createInstruT3("创建本地授权策略");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("GW(config)# aaa authorization network “EzXNSY-author。 local");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-author。","授权策略名称");
+								instruArr[0] = createCmdSpan("GW(config)# aaa authorization network “EzVPN-author。 local");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-author。","授权策略名称");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("配置isakmp profile","i11-1-6");
 							createInstruT3("创建isakmp profile");
-								instruArr[0] = createCmdSpan("GW(config)# crypto isakmp profile “EzXNSY-profile。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-profile。","Profile名");
+								instruArr[0] = createCmdSpan("GW(config)# crypto isakmp profile “EzVPN-profile。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-profile。","Profile名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配第1阶段的组");
-								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# match identity group “EzXNSY-group。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-group。","第1阶段组名");
+								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# match identity group “EzVPN-group。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-group。","第1阶段组名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配第1.5阶段的xauth策略");
-								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# client authentication list “EzXNSY-xauth。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-xauth。","第1.5阶段xauth策略名");
+								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# client authentication list “EzVPN-xauth。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-xauth。","第1.5阶段xauth策略名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配第1.5阶段的授权");
-								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# isakmp authorization list “EzXNSY-author。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-author。","第1.5阶段授权策略名");
+								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# isakmp authorization list “EzVPN-author。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-author。","第1.5阶段授权策略名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("激活mode config");
@@ -1971,36 +1971,36 @@
 							createInstruT3("创建ipsec client");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("Client(config)# crypto ipsec client ezxnsy “EzXNSY-Client。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-Client。","client名");
+								instruArr[0] = createCmdSpan("Client(config)# crypto ipsec client ezvpn “EzVPN-Client。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-Client。","client名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置连接方式");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# connect { manual | auto }");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# connect { manual | auto }");
 								instruArr[1] = createCmdInstruSpan("manual","手动");
 								instruArr[2] = createCmdInstruSpan("auto","自动");
 								instruArr[3] = createCmdInstruSpan("自动的前提是服务器端允许保存密码");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置第1阶段的组及预共享密钥");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# group “EzXNSY-group。 key 0 “cisco。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-group。","组名");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# group “EzVPN-group。 key 0 “cisco。");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-group。","组名");
 								instruArr[2] = createCmdInstruSpan("“cisco。","预共享密钥");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置客户端模式");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# mode { client | network-extension | network-plus }");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# mode { client | network-extension | network-plus }");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置服务器端地址");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# peer “202.100.1.1。");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# peer “202.100.1.1。");
 								instruArr[1] = createCmdInstruSpan("“202.100.1.1。","服务器地址，支持IP及域名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置第1.5阶段的用户名，密码");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# username “admin。 password “root。");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# username “admin。 password “root。");
 								instruArr[1] = createCmdInstruSpan("“admin。","用户名");
 								instruArr[2] = createCmdInstruSpan("“root。","密码");
 								instruArr[3] = createCmdInstruSpan("如果服务器端允许保存密码，则有效");
@@ -2009,29 +2009,29 @@
 						createInstruT2("外部接口应用ipsec client","i11-2-2");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezxnsy “EzXNSY-Client。 outside");
-							instruArr[1] = createCmdInstruSpan("“EzXNSY-Client。","client名");
+							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezvpn “EzVPN-Client。 outside");
+							instruArr[1] = createCmdInstruSpan("“EzVPN-Client。","client名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("内部接口应用ipsec client","i11-2-3");
-							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezxnsy “EzXNSY-Client。 inside");
-							instruArr[1] = createCmdInstruSpan("“EzXNSY-Client。","client名");
+							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezvpn “EzVPN-Client。 inside");
+							instruArr[1] = createCmdInstruSpan("“EzVPN-Client。","client名");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("手动连接Easy XNSY","i11-2-4");
-							createInstruT3("连接Easy XNSY");
-								instruArr[0] = createCmdSpan("Client# crypto ipsec client ezxnsy connect");
+						createInstruT2("手动连接Easy VPN","i11-2-4");
+							createInstruT3("连接Easy VPN");
+								instruArr[0] = createCmdSpan("Client# crypto ipsec client ezvpn connect");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("显示输入XAUTH用户名密码");
-								instruArr[0] = createCmdSpan("Client# crypto ipsec client ezxnsy xauth");
+								instruArr[0] = createCmdSpan("Client# crypto ipsec client ezvpn xauth");
 								instruArr[1] = createCmdInstruSpan("输入命令后，根据提示输入用户名密码");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("查看Easy XNSY状态","i11-2-5");
+						createInstruT2("查看Easy VPN状态","i11-2-5");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("Client# show crypto ipsec client ezxnsy");
+							instruArr[0] = createCmdSpan("Client# show crypto ipsec client ezvpn");
 							createCmdInstruT2(instruArr,"cisco");
 
 
@@ -2081,7 +2081,7 @@
 
 							createInstruT3("配置IP地址池");
 								instruArr[0] = createCmdSpan("GW(config-isakmp-group)# pool “dvti-pool。");
-								instruArr[1] = createCmdInstruSpan("“EzXNSY-pool。","IP地址池名");
+								instruArr[1] = createCmdInstruSpan("“EzVPN-pool。","IP地址池名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("允许客户端保存密码");
@@ -2241,18 +2241,18 @@
 
 						createInstruT2("配置ipsec client","i12-2-2");
 							createInstruT3("创建ipsec client");
-								instruArr[0] = createCmdSpan("Client(config)# crypto ipsec client ezxnsy “dvti-client。");
+								instruArr[0] = createCmdSpan("Client(config)# crypto ipsec client ezvpn “dvti-client。");
 								instruArr[1] = createCmdInstruSpan("“dvti-client。","ipsec client名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置自动连接");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# connect auto");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# connect auto");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置第1组名和预共享密钥");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# group “dvti-group。 key “cisco。");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# group “dvti-group。 key “cisco。");
 								instruArr[1] = createCmdInstruSpan("“dvti-group。","组名");
 								instruArr[2] = createCmdInstruSpan("“cisco。","预共享密钥");
 								createCmdInstruT3(instruArr,"cisco");
@@ -2260,21 +2260,21 @@
 							createInstruT3("配置模式为网络扩展");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# mode network-extension");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# mode network-extension");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置对端IP");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# peer “100.1.1.1。");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# peer “100.1.1.1。");
 								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","对端IP");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("匹配虚模版");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# virtual-interface “100。");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# virtual-interface “100。");
 								instruArr[1] = createCmdInstruSpan("“100。","虚模版编号");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置xauth用户名密码");
-								instruArr[0] = createCmdSpan("Client(config-crypto-ezxnsy)# username “admin。 password “root。");
+								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# username “admin。 password “root。");
 								instruArr[1] = createCmdInstruSpan("“admin。","用户名");
 								instruArr[2] = createCmdInstruSpan("“root。","密码");
 								createCmdInstruT3(instruArr,"cisco");
@@ -2282,35 +2282,35 @@
 						createInstruT2("外部接口应用ipsec client","i12-2-3");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezxnsy “dvti-client。 outside");
+							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezvpn “dvti-client。 outside");
 							instruArr[1] = createCmdInstruSpan("“dvti-client。","client名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("内部接口应用ipsec client","i12-2-4");
-							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezxnsy “dvti-client。 inside");
+							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezvpn “dvti-client。 inside");
 							instruArr[1] = createCmdInstruSpan("“dvti-client。","client名");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("SSL XNSY（Secure Sockets Layer XNSY）","i13");
+				createInstruT0("SSL VPN（Secure Sockets Layer VPN）","i13");
 					createInstruT1("配置gateway","i13-1");
 						createInstruT2("创建gateway");
-							instruArr[0] = createCmdSpan("R1(config)# webxnsy gateway “GW。");
+							instruArr[0] = createCmdSpan("R1(config)# webvpn gateway “GW。");
 							instruArr[1] = createCmdInstruSpan("“GW。","gateway名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置IP地址");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-gateway)# ip address “200.1.1.1。 [ port 443 ]");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-gateway)# ip address “200.1.1.1。 [ port 443 ]");
 							instruArr[1] = createCmdInstruSpan("“200.1.1.1。","提供SSL拨入的接口地址	 https的端口号，省略则为默认的443");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("将http自动重定向到https");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-gateway)# http-redirect port 80");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-gateway)# http-redirect port 80");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("启用gateway");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-gateway)# inservice");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-gateway)# inservice");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("启用AAA，并配置线下保护","i13-2");
@@ -2344,47 +2344,47 @@
 					createInstruT1("配置本地认证策略","i13-4");
 						instruArr = null;
 						instruArr = new Array();
-						instruArr[0] = createCmdSpan("R1(config)# aaa authentication login “sslxnsy。 local");
-						instruArr[1] = createCmdInstruSpan("“sslxnsy。","认证策略名");
+						instruArr[0] = createCmdSpan("R1(config)# aaa authentication login “sslvpn。 local");
+						instruArr[1] = createCmdInstruSpan("“sslvpn。","认证策略名");
 						createCmdInstruT1(instruArr,"cisco");
 
 					createInstruT1("配置context","i13-5");
 						createInstruT2("创建context");
-							instruArr[0] = createCmdSpan("R1(config)# webxnsy context “con。");
+							instruArr[0] = createCmdSpan("R1(config)# webvpn context “con。");
 							instruArr[1] = createCmdInstruSpan("“con。","context名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("关联gateway");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# gateway “GW。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# gateway “GW。");
 							instruArr[1] = createCmdInstruSpan("“GW。","gateway名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("关联认证策略");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# aaa authentication list “sslxnsy。");
-							instruArr[1] = createCmdInstruSpan("“sslxnsy。","认证策略名");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# aaa authentication list “sslvpn。");
+							instruArr[1] = createCmdInstruSpan("“sslvpn。","认证策略名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("启用context");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# inservice");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# inservice");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("clientless，配置书签","i13-6");
 
 						createInstruT2("配置url-list");
 							createInstruT3("创建url-list");
-								instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# url-list “bookmark。");
+								instruArr[0] = createCmdSpan("R1(config-webvpn-context)# url-list “bookmark。");
 								instruArr[1] = createCmdInstruSpan("“bookmark。","url-list名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置书签列标题");
-								instruArr[0] = createCmdSpan("R1(config-webxnsy-url)# heading “insdie-server。");
+								instruArr[0] = createCmdSpan("R1(config-webvpn-url)# heading “insdie-server。");
 								instruArr[1] = createCmdInstruSpan("“insdie-server。","书签列标题，用户可看到");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("配置具体书签");
-								instruArr[0] = createCmdSpan("R1(config-webxnsy-url)# url-text “web-server。 url-value “http://192.168.10.1。");
+								instruArr[0] = createCmdSpan("R1(config-webvpn-url)# url-text “web-server。 url-value “http://192.168.10.1。");
 								instruArr[1] = createCmdInstruSpan("“web-server。","具体书签文字");
 								instruArr[2] = createCmdInstruSpan("“http://192.168.10.1。","链接地址");
 								instruArr[3] = createCmdInstruSpan("一个书签列下可以有多个书签");
@@ -2394,35 +2394,35 @@
 							createInstruT3("创建policy group");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# policy group “gp。");
+								instruArr[0] = createCmdSpan("R1(config-webvpn-context)# policy group “gp。");
 								instruArr[1] = createCmdInstruSpan("“gp。","policy group 名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("关联url-list");
-								instruArr[0] = createCmdSpan("R1(config-webxnsy-group)# url-list “bookmark。");
+								instruArr[0] = createCmdSpan("R1(config-webvpn-group)# url-list “bookmark。");
 								instruArr[1] = createCmdInstruSpan("“bookmark。","url-list名");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("隐藏地址栏");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-webxnsy-group)# hide-url-bar");
+								instruArr[0] = createCmdSpan("R1(config-webvpn-group)# hide-url-bar");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("将policy group关联到context");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# default-group-policy “gp。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# default-group-policy “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp。","policy group 名");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("port-forwarding","i13-7");
 
 						createInstruT2("创建port-forwarding");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# port-forward “inside-telnet。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# port-forward “inside-telnet。");
 							instruArr[1] = createCmdInstruSpan("“inside-telnet。","port-forward名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置转换项");
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-port-fwd)# local-port “5555。 remote-server “192.168.10.1。 remote-port “23。 description “telnet-server。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-port-fwd)# local-port “5555。 remote-server “192.168.10.1。 remote-port “23。 description “telnet-server。");
 							instruArr[1] = createCmdInstruSpan("“5555。","本地端口号");
 							instruArr[2] = createCmdInstruSpan("“192.168.10.1。","内部设备地址");
 							instruArr[3] = createCmdInstruSpan("“23。","内部设备端口号");
@@ -2432,37 +2432,37 @@
 						createInstruT2("关联到policy group");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# policy group “gp。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# policy group “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp","policy group名");
-							instruArr[2] = createCmdSpan("R1(config-webxnsy-group)# port-forward “inside-telnet。");
+							instruArr[2] = createCmdSpan("R1(config-webvpn-group)# port-forward “inside-telnet。");
 							instruArr[3] = createCmdInstruSpan("“inside-telnet。","port-forward名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("将policy group关联到context");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# default-group-policy “gp。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# default-group-policy “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp。","policy group名");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("Anyconnect","i13-8");
 						createInstruT2("加载flash内的anyconnection文件");
-							instruArr[0] = createCmdSpan("R1(config)# crypto xnsy anyconnect “flash:/anyconnection-win.pkg。");
+							instruArr[0] = createCmdSpan("R1(config)# crypto vpn anyconnect “flash:/anyconnection-win.pkg。");
 							instruArr[1] = createCmdInstruSpan("“flash:/anyconnection-win.pkg。","annconnection文件路径");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置anyconnect模式");
-							instruArr[0] = createCmdSpan("R1(config)# webxnsy context “con。");
+							instruArr[0] = createCmdSpan("R1(config)# webvpn context “con。");
 							instruArr[1] = createCmdInstruSpan("“con。","context名");
-							instruArr[2] = createCmdSpan("R1(config-webxnsy-context)# policy group “gp。");
+							instruArr[2] = createCmdSpan("R1(config-webvpn-context)# policy group “gp。");
 							instruArr[3] = createCmdInstruSpan("“gp。","policy group名");
-							instruArr[4] = createCmdSpan("R1(config-webxnsy-group)# functions { svc-enabled | svc-required }");
+							instruArr[4] = createCmdSpan("R1(config-webvpn-group)# functions { svc-enabled | svc-required }");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("关联IP地址池");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-group)# svc address-pool “sslpool。 [ netmask “255.255.255.0。 ]");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-group)# svc address-pool “sslpool。 [ netmask “255.255.255.0。 ]");
 							instruArr[1] = createCmdInstruSpan("“sslpool。","IP地址池名");
 							instruArr[2] = createCmdInstruSpan("[ netmask “255.255.255.0。 ]","子网掩码，省略按标准的主类地址处理");
 							createCmdInstruT2(instruArr,"cisco");
@@ -2470,7 +2470,7 @@
 						createInstruT2("保持客户端在电脑（不配置采用默认的，下线后会卸载）");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-group)# svc keep-client-installed");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-group)# svc keep-client-installed");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("关联隧道（建议配置）");
@@ -2482,18 +2482,18 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("context关联虚模版，先将context停止，关联后再启用");
-								instruArr[0] = createCmdSpan("R1(config)# webxnsy context “con。");
+								instruArr[0] = createCmdSpan("R1(config)# webvpn context “con。");
 								instruArr[1] = createCmdInstruSpan("“con。","context名");
-								instruArr[2] = createCmdSpan("R1(config-webxnsy-context)# no inservice ");
-								instruArr[3] = createCmdSpan("R1(config-webxnsy-context)# virtual-template “100。 tunnel");
+								instruArr[2] = createCmdSpan("R1(config-webvpn-context)# no inservice ");
+								instruArr[3] = createCmdSpan("R1(config-webvpn-context)# virtual-template “100。 tunnel");
 								instruArr[4] = createCmdInstruSpan("“100。","虚模式版编号");
-								instruArr[5] = createCmdSpan("R1(config-webxnsy-context)# inservice");
+								instruArr[5] = createCmdSpan("R1(config-webvpn-context)# inservice");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("将policy group关联到context");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("R1(config-webxnsy-context)# default-group-policy “gp。");
+							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# default-group-policy “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp。","policy group名");
 							createCmdInstruT2(instruArr,"cisco");
 			</script>

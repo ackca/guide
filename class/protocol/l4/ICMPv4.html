@@ -733,11 +733,10 @@
 					createInstruAllTopT0("ICMP主要用于两点：1、确认网络是否正常工作，2、遇到异常时进行问题诊断");
 
 				createInstruT0("ICMP 通用协议结构","i2");
-					document.writeln("<br />");
 					createProtocolStructT0(
-						"820",
-						"220",
-						"1120",
+						"830",
+						"242",
+						"1210",
 						"ICMP/ICMP",
 					);
 
@@ -754,7 +753,7 @@
 						与类型相关
 						与类型相关，不同类型的ICMP报文，格式不同
 						`;
-						createProtocolExplainT0(words, -225.5);
+						createProtocolExplainT0(words, -242);
 
 				createInstruT0("ICMPv4 报文类型<br />","i5");
 					tHeader = [
@@ -808,9 +807,9 @@
 				createInstruT0("回显请求/响应 报文（ping）","i3");
 					createInstruT1("回显请求/响应 报文结构","i3-1");
 						createProtocolStructT1(
-							"820",
-							"290",
-							"2210",
+							"830",
+							"312",
+							"2184",
 							"ICMP/ping",
 							"ping"
 						);
@@ -834,7 +833,7 @@
 							数据（Data）
 							数据部分
 						`;
-						createProtocolExplainT2(words, -316.5, "ping");
+						createProtocolExplainT2(words, -312, "ping");
 
 					createInstruT1("回显请求/响应 报文实例","i3-2");
 						createInstruT2("ping请求报文（echo）","i3-2-1");

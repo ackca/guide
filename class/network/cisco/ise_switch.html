@@ -28,6 +28,13 @@
 							line con 0
 							 login authentication linelogin
 							!
+							radius server pan-p
+							 address ipv4 10.1.20.241 auth-port 1812 acct-port 1813
+							 key cisco
+							!
+							aaa group server radius ISE
+							 server name pan-p
+							!
 							aaa authentication dot1x default group ISE
 							aaa authorization network default group ISE
 							aaa accounting dot1x default start-stop group ISE
@@ -103,12 +110,40 @@
 							instruArr[5] = createCmdInstruSpan("“linelogin。","用于线下保护的登录策略名");
 							createCmdInstruT2(instruArr,"cisco");
 
+						createInstruT2("交换机指定ISE","i2-1-6");
+							createInstruAllTopT2("先配置单个ISE，再加入ISE组中，如果存在冗余，将多个ISE加入组中");
+							createInstruT3("配置单个radius服务器（ISE）地址及相关信息");
+								instruArr[0] = createCmdSpan("SW1(config)# radius server “pan-p。");
+								instruArr[1] = createCmdInstruSpan("“pan-p。","ISE名");
+								instruArr[2] = createCmdSpan("SW1(config-radius-server)# address ipv4 “10.1.100.241。 [ auth-port “1812。 acct-port “1813。 ]");
+								instruArr[3] = createCmdInstruSpan("“10.1.100.241。","ISE的IP地址");
+								instruArr[4] = createCmdInstruSpan("“1812。","认证与授权的端口号");
+								instruArr[5] = createCmdInstruSpan("“1813。","审计的端口号");
+								instruArr[6] = createCmdSpan("SW1(config-radius-server)# key “cisco。");
+								instruArr[7] = createCmdInstruSpan("“cisco。","与ISE间的预共享密匙");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置radius服务器（ISE）组");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("SW1(config)# aaa group server radius “ISE。");
+								instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
+								instruArr[2] = createCmdSpan("SW1(config-sg-radius)# server name “pan-p。");
+								instruArr[3] = createCmdInstruSpan("“pan-p。","单个radius服务器名，如果ISE存在冗余，配置多条 server … 命令");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("测试与ISE的连通性");
+								instruArr[0] = createCmdSpan("SW1# test aaa group “ISE。 “itachi。 “Cisc0123。 new-code");
+								instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
+								instruArr[2] = createCmdInstruSpan("“itachi。","用户名");
+								instruArr[3] = createCmdInstruSpan("“Cisc0123。","密码");
+								createCmdInstruT3(instruArr,"cisco");
+
 						createInstruT2("启用802.1x认证、授权与审计","i2-1-2");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("SW1(config)# aaa authentication dot1x default group radius");
-							instruArr[1] = createCmdSpan("SW1(config)# aaa authorization network default group radius");
-							instruArr[2] = createCmdSpan("SW1(config)# aaa accounting dot1x default start-stop group radius");
+							instruArr[0] = createCmdSpan("SW1(config)# aaa authentication dot1x default group “ISE。");
+							instruArr[1] = createCmdSpan("SW1(config)# aaa authorization network default group “ISE。");
+							instruArr[2] = createCmdSpan("SW1(config)# aaa accounting dot1x default start-stop group “ISE。");
+							instruArr[3] = createCmdInstruSpan("“ISE。","ISE组名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("启用CoA","i2-1-3");
@@ -140,35 +175,6 @@
 							instruArr[3] = createCmdInstruSpan("“10。","最多追踪10个设备");
 							instruArr[4] = createCmdSpan("SW1(config-device-tracking)#tracking enable ");
 							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("交换机指定ISE","i2-1-6");
-							createInstruAllTopT2("先配置单个ISE，再加入ISE组中，如果存在冗余，将多个ISE加入组中");
-							createInstruT3("配置单个radius服务器（ISE）地址及相关信息");
-								instruArr[0] = createCmdSpan("SW1(config)# radius server “PAN-P。");
-								instruArr[1] = createCmdInstruSpan("“PAN-P。","ISE名");
-								instruArr[2] = createCmdSpan("SW1(config-radius-server)# address ipv4 “10.1.100.241。 [ auth-port “1812。 acct-port “1813。 ]");
-								instruArr[3] = createCmdInstruSpan("“10.1.100.241。","ISE的IP地址");
-								instruArr[4] = createCmdInstruSpan("“1812。","认证与授权的端口号，省略则默认1645");
-								instruArr[5] = createCmdInstruSpan("“1813。","审计的端口号，省略则默认1646");
-								instruArr[6] = createCmdSpan("SW1(config-radius-server)# key “cisco。");
-								instruArr[7] = createCmdInstruSpan("“cisco。","与ISE间的预共享密匙");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("配置radius服务器（ISE）组");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("SW1(config)# aaa group server radius “ISE。");
-								instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
-								instruArr[2] = createCmdSpan("SW1(config-sg-radius)# server name “PSN-1。");
-								instruArr[3] = createCmdInstruSpan("“PSN-1。","单个radius服务器名，如果ISE存在冗余，配置多条 server … 命令");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("测试与ISE的连通性");
-								instruArr[0] = createCmdSpan("SW1# test aaa group “ISE。 “itachi。 “Cisc0123。 new-code");
-								instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
-								instruArr[2] = createCmdInstruSpan("“itachi。","用户名");
-								instruArr[3] = createCmdInstruSpan("“Cisc0123。","密码");
-								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("配置radius属性","i2-1-7");
 							createInstruT3("配置radius属性6");

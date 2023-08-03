@@ -172,8 +172,8 @@
 						document.writeln("<br />");
 						createProtocolStructT1(
 							"820",
-							"300",
-							"2080",
+							"305",
+							"2135",
 							"DNS/header",
 							"DNS_header"
 						);
@@ -197,15 +197,15 @@
 							额外资源记录数（Additional）
 							由16 bit构成，表示之后的额外资源字段中的额外资源数量
 						`;
-						createProtocolExplainT0(words, -295, "DNS_header");
+						createProtocolExplainT0(words, -305, "DNS_header");
 
 					document.writeln("<br /><br />");
 					createInstruT1("DNS报文查询字段说明","i2-5");
 						document.writeln("<br />");
 						createProtocolStructT1(
 							"820",
-							"220",
-							"930",
+							"243",
+							"972",
 							"DNS/question",
 							"DNS_question"
 						);
@@ -221,15 +221,15 @@
 							类（Class）
 							由16 bit构成，取值为1，表示Internet
 						`;
-						createProtocolExplainT0(words, -237.6, "DNS_question");
+						createProtocolExplainT0(words, -243, "DNS_question");
 
 					document.writeln("<br /><br />");
 					createInstruT1("DNS报文回答、授权、额外信息字段说明","i2-6");
 						document.writeln("<br />");
 						createProtocolStructT1(
-							"820",
-							"410",
-							"3060",
+							"830",
+							"414",
+							"2898",
 							"DNS/other",
 							"DNS_other"
 						);
@@ -254,7 +254,7 @@
 							资源数据长度（Data Length）
 							长度可变，根据不同的响应类型，确定内容，如：A记录则为对应的IPv4地址
 						`;
-						createProtocolExplainT0(words, -440, "DNS_other");
+						createProtocolExplainT0(words, -414, "DNS_other");
 
 					createInstruT0("简单解析实例","i4");
 						document.writeln("<br />");

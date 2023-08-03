@@ -764,11 +764,68 @@ function createProtocolStructT2(imgWidth, imgHeight, SFHeight, imgUrl, divID = '
 function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, divID) {
 	htmlText = "<div class='divSJ" + divT + "'>";
 	htmlText = htmlText + "<div class='divProtocolStruct'>";
-	htmlText = htmlText + "<div id='" + divID + "' style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
+	onclinkStr = "\"protocolStructClick(" + imgWidth + "," + imgHeight + "," + SFHeight + ",\'" + imgUrl + "\')\"";
+	htmlText = htmlText + "<div id='" + divID + "' onclick=" + onclinkStr + " style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
 	htmlText = htmlText + "</div>";
 	htmlText = htmlText + "</div>";
 	document.write(htmlText);
 }
+
+function protocolStructClick(imgWidth, imgHeight, SFHeight, imgUrl) {
+	// alert(imgWidth);
+	// alert(imgHeight);
+	// alert(SFHeight);
+	// alert(imgUrl);
+	$('#protocolImg').css("width", imgWidth + "px");
+	$('#protocolImg').css("height", imgHeight + "px");
+	$('#protocolImg').css("background-image", "url(config_img/" + imgUrl + ".png)");
+	$('#protocolImg').css("display", "flex");
+	// $('#protocolImg').onmousemove = function (e) {
+	// 	e = e || window.event;
+	// 	// 盒子的位置
+	// 	var x = getPage(e).pageX - $('#protocolImg').offsetLeft;
+	// 	var y = getPage(e).pageY - $('#protocolImg').offsetTop;
+	// 	document.onmousemove = function (e) {
+	// 		e = e || window.event;
+	// 		pleft = getPage(e).pageX - x + 'px';
+	// 		ptop = getPage(e).pageY - y + 'px';
+	// 		// $('#protocolImg').offset({top:ptop,left:pleft});
+	// 		// $('#protocolImg').offset({top:'100px',left:'200px'});
+	// 		$('#protocolImg').css("left", pleft);
+	// 		$('#protocolImg').css("top", ptop);
+	// 		console.log(2222);
+	// 	}
+	// }
+}
+
+function protocolMove(e) {
+	e = e || window.event;
+	// 盒子的位置
+	var x = getPage(e).pageX - $('#protocolImg').offset().left;
+	var y = getPage(e).pageY - $('#protocolImg').offset().top;
+
+	document.onmousemove = function (e) {
+		e = e || window.event;
+		pleft = getPage(e).pageX - x + 'px';
+		ptop = getPage(e).pageY - y + 'px';
+
+		$('#protocolImg').css("left", pleft);
+		$('#protocolImg').css("top", ptop);
+
+	}
+}
+
+function getPage(e) {
+  var pageX = e.pageX || e.clientX + getScroll().scrollLeft;
+  var pageY = e.pageY || e.clientY + getScroll().scrollTop;
+  return {
+    pageX: pageX,
+    pageY: pageY
+  }
+}
+// document.onmouseup = function () {
+// 	document.onmousemove = null;
+// }
 
 function heightlightField(protocolField, k, structID) {
 	y = (k * protocolField).toString() + 'px';

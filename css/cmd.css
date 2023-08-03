@@ -40,6 +40,7 @@ body, html
 .instruT0
 {
 	color: #0080FF;
+	/*color: #00BBFF;*/
 	font-size: 35px;
 }
 
@@ -87,7 +88,7 @@ body, html
 
 .instruT1 a, .instruT2 a, .instruT3 a
 {
-	font-size: 80%;
+	/*font-size: 80%;*/
 	font-weight: normal;
 	color: #AC80FF;
 }
@@ -614,6 +615,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	text-align: center;
 	z-index: 5;
 	margin-top: 24.5px;
+	/*margin-top: 15px;*/
 }
 
 .protocolSX
@@ -744,4 +746,48 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	padding-bottom: 2px;
 	border-radius: 5px;
 	display: none;
+}
+
+#divProtocolStruct
+{
+	cursor: pointer;
+}
+
+#divProtocol
+{
+	z-index: 100;
+}
+
+#protocolImg
+{
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	flex-direction: column;
+    box-sizing: border-box;
+	cursor: move;
+	z-index: 100;
+}
+
+#close
+{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: normal;
+    display: block;
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 20px;
+    color: #7a9ae4;
+	z-index: 200;
+}
+
+#close:hover
+{
+    background-color: #52699e;
+    cursor: pointer;
 }

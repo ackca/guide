@@ -65,11 +65,10 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				 createInstruT0("IPv6 首部字段说明","i1");
-					document.writeln("<br />");
 					createProtocolStructT0(
-						"1000",
-						"370",
-						"3896",
+						"1150",
+						"459",
+						"4590",
 						"IPv6/IPv6",
 					);
 
@@ -102,7 +101,7 @@
 						数据部分（Data）
 						IPv6数据部分
 					`;
-					createProtocolExplainT0(words, -391.3);
+					createProtocolExplainT0(words, -459);
 
 				createInstruT0("常规IPv6报文实例实例","i2");
 					createInstruT1("实例为ping报文，如下所示");
@@ -112,11 +111,10 @@
 				createInstruT0("IPv6 分片","i3");
 					createInstruT1("IPv6 分片头部","i3-5");
 						createInstruAllTopT1("为了分片，IPv6设计了分片头部，分片头部的大小（8字节）计算在IPv6的负载部分");
-						document.writeln("<br />");
 						createProtocolStructT1(
-							"700",
-							"250",
-							"1931",
+							"830",
+							"287",
+							"2009",
 							"IPv6/IPv6_Fragment",
 							"protocolStructure1"
 						);
@@ -140,7 +138,7 @@
 							标识（Identification）
 							由32 bit构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。
 						`;
-						createProtocolExplainT1(words, -274, 'protocolStructure1');
+						createProtocolExplainT1(words, -287, 'protocolStructure1');
 
 					createInstruT1("IPv6 分片只在发送设备分片","i3-1");
 						createInstruAllTopT1("在设备的‘出方向。，如果IPv6报文大于MTU，则需要分片");
@@ -180,7 +178,7 @@
 						["FF02::2","所有路由器",""],
 						["FF02::1:2","所有DHCP代理","所有DHCP服务器及中继代理监听的地址"],
 					];
-					createHLTableT0(1000, tHeader, tBody, "tV6address");
+					createHLTableT0(1100, tHeader, tBody, "tV6address");
 
 				createInstruT0("IPv6特定地址的构成方式","i5");
 					createInstruT1("IPv6组播mac地址","i5-1");
