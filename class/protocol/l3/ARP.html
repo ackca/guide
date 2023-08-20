@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -27,6 +31,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_arp, '../../../');
@@ -45,11 +53,12 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("ARP 首部字段说明","i1");
-					createProtocolStruct(
-						"1038",
-						"510",
-						"5100",
-						"ARP/ARP"
+					createProtocolStructT0(
+						"1000",
+						"470",
+						"4700",
+						"ARP/ARP",
+						"ARP协议",
 					);
 
 					words = `
@@ -80,7 +89,7 @@
 						目标协议地址（Target Protocol Address）
 						由32 bit构成，表示目标IPv4地址
 					`;
-					createProtocolExplain(words, -510);
+					createProtocolExplain(words, -470);
 
 				createInstruT0("ARP 实例","i2");
 					createInstruT1("ARP请求&响应","i2-1");

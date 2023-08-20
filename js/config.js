@@ -322,8 +322,8 @@ function createYAML(cmds, cmdT) {
 		index = cmd_arr[i].indexOf('#');
 		console.log(cmd_arr[i])
 		if(index == 0) {	//纯注释
-			console.log('%%%%%%%%%%%%%%%%%%%%%%'+cmd_arr[i])
-			console.log(i)
+			// console.log('%%%%%%%%%%%%%%%%%%%%%%'+cmd_arr[i])
+			// console.log(i)
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
 			continue;		//纯注释，无需进行后面的分解
 		}
@@ -734,6 +734,52 @@ function addSQLSpan(cmd) {
 	return cmd;
 }
 
+function splitBR(text) {
+	reg = new RegExp("(^(<br />)*)(.+?)((<br />)*$)");
+	br = text.match(reg);
+	return [br[1], br[3], br[4]];
+}
+
+function linuxCopy(element) {
+	txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
+	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
+	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ');
+	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
+	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
+	// \r\n：windows的换行
+
+	const textarea = document.createElement('textarea');	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
+	textarea.value = txt;					// 设置内容
+	document.body.appendChild(textarea);	// 添加临时实例
+	textarea.select();						// 选择实例内容
+	document.execCommand('Copy');			// 执行复制
+	document.body.removeChild(textarea);	// 删除临时实例
+
+	$(element).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
+	setTimeout(function() { $(element).next().fadeOut(500) }, 1000)
+
+}
+
+function reverse_protocol(protocol_l) {
+    var row_id = [];
+    var row_innerHTML = [];
+
+    for (i = 1; ; i++) {
+        var element = document.getElementById(protocol_l + "r" + i);
+        if(element) {
+            row_id.push(protocol_l + "r" + i);
+            row_innerHTML.push(element.innerHTML);
+        }
+        else {
+            break;
+        }
+    }
+
+    for(i = 0; i < row_id.length; i++) {
+        document.getElementById(row_id[i]).innerHTML = row_innerHTML[row_innerHTML.length - i - 1];
+    }
+}
+
 function createProtocolWord(protocolSX, protocolQC, protocolZW) {
 	htmlText = "<div style='display: inline-block'>";
 	htmlText = htmlText + "<table>";
@@ -749,91 +795,32 @@ function createProtocolWord(protocolSX, protocolQC, protocolZW) {
 	document.write(htmlText);
 }
 
-function createProtocolStructT0(imgWidth, imgHeight, SFHeight, imgUrl, divID = 'divProtocolStruct') {
-	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T0", divID);
+function createProtocolStructT0(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = 'divProtocolStruct') {
+	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T0", protocolName, divID);
 }
 
-function createProtocolStructT1(imgWidth, imgHeight, SFHeight, imgUrl, divID = 'divProtocolStruct') {
-	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T1", divID);
+function createProtocolStructT1(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = 'divProtocolStruct') {
+	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T1", protocolName, divID);
 }
 
-function createProtocolStructT2(imgWidth, imgHeight, SFHeight, imgUrl, divID = 'divProtocolStruct') {
-	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T2", divID);
+function createProtocolStructT2(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = 'divProtocolStruct') {
+	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T2", protocolName, divID);
 }
-
-function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, divID) {
-	htmlText = "<div class='divSJ" + divT + "'>";
-	htmlText = htmlText + "<div class='divProtocolStruct'>";
-	onclinkStr = "\"protocolStructClick(" + imgWidth + "," + imgHeight + "," + SFHeight + ",\'" + imgUrl + "\')\"";
-	htmlText = htmlText + "<div id='" + divID + "' onclick=" + onclinkStr + " style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
-	htmlText = htmlText + "</div>";
-	htmlText = htmlText + "</div>";
-	document.write(htmlText);
-}
-
-function protocolStructClick(imgWidth, imgHeight, SFHeight, imgUrl) {
-	// alert(imgWidth);
-	// alert(imgHeight);
-	// alert(SFHeight);
-	// alert(imgUrl);
-	$('#protocolImg').css("width", imgWidth + "px");
-	$('#protocolImg').css("height", imgHeight + "px");
-	$('#protocolImg').css("background-image", "url(config_img/" + imgUrl + ".png)");
-	$('#protocolImg').css("display", "flex");
-	// $('#protocolImg').onmousemove = function (e) {
-	// 	e = e || window.event;
-	// 	// 盒子的位置
-	// 	var x = getPage(e).pageX - $('#protocolImg').offsetLeft;
-	// 	var y = getPage(e).pageY - $('#protocolImg').offsetTop;
-	// 	document.onmousemove = function (e) {
-	// 		e = e || window.event;
-	// 		pleft = getPage(e).pageX - x + 'px';
-	// 		ptop = getPage(e).pageY - y + 'px';
-	// 		// $('#protocolImg').offset({top:ptop,left:pleft});
-	// 		// $('#protocolImg').offset({top:'100px',left:'200px'});
-	// 		$('#protocolImg').css("left", pleft);
-	// 		$('#protocolImg').css("top", ptop);
-	// 		console.log(2222);
-	// 	}
-	// }
-}
-
-function protocolMove(e) {
-	e = e || window.event;
-	// 盒子的位置
-	var x = getPage(e).pageX - $('#protocolImg').offset().left;
-	var y = getPage(e).pageY - $('#protocolImg').offset().top;
-
-	document.onmousemove = function (e) {
-		e = e || window.event;
-		pleft = getPage(e).pageX - x + 'px';
-		ptop = getPage(e).pageY - y + 'px';
-
-		$('#protocolImg').css("left", pleft);
-		$('#protocolImg').css("top", ptop);
-
-	}
-}
-
-function getPage(e) {
-  var pageX = e.pageX || e.clientX + getScroll().scrollLeft;
-  var pageY = e.pageY || e.clientY + getScroll().scrollTop;
-  return {
-    pageX: pageX,
-    pageY: pageY
-  }
-}
-// document.onmouseup = function () {
-// 	document.onmousemove = null;
-// }
 
 function heightlightField(protocolField, k, structID) {
 	y = (k * protocolField).toString() + 'px';
-	$(structID).css('background-position-y',y);
+	$(structID).css('background-position-y', y);
+	if (structID.substring(1) == $('#divProtocol').attr("protocolID")) {
+		$('#protocolImg').css('background-position-y', y);
+	}
+
 }
 
 function initProtocol(structID) {
 	$(structID).css('background-position-y','0px');
+	if (structID.substring(1) == $('#divProtocol').attr("protocolID")) {
+		$('#protocolImg').css('background-position-y','0px');
+	}
 }
 
 function createProtocolExplainT0(words, k, structID = 'divProtocolStruct') {
@@ -865,28 +852,103 @@ function createProtocolExplain(words, k, structID, divT) {
 	document.writeln(htmlText);
 }
 
-function splitBR(text) {
-	reg = new RegExp("(^(<br />)*)(.+?)((<br />)*$)");
-	br = text.match(reg);
-	return [br[1], br[3], br[4]];
+function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, protocolName, divID) {
+	htmlText = "<div class='divSJ" + divT + "'>";
+	htmlText = htmlText + "<div class='divProtocolStruct'>";
+	// onclinkStr = "\"protocolStructClick(" + imgWidth + "," + imgHeight + "," + SFHeight + ",\'" + imgUrl + "\')\"";
+	// htmlText = htmlText + "<div id='" + divID + "' ondblclick='ddl()' onclick=" + onclinkStr + " style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
+	htmlText = htmlText + "<div id='" + divID + "' protocolName='" + protocolName + "' ondblclick='protocolStructdbClick(this)' onclick='protocolStructClick(this)' " +
+		"style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
+
+	htmlText = htmlText + "</div>";
+	htmlText = htmlText + "</div>";
+	document.write(htmlText);
 }
 
-function linuxCopy(element) {
-	txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
-	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
-	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ');
-	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
-	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
-	// \r\n：windows的换行
+// function protocolStructClick(imgWidth, imgHeight, SFHeight, imgUrl) {
+// 	$('#protocolImg').css("width", imgWidth + "px");
+// 	$('#protocolImg').css("height", imgHeight + "px");
+// 	$('#protocolImg').css("background-image", "url(config_img/" + imgUrl + ".png)");
+// 	$('#divProtocol').css("display", "flex");
+// 	$('#divProtocol').css("width", imgWidth + "px");
+// 	$('#divProtocol').css("height", imgHeight + 25 + "px");
+// 	// $('#divProtocol').css("top", $(window).scrollTop() + "px");
+// 	$('#divProtocol').css("top", 0);
+// 	$('#divProtocol').css("left", "inherit");
+// 	$('#divProtocol').css("right", 0);
+// 	$('#divProtocol').attr("protocolID", '0123');
+// }
 
-	const textarea = document.createElement('textarea');	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
-	textarea.value = txt;					// 设置内容
-	document.body.appendChild(textarea);	// 添加临时实例
-	textarea.select();						// 选择实例内容
-	document.execCommand('Copy');			// 执行复制
-	document.body.removeChild(textarea);	// 删除临时实例
+var timeFN = null;
+function protocolStructClick(elem) {
+	// console.log(elem.id)
+	// console.log($(elem).css("width"))
 
-	$(element).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
-	setTimeout(function() { $(element).next().fadeOut(500) }, 1000)
+	clearTimeout(timeFN);
+	timeFN = setTimeout(function () {
+		$('#protocolImg').css("width", $(elem).css("width"));
+		$('#protocolImg').css("height", $(elem).css("height"));
+		$('#protocolImg').css("background-image", $(elem).css("background-image"));
+		$('#divProtocol').css("display", "flex");
+		$('#divProtocol').css("width", $(elem).css("width"));
+		$('#divProtocol').css("height", $(elem).css("height") + 25);
+		$('#divProtocol').css("top", 0);
+		$('#divProtocol').css("left", "inherit");
+		$('#divProtocol').css("right", 0);
+		$('#divProtocol').attr("protocolID", elem.id);
+	}, 200);
 
+}
+
+function protocolMove(e) {
+	// console.log(232323)
+	e = e || window.event;
+	// 盒子的位置
+	var x = getPage(e).pageX - $('#divProtocol').offset().left;
+	var y = getPage(e).pageY - $('#divProtocol').offset().top;
+
+	document.onmousemove = function (e) {
+		e = e || window.event;
+		// pleft = getPage(e).pageX - x + 'px';
+		// ptop = getPage(e).pageY - y + 'px';
+
+		pleft = getPage(e).pageX - $(window).scrollLeft() - x + 'px';
+		ptop = getPage(e).pageY - $(window).scrollTop() - y + 'px';
+
+		$('#divProtocol').css("left", pleft);
+		$('#divProtocol').css("top", ptop);
+
+	}
+}
+
+function getPage(e) {
+	var pageX = e.pageX || e.clientX + getScroll().scrollLeft;
+	var pageY = e.pageY || e.clientY + getScroll().scrollTop;
+	return {
+		pageX: pageX,
+		pageY: pageY
+	}
+}
+
+function closeProtocol() {
+	$('#divProtocol').css("display", "none");
+}
+
+function protocolStructdbClick(elem) {
+	// console.log('12ds')
+	clearTimeout(timeFN);
+	// console.log(elem)
+	protocolWidth = $(elem).css("width");
+	protocolHeight =  $(elem).css("height");
+	protocolBgImage = $(elem).css("background-image");
+
+	protocolHTML = "<title>" + $(elem).attr("protocolName") + "结构</title>" +
+		"<body style='margin: 0; background-color: #494A5F'></body>" +
+		"<div style='font-size: 50px; font-weight: bold; text-align: center; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
+			$(elem).attr("protocolName") + "结构" +
+		"</div>" +
+		"<div style='margin: 20px auto; width:" + protocolWidth + "; height:" + protocolHeight + "; " +	"background-image: " + protocolBgImage + "'></div></body>";
+
+	nwin = window.open('');
+	nwin.document.writeln(protocolHTML)
 }

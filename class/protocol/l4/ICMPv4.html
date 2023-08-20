@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -697,6 +701,10 @@
 	</script>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_icmpv4, '../../../');
@@ -734,10 +742,11 @@
 
 				createInstruT0("ICMP 通用协议结构","i2");
 					createProtocolStructT0(
-						"830",
-						"242",
-						"1210",
+						"815",
+						"220",
+						"1100",
 						"ICMP/ICMP",
+						"ICMP通用协议"
 					);
 
 					words = `
@@ -753,7 +762,7 @@
 						与类型相关
 						与类型相关，不同类型的ICMP报文，格式不同
 						`;
-						createProtocolExplainT0(words, -242);
+						createProtocolExplainT0(words, -220);
 
 				createInstruT0("ICMPv4 报文类型<br />","i5");
 					tHeader = [
@@ -807,11 +816,13 @@
 				createInstruT0("回显请求/响应 报文（ping）","i3");
 					createInstruT1("回显请求/响应 报文结构","i3-1");
 						createProtocolStructT1(
-							"830",
-							"312",
-							"2184",
+							"815",
+							"290",
+							"2030",
 							"ICMP/ping",
-							"ping"
+							"回显请求/响应（ping）报文",
+							"ping",
+
 						);
 
 						words = `
@@ -833,7 +844,7 @@
 							数据（Data）
 							数据部分
 						`;
-						createProtocolExplainT2(words, -312, "ping");
+						createProtocolExplainT2(words, -290, "ping");
 
 					createInstruT1("回显请求/响应 报文实例","i3-2");
 						createInstruT2("ping请求报文（echo）","i3-2-1");

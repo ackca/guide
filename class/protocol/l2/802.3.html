@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -17,6 +21,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_8023, '../../../');
@@ -27,7 +35,7 @@
 				createProtocolWord(
 					"802.3",
 					"",
-					"",
+					""
 				);
 			</script>
 		</div><br />
@@ -36,10 +44,11 @@
 			<script type="text/javascript">
 				createInstruT0("802.3 首部字段说明","i1");
 					createProtocolStructT0(
-						"1622",
-						"326",
-						"2934",
-						"802.3/802.3"
+						"1600",
+						"300",
+						"2700",
+						"802.3/802.3",
+						"802.3协议",
 					);
 
 					words = `
@@ -64,7 +73,7 @@
 						帧校验序列（FCS）
 						由4字节构成，对帧完整性的检查
 					`;
-					createProtocolExplainT0(words, -326);
+					createProtocolExplainT0(words, -300);
 
 				createInstruT0("802.3 实例","i2");
 					createInstruT1("实例为CDP报文，如下所示");

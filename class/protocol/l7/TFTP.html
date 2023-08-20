@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -17,6 +21,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_tftp, '../../../');
@@ -63,10 +71,11 @@
 				createInstruT0("TFTP 不同类型报文","i2");
 					createInstruT1("TFTP 报文概述","i2-5");
 						createProtocolStructT1(
-							"800",
-							"465",
-							"465",
-							"TFTP/TFTP"
+							"980",
+							"575",
+							"575",
+							"TFTP/TFTP",
+							"TFTP协议"
 						);
 
 						createInstruAllTopT1("除第一字段外，其余字段与第一字段有关");
@@ -92,9 +101,10 @@
 						createInstruT2("RRQ / WRQ 报文结构","i2-1-1");
 							createProtocolStructT2(
 								"980",
-								"154",
-								"924",
+								"159",
+								"954",
 								"TFTP/TFTP12",
+								"TFTP协议 RRQ/WRQ（读/写）报文",
 								"protocolStructure1"
 							);
 							document.writeln("<br />");
@@ -115,7 +125,7 @@
 								0
 								由8 bit构成，值为0，表示模式终止
 							`;
-							createProtocolExplainT2(words, -154, 'protocolStructure1');
+							createProtocolExplainT2(words, -159, 'protocolStructure1');
 
 						createInstruT2("RRQ / WRQ 报文实例","i2-1-2");
 							createConfigImgT2("TFTP/TFTP_read");
@@ -125,9 +135,10 @@
 						createInstruT2("DATA 报文结构","i2-2-1");
 							createProtocolStructT2(
 								"838",
-								"154",
-								"616",
+								"159",
+								"636",
 								"TFTP/TFTP3",
+								"TFTP协议 DATA（数据）报文",
 								"protocolStructure2"
 							);
 							document.writeln("<br />");
@@ -142,7 +153,7 @@
 								数据部分（Data）
 								根据TFTP的传输规则，除最后一块外，其余每块均为512字节，因此数据总分最大512字节
 							`;
-							createProtocolExplainT2(words, -154, 'protocolStructure2');
+							createProtocolExplainT2(words, -159, 'protocolStructure2');
 
 						createInstruT2("DATA 报文实例","i2-2-2");
 							createConfigImgT2("TFTP/TFTP_data");
@@ -151,9 +162,10 @@
 						createInstruT2("ACK 报文结构","i2-3-1");
 							createProtocolStructT2(
 								"497",
-								"154",
-								"462",
+								"159",
+								"477",
 								"TFTP/TFTP4",
+								"TFTP协议 ACK（确认）报文",
 								"protocolStructure3"
 							);
 							document.writeln("<br />");
@@ -165,7 +177,7 @@
 								块编号（Block Number）
 								16 bit构成，表示被确认的数据的编号，如果为0，则确认客户端的下载/上传的请求
 							`;
-							createProtocolExplainT2(words, -154, 'protocolStructure3');
+							createProtocolExplainT2(words, -159, 'protocolStructure3');
 
 						createInstruT2("ACK 报文实例","i2-3-2");
 							createConfigImgT2("TFTP/TFTP_ack");
@@ -174,9 +186,10 @@
 						createInstruT2("ERROR 报文结构","i2-4-1");
 							createProtocolStructT2(
 								"946",
-								"154",
-								"770",
+								"159",
+								"795",
 								"TFTP/TFTP5",
+								"TFTP协议 ERROR（错误）报文",
 								"protocolStructure4"
 							);
 							document.writeln("<br />");
@@ -194,7 +207,7 @@
 								0
 								由8 bit构成，值为0，表示差错信息终止
 							`;
-							createProtocolExplainT2(words, -154, 'protocolStructure4');
+							createProtocolExplainT2(words, -159, 'protocolStructure4');
 
 						createInstruT2("ERROR 报文实例","i2-4-2");
 					 		createConfigImgT2("TFTP/TFTP_error");

@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -57,6 +61,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_syslog, '../../../');
@@ -77,9 +85,10 @@
 				createInstruT0("syslog 报文结构","i1");
 					createProtocolStructT0(
 						"1060",
-						"230",
-						"690",
-						"syslog/syslog"
+						"220",
+						"660",
+						"syslog/syslog",
+						"syslog协议"
 					);
 
                     words = `
@@ -89,7 +98,7 @@
 						日志内容
                         由于syslog的协议规范制定比较晚，而且是推荐标准，所有实际的日志格式多样，基本只有PRI遵循规范
 					`;
-					createProtocolExplainT0(words, -230);
+					createProtocolExplainT0(words, -220);
 
 				createInstruT0("Facility取值对应关系","i2");
 					document.writeln("<br />");

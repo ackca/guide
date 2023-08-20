@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -73,6 +77,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_dns, '../../../');
@@ -130,7 +138,14 @@
 
 				createInstruT0("DNS报文格式","i2");
 					createInstruT1("DNS报文格式总览","i2-1");
-					createConfigImgT1("DNS/DNS");
+					createProtocolStructT1(
+							"1315",
+							"750",
+							"750",
+							"DNS/DNS",
+							"DNS协议",
+							"DNS"
+						);
 
 					createInstruT1("报文中域名表示方式","i2-2");
 						createInstruAllTopT1("下图即域名 www.jd.com 的表示方式，");
@@ -171,10 +186,11 @@
 					createInstruT1("DNS报文头部字段说明","i2-4");
 						document.writeln("<br />");
 						createProtocolStructT1(
-							"820",
-							"305",
-							"2135",
+							"815",
+							"285",
+							"1995",
 							"DNS/header",
+							"DNS报文头部",
 							"DNS_header"
 						);
 
@@ -197,16 +213,16 @@
 							额外资源记录数（Additional）
 							由16 bit构成，表示之后的额外资源字段中的额外资源数量
 						`;
-						createProtocolExplainT0(words, -305, "DNS_header");
+						createProtocolExplainT0(words, -285, "DNS_header");
 
 					document.writeln("<br /><br />");
 					createInstruT1("DNS报文查询字段说明","i2-5");
-						document.writeln("<br />");
 						createProtocolStructT1(
-							"820",
-							"243",
-							"972",
+							"815",
+							"220",
+							"880",
 							"DNS/question",
+							"DNS报文查询",
 							"DNS_question"
 						);
 
@@ -221,16 +237,17 @@
 							类（Class）
 							由16 bit构成，取值为1，表示Internet
 						`;
-						createProtocolExplainT0(words, -243, "DNS_question");
+						createProtocolExplainT0(words, -220, "DNS_question");
 
 					document.writeln("<br /><br />");
 					createInstruT1("DNS报文回答、授权、额外信息字段说明","i2-6");
 						document.writeln("<br />");
 						createProtocolStructT1(
-							"830",
-							"414",
-							"2898",
+							"815",
+							"400",
+							"2800",
 							"DNS/other",
+							"DNS报文回答、授权、额外信息",
 							"DNS_other"
 						);
 
@@ -254,7 +271,7 @@
 							资源数据长度（Data Length）
 							长度可变，根据不同的响应类型，确定内容，如：A记录则为对应的IPv4地址
 						`;
-						createProtocolExplainT0(words, -414, "DNS_other");
+						createProtocolExplainT0(words, -400, "DNS_other");
 
 					createInstruT0("简单解析实例","i4");
 						document.writeln("<br />");

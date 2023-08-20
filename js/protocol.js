@@ -226,23 +226,3 @@ function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
 
     return htmlText;
 }
-
-function reverse_protocol(protocol_l) {
-    var row_id = [];
-    var row_innerHTML = [];
-
-    for (i = 1; ; i++) {
-        var element = document.getElementById(protocol_l + "r" + i);
-        if(element) {
-            row_id.push(protocol_l + "r" + i);
-            row_innerHTML.push(element.innerHTML);
-        }
-        else {
-            break;
-        }
-    }
-
-    for(i = 0; i < row_id.length; i++) {
-        document.getElementById(row_id[i]).innerHTML = row_innerHTML[row_innerHTML.length - i - 1];
-    }
-}

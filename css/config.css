@@ -584,6 +584,83 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	background: #CFCFCF;
 }
 
+.divSJT0
+{
+	margin-left: 15px;
+}
+
+.divSJT1
+{
+	margin-left: 70px;
+}
+
+.divSJT2
+{
+	margin-left: 80px;
+}
+
+.divSJT3
+{
+	margin-left: 110px;
+}
+
+.cmdInstruAllTopT1 + .divSJT1,
+.cmdInstruAllTopT2 + .divSJT2,
+.cmdInstruAllTopT3 + .divSJT3
+{
+	margin-top: 15px;
+}
+
+.cmdInstruAllTopT1 + .divSJT1,
+.cmdInstruAllTopT2 + .divSJT2,
+.cmdInstruAllTopT3 + .divSJT3
+{
+	margin-top: 15px;
+}
+
+.spanY
+{
+	color: #FFFF00;
+}
+
+.divCopy
+{
+
+	padding: 5px;
+	padding-top: 2px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.divCopy:hover
+{
+	background-color: #4C5052;
+}
+
+.divCopy:active
+{
+	background-color: #5C6164;
+}
+
+.copysuccess
+{
+	position: absolute;
+	top: 25px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #494A5F;
+	font-size: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-radius: 5px;
+	display: none;
+}
+
 .divProtocolExplain
 {
 	margin-left: 20px;
@@ -670,104 +747,29 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	padding-right: 10px;
 	line-height: 30px;
 }
-
-.divSJT0
-{
-	margin-left: 15px;
-}
-
-.divSJT1
-{
-	margin-left: 70px;
-}
-
-.divSJT2
-{
-	margin-left: 80px;
-}
-
-.divSJT3
-{
-	margin-left: 110px;
-}
-
-.cmdInstruAllTopT1 + .divSJT1,
-.cmdInstruAllTopT2 + .divSJT2,
-.cmdInstruAllTopT3 + .divSJT3
-{
-	margin-top: 15px;
-}
-
-.cmdInstruAllTopT1 + .divSJT1,
-.cmdInstruAllTopT2 + .divSJT2,
-.cmdInstruAllTopT3 + .divSJT3
-{
-	margin-top: 15px;
-}
-
-.spanY
-{
-	color: #FFFF00;
-}
-
-.divCopy
-{
-
-	padding: 5px;
-	padding-top: 2px;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	cursor: pointer;
-	border-radius: 10px;
-}
-
-.divCopy:hover
-{
-	background-color: #4C5052;
-}
-
-.divCopy:active
-{
-	background-color: #5C6164;
-}
-
-.copysuccess
-{
-	position: absolute;
-	top: 25px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #494A5F;
-	font-size: 15px;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-radius: 5px;
-	display: none;
-}
-
-#divProtocolStruct
+/*divProtocolStruct*/
+.divProtocolStruct
 {
 	cursor: pointer;
 }
 
 #divProtocol
 {
-	z-index: 100;
-}
-
-#protocolImg
-{
 	display: none;
-	position: absolute;
-	top: 0;
-	right: 0;
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*right: 0;*/
+
+	position: fixed;
+    top: 0;
+    right: 0;
+
 	flex-direction: column;
     box-sizing: border-box;
 	cursor: move;
-	z-index: 100;
+    background-color: #494A5F;
+    z-index: 100;
+	/*opacity: 1.0;*/
 }
 
 #close
@@ -776,18 +778,39 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
     top: 5px;
     right: 5px;
     font-weight: normal;
-    display: block;
-    width: 50px;
-    height: 25px;
-    line-height: 25px;
+    width: 55px;
+    height: 35px;
+    line-height: 35px;
     text-align: center;
-    border-radius: 20px;
-    color: #7a9ae4;
-	z-index: 200;
+    border-radius: 8px;
+    color: #A6E22E;
+    font-size: 20px;
+	z-index: 300;
+	/*opacity: 1.0;*/
 }
 
 #close:hover
 {
     background-color: #52699e;
     cursor: pointer;
+}
+
+#protocolImg
+{
+    margin-top: 25px;
+    z-index: 200;
+	opacity: 1.0;
+}
+
+#hidden
+{
+	/*width: 1%;*/
+    /*height: 1%;*/
+	width: 1010px;
+	height: 559px;
+    position: fixed;
+    top: 0;
+    left: 0;
+	/*opacity: 1.0;*/
+	z-index: 100;
 }

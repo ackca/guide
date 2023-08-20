@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -47,6 +51,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_ipv6, '../../../');
@@ -66,10 +74,11 @@
 			<script type="text/javascript">
 				 createInstruT0("IPv6 首部字段说明","i1");
 					createProtocolStructT0(
-						"1150",
-						"459",
-						"4590",
+						"1000",
+						"420",
+						"4200",
 						"IPv6/IPv6",
+						"IPv6协议"
 					);
 
 					document.writeln("<br />");
@@ -101,7 +110,7 @@
 						数据部分（Data）
 						IPv6数据部分
 					`;
-					createProtocolExplainT0(words, -459);
+					createProtocolExplainT0(words, -420);
 
 				createInstruT0("常规IPv6报文实例实例","i2");
 					createInstruT1("实例为ping报文，如下所示");
@@ -116,6 +125,7 @@
 							"287",
 							"2009",
 							"IPv6/IPv6_Fragment",
+							"IPv6分片头部",
 							"protocolStructure1"
 						);
 

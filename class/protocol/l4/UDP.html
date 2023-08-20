@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -17,6 +21,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_udp, '../../../');
@@ -36,10 +44,11 @@
 			<script type="text/javascript">
 				createInstruT0("UDP 首部字段说明","i1");
 					createProtocolStructT0(
-						"828",
-						"333",
-						"1998",
-						"UDP/UDP"
+						"815",
+						"290",
+						"1740",
+						"UDP/UDP",
+						"UDP协议"
 					);
 
 					words = `
@@ -58,7 +67,7 @@
 						数据部分（Data）
 						UDP数据部分
 					`;
-					createProtocolExplainT0(words, -333);
+					createProtocolExplainT0(words, -290);
 
 				createInstruT0("UDP 实例","i2");
 					createInstruT1("实例为tftp报文，如下所示<br />");

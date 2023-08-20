@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -17,6 +21,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_8021q, '../../../');
@@ -27,7 +35,7 @@
 				createProtocolWord(
 					"802.1Q",
 					"",
-					"",
+					""
 				);
 			</script>
 		</div><br />
@@ -36,10 +44,11 @@
 			<script type="text/javascript">
 				createInstruT0("802.1Q 首部字段说明","i1");
 					createProtocolStructT0(
-						"1450",
-						"566",
-						"2830",
-						"802.1Q/802.1Q"
+						"1440",
+						"510",
+						"2550",
+						"802.1Q/802.1Q",
+						"802.1Q协议封装",
 					);
 
 					words = `
@@ -56,7 +65,7 @@
 						由12bits构成，取值范围0~4095，除全0全1外，不同厂商的设备还有几个ID不能使用
 
 					`;
-					createProtocolExplainT0(words, -566);
+					createProtocolExplainT0(words, -510);
 
 				createInstruT0("802.1Q 实例","i2");
 					createInstruT1("实例为ping报文，vlan id 为10，如下所示");

@@ -8,6 +8,10 @@
 	<script src="../../../js/js_css.js"></script>
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -17,6 +21,10 @@
 	</style>
 </head>
 <body>
+	<div id="divProtocol" class="divProtocol">
+		<strong id="close" onclick="closeProtocol()">关闭</strong>
+		<div id="protocolImg" onmousedown="protocolMove()"></div>
+	</div>
 	<div class="container-fluid">
 		<script type="text/javascript">
 			createNavigation(tree_vxlan, '../../../');
@@ -36,10 +44,11 @@
 			<script type="text/javascript">
 				createInstruT0("VXLAN报文结构","i1");
 					createProtocolStructT0(
-						"820",
-						"310",
-						"1860",
-						"VXLAN/VXLAN"
+						"815",
+						"290",
+						"1740",
+						"VXLAN/VXLAN",
+						"VXLAN协议"
 					);
 
 					words = `
@@ -55,7 +64,7 @@
 						保留（Reserved）
 						由8 bit构成，值为 0
 					`;
-					createProtocolExplainT0(words, -310);
+					createProtocolExplainT0(words, -290);
 
 				createInstruT0("VXLAN 封装方式","i2");
 					document.writeln("<br />");
