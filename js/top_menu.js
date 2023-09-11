@@ -283,17 +283,34 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-mysql"></i>
+									<i class="ico-certsrv"></i>
 								</div>
-								<span><a href="rootpath/class/netdevops/mysql/mysql8.html">MySQL 8</a></span>
+								<span style="font-size: 20px">证书服务</span>
+								<ul class="cat-list pki">
+                                    <li class="cat-item">
+                                        <div class="cat-item-main">
+                                            <a href="rootpath/class/netdevops/pki/certsrv.html">Windows平台</a>
+                                        </div>
+                                    </li>
+                                    <li class="cat-item">
+                                        <div class="cat-item-main">
+                                            <a href="rootpath/class/netdevops/pki/cfssl.html">CFSSL</a>
+                                        </div>
+                                    </li>
+                                    <li class="cat-item">
+                                        <div class="cat-item-main">
+                                            <a href="rootpath/class/netdevops/pki/openssl.html">OpenSSL</a>
+                                        </div>
+                                    </li>
+                                </ul>
 							</h3>
 						</div>
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-certsrv"></i>
+									<i class="ico-mysql"></i>
 								</div>
-								<span style="font-size: 20px"><a href="rootpath/class/netdevops/certsrv/certsrv.html">证书服务（Windows）</a></span>
+								<span><a href="rootpath/class/netdevops/mysql/mysql8.html">MySQL 8</a></span>
 							</h3>
 						</div>
 						<div class="cat-group">

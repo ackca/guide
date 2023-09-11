@@ -454,3 +454,11 @@ div[data-cat~="protocol"] .cat-item-row a {
 div[data-cat~="netdevops"] .cat-group:not(:first-child) {
 	margin-left: 100px;
 }
+
+div[data-cat~="netdevops"] .cat-group:first-child li {
+	width: 200px;
+}
+
+.pki li {
+	margin-top: 20px;
+}

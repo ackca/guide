@@ -391,7 +391,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 	htmlText = "";
 	if(cmdNum == 2) {
 		// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?)?)(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
+		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][\\w-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
 
 	}
 	else {
