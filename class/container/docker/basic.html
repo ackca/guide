@@ -258,49 +258,6 @@
 							instruArr[0] = createLinuxCmd("docker rm -f $(docker ps -aq)");
 							createCmdInstruT2(instruArr,"docker");
 
-					createInstruT1("容器镜像导出导入","i3-4");
-						createInstruT2("将容器转化为镜像","i3-4-1");
-							instruArr[0] = createLinuxCmd("docker commit -m “\"installed net-tools\"。 -a “v_itachi。 “itachi。 “v_itachi/centos_ifconfig。");
-							instruArr[1] = createCmdInstruSpan("-m “\"installed net-tools\"。","-m 用于添加描述信息");
-							instruArr[2] = createCmdInstruSpan("-a “v_itachi。","-a 用于添加作者信息");
-							instruArr[3] = createCmdInstruSpan("“itachi。","容器名或ID");
-							instruArr[4] = createCmdInstruSpan("“v_itachi/centos_ifconfig。","新镜像名，一般采用 “作者。/“镜像名。");
-							createCmdInstruT2(instruArr,"docker");
-
-						createInstruT2("重命名镜像","i3-4-2");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createLinuxCmd("docker tag “v_itachi/centos_ifconfig。 “v_itachi/centos。");
-							instruArr[1] = createCmdInstruSpan("“v_itachi/centos_ifconfig。","原镜像名");
-							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","新镜像名");
-							createCmdInstruT2(instruArr,"docker");
-							createConfigImgT2("basic/i3_4_2$1");
-
-						createInstruT2("将容器导出为文件","i3-4-3");
-							instruArr[0] = createLinuxCmd("docker export -o “container_itachi.tar。 “itachi。");
-							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。","导出的文件名");
-							instruArr[2] = createCmdInstruSpan("“itachi。","容器名或ID");
-							createCmdInstruT2(instruArr,"docker");
-
-						createInstruT2("将容器文件导入为镜像","i3-4-4");
-							instruArr[0] = createLinuxCmd("docker import -o “container_itachi.tar。 “v_itachi/centos。");
-							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。","导入的文件名");
-							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","容器名");
-							createCmdInstruT2(instruArr,"docker");
-
-						createInstruT2("将镜像导出为文件","i3-4-5");
-							instruArr[0] = createLinuxCmd("docker save -o “image_itachi.tar。 “v_itachi/centos。");
-							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。","导出的文件名");
-							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","镜像名或ID");
-							createCmdInstruT2(instruArr,"docker");
-
-						createInstruT2("将镜像文件导入为镜像","i3-4-6");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createLinuxCmd("docker load -i “image_itachi.tar。");
-							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。","导入的文件名");
-							createCmdInstruT2(instruArr,"docker");
-
 					createInstruT1("映射端口","i3-5");
 						createInstruT2("映射容器端口到宿主机（运行容器时配置）","i3-5-1");
 							instruArr[0] = createLinuxCmd("docker run -it -d -p [“10.0.0.1。]”:。“2222。”:。“22。[“/tcp。] [ -p 53”:。53/udp ] “centos。");
@@ -380,6 +337,49 @@
 
 							createInstruT3("实例<br />","i3-7-3-3");
 								createConfigImgT3("basic/i3_7_3_3$1~3");
+
+				createInstruT0("容器镜像导出导入","i6");
+						createInstruT2("将容器转化为镜像","i6-1");
+							instruArr[0] = createLinuxCmd("docker commit -m “\"installed net-tools\"。 -a “v_itachi。 “itachi。 “v_itachi/centos_ifconfig。");
+							instruArr[1] = createCmdInstruSpan("-m “\"installed net-tools\"。","-m 用于添加描述信息");
+							instruArr[2] = createCmdInstruSpan("-a “v_itachi。","-a 用于添加作者信息");
+							instruArr[3] = createCmdInstruSpan("“itachi。","容器名或ID");
+							instruArr[4] = createCmdInstruSpan("“v_itachi/centos_ifconfig。","新镜像名，一般采用 “作者。/“镜像名。");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("重命名镜像","i6-2");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createLinuxCmd("docker tag “v_itachi/centos_ifconfig。 “v_itachi/centos。");
+							instruArr[1] = createCmdInstruSpan("“v_itachi/centos_ifconfig。","原镜像名");
+							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","新镜像名");
+							createCmdInstruT2(instruArr,"docker");
+							createConfigImgT2("basic/i3_4_2$1");
+
+						createInstruT2("将容器导出为文件","i6-3");
+							instruArr[0] = createLinuxCmd("docker export -o “container_itachi.tar。 “itachi。");
+							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。","导出的文件名");
+							instruArr[2] = createCmdInstruSpan("“itachi。","容器名或ID");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("将容器文件导入为镜像","i6-4");
+							instruArr[0] = createLinuxCmd("docker import -o “container_itachi.tar。 “v_itachi/centos。");
+							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。","导入的文件名");
+							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","容器名");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("将镜像导出为文件","i6-5");
+							instruArr[0] = createLinuxCmd("docker save -o “image_itachi.tar。 “v_itachi/centos。");
+							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。","导出的文件名");
+							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","镜像名或ID");
+							createCmdInstruT2(instruArr,"docker");
+
+						createInstruT2("将镜像文件导入为镜像","i6-6");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createLinuxCmd("docker load -i “image_itachi.tar。");
+							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。","导入的文件名");
+							createCmdInstruT2(instruArr,"docker");
 
 				createInstruT0("Dockerfile","i4");
 						createInstruKeyT2("FROM 指定基础镜像","i4-1");

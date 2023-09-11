@@ -743,7 +743,8 @@ function splitBR(text) {
 function linuxCopy(element) {
 	txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
 	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
-	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ');
+	// 将使用html符号表示的 空格、>、< 还原
+	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ').replaceAll('&gt;','>').replaceAll('&lt;','<');
 	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
 	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
 	// \r\n：windows的换行

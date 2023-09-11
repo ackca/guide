@@ -291,6 +291,14 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
+									<i class="ico-certsrv"></i>
+								</div>
+								<span style="font-size: 20px"><a href="rootpath/class/netdevops/certsrv/certsrv.html">证书服务（Windows）</a></span>
+							</h3>
+						</div>
+						<div class="cat-group">
+							<h3 class="cat-tit">
+								<div class="cat-ico">
 									<i class="ico-gitlab"></i>
 								</div>
 								<span><a href="rootpath/class/netdevops/gitlab/gitlab.html">GitLab</a></span>

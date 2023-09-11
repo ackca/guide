@@ -366,6 +366,12 @@
 	background-image: url(../img/mysql_title.png);
 }
 
+.mod-header .ico-certsrv {
+	width: 50px;
+	height: 41px;
+	background-image: url(../img/cert.png);
+}
+
 .mod-header .ico-gitlab {
 	width: 45px;
 	height: 41px;
@@ -446,5 +452,5 @@ div[data-cat~="protocol"] .cat-item-row a {
 }
 
 div[data-cat~="netdevops"] .cat-group:not(:first-child) {
-	margin-left: 80px;
+	margin-left: 100px;
 }

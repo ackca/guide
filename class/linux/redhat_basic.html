@@ -12,7 +12,7 @@
 	<style type="text/css">
 		.HLTableS1
 		{
-			border-radius: 5px;
+			/*border-radius: 5px;*/
 		}
 
 		#tUname .cell:nth-child(1)
@@ -836,6 +836,8 @@
 								createHLTableT2(550, '', tBody, 'tTar');
 
 							createInstruAllTopT2("<br />压缩时一般使用 <span class='spanY'>-czvf</span> 参数");
+							instruArr[0] = createLinuxCmd("tar -czvf “压缩文件名。 “被压缩文件名或目录名。");
+							createCmdInstruT2(instruArr,"redhat");
 							createConfigImgT2("redhat_basic/i6-1$1");
 
 							createInstruAllTopT2("解压缩时一般使用 <span class='spanY'>-xzvf</span> 参数，不解压到当前目录则使用 <span class='spanY'>-C</span>");
