@@ -146,6 +146,8 @@ span .link
 	margin-top: 20px;
 	margin-bottom: 50px;
 	position: relative;
+
+	word-break: break-all;
 }
 
 .linuxDivT1 a, .linuxDivT2 a, .linuxDivT3 a

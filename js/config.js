@@ -93,7 +93,7 @@ function addKeywords(text) {
 	return text.replace(regInstruKeywords,"<span class='spanInstruKeyword'>$1</span>");
 }
 
-////-------------------位置
+
 function createInstru(text, NO, instruT) {
 	text = addSpan(text);
 	if(NO != null) {
@@ -102,6 +102,7 @@ function createInstru(text, NO, instruT) {
 		}
 
 		words = splitBR(text);
+
 		document.writeln(words[0] + "<span class='" + instruT + "' id='" + NO +"'>" + words[1] + "</span>" + words[2]);
 	}
 	else {
@@ -109,15 +110,14 @@ function createInstru(text, NO, instruT) {
 		document.writeln(words[0] + "<span class='" + instruT + "'>" + words[1] + "</span>" + words[2]);
 	}
 }
-////-------------------位置
+
 function createInstruAllTop(text, instruT) {
 	words = splitBR(addSpan(text));
 	document.writeln(words[0] + '<span class="cmdInstruAllTop' + instruT + '">' + words[1] + '</span>' + words[2]);
 }
-////-------------------位置
+
 function createInstruAllBottom(text, instruT) {
 	words = splitBR(addSpan(text));
-
 	document.writeln(words[0] + '<span class="cmdInstruAllBottom' + instruT + '">' + words[1] + '</span>' + words[2]);
 }
 
@@ -183,7 +183,6 @@ function createLinuxTxt(cmds, cmdT) {
 		index = cmd_arr[i].indexOf('#');
 
 		if(index == 0) {	//纯注释
-			// console.log(0);
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
 			continue;
 		}
@@ -231,6 +230,7 @@ function createLinuxTxt(cmds, cmdT) {
 	htmlText = htmlText + "</div>";
 	document.writeln(htmlText);
 }
+
 
 function createViptelaCLI1(cmds) {
 	createViptelaCLI(cmds, "T1");
@@ -320,10 +320,7 @@ function createYAML(cmds, cmdT) {
 
 		zs = '';
 		index = cmd_arr[i].indexOf('#');
-		console.log(cmd_arr[i])
 		if(index == 0) {	//纯注释
-			// console.log('%%%%%%%%%%%%%%%%%%%%%%'+cmd_arr[i])
-			// console.log(i)
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
 			continue;		//纯注释，无需进行后面的分解
 		}
@@ -355,10 +352,6 @@ function createYAML(cmds, cmdT) {
 			else {
 				type = cmd_arr[i].substring(0, index);
 				value = cmd_arr[i].substring(index + 1);
-				// console.log('进来了')
-				// console.log(i)
-				// console.log(cmd_arr[i])
-				// console.log('--------------------------------------------------')
 				htmlText = htmlText + "<span class='spanT'>" + type + "</span><span class='spanV'><span class='spanFGF'>" + fgf + "</span>" + value + "</span>";
 			}
 		}
@@ -398,18 +391,15 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 	htmlText = "";
 	if(cmdNum == 2) {
 		// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?)?)(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
+		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
 
 	}
 	else {
 		// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
+		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
 	}
 	for(i = 0; i < cmd.length; i++) {
 		cmds = cmd[i].match(reg);
-		// console.log(cmd[i]);
-		// console.log(cmds);
-		// console.log("-----------------------");
 
 		htmlText = htmlText + "<span class='sqlWord'>" + cmds[1].replaceAll(" ","&nbsp;&nbsp;") + "</span>";
 
@@ -449,12 +439,10 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 		}
 		htmlText = htmlText + "&nbsp;&nbsp;|&nbsp;&nbsp;";
 	}
-	// console.log(htmlText)
 	return createCmdSpan(htmlText.substr(0, htmlText.length - 25));
 }
 
 function splitLinuxCmd(cmd) {
-	// console.log(cmd);
 	htmlText = "";
 	index = cmd.indexOf(" -");
 	if(index == -1) {
@@ -469,7 +457,6 @@ function splitLinuxCmd(cmd) {
 }
 
 function splitParaObj(cmd){
-	// console.log("PO：" + cmd);
 	reg = new RegExp("(-{1,2}[^ ]+)?( (.+))?");
 	cmds = cmd.match(reg);
 
@@ -497,7 +484,7 @@ function createSQLCmdSpan(cmd) {
 
 function createSQLCmdInstruSpan(cmd, text) {
 	cmd = addSQLSpan(cmd);
-	// <span className="sqlWord">'“Cisc0123!。'</span>
+	// <span class="sqlWord">'“Cisc0123!。'</span>
 	cmd = cmd.replace("<span class=\"sqlWord\">'","<span class=\"sqlWord\">");
 	cmd = cmd.replace("'</span>","</span>");
 	return createCmdInstruSpan(cmd, text);
@@ -505,7 +492,6 @@ function createSQLCmdInstruSpan(cmd, text) {
 
 function createCmdSpan(cmd) {
 	// cmd为 <span……，不加前缀
-	// console.log(cmd);
 	if(cmd.indexOf("<span") >= 0) {
 		return "<span class='cmd'>" + addSpan(cmd) +"</span>"
 	}
@@ -664,15 +650,8 @@ function createConfigImg(imgNameList, typeT) {
 
 	if(imgNameList.indexOf('~') > 0) {
 		imgNameArr = imgNameList.split("~");
-		// console.log(imgNameArr)
-		// console.log(imgNameArr[0].substr(imgNameArr[0].length - 1) == 3)
-		// console.log(imgNameArr[1] == 11)
-		// console.log(3 <= 11)
-		// console.log(parseInt(imgNameArr[0].substr(imgNameArr[0].length - 1)) <= parseInt(imgNameArr[1]))
 		for(i = imgNameArr[0].substr(imgNameArr[0].length - 1); i <= parseInt(imgNameArr[1]); i++) {
-			// console.log('ooo')
 			eachName = imgNameArr[0].substr(0, imgNameArr[0].length - 1) + i;
-			// console.log(eachName)
 			htmlText = htmlText + "<img src='config_img/" + eachName + ".png' />";
 			if(i != imgNameArr[1]) { //除最后第一张，每二张图间空行
 				htmlText = htmlText + "<br /><br />";
@@ -882,9 +861,6 @@ function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, proto
 
 var timeFN = null;
 function protocolStructClick(elem) {
-	// console.log(elem.id)
-	// console.log($(elem).css("width"))
-
 	clearTimeout(timeFN);
 	timeFN = setTimeout(function () {
 		$('#protocolImg').css("width", $(elem).css("width"));
@@ -902,7 +878,6 @@ function protocolStructClick(elem) {
 }
 
 function protocolMove(e) {
-	// console.log(232323)
 	e = e || window.event;
 	// 盒子的位置
 	var x = getPage(e).pageX - $('#divProtocol').offset().left;
@@ -936,9 +911,7 @@ function closeProtocol() {
 }
 
 function protocolStructdbClick(elem) {
-	// console.log('12ds')
 	clearTimeout(timeFN);
-	// console.log(elem)
 	protocolWidth = $(elem).css("width");
 	protocolHeight =  $(elem).css("height");
 	protocolBgImage = $(elem).css("background-image");
