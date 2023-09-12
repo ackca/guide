@@ -386,18 +386,29 @@ function createCmd(text, cmdT) {
 	document.writeln("<span class='"+cmdT+"'>" + text + "</span>");
 }
 
+// cmdNum：整条命令中，命令单词的最大数量
 function createLinuxCmd(linuxCmd, cmdNum = 2) {
-	cmd = linuxCmd.split(" ||| ");
-	htmlText = "";
-	if(cmdNum == 2) {
-		// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?)?)(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][\\w-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
+	count = (linuxCmd.match(/\|/g) || []).length;
+	cmd = linuxCmd.split(" | ");
+	// cmd = linuxCmd.split(" ||| ");
 
+	htmlText = "";
+	if(cmdNum >= 2) {
+		// reg = new RegExp("([A-z][\\w-]+)(( (\\[ )?([A-z][\\w-]+)( \\])?){0," + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
+		reg = new RegExp("([A-z][\\w-]+)(( (\\[ )?([A-z][\\w-]+)( \\])?){0," + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
+		// reg = new RegExp("([A-z][\\w-]+)(( (\\[ )?([A-z][\\w-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
 	}
-	else {
-		// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-		reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
-	}
+
+	// if(cmdNum == 2) {
+	// 	// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?)?)(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
+	// 	reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
+	//
+	// }
+	// else {
+	// 	// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
+	// 	reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
+	// }
+
 	for(i = 0; i < cmd.length; i++) {
 		cmds = cmd[i].match(reg);
 
@@ -439,7 +450,24 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 		}
 		htmlText = htmlText + "&nbsp;&nbsp;|&nbsp;&nbsp;";
 	}
-	return createCmdSpan(htmlText.substr(0, htmlText.length - 25));
+
+	// console.log("<span class='sqlWord'></span>".length)
+
+	regg = new RegExp("<span class='sqlWord'>\\S+</span>");
+	reg = /<span class='sqlWord'>\S+<\/span>/g;
+	sqlWords = htmlText.match(reg);
+	num = 0;
+
+	console.log(count);
+	console.log(htmlText);
+
+	for(i = 0; i < sqlWords.length - count; i++) {
+		word = sqlWords[i].replaceAll('&nbsp;','');
+		num = num + word.length - 29
+	}
+	console.log(num);
+
+	return createCmdSpan(htmlText.substr(0, htmlText.length - 25).replaceAll('\\', '<br />' + '&nbsp;'.repeat(num * 2)));
 }
 
 function splitLinuxCmd(cmd) {

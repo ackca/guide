@@ -92,7 +92,13 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("初始化CA");
+					createInstruT1("初始化CA<br/>");
+						instruArr = new Array();
+						instruArr[0]=createLinuxCmd("cfssl gencert -initca “ca-csr.json。 | cfssljson -bare “ca。");
+						instruArr[1]=createCmdInstruSpan("“ca-csr.json。","json格式根证书请求");
+						instruArr[2]=createCmdInstruSpan("“ca。","生成的根证书的文件名，扩展名根据文件类型自动添加");
+						createCmdInstruT1(instruArr,"cfssl");
+
 						cmd = `
 							# cfssl gencert -initca ca-csr.json 输出文本(json)结果
 							# cfssljson -bare ca 把输出文本信息(json), 产生文件
@@ -120,6 +126,28 @@
 					createInstruT1("查看证书信息");
 						cmd = `
 							cfssl-certinfo -cert ca.pem
+							# 以下是输出
+							{
+							  "subject": {
+								"common_name": "itachica",
+								"names": [
+								  "itachica"
+								]
+							  },
+							  "issuer": {
+								"common_name": "itachica",
+								"names": [
+								  "itachica"
+								]
+							  },
+							  "serial_number": "61857579819241270272870508549841533315689933009",
+							  "not_before": "2023-09-04T00:44:00Z",
+							  "not_after": "2025-09-03T00:44:00Z",
+							  "sigalg": "SHA256WithRSA",
+							  "authority_key_id": "",
+							  "subject_key_id": "B1:BB:D1:A8:5D:53:14:40:54:E0:33:7F:86:41:4A:3F:65:9F:6D:13",
+							  "pem": "-----BEGIN CERTIFICATE-----\\n省略复杂的证书内容\\n-----END CERTIFICATE-----\\n"
+							}
 						`;
 						createLinuxTxtT1(cmd);
 
@@ -198,6 +226,19 @@
 							createLinuxTxtT2(cmd);
 
 						createInstruT2("申请证书");
+							instruArr[0]=createLinuxCmd(
+								"cfssl gencert -ca=“ca.pem。 -ca-key=“ca-key.pem。\\" +
+													"-config=“ca-config.json。 -profile=“server。\\" +
+													"“web.json。 | cfssljson -bare “web-server。"
+							);
+							instruArr[1]=createCmdInstruSpan("“ca.pem。","根证书");
+							instruArr[2]=createCmdInstruSpan("“ca-key.pem。","根证书的私钥");
+							instruArr[3]=createCmdInstruSpan("“ca-config.json。","json格式的证书模板");
+							instruArr[4]=createCmdInstruSpan("“server。","证书类型");
+							instruArr[5]=createCmdInstruSpan("“web.json。","json格式的证书请求");
+							instruArr[6]=createCmdInstruSpan("“web-server。","生成的证书的文件名，扩展名根据文件类型自动添加");
+							createCmdInstruT2(instruArr,"cfssl");
+
 							cmd = `
 								cfssl gencert -ca=ca.pem -ca-key=ca-key.pem \\
 												-config=ca-config.json -profile=server \\
@@ -227,7 +268,16 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("已经申请文件csr","i3-2")
+					createInstruT1("已经申请文件csr<br />","i3-2")
+						instruArr[0]=createLinuxCmd(
+							"cfssl sign -ca=“ca.pem。 -ca-key=“ca-key.pem。\\" +
+										"-config=“ca-config.json。 -profile=“server。\\" +
+										"-csr “PAN-P.itachi.tech.csr。 | cfssljson -bare “PAN-P.itachi.tech。"
+						);
+						instruArr[5]=createCmdInstruSpan("“PAN-P.itachi.tech.csr。","证书请求");
+						instruArr[6]=createCmdInstruSpan("“PAN-P.itachi.tech。","生成的证书的文件名，扩展名根据文件类型自动添加");
+						createCmdInstruT2(instruArr,"cfssl");
+
 						cmd = `
 							cfssl sign -ca ca.pem -ca-key ca-key.pem \\
 										-config ca-config.json -profile server \\

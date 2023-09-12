@@ -10,12 +10,6 @@
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
 	</script>
-<!--	<style type="text/css">-->
-<!--		.linuxDivT2, .divConfigImgT2, .divConfigImgT3-->
-<!--		{-->
-<!--			margin-top: -30px;-->
-<!--		}-->
-<!--	</style>-->
 </head>
 <body>
 	<div class="container-fluid">
@@ -26,16 +20,16 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("修改主机名（推荐）","i1");
-					createInstruAllTopT1("完成配置后，证书颁发机构的证书的域名为 计算机名.域名");
-					createInstruAllTopT1("默认的计算机名包含随机内容，比较奇怪");
+					createInstruAllTopT0("完成配置后，证书颁发机构的证书的域名为 计算机名.域名");
+					createInstruAllTopT0("默认的计算机名包含随机内容，比较奇怪<br />");
 
-					createConfigImgT1("certsrv/i1$1~7");
+					createConfigImgT0("certsrv/i1$1~7");
 
 				createInstruT0("安装配置域服务<br />","i2");
-					createConfigImgT1("certsrv/i2$1~22");
+					createConfigImgT0("certsrv/i2$1~22");
 
 				createInstruT0("安装配置证书服务<br />","i3");
-					createConfigImgT1("certsrv/i3$1~29");
+					createConfigImgT0("certsrv/i3$1~29");
 
 				createInstruT0("配置证书Web服务","i4");
 					createInstruT1("配置证书服务<br />","i4-1");
@@ -85,7 +79,6 @@
 							cmd = `
 								ll
 								# 下面为输出
-								总用量 8
 								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx	# 证书私钥打包文件
 
 								# 从打包文件中分离私钥
@@ -96,7 +89,6 @@
 
 								ll
 								# 下面为输出
-								总用量 12
 								-rw-------. 1 root root 2173  9月 11 16:54 test.itachi.tech-key-encry.pem	  # 加密的私钥
 								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx				# 证书私钥打包文件
 
@@ -107,7 +99,6 @@
 
 								ll
 								# 下面为输出
-								总用量 16
 								-rw-------. 1 root root 2173  9月 11 16:54 test.itachi.tech-key-encry.pem	  # 加密的私钥
 								-rw-------. 1 root root 1704  9月 11 16:54 test.itachi.tech-key.pem			# 明文的私钥
 								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx				# 证书私钥打包文件
@@ -118,7 +109,6 @@
 
 								ll
 								# 下面为输出
-								总用量 20
 								-rw-------. 1 root root 2173  9月 11 16:54 test.itachi.tech-key-encry.pem	  # 加密的私钥
 								-rw-------. 1 root root 1704  9月 11 16:54 test.itachi.tech-key.pem			# 明文的私钥
 								-rw-------. 1 root root 2072  9月 11 16:55 test.itachi.tech.pem				# 证书

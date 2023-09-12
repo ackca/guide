@@ -456,7 +456,7 @@ div[data-cat~="netdevops"] .cat-group:not(:first-child) {
 }
 
 div[data-cat~="netdevops"] .cat-group:first-child li {
-	width: 200px;
+	width: 220px;
 }
 
 .pki li {
