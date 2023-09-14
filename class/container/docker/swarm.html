@@ -30,7 +30,7 @@
 					createInstruT1("配置docker集群","i1-2");
 						createInstruT2("新建集群，配置第一个manager节点");
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("docker swarm init --advertise-addr “10.1.1.201。");
+							instruArr[0] = createLinuxCmd3("docker swarm init --advertise-addr “10.1.1.201。");
 							instruArr[1] = createCmdInstruSpan("“10.1.1.201。","该节点的IP地址");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i1_2$1");
@@ -38,12 +38,12 @@
 						createInstruT2("根据提示，获得添加manager节点的命令");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("docker swarm join-token manager");
+							instruArr[0] = createLinuxCmd3("docker swarm join-token manager");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i1_2$2");
 
 						createInstruT2("根据提示，获得添加worker节点的命令");
-							instruArr[0] = createCmdSpan("docker swarm join-token worker");
+							instruArr[0] = createLinuxCmd3("docker swarm join-token worker");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i1_2$3");
 
@@ -58,7 +58,7 @@
 
 				createInstruT0("运行容器","i2");
 						createInstruT2("通过命令运行单个容器<br />","i2-1");
-							instruArr[0] = createCmdSpan("docker service create ……");
+							instruArr[0] = createLinuxCmd3("docker service create ……");
 							instruArr[1] = createCmdInstruSpan("基本与 docker run 相同");
 							instruArr[2] = createCmdInstruSpan("由于属于集群部署，增加了几个参数");
 							instruArr[3] = createCmdInstruSpan("　　　　--mode global，global方式部署容器");
@@ -69,7 +69,7 @@
 						createInstruT2("运行项目","i2-2-1");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("docker stack deploy “itachi。 -c “itachi-docker.yml。");
+							instruArr[0] = createLinuxCmd3("docker stack deploy “itachi。 -c “itachi-docker.yml。");
 							instruArr[1] = createCmdInstruSpan("“itachi。","项目名");
 							instruArr[2] = createCmdInstruSpan("“itachi-docker.yml。","项目配置文件");
 							createCmdInstruT2(instruArr,"docker");
@@ -77,30 +77,30 @@
 						createInstruT2("查看项目","i2-2-2");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("docker stack ls");
+							instruArr[0] = createLinuxCmd3("docker stack ls");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i2_2_2$1");
 
 							document.write("<br />")
-							instruArr[0] = createCmdSpan("docker service ls");
+							instruArr[0] = createLinuxCmd3("docker service ls");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i2_2_2$2");
 
 							document.write("<br />")
-							instruArr[0] = createCmdSpan("docker stack ps itachi");
+							instruArr[0] = createLinuxCmd3("docker stack ps “itachi。");
 							instruArr[1] = createCmdInstruSpan("“itachi。","项目名");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("swarm/i2_2_2$3");
 
 					createInstruT1("调整容器","i2-3");
 						createInstruT2("调整容器的副本数量","i2-3-1");
-							instruArr[0] = createCmdSpan("docker service scale “itachi_itachi_nginx。”=。“2。");
+							instruArr[0] = createLinuxCmd3("docker service scale “itachi_itachi_nginx。”=。“2。");
 							instruArr[1] = createCmdInstruSpan("“itachi_itachi_nginx。","服务名，可通过docker service ls查看");
 							instruArr[2] = createCmdInstruSpan("“2。","副本数量");
 							createCmdInstruT2(instruArr,"docker");
 
 						createInstruT2("更新容器镜像","i2-3-2");
-							instruArr[0] = createCmdSpan("docker service update --image “itachi/flask:v2.0。　“itachi_itachi_nginx。”");
+							instruArr[0] = createLinuxCmd3("docker service update --image “itachi/flask:v2.0。　“itachi_itachi_nginx。”");
 							instruArr[1] = createCmdInstruSpan("“itachi/flask:v2.0。","新的镜像名");
 							instruArr[2] = createCmdInstruSpan("“itachi_itachi_nginx。","服务名，可通过docker service ls查看");
 							createCmdInstruT2(instruArr,"docker");
@@ -180,7 +180,7 @@
 							createInstruT3("生成secret");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("docker secret create “mysql-pw。 “itachi-pass。");
+								instruArr[0] = createLinuxCmd3("docker secret create “mysql-pw。 “itachi-pass。");
 								instruArr[1] = createCmdInstruSpan("“mysql-pw。","secret 名");
 								instruArr[2] = createCmdInstruSpan("“itachi-pass。","存储机密信息的文件名");
 								createCmdInstruT3(instruArr,"docker");
@@ -188,13 +188,13 @@
 							createInstruT3("删除明文文件");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("rm -f itachi-pass “itachi-pass。");
+								instruArr[0] = createLinuxCmd3("rm -f itachi-pass “itachi-pass。");
 								instruArr[1] = createCmdInstruSpan("“itachi-pass。","存储机密信息的文件名");
 								createCmdInstruT3(instruArr,"docker");
 
 						createInstruT2("基于标准输入","i4-1-2");
 							createInstruT3("生成secret");
-								instruArr[0] = createCmdSpan("echo \"“Cisc0123!。\" | docker secret create mysql-pass ‘”-。。");
+								instruArr[0] = createLinuxCmd3("echo \"“Cisc0123!。\" | docker secret create “mysql-pass。 ‘”-。");
 								instruArr[1] = createCmdInstruSpan("“Cisc0123!。","机密信息");
 								instruArr[2] = createCmdInstruSpan("“mysql-pw。","secret 名");
 								createCmdInstruT3(instruArr,"docker");
@@ -202,18 +202,18 @@
 							createInstruT3("删除输入历史");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("history -c");
+								instruArr[0] = createLinuxCmd3("history -c");
 								createCmdInstruT3(instruArr,"docker");
 
 					createInstruT1("查看 secret<br />","i4-2");
 						instruArr = null;
 						instruArr = new Array();
-						instruArr[0] = createCmdSpan("docker secret ls");
+						instruArr[0] = createLinuxCmd3("docker secret ls");
 						createCmdInstruT1(instruArr,"docker");
 						createConfigImgT1("swarm/i4_2$1");
 
 					createInstruT1("删除 secret<br />","i4-3");
-						instruArr[0] = createCmdSpan("docker secret rm “mysql-pass。");
+						instruArr[0] = createLinuxCmd3("docker secret rm “mysql-pass。");
 						instruArr[1] = createCmdInstruSpan("“mysql-pw。","secret 名");
 						createCmdInstruT1(instruArr,"docker");
 
@@ -239,12 +239,19 @@
 						createYAMLT2(yaml);
 
 						createInstruT2("docker service命令中使用","i4-4-2");
-							nbsp = "&nbsp;".repeat(12);
-							instruArr[0] = createCmdSpan("docker service create \\")
-							instruArr[1] = createCmdSpan(nbsp + "--name itachi -p 3306:3306 \\")
-							instruArr[2] = createCmdSpan(nbsp + "--secret itachi-pass \\")
-							instruArr[3] = createCmdSpan(nbsp + "-e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/itachi-pass \\")
-							instruArr[4] = createCmdSpan(nbsp + "mysql")
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createLinuxCmd3(
+								"docker service create \\ " +
+													"--name itachi -p 3306:3306 \\ " +
+													"--secret itachi-pass \\ " +
+													"-e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/itachi-pass \\ " +
+													"mysql"
+							)
+							// instruArr[1] = createCmdSpan(nbsp + "--name itachi -p 3306:3306 \\")
+							// instruArr[2] = createCmdSpan(nbsp + "--secret itachi-pass \\")
+							// instruArr[3] = createCmdSpan(nbsp + "-e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/itachi-pass \\")
+							// instruArr[4] = createCmdSpan(nbsp + "mysql")
 							createCmdInstruT2(instruArr,"docker");
 
 			</script>

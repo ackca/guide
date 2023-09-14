@@ -62,7 +62,7 @@
 							createLinuxTxtT2(cmd);
 
 				createInstruT0("初始化CA","i2");
-					createInstruT1("自签名根证书(10年有效期)");
+					createInstruT1("创建json格式的自签名根证书","i2-1");
 						cmd = `
 							mkdir -p /opt/certs
 
@@ -92,7 +92,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("初始化CA<br/>");
+					createInstruT1("初始化CA<br/>","i2-2");
 						instruArr = new Array();
 						instruArr[0]=createLinuxCmd("cfssl gencert -initca “ca-csr.json。 | cfssljson -bare “ca。");
 						instruArr[1]=createCmdInstruSpan("“ca-csr.json。","json格式根证书请求");
@@ -116,42 +116,42 @@
 							ll
 							# 以下是输出
 							总用量 16
-							-rw-r--r-- 1 root root 1700 1月   9 23:48 ca.csr       # 证书请求
-							-rw-r--r-- 1 root root  336 1月   9 23:45 ca-csr.json
-							-rw------- 1 root root 3243 1月   9 23:48 ca-key.pem   # 根的私钥
-							-rw-r--r-- 1 root root 2061 1月   9 23:48 ca.pem       # 根证书
+							-rw-r--r-- 1 root root 1700  1月   9 23:48 ca.csr       # 证书请求
+							-rw-r--r-- 1 root root  336  1月   9 23:45 ca-csr.json
+							-rw------- 1 root root 3243  1月   9 23:48 ca-key.pem   # 根的私钥
+							-rw-r--r-- 1 root root 2061  1月   9 23:48 ca.pem       # 根证书
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("查看证书信息");
-						cmd = `
-							cfssl-certinfo -cert ca.pem
-							# 以下是输出
-							{
-							  "subject": {
-								"common_name": "itachica",
-								"names": [
-								  "itachica"
-								]
-							  },
-							  "issuer": {
-								"common_name": "itachica",
-								"names": [
-								  "itachica"
-								]
-							  },
-							  "serial_number": "61857579819241270272870508549841533315689933009",
-							  "not_before": "2023-09-04T00:44:00Z",
-							  "not_after": "2025-09-03T00:44:00Z",
-							  "sigalg": "SHA256WithRSA",
-							  "authority_key_id": "",
-							  "subject_key_id": "B1:BB:D1:A8:5D:53:14:40:54:E0:33:7F:86:41:4A:3F:65:9F:6D:13",
-							  "pem": "-----BEGIN CERTIFICATE-----\\n省略复杂的证书内容\\n-----END CERTIFICATE-----\\n"
-							}
-						`;
-						createLinuxTxtT1(cmd);
+					// createInstruT1("查看证书信息");
+					// 	cmd = `
+					// 		cfssl-certinfo -cert ca.pem
+					// 		# 以下是输出
+					// 		{
+					// 		  "subject": {
+					// 			"common_name": "itachica",
+					// 			"names": [
+					// 			  "itachica"
+					// 			]
+					// 		  },
+					// 		  "issuer": {
+					// 			"common_name": "itachica",
+					// 			"names": [
+					// 			  "itachica"
+					// 			]
+					// 		  },
+					// 		  "serial_number": "61857579819241270272870508549841533315689933009",
+					// 		  "not_before": "2023-09-04T00:44:00Z",
+					// 		  "not_after": "2025-09-03T00:44:00Z",
+					// 		  "sigalg": "SHA256WithRSA",
+					// 		  "authority_key_id": "",
+					// 		  "subject_key_id": "B1:BB:D1:A8:5D:53:14:40:54:E0:33:7F:86:41:4A:3F:65:9F:6D:13",
+					// 		  "pem": "-----BEGIN CERTIFICATE-----\\n省略复杂的证书内容\\n-----END CERTIFICATE-----\\n"
+					// 		}
+					// 	`;
+					// 	createLinuxTxtT1(cmd);
 
-					createInstruT1("配置证书模板");
+					createInstruT1("配置证书模板","i2-3");
 						cmd = `
 							# server 服务器证书
 							# client 客户证书
@@ -199,7 +199,7 @@
 				createInstruT0("申请证书","i3")
 					createInstruAllTopT0("以申请Web服务器证书为例")
 					createInstruT1("全新申请","i3-1")
-						createInstruT2("创建证书申请");
+						createInstruT2("创建json格式的证书申请文件","i3-1-1");
 							cmd = `
 								cat >/opt/certs/web.json <<EOF
 								{
@@ -225,10 +225,11 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("申请证书");
+						createInstruT2("申请证书","i3-1-2");
+							instruArr = new Array();
 							instruArr[0]=createLinuxCmd(
-								"cfssl gencert -ca=“ca.pem。 -ca-key=“ca-key.pem。\\" +
-													"-config=“ca-config.json。 -profile=“server。\\" +
+								"cfssl gencert -ca “ca.pem。 -ca-key “ca-key.pem。\\ " +
+													"-config “ca-config.json。 -profile “server。\\ " +
 													"“web.json。 | cfssljson -bare “web-server。"
 							);
 							instruArr[1]=createCmdInstruSpan("“ca.pem。","根证书");
@@ -240,9 +241,9 @@
 							createCmdInstruT2(instruArr,"cfssl");
 
 							cmd = `
-								cfssl gencert -ca=ca.pem -ca-key=ca-key.pem \\
-												-config=ca-config.json -profile=server \\
-												web.json | cfssljson -bare web-server
+								cfssl gencert -ca ca.pem -ca-key ca-key.pem \\
+												-config ca-config.json -profile server \\
+												web.json ||| cfssljson -bare web-server
 
 								# ca.pem			根证书
 								# ca-key.pem		根证书私钥
@@ -261,17 +262,17 @@
 								ll | grep web
 
 								# 下面为输出
-								-rw-r--r--. 1 root root	323	3月 30 16:50 web.json
-								-rw-r--r--. 1 root root 1078	3月 30 16:50 web-server.csr		# 证书请求
-								-rw-------. 1 root root 1675	3月 30 16:50 web-server-key.pem	# 证书私钥
-								-rw-r--r--. 1 root root 1785	3月 30 16:50 web-server.pem		# 证书
+								-rw-r--r--. 1 root root  323  3月  30 16:50 web.json
+								-rw-r--r--. 1 root root 1078  3月  30 16:50 web-server.csr		# 证书请求
+								-rw-------. 1 root root 1675  3月  30 16:50 web-server-key.pem	# 证书私钥
+								-rw-r--r--. 1 root root 1785  3月  30 16:50 web-server.pem		# 证书
 							`;
 							createLinuxTxtT2(cmd);
 
 					createInstruT1("已经申请文件csr<br />","i3-2")
 						instruArr[0]=createLinuxCmd(
-							"cfssl sign -ca=“ca.pem。 -ca-key=“ca-key.pem。\\" +
-										"-config=“ca-config.json。 -profile=“server。\\" +
+							"cfssl sign -ca “ca.pem。 -ca-key “ca-key.pem。\\ " +
+										"-config “ca-config.json。 -profile “server。\\ " +
 										"-csr “PAN-P.itachi.tech.csr。 | cfssljson -bare “PAN-P.itachi.tech。"
 						);
 						instruArr[5]=createCmdInstruSpan("“PAN-P.itachi.tech.csr。","证书请求");
@@ -296,8 +297,8 @@
 							ll | grep PAN-P.itachi.tech
 
 							# 下面为输出
-							-rw-r--r--. 1 root root	1085	9月 11 15:27 PAN-P.itachi.tech.csr	# 证书请求
-							-rw-r--r--. 1 root root	1233	9月 11 15:27 PAN-P.itachi.tech.pem	# 证书
+							-rw-r--r--. 1 root root 1085  9月  11 15:27 PAN-P.itachi.tech.csr	# 证书请求
+							-rw-r--r--. 1 root root 1233  9月  11 15:27 PAN-P.itachi.tech.pem	# 证书
 						`;
 						createLinuxTxtT1(cmd);
 

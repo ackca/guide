@@ -1,6 +1,6 @@
 function createNavigation(tree, path) {
 	// 顶部导航
-	htmlText = top_menu.replace(/rootpath\//g, path);
+	var htmlText = top_menu.replace(/rootpath\//g, path);
 
 	// 左侧导航树 <---- 开始 ---->
 	htmlText = htmlText +
@@ -19,13 +19,13 @@ function createNavigation(tree, path) {
 }
 
 function createTree(tree) {
-	htmlText = '';
-	for (key in tree) {
+	var htmlText = '';
+	for (var key in tree) {
 		htmlText = htmlText + '<li class="treeview">'
 		if(typeof tree[key] != "string") {
 			htmlText = htmlText + '<a href="javascript:void(0)" cmd="#' + key + '"><i class="fa fa-folder"></i><span>';
-			key_next = '';
-			for(key_nexts in tree[key]) {
+			var key_next = '';
+			for(var key_nexts in tree[key]) {
 				key_next = key_nexts;
 			}
 			htmlText = htmlText + key_next +
@@ -101,8 +101,7 @@ function createInstru(text, NO, instruT) {
 			document.writeln('<br /><br />')
 		}
 
-		words = splitBR(text);
-
+		var words = splitBR(text);
 		document.writeln(words[0] + "<span class='" + instruT + "' id='" + NO +"'>" + words[1] + "</span>" + words[2]);
 	}
 	else {
@@ -112,12 +111,12 @@ function createInstru(text, NO, instruT) {
 }
 
 function createInstruAllTop(text, instruT) {
-	words = splitBR(addSpan(text));
+	var words = splitBR(addSpan(text));
 	document.writeln(words[0] + '<span class="cmdInstruAllTop' + instruT + '">' + words[1] + '</span>' + words[2]);
 }
 
 function createInstruAllBottom(text, instruT) {
-	words = splitBR(addSpan(text));
+	var words = splitBR(addSpan(text));
 	document.writeln(words[0] + '<span class="cmdInstruAllBottom' + instruT + '">' + words[1] + '</span>' + words[2]);
 }
 
@@ -150,37 +149,37 @@ function createInstruAllBottomT3(text, instruT) {
 }
 
 function createCmdT1(text) {
-	createCmd(text, cmdT1);
+	createCmd(text, 'cmdT1');
 }
 
 function createCmdT2(text) {
-	createCmd(text, cmdT2);
+	createCmd(text, 'cmdT2');
 }
 
 function createCmdT3(text) {
-	createCmd(text, cmdT3);
+	createCmd(text, 'cmdT3');
 }
 
 function createLinuxTxt(cmds, cmdT) {
-	cmds = cmds.replace(/</g,'&lt;') //由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
+	cmds = cmds.replace(/</g, '&lt;') // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
 
-	url = window.location.href
+	var url = window.location.href
 	url = url.substring(url.indexOf('/guide/class/'));
-	path = "../".repeat(url.split('/').length - 3);
+	var path = "../".repeat(url.split('/').length - 3);
 
-	htmlText = "<div class='linuxDiv" + cmdT + "'>" +
+	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
 		"<div class='divCopy' onclick='linuxCopy(this)'><img src='" + path + "img/copy.png' /></div>" +
 		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
-	cmd_arr = cmds.split('\n')
-	subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
+	var cmd_arr = cmds.split('\n')
+	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
-	for(i = 1; i < cmd_arr.length - 1; i++) {
+	for(var i = 1; i < cmd_arr.length - 1; i++) {
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
 		//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
 		cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
 		cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
 
-		index = cmd_arr[i].indexOf('#');
+		var index = cmd_arr[i].indexOf('#');
 
 		if(index == 0) {	//纯注释
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
@@ -218,10 +217,11 @@ function createLinuxTxt(cmds, cmdT) {
 
 		index = cmd_arr[i].indexOf('&lt;a') // 即<a
 		if (index >= 0) {
-			link = cmd_arr[i].substring(index);	// 链接
-			link = link.replace(/&lt;/g,'<');	// 将空格和<还原
+			var link = cmd_arr[i].substring(index);	// 链接
+			link = link.replace(/&lt;/g,'<');		// 将空格和<还原
 			link = link.replace(/&nbsp;/g,' ');
-			cmd = cmd_arr[i].substring(0, index);	// 命令部分
+
+			var cmd = cmd_arr[i].substring(0, index);	// 命令部分
 			htmlText = htmlText + '<span>' + cmd.trim() + '</span>' + link + '<br />';
 			continue;
 		}
@@ -245,13 +245,13 @@ function createViptelaCLI3(cmds) {
 }
 
 function createViptelaCLI(cmds, cmdT) {
-	htmlText = "<div class='linuxDiv" + cmdT + "'>"
-	cmd_arr = cmds.split('\n')
+	var htmlText = "<div class='linuxDiv" + cmdT + "'>"
+	var cmd_arr = cmds.split('\n')
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
-	subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length;
+	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length;
 
-	for(i = 1; i < cmd_arr.length - 1; i++) {
+	for(var i = 1; i < cmd_arr.length - 1; i++) {
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
 		if(
 			cmd_arr[i].indexOf('config terminal') >= 0 ||
@@ -268,8 +268,8 @@ function createViptelaCLI(cmds, cmdT) {
 			continue;
 		}
 
-		reg = new RegExp("(\\s*ip (address|route))(.+)");
-		clis = cmd_arr[i].match(reg);
+		var reg = new RegExp("(\\s*ip (address|route))(.+)");
+		var clis = cmd_arr[i].match(reg);
 
 		if(clis) {
 			htmlText = htmlText + "<span class='spanB'>" + clis[1].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
@@ -305,21 +305,21 @@ function createLinuxTxtT3(cmds) {
 }
 
 function createYAML(cmds, cmdT) {
-	htmlText = "<div class='linuxDiv" + cmdT + "'>";
-	cmd_arr = cmds.split('\n');
+	var htmlText = "<div class='linuxDiv" + cmdT + "'>";
+	var cmd_arr = cmds.split('\n');
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
-	subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length;
+	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length;
 
-	for(i = 1; i < cmd_arr.length - 1; i++){
+	for(var i = 1; i < cmd_arr.length - 1; i++){
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
 
 		//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
 		cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;');
 		cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
 
-		zs = '';
-		index = cmd_arr[i].indexOf('#');
+		var zs = '';
+		var index = cmd_arr[i].indexOf('#');
 		if(index == 0) {	//纯注释
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
 			continue;		//纯注释，无需进行后面的分解
@@ -330,10 +330,10 @@ function createYAML(cmds, cmdT) {
 			cmd_arr[i] = cmd_arr[i].substring(0, index);	//配置
 		}
 
-		fgf_list = [':','='];
-		fgf = ''
+		var fgf_list = [':','='];
+		var fgf = ''
 
-		for(j in fgf_list) {
+		for(var j in fgf_list) {
 			if(cmd_arr[i].indexOf(fgf_list[j]) != -1) {
 				fgf = fgf_list[j];
 				break;
@@ -345,13 +345,13 @@ function createYAML(cmds, cmdT) {
 		}
 		else {
 			index = cmd_arr[i].indexOf(fgf);
-			reg  = new RegExp(/\d/);
+			var reg  = new RegExp(/\d/);
 			if(reg.test(cmd_arr[i][index-1]) && reg.test(cmd_arr[i][index+1])) {
 				htmlText = htmlText + "<span class='spanV'>" + cmd_arr[i] + "</span>";
 			}
 			else {
-				type = cmd_arr[i].substring(0, index);
-				value = cmd_arr[i].substring(index + 1);
+				var type = cmd_arr[i].substring(0, index);
+				var value = cmd_arr[i].substring(index + 1);
 				htmlText = htmlText + "<span class='spanT'>" + type + "</span><span class='spanV'><span class='spanFGF'>" + fgf + "</span>" + value + "</span>";
 			}
 		}
@@ -386,32 +386,51 @@ function createCmd(text, cmdT) {
 	document.writeln("<span class='"+cmdT+"'>" + text + "</span>");
 }
 
+function createLinuxCmd3(linuxCmd) {
+	return createLinuxCmd(linuxCmd, 3)
+}
+
 // cmdNum：整条命令中，命令单词的最大数量
 function createLinuxCmd(linuxCmd, cmdNum = 2) {
-	count = (linuxCmd.match(/\|/g) || []).length;
-	cmd = linuxCmd.split(" | ");
-	// cmd = linuxCmd.split(" ||| ");
+	/*
+		由于命令中存在可选项 [ | ] 或 { | }，括号中也可能不只一个 | ，拆分命令时会出现问题
+		由于 [] 在正则表达式中用途更多，处理比 {} 复杂
+		先将 {} 中的 | 修改为 @@@
+		再将 [] 修改为 {{}}，再将{{}}中的 | 修改为 @@@
+		最后再将 @@@、{{}} 还原
+	*/
+	var reg = new RegExp("(^.+{{1,2}[^|]+)|( .+}{1,2}.*$)","g");
 
-	htmlText = "";
-	if(cmdNum >= 2) {
-		// reg = new RegExp("([A-z][\\w-]+)(( (\\[ )?([A-z][\\w-]+)( \\])?){0," + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
-		reg = new RegExp("([A-z][\\w-]+)(( (\\[ )?([A-z][\\w-]+)( \\])?){0," + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
-		// reg = new RegExp("([A-z][\\w-]+)(( (\\[ )?([A-z][\\w-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
+	if(reg.test(linuxCmd)) {
+		var orCMD = linuxCmd.match(reg);
+		while(orCMD.length == 2) {
+			linuxCmd = orCMD[0] + '@@@' + orCMD[1];
+			orCMD = linuxCmd.match(reg);
+		}
 	}
 
-	// if(cmdNum == 2) {
-	// 	// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?)?)(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-	// 	reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?)?)(( ([-+]{1,2}\\S+))*)?( (.+))?");
-	//
-	// }
-	// else {
-	// 	// reg = new RegExp("([A-z][A-z-]+)(( (\\[ )?([A-z][A-z-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}[^ ]+))*)?( (.+))?");
-	// 	reg = new RegExp("(\\S+)(( (\\[ )?([A-z][A-z0-9-]+)( \\])?){" + (cmdNum -1).toString() + "})(( ([-+]{1,2}\\S+))*)?( (.+))?");
-	// }
+
+	// 添加空格，防止修改命令参数或对象中内容，因为只能位于开始或结束，只添加一侧空格
+	linuxCmd = linuxCmd.replaceAll("[ ", "{{ ").replace(" ]", " }}");
+	reg = new RegExp("(^.+{{[^|]+)|( .+}}.*$)","g");
+	if(reg.test(linuxCmd)) {
+		var orCMD = linuxCmd.match(reg);
+		while(orCMD.length == 2) {
+			linuxCmd = orCMD[0] + '@@@' + orCMD[1];
+			orCMD = linuxCmd.match(reg);
+		}
+	}
+
+	// 处理 []、{}中的 | 结束
+
+	var count = (linuxCmd.match(/\|/g) || []).length;
+	var cmd = linuxCmd.split(" | ");
+	reg = new RegExp("([A-z.][\\w-./]+)(( (\\[ )?([A-z][\\w-]+)( \\])?){0," + (cmdNum -1).toString() + "})(( (-{1,2}\\S+))*)?( (.+))?");
+	var htmlText = "";
 
 	for(i = 0; i < cmd.length; i++) {
-		cmds = cmd[i].match(reg);
-
+		var cmds = cmd[i].match(reg);
+		// console.log(cmds)
 		htmlText = htmlText + "<span class='sqlWord'>" + cmds[1].replaceAll(" ","&nbsp;&nbsp;") + "</span>";
 
 		if(cmds[2]) {// cmds[4]首字符为一个空格，如果有多个参数，每个参数间还有一个空格，改为两个空格
@@ -434,16 +453,13 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 				htmlText = htmlText + "&nbsp;&nbsp;" + cmds[11].replaceAll(" ","&nbsp;&nbsp;").replaceAll("[\"","[ \"").replaceAll("\"]","\" ]");
 			}
 			else {
-				index = cmds[11].indexOf(" -");
-				// index2 = cmds[11].indexOf(" - ");	// 应对 chattr { + | - }“i。 “ap。
-				// if(index == -1 || index == index2) {
-				// 	cmds[11] = cmds.replaceAll('')
-				// }
+				var index = cmds[11].indexOf(" -");
+
 				if(index == -1) {
-					htmlText = htmlText + "&nbsp;&nbsp" + cmds[11].replaceAll(" ","&nbsp;&nbsp;").replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
+					htmlText = htmlText + "&nbsp;&nbsp" + cmds[11].replaceAll(" ","&nbsp;&nbsp;");//.replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
 				}
 				else {
-					htmlText = htmlText + "&nbsp;&nbsp" + cmds[11].split(" -")[0].replace("。 “","。&nbsp;&nbsp;“").replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
+					htmlText = htmlText + "&nbsp;&nbsp" + cmds[11].split(" -")[0].replace("。 “","。&nbsp;&nbsp;“");//.replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
 					htmlText = htmlText + splitLinuxCmd(cmds[11].substring(index + 1));
 				}
 			}
@@ -451,28 +467,35 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 		htmlText = htmlText + "&nbsp;&nbsp;|&nbsp;&nbsp;";
 	}
 
-	// console.log("<span class='sqlWord'></span>".length)
-
-	regg = new RegExp("<span class='sqlWord'>\\S+</span>");
+	// 当命令较长时，需要换行，为了看着方便，换行后的所有内容的缩进均在命令单词后
+	// 统计命令单词的字数，后面的各行，添加 字数*2 - 2 的空格作为缩进
 	reg = /<span class='sqlWord'>\S+<\/span>/g;
-	sqlWords = htmlText.match(reg);
-	num = 0;
-
-	console.log(count);
-	console.log(htmlText);
+	var sqlWords = htmlText.match(reg);
+	var num = 0;
 
 	for(i = 0; i < sqlWords.length - count; i++) {
-		word = sqlWords[i].replaceAll('&nbsp;','');
+		var word = sqlWords[i].replaceAll('&nbsp;','');
 		num = num + word.length - 29
 	}
-	console.log(num);
+	// 统计命令单词的字数部分结束
 
-	return createCmdSpan(htmlText.substr(0, htmlText.length - 25).replaceAll('\\', '<br />' + '&nbsp;'.repeat(num * 2)));
+	// 个别命令用 + 代表参数，如：chattr，处理 + 的参数
+	reg = new RegExp(" (\\+[^ ]+) ","g");
+	htmlText = htmlText.replace(reg, "&nbsp;&nbsp;<span class='spanY'>$1</span>&nbsp;&nbsp;")
+
+	// 还原非管道符的 | ，以及 []
+	htmlText = htmlText.replaceAll('@@@', '|').replaceAll('{{', '[').replaceAll('}}', ']');
+
+	// 处理长命令的换行，\替换为\<br />，并处理缩进
+	htmlText = htmlText.replaceAll('\\', '&nbsp;&nbsp;\\<br />' + '&nbsp;'.repeat(num * 2 - 2));
+
+	// 由于html代码的缩进原因，去掉前面的空格
+	return createCmdSpan(htmlText.substr(0, htmlText.length - 25));
 }
 
 function splitLinuxCmd(cmd) {
-	htmlText = "";
-	index = cmd.indexOf(" -");
+	var htmlText = "";
+	var index = cmd.indexOf(" -");
 	if(index == -1) {
 		htmlText = htmlText + splitParaObj(cmd);
 	}
@@ -485,18 +508,48 @@ function splitLinuxCmd(cmd) {
 }
 
 function splitParaObj(cmd){
-	reg = new RegExp("(-{1,2}[^ ]+)?( (.+))?");
-	cmds = cmd.match(reg);
+	var reg = new RegExp("(-{1,2}[^ ]+)?( (.+))?");
+	var cmds = cmd.match(reg);
 
-	htmlText = "&nbsp;&nbsp;<span class='spanY'>" + cmds[1] + "</span>";
+	var htmlText = "&nbsp;&nbsp;<span class='spanY'>" + cmds[1] + "</span>";
 	if(cmds[3]) {
-		// htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replace("。 “","。&nbsp;&nbsp;“").replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
 		htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replaceAll(" ","&nbsp;&nbsp;");
 	}
 
 	return htmlText;
 }
 
+
+///////////////////////////////////////
+
+function splitLinuxCmdp(cmd) {
+	var htmlText = "";
+	var index = cmd.indexOf(" +");
+	if(index == -1) {
+		htmlText = htmlText + splitParaObj(cmd);
+	}
+	else {
+		htmlText = htmlText + splitParaObjp(cmd.split(" +")[0]);
+		htmlText = htmlText + splitLinuxCmdp(cmd.substring(index + 1));
+	}
+
+	return htmlText;
+}
+
+function splitParaObjp(cmd){
+	var reg = new RegExp("(\\+[^ ]+)?( (.+))?");
+	var cmds = cmd.match(reg);
+
+	var htmlText = "&nbsp;&nbsp;<span class='spanY'>" + cmds[1] + "</span>";
+	if(cmds[3]) {
+		htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replaceAll(" ","&nbsp;&nbsp;");
+	}
+
+	return htmlText;
+}
+
+
+///////////////////////////////////////
 function createSQLLinuxCmdSpan(cmd) {
 	return createCmdSpan("<span style='color:#8AA4AF'>[root@localhost ~]#</span> "+ cmd);
 }
@@ -674,7 +727,7 @@ function createCmdInstruT3(instruArr, typeBrand) {
 }
 
 function createConfigImg(imgNameList, typeT) {
-	htmlText = "<div class='divConfigImg" + typeT + "'>";
+	var htmlText = "<div class='divConfigImg" + typeT + "'>";
 
 	if(imgNameList.indexOf('~') > 0) {
 		imgNameArr = imgNameList.split("~");
@@ -712,7 +765,7 @@ function createConfigImgT3(imgNameList) {
 }
 
 function addSQLSpan(cmd) {
-	sql_keyword =
+	var sql_keyword =
 		'alter|all|' +
 		'by|' +
 		'create|' +
@@ -727,6 +780,7 @@ function addSQLSpan(cmd) {
 		'update|use|user|' +
 		'variables|' +
 		'where|with';
+
 	for (const sElement of reg = '/'
 		+ '(^(' + sql_keyword + ') )|'
 		+ '( (' + sql_keyword + ')$)|'
@@ -742,13 +796,13 @@ function addSQLSpan(cmd) {
 }
 
 function splitBR(text) {
-	reg = new RegExp("(^(<br />)*)(.+?)((<br />)*$)");
-	br = text.match(reg);
+	var reg = new RegExp("(^(<br />)*)(.+?)((<br />)*$)");
+	var br = text.match(reg);
 	return [br[1], br[3], br[4]];
 }
 
 function linuxCopy(element) {
-	txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
+	var txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
 	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
 	// 将使用html符号表示的 空格、>、< 还原
 	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ').replaceAll('&gt;','>').replaceAll('&lt;','<');
@@ -765,14 +819,13 @@ function linuxCopy(element) {
 
 	$(element).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
 	setTimeout(function() { $(element).next().fadeOut(500) }, 1000)
-
 }
 
 function reverse_protocol(protocol_l) {
     var row_id = [];
     var row_innerHTML = [];
 
-    for (i = 1; ; i++) {
+    for (var i = 1; ; i++) {
         var element = document.getElementById(protocol_l + "r" + i);
         if(element) {
             row_id.push(protocol_l + "r" + i);
@@ -783,13 +836,13 @@ function reverse_protocol(protocol_l) {
         }
     }
 
-    for(i = 0; i < row_id.length; i++) {
+    for(var i = 0; i < row_id.length; i++) {
         document.getElementById(row_id[i]).innerHTML = row_innerHTML[row_innerHTML.length - i - 1];
     }
 }
 
 function createProtocolWord(protocolSX, protocolQC, protocolZW) {
-	htmlText = "<div style='display: inline-block'>";
+	var htmlText = "<div style='display: inline-block'>";
 	htmlText = htmlText + "<table>";
 	htmlText = htmlText + "<tr>";
 	htmlText = htmlText + "<td rowSpan='2' class='protocolSX'>" + protocolSX + "</td>";
@@ -816,12 +869,11 @@ function createProtocolStructT2(imgWidth, imgHeight, SFHeight, imgUrl, protocolN
 }
 
 function heightlightField(protocolField, k, structID) {
-	y = (k * protocolField).toString() + 'px';
+	var y = (k * protocolField).toString() + 'px';
 	$(structID).css('background-position-y', y);
 	if (structID.substring(1) == $('#divProtocol').attr("protocolID")) {
 		$('#protocolImg').css('background-position-y', y);
 	}
-
 }
 
 function initProtocol(structID) {
@@ -844,12 +896,12 @@ function createProtocolExplainT2(words, k, structID = 'divProtocolStruct') {
 }
 
 function createProtocolExplain(words, k, structID, divT) {
-	htmlText = "<div class='divSJ" + divT + "'>";
+	var htmlText = "<div class='divSJ" + divT + "'>";
 
 	htmlText = htmlText + "<div class='divProtocolExplain'><dl>";
 	words_arr = words.split('\n');
 
-	for(i = 1,j = 1; i < words_arr.length - 1; i = i + 3, j++){
+	for(var i = 1,j = 1; i < words_arr.length - 1; i = i + 3, j++){
 		htmlText = htmlText + "<div onMouseOver=\"heightlightField("
 			+ j + "," + k + ", \'#" + structID + "\')\" onMouseOut=\"initProtocol(\'#" + structID + "\')\">";
 		htmlText = htmlText + "<dt class='fa fa-files-o'>&nbsp;&nbsp;" + words_arr[i].trim() + "</dt>";
@@ -861,7 +913,7 @@ function createProtocolExplain(words, k, structID, divT) {
 }
 
 function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, protocolName, divID) {
-	htmlText = "<div class='divSJ" + divT + "'>";
+	var htmlText = "<div class='divSJ" + divT + "'>";
 	htmlText = htmlText + "<div class='divProtocolStruct'>";
 	// onclinkStr = "\"protocolStructClick(" + imgWidth + "," + imgHeight + "," + SFHeight + ",\'" + imgUrl + "\')\"";
 	// htmlText = htmlText + "<div id='" + divID + "' ondblclick='ddl()' onclick=" + onclinkStr + " style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
@@ -902,7 +954,6 @@ function protocolStructClick(elem) {
 		$('#divProtocol').css("right", 0);
 		$('#divProtocol').attr("protocolID", elem.id);
 	}, 200);
-
 }
 
 function protocolMove(e) {
@@ -921,7 +972,6 @@ function protocolMove(e) {
 
 		$('#divProtocol').css("left", pleft);
 		$('#divProtocol').css("top", ptop);
-
 	}
 }
 
@@ -940,17 +990,17 @@ function closeProtocol() {
 
 function protocolStructdbClick(elem) {
 	clearTimeout(timeFN);
-	protocolWidth = $(elem).css("width");
-	protocolHeight =  $(elem).css("height");
-	protocolBgImage = $(elem).css("background-image");
+	var protocolWidth = $(elem).css("width");
+	var protocolHeight =  $(elem).css("height");
+	var protocolBgImage = $(elem).css("background-image");
 
-	protocolHTML = "<title>" + $(elem).attr("protocolName") + "结构</title>" +
+	var protocolHTML = "<title>" + $(elem).attr("protocolName") + "结构</title>" +
 		"<body style='margin: 0; background-color: #494A5F'></body>" +
 		"<div style='font-size: 50px; font-weight: bold; text-align: center; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
 			$(elem).attr("protocolName") + "结构" +
 		"</div>" +
 		"<div style='margin: 20px auto; width:" + protocolWidth + "; height:" + protocolHeight + "; " +	"background-image: " + protocolBgImage + "'></div></body>";
 
-	nwin = window.open('');
+	var nwin = window.open('');
 	nwin.document.writeln(protocolHTML)
 }

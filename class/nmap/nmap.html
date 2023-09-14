@@ -171,15 +171,15 @@
 						createInstruAllBottomT2("主机未开放端口 udp ---> icmp port unreacheabale");
 
 					createInstruT2("扫描检测主机指定的端口号");
-						instruArr[0] = createCmdSpan("<span class='sqlWord'>nmap</span>　[　<span class='spanY'>-sS</span>　|　<span class='spanY'>-sT</span>　|　<span class='spanY'>-sU</span>　]　<span class='spanY'>-p</span>　“‘T。:23,‘U。:1812。　“192.168.120.2。");
+						instruArr[0] = createLinuxCmd("nmap [ -sS | -sT | -sU ] -p “‘T。:23,‘U。:1812。 “192.168.120.2。");
 						instruArr[1] = createCmdInstruSpan("<span class='spanY'>-sS</span>　|　<span class='spanY'>-sT</span>　|　<span class='spanY'>-sU</span> ","端口扫描方式，依次为tcp syn、tcp connect、udp");
 						instruArr[2] = createCmdInstruSpan("“‘T。:23,‘U。:1812。","被扫描的端口号，T表示TCP，U表示UDP，只扫描TCP或UDP时不加也可");
 						instruArr[3] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
 						createCmdInstruT2(instruArr,"nmap");
 						createInstruAllBottomT2("<br />支持TCP与UDP在一条命令中扫描，TCP扫描方式在两者中选择一种，同时添加 -sU进行UDP扫描");
-						createInstruAllBottomT2("TCP、UDP同时扫描：<span class='sqlWord'>nmap</span>　<span class='spanY'>-sT</span>　<span class='spanY'>-sU</span>　<span class='spanY'>-p</span>　‘T。:23,‘U。:1812　192.168.120.1");
-						createInstruAllBottomT2("TCP扫描：　　　　　　　　<span class='sqlWord'>nmap</span>　<span class='spanY'>-sT</span>　<span class='spanY'>-p</span>　23　192.168.120.1");
-						createInstruAllBottomT2("UDP扫描：　　　　　　　&nbsp;<span class='sqlWord'>nmap</span>　<span class='spanY'>-sU</span>　<span class='spanY'>-p</span>　1812　192.168.120.1");
+						createInstruAllBottomT2("TCP、UDP同时扫描：" + createLinuxCmd("nmap -sT -sU -p ‘T。:23,‘U。:1812 192.168.120.1"));
+						createInstruAllBottomT2("TCP扫描：　　　　　　　&nbsp;&nbsp;" + createLinuxCmd("nmap -sT -p 23 192.168.120.1"));
+						createInstruAllBottomT2("UDP扫描：　　　　　　　 " + createLinuxCmd("nmap -sU -p 1812 192.168.120.1"));
 
 					createInstruT2("扫描检测主机开放端口对应的应用层程序");
 						instruArr = null
@@ -192,14 +192,11 @@
 
 				createInstruT0("高级功能","i4");
 					createInstruT2("伪装源端口");
-						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("nmap { --source-port | -g } “12345。 “其它扫描参数。");
 						instruArr[1] = createCmdInstruSpan("“12345。","扫描数据包的源端口号");
 						createCmdInstruT2(instruArr,"nmap");
 
 					createInstruT2("修改ttl值");
-						instruArr = null
-						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("nmap --ttl “8。 “其它扫描参数。");
 						instruArr[1] = createCmdInstruSpan("“8。","扫描数据包的ttl值");
 						createCmdInstruT2(instruArr,"nmap");

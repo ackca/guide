@@ -29,28 +29,27 @@
 					createInstruT1("官方文档地址：<a class='link' href='https://docs.docker.com/engine/install/' target='_blank'>https://docs.docker.com/engine/install/</a>，Server 部分");
 						createInstruT2("删除原有组件");
 							instruArr = new Array();
-							nbsp = "&nbsp;".repeat(21);
-							instruArr[0] = createLinuxCmd("yum remove docker \\");
-							instruArr[1] = createCmdSpan(nbsp + "docker-client \\");
-							instruArr[2] = createCmdSpan(nbsp + "docker-client-latest \\");
-							instruArr[3] = createCmdSpan(nbsp + "docker-common \\");
-							instruArr[4] = createCmdSpan(nbsp + "docker-latest \\");
-							instruArr[5] = createCmdSpan(nbsp + "docker-latest-logrotate \\");
-							instruArr[6] = createCmdSpan(nbsp + "docker-logrotate \\");
-							instruArr[7] = createCmdSpan(nbsp + "docker-engine");
+							instruArr[0] = createLinuxCmd(
+								"yum remove docker\\ " +
+											"docker-client\\ " +
+											"docker-client-latest\\ " +
+											"docker-common\\ " +
+											"docker-latest\\ " +
+											"docker-latest-logrotate\\ " +
+											"docker-logrotate\\ " +
+											"docker-engine"
+							);
 							createCmdInstruT2(instruArr,"docker");
 
 						createInstruT2("安装 yum-utils");
-							instruArr = null;
-							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("yum install -y yum-utils");
 							createCmdInstruT2(instruArr,"docker");
 
 						createInstruT2("配置国内镜像");
-							nbsp = "&nbsp;".repeat(9);
-							instruArr[0] = createLinuxCmd("yum-config-manager \\");
-							instruArr[1] = createCmdSpan(nbsp + "<span class='spanY'> --add-repo</span> \\");
-							instruArr[2] = createCmdSpan(nbsp + "http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo");
+							instruArr[0] = createLinuxCmd(
+								"yum-config-manager --add-repo \\ " +
+									"http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo "
+							);
 							createCmdInstruT2(instruArr,"docker");
 
 						createInstruT2("安装其它组件");
@@ -296,7 +295,7 @@
 						createInstruT2("查看数据卷","i3-7-1");
 							createInstruT3("查看数据卷（通过jq查看）","i3-7-1-1");
 								instruArr = new Array();
-								instruArr[0] = createLinuxCmd("docker inspect “itachi。 ||| jq -r '.[0].Mounts'");
+								instruArr[0] = createLinuxCmd("docker inspect “itachi。 | jq -r '.[0].Mounts'");
 								instruArr[1] = createCmdInstruSpan("“itachi。","容器名或ID");
 								createCmdInstruT3(instruArr,"docker");
 								createConfigImgT3("basic/i3_7_1_1$1");

@@ -31,24 +31,24 @@
 						createInstruT2("下载，软件版本参考官方文档");
 							createInstruT3("官方下载");
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("curl -L \"https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
+								instruArr[0] = createLinuxCmd("curl -L \"https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
 								createCmdInstruT3(instruArr,"docker");
 
 							createInstruT3("国内地址下载");
-								instruArr[0] = createCmdSpan("curl -L \"https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
+								instruArr[0] = createLinuxCmd("curl -L \"https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
 								createCmdInstruT3(instruArr,"docker");
 
 						createInstruT2("添加执行权限");
-							instruArr[0] = createCmdSpan("chmod +x /usr/local/bin/docker-compose");
+							instruArr[0] = createLinuxCmd("chmod +x /usr/local/bin/docker-compose");
 							createCmdInstruT2(instruArr,"docker");
 
 						createInstruT2("查看版本（检测安装是否成功）");
-							instruArr[0] = createCmdSpan("docker-compose version");
+							instruArr[0] = createLinuxCmd("docker-compose version");
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("compose/i1$1");
 
 				createInstruT0("docker-compose命令<br />","i2");
-					instruArr[0] = createCmdSpan("docker-compose　[ -f　docker-com.yml ]　[ -p　itachi ]　“操作命令。　[ “itachi_mysql。 ]");
+					instruArr[0] = createLinuxCmd("docker-compose　[ -f　docker-com.yml ]　[ -p　itachi ]　“操作命令。　[ “itachi_mysql。 ]");
 					instruArr[1] = createCmdInstruSpan("-f　“docker-com.yml。","指定配置文件，默认为当前目录的 docker-compose.yml 或 docker-compose.yaml");
 					instruArr[2] = createCmdInstruSpan("-p　“itachi。","指定项目名称，默认为当前目录下的项目");
 					instruArr[3] = createCmdInstruSpan("“itachi_mysql。","特定的容器名，默认为所有容器");

@@ -713,6 +713,7 @@
 								createConfigImgT3("redhat_basic/i5-1$1");
 
 							createInstruT3("修改文件的时间");
+								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("touch { -a | -m | -d } “rhel.txt。");
 								instruArr[1] = createCmdInstruSpan("-a","仅修改 读取时间（atime）");
 								instruArr[2] = createCmdInstruSpan("-m","仅修改 修改时间（mtime）");
@@ -720,7 +721,7 @@
 								instruArr[4] = createCmdInstruSpan("“rhel.txt。","文件名");
 								createCmdInstruT3(instruArr,"redhat");
 								createConfigImgT3("redhat_basic/i5-1$2");
-
+				//
 
 						createInstruKeyT2("mkdir – 创建空白的目录","i5-2");
 							createInstruT3("创建目录");
@@ -785,6 +786,7 @@
 
 
 						createInstruKeyT2("<br /><br />rm – 删除文件或目录","i5-5");
+							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("rm [ -r | -f ] { “ISE.txt。 | “fw。 }");
 							instruArr[1] = createCmdInstruSpan("-r","删除目录，及目录中的文件");
 							instruArr[2] = createCmdInstruSpan("-f","直接删除，不会有是否删除的提示");
@@ -1141,15 +1143,15 @@
 								document.writeln("<br />");
 								createConfigImgT3("redhat_basic/i10-5$1");
 
-
 						createInstruT2("<br />文件的隐藏属性","i10-2");
 							createInstruKeyT3("chattr – 管理隐藏属性","i10-2-1");
-								instruArr[0] = createLinuxCmd("chattr +“i。 “ap。");
-								instruArr[1] = createLinuxCmd("chattr -“i。 “ap。");
-								instruArr[2] = createCmdInstruSpan("+","添加隐藏属性");
-								instruArr[3] = createCmdInstruSpan("-","移除隐藏属性");
-								instruArr[4] = createCmdInstruSpan("“i。","隐藏属性");
-								instruArr[5] = createCmdInstruSpan("“ap。","文件/目录");
+								instruArr = new Array();
+								instruArr[0] = createLinuxCmd("chattr { +“i。 | -“i。 } “ap。");
+								// instruArr[0] = createCmdSpan("<span class='sqlWord'>chattr</span>　{　<span class='spanY'>+“i。</span>　|　<span class='spanY'>-“i。</span>　}　“ap。");
+								instruArr[1] = createCmdInstruSpan("+","添加隐藏属性");
+								instruArr[2] = createCmdInstruSpan("-","移除隐藏属性");
+								instruArr[3] = createCmdInstruSpan("“i。","隐藏属性");
+								instruArr[4] = createCmdInstruSpan("“ap。","文件/目录");
 								createCmdInstruT2(instruArr,"redhat");
 
 								createInstruAllTopT3("各个隐藏属性的表示方法如下：");
@@ -1221,7 +1223,6 @@
 								instruArr[1] = createCmdInstruSpan("“/root。","文件/目录");
 								createCmdInstruT3(instruArr,"redhat");
 								createConfigImgT3("redhat_basic/i10-3-2$1");
-
 
 			</script>
 			<div id="guide-icon">
