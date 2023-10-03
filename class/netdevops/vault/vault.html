@@ -10,6 +10,12 @@
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
 	</script>
+	<style type="text/css">
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -372,30 +378,30 @@
 						createInstruT2("切换令牌","i4-1-1");
 							createInstruAllTopT2("相当于登录一个有对应权限的用户");
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("export VAULT_TOKEN=\"“s.aLI7r4at4lJepW6lY96h32ek。\"");
+							instruArr[0] = createLinuxCmd1("export VAULT_TOKEN=\"“s.aLI7r4at4lJepW6lY96h32ek。\"");
 							instruArr[1] = createCmdInstruSpan("“s.aLI7r4at4lJepW6lY96h32ek。","拥有相应权限的token。");
 							createCmdInstruT2(instruArr,"vault");
 
 						createInstruT2("存储secret组的配置","i4-1-2");
 							createInstruT3("创建组","i4-1-2-1");
-								instruArr[0] = createCmdSpan("vault secrets enable -path=“itachi。”/。 kv-v2");
+								instruArr[0] = createLinuxCmd3("vault secrets enable -path=“itachi。/ kv-v2");
 								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
 								createCmdInstruT3(instruArr,"vault");
 
 							createInstruT3("罗列组","i4-1-2-2");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("vault secrets list");
+								instruArr[0] = createLinuxCmd3("vault secrets list");
 								createCmdInstruT3(instruArr,"vault");
 
 							createInstruT3("删除组","i4-1-2-3");
-								instruArr[0] = createCmdSpan("vault secrets disable “itachi。”/。");
+								instruArr[0] = createLinuxCmd3("vault secrets disable “itachi。/");
 								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
 								createCmdInstruT3(instruArr,"vault");
 
 						createInstruT2("secret的配置","i4-1-3");
 							createInstruT3("向组中添加secret","i4-1-3-1");
-								instruArr[0] = createCmdSpan("vault kv put　“itachi。”/。“router-auth。　“username。=“admin。　“password。=“Cisc0123。");
+								instruArr[0] = createLinuxCmd3("vault kv put “itachi。/“router-auth。 “username。=“admin。 “password。=“Cisc0123。");
 								instruArr[2] = createCmdInstruSpan("“router-auth。","secret名");
 								instruArr[3] = createCmdInstruSpan("“username。","secret的键，多组键值间以空格分隔");
 								instruArr[4] = createCmdInstruSpan("“admin。","secret的值");
@@ -404,13 +410,13 @@
 							createInstruT3("获取secret","i4-1-3-2");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("vault kv get　“itachi。”/。“router-auth。");
+								instruArr[0] = createLinuxCmd3("vault kv get “itachi。/“router-auth。");
 								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
 								instruArr[2] = createCmdInstruSpan("“router-auth。","secret名");
 								createCmdInstruT3(instruArr,"vault");
 
 							createInstruT3("获取secret中特定的键的值","i4-1-3-3");
-								instruArr[0] = createCmdSpan("vault kv get　”-。field=“username。　“itachi。”/。“router-auth。");
+								instruArr[0] = createLinuxCmd3("vault kv get -field=“username。 “itachi。/“router-auth。");
 								instruArr[1] = createCmdInstruSpan("“username。","键名");
 								instruArr[2] = createCmdInstruSpan("“itachi。","组名");
 								instruArr[3] = createCmdInstruSpan("“router-auth。","secret名");
@@ -419,12 +425,12 @@
 							createInstruT3("罗列secret","i4-1-3-4");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createCmdSpan("vault kv list　“itachi。”/。");
+								instruArr[0] = createLinuxCmd3("vault kv list “itachi。/");
 								instruArr[1] = createCmdInstruSpan("“itachi。","组名");
 								createCmdInstruT3(instruArr,"vault");
 
 							createInstruT3("删除secret","i4-1-3-5");
-								instruArr[0] = createCmdSpan("vault kv delete　“itachi。”/。“router-auth。");
+								instruArr[0] = createLinuxCmd3("vault kv delete “itachi。/“router-auth。");
 								instruArr[2] = createCmdInstruSpan("“router-auth。","secret名");
 								createCmdInstruT3(instruArr,"vault");
 
@@ -433,7 +439,7 @@
 					createInstruT1("切换令牌","i5-1");
 						createInstruAllTopT1("相当于登录一个有对应权限的用户<br />");
 						instruArr = new Array();
-						instruArr[0] = createCmdSpan("export VAULT_TOKEN=\"“s.aLI7r4at4lJepW6lY96h32ek。\"");
+						instruArr[0] = createLinuxCmd1("export VAULT_TOKEN=\"“s.aLI7r4at4lJepW6lY96h32ek。\"");
 						instruArr[1] = createCmdInstruSpan("“s.aLI7r4at4lJepW6lY96h32ek。","拥有相应权限的token。");
 						createCmdInstruT1(instruArr,"vault");
 
@@ -467,6 +473,8 @@
 						`;
 						createLinuxTxtT1(cmd);
 
+				document.writeln("<br /><br /><br /><br /><br /><br /><br />")
+				document.writeln("<br /><br /><br /><br /><br /><br /><br />")
 
 			</script>
 			<div id="guide-icon">

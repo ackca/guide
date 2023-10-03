@@ -133,12 +133,7 @@ tree_swarm = {
 		"配置docker集群":{
 			"i1-1":"安装 docker swarm",
 			"i1-2":"配置docker集群",
-			"i1-3":{
-				"查看docker集群":{
-					"i1-3-1":"docker node ls",
-					"i1-3-2":"docker info",
-				}
-			},
+			"i1-3":"查看docker集群",
 		}
 	},
 	"i2":{

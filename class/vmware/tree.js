@@ -1,4 +1,12 @@
 vsphere7 = {
+	"i9": {
+		"安装vCenter Server":{
+			"i9-1":"安装文件路径",
+			"i9-2":"第1阶段：部署vCenter Server",
+			"i9-3":"第2阶段：设置vCenter Server",
+		}
+	},
+
 	"i1": {
 		"初始化":{
 			"i1-1":"新建数据中心",

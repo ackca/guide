@@ -10,6 +10,12 @@
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
 	</script>
+	<style type="text/css">
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -25,6 +31,8 @@
 
 					createInstruT1("下载安装cfssl");
 						createInstruAllTopT1("下载地址：<a class='link' href='https://github.com/cloudflare/cfssl/releases' target='_blank'>https://github.com/cloudflare/cfssl/releases</a>");
+						createInstruAllTopT1("下载 ‘cfssl。、‘cfssljson。、‘cfssl-certinfo。 对应版本的文件，并赋予执行权限");
+
 						cmd = `
 							wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64 -O /usr/bin/cfssl
 
@@ -111,7 +119,7 @@
 							2021/01/09 23:48:43 [INFO] received CSR
 							2021/01/09 23:48:43 [INFO] generating key: rsa-4096
 							2021/01/09 23:48:46 [INFO] encoded CSR
-							2021/01/09 23:48:46 [INFO] signed certificate with serial number 246970798440184992149105239827901069071556381741
+							2021/01/09 23:48:46 [INFO] signed certificate with serial number 246970… # 省略冗长的序列号
 
 							ll
 							# 以下是输出
@@ -228,10 +236,13 @@
 						createInstruT2("申请证书","i3-1-2");
 							instruArr = new Array();
 							instruArr[0]=createLinuxCmd(
-								"cfssl gencert -ca “ca.pem。 -ca-key “ca-key.pem。\\ " +
-													"-config “ca-config.json。 -profile “server。\\ " +
+								"cfssl gencert -ca “ca.pem。 -ca-key “ca-key.pem。 \\ " +
+													"-config “ca-config.json。 -profile “server。 \\ " +
 													"“web.json。 | cfssljson -bare “web-server。"
 							);
+							// instruArr[0]=createLinuxCmd(
+							// 	"cfssljson -bare “web-server。"
+							// );
 							instruArr[1]=createCmdInstruSpan("“ca.pem。","根证书");
 							instruArr[2]=createCmdInstruSpan("“ca-key.pem。","根证书的私钥");
 							instruArr[3]=createCmdInstruSpan("“ca-config.json。","json格式的证书模板");
@@ -242,8 +253,8 @@
 
 							cmd = `
 								cfssl gencert -ca ca.pem -ca-key ca-key.pem \\
-												-config ca-config.json -profile server \\
-												web.json ||| cfssljson -bare web-server
+											  -config ca-config.json -profile server \\
+											  web.json | cfssljson -bare web-server
 
 								# ca.pem			根证书
 								# ca-key.pem		根证书私钥
@@ -257,7 +268,7 @@
 								2023/03/30 16:50:41 [INFO] received CSR
 								2023/03/30 16:50:41 [INFO] generating key: rsa-2048
 								2023/03/30 16:50:41 [INFO] encoded CSR
-								2023/03/30 16:50:41 [INFO] signed certificate with serial number 272845908368040715241949782944036322906758807569
+								2023/03/30 16:50:41 [INFO] signed certificate with serial number 272845… # 省略冗长的序列号
 
 								ll | grep web
 
@@ -269,10 +280,10 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("已经申请文件csr<br />","i3-2")
+					createInstruT1("已经申请文件csr<br />","i3-2");
 						instruArr[0]=createLinuxCmd(
-							"cfssl sign -ca “ca.pem。 -ca-key “ca-key.pem。\\ " +
-										"-config “ca-config.json。 -profile “server。\\ " +
+							"cfssl sign -ca “ca.pem。 -ca-key “ca-key.pem。 \\ " +
+										"-config “ca-config.json。 -profile “server。 \\ " +
 										"-csr “PAN-P.itachi.tech.csr。 | cfssljson -bare “PAN-P.itachi.tech。"
 						);
 						instruArr[5]=createCmdInstruSpan("“PAN-P.itachi.tech.csr。","证书请求");
@@ -281,8 +292,8 @@
 
 						cmd = `
 							cfssl sign -ca ca.pem -ca-key ca-key.pem \\
-										-config ca-config.json -profile server \\
-										-csr PAN-P.itachi.tech.csr | cfssljson -bare PAN-P.itachi.tech
+									   -config ca-config.json -profile server \\
+									   -csr PAN-P.itachi.tech.csr | cfssljson -bare PAN-P.itachi.tech
 
 							# ca.pem					根证书
 							# ca-key.pem				根证书私钥
@@ -292,7 +303,7 @@
 							# PAN-P.itachi.tech		 得到的证书文件名
 
 							# 下面为输出
-							2023/09/11 15:27:30 [INFO] signed certificate with serial number 626807903266177927017074210372749799080450261134
+							2023/09/11 15:27:30 [INFO] signed certificate with serial number 626807… # 省略冗长的序列号
 
 							ll | grep PAN-P.itachi.tech
 

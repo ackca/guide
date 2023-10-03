@@ -10,6 +10,12 @@
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
 	</script>
+	<style type="text/css">
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -83,6 +89,7 @@
 
 								# 从打包文件中分离私钥
 								openssl pkcs12 -in test.itachi.tech.pfx -nocerts -out test.itachi.tech-key-encry.pem
+								# 下面为输出
 								Enter Import Password:				# 输入打包文件加密密码
 								Enter PEM pass phrase:				# 输入私钥加密密码
 								Verifying - Enter PEM pass phrase:	# 再次输入私钥加密密码
@@ -94,6 +101,7 @@
 
 								# 私钥解密，得到明文私钥
 								openssl rsa -in test.itachi.tech-key-encry.pem -out test.itachi.tech-key.pem
+								# 下面为输出
 								Enter pass phrase for test.itachi.tech-key-encry.pem:	# 输入私钥加密密码
 								writing RSA key
 
@@ -105,6 +113,7 @@
 
 								# 从打包文件中分离证书
 								openssl pkcs12 -in test.itachi.tech.pfx -clcerts -nokeys -out test.itachi.tech.pem
+								# 下面为输出
 								Enter Import Password:	# 输入打包文件加密密码
 
 								ll

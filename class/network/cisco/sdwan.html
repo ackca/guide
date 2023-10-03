@@ -54,7 +54,7 @@
 									!
 									commit
 								`;
-								createViptelaCLI2(cmd);
+								createViptelaCLIT2(cmd);
 
 						createInstruT2("如果没有DNS服务，可以使用host方式（不推荐）","i1-1-2");
 							cmd = `
@@ -63,7 +63,7 @@
 								vpn 0
 								 host vbond.testrabbit.local ip 202.100.100.30
 							`;
-							createViptelaCLI2(cmd);
+							createViptelaCLIT2(cmd);
 
 						createInstruT2("vBound冗余","i1-1-3");
 							createInstruAllTopT2("使用DNS时，对应域名配置多个解析结果即可<br />");
@@ -76,7 +76,7 @@
 								vpn 0
 								 host vbond.testrabbit.local ip 202.100.100.30 202.101.30
 							`;
-							createViptelaCLI2(cmd);
+							createViptelaCLIT2(cmd);
 
 					createInstruT1("vManage基本配置","i1-2");
 						createInstruT2("配置组织名","i1-2-1");
@@ -135,7 +135,7 @@
 							!
 							commit
 						`;
-						createViptelaCLI1(cmd);
+						createViptelaCLIT1(cmd);
 
 						createInstruAllTopT1("如果需要接口IP的PAT，如下配置");
 						cmd = `
@@ -143,7 +143,7 @@
 							 interface ge0/0
 							  nat
 						`;
-						createViptelaCLI1(cmd);
+						createViptelaCLIT1(cmd);
 
 
 					createInstruT1("Edge加载根证书","i2-3");

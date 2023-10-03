@@ -6,10 +6,10 @@ head = `
     <link rel='stylesheet' type='text/css' href='rootpath/css/guide-icon.css'>
     <link rel='stylesheet' type='text/css' href='rootpath/css/config.css'>
     <link rel='stylesheet' type='text/css' href='rootpath/css/HLTable.css'>
-    <script type='text/javascript' src='rootpath/js/jquery-2.1.1.min.js'></script>
+    <script type='text/javascript' src='rootpath/js/jquery.min.js'></script>
     <script type='text/javascript' src='rootpath/js/config.js'></script>
-    <script src='tree.js'></script>
-    <script src='rootpath/js/top_menu.js'></script>
+    <script type='text/javascript' src='tree.js'></script>
+    <script type='text/javascript' src='rootpath/js/top_menu.js'></script>
     <script type='text/javascript' src='rootpath/js/HLTable.js'></script>
 `
 

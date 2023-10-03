@@ -10,6 +10,11 @@
 		document.write(head.replace(/rootpath\//g, '../../'));
 	</script>
 	<style type="text/css">
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
+
 		.HLTableS1, .HLTableS2
 		{
 			border-radius: 5px;
@@ -72,7 +77,7 @@
 								TYPE=Ethernet
 								PROXY_METHOD=none
 								BROWSER_ONLY=no
-								BOOTPROTO=static						# IPv4地址配置方式，dhcp / static
+								BOOTPROTO=static				  # IPv4地址配置方式，dhcp / static
 								DEFROUTE=yes
 								IPV4_FAILURE_FATAL=no
 								IPV6INIT=yes
@@ -82,37 +87,28 @@
 								NAME=ens160
 								UUID=ea74cf24-c2a2-ecee-3747-a2d76d46f93b
 								DEVICE=ens160
-								ONBOOT=yes									# 是否启用网卡
+								ONBOOT=yes						# 是否启用网卡
 
 								IPADDR=192.168.100.101			# IPv4地址
 								NETMASK=255.255.255.0		 	# IPv4子网掩码，前缀、子网掩码二选一
 								GATEWAY=192.168.100.1		 	# IPv4默认网关
-								DNS1=202.99.96.68				 	# IPv4 DNS
+								DNS1=202.99.96.68				 # IPv4 DNS
 								DNS2=8.8.8.8
 
 								IPV6ADDR=2001::100/64		 	# IPv6地址、前缀
 								IPV6_DEFAULTGW=2001::1			# IPv6默认网关
-								DNS3=2400::1								# IPv6 DNS
+								DNS3=2400::1					  # IPv6 DNS
 								DNS4=2400::2
 							`;
 							createLinuxTxtT2(cmd);
 
 							createInstruAllTopT2("较高版本系统：文件配置后重启网卡，使配置生效");
-							// cmd = `
-							// 	nmcli connection reload ens160
-							// 	nmcli connection up ens160
-							// `;
-							// createLinuxTxtT2(cmd);
-							instruArr[0] = createLinuxCmd("nmcli connection reload “ens160。","3");
-							instruArr[1] = createLinuxCmd("nmcli connection up “ens160。","3");
+							instruArr[0] = createLinuxCmd3("nmcli connection reload “ens160。");
+							instruArr[1] = createLinuxCmd3("nmcli connection up “ens160。");
 							instruArr[2] = createCmdInstruSpan("“ens160。","网卡名");
 							createCmdInstruT2(instruArr,"redhat");
 
 							createInstruAllTopT2("较低版本系统：文件配置后需要重启网络服务，使配置生效");
-							// cmd = `
-							// 	systemctl reload network
-							// `;
-							// createLinuxTxtT2(cmd);
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("systemctl reload network");
@@ -122,10 +118,6 @@
 							createInstruAllTopT2("一个用命令行画的图形界面，操作不是很方便");
 
 							createInstruAllTopT2("使配置生效时，需要禁用，再启用网卡，基于该网卡的网络连接会中断");
-							// cmd = `
-							// 	nmtui
-							// `;
-							// createLinuxTxtT2(cmd);
 							instruArr[0] = createLinuxCmd("nmtui");
 							createCmdInstruT2(instruArr,"redhat");
 
@@ -134,71 +126,31 @@
 						createInstruKeyT2("nmcli – 命令行工具配置网络","i2-1-3");
 							createInstruT3("配置地址");
 								createInstruAllTopT3("静态IPv4地址");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv4.addresses 192.168.100.111/34 ipv4.gateway 192.168.100.1 ipv4.dns 202.99.96.68,8.8.8.8
-								// 	nmcli connection modify ens192 ipv6.method manual
-								// `;
-								// createLinuxTxtT3(cmd);
-								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv4.addresses “192.168.100.11。/“24。 ipv4.gateway “192.168.100.1。 ipv4.dns “202.99.96.68,8.8.8.8。","3");
+								instruArr[0] = createLinuxCmd3("nmcli connection modify “ens192。 ipv4.addresses “192.168.100.11。/“24。 ipv4.gateway “192.168.100.1。 ipv4.dns “202.99.96.68”,。8.8.8.8。");
 								instruArr[1] = createCmdInstruSpan("“ens192。","网卡名");
 								instruArr[2] = createCmdInstruSpan("“192.168.100.11。/“24。","IP地址/子网掩码");
 								instruArr[3] = createCmdInstruSpan("“192.168.100.1。","默认网关");
-								instruArr[4] = createCmdInstruSpan("“202.99.96.68,8.8.8.8。","DNS服务器地址（多个）");
+								instruArr[4] = createCmdInstruSpan("“202.99.96.68”,。8.8.8.8。","DNS服务器地址（多个以 , 间隔）");
 								createCmdInstruT3(instruArr,"redhat");
 
 								createInstruAllTopT3("静态IPv6地址");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv6.addresses 2001:1::100/64 ipv6.gateway 2001:1::1 ipv6.dns 2400::1,2400::2
-								// 	nmcli connection modify ens192 ipv6.method manual
-								// `;
-								// createLinuxTxtT3(cmd);
-
-								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv6.addresses “2001:1::100。/“64。 ipv6.gateway “2001:1::1。 ipv6.dns “2400::1,2400::2。","3");
+								instruArr[0] = createLinuxCmd3("nmcli connection modify “ens192。 ipv6.addresses “2001:1::100。/“64。 ipv6.gateway “2001:1::1。 ipv6.dns “2400::1”,。2400::2。");
 								instruArr[2] = createCmdInstruSpan("“2001:1::100。/“64。","IP地址/子网掩码");
 								instruArr[3] = createCmdInstruSpan("“2001:1::1。","默认网关");
-								instruArr[4] = createCmdInstruSpan("“2400::1,2400::2。","DNS服务器地址（多个）");
+								instruArr[4] = createCmdInstruSpan("“2400::1”,。2400::2。","DNS服务器地址（多个以 , 间隔）");
 								createCmdInstruT3(instruArr,"redhat");
 
 							createInstruT3("修改IP地址配置方式");
-								// createInstruAllTopT3("IPv4地址采用静态方式配置，ens192为网卡名");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv4.method manual
-								// `;
-								// createLinuxTxtT3(cmd);
-								//
-								// createInstruAllTopT3("IPv4地址采用DHCP方式获得，ens192为网卡名");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv4.method auto
-								// `;
-								// createLinuxTxtT3(cmd);
 								createInstruAllTopT3("IPv4");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv4.method { manual | auto }" ,"3");
+								instruArr[0] = createLinuxCmd3("nmcli connection modify “ens192。 ipv4.method { manual | auto }");
 								instruArr[1] = createCmdInstruSpan("“ens192。","网卡名");
 								instruArr[2] = createCmdInstruSpan("manual","静态方式配置");
 								instruArr[3] = createCmdInstruSpan("auto","DHCP方式获得");
 								createCmdInstruT3(instruArr,"redhat");
-
-								// createInstruAllTopT3("IPv6地址采用静态方式配置，ens192为网卡名");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv6.method manual
-								// `;
-								// createLinuxTxtT3(cmd);
-								//
-								// createInstruAllTopT3("IPv6地址采用自动获取（通过‘ICMPv6 RA引导。），ens192为网卡名");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv6.method auto
-								// `;
-								// createLinuxTxtT3(cmd);
-								//
-								// createInstruAllTopT3("IPv6地址‘仅采用DHCP。方式获得，ens192为网卡名");
-								// cmd = `
-								// 	nmcli connection modify ens192 ipv6.method dhcp
-								// `;
-								// createLinuxTxtT3(cmd);
 								createInstruAllTopT3("IPv6");
-								instruArr[0] = createLinuxCmd("nmcli connection modify “ens192。 ipv6.method { manual | auto | dhcp }" ,"3");
+								instruArr[0] = createLinuxCmd3("nmcli connection modify “ens192。 ipv6.method { manual | auto | dhcp }");
 								instruArr[2] = createCmdInstruSpan("manual","静态方式配置");
 								instruArr[3] = createCmdInstruSpan("auto","自动获取（通过‘ICMPv6 RA引导。）");
 								instruArr[4] = createCmdInstruSpan("dhcp","‘仅采用DHCP。方式获得");
@@ -206,28 +158,18 @@
 
 
 							createInstruT3("使配置修改生效");
-								// cmd = `
-								// 	nmcli connection reload ens192
-								// 	nmcli connection up ens192
-								// `;
-								// createLinuxTxtT3(cmd);
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0] = createLinuxCmd("nmcli connection reload “ens192。","3");
-								instruArr[1] = createLinuxCmd("nmcli connection up “ens192。","3");
+								instruArr[0] = createLinuxCmd3("nmcli connection reload “ens192。");
+								instruArr[1] = createLinuxCmd3("nmcli connection up “ens192。");
 								instruArr[2] = createCmdInstruSpan("“ens192。","网卡名");
 								createCmdInstruT3(instruArr,"redhat");
 
 								createInstruAllTopT3("实测：动态地址变为静态地址，静态地址间改变IP地址，正常");
 
 								createInstruAllTopT3("静态地址变为动态地址时，原有静态地址不会失去，可按下面方法去掉");
-								// cmd = `
-								// 	nmcli connection delete ens192
-								// 	nmcli device up ens192
-								// `;
-								// createLinuxTxtT3(cmd);
-								instruArr[0] = createLinuxCmd("nmcli connection delete “ens192。","3");
-								instruArr[1] = createLinuxCmd("nmcli device up “ens192。","3");
+								instruArr[0] = createLinuxCmd3("nmcli connection delete “ens192。");
+								instruArr[1] = createLinuxCmd3("nmcli device up “ens192。");
 								createCmdInstruT3(instruArr,"redhat");
 
 
@@ -700,7 +642,6 @@
 									EOF
 								`;
 								createLinuxTxtT3(cmd);
-
 			</script>
 			<div id="guide-icon">
 				<div>

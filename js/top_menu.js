@@ -142,16 +142,16 @@ top_menu = `
 										<a href="rootpath/class/network/cisco/ise21.html">ISE 2.1</a>
 									</div>
 								</li>
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<span>DEVNET</span>
-									</div>
-									<div class="cat-item-sub">
-										<div class="cat-item-row">
-											<a href="rootpath/class/network/cisco/ios-xe.html">IOS-XE</a>
-										</div>
-									</div>
-								</li>
+<!--								<li class="cat-item">-->
+<!--									<div class="cat-item-main">-->
+<!--										<span>DEVNET</span>-->
+<!--									</div>-->
+<!--									<div class="cat-item-sub">-->
+<!--										<div class="cat-item-row">-->
+<!--											<a href="rootpath/class/network/cisco/ios-xe.html">IOS-XE</a>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</li>-->
 							</ul>
 						</div>
 						<div class="cat-group">
@@ -446,18 +446,19 @@ top_menu = `
 									<i class="ico-redhat"></i>
 								</div>
 								<span></span>
-								<ul class="cat-list">
-									<li class="cat-item">
-										<div class="cat-item-main">
-											<a href="rootpath/class/linux/redhat_basic.html">基础命令</a>
-										</div>
-									</li>
-									<li class="cat-item">
-										<div class="cat-item-main">
-											<a href="rootpath/class/linux/redhat_service.html">基础服务</a>
-										</div>
-									</li>
-								</ul>
+                            </h3>
+                            <ul class="cat-list">
+                                <li class="cat-item">
+                                    <div class="cat-item-main">
+                                        <a href="rootpath/class/linux/redhat_basic.html">基础命令</a>
+                                    </div>
+                                </li>
+                                <li class="cat-item">
+                                    <div class="cat-item-main">
+                                        <a href="rootpath/class/linux/redhat_service.html">基础服务</a>
+                                    </div>
+                                </li>
+                            </ul>
 						</div>
 					</div>
 				</div>

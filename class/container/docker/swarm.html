@@ -15,6 +15,11 @@
 		{
 			margin-top: -30px;
 		}
+
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
 	</style>
 </head>
 <body>
@@ -50,14 +55,16 @@
 						createInstruT2("在相应节点执行相关命令即可<br />");
 							createConfigImgT2("swarm/i1_2$4~5");
 
-					createInstruT1("查看docker集群","i1-3");
-						createInstruT2("docker node ls<br />","i1-3-1");
-							createConfigImgT2("swarm/i1_3$1");
+					createInstruT1("查看docker集群<br />","i1-3");
+						instruArr[0] = createLinuxCmd3("docker node ls");
+						createCmdInstruT1(instruArr,"docker");
+						createConfigImgT1("swarm/i1_3$1");
 
-						createInstruT2("docker info","i1-3-2");
+						instruArr[0] = createLinuxCmd("docker info");
+						createCmdInstruT1(instruArr,"docker");
 
 				createInstruT0("运行容器","i2");
-						createInstruT2("通过命令运行单个容器<br />","i2-1");
+						createInstruT2("通过命令运行单个容器","i2-1");
 							instruArr[0] = createLinuxCmd3("docker service create ……");
 							instruArr[1] = createCmdInstruSpan("基本与 docker run 相同");
 							instruArr[2] = createCmdInstruSpan("由于属于集群部署，增加了几个参数");
@@ -248,10 +255,6 @@
 													"-e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/itachi-pass \\ " +
 													"mysql"
 							)
-							// instruArr[1] = createCmdSpan(nbsp + "--name itachi -p 3306:3306 \\")
-							// instruArr[2] = createCmdSpan(nbsp + "--secret itachi-pass \\")
-							// instruArr[3] = createCmdSpan(nbsp + "-e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/itachi-pass \\")
-							// instruArr[4] = createCmdSpan(nbsp + "mysql")
 							createCmdInstruT2(instruArr,"docker");
 
 			</script>

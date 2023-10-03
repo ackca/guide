@@ -15,6 +15,11 @@
 		{
 			margin-top: -30px;
 		}
+
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
 	</style>
 </head>
 <body>
@@ -26,12 +31,15 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("安装 docker-compose","i1");
+					createInstruAllTopT0("新版docker已包含docker compose，无需要安装");
 						createInstruT2("官方文档地址：<a class='link'  href='https://docs.docker.com/compose/install/' target='_blank'>https://docs.docker.com/compose/install/</a>");
 
 						createInstruT2("下载，软件版本参考官方文档");
 							createInstruT3("官方下载");
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("curl -L \"https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
+								// instruArr[0] = createLinuxCmd("curl -L \"https:/-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
+
 								createCmdInstruT3(instruArr,"docker");
 
 							createInstruT3("国内地址下载");
@@ -47,8 +55,9 @@
 							createCmdInstruT2(instruArr,"docker");
 							createConfigImgT2("compose/i1$1");
 
-				createInstruT0("docker-compose命令<br />","i2");
-					instruArr[0] = createLinuxCmd("docker-compose　[ -f　docker-com.yml ]　[ -p　itachi ]　“操作命令。　[ “itachi_mysql。 ]");
+				createInstruT0("docker-compose命令","i2");
+					createInstruAllTopT0("新版docker中，命令修改为 docker compose …，无需 ”-。，其它相同<br />");
+					instruArr[0] = createLinuxCmd("docker-compose [ -f docker-com.yml ] [ -p itachi ] “操作命令。 [ “itachi_mysql。 ]");
 					instruArr[1] = createCmdInstruSpan("-f　“docker-com.yml。","指定配置文件，默认为当前目录的 docker-compose.yml 或 docker-compose.yaml");
 					instruArr[2] = createCmdInstruSpan("-p　“itachi。","指定项目名称，默认为当前目录下的项目");
 					instruArr[3] = createCmdInstruSpan("“itachi_mysql。","特定的容器名，默认为所有容器");
@@ -232,7 +241,7 @@
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("");
-								instruArr[1] = createCmdSpan("docker run --name itachi -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Cisc0123! -d mysql<br />　　　　　 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci");
+								instruArr[1] = createLinuxCmd("docker run --name itachi -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Cisc0123! -d mysql \\ --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci");
 								createCmdInstruT3(instruArr,"docker");
 
 								yaml = `
@@ -268,8 +277,6 @@
 												file: ./itachi-pass.txt # 指定某个文件中的内容为信息，单机的docker compose只支持这种方式',
 								`;
 								createYAMLT3(yaml);
-
-
 			</script>
 			<div id="guide-icon">
 				<div>

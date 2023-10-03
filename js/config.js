@@ -2,6 +2,11 @@ function createNavigation(tree, path) {
 	// 顶部导航
 	var htmlText = top_menu.replace(/rootpath\//g, path);
 
+	if(tree == 'regex') {
+		document.write(htmlText);
+		// console.log('regex');
+		return;
+	}
 	// 左侧导航树 <---- 开始 ---->
 	htmlText = htmlText +
 	'<aside class="main-sidebar">\
@@ -187,7 +192,9 @@ function createLinuxTxt(cmds, cmdT) {
 		}
 
 		if(index > 0 ) {	//配置和注释
-			notZS = 'sed&nbsp;-i&nbsp;\'/&nbsp;swap&nbsp;/&nbsp;s/^\\(.*\\)$/#\\1/g\'&nbsp;/etc/fstab';
+			var notZS = 'sed&nbsp;-i&nbsp;\'/&nbsp;swap&nbsp;/&nbsp;s/^\\(.*\\)$/#\\1/g\'&nbsp;/etc/fstab';
+			// var notZS_reg = new RegExp('\\[root@localhost&nbsp;[\\w~/]+\\]#');
+			// if (!notZS_reg.test(cmd_arr[i]) && cmd_arr[i] != notZS) {
 			if (cmd_arr[i] != notZS) {
 				zs = cmd_arr[i].substring(index);	//注释部分
 				cmd = cmd_arr[i].substring(0, index);	//命令部分
@@ -232,20 +239,27 @@ function createLinuxTxt(cmds, cmdT) {
 }
 
 
-function createViptelaCLI1(cmds) {
+function createViptelaCLIT1(cmds) {
 	createViptelaCLI(cmds, "T1");
 }
 
-function createViptelaCLI2(cmds) {
+function createViptelaCLIT2(cmds) {
 	createViptelaCLI(cmds, "T2");
 }
 
-function createViptelaCLI3(cmds) {
+function createViptelaCLIT3(cmds) {
 	createViptelaCLI(cmds, "T3");
 }
 
 function createViptelaCLI(cmds, cmdT) {
-	var htmlText = "<div class='linuxDiv" + cmdT + "'>"
+	var url = window.location.href
+	url = url.substring(url.indexOf('/guide/class/'));
+	var path = "../".repeat(url.split('/').length - 3);
+
+	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
+		"<div class='divCopy' onclick='linuxCopy(this)'><img src='" + path + "img/copy.png' /></div>" +
+		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
+
 	var cmd_arr = cmds.split('\n')
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
@@ -276,7 +290,6 @@ function createViptelaCLI(cmds, cmdT) {
 			htmlText = htmlText + "<span>" + clis[3].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
 			continue;
 		}
-
 
 		reg = new RegExp("(\\s*\\S+)(.*)");
 		clis = cmd_arr[i].match(reg);
@@ -386,12 +399,16 @@ function createCmd(text, cmdT) {
 	document.writeln("<span class='"+cmdT+"'>" + text + "</span>");
 }
 
+function createLinuxCmd1(linuxCmd) {
+	return createLinuxCmd(linuxCmd, 1)
+}
+
 function createLinuxCmd3(linuxCmd) {
 	return createLinuxCmd(linuxCmd, 3)
 }
 
 // cmdNum：整条命令中，命令单词的最大数量
-function createLinuxCmd(linuxCmd, cmdNum = 2) {
+function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	/*
 		由于命令中存在可选项 [ | ] 或 { | }，括号中也可能不只一个 | ，拆分命令时会出现问题
 		由于 [] 在正则表达式中用途更多，处理比 {} 复杂
@@ -420,139 +437,150 @@ function createLinuxCmd(linuxCmd, cmdNum = 2) {
 			orCMD = linuxCmd.match(reg);
 		}
 	}
-
 	// 处理 []、{}中的 | 结束
 
-	var count = (linuxCmd.match(/\|/g) || []).length;
-	var cmd = linuxCmd.split(" | ");
-	reg = new RegExp("([A-z.][\\w-./]+)(( (\\[ )?([A-z][\\w-]+)( \\])?){0," + (cmdNum -1).toString() + "})(( (-{1,2}\\S+))*)?( (.+))?");
-	var htmlText = "";
+	var cmds = [linuxCmd];
+	var FGFs = ['|', '&&'];
 
-	for(i = 0; i < cmd.length; i++) {
-		var cmds = cmd[i].match(reg);
-		// console.log(cmds)
-		htmlText = htmlText + "<span class='sqlWord'>" + cmds[1].replaceAll(" ","&nbsp;&nbsp;") + "</span>";
+	for(var i in FGFs) {
+		cmds = splitLinuxCMD(cmds, FGFs[i]);
+	}
 
-		if(cmds[2]) {// cmds[4]首字符为一个空格，如果有多个参数，每个参数间还有一个空格，改为两个空格
-			if(cmds[4] && cmds[6]) {
-				htmlText = htmlText + "&nbsp;&nbsp;[&nbsp;&nbsp;<span class='sqlWord'>" + cmds[5] + "</span>&nbsp;&nbsp;]";
+	var htmlText = '';
+
+	for(var j in cmds){
+		var cmd = cmds[j].split(' ');
+		for(var i in cmd) {
+			if(i == 0) {	// 第一位的只能是命令
+				htmlText = htmlText + "<span class='linuxCMD_cmd'>" + cmd[i] + "</span>";
 			}
-			else{
-				htmlText = htmlText + "<span class='sqlWord'>" + cmds[2].replaceAll(" ","&nbsp;&nbsp;") + "</span>";
-			}
-		}
 
-		// 命令参数部分
-		if(cmds[7]) {// cmds[6]首字符为一个空格，如果有多个参数，每个参数间还有一个空格，改为两个空格
-			htmlText = htmlText + "<span class='spanY'>" + cmds[7].replaceAll(" ","&nbsp;&nbsp;") + "</span>";
-		}
-
-		// 命令对象部分
-		if(cmds[11]) {
-			if(/^\$\(.+\)$/.test(cmds[11]) || /^("|(\[")).+(("\])|")$/.test(cmds[11])) { // $(…内容…) "…内容…" ["…内容…"]
-				htmlText = htmlText + "&nbsp;&nbsp;" + cmds[11].replaceAll(" ","&nbsp;&nbsp;").replaceAll("[\"","[ \"").replaceAll("\"]","\" ]");
-			}
-			else {
-				var index = cmds[11].indexOf(" -");
-
-				if(index == -1) {
-					htmlText = htmlText + "&nbsp;&nbsp" + cmds[11].replaceAll(" ","&nbsp;&nbsp;");//.replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
+			if(i >= 1 && i < cmdNum && cmdNum > 1) {
+				if(cmd[i][0] ==	'-' || cmd[i][0] ==	'+') {	// 第二位以 - 或 + 开头，则为参数
+					htmlText = htmlText + "<span class='linuxCMD_Para'>" + cmd[i] + "</span>";
 				}
 				else {
-					htmlText = htmlText + "&nbsp;&nbsp" + cmds[11].split(" -")[0].replace("。 “","。&nbsp;&nbsp;“");//.replaceAll(" | ","&nbsp;&nbsp;|&nbsp;&nbsp;");
-					htmlText = htmlText + splitLinuxCmd(cmds[11].substring(index + 1));
+					if(/^[A-z]$/.test(cmd[i][0])) {	// 第二位以英文字母开头，则为命令
+						htmlText = htmlText + "<span class='linuxCMD_cmd'>" + cmd[i] + "</span>";
+					}
+					else {	// 其它情况为命令对象
+						htmlText = htmlText + cmd[i];
+					}
 				}
 			}
+
+			if(i >= cmdNum) {
+				if(cmd[i][0] ==	'-' || cmd[i][0] ==	'+') {	// 第三及以后位以 - 或 + 开头，则为参数
+					htmlText = htmlText + "<span class='linuxCMD_Para'>" + cmd[i] + "</span>";
+				}
+				else {
+					// if(/^[A-z]$/.test(cmd[i][0])) {	// 第三及以后位以英文字母开头，则为命令
+					// 	htmlText = htmlText + cmd[i];
+					// }
+					// else {	// 其它情况为命令对象
+					// 	htmlText = htmlText + cmd[i];
+					// }
+					htmlText = htmlText + cmd[i];
+				}
+			}
+			htmlText = htmlText + '&nbsp;&nbsp;';
 		}
-		htmlText = htmlText + "&nbsp;&nbsp;|&nbsp;&nbsp;";
+	}
+	htmlText = htmlText.substring(0, htmlText.length - 12);
+
+	for(var i in FGFs) {
+		htmlText = htmlText.replaceAll("&nbsp;&nbsp;" + FGFs[i] + "&nbsp;&nbsp;", "&nbsp;&nbsp;<span class='linuxCMD_pipeline'>" + FGFs[i] + "</span>&nbsp;&nbsp;");
 	}
 
 	// 当命令较长时，需要换行，为了看着方便，换行后的所有内容的缩进均在命令单词后
-	// 统计命令单词的字数，后面的各行，添加 字数*2 - 2 的空格作为缩进
-	reg = /<span class='sqlWord'>\S+<\/span>/g;
-	var sqlWords = htmlText.match(reg);
+	// 统计命令单词的字数，后面的各行，添加 （字数+命令数）*2 - 2 的空格作为缩进
+	reg = /<span class='linuxCMD_cmd'>\S+<\/span>/g;
+	var linuxCMD_cmds = htmlText.split("<span class='linuxCMD_pipeline'>|</span>")[0].match(reg);
 	var num = 0;
 
-	for(i = 0; i < sqlWords.length - count; i++) {
-		var word = sqlWords[i].replaceAll('&nbsp;','');
-		num = num + word.length - 29
+	for(var i = 0; i < linuxCMD_cmds.length; i++) {
+		var word = linuxCMD_cmds[i].replaceAll('&nbsp;','');
+		num = num + word.length - 34
 	}
-	// 统计命令单词的字数部分结束
 
-	// 个别命令用 + 代表参数，如：chattr，处理 + 的参数
-	reg = new RegExp(" (\\+[^ ]+) ","g");
-	htmlText = htmlText.replace(reg, "&nbsp;&nbsp;<span class='spanY'>$1</span>&nbsp;&nbsp;")
+	htmlText = htmlText.replaceAll('&nbsp;&nbsp;\\&nbsp;&nbsp;', '&nbsp;&nbsp;\\<br />' + '&nbsp;'.repeat((num + linuxCMD_cmds.length) * 2 - 2));
+	// 处理命令命令中的换行部分结束
 
 	// 还原非管道符的 | ，以及 []
 	htmlText = htmlText.replaceAll('@@@', '|').replaceAll('{{', '[').replaceAll('}}', ']');
 
-	// 处理长命令的换行，\替换为\<br />，并处理缩进
-	htmlText = htmlText.replaceAll('\\', '&nbsp;&nbsp;\\<br />' + '&nbsp;'.repeat(num * 2 - 2));
+	reg = new RegExp("(\"[^\"]+\")","g");
+	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
 
-	// 由于html代码的缩进原因，去掉前面的空格
-	return createCmdSpan(htmlText.substr(0, htmlText.length - 25));
-}
+	reg = new RegExp(" ('[^']+')","g");
+	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
 
-function splitLinuxCmd(cmd) {
-	var htmlText = "";
-	var index = cmd.indexOf(" -");
-	if(index == -1) {
-		htmlText = htmlText + splitParaObj(cmd);
-	}
-	else {
-		htmlText = htmlText + splitParaObj(cmd.split(" -")[0]);
-		htmlText = htmlText + splitLinuxCmd(cmd.substring(index + 1));
+
+	if(isDG) {
+		return htmlText;
 	}
 
-	return htmlText;
-}
-
-function splitParaObj(cmd){
-	var reg = new RegExp("(-{1,2}[^ ]+)?( (.+))?");
-	var cmds = cmd.match(reg);
-
-	var htmlText = "&nbsp;&nbsp;<span class='spanY'>" + cmds[1] + "</span>";
-	if(cmds[3]) {
-		htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replaceAll(" ","&nbsp;&nbsp;");
+	if (htmlText.indexOf('$(') >= 0) {
+		htmlText = spliteDolor(htmlText, cmdNum);
 	}
 
-	return htmlText;
+	htmlText = htmlText.replaceAll('</span></span>', '</span>');
+	return createCmdSpan(htmlText);
 }
 
-
-///////////////////////////////////////
-
-function splitLinuxCmdp(cmd) {
-	var htmlText = "";
-	var index = cmd.indexOf(" +");
-	if(index == -1) {
-		htmlText = htmlText + splitParaObj(cmd);
-	}
-	else {
-		htmlText = htmlText + splitParaObjp(cmd.split(" +")[0]);
-		htmlText = htmlText + splitLinuxCmdp(cmd.substring(index + 1));
+function splitLinuxCMD(cmd_arrary, FGF) {
+	var cmdss = new Array();
+	for(var i in cmd_arrary) {
+		var cmds = cmd_arrary[i].split(' ' + FGF + ' ');
+		for(var j = 0; j < cmds.length -1; j++) {
+			cmdss.push(cmds[i] + ' ' + FGF)
+		}
+		cmdss.push(cmds[cmds.length - 1]);
 	}
 
-	return htmlText;
+	return cmdss;
 }
 
-function splitParaObjp(cmd){
-	var reg = new RegExp("(\\+[^ ]+)?( (.+))?");
-	var cmds = cmd.match(reg);
+function spliteDolor(cmd, cmdNum) {
+	if(cmd.indexOf('$(') >= 0) {
+		var dstart = cmd.indexOf('$(');
+		var dend = cmd.indexOf(')');
+		var son_cmd = cmd.substring(dstart + 2, dend);
 
-	var htmlText = "&nbsp;&nbsp;<span class='spanY'>" + cmds[1] + "</span>";
-	if(cmds[3]) {
-		htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replaceAll(" ","&nbsp;&nbsp;");
+		son_cmd = son_cmd.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;&nbsp;',' ').replaceAll('&gt;','>').replaceAll('&lt;','<');
+		cmd = cmd.substring(0, dstart) + "<span class='spanObj'>$(</span>" + createLinuxCmd(son_cmd, cmdNum, true) + "<span class='spanObj'>)</span>" + spliteDolor(cmd.substring(dend + 1));
 	}
-
-	return htmlText;
+	return cmd;
 }
-
-
-///////////////////////////////////////
-function createSQLLinuxCmdSpan(cmd) {
-	return createCmdSpan("<span style='color:#8AA4AF'>[root@localhost ~]#</span> "+ cmd);
-}
+// function splitLinuxCmd(cmd) {
+// 	var htmlText = "";
+// 	var index = cmd.indexOf(" -");
+// 	if(index == -1) {
+// 		htmlText = htmlText + splitParaObj(cmd);
+// 	}
+// 	else {
+// 		htmlText = htmlText + splitParaObj(cmd.split(" -")[0]);
+// 		htmlText = htmlText + splitLinuxCmd(cmd.substring(index + 1));
+// 	}
+//
+// 	return htmlText;
+// }
+//
+// function splitParaObj(cmd){
+// 	var reg = new RegExp("(-{1,2}[^ ]+)?( (.+))?");
+// 	var cmds = cmd.match(reg);
+//
+// 	var htmlText = "&nbsp;&nbsp;<span class='linuxCMD_Para'>" + cmds[1] + "</span>";
+// 	if(cmds[3]) {
+// 		htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replaceAll(" ","&nbsp;&nbsp;");
+// 	}
+//
+// 	return htmlText;
+// }
+//
+// function createSQLLinuxCmdSpan(cmd) {
+// 	return createCmdSpan("<span style='color:#8AA4AF'>[root@localhost ~]#</span> "+ cmd);
+// }
 
 function createSQLCmdSpan(cmd) {
 	cmd = addSQLSpan(cmd);
@@ -573,6 +601,7 @@ function createSQLCmdInstruSpan(cmd, text) {
 
 function createCmdSpan(cmd) {
 	// cmd为 <span……，不加前缀
+
 	if(cmd.indexOf("<span") >= 0) {
 		return "<span class='cmd'>" + addSpan(cmd) +"</span>"
 	}
@@ -630,7 +659,6 @@ function addSpan(text) {
 	// text = text.replace(/xnsy/g, "vpn");	// Gitee Pages屏蔽词
 	// text = text.replace(/邻邻邻/g, "邻居");	// Gitee Pages屏蔽词
 
-
 	var regVariable = new RegExp("“","g");
 	var regSpanBold = new RegExp("”","g");
 	var regR = new RegExp("‘","g");
@@ -646,7 +674,7 @@ function addSpan(text) {
 	text = text.replace(regSpanBold, "<span class='spanBold'>");
 	text = text.replace(regR, "<span class='spanR'>");
 	text = text.replace(regZN, "<span class='variableZN'>");
-	text = text.replace(regLinuxPara, "<span class='spanY'>");
+	text = text.replace(regLinuxPara, "<span class='linuxCMD_Para'>");
 	text = text.replace(regEnd, "$1</span>");
 	text = text.replace(regEnd2, "$1</span></span>");
 	text = text.replace(regJH, "。");
@@ -730,9 +758,9 @@ function createConfigImg(imgNameList, typeT) {
 	var htmlText = "<div class='divConfigImg" + typeT + "'>";
 
 	if(imgNameList.indexOf('~') > 0) {
-		imgNameArr = imgNameList.split("~");
+		var imgNameArr = imgNameList.split("~");
 		for(i = imgNameArr[0].substr(imgNameArr[0].length - 1); i <= parseInt(imgNameArr[1]); i++) {
-			eachName = imgNameArr[0].substr(0, imgNameArr[0].length - 1) + i;
+			var eachName = imgNameArr[0].substr(0, imgNameArr[0].length - 1) + i;
 			htmlText = htmlText + "<img src='config_img/" + eachName + ".png' />";
 			if(i != imgNameArr[1]) { //除最后第一张，每二张图间空行
 				htmlText = htmlText + "<br /><br />";
@@ -745,7 +773,6 @@ function createConfigImg(imgNameList, typeT) {
 
 	htmlText = htmlText + "</div><br /><br />";
 	document.write(htmlText);
-	
 }
 
 function createConfigImgT0(imgNameList) {
@@ -899,7 +926,7 @@ function createProtocolExplain(words, k, structID, divT) {
 	var htmlText = "<div class='divSJ" + divT + "'>";
 
 	htmlText = htmlText + "<div class='divProtocolExplain'><dl>";
-	words_arr = words.split('\n');
+	var words_arr = words.split('\n');
 
 	for(var i = 1,j = 1; i < words_arr.length - 1; i = i + 3, j++){
 		htmlText = htmlText + "<div onMouseOver=\"heightlightField("
