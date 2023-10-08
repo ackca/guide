@@ -1,4 +1,4 @@
-tree_redhat_basic = {
+redhat_basic = {
 	"i1":{
 		"系统工作命令":{
 			"i1-1":"echo – 输出字符串或提取Shell变量的值",
@@ -127,7 +127,7 @@ tree_redhat_basic = {
 	},
 };
 
-tree_redhat_service = {
+redhat_service = {
 	"i1":"systemctl – 管理系统服务",
 	"i2":{
 		"网络管理":{

@@ -1,4 +1,4 @@
-tree_icmpv4 = {
+icmpv4 = {
 	"i1":"ICMP 协议简介",
 	"i2":"ICMP 协议结构",
 	"i5":"ICMPv4 报文类型",
@@ -25,7 +25,7 @@ tree_icmpv4 = {
 	},
 };
 
-tree_tcp = {
+tcp = {
 	"i1":"TCP 首部字段说明",
 	"i2":{
 		"TCP 选项":{
@@ -47,14 +47,14 @@ tree_tcp = {
 	},
 };
 
-tree_udp = {
+udp = {
 	"i1":"UDP 首部字段说明",
 	"i2":"UDP 实例",
 	"i3":"UDP 应用源目端口关系",
 	"i4":"UDP 伪首部",
 };
 
-tree_icmpv6 = {
+icmpv6 = {
 	"i1":"ICMP 协议简介",
 	"i2":"ICMP 协议结构",
 	"i8":"ICMPv6 报文类型",

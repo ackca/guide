@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>协议-HTTP</title>
+
+	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript">
+		document.write(head.replace(/rootpath\//g, '../../../'));
+
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
+	</script>
+	<style type="text/css">
+		#divCommand
+		{
+			margin-top: 84.5px;
+		}
+
+		#tMethod .cell:nth-child(1)
+        {
+			width: 160px;
+		}
+
+		#tStatus1 .cell:nth-child(1),
+		#tStatus2 .cell:nth-child(1)
+        {
+			width: 100px;
+		}
+
+		#tStatus2 .row:nth-child(5) .cell,  /* 2XX状态码结束 */
+		#tStatus2 .row:nth-child(10) .cell, /* 3XX状态码结束 */
+		#tStatus2 .row:nth-child(16) .cell  /* 4XX状态码结束 */
+		{
+			border-bottom: solid 2px #FF6A6A;
+		}
+
+		#tStatus2 .row:nth-child(6) .cell,  /* 3XX状态码开始 */
+		#tStatus2 .row:nth-child(11) .cell, /* 4XX状态码开始 */
+		#tStatus2 .row:nth-child(17) .cell  /* 5XX状态码开始 */
+		{
+			border-top: solid 1px #FF6A6A;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<script type="text/javascript">
+			createNavigation(http, '../../../');
+		</script>
+
+		<div class="divProtocolWord">
+			<script type="text/javascript">
+				createProtocolWord(
+					"HTTP",
+					"HyperText Transfer Protocol",
+					"超文本传输协议"
+				);
+			</script>
+		</div>
+	</div><br />
+	<div id="divCommand">
+		<script type="text/javascript">
+			createInstruT0("http 报文基本结构","i1");
+                createInstruAllTopT1("特定报文不包含 主体，比如 GET Request、204 Respose，但仍然包含空行");
+                createConfigImgT1("HTTP/http");
+
+            createInstruT0("http 报文简单解析","i2");
+                createInstruT1("请求报文（Request）","i2-1");
+                    createConfigImgT1("HTTP/request");
+
+                createInstruT1("响应报文（Response）","i2-2");
+                    createConfigImgT1("HTTP/response");
+
+            createInstruT0("http 方法（methond）<br />","i3");
+                tHeader = [
+					"方法",
+					"作用",
+	                "说明"
+				];
+
+				tBody = [
+					["GET","获取资源","可通过URL传输信息"],
+					["POST","传输实体主体","通过主体传输信息，也可实现其它方法功能"],
+					["PATCH","","在REST API中更新对应项部分内容"],
+					["PUT","","在REST API中覆盖对应项全部内容"],
+					["HEAD","获得报文首部",""],
+					["DELETE","删除内容","也可用POST实现删除"],
+					["OPTIONS","询问支持的方法",""],
+					["TRACE","追踪路径",""],
+					["CONNECT","要求用隧道协议连接代理",""],
+					["LINK","建立和资源之间的联系","从HTTP 1.1开始，已废弃"],
+					["UNLINK","断开连接关系","从HTTP 1.1开始，已废弃"],
+				];
+				createHLTableT0(820, tHeader, tBody, "tMethod");
+
+
+            createInstruT0("http 状态码","i4");
+                createInstruT1("状态码类型<br />","i4-1");
+                    tHeader = [
+						"状态码",
+						"类别",
+		                "原因短语"
+					];
+
+					tBody = [
+						["1XX","Informational（信息性状态码）","可通过URL传输信息"],
+						["2XX","Success（成功状态码）","请求正常处理完毕"],
+						["3XX","Redirection（重定向状态码）","需要进行附加操作以完成请求"],
+						["4XX","Client Error（客户端错误状态码）","服务器无法处理请求"],
+						["5XX","Server Error（服务器错误状态码）","服务器处理请求出错"],
+					];
+					createHLTableT1(750, tHeader, tBody, "tStatus1");
+
+                    document.write("<br /><br />");
+
+                    tHeader = [
+						"状态码",
+		                "原因短语",
+	                    "说明"
+					];
+
+					tBody = [
+						["200","OK","请求已经正常处理"],
+						["201","Created","资源已经成功创建"],
+						["204","No Content","请求已经正常处理，但没有资源返回"],
+						["206","Partial Content","成功返回了部分内容"],
+						["301","Moved Permanently","永久重定向"],
+						["302","Moved Temporarily","临时重定向"],
+						["303","See Other","临时重定向"],
+						["304","Not Modified","继续使用缓存"],
+						["307","Temporary Redirect","临时重定向"],
+						["400","Bad Request","请求存在语法错误"],
+						["401","Unauthorized","需要认证"],
+						["403","Forbidden","请求的资源被拒绝"],
+						["404","Not Found","请求的资源无法找到"],
+						["405","Method Not Allowed","请求的方法不被允许"],
+						["413","Request Fntity Too Large","请求的Body过大"],
+						["500","Internal Server Error","服务器错误"],
+						["503","Service Unavailable","服务器无法响应"],
+					];
+					createHLTableT1(750, tHeader, tBody, "tStatus2");
+
+                createInstruT1("<br />2XX：成功","i4-2");
+                    createInstruT2("200：OK","i4-2-1");
+                        createInstruAllTopT2("最常见状态码，表示请求已经正常处理");
+
+
+                    createInstruT2("<br />201：Created","i4-2-2");
+                        createInstruAllTopT2("表示资源已经成功创建");
+                        createInstruAllTopT2("如：使用以下方式创建环回接口，正常返回201");
+                        createConfigImgT2("HTTP/201");
+
+
+                    createInstruT2("204：No Content","i4-2-3");
+                        createInstruAllTopT2("表示请求已经正常处理，但该请求没有资源可以返回");
+
+
+                    createInstruT2("<br />206：Partial Content","i4-2-4");
+                        createInstruAllTopT2("表示客户端进行了范围请求，而服务器成功返回了这部分内容");
+                        createInstruAllTopT2("如：客户端想获取一个较大PDF中的部分页面");
+
+
+                createInstruT1("<br />3XX：重定向","i4-3");
+                    createInstruT2("301：Moved Permanently","i4-3-1");
+                        createInstruAllTopT2("永久重定向，该状态码表示请求的资源已经被分配了新的URI，以后应使用现在所指的URI");
+                        createInstruAllTopT2("一般用于网站搬迁，对仍使用旧URI的用户发送301，告知新URI");
+
+
+                    createInstruT2("<br />302：Moved Temporarily","i4-3-2");
+                        createInstruAllTopT2("临时重定向，该状态码表示请求的资源已经被分配了新的URI，希望本次使用新的URI访问");
+                        createInstruAllTopT2("302为HTTP 1.0的旧方案，307为302的替代方案");
+
+
+                    createInstruT2("<br />303：See Other","i4-3-3");
+                        createInstruAllTopT2("该状态码表示请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源");
+                        createInstruAllTopT2("303与302有着相似的功能，但‘303明确表示客户端应当采用GET方法获取资源。");
+
+
+                    createInstruT2("<br />304：Not Modified","i4-3-4");
+                        createInstruAllTopT2("该状态码表示请求对应的资源之前已经发送并要求缓存，本次请求对应的资源没有改变，应继续使用缓存");
+                        createInstruAllTopT2("304虽然在3XX系列中，但和重定向无关");
+                        createInstruAllTopT2("某些浏览器不支持缓存，如：Chrome，会在请求头部中添加 Cache-Control: no-cache 表明不使用缓存");
+
+
+                    createInstruT2("<br />307：Temporary Redirect","i4-3-5");
+                        createInstruAllTopT2("临时重定向，与302相似，虽然302禁止将原始POST请求变成GET请求到重定向页面，但浏览器未必遵守");
+                        createInstruAllTopT2("但307会遵照浏览器标准，原始请求方法与重定向请求方法相同");
+
+
+				createInstruT1("<br />4XX：客户端错误","i4-4");
+                    createInstruT2("400：Bad Request","i4-4-1");
+                        createInstruAllTopT2("该状态码表示请求中存在语法错误，如：URL编码无法解析");
+
+
+                    createInstruT2("<br />401：Uncuthorized","i4-4-2");
+                        createInstruAllTopT2("该状态码表示发送的请求需要通过有HTTP认证（BASIC认证、DIGEST认证）的认证信息");
+                        createInstruAllTopT2("如果之前已经进行过1次请求，则表示用户认证失败");
+                        createInstruAllTopT2("返回的401响应中包含适用于被请求资源的WWW Authenticate首部用以质询（challenge）用户信息");
+                        createInstruAllTopT2("当浏览器初次接收到401响应，会认证用的对话窗口");
+
+
+                    createInstruT2("<br />403：Forbidden","i4-4-3");
+                        createInstruAllTopT2("该状态码表示请求资源的访问被服务器拒绝");
+                        createInstruAllTopT2("服务器没有必要经出拒绝的详细理由，但如果想说明的话，可以在主体部分对原因进行描述");;
+
+
+                    createInstruT2("<br />404：Not Found","i4-4-4");
+                        createInstruAllTopT2("该状态码表示请求资源没有找到，也可以在拒绝请求且不想说明理由时使用");
+
+
+                    createInstruT2("<br />405：Method Not Allowed","i4-4-5");
+                        createInstruAllTopT2("该状态码表示请求的方法不被允许");
+
+
+                    createInstruT2("<br />413：Request Fntity Too Large","i4-4-6");
+                        createInstruAllTopT2("该状态码表示请求的Body过大，超过了服务器的限制");
+
+
+                createInstruT1("<br />5XX：服务器错误","i4-5");
+                    createInstruT2("500：Internal Server Error","i4-5-1");
+                        createInstruAllTopT2("该状态码表示服务器在处理请求时发生了错误");
+
+
+                    createInstruT2("<br />503：Service Unavailable","i4-5-2");
+                        createInstruAllTopT2("该状态码表示服务器暂时处理超负载或正在进行停机维护");
+
+
+		</script>
+
+
+		<div id="guide-icon">
+			<div>
+				<span class="open"></span>
+				<span class="open"></span>
+				<span class="open"></span>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		bottom = bottom.replace(/74.5/, "160");
+		document.write(bottom.replace(/rootpath\//g, '../../../'));
+	</script>
+</body>
+</html>

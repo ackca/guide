@@ -69,12 +69,12 @@
 			width: 130px;
 		}
 
-		#tDateFormat .cell:nth-child(1),
 		#tPasswd .cell:nth-child(1)
 		{
 			width: 40px;
 		}
 
+		#tDateFormat .cell:nth-child(1),
 		.HLTableS1 .cell:nth-child(1)
 		{
 			width: 80px;
@@ -118,7 +118,7 @@
 <body>
 	<div class="container-fluid">
 		<script type="text/javascript">
-			createNavigation(tree_redhat_basic, '../../');
+			createNavigation(redhat_basic, '../../');
 		</script>
 
 		<div id="divCommand">
@@ -134,8 +134,8 @@
 
 						createInstruKeyT2("<br />date – 查看及设置系统的时间日期","i1-2");
 							createInstruT3("查看时间日期");
-								instruArr[0] = createLinuxCmd("date [\"+“%Y-%m-%d %H:%M:%S。\"]");
-								instruArr[1] = createCmdInstruSpan("[ \"+“%Y-%m-%d %H:%M:%S。\" ]","支持格式化输出，需要在格式前添加 + ，省略则按默认格式");
+								instruArr[0] = createLinuxCmd("date [ \"+“%Y-%m-%d %H:%M:%S。\" ]");
+								instruArr[1] = createCmdInstruSpan("\"+“%Y-%m-%d %H:%M:%S。\"","支持格式化输出，需要在格式前添加 + ，省略则按默认格式");
 								createCmdInstruT3(instruArr,"redhat");
 
 								createInstruAllTopT3("格式化输出，参数如下：<br />")

@@ -1,4 +1,4 @@
-tree_ltm_basic = {
+ltm_basic = {
 	"i1":"LTM基本概念",
 	"i2":{
 		"组网方案":{
@@ -30,7 +30,7 @@ tree_ltm_basic = {
 	},
 }
 
-tree_bigip = {
+bigip = {
 	"i1":{
 		"设备初始化":{
 			"i1-1":{

@@ -1,4 +1,4 @@
-tree_basic = {
+basic = {
 	'i3': {
 		'网管协议': {
 			'i3-3': 'SSH'
@@ -6,7 +6,7 @@ tree_basic = {
 	},
 };
 
-tree_switch = {
+h3switch = {
 	'i6': {
 		'镜像': {
 			'i6-1': {

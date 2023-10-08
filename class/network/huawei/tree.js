@@ -1,4 +1,4 @@
-tree_basic = {
+basic = {
 	'i1': {
 		'基本命令':{
 			'i1-1': '模式切换',
@@ -45,7 +45,7 @@ tree_basic = {
 	},
 };
 
-tree_dynamic_routing = {
+dynamic_routing = {
 	'i5': {
 		'路由选择信息协议（RIP）': {
 			'i5-1':'基本配置',
@@ -208,7 +208,7 @@ tree_dynamic_routing = {
 	},
 };
 
-tree_other_routing = {
+other_routing = {
 	'i1': {
 		'访问控制列表（ACL）': {
 			'i1-1': '基本访问控制列表（Basic ACL）',
@@ -248,7 +248,7 @@ tree_other_routing = {
 	'i6':'单播反向路径转发（uRPF）',
 };
 
-tree_switch = {
+hswitch = {
 	'i1':'基本命令',
 
 	'i2': {
@@ -335,7 +335,7 @@ tree_switch = {
 	},
 };
 
-tree_vpn = {
+vpn = {
 	'i2': {
 		'L2L IPSec VPN': {
 			'i2-1': {

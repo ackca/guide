@@ -1,4 +1,4 @@
-tree_kubeadm_setup = {
+kubeadm_setup = {
 	"i1":"前期准备",
 	"i2":"安装docker",
 	"i3":"初始化DNS",
@@ -11,7 +11,7 @@ tree_kubeadm_setup = {
 	"i10":" 安装ingress",
 };
 
-tree_basic = {
+basic = {
 	"i1":{
 		"基本命令":{
 			"i1-1":"查看基本信息",
@@ -33,7 +33,7 @@ tree_basic = {
 	},
 }
 
-tree_orchestration = {
+orchestration = {
 	"i1":"资源限制",
 	"i2":{
 		"亲和与反亲和":{

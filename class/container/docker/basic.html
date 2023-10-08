@@ -25,7 +25,7 @@
 <body>
 	<div class="container-fluid">
 		<script type="text/javascript">
-			createNavigation(tree_basic, '../../../');
+			createNavigation(basic, '../../../');
 		</script>
 
 		<div id="divCommand">
@@ -466,11 +466,11 @@
 
 						createInstruKeyT2("ENTRYPOINT 指定容器在运行时执行的程序及参数","i4-11");
 							createInstruT3("格式一：shell方式，ENTRYPOINT “命令。");
-								instruArr[0] = createCmdSpan("CMD ifconfig");
+								instruArr[0] = createCmdSpan("ENTRYPOINT ifconfig");
 								createCmdInstruT3(instruArr,"docker");
 
 							createInstruT3("格式二：exec方式，ENTRYPOINT [\"“可执行文件。\",\"“参数1。\",\"“参数2。\"…]（推荐）");
-								instruArr[0] = createCmdSpan("CMD [\"snmp.py\", \"10.1.1.1\", \"Cisc0123\"]");
+								instruArr[0] = createCmdSpan("ENTRYPOINT [\"snmp.py\", \"10.1.1.1\", \"Cisc0123\"]");
 								createCmdInstruT3(instruArr,"docker");
 
 							createInstruT3("docker run里指定的命令会‘追加。在ENTRYPOINT的命令后");
@@ -479,10 +479,11 @@
 								createConfigImgT3("basic/i4_11$1~2");
 
 						createInstruT2("生成镜像","i4-12");
-							instruArr[0] = createLinuxCmd("docker build [ -f “itachi_docker。 ] -t “itachi/centos_vim_ifconfig。 <b>“.。</b>");
-							instruArr[1] = createCmdInstruSpan("-f “itachi_docker。","指定dockerfile文件文件名，默认为‘Dockerfile。（区分大小写）");
-							instruArr[2] = createCmdInstruSpan("-t “itachi/centos_vim_ifconfig。","指定镜像名");
+							instruArr[0] = createLinuxCmd("docker build [ -f “itachi_docker。 ] -t “itachi/centos_vim_ifconfig。 <b>“.。</b> [ --no-cache ]");
+							instruArr[1] = createCmdInstruSpan("-f&nbsp;&nbsp;“itachi_docker。","指定dockerfile文件文件名，默认为‘Dockerfile。（区分大小写）");
+							instruArr[2] = createCmdInstruSpan("-t&nbsp;&nbsp;“itachi/centos_vim_ifconfig。","指定镜像名");
 							instruArr[3] = createCmdInstruSpan("<b>“.。</b>","文件路径 ");
+							instruArr[4] = createCmdInstruSpan("--no-cache","不使用缓存生成镜像");
 							createCmdInstruT2(instruArr,"docker");
 
 				createInstruT0("网络配置","i5");

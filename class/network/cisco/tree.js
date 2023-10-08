@@ -1,4 +1,4 @@
-tree_basic = {
+basic = {
     "i1": {
         "基本配置": {
             "i1-1": "模式切换",
@@ -72,7 +72,7 @@ tree_basic = {
     },
 };
 
-tree_dynamic_routing = {
+dynamic_routing = {
     "i4": {
         "路由选择信息协议（RIP）": {
             "i4-1": "基本配置",
@@ -221,7 +221,7 @@ tree_dynamic_routing = {
     },
 };
 
-tree_other_routing = {
+other_routing = {
     "i1": {
         "访问控制列表（ACL）": {
             "i1-1": {
@@ -289,7 +289,7 @@ tree_other_routing = {
     "i13": "单播反向路径转发（uRPF）"
 };
 
-tree_catalyst = {
+catalyst = {
     "i1": "基本配置",
 
     "i2": "虚拟局域网（vlan）",
@@ -356,7 +356,7 @@ tree_catalyst = {
     },
 };
 
-tree_asa = {
+asa = {
     "i1": {
         "基本配置": {
             "i1-1": "接口配置",
@@ -426,7 +426,7 @@ tree_asa = {
     },
 };
 
-tree_vpn_router = {
+vpn_router = {
     "i2": {
         "L2L IPSec VPN": {
             "i2-1": {
@@ -670,7 +670,7 @@ tree_vpn_router = {
     },
 };
 
-tree_vpn_asa = {
+vpn_asa = {
     "i1": {
         "L2L IPSec VPN": {
             "i1-1": {
@@ -752,14 +752,14 @@ tree_vpn_asa = {
     },
 };
 
-tree_mobility_express = {
+mobility_express = {
     "i1": "AP模式切换",
     "i2": "清空配置",
     "i3": "命令行模式切换",
     "i4": "配置AAA overload",
 };
 
-tree_wlc_AireOS = {
+wlc_AireOS = {
     'i1': {
         '命令行配置': {
             'i1-1': '初始化配置',
@@ -1124,7 +1124,7 @@ tree_wlc_AireOS = {
     },
 };
 
-tree_ise21 = {
+ise21 = {
     'i2': {
         '建议开局配置': {
             'i2-1': '适当取消密码限制策略',
@@ -1308,7 +1308,7 @@ tree_ise21 = {
     },
 };
 
-tree_iosxe = {
+iosxe = {
     "i1": {
         "Guest Shell": {
             "i1-1": "创建vrf",
@@ -1318,7 +1318,7 @@ tree_iosxe = {
     },
 };
 
-tree_nexus = {
+nexus = {
     "i1": {
         "与IOS的配置区别": {
             "i1-4": {
@@ -1547,7 +1547,7 @@ tree_nexus = {
     },
 };
 
-tree_sdwan = {
+sdwan = {
     "i1": {
         "核心设备上线": {
             "i1-1": {
@@ -1676,7 +1676,7 @@ tree_sdwan = {
     },
 };
 
-tree_ise_switch = {
+ise_switch = {
     'i1': {
         '配置总览': {
             'i1-1': '全局配置',
@@ -1735,7 +1735,7 @@ tree_ise_switch = {
     },
 };
 
-tree_ise31 = {
+ise31 = {
     'i15': '安装&初始化',
 
     'i1': {

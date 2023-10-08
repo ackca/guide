@@ -17,6 +17,7 @@ top_menu = `
 											<a href="rootpath/class/protocol/l7/DHCPv4.html">DHCPv4</a>
 											<a href="rootpath/class/protocol/l7/TFTP.html">TFTP</a>
 											<a href="rootpath/class/protocol/l7/NTP.html">NTP/SNTP</a>
+											<a href="rootpath/class/protocol/l7/HTTP.html">HTTP</a>
 											<a href="rootpath/class/protocol/l7/syslog.html">syslog</a>
 											<a href="rootpath/class/protocol/l7/DHCPv6.html">DHCPv6</a>
 											<a href="rootpath/class/protocol/l7/VXLAN.html">VXLAN</a>

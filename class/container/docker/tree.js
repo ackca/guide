@@ -1,4 +1,4 @@
-tree_basic = {
+basic = {
 	"i1":"安装docker",
 	"i2": {
 		"镜像相关配置":{
@@ -107,7 +107,7 @@ tree_basic = {
 	},
 }
 
-tree_compose = {
+compose = {
 	"i1":"安装 docker-compose",
 	"i2":"docker-compose命令",
 	"i3":{
@@ -128,7 +128,7 @@ tree_compose = {
 	}
 }
 
-tree_swarm = {
+swarm = {
 	"i1":{
 		"配置docker集群":{
 			"i1-1":"安装 docker swarm",
@@ -190,7 +190,7 @@ tree_swarm = {
 	},
 }
 
-tree_private_hub = {
+private_hub = {
 	"i2":{
 		"harbar":{
 			"i2-1":"安装harbar",
