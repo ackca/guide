@@ -655,7 +655,7 @@
 							instruArr[3] = createCmdInstruSpan("“5。","track编号");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("单播反向路径转发（uRPF）","i13");
+				createInstruT0("单播反向路径转发（uRPF）<br />","i13");
 					instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
 					instruArr[1] = createCmdInstruSpan("“f0/0。","可能出现地址欺骗流量的流入网口");
 					instruArr[2] = createCmdSpan("R1(config-if)# ip verify unicast source reachable-via { rx | any } [ allow-default ] [ allow-self-ping ] [ “100。 ] ");
@@ -664,7 +664,7 @@
 					instruArr[5] = createCmdInstruSpan("allow-default","宽松模式时，匹配源IP的路由可以是默认路由");
 					instruArr[6] = createCmdInstruSpan("allow-self-ping","允许路由器自己连通自已的这个接口（不仅仅是ping），默认不为允许，且不推荐使用，会有安全隐患");
 					instruArr[7] = createCmdInstruSpan("“100。","acl编号，对于不合规的流量，再通过acl进行过滤，如果acl的行为permit，也可以转发，如果为deny，不可转发");
-					createCmdInstruT1(instruArr,"cisco");
+					createCmdInstruT0(instruArr,"cisco");
 			</script>
 			<div id="guide-icon">
 				<div>

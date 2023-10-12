@@ -269,8 +269,9 @@ h4
 .cmdInstruAllTopT2, .cmdInstruAllBottomT2
 {
 	margin-left: 80px;
-	margin-top: 7px;
-	margin-bottom: 7px;
+	/*margin-top: 7px;*/
+	/*margin-bottom: 7px;*/
+	margin-top: 20px;
 }
 
 .cmdInstruAllTopT0
@@ -295,6 +296,7 @@ h4
 
 .divConfigImgT2 + br + br + .divSJT2,
 .divConfigImgT1 + br + br + .divConfigImgT1,
+.divConfigImgT1 + br + br + .cmdInstruAllTopT1,
 .divConfigImgT2 + br + br + .cmdInstruAllTopT2,
 .divConfigImgT3 + br + br + .cmdInstruAllTopT3,
 .cmdTableT2 + .cmdInstruAllTopT2,
@@ -401,6 +403,11 @@ td
 .divConfigImgT2 + br + br + .divConfigImgT2
 {
 	margin-top: -25px;
+}
+
+.instruT2 + .cmdInstruAllTopT2
+{
+	margin-top: 7px;
 }
 
 .divLogo

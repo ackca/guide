@@ -1,6 +1,6 @@
 top_menu = `	
 	<div class="top_navigation">
-		<div class="mod-header">
+		<div class="mod-header hover">
 			<div class="cat">
 				<div class="cat-box" data-cat="protocol" id="protocol">
 					<div class="layout">
@@ -143,16 +143,16 @@ top_menu = `
 										<a href="rootpath/class/network/cisco/ise21.html">ISE 2.1</a>
 									</div>
 								</li>
-<!--								<li class="cat-item">-->
-<!--									<div class="cat-item-main">-->
-<!--										<span>DEVNET</span>-->
-<!--									</div>-->
-<!--									<div class="cat-item-sub">-->
-<!--										<div class="cat-item-row">-->
-<!--											<a href="rootpath/class/network/cisco/ios-xe.html">IOS-XE</a>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</li>-->
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<span>DEVNET</span>
+									</div>
+									<div class="cat-item-sub">
+										<div class="cat-item-row">
+											<a href="rootpath/class/network/cisco/ios-xe.html">IOS-XE</a>
+										</div>
+									</div>
+								</li>
 							</ul>
 						</div>
 						<div class="cat-group">
@@ -279,7 +279,7 @@ top_menu = `
 				</div>
 			</div>
 			<div class="cat">
-				<div class="cat-box" data-cat="netdevops">
+				<div class="cat-box active" data-cat="netdevops">
 					<div class="layout">
 						<div class="cat-group">
 							<h3 class="cat-tit">
@@ -319,7 +319,7 @@ top_menu = `
 								<div class="cat-ico">
 									<i class="ico-gitlab"></i>
 								</div>
-								<span><a href="rootpath/class/netdevops/gitlab/gitlab.html">GitLab</a></span>
+								<span style="margin-left: 5px"><a href="rootpath/class/netdevops/gitlab/gitlab.html">GitLab</a></span>
 							</h3>
 						</div>
 						<div class="cat-group">
@@ -328,6 +328,14 @@ top_menu = `
 									<i class="ico-vault"></i>
 								</div>
 								<span><a href="rootpath/class/netdevops/vault/vault.html">Vault</a></span>
+							</h3>
+						</div><br />
+						<div class="cat-group">
+							<h3 class="cat-tit">
+								<div class="cat-ico">
+									<i class="ico-nginx"></i>
+								</div>
+								<span style="margin-left: 5px"><a href="rootpath/class/netdevops/nginx/nginx.html">Nginx</a></span>
 							</h3>
 						</div>
 					</div>

@@ -9,9 +9,9 @@
 	<script type="text/javascript">
 		document.write(head.replace(/rootpath\//g, '../../../'));
 
-		document.onmouseup = function () {
-			document.onmousemove = null;
-		}
+		// document.onmouseup = function () {
+		// 	document.onmousemove = null;
+		// }
 	</script>
 	<style type="text/css">
 		#divCommand
@@ -30,6 +30,22 @@
 			width: 100px;
 		}
 
+		#tStatus2 .cell:nth-child(2)
+        {
+			font-weight: bold;
+		}
+
+		#tStatus1 .row:nth-child(4) .cell:nth-child(1),
+		#tStatus1 .row:nth-child(4) .cell:nth-child(2)
+        {
+			vertical-align: middle;
+		}
+
+		#tStatus1 .row:nth-child(4) .cell:nth-child(3)
+        {
+			line-height: 30px;
+		}
+
 		#tStatus2 .row:nth-child(5) .cell,  /* 2XX状态码结束 */
 		#tStatus2 .row:nth-child(10) .cell, /* 3XX状态码结束 */
 		#tStatus2 .row:nth-child(16) .cell  /* 4XX状态码结束 */
@@ -44,7 +60,12 @@
 			border-top: solid 1px #FF6A6A;
 		}
 
+		.cmdInstruAllTopT2
+        {
+			margin-top: 20px;
+		}
 	</style>
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -64,18 +85,28 @@
 	</div><br />
 	<div id="divCommand">
 		<script type="text/javascript">
-			createInstruT0("http 报文基本结构","i1");
-                createInstruAllTopT1("特定报文不包含 主体，比如 GET Request、204 Respose，但仍然包含空行");
-                createConfigImgT1("HTTP/http");
+			createInstruT0("HTTP 报文基本结构","i1");
+                createInstruT1("报文基本结构","i1-1");
+	                createConfigImgT1("HTTP/http");
+	                createInstruAllTopT1("特定报文不包含 主体，比如 GET Request、204 Respose，但仍然包含空行");
+	                createConfigImgT1("HTTP/http_packet");
 
-            createInstruT0("http 报文简单解析","i2");
-                createInstruT1("请求报文（Request）","i2-1");
+                createInstruT1("首部结构","i1-2");
+	                createInstruAllTopT1("首部采用键值类型，一行为一个首部，一个键，可能包含多个值");
+	                createConfigImgT1("HTTP/headers");
+
+
+                createInstruT1("请求首部结构","i1-3");
+	                createConfigImgT1("HTTP/request_headers");
                     createConfigImgT1("HTTP/request");
 
-                createInstruT1("响应报文（Response）","i2-2");
+
+                createInstruT1("响应首部结构","i1-4");
+	                createConfigImgT1("HTTP/response_headers");
                     createConfigImgT1("HTTP/response");
 
-            createInstruT0("http 方法（methond）<br />","i3");
+
+            createInstruT0("HTTP 方法（methond）<br />","i3");
                 tHeader = [
 					"方法",
 					"作用",
@@ -98,7 +129,7 @@
 				createHLTableT0(820, tHeader, tBody, "tMethod");
 
 
-            createInstruT0("http 状态码","i4");
+            createInstruT0("HTTP 状态码","i4");
                 createInstruT1("状态码类型<br />","i4-1");
                     tHeader = [
 						"状态码",
@@ -109,20 +140,20 @@
 					tBody = [
 						["1XX","Informational（信息性状态码）","可通过URL传输信息"],
 						["2XX","Success（成功状态码）","请求正常处理完毕"],
-						["3XX","Redirection（重定向状态码）","需要进行附加操作以完成请求"],
+						["3XX","Redirection（重定向状态码）","需要进行附加操作以完成请求<br />对于重定向地址通过 Location 字段实现"],
 						["4XX","Client Error（客户端错误状态码）","服务器无法处理请求"],
 						["5XX","Server Error（服务器错误状态码）","服务器处理请求出错"],
 					];
-					createHLTableT1(750, tHeader, tBody, "tStatus1");
+					createHLTableT1(780, tHeader, tBody, "tStatus1");
 
                     document.write("<br /><br />");
 
+				createInstruT1("状态码总览<br />","i4-6");
                     tHeader = [
 						"状态码",
 		                "原因短语",
 	                    "说明"
 					];
-
 					tBody = [
 						["200","OK","请求已经正常处理"],
 						["201","Created","资源已经成功创建"],
@@ -229,8 +260,102 @@
                         createInstruAllTopT2("该状态码表示服务器暂时处理超负载或正在进行停机维护");
 
 
+			createInstruT0("<br />HTTP 通用首部","i5");
+                createInstruT1("通用首部总览<br />","i5-1");
+                    tHeader = [
+						"首部名称",
+		                "首部作用",
+					];
+					tBody = [
+						["Cache-Control","操作缓存的工作机制"],
+					];
+					createHLTableT1(750, tHeader, tBody, "tRequestHeaders");
+
+
+                createInstruT1("<br />Cache-Control","i5-1");
+                    yaml = `
+						Cache-Control: private, max-age=0, no-cache
+					`;
+					createYAMLT1(yaml);
+
+            createInstruT0("HTTP认证","i8");
+                createInstruT1("基本认证（Basic auth）","i8-1");
+                    createInstruAllTopT1("浏览器弹出窗口认证");
+                    createConfigImgT1("HTTP/basic");
+
+                createInstruT1("散列认证（Digest auth）","i8-2");
+                    createInstruAllTopT1("浏览器弹出窗口认证");
+                    createConfigImgT1("HTTP/digest");
+
+                createInstruT1("表单认证","i8-3");
+                    createInstruAllTopT1("最常见的网站中使用页面登录");
+                    createConfigImgT1("HTTP/form");
+
+
+			createInstruT0("HTTP 版本与历史","i9");
+                createInstruT1("HTTP/1.0","i9-1");
+                    createInstruAllTopT1("一次TCP连接只做一次HTTP请求，完成后TCP关闭，效率较低");
+
+				createInstruT1("<br />HTTP/1.1","i9-2");
+					createInstruAllTopT1("使用keep-alive技术，在一次TCP连接中，实现多次HTTP请求");
+                    createInstruAllTopT1("但同一时间只进行一次HTTP请求，下次请求必须等待本次请求结束后进行，效率仍然较低");
+                    createInstruAllTopT1("为了提高效率，主流浏览器同时使用6个并发的TCP连接，但这样会消耗较多的服务器资源");
+
+
+                createInstruT1("<br />HTTP/2","i9-3");
+                    createInstruT2("核心技术：二进制帧","i9-3-1");
+                        createInstruAllTopT2("HTTP/1.1及以前的HTTP，采用纯文本格式，因此在首部和主体之间需要空行分割");
+                        createInstruAllTopT2("而HTTP/2采用二进制帧，可以直接区分首部和数据，不再需要空行");
+                        createConfigImgT2("HTTP/http2");
+
+
+                    createInstruT2("<br />优势1：一次TCP连接多次HTTP请求","i9-3-2");
+						createInstruAllTopT2("stream（流）：　　　一个stream，即一次请求与响应");
+                        createInstruAllTopT2("message（信息）：一个stream，包含一个请求的message，以及一个响应的message");
+                        createInstruAllTopT2("frame（帧）：　　　　一次请求（响应）中，包含一个 首部的帧，请求（响应）中如果包含主体，还会包含 数据帧");
+                        createInstruAllTopT2("一次TCP连接中包含多个stream，一个TCP报文中可能包含多个流的多个帧，接收方根据流ID进行重组装");
+
+
+                    createInstruT2("<br />优势2：首部压缩","i9-3-3");
+                        createInstruAllTopT2("打开一个页面会有多次请求，也就需要发送多次首部，很多首部是相同的（如：user-agent），没有必要反复发送");
+						createInstruAllTopT2("HTTP/2首次发送请求时，包含全部首部，同时维护索引表，后续请求中，不变的头部直接发送索引编号即可");
+                        createInstruAllTopT2("首部除了使用索引表外，还有压缩功能，进一步减小首部大小");
+
+
+                    createInstruT2("<br />优势3：服务推送","i9-3-4");
+						createInstruAllTopT2("通常，一个页面中还包含若干.js .css文件，客户端首先得到主页面，然后再去请求页面中包含的.js .css等其它内容");
+                        createInstruAllTopT2("HTTP/2可以在发送主页面时，也把页面中的其它内容一起发送客户端");
+                        createInstruAllTopT2("但是，页面中可能存在一些有安全风险的内容，一起发送有安全隐患");
+                        createInstruAllTopT2("　　　　　页面还可能存在一些客户端已经获得的内容，没必须接收");
+                        createInstruAllTopT2("因此，主流浏览器并不接受服务推送功能");
+
+
+                    createInstruT2("<br />优势4：必须TLS加密","i9-3-5");
+                        createInstruAllTopT2("HTTP/2 必须使用TLS加密的https，不加密http为 HTTP/1.1");
+
+
+                    createInstruT2("<br />优势5：可以在TLS阶段进行HTTP协商","i9-3-6");
+                        createInstruAllTopT2("HTTP/1.1时，HTTP的相关协商，在TLS隧道建立完成后进行");
+                        createInstruAllTopT2("HTTP/2时，TLS协商过程中，同时进行HTTP的相关协商");
+
+
+                    createInstruT2("<br />不足","i9-3-7");
+                        createInstruAllTopT2("服务推送存在安全隐患，也有可能推送不必要的内容");
+                        createInstruAllTopT2("<br />主要问题：");
+                        createInstruAllTopT2("　　HTTP/2上层使用TCP协议，又能够在一个TCP连接中进行多次TCP请求");
+                        createInstruAllTopT2("　　由于TCP本身的机制，多个流（stream），可能放在一个TCP报文中，一旦丢包，则需要进行重传");
+						createInstruAllTopT2("　　如果网络质量较差，多次重次，实际效率还不如HTTP/1.1");
+
+
+                createInstruT1("<br />HTTP/3","i9-4");
+                    createInstruAllTopT1("HTTP/3上层使用UDP，并使用QUIC技术提供可靠性保障，且必须使用TLS1.3");
+                    createInstruAllTopT1("QUIC：Quick UDP Internet Connections，快速的UDP网络连接");
+                    createInstruAllTopT1("由于使用UDP封装，一个报文中只包含一个帧，即使丢包，也只需要重传很少的部分");
+
 		</script>
 
+		<br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br />
 
 		<div id="guide-icon">
 			<div>
@@ -244,6 +369,89 @@
 	<script type="text/javascript">
 		bottom = bottom.replace(/74.5/, "160");
 		document.write(bottom.replace(/rootpath\//g, '../../../'));
+
+        function toStatusNO(id) {
+	        href = window.location.href.split('#')[0];
+			location.href = href + id;
+			topp = $('#divCommand').offset().top + 160;
+
+			leftt = $('#divCommand').offset().left;
+			$('#divCommand').offset({top:topp,left:leftt});
+        }
+		
+		$('#tStatus2 .row').click(function(){
+			index = $('#tStatus2 .row').index($(this)); // 获取该行在表格中为第几行
+
+			switch (index) {
+				case 1: // 200 OK
+                    toStatusNO("#i4-2-1");
+                    break;
+
+                case 2: // 201 Created
+                    toStatusNO("#i4-2-2");
+                    break;
+
+                case 3: // 204 No Content
+                    toStatusNO("#i4-2-3");
+                    break;
+
+                case 4: // 206 Partial Content
+                    toStatusNO("#i4-2-4");
+                    break;
+
+                case 5: // 301 Moved Permanently
+                    toStatusNO("#i4-3-1");
+                    break;
+
+                case 6: // 302 Moved Temporarily
+                    toStatusNO("#i4-3-2");
+                    break;
+
+                case 7: // 303 See Other
+                    toStatusNO("#i4-3-3");
+                    break;
+
+                case 8: // 304 Not Modified
+                    toStatusNO("#i4-3-4");
+                    break;
+
+                case 9: // 307 Temporary Redirect
+                    toStatusNO("#i4-3-5");
+                    break;
+
+                case 10: // 400 Bad Request
+                    toStatusNO("#i4-4-1");
+                    break;
+
+                case 11: // 401 Uncuthorized
+                    toStatusNO("#i4-4-2");
+                    break;
+
+                case 12: // 403 Forbidden
+                    toStatusNO("#i4-4-3");
+                    break;
+
+                case 13: // 404 Not Found
+                    toStatusNO("#i4-4-4");
+                    break;
+
+                case 14: // 405 Method Not Allowed
+                    toStatusNO("#i4-4-5");
+                    break;
+
+                case 15: // 413 Request Fntity Too Large
+                    toStatusNO("#i4-4-6");
+                    break;
+
+                case 16: // 500 Internal Server Error
+                    toStatusNO("#i4-5-1");
+                    break;
+
+                case 17: // 503 Service Unavailable
+                    toStatusNO("#i4-5-2");
+                    break;
+            }
+		});
 	</script>
 </body>
 </html>

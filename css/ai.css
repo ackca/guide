@@ -90,6 +90,7 @@
 	min-width: 1200px;
 	width: auto;
 	position: relative;
+	/*text-align: left;*/
 	/*display:flex;*/
 	/*justify-content:center;*/
 }
@@ -175,6 +176,7 @@
 	position: relative;
 }
 
+
 .mod-header .cat .layout {
 	min-width: 0;
 }
@@ -188,13 +190,13 @@
 	color: #fff;
 	font-size: 0;
 	box-sizing: border-box;
-	padding: 0 0 0 220px;
+	/*padding: 0 0 0 220px;*/
 	background-color: rgba(44,59,65,.95);
 	position: absolute;
 	width: 100%;
 	top: 60px;
 	left: 0;
-	text-align: left;
+	text-align: center;
 	transition: -webkit-transform .3s ease-out;
 	transition: transform .3s ease-out;
 	transition: transform .3s ease-out,-webkit-transform .3s ease-out;
@@ -218,6 +220,7 @@
 	font-size: 14px;
 	margin-left: 12px;
 	padding: 20px 0;
+	text-align: left;
 }
 
 .mod-header .cat-group:first-child {
@@ -237,10 +240,11 @@
 
 .mod-header .cat-item {
 	display: block;
-	width: 390px;
+	min-width: 350px;
 	box-sizing: border-box;
 	margin-left: 25px;
-	padding: 7px 0 7px 50px;
+	padding: 7px 50px 7px 50px;
+	/*padding: 7px 0 7px 50px;*/
 	margin-bottom: 4px;
 	font-size: 16px;
 	line-height: 30px;
@@ -251,11 +255,11 @@
 }
 
 .mod-header .cat-item a {
-	color: #fff;
+	color: #FFFFFF;
 }
 
 .mod-header .cat-item a:hover {
-	color: #1070e1;
+	color: #1070E1;
 }
 
 .mod-header .cat-item-sub {
@@ -378,6 +382,12 @@
 	background-image: url(../img/gitlab_title.png);
 }
 
+.mod-header .ico-nginx {
+	width: 44px;
+	height: 50px;
+	background-image: url(../img/nginx_title.png);
+}
+
 .mod-header .ico-docker {
 	width: 100px;
 	height: 26px;
@@ -431,10 +441,6 @@ html[lang=en] body {
 	height: 62px;
 }
 
-div[data-cat~="protocol"] .cat-item {
-	width: 800px;
-}
-
 div[data-cat~="protocol"] .cat-item:not(:first-child) {
 	margin-top: 50px;
 }
@@ -451,8 +457,17 @@ div[data-cat~="protocol"] .cat-item-row a {
 	font-size: 20px;
 }
 
+div[data-cat~="netdevops"] .cat-item {
+	min-width: inherit;
+}
+
 div[data-cat~="netdevops"] .cat-group:not(:first-child) {
 	margin-left: 100px;
+}
+
+/* MySQL */
+div[data-cat~="netdevops"] .cat-group:nth-child(2) {
+	margin-left: 40px;
 }
 
 div[data-cat~="netdevops"] .cat-group:first-child li {

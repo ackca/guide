@@ -40,8 +40,7 @@ $.sidebarMenu = function(menu, cmdOffset) {
 			});
 		}
 		else {
-			href = window.location.href;
-			href = href.substring(0, href.indexOf('#'));
+			href = window.location.href.split('#')[0];
 			location.href = href + $this.attr('cmd');
 			topp = $('#divCommand').offset().top + cmdOffset;
 
@@ -52,8 +51,7 @@ $.sidebarMenu = function(menu, cmdOffset) {
 		if (checkElement.is('.treeview-menu') || $this.children().length == 2) {
 			e.preventDefault();
 
-			href = window.location.href;
-			href = href.substring(0, href.indexOf('#'));
+			href = window.location.href.split('#')[0];
 			location.href = href + $this.attr('cmd');
 			topp = $('#divCommand').offset().top + cmdOffset;
 
