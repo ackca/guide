@@ -5,9 +5,9 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 	<link rel="shortcut icon" href="../../img/redhat.ico" />
 	<title>Linux-RedHat-基础命令</title>
-	<script src="../../js/js_css.js"></script>
+	<script src="../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../'));
+		window.onload = createNavigation(redhat_basic);
 	</script>
 	<style type="text/css">
 		.tdCliLogo
@@ -117,10 +117,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(redhat_basic, '../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("系统工作命令","i1");
@@ -1230,18 +1226,7 @@
 								createConfigImgT3("redhat_basic/i10-3-2$1");
 
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../'));
-	</script>
 </body>
 </html>

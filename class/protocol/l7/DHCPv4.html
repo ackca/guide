@@ -4,21 +4,14 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-DHCPv4</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
-
+		window.onload = createNavigation(dhcpv4);
 		document.onmouseup = function () {
 			document.onmousemove = null;
-		}
+		};
 	</script>
 	<style type="text/css">
-		#divCommand
-		{
-			margin-top: 84.5px;
-		}
-
 		#tOption53 .row .cell
 		{
 			vertical-align: middle;
@@ -81,10 +74,6 @@
 		<div id="protocolImg" onmousedown="protocolMove()"></div>
 	</div>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(dhcpv4, '../../../');
-		</script>
-
 		<div class="divProtocolWord">
 			<script type="text/javascript">
 				createProtocolWord(
@@ -250,20 +239,7 @@
 
 			<br /><br /><br /><br /><br /><br /><br />
 			<br /><br /><br /><br /><br /><br /><br />
-
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		bottom = bottom.replace(/74.5/, "160");
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

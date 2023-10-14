@@ -5,9 +5,9 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 	<link rel="shortcut icon" href="../../img/nmap.ico" />
 	<title>NMAP</title>
-	<script src="../../js/js_css.js"></script>
+	<script type="text/javascript" src="../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../'));
+		window.onload = createNavigation(nmap);
 	</script>
 	<style type="text/css">
 		.tdCliLogo
@@ -70,11 +70,7 @@
 	</style>
 </head>
 <body>
-	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(nmap, '../../');
-		</script>
-
+ 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("主机扫描","i1");
@@ -133,7 +129,7 @@
 						instruArr[2] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
 						createCmdInstruT2(instruArr,"nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 syn 进制检测");
-						createInstruAllBottomT2("主机活跃并开放端口则为 syn ---> syn + ack ---> rst");
+						createInstruAllBottomT2("主机活跃并开放端口则为 syn -&ndash;&gt; syn + ack ---> rst");
 						createInstruAllBottomT2("主机活跃但未开放端口则为 syn ---> rst");
 
 					createInstruT2("基于 ‘TCP ACK。 检测");
@@ -158,14 +154,14 @@
 						instruArr[1] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
 						createCmdInstruT2(instruArr,"nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 syn 进制检测");
-						createInstruAllBottomT2("主机开放端口 syn ---> syn + ack ---> rst");
+						createInstruAllBottomT2("主机开放端口 syn -&ndash;&gt; syn + ack ---> rst");
 						createInstruAllBottomT2("主机未开放端口 syn ---> rst");
 
 					createInstruT2("‘TCP Connect。扫描 检测主机开放的tcp端口");
 						instruArr[0] = createLinuxCmd("nmap -sT “192.168.50.1。");
 						createCmdInstruT2(instruArr,"nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 syn 进制检测");
-						createInstruAllBottomT2("主机开放端口 syn ---> syn+ack ---> syn+ack---> rst");
+						createInstruAllBottomT2("主机开放端口 syn -&ndash;&gt; syn+ack -&ndash;&gt; syn+ack---> rst");
 						createInstruAllBottomT2("主机未开放端口 syn ---> rst");
 
 					createInstruT2("‘UDP。扫描 检测主机开放的udp端口");
@@ -276,18 +272,7 @@
 					createHLTableT0(600, '', tBody, 'tUDPfiltered');
 
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../'));
-	</script>
 </body>
 </html>

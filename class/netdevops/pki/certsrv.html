@@ -5,10 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/cert.ico" />
 	<title>NetDevOps-证书服务-windows平台</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(certsrv);
 	</script>
 	<style type="text/css">
 		.tdCliLogo
@@ -19,10 +18,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(certsrv, '../../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("修改主机名（推荐）","i1");
@@ -126,18 +121,7 @@
 							createLinuxTxtT2(cmd);
 
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

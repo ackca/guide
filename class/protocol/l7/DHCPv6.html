@@ -4,18 +4,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-DHCPv6</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(dhcpv6);
 	</script>
 	<style type="text/css">
-		#divCommand
-		{
-			margin-top: 84.5px;
-		}
-
-
 		#tRAFlag .row.header .cell:nth-child(1),
 		#tRAFlag .row.header .cell:nth-child(2),
 		#tRAFlag .row.header .cell:nth-child(3)
@@ -73,10 +66,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(dhcpv6, '../../../');
-		</script>
-
 		<div class="divProtocolWord">
 			<script type="text/javascript">
 				createProtocolWord(
@@ -160,26 +149,11 @@
 					createHLTableT0(1100, tHeader, tBody, "tV6V4");
 
 
-
-
 			</script>
 
 			<br /><br /><br /><br /><br /><br /><br />
 			<br /><br /><br /><br /><br /><br /><br />
-
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		bottom = bottom.replace(/74.5/, "160");
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 top_menu = `	
 	<div class="top_navigation">
-		<div class="mod-header hover">
+		<div class="mod-header">
 			<div class="cat">
 				<div class="cat-box" data-cat="protocol" id="protocol">
 					<div class="layout">
@@ -279,7 +279,7 @@ top_menu = `
 				</div>
 			</div>
 			<div class="cat">
-				<div class="cat-box active" data-cat="netdevops">
+				<div class="cat-box" data-cat="netdevops">
 					<div class="layout">
 						<div class="cat-group">
 							<h3 class="cat-tit">
@@ -307,36 +307,68 @@ top_menu = `
 							</h3>
 						</div>
 						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-mysql"></i>
-								</div>
-								<span><a href="rootpath/class/netdevops/mysql/mysql8.html">MySQL 8</a></span>
-							</h3>
-						</div>
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-gitlab"></i>
-								</div>
-								<span style="margin-left: 5px"><a href="rootpath/class/netdevops/gitlab/gitlab.html">GitLab</a></span>
-							</h3>
-						</div>
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-vault"></i>
-								</div>
-								<span><a href="rootpath/class/netdevops/vault/vault.html">Vault</a></span>
-							</h3>
-						</div><br />
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-nginx"></i>
-								</div>
-								<span style="margin-left: 5px"><a href="rootpath/class/netdevops/nginx/nginx.html">Nginx</a></span>
-							</h3>
+						    <table>
+						        <tr>
+						            <td class="logo">
+						                <h3 class="cat-tit">
+                                            <i class="ico-mysql"></i>
+                                        </h3>
+                                    </td>
+                                    <td>
+						                <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/netdevops/tool/mysql8.html">MySQL 8</a></span>
+                                        </h3>
+                                    </td>
+                                    <td class="logo">
+						                <h3 class="cat-tit">
+                                            <i class="ico-gitlab"></i>
+                                       </h3>
+                                    </td>
+                                    <td>
+						                <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/netdevops/tool/gitlab.html">GitLab</a></span>
+                                        </h3>
+                                    </td>
+                                    <td class="logo">
+						                <h3 class="cat-tit">
+                                            <i class="ico-vault"></i>
+                                        </h3>
+                                    </td>
+                                    <td>
+						                <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/netdevops/tool/vault.html">Vault</a></span>
+                                        </h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="logo">
+                                        <h3 class="cat-tit">
+                                            <i class="ico-nginx"></i>
+                                        </h3>
+                                    </td>
+                                    <td>
+                                        <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/netdevops/tool/nginx.html">Nginx</a></span>
+                                        </h3>
+                                    </td>
+                                    <td class="logo">
+                                        <h3 class="cat-tit">
+                                            <i class="ico-regex"></i>
+                                        </h3>
+                                    </td>
+                                    <td>
+                                        <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/netdevops/tool/regex.html">正则表达式</a></span>
+                                        </h3>
+                                    </td>
+                                    <td class="logo">
+                                    
+                                    </td>
+                                    <td>
+                                    
+                                    </td>
+                                </tr>
+                            </table>							
 						</div>
 					</div>
 				</div>

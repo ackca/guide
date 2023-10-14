@@ -5,18 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/cisco.ico" />
 	<title>思科-传统企业网-防火墙-ASA</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(asa);
 	</script>
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(asa, '../../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("基本配置","i1");
@@ -1062,18 +1057,7 @@
 								instruArr[4]=createCmdInstruSpan("“aaaa.bbbb.cccc。","Port-channel接口mac地址，推荐配置");
 								createCmdInstruT3(instruArr,"cisco");
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

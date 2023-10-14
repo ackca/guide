@@ -5,9 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/f5.ico" />
 	<title>F5-LTM基本原理</title>
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(ltm_basic);
 	</script>
 	<style type="text/css">
 		#npath span, #snat span, #gw span
@@ -45,10 +45,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(ltm_basic, '../../../');
-		</script>
-		
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("LTM基本概念","i1");
@@ -177,18 +173,7 @@
 						createInstruT2("<br />Least Sessions：<span class='lb'>最小会话</span>","i3-11");
 
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

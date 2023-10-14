@@ -1,24 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-HTTP</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
-
-		// document.onmouseup = function () {
-		// 	document.onmousemove = null;
-		// }
+		window.onload = createNavigation(http);
 	</script>
 	<style type="text/css">
-		#divCommand
-		{
-			margin-top: 84.5px;
-		}
-
 		#tMethod .cell:nth-child(1)
         {
 			width: 160px;
@@ -65,14 +55,9 @@
 			margin-top: 20px;
 		}
 	</style>
-
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(http, '../../../');
-		</script>
-
 		<div class="divProtocolWord">
 			<script type="text/javascript">
 				createProtocolWord(
@@ -129,7 +114,7 @@
 				createHLTableT0(820, tHeader, tBody, "tMethod");
 
 
-            createInstruT0("HTTP 状态码","i4");
+            createInstruT0("<br />HTTP 状态码","i4");
                 createInstruT1("状态码类型<br />","i4-1");
                     tHeader = [
 						"状态码",
@@ -144,7 +129,7 @@
 						["4XX","Client Error（客户端错误状态码）","服务器无法处理请求"],
 						["5XX","Server Error（服务器错误状态码）","服务器处理请求出错"],
 					];
-					createHLTableT1(780, tHeader, tBody, "tStatus1");
+					createHLTableT1(800, tHeader, tBody, "tStatus1");
 
                     document.write("<br /><br />");
 
@@ -267,16 +252,138 @@
 		                "首部作用",
 					];
 					tBody = [
-						["Cache-Control","操作缓存的工作机制"],
+						["Cache-Control","管理缓存的工作机制"],
+						["Connection","连接类型"],
+						["Date","创建报文的时间日期"],
+						["Transfer-Encoding","传输文件主体的编码方式"],
+						["Upgrade","是否可使用更高版本协议通信"],
+						["Warning","警告信息"],
 					];
 					createHLTableT1(750, tHeader, tBody, "tRequestHeaders");
 
 
-                createInstruT1("<br />Cache-Control","i5-1");
-                    yaml = `
-						Cache-Control: private, max-age=0, no-cache
+                createInstruT1("<br />Cache-Control：管理缓存的工作机制","i5-2-1");
+                    createInstruT2("启用缓存时的工作原理","i5-2-1");
+                        createInstruT3("第一次请求与响应");
+		                    htmlheaders = `
+								GET / HTTP/1.1
+							`;
+							createHTTPHeadersT3(htmlheaders);
+
+                            htmlheaders = `
+								HTTP/1.1 200 OK
+								Server: nginx
+								Last-Modified: Thu, 12 Oct 2023 06:16:07 GMT    # 上次修改时间
+								ETag: "65278f27-1dbf"                           # 当前资源的ID
+								Expires: Sat, 11 Nov 2023 07:40:26 GMT          # 缓存过期时间
+								Cache-Control: max-age=2592000                  # 缓存有效期
+								Cache-Control: public, no-gransform             # 支持缓存
+							`;
+							createHTTPHeadersT3(htmlheaders);
+
+                        createInstruT3("继续请求与响应（服务端未修改）");
+                            htmlheaders = `
+								GET / HTTP/1.1
+								If-Modified-Since: Thu, 12 Oct 2023 06:16:07 GMT    # 缓存修改时间
+								If-None-Match: "65278f27-1dbf"                      # 缓存的ID
+							`;
+							createHTTPHeadersT3(htmlheaders);
+
+                            htmlheaders = `
+								HTTP/1.1 304 Not Modified                       # 继续使用缓存
+								Server: nginx
+								Last-Modified: Thu, 12 Oct 2023 06:16:07 GMT    # 上次修改时间
+								ETag: "65278f27-1dbf"                           # 当前资源的ID
+								Expires: Sat, 11 Nov 2023 07:41:12 GMT          # 由于再次访问，缓存过期时间更新
+								Cache-Control: max-age=2592000                  # 缓存有效期
+								Cache-Control: public, no-gransform             # 支持缓存
+							`;
+							createHTTPHeadersT3(htmlheaders);
+
+                        createInstruT3("继续请求与响应（服务端已修改）");
+                            htmlheaders = `
+								GET / HTTP/1.1
+								If-Modified-Since: Thu, 12 Oct 2023 06:16:07 GMT    # 缓存修改时间
+								If-None-Match: "65278f27-1dbf"                      # 缓存的ID
+							`;
+							createHTTPHeadersT3(htmlheaders);
+
+                            htmlheaders = `
+								HTTP/1.1 200 OK                                 # 由于资源已经改变，状态码为200
+								Server: nginx
+								Last-Modified: Thu, 12 Oct 2023 07:42:06 GMT    # 上次修改时间，已经更新
+								ETag: "6527a34e-1daa"                           # 当前资源的ID，已经更新
+								Expires: Sat, 11 Nov 2023 07:42:21 GMT          # 缓存过期时间，已经更新
+								Cache-Control: max-age=2592000                  # 缓存有效期，仅修改资源内容，未修改缓存策略
+								Cache-Control: public, no-gransform             # 支持缓存
+							`;
+							createHTTPHeadersT3(htmlheaders);
+
+                    createInstruT2("不支持缓存","i5-2-2");
+                        htmlheaders = `
+							Cache-Control: private, max-age=0, no-cache
+						`;
+						createHTTPHeadersT2(htmlheaders);
+
+
+                createInstruT1("<br />Connection：连接类型","i5-3");
+	                createInstruT2("目前的HTTP连接均为持久化连接，该首部没有必要");
+	                    htmlheaders = `
+							Connection: keep-alive
+						`;
+						createHTTPHeadersT2(htmlheaders);
+
+					createInstruT2("如有特殊情况，可以不使用持久化连接");
+	                    htmlheaders = `
+							Connection: close
+						`;
+						createHTTPHeadersT2(htmlheaders);
+
+
+                createInstruT1("<br />Date：创建报文的时间日期","i5-4");
+                    htmlheaders = `
+						Date: Thu, 12 Oct 2023 07:42:21 GMT
 					`;
-					createYAMLT1(yaml);
+					createHTTPHeadersT1(htmlheaders);
+
+
+                createInstruT1("<br />Transfer-Encoding：传输文件主体的编码方式","i5-5");
+                    createInstruT2("一般用于分块传输资源时");
+                    htmlheaders = `
+						Transfer-Encoding: chunked
+					`;
+					createHTTPHeadersT1(htmlheaders);
+
+
+                createInstruT1("<br />Upgrade：是否可使用更高版本协议通信","i5-6");
+                    createInstruAllTopT1("首部字段Upgrade用于检测HTTP协议及其他协议是否可以使用更高的版本进行通信");
+                    createInstruAllTopT1("其参数值可以用来指定一个完全不同的通信协议");
+
+                    htmlheaders = `
+						GET / HTTP/1.1
+						Upgrade: TLS/1.0
+						Connection: Upgrade
+					`;
+					createHTTPHeadersT1(htmlheaders);
+
+                    htmlheaders = `
+						HTTP/1.1 101 Switching Protocols
+						Upgrade: TLS/1.0, HTTP/1.1
+						Connection: Upgrade
+					`;
+					createHTTPHeadersT1(htmlheaders);
+
+
+                createInstruT1("<br />Warning：警告信息","i5-7");
+					createInstruAllTopT1("通常会告知用户一些与缓存相关问题的警告");
+                    createInstruAllTopT1("<a class='link' href='https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Warning' target='_blank'>https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Warning</a>");
+                    createInstruAllTopT1("格式如下，最后的日期时间部分可省略");
+
+					htmlheaders = `
+						Waring: [ 警告码 ] [警告的主机：端口号] "[警告内容]" ( [ 日期时间 ] )
+					`;
+					createHTTPHeadersT1(htmlheaders);
+
 
             createInstruT0("HTTP认证","i8");
                 createInstruT1("基本认证（Basic auth）","i8-1");
@@ -356,21 +463,10 @@
 
 		<br /><br /><br /><br /><br /><br /><br />
 		<br /><br /><br /><br /><br /><br /><br />
-
-		<div id="guide-icon">
-			<div>
-				<span class="open"></span>
-				<span class="open"></span>
-				<span class="open"></span>
-			</div>
-		</div>
 	</div>
 
 	<script type="text/javascript">
-		bottom = bottom.replace(/74.5/, "160");
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-
-        function toStatusNO(id) {
+		function toStatusNO(id) {
 	        href = window.location.href.split('#')[0];
 			location.href = href + id;
 			topp = $('#divCommand').offset().top + 160;

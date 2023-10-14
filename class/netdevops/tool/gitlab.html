@@ -5,10 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/gitlab.ico" />
 	<title>NetDevOps-gitlab</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(gitlab);
 	</script>
 	<style type="text/css">
 		.linuxDivT2, .divConfigImgT2, .divConfigImgT3
@@ -19,10 +18,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(gitlab, '../../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("安装&初始化（Docker版）","i1");
@@ -199,18 +194,7 @@
 								createConfigImgT2("gitlab/i3_3_2$1");
 
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

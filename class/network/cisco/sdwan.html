@@ -5,10 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/cisco.ico" />
 	<title>思科-SDN-SDWAN</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(sdwan);
 	</script>
 	<style type="text/css">
 		.linuxDivT1, .linuxDivT2, .linuxDivT3, .spanB
@@ -19,10 +18,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(sdwan, '../../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("核心设备上线","i1");
@@ -300,18 +295,7 @@
 						createConfigImgT1("sdwan/i7_3$1~3");
 
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

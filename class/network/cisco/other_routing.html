@@ -5,18 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/cisco.ico" />
 	<title>思科-传统企业网-其它路由协议</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(other_routing);
 	</script>
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(other_routing, '../../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("访问控制列表（ACL）","i1");
@@ -666,18 +661,7 @@
 					instruArr[7] = createCmdInstruSpan("“100。","acl编号，对于不合规的流量，再通过acl进行过滤，如果acl的行为permit，也可以转发，如果为deny，不可转发");
 					createCmdInstruT0(instruArr,"cisco");
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

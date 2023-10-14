@@ -156,6 +156,61 @@ span .link
 	font-weight: bold;
 }
 
+.headersT1, .headersT2, .headersT3
+{
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 20px!important;
+	background-color: #282923;
+	border-radius: 5px;
+	line-height: 1.6;
+	/*margin-top: 10px;*/
+	margin-bottom: 50px;
+	padding-top: 8px;
+	padding-left: 8px;
+	padding-right: 30px;
+	padding-bottom: 8px;
+	width:fit-content;
+}
+
+.headersT1 span, .headersT2 span, .headersT3 span
+{
+	font-size: 20px;
+}
+
+.headersT1 .spanZS, .headersT2 .spanZS, .headersT3 .spanZS
+{
+	font-size: 18px;
+}
+
+.headersT1
+{
+	margin-left: 50px;
+}
+
+.headersT2
+{
+	margin-left: 80px;
+}
+
+.headersT3
+{
+	margin-left: 110px;
+}
+
+.headersT1 + .headersT1,
+.headersT2 + .headersT2,
+.headersT3 + .headersT3
+{
+	margin-top: -30px;
+}
+
+.cmdInstruAllTopT1 + .headersT1,
+.cmdInstruAllTopT2 + .headersT2,
+.cmdInstruAllTopT3 + .headersT3
+{
+	margin-top: 20px;
+}
+
 h4
 {
 	font-size: 22px;
@@ -525,7 +580,7 @@ td
 
 .spanT
 {
-	color: #F92472;
+	color: #63D8EE;
 	font-size: 18px;
 	line-height: 1.6em;
 }
@@ -535,6 +590,16 @@ td
 	color: #E7DB74;
 	font-size: 18px;
 	line-height: 1.6em;
+}
+
+.spanG
+{
+	color: #00B050;
+}
+
+.span3
+{
+	color: #CC7832;
 }
 
 .spanB

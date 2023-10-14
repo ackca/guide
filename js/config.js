@@ -1,10 +1,12 @@
-function createNavigation(tree, path) {
+function createNavigation(tree, offset = 74.5) {
+	var uri = window.location.href.substring(window.location.href.indexOf('/guide'));
+	var path_num = uri.split('/').length - 1 - 2;
+
 	// 顶部导航
-	var htmlText = top_menu.replace(/rootpath\//g, path);
+	var htmlText = top_menu.replace(/rootpath\//g, '../'.repeat(path_num));
 
 	if(tree == 'regex') {
 		document.write(htmlText);
-		// console.log('regex');
 		return;
 	}
 	// 左侧导航树 <---- 开始 ---->
@@ -20,7 +22,40 @@ function createNavigation(tree, path) {
 	</aside>';
 	// 左侧导航树 <---- 结束 ---->
 
+	// 关闭/显示左侧导航按钮 <---- 开始 ---->
+	htmlText = htmlText + `
+		<div id="guide-icon">
+			<div>
+				<span class="open"></span>
+				<span class="open"></span>
+				<span class="open"></span>
+			</div>
+		</div>
+	`;
+	// 关闭/显示左侧导航按钮 <---- 结束 ---->
+
 	document.write(htmlText);
+
+	if (uri.indexOf('/guide/class/protocol') >= 0) {
+		offset = 160;
+	}
+
+	var body = `
+		<script type='text/javascript' src='rootpath/js/ai.js'></script>
+	<!--    <script type='text/javascript'>window.jQuery</script>-->
+		<script type='text/javascript' src='rootpath/js/sidebar-menu.js'></script>
+		<script type='text/javascript'>
+			$.sidebarMenu($('.sidebar-menu'), offset);
+		</script>
+		<script type='text/javascript' src='rootpath/js/guide-icon.js'></script>
+	`
+	document.write(body.replace(/rootpath\//g, '../'.repeat(path_num)).replace('offset', offset));
+
+	$('document').ready(function () {
+		if (uri.indexOf('/guide/class/protocol') >= 0) {
+			$('#divCommand').css('margin-top', '84.5px');
+		}
+	})
 }
 
 function createTree(tree) {
@@ -177,9 +212,10 @@ function createLinuxTxt(cmds, cmdT) {
 		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
 	var cmd_arr = cmds.split('\n')
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
-
+	console.log(subNum)
 	for(var i = 1; i < cmd_arr.length - 1; i++) {
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
+
 		//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
 		cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
 		cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
@@ -848,26 +884,6 @@ function linuxCopy(element) {
 	setTimeout(function() { $(element).next().fadeOut(500) }, 1000)
 }
 
-function reverse_protocol(protocol_l) {
-    var row_id = [];
-    var row_innerHTML = [];
-
-    for (var i = 1; ; i++) {
-        var element = document.getElementById(protocol_l + "r" + i);
-        if(element) {
-            row_id.push(protocol_l + "r" + i);
-            row_innerHTML.push(element.innerHTML);
-        }
-        else {
-            break;
-        }
-    }
-
-    for(var i = 0; i < row_id.length; i++) {
-        document.getElementById(row_id[i]).innerHTML = row_innerHTML[row_innerHTML.length - i - 1];
-    }
-}
-
 function createProtocolWord(protocolSX, protocolQC, protocolZW) {
 	var htmlText = "<div style='display: inline-block'>";
 	htmlText = htmlText + "<table>";
@@ -1030,4 +1046,78 @@ function protocolStructdbClick(elem) {
 
 	var nwin = window.open('');
 	nwin.document.writeln(protocolHTML)
+}
+
+function createHTTPHeadersT1(text, instruT) {
+	createHTTPHeaders(text, "T1");
+}
+
+function createHTTPHeadersT2(text, instruT) {
+	createHTTPHeaders(text, "T2");
+}
+
+function createHTTPHeadersT3(text, instruT) {
+	createHTTPHeaders(text, "T3");
+}
+
+function createHTTPHeaders(cmds, cmdT) {
+	var headers = cmds.split('\n');
+	var htmlText = "<div class='headers" + cmdT + "'><table><tr>";
+	var heads_num = 2;
+
+	if(headers[1].indexOf(": ") == -1) {	// 为了查看方便，第0行为空白行，第1行可能并非首部字段
+		var header = headers[1].replace(/\t/g,'')
+		var l1 = header.split(' ');
+		if(l1[0] == 'GET') {	// HTTP请求
+			htmlText = htmlText + "<td colspan='3'><span class='spanT'>" + l1[0] + '</span> ';
+			htmlText = htmlText + "<span class='spanV'>" + l1[1] + '</span> ';
+			htmlText = htmlText + l1[2] + '</td></tr>';
+		}
+
+		if(l1[0].indexOf("HTTP") == 0) {	// HTTP响应
+			htmlText = htmlText + "<td colspan='3'><span class='spanT'>" + l1[0] + "</span> ";
+			var index = header.indexOf(' ')
+			// var protocol = header.substring(0, index);
+			var status = header.substring(index).split('#');
+
+			if(l1[1][0] == "1") {	// 状态码1XX
+				htmlText = htmlText + status[0].trim();
+			}
+
+			if(l1[1][0] == "2") {	// 状态码2XX
+				htmlText = htmlText + "<span class='spanG'>" + status[0].trim() + "</span>";
+			}
+
+			if(l1[1][0] == "3") {	// 状态码3XX
+				htmlText = htmlText + "<span class='span3'>" + status[0].trim() + "</span>";
+			}
+
+			if (status.length > 1) {	// 状态码后有注释
+				htmlText = htmlText + "&nbsp;&nbsp;<span class='spanZS'># " + status[1].trim() + "</span>";
+			}
+			htmlText = htmlText + '</td></tr>';
+		}
+	}
+	else {
+		heads_num = 1;
+	}
+
+
+	for(var i = heads_num; i < headers.length - 1; i++) {
+		var header = headers[i].replace(/\t/g,'').trim();
+		var headerT = header.split(': ')[0];
+		var headerV = header.split(': ')[1].split('# ')[0];
+		var headerZS = '';
+		if (header.split(': ')[1].indexOf('# ') > 0) {	// 包含注释
+			headerZS = '# ' + header.split(': ')[1].split('# ')[1]
+		}
+		htmlText = htmlText + "<tr><td><span class='spanT'>" + headerT + "</span><b>:</b> </td>";
+		htmlText = htmlText + "<td><span class='spanV'>&nbsp;" + headerV.trim() + "</span></td>";
+		if (headerZS) {
+			htmlText = htmlText + "<td><span class='spanZS'>&nbsp;&nbsp;&nbsp;&nbsp;" + headerZS.trim() + "</span></td></tr>";
+		}
+	}
+
+	htmlText = htmlText + "</table></div>";
+	document.writeln(htmlText);
 }

@@ -5,10 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/docker.ico" />
 	<title>容器-docker-基础配置</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script src="../../../js/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
+		window.onload = createNavigation(basic);
 	</script>
 	<style type="text/css">
 		.divConfigImgT2, .divConfigImgT3
@@ -24,10 +23,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(basic, '../../../');
-		</script>
-
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("安装docker（CentOS 8 在线）","i1");
@@ -515,18 +510,7 @@
 							createInstruT3("CentOS 8查看bridge与veth-pain的对应关系<br />","i5-4-2");
 								createConfigImgT3("basic/i5_4_2$1");
 			</script>
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

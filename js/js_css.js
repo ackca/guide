@@ -1,6 +1,6 @@
 head = `
     <link rel='stylesheet' type='text/css' href='rootpath/css/bootstrap.min.css'>
-    <link rel='stylesheet' type='text/css' href='rootpath/css/font-awesome.min.css'>
+<!--    <link rel='stylesheet' type='text/css' href='rootpath/css/font-awesome.min.css'>-->
     <link rel='stylesheet' type='text/css' href='rootpath/css/sidebar-menu.css'>
     <link rel='stylesheet' type='text/css' href='rootpath/css/ai.css'>
     <link rel='stylesheet' type='text/css' href='rootpath/css/guide-icon.css'>
@@ -10,7 +10,7 @@ head = `
     <script type='text/javascript' src='rootpath/js/config.js'></script>
     <script type='text/javascript' src='tree.js'></script>
     <script type='text/javascript' src='rootpath/js/top_menu.js'></script>
-    <script type='text/javascript' src='rootpath/js/HLTable.js'></script>
+    <script type='text/javascript' src='rootpath/js/HLTable.js'></script> 
 `
 
 bottom = `

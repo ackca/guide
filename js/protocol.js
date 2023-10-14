@@ -1,3 +1,98 @@
+// 协议名，
+// 协议宽度，
+// 协议行数，
+// 一行协议编号（二行协议第一行），
+// 二行协议第二行，
+// 协议详细页面链接
+
+var l3_protocol = [
+    ["IPv4", 2, 1, '0x0800', '', 'class/protocol/l3/IPv4.html'],
+    ["ARP", 2, 1, '0x0806', '', 'class/protocol/l3/ARP.html'],
+    ["IPv6", 2, 1, '0x08dd', '', 'class/protocol/l3/IPv6.html'],
+    ["802.1Q", 2, 1, '0x8100', '', 'class/protocol/l2/802.1Q.html'],
+    ["MPLS", 2, 2, 'Unicast：0x8847', 'Multicast：0x8848', ''],
+    ["PPPoE", 2, 2, 'Discovery：0x8863', 'Session：0x8864', ''],
+    ["EAPoL", 2, 1, '0x888e', '', ''],
+    ["ERSPAN", 2, 1, '0x88be', '', ''],
+    ["MACSec&nbsp;(&nbsp;802.1ae&nbsp;)&nbsp;", 2, 1, '0x88e5', '', ''],
+];
+
+var l4_protocol = [
+    ["ICMPv4", 1, 1, '1', '', 'class/protocol/l4/ICMPv4.html'],
+    ["IGMP", 1, 1, '2', '', ''],
+    ["TCP", 1, 1, '6', '', 'class/protocol/l4/TCP.html'],
+    ["UDP", 1, 1, '17', '', 'class/protocol/l4/UDP.html'],
+    ["IPv6", 1, 1, '41', '', 'class/protocol/l3/IPv6.html'],
+    ["IPv6 Fragment header", 2, 1, '44', '', 'class/protocol/l3/IPv6.html#i3'],
+    ["GRE", 1, 1, '47', '', ''],
+    ["ESP", 1, 1, '50', '', ''],
+    ["AH", 1, 1, '51', '', ''],
+    ["ICMPv6", 1, 1, '58', '', 'class/protocol/l4/ICMPv6.html'],
+    ["EIGRP", 1, 1, '88', '', ''],
+    ["OSPF", 1, 1, '89', '', ''],
+    ["EoIP", 1, 1, '97', '', ''],
+    ["PIM", 1, 1, '103', '', ''],
+    ["VRRP", 1, 1, '112', '', ''],
+];
+
+var tcp_protocol = [
+    ["FTP-Data&nbsp;(&nbsp;Active&nbsp;)&nbsp;", 2, 1, '20', '', 'class/protocol/l7/FTP.html'],
+    ["FTP", 2, 1, '21', '', 'class/protocol/l7/FTP.html'],
+    ["SSH / SCP / SFTP", 2, 1, '22', '',''],
+    ["telnet", 2, 1, '23', '',''],
+    ["SMTP", 2, 1, '25', '',''],
+    ["TACACS+", 2, 1, '49', '',''],
+    ["DNS", 2, 1, '53', '', 'class/protocol/l7/DNS.html'],
+    ["HTTP", 2, 1, '80', '','class/protocol/l7/HTTP.html'],
+    ["POP3", 2, 1, '110', '', ''],
+    ["IMAP", 2, 1, '143', '', ''],
+    ["BGP", 2, 1, '179', '', ''],
+    ["LDAP", 2, 1, '389', '', ''],
+    ["HTTPS&nbsp;(&nbsp;HTTP1/2&nbsp;)&nbsp;", 2, 1, '443', '', 'class/protocol/l7/HTTP.html'],
+    ["SMTPS", 2, 1, '465（587）', '', ''],
+    ["LDAPS", 2, 1, '636', '', ''],
+    ["MSDP", 2, 1, '639', '', ''],
+    ["LDP Session", 2, 1, '646', '', ''],
+    ["Netconf", 2, 1, '830', '', ''],
+    ["IMAPS", 2, 1, '993', '', ''],
+    ["POP3S", 2, 1, '995', '', ''],
+];
+
+var udp_protocol = [
+    ["DNS", 2, 1, '53', '','class/protocol/l7/DNS.html'],
+    ["DHCPv4", 3, 2, 'Server&nbsp;(&nbsp;bootps&nbsp;)&nbsp;/&nbsp;Relay：67', 'Client&nbsp;(&nbsp;bootpc&nbsp;)&nbsp;：68', 'class/protocol/l7/DHCPv4.html'],
+    ["TFTP", 2, 1, '69', '', 'class/protocol/l7/TFTP.html'],
+    ["NTP&nbsp;/&nbsp;SNTP", 2, 1, '123', '', 'class/protocol/l7/NTP.html'],
+    ["SNMP", 2, 2, 'Get&nbsp;/&nbsp;Set：161', 'Trap：162', ''],
+    ["HTTPS&nbsp;(&nbsp;HTTP3&nbsp;)&nbsp;", 2, 1, 443, '', 'class/protocol/l7/HTTP.html'],
+    ["IKE", 2, 1, '500', '', ''],
+    ["syslog", 2, 1, '514', '', 'class/protocol/l7/syslog.html'],
+    ["RIP", 2, 1, '520', '', ''],
+    ["DHCPv6", 2, 2, 'Server&nbsp;/&nbsp;Relay：547', 'Client：546', 'class/protocol/l7/DHCPv6.html'],
+    ["LDP Discovery", 2, 1, '646', '', ''],
+    ["GDOI&nbsp;(&nbsp;GETVPN&nbsp;)&nbsp;", 2, 1, '848', '', ''],
+    ["Radius", 4, 2, 'Authentication&nbsp;/&nbsp;Authorization：1812&nbsp;(&nbsp;1645&nbsp;)&nbsp;', 'Accounting：1813&nbsp;(&nbsp;1646&nbsp;)&nbsp;', ''],
+    ["HSRP", 2, 1, '1985', '', ''],
+    ["RadSec&nbsp;(&nbsp;Radius over DTLS&nbsp;)&nbsp;", 3, 1, '2083', '', ''],
+    ["BFD", 2, 1, '3784', '', ''],
+    ["IKE&nbsp;(&nbsp;NAT-T&nbsp;)&nbsp;", 2, 1, '4500', '', ''],
+    ["VXLAN", 2, 1, '4789', '', 'class/protocol/l7/VXLAN.html'],
+    ["CAPWAP", 2, 2, 'Control：5246', 'Data：5247', ''],
+    ["Mobility Protocol", 2, 1, '16666', '', ''],
+];
+
+var tcp_application = [
+    ["SQL Server DB", 2, 1, '1433', '',''],
+    ["Oracle DB", 2, 1, '1521', '',''],
+    ["MySQL DB", 2, 1, '3306', '',''],
+    ["Microsoft RDP", 2, 1, '3389', '',''],
+    ["PostgrepSQL DB", 2, 1, '5432', '',''],
+];
+
+var udp_application = [
+
+];
+
 var l34_color = ['c1', 'c4', 'c6', 'c3', 'c5', 'c2'];
 var l7_color = ['c1', 'c2', 'c3'];
 var index_udp = 0;
@@ -65,7 +160,7 @@ function createProtocol34(protocol_list, protocol_l) {
         k = k + protocol_list[index][1];
     }
     htmlText = htmlText + "</div><br />";
-    document.writeln(htmlText);
+    return htmlText;
 }
 
 function createProtocol7(tcp_list, udp_list, protocol_l) {
@@ -151,8 +246,7 @@ function createProtocol7(tcp_list, udp_list, protocol_l) {
         }
     }
 
-    htmlText = htmlText + "</div><br />";
-    document.writeln(htmlText);
+    return htmlText = htmlText + "</div><br />";
 }
 
 function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
@@ -226,3 +320,48 @@ function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
 
     return htmlText;
 }
+
+function reverse_protocol(protocol_l) {
+    var row_id = [];
+    var row_innerHTML = [];
+
+    for (var i = 1; ; i++) {
+        var element = document.getElementById(protocol_l + "r" + i);
+        if(element) {
+            row_id.push(protocol_l + "r" + i);
+            row_innerHTML.push(element.innerHTML);
+        }
+        else {
+            break;
+        }
+    }
+
+    for(var i = 0; i < row_id.length; i++) {
+        document.getElementById(row_id[i]).innerHTML = row_innerHTML[row_innerHTML.length - i - 1];
+    }
+}
+
+
+$(document).ready(function () {
+	var ll = `
+		<div class="row">
+			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+		</div><br />
+	`;
+	var htmlText = "";
+
+	htmlText = htmlText + createProtocol7(tcp_application, udp_application, 'app');
+	htmlText = htmlText + ll;
+	htmlText = htmlText + createProtocol7(tcp_protocol, udp_protocol, 'l7');
+	htmlText = htmlText + ll;
+	htmlText = htmlText + createProtocol34(l4_protocol, 'l4');
+	htmlText = htmlText + ll;
+	htmlText = htmlText + createProtocol34(l3_protocol, 'l3');
+
+	$('#protocol_list').append(htmlText);
+
+	reverse_protocol('l3');
+	reverse_protocol('l4');
+	reverse_protocol('l7');
+	reverse_protocol('app');
+});
