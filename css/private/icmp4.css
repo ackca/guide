@@ -3,14 +3,14 @@
     padding-left: 0;
 }
 
-#tICMPv4Type .row:nth-child(n+2) .cell
-{
-    border-right: solid 1px #A0A0A0;
-    border-bottom: solid 1px #A0A0A0;
+#tICMPv4Type .row:nth-child(n+2) .cell  /* 表格内容颜色修改为一致 */
+{                                       /* 添加表格线 */
+    border-right: solid 2px #A0A0A0;
+    border-bottom: solid 2px #A0A0A0;
     background-color: #5A5D6F;
 }
 
-#tICMPv4Type .row:nth-child(n+2):hover .cell
+#tICMPv4Type .row:nth-child(n+2):hover .cell  /* 修改高亮颜色 */
 {
     background-color: #CBCFFF;
 }
@@ -31,6 +31,7 @@
     color: #FFFF00;
 }
 
+/* 去掉被合并的列单元格的下边框 */
 #tICMPv4Type .row:nth-child(3) > .cell:nth-child(1),
 #tICMPv4Type .row:nth-child(4) > .cell:nth-child(1),
 #tICMPv4Type .row:nth-child(5) > .cell:nth-child(1),
@@ -59,6 +60,7 @@
     border-bottom-color: #5A5D6F;
 }
 
+/* 去掉最下侧的表格线 */
 #tICMPv4Type .row:last-child .cell
 {
     border-bottom: 0;
@@ -99,7 +101,8 @@
     padding-left: 10px;
 }
 
-#tICMPv4Type .row .cell:nth-child(5)
+/* 去掉最右侧的表格线 */
+#tICMPv4Type .row .cell:last-child
 {
     border-right: 0;
 }

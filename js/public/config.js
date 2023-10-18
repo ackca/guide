@@ -41,19 +41,34 @@ function createNavigation(tree, offset = 74.5) {
 	}
 
 	var body = `
-		<script type='text/javascript' src='rootpath/js/ai.js'></script>
+		<script type='text/javascript' src='rootpath/js/public/ai.js'></script>
 	<!--    <script type='text/javascript'>window.jQuery</script>-->
-		<script type='text/javascript' src='rootpath/js/sidebar-menu.js'></script>
+		<script type='text/javascript' src='rootpath/js/public/sidebar-menu.js'></script>
 		<script type='text/javascript'>
 			$.sidebarMenu($('.sidebar-menu'), offset);
 		</script>
-		<script type='text/javascript' src='rootpath/js/guide-icon.js'></script>
+		<script type='text/javascript' src='rootpath/js/public/guide-icon.js'></script>
 	`
 	document.write(body.replace(/rootpath\//g, '../'.repeat(path_num)).replace('offset', offset));
 
-	$('document').ready(function () {
+	$(document).ready(function () {
 		if (uri.indexOf('/guide/class/protocol') >= 0) {
 			$('#divCommand').css('margin-top', '84.5px');
+		}
+
+		if (uri.indexOf('#') > 0) {
+			// 以 DHCP Snooping 为例，#i10-2
+			// ['#i10','2']
+			// 第一次：'#i10'
+			// 第二次：'#i10-2'
+			var linkID = uri.substring(uri.indexOf(('#')));
+			var linkID_arr = linkID.split('-');
+			var link = '';
+			for (var i = 0; i < linkID_arr.length; i++) {
+				link = link + linkID_arr[i];
+				$('[cmd="' + link + '"]').click();
+				link = link + '-';
+			}
 		}
 	})
 }
@@ -212,7 +227,7 @@ function createLinuxTxt(cmds, cmdT) {
 		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
 	var cmd_arr = cmds.split('\n')
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
-	console.log(subNum)
+
 	for(var i = 1; i < cmd_arr.length - 1; i++) {
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
 
@@ -1112,12 +1127,33 @@ function createHTTPHeaders(cmds, cmdT) {
 			headerZS = '# ' + header.split(': ')[1].split('# ')[1]
 		}
 		htmlText = htmlText + "<tr><td><span class='spanT'>" + headerT + "</span><b>:</b> </td>";
-		htmlText = htmlText + "<td><span class='spanV'>&nbsp;" + headerV.trim() + "</span></td>";
+		htmlText = htmlText + "<td><span class='spanV'>" + headerV.trim() + "</span></td>";
 		if (headerZS) {
-			htmlText = htmlText + "<td><span class='spanZS'>&nbsp;&nbsp;&nbsp;&nbsp;" + headerZS.trim() + "</span></td></tr>";
+			htmlText = htmlText + "<td><span class='spanZS'>" + headerZS.trim() + "</span></td></tr>";
 		}
 	}
 
 	htmlText = htmlText + "</table></div>";
+	// 将 , ; 配置为白色
+	htmlText = htmlText.replaceAll(",", "<span class='spanW'>,</span>").replaceAll(";", "<span class='spanW'>;</span>");
+	// 由于&nbsp;中包含;，替换回&nbsp;
+	htmlText = htmlText.replaceAll("&nbsp<span class='spanW'>;</span>", "&nbsp;");
 	document.writeln(htmlText);
+}
+
+function createSelection(tableName, HLobj) {
+    // _c201："#tHeaders .row:nth-child(20) .cell:nth-child(1), ";
+    // _r2："#tHeaders .row:nth-child(2) .cell, ";
+    var HLtype = HLobj[1];
+    var selectionTXT = tableName;
+    if (HLtype == "c") {
+		// 行数有可能达到两位数，列数中有一位数
+		selectionTXT = selectionTXT + " .row:nth-child(" + HLobj.substring(2, HLobj.length - 1);
+        selectionTXT = selectionTXT + ") .cell:nth-child(" + HLobj[HLobj.length - 1] + "), ";
+    }
+    if (HLtype == "r") {
+        selectionTXT = selectionTXT + " .row:nth-child(" + HLobj.substring(2) + ") .cell, ";
+    }
+
+    return selectionTXT;
 }

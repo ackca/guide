@@ -23,7 +23,7 @@ var l4_protocol = [
     ["TCP", 1, 1, '6', '', 'class/protocol/l4/TCP.html'],
     ["UDP", 1, 1, '17', '', 'class/protocol/l4/UDP.html'],
     ["IPv6", 1, 1, '41', '', 'class/protocol/l3/IPv6.html'],
-    ["IPv6 Fragment header", 2, 1, '44', '', 'class/protocol/l3/IPv6.html#i3'],
+    ["IPv6 Fragment header", 2, 1, '44', '', 'class/protocol/l3/IPv6.html#i3-5'],
     ["GRE", 1, 1, '47', '', ''],
     ["ESP", 1, 1, '50', '', ''],
     ["AH", 1, 1, '51', '', ''],
@@ -365,3 +365,4 @@ $(document).ready(function () {
 	reverse_protocol('l7');
 	reverse_protocol('app');
 });
+

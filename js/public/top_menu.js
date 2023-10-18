@@ -33,7 +33,7 @@ top_menu = `
 											<a href="rootpath/class/protocol/l4/ICMPv4.html">ICMPv4</a>
 											<a href="rootpath/class/protocol/l4/TCP.html">TCP</a>
 											<a href="rootpath/class/protocol/l4/UDP.html">UDP</a>
-											<a href="rootpath/class/protocol/l3/IPv6.html#i3">IPv6 Fragment header</a>
+											<a href="rootpath/class/protocol/l3/IPv6.html#i3-5">IPv6 Fragment header</a>
 											<a href="rootpath/class/protocol/l4/ICMPv6.html">ICMPv6</a>
 										</div>
 									</div>

@@ -177,6 +177,14 @@ span .link
 	font-size: 20px;
 }
 
+.headersT1 tr td:first-child,
+.headersT2 tr td:first-child,
+.headersT3 tr td:first-child
+{
+	white-space: nowrap;
+	vertical-align: top;
+}
+
 .headersT1 .spanZS, .headersT2 .spanZS, .headersT3 .spanZS
 {
 	font-size: 18px;
@@ -197,6 +205,20 @@ span .link
 	margin-left: 110px;
 }
 
+.headersT1 tr td:nth-child(2),
+.headersT2 tr td:nth-child(2),
+.headersT3 tr td:nth-child(2)
+{
+	padding-left: 10px;
+}
+
+.headersT1 tr td:nth-child(3),
+.headersT2 tr td:nth-child(3),
+.headersT3 tr td:nth-child(3)
+{
+	padding-left: 40px;
+}
+
 .headersT1 + .headersT1,
 .headersT2 + .headersT2,
 .headersT3 + .headersT3
@@ -210,6 +232,14 @@ span .link
 {
 	margin-top: 20px;
 }
+
+.headersT1 + .cmdInstruAllTopT1,
+.headersT2 + .cmdInstruAllTopT2,
+.headersT3 + .cmdInstruAllTopT3
+{
+	margin-top: -40px;
+}
+
 
 h4
 {
@@ -599,7 +629,12 @@ td
 
 .span3
 {
-	color: #CC7832;
+	color: #F29900;
+}
+
+.spanW
+{
+	color: #FFFFFF;
 }
 
 .spanB
@@ -684,7 +719,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .divSJT1
 {
-	margin-left: 70px;
+	margin-left: 50px;
 }
 
 .divSJT2

@@ -1,8 +1,8 @@
 $('#guide-icon, nav ~ ul li').click(function() {
-	etop_show = 0;
-	var e;
-	findDiv = true;
-	offset_top = document.documentElement.scrollTop;
+	var etop_show = 0;
+	var e, etop_hide;
+	var findDiv = true;
+	var offset_top = document.documentElement.scrollTop;
 
 	$('#divCommand table').each(function() {
 		if($(this).offset().top - offset_top >= 0) {
@@ -49,7 +49,6 @@ $('#guide-icon, nav ~ ul li').click(function() {
 		if(window.location.href.indexOf("DHCPv4.html") > 0) {
 			 $("#tOption53").animate({"width":"1370px"});
 		}
-
 	}
 	else {
 		$(".main-sidebar").animate({"width":"350px"});
@@ -71,11 +70,11 @@ $('#guide-icon, nav ~ ul li').click(function() {
 		}
 
 	}
-	$('#guide-icon span').toggleClass('open')
+	$('#guide-icon span').toggleClass('open');
 
 	function move_divCommand(){
 		etop_show = e.offset().top;
-		dtop = document.documentElement.scrollTop;
-		document.documentElement.scrollTop = dtop + (etop_show - etop_hide)
+		var dtop = document.documentElement.scrollTop;
+		document.documentElement.scrollTop = dtop + (etop_show - etop_hide);
 	}
 });

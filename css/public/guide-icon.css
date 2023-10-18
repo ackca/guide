@@ -1,6 +1,6 @@
 #guide-icon
 {
-    top: 60px;
+    top: 55px;
     left: 340px;
     cursor: pointer;
     position: fixed;
@@ -37,22 +37,23 @@
 
 #guide-icon span.open:nth-child(1)
 {
-    transform: rotate(45deg) translate(3px, 3px)
+    transform: rotate(45deg) translate(3px, 3px);
 }
 
 #guide-icon span.open:nth-child(2)
 {
-    transform: rotate(-45deg) translate(3px, -3px)
+    transform: rotate(-45deg) translate(3px, -3px);
 }
 
 #guide-icon span.open:nth-child(3)
 {
-    opacity: 0
+    display: none;
 }
 
 #guide-icon:hover
 {
     background-color: #1E282C;
+    background-position: left;
 }
 
 #guide-icon:hover span

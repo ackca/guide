@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/cert.ico" />
 	<title>NetDevOps-证书服务-CFSSL</title>
-	<script src="../../../js/head.js"></script>
+	<script src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(cfssl);
 	</script>
@@ -283,7 +283,7 @@
 						);
 						instruArr[5]=createCmdInstruSpan("“PAN-P.itachi.tech.csr。","证书请求");
 						instruArr[6]=createCmdInstruSpan("“PAN-P.itachi.tech。","生成的证书的文件名，扩展名根据文件类型自动添加");
-						createCmdInstruT2(instruArr,"cfssl");
+						createCmdInstruT1(instruArr,"cfssl");
 
 						cmd = `
 							cfssl sign -ca ca.pem -ca-key ca-key.pem \\
