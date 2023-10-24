@@ -1,0 +1,191 @@
+/* -----ICMPv6 Type Code对应关系表格开始----- */
+#tICMPv6Type .row:nth-child(n+2) .cell
+{
+	border-right: solid 2px #A0A0A0;
+	border-bottom: solid 2px #A0A0A0;
+	background-color: #5A5D6F;
+}
+
+#tICMPv6Type .row:nth-child(n+2):hover .cell
+{
+	background-color: #CBCFFF;
+}
+
+#tICMPv6Type .row:nth-child(n+2):hover .cell:nth-child(-n+2)
+{
+	color: #8000FF;
+}
+
+#tICMPv6Type .row:nth-child(n+2) .cell:nth-child(1)
+{
+	font-weight: bold;
+	color: #FFFF00;
+}
+
+#tICMPv6Type .row:nth-child(n+2) .cell:nth-child(2)
+{
+	color: #FFFF00;
+}
+
+#tICMPv6Type .row:nth-child(2) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(3) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(4) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(5) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(6) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(7) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(8) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(11) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(12) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(14) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(15) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(16) > .cell:nth-child(1)
+{
+	border-bottom-color: #5A5D6F;
+}
+
+#tICMPv6Type .row:last-child .cell
+{
+	border-bottom: 0;
+}
+
+#tICMPv6Type .row:nth-child(2) > .cell:nth-child(2),
+#tICMPv6Type .row:nth-child(11) > .cell:nth-child(2),
+#tICMPv6Type .row:nth-child(14) > .cell:nth-child(2)
+{
+	border-right: 0;
+}
+
+#tICMPv6Type .row .cell:nth-child(1)
+{
+	padding-left: 0px;
+}
+
+#tICMPv6Type .row .cell
+{
+	border-right: solid 1px #A0A0A0;
+}
+
+#tICMPv6Type .row.header .cell
+{
+	border-right: 0;
+}
+
+#tICMPv6Type .row .cell
+{
+	text-align: center;
+	width: 80px;
+}
+
+#tICMPv6Type .row .cell:nth-child(3)
+{
+	width: auto;
+	border-right: 0;
+}
+
+#tICMPv6Type .row.header .cell:nth-child(1), #zwTable .row.header .cell:nth-child(1)
+{
+	width: 110px;
+}
+
+#zwTable .row.header .cell:nth-child(2)
+{
+	width: 80px;
+}
+
+#tICMPv6Type .row.header .cell:nth-child(3)
+{
+	text-align: center;
+	padding-left: inherit;
+}
+
+#tICMPv6Type .row .cell:nth-child(3)
+{
+	text-align: left;
+	padding-left: 10px;
+}
+/* -----ICMPv6 Type Code对应关系表格结束----- */
+/* ---------------------------------------------------------------------- */
+/* -----ICMPv6选项表格表格开始----- */
+#tOptions .row.header .cell:nth-child(1)
+{
+	width: 80px;
+}
+
+#tOptions .row.header .cell:nth-child(2)
+{
+	width: 450px;
+	padding-left: 0;
+	text-align: center;
+}
+
+#tOptions .row .cell:nth-child(1)
+{
+	text-align: center;
+	padding-left: 0;
+}
+
+#tOptions .row .cell:nth-child(2)
+{
+	text-align: left;
+	padding-left: 10px;
+}
+/* -----ICMPv6选项表格表格结束----- */
+/* ---------------------------------------------------------------------- */
+/* -----NA报文的标志位表格开始----- */
+#tNAFlags
+{
+	margin-top: 20px;
+}
+
+#tNAFlags .row.header .cell:nth-child(1)
+{
+	width: 120px;
+}
+
+#tNAFlags .row.header .cell:nth-child(2)
+{
+	width: 80px;
+}
+
+#tNAFlags .cell
+{
+	border: 0;
+}
+
+
+#tNAFlags .row .cell:nth-child(2)
+{
+	text-align: center;
+}
+
+#tNAFlags .row .cell:nth-child(3)
+{
+	padding-left: 10px;
+}
+/* -----NA报文的标志位表格结束----- */
+
+
+#zwTable
+{
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
+}
+
+#zwTable, .divBG
+{
+	position: fixed;
+	z-index: 10;
+	top: 162px;
+	left: 410px;
+	display: none;
+}
+
+#zwTable .cell
+{
+	border-bottom: 0;
+}

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-ARP</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(arp);
 		document.onmouseup = function () {
@@ -24,10 +24,6 @@
 	</style>
 </head>
 <body>
-	<div id="divProtocol" class="divProtocol">
-		<strong id="close" onclick="closeProtocol()">关闭</strong>
-		<div id="protocolImg" onmousedown="protocolMove()"></div>
-	</div>
 	<div class="container-fluid">
 		<div class="divProtocolWord">
 			<script type="text/javascript">
@@ -50,6 +46,7 @@
 						"ARP协议",
 					);
 
+                    document.writeln("<br />");
 					words = `
 						硬件类型（Hardware Type）
 						由16 bit构成，一般为1，表示以太网（Ethernet）
@@ -78,7 +75,7 @@
 						目标协议地址（Target Protocol Address）
 						由32 bit构成，表示目标IPv4地址
 					`;
-					createProtocolExplain(words, -470);
+					createProtocolExplainT0(words, -470);
 
 				createInstruT0("ARP 实例","i2");
 					createInstruT1("ARP请求&响应","i2-1");

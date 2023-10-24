@@ -4,32 +4,16 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-VXLAN</title>
-
-	<script src="../../../js/js_css.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
-		document.write(head.replace(/rootpath\//g, '../../../'));
-
+		window.onload = createNavigation(vxlan);
 		document.onmouseup = function () {
 			document.onmousemove = null;
-		}
+		};
 	</script>
-	<style type="text/css">
-		#divCommand
-		{
-			margin-top: 84.5px;
-		}
-	</style>
 </head>
 <body>
-	<div id="divProtocol" class="divProtocol">
-		<strong id="close" onclick="closeProtocol()">关闭</strong>
-		<div id="protocolImg" onmousedown="protocolMove()"></div>
-	</div>
 	<div class="container-fluid">
-		<script type="text/javascript">
-			createNavigation(tree_vxlan, '../../../');
-		</script>
-
 		<div class="divProtocolWord">
 			<script type="text/javascript">
 				createProtocolWord(
@@ -66,32 +50,17 @@
 					`;
 					createProtocolExplainT0(words, -290);
 
-				createInstruT0("VXLAN 封装方式","i2");
-					document.writeln("<br />");
-					createConfigImgT0("VXLAN/VXLAN封装");
+				createInstruT0("VXLAN 封装方式<br />","i2");
+					createConfigImgT0("VXLAN/VXLAN封装", "VXLAN 封装方式");
 
-				createInstruT0("VXLAN 实例","i3");
-					document.writeln("<br />");
+				createInstruT0("VXLAN 实例<br />","i3");
 					createConfigImgT0("VXLAN/VXLAN_packet");
 
 			</script>
 
 			<br /><br /><br /><br /><br /><br /><br />
 			<br /><br /><br /><br /><br /><br /><br />
-
-			<div id="guide-icon">
-				<div>
-					<span class="open"></span>
-					<span class="open"></span>
-					<span class="open"></span>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		bottom = bottom.replace(/74.5/, "160");
-		document.write(bottom.replace(/rootpath\//g, '../../../'));
-	</script>
 </body>
 </html>

@@ -1,0 +1,103 @@
+.tdCliLogo
+{
+    border-right-color: #E6DB74;
+}
+
+.HLTableS1
+{
+    /*border-radius: 5px;*/
+}
+
+#tUname .cell:nth-child(1)
+{
+    width: 450px;
+}
+
+#tTOP1 .cell:nth-child(1),
+#tUptime .cell:nth-child(1)
+{
+    width: 350px;
+}
+
+#tTimdatectl .cell:nth-child(1)
+{
+    width: 320px;
+}
+
+#tVim3 .cell:nth-child(1)
+{
+    width: 270px;
+}
+
+#tFind .cell:nth-child(1)
+{
+    width: 230px;
+}
+
+#tSudo1 .cell:nth-child(1)
+{
+    width: 210px;
+}
+
+#tPSU .cell:nth-child(1),
+#tPSSTAT .cell:nth-child(1),
+#tTOP2 .cell:nth-child(1)
+{
+    width: 170px;
+}
+
+#tPing .cell:nth-child(1)
+{
+    width: 150px;
+}
+
+#tVim2 .cell:nth-child(1),
+#tStat .cell:nth-child(1)
+{
+    width: 130px;
+}
+
+#tPasswd .cell:nth-child(1)
+{
+    width: 40px;
+}
+
+#tDateFormat .cell:nth-child(1),
+.HLTableS1 .cell:nth-child(1)
+{
+    width: 80px;
+}
+
+#tDateFormat, #tUname, #tWC
+{
+    margin-top: -20px;
+}
+
+#tRedirect .cell:nth-child(1)
+{
+    font-weight: inherit;
+    width: 290px;
+}
+
+#tRedirect .cell:nth-child(2)
+{
+    width: 180px;
+}
+
+.protocolDivTable .cell:nth-child(1)
+{
+    font-weight: bold;
+    color: #FFFF00;
+    width: 100px;
+}
+
+.protocolDivTable .row:hover .cell:nth-child(1)
+{
+    font-weight: bold;
+    color: #8000FF;
+}
+
+.treeview
+{
+    white-space: nowrap;
+}

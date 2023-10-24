@@ -12,7 +12,8 @@
     margin: 0;
 }
 
-.row
+.HLTableS1 .row,
+.HLTableS2 .row
 {
     display: table-row;
     background-color: #5A5D6F;
@@ -54,9 +55,11 @@
     padding-bottom: 19px;
     text-align: center;
     padding-left: 0;
+    vertical-align: middle;
 }
 
-.row:hover
+.HLTableS1 .row:hover,
+.HLTableS2 .row:hover
 {
     background-color: #CBCFFF;
     cursor: pointer;

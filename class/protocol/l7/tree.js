@@ -257,6 +257,23 @@ http = {
 		}
 	},
 
+	"i12":{
+		"Cookie":{
+			"i12-1":"Cookie作用",
+			"i12-2":"Cookie工作原理",
+			"i12-3":{
+				"Cookie相关属性":{
+					"i12-3-1":"Cookie相关属性",
+					"i12-3-2":"expires：Cookie的有效期",
+					"i12-3-3":"path：Cookie所在目录",
+					"i12-3-4":"domain：Cookie适用的域名",
+					"i12-3-5":"Secure：只能在HTTPS时发送",
+					"i12-3-6":"HttpOnly：只允许HTTP处理",
+				}
+			},
+		}
+	},
+
 	"i8":{
 		"HTTP 认证":{
 			"i8-1":"基本认证（Basic auth）",

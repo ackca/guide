@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/nginx.ico" />
+	<title>NetDevOps-gitlab</title>
+	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(nginx);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("基本配置","i1");
+                    createInstruT1("安装软件","i1-1");
+                        createInstruAllTopT1("软件名为 nginx");
+						cmd = `
+							dnf install -y nginx
+						`;
+						createLinuxTxtT1(cmd);
+
+                    createInstruT1("启用&&开机启用服务","i1-2");
+                        createInstruAllTopT1("服务名为 nginx");
+						cmd = `
+							systemctl start nginx
+							systemctl enable nginx
+						`;
+						createLinuxTxtT1(cmd);
+
+                    createInstruT1("配置文件位置","i1-3");
+                        createInstruAllTopT1("主配置文件路径：<span class='linuxCMD_cmd'>/etc/nginx/nginx.conf</span>");
+                        createInstruAllTopT1("自定义配置文件 以 .conf 结尾，保存到 <span class='linuxCMD_cmd'>/etc/nginx/default.d/</span>");
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

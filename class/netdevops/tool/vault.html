@@ -22,172 +22,51 @@
 			<script type="text/javascript">
 				createInstruT0("安装vault","i1");
 					createInstruT1("准备证书","i1-1");
-						createInstruT2("安装cfssl","i1-1-1");
-							cmd = `
-								wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -O /usr/bin/cfssl
-								wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -O /usr/bin/cfssl-json
-								wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64 -O /usr/bin/cfssl-certinfo
-								chmod +x /usr/bin/cfssl*
-							`;
-							createLinuxTxtT2(cmd);
+						createInstruAllTopT1("Vault为HTTPS应用，需要证书及其私钥");
 
-						createInstruT2("确认安装","i1-1-2");
-							cmd = `
-								which cfssl
-								# 下面为输出
-								/usr/bin/cfssl
-
-								which cfssl-json
-								# 下面为输出
-								/usr/bin/cfssl-json
-
-								which cfssl-certinfo
-								# 下面为输出
-								/usr/bin/cfssl-certinfo
-							`;
-							createLinuxTxtT2(cmd);
-
-						createInstruT2("准备根证书","i1-1-3");
-							cmd = `
-								mkdir -p /opt/certs
-
-								cat >/opt/certs/ca-csr.json <<EOF
-								{
-									"CN": "itachica",
-									"hosts": [
-									],
-									"key": {
-										"algo": "rsa",
-										"size": 4096
-									},
-									"names": [
-										{
-											"C": "CN",
-											"ST": "tj",
-											"L": "tj",
-											"O": "uchiha"
-										}
-									],
-									"ca": {
-										"expiry": "17520h"
-									}
-								}
-								EOF
-							`;
-							createLinuxTxtT2(cmd);
-
-						createInstruT2("初始化CA","i1-1-4");
-							cmd = `
-								cd /opt/certs/
-								cfssl gencert -initca ca-csr.json | cfssl-json -bare ca
-								# 下面为输出
-								2021/02/07 14:28:20 [INFO] generating a new CA key and certificate from CSR
-								2021/02/07 14:28:20 [INFO] generate received request
-								2021/02/07 14:28:20 [INFO] received CSR
-								2021/02/07 14:28:20 [INFO] generating key: rsa-4096
-								2021/02/07 14:28:24 [INFO] encoded CSR
-								2021/02/07 14:28:24 [INFO] signed certificate with serial number 574361734982557982192417515412895466935984323735
-
-								ll
-								# 下面为输出
-								总用量 16
-								-rw-r--r-- 1 root root 1712 2月   7 14:28 ca.csr
-								-rw-r--r-- 1 root root  267 2月   7 14:28 ca-csr.json
-								-rw------- 1 root root 3243 2月   7 14:28 ca-key.pem
-								-rw-r--r-- 1 root root 2013 2月   7 14:28 ca.pem
-							`;
-							createLinuxTxtT2(cmd);
-
-						createInstruT2("部署证书模板","i1-1-5");
-							cmd = `
-								cat >/opt/certs/ca-config.json <<EOF
-								{
-									"signing": {
-										"default": {
-											"expiry": "87600h"
-										},
-										"profiles": {
-											"server": {
-												"expiry": "175200h",
-												"usages": [
-													"signing",
-													"key encipherment",
-													"server auth"
-												]
+					createInstruT1("<br /><br />安装vault（离线安装，在线很慢）","i1-3");
+						yaml = `
+							services:
+								vault:
+									image: vault:1.13.3
+									restart: always
+									ports:
+										- 8200:8200
+									cap_add:
+										- IPC_LOCK
+									environment:
+										VAULT_LOCAL_CONFIG: '{
+											"storage": {
+												"file": {
+													"path": "vault/file"
+												}
 											},
-											"client": {
-												"expiry": "87600h",
-												"usages": [
-													"signing",
-													"key encipherment",
-													"client auth"
-												]
-											},
-											"peer": {
-												"expiry": "87600h",
-												"usages": [
-													"signing",
-													"key encipherment",
-													"server auth",
-													"client auth"
-												]
-											}
-										}
-									}
-								}
-								EOF
-							`;
-							createLinuxTxtT2(cmd);
+											"listener": [{
+												"tcp": {
+													"address": "0.0.0.0:8200",
+													"tls_cert_file": "/opt/certs/certsrv.pem",
+													"tls_key_file": "/opt/certs/certsrv-key.pem",
+													"tls_disable": false
+												}
+											}],
+											# "default_lease_ttl": "8760h", # 默认的 root token 只有768h，可根据需要适当延长
+											# "max_lease_ttl": "17520h",    # 此处不支持注释，如果不修改有效期，删除这两行
+											"ui": true
+										}'
+									command: server
+									volumes:
+										- vault_logs:/vault/logs
+										- vault_file:/vault/file
+										- ./certsrv.pem:/opt/certs/certsrv.pem
+										- ./certsrv-key.pem:/opt/certs/certsrv-key.pem
 
-						createInstruT2("签署证书","i1-1-6");
-							cmd = `
-								# 192.168.110.100为安装vault的服务器地址
+							volumes:
+								vault_logs:
+								vault_file:
+						`;
+						createYAMLT1(yaml);
 
-								cat >/opt/certs/vault-csr.json <<EOF
-								{
-									"CN": "vault",
-									"hosts": [
-										"127.0.0.1",
-										"192.168.110.100"
-									],
-									"key": {
-										"algo": "rsa",
-										"size": 2048
-									},
-									"names": [
-										{
-											"C": "CN",
-											"ST": "tj",
-											"L": "tj",
-											"O": "uchiha"
-										}
-									]
-								}
-								EOF
-
-								cd /opt/certs/
-								cfssl gencert -ca=ca.pem \\
-											  -ca-key=ca-key.pem \\
-											  -config=ca-config.json \\
-											  -profile=server vault-csr.json \\
-											  |cfssl-json -bare vault
-
-								ll
-								# 以下为输出
-								总用量 36
-								-rw-r--r-- 1 root root  599 2月   7 14:38 ca-config.json
-								-rw-r--r-- 1 root root 1712 2月   7 14:28 ca.csr
-								-rw-r--r-- 1 root root  267 2月   7 14:28 ca-csr.json
-								-rw------- 1 root root 3243 2月   7 14:28 ca-key.pem
-								-rw-r--r-- 1 root root 2013 2月   7 14:28 ca.pem
-								-rw-r--r-- 1 root root  960 2月   7 14:39 vault.csr
-								-rw-r--r-- 1 root root  192 2月   7 14:38 vault-csr.json
-								-rw------- 1 root root 1679 2月   7 14:39 vault-key.pem
-								-rw-r--r-- 1 root root 1651 2月   7 14:39 vault.pem
-							`;
-							createLinuxTxtT2(cmd);
-
-					createInstruT1("安装vault（离线安装，在线很慢）","i1-2");
+					createInstruT1("<br />文件版安装（离线安装，在线很慢）","i1-2");
 						createInstruT2("下载离线程序，<a class='link' target='_blank' href='https://www.vaultproject.io/downloads'>https://www.vaultproject.io/downloads</a>","i1-2-1");
 
 						createInstruT2("将程序复制到 ‘/usr/bin/ 。，并添加执行权限","i1-2-2");
@@ -307,7 +186,8 @@
 						It is possible to generate new unseal keys, provided you have a quorum of
 						existing unseal keys shares. See "vault operator rekey" for more information.
 					`;
-					createLinuxTxtT1(cmd);
+					// createLinuxTxtT1(cmd);
+                    createConfigImgT0("vault/i2$1~2");
 
 				createInstruT0("解封数据库","i3");
 					cmd = `
@@ -365,7 +245,8 @@
 						Raft Committed Index    24
 						Raft Applied Index      24
 					`;
-					createLinuxTxtT1(cmd);
+					// createLinuxTxtT1(cmd);
+					createConfigImgT0("vault/i3$1~3");
 
 				createInstruT0("配置secret","i4");
 					createInstruT1("kv-v2类型（键值类型）","i4-1");

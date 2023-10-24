@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-FTP</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(ftp);
 	</script>
@@ -38,34 +38,28 @@
 					createInstruT1("综述","i2-1");
 						createInstruAllTopT1("被动模式，指的由‘客户端。主动向‘服务器。请求，使用被动模式，由‘服务器。提供数据信道的端口号");
 
-						createInstruAllTopT1("控制信道，由‘客户端。主动向‘服务器。发起，‘源端口号。为‘随机高端口。，‘目的端口号。为‘客户端提供的端口号。");
+						createInstruAllTopT1("控制信道，由‘客户端。主动向‘服务器。发起，‘源端口号。为‘随机高端口。，‘目的端口号。为‘客户端提供的端口号。<br /><br /><br />");
 
-						document.writeln("<br /><br /><br />");
-						createConfigImgT1("FTP/Passive_mode");
+						createConfigImgT1("FTP/Passive_mode", "FTP被动模式");
 
-					createInstruT1("基于IPv4","i2-2");
-						document.writeln("<br />");
+					createInstruT1("基于IPv4<br />","i2-2");
 						createConfigImgT1("FTP/IPv4_Passive$1~2");
 
-					createInstruT1("基于IPv6","i2-3");
-						document.writeln("<br />");
+					createInstruT1("基于IPv6<br />","i2-3");
 						createConfigImgT1("FTP/IPv6_Passive$1~2");
 
 				createInstruT0("FTP Active（主动）模式详解","i3");
 					createInstruT1("综述","i3-1");
 						createInstruAllTopT1("主动模式，指的由‘客户端。主动向‘服务器。请求，使用主动模式，向‘服务器。提供数据信道的端口号");
 
-						createInstruAllTopT1("控制信道，由‘服务器。主动向‘客户端。发起，‘源端口号。为‘20。，‘目的端口号。为‘客户端提供的端口号。");
+						createInstruAllTopT1("控制信道，由‘服务器。主动向‘客户端。发起，‘源端口号。为‘20。，‘目的端口号。为‘客户端提供的端口号。<br /><br /><br />");
 
-						document.writeln("<br /><br /><br />");
-						createConfigImgT1("FTP/Active_mode");
+						createConfigImgT1("FTP/Active_mode", "FTP主动动模式");
 
-					createInstruT1("基于IPv4","i3-2");
-						document.writeln("<br />");
+					createInstruT1("基于IPv4<br />","i3-2");
 						createConfigImgT1("FTP/IPv4_Active$1~2");
 
-					createInstruT1("基于IPv6","i3-3");
-						document.writeln("<br />");
+					createInstruT1("基于IPv6<br />","i3-3");
 						createConfigImgT1("FTP/IPv6_Active");
 
 

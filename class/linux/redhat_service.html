@@ -5,34 +5,11 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 	<link rel="shortcut icon" href="../../img/redhat.ico" />
 	<title>Linux-RedHat-基础服务</title>
+	<link rel="stylesheet" type="text/css" href="../../css/private/redhat_basic.css">
 	<script src="../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(redhat_service);
 	</script>
-	<style type="text/css">
-		.tdCliLogo
-		{
-			border-right-color: #E6DB74;
-		}
-
-		.HLTableS1, .HLTableS2
-		{
-			border-radius: 5px;
-		}
-
-		.treeview
-		{
-			white-space: nowrap;
-		}
-
-		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(3) .cmd,
-		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(5) .cmd,
-		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(7) .cmd
-		{
-			line-height: 0;
-		}
-
-	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -43,7 +20,7 @@
 					instruArr[0] = createLinuxCmd("systemctl “操作。 “服务。");
 					createCmdInstruT1(instruArr,"redhat");
 
-					createInstruAllTopT1("可选的操作如下：")
+					createInstruAllTopT1("可选的操作如下：");
 					tBody = [
 						["start","启动服务"],
 						["stop","停止服务"],
@@ -518,8 +495,8 @@
 
 					createInstruT1("配置反向解析（IPv6）","i5-5");
 						createInstruT2("生成区域配置文件中的区域名","i5-5-1");
-							instruArr[0] = createLinuxCmd("dig -x “2001:110::。 ||| grep .ip6.arpa ");
-							instruArr[0] = instruArr[0] + createCmdSpan("| { read v6; echo ${v6: “33。: “40。}; }".replaceAll(" ", "&nbsp;&nbsp;"));
+							instruArr[0] = createLinuxCmd("dig -x “2001:110::。 | grep .ip6.arpa | ") +
+											"<span class='cmd'>{&nbsp;&nbsp;<span class='linuxCMD_cmd'>read</span>&nbsp;&nbsp;v6;&nbsp;&nbsp;<span class='linuxCMD_cmd'>echo</span>&nbsp;&nbsp;${v6<span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='variable' style='background-color: #657382'><span class='spanNum'>33</span></span><span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='variable' style='background-color: #657382'><span class='spanNum'>40</span></span>};&nbsp;&nbsp;}</span>";
 							instruArr[1] = createCmdInstruSpan("“2001:110::。","反向解析的IPv6地址的网络位");
 							instruArr[2] = createCmdInstruSpan("“33。","64位网络位对应的取值，计算规则：网络位长度为n，取值为 2((128-n)/4) + 1，实质为截取字符串的起始位置");
 							instruArr[3] = createCmdInstruSpan("“40。","64位网络位对应的取值，计算规则：网络位长度为n，取值为 2(n/4) + 8，实质为截取字符串的长度");
@@ -529,8 +506,10 @@
 						createInstruT2("生成数据配置文件的IPv6地址","i5-5-1");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createLinuxCmd("dig -x “2001:110::20。 ||| grep .ip6.arpa ");
-							instruArr[0] = instruArr[0] + createCmdSpan("| { read v6; echo ${v6: 1}; }".replaceAll(" ", "&nbsp;&nbsp;"));
+							instruArr[0] = createLinuxCmd("dig -x “2001:110::20。 | grep .ip6.arpa | ") +
+											"<span class='cmd'>{&nbsp;&nbsp;<span class='linuxCMD_cmd'>read</span>&nbsp;&nbsp;v6;&nbsp;&nbsp;<span class='linuxCMD_cmd'>echo</span>&nbsp;&nbsp;${v6<span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='spanNum' style='padding-right: 2px'>1</span>};&nbsp;&nbsp;}</span>";
+
+				//{ read v6; echo ${v6: 1}; }");
 							instruArr[1] = createCmdInstruSpan("“2001:110::20。","反向解析的IPv6地址");
 							createCmdInstruT2(instruArr,"redhat");
 							createConfigImgT2("redhat_service/i5-5-2$1");

@@ -4,50 +4,16 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-IPv6</title>
-	<script src="../../../js/public/head.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/ipv6.css">
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(ipv6);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-	<style type="text/css">
-		#tV6address .row:nth-child(4) .cell
-		{/*前缀与地址分隔线——上半*/
-			border-bottom: solid 2px #FF6A6A;
-		}
-
-		#tV6address .row:nth-child(5) .cell
-		{/*前缀与地址分隔线——下半*/
-			border-top: solid 2px #FF6A6A;
-		}
-
-		.row.header .cell:nth-child(1),
-		.row.header .cell:nth-child(2),
-		.row.header .cell:nth-child(3)
-		{
-			text-align: center;
-			padding-left: 0;
-		}
-
-		.row.header .cell:nth-child(1),
-		.row.header .cell:nth-child(2)
-		{
-			width: 220px;
-		}
-
-		.row .cell:nth-child(2)
-		{
-			font-weight: bold;
-		}
-
-	</style>
 </head>
 <body>
-	<div id="divProtocol" class="divProtocol">
-		<strong id="close" onclick="closeProtocol()">关闭</strong>
-		<div id="protocolImg" onmousedown="protocolMove()"></div>
-	</div>
 	<div class="container-fluid">
 		<div class="divProtocolWord">
 			<script type="text/javascript">
@@ -102,8 +68,7 @@
 					createProtocolExplainT0(words, -420);
 
 				createInstruT0("常规IPv6报文实例实例","i2");
-					createInstruT1("实例为ping报文，如下所示");
-						document.writeln("<br />");
+					createInstruT1("实例为ping报文，如下所示<br />");
 						createConfigImgT1("IPv6/normal");
 
 				createInstruT0("IPv6 分片","i3");
@@ -142,25 +107,21 @@
 					createInstruT1("IPv6 分片只在发送设备分片","i3-1");
 						createInstruAllTopT1("在设备的‘出方向。，如果IPv6报文大于MTU，则需要分片");
 						createInstruAllTopT1("与IPv4不同，‘IPv6只能在发送设备进行分片。，中间设备不进行分片");
-						createInstruAllTopT1("如果报文传输过程中需要分片，则发送端根据ICMPv6差错报文，重新发送分片后的报文");
-						document.writeln("<br />");
+						createInstruAllTopT1("如果报文传输过程中需要分片，则发送端根据ICMPv6差错报文，重新发送分片后的报文<br />");
 
-					createInstruT1("起始报文","i3-2");
-						document.writeln("<br />");
+					createInstruT1("起始报文<br />","i3-2");
 						createConfigImgT1("IPv6/fragmentation2$1~2");
 
 					createInstruT1("第一次分片，MTU 1350","i3-3");
 						createInstruAllTopT1("与IPv4分片的规则相同，除最后一片外，IPv6分片的数据部分必须是8字节的整数倍");
 						createInstruAllTopT1("因此IPv6数据部分最大为 1350-20-8=1302 字节，8的最大倍数为1296，第一片的数据部分 1296 字节");
-						createInstruAllTopT1("第二片的数据部分 1360-1296=64 字节");
-						document.writeln("<br />");
+						createInstruAllTopT1("第二片的数据部分 1360-1296=64 字节<br />");
 						createConfigImgT1("IPv6/fragmentation3$1~2");
 
 					createInstruT1("第二次分片，MTU 1280","i3-4");
 						createInstruAllTopT1("规则不变，但仍由发送设备基于新的MTU重新分片");
 						createInstruAllTopT1("第一片数据部分最大 1280-40-8=1232 字节，恰好为8的倍数");
-						createInstruAllTopT1("第二片数据部分 1350-1232=128 字节");
-						document.writeln("<br />");
+						createInstruAllTopT1("第二片数据部分 1350-1232=128 字节<br />");
 						createConfigImgT1("IPv6/fragmentation4$1~2");
 
 				createInstruT0("IPv6特定用途地址（前缀）<br />","i4");
@@ -201,11 +162,8 @@
 
 						createInstruAllTopT1("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
 
-
-
-
 				createInstruT0("IPv6伪首部<br />","i6");
-					createConfigImgT0("IPv6/IPv6伪首部");
+					createConfigImgT0("IPv6/IPv6伪首部", "IPv6伪首部");
 
 			</script>
 

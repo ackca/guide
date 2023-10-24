@@ -152,7 +152,7 @@
 
 				createInstruT0("部署应用","i2");
 					createInstruT1("部署pod","i2-1");
-						createInstruT2("Deployment方式 <a href='yaml/basic/02_dep/svc-dp.yaml' download='pod-dp.yaml'>下载该文件</a>","i2-1-1");
+						createInstruT2("Deployment方式","i2-1-1");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -176,7 +176,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("DaemonSet方式 <a href='yaml/basic/02_dep/svc-dp.yaml' download='pod-ds.yaml'>下载该文件</a>","i2-1-2");
+						createInstruT2("DaemonSet方式","i2-1-2");
 							yaml = `
 								apiVersion: apps/v1
 								kind: DaemonSet
@@ -199,7 +199,7 @@
 							`;
 							createYAMLT2(yaml);
 
-					createInstruT1("部署Service <a href='yaml/basic/02_dep/svc-dp.yaml' download='svc-dp.yaml'>下载该文件</a>","i2-2");
+					createInstruT1("部署Service","i2-2");
 						yaml = `
 							apiVersion: v1
 							kind: Service
@@ -215,7 +215,7 @@
 							`;
 						createYAMLT1(yaml);
 
-					createInstruT1("部署Ingress <a href='yaml/basic/02_dep/svc-dp.yaml' download='ingress-dp.yaml'>下载该文件</a>","i2-3");
+					createInstruT1("部署Ingress","i2-3");
 						yaml = `
 							apiVersion: networking.k8s.io/v1beta1
 							kind: Ingress

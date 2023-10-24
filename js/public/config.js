@@ -34,15 +34,23 @@ function createNavigation(tree, offset = 74.5) {
 	`;
 	// 关闭/显示左侧导航按钮 <---- 结束 ---->
 
-	document.write(htmlText);
 
 	if (uri.indexOf('/guide/class/protocol') >= 0) {
 		offset = 160;
+		// 浮动显示协议结构的div <---- 开始 ---->
+		htmlText = htmlText + `
+			<div id="divProtocol" protocolID="" class="divProtocol">
+				<strong id="close">✕</strong>
+				<div id="protocolImg" onmousedown="protocolMove()"></div>
+				</div>
+		`;
+		// 浮动显示协议结构的div <---- 结束 ---->
 	}
+
+	document.write(htmlText);
 
 	var body = `
 		<script type='text/javascript' src='rootpath/js/public/ai.js'></script>
-	<!--    <script type='text/javascript'>window.jQuery</script>-->
 		<script type='text/javascript' src='rootpath/js/public/sidebar-menu.js'></script>
 		<script type='text/javascript'>
 			$.sidebarMenu($('.sidebar-menu'), offset);
@@ -223,8 +231,8 @@ function createLinuxTxt(cmds, cmdT) {
 	var path = "../".repeat(url.split('/').length - 3);
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy' onclick='linuxCopy(this)'><img src='" + path + "img/copy.png' /></div>" +
-		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
+		"<div class='divCopy'><div class='CopyImage'></div></div>" +
+		"<div class='copySuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
 	var cmd_arr = cmds.split('\n')
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
@@ -308,8 +316,8 @@ function createViptelaCLI(cmds, cmdT) {
 	var path = "../".repeat(url.split('/').length - 3);
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy' onclick='linuxCopy(this)'><img src='" + path + "img/copy.png' /></div>" +
-		"<div class='copysuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
+		"<div class='divCopy'><div class='CopyImage'></div></div>" +
+		"<div class='copySuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
 
 	var cmd_arr = cmds.split('\n')
 	// 为了查看方便，第0行为空白行
@@ -369,7 +377,13 @@ function createLinuxTxtT3(cmds) {
 }
 
 function createYAML(cmds, cmdT) {
-	var htmlText = "<div class='linuxDiv" + cmdT + "'>";
+	var url = window.location.href
+	url = url.substring(url.indexOf('/guide/class/'));
+	var path = "../".repeat(url.split('/').length - 3);
+
+	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
+		"<div class='divCopy'><div class='CopyImage'></div></div>" +
+		"<div class='copySuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>";
 	var cmd_arr = cmds.split('\n');
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
@@ -490,6 +504,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	}
 	// 处理 []、{}中的 | 结束
 
+	console.log('1：' + linuxCmd);
 	var cmds = [linuxCmd];
 	var FGFs = ['|', '&&'];
 
@@ -565,8 +580,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 
 	reg = new RegExp(" ('[^']+')","g");
 	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
-
-
+	
 	if(isDG) {
 		return htmlText;
 	}
@@ -583,12 +597,12 @@ function splitLinuxCMD(cmd_arrary, FGF) {
 	var cmdss = new Array();
 	for(var i in cmd_arrary) {
 		var cmds = cmd_arrary[i].split(' ' + FGF + ' ');
+		console.log(cmds)
 		for(var j = 0; j < cmds.length -1; j++) {
-			cmdss.push(cmds[i] + ' ' + FGF)
+			cmdss.push(cmds[j] + ' ' + FGF)
 		}
 		cmdss.push(cmds[cmds.length - 1]);
 	}
-
 	return cmdss;
 }
 
@@ -603,35 +617,6 @@ function spliteDolor(cmd, cmdNum) {
 	}
 	return cmd;
 }
-// function splitLinuxCmd(cmd) {
-// 	var htmlText = "";
-// 	var index = cmd.indexOf(" -");
-// 	if(index == -1) {
-// 		htmlText = htmlText + splitParaObj(cmd);
-// 	}
-// 	else {
-// 		htmlText = htmlText + splitParaObj(cmd.split(" -")[0]);
-// 		htmlText = htmlText + splitLinuxCmd(cmd.substring(index + 1));
-// 	}
-//
-// 	return htmlText;
-// }
-//
-// function splitParaObj(cmd){
-// 	var reg = new RegExp("(-{1,2}[^ ]+)?( (.+))?");
-// 	var cmds = cmd.match(reg);
-//
-// 	var htmlText = "&nbsp;&nbsp;<span class='linuxCMD_Para'>" + cmds[1] + "</span>";
-// 	if(cmds[3]) {
-// 		htmlText = htmlText + "&nbsp;&nbsp;" + cmds[3].replaceAll(" ","&nbsp;&nbsp;");
-// 	}
-//
-// 	return htmlText;
-// }
-//
-// function createSQLLinuxCmdSpan(cmd) {
-// 	return createCmdSpan("<span style='color:#8AA4AF'>[root@localhost ~]#</span> "+ cmd);
-// }
 
 function createSQLCmdSpan(cmd) {
 	cmd = addSQLSpan(cmd);
@@ -656,19 +641,6 @@ function createCmdSpan(cmd) {
 	if(cmd.indexOf("<span") >= 0) {
 		return "<span class='cmd'>" + addSpan(cmd) +"</span>"
 	}
-
-	//------------------------疑似无用-------------------------------
-	// var regFG = /([\w() -/[<&:~;]+[#>\$\]] )(.+)/;	// 思科华为各种模式前缀，如：R1(config-route)# [R1-FastEthernet0/0]
-	// var regLinux = /[\w ]+\[[\w |-]+\].+/;	// 可选参数的linux命令，如：mkdir [ -p ] fw/cisco/asa
-	//
-	// if(!regLinux.test(cmd) && regFG.test(cmd)) {
-	// 	cmd = cmd.replace(regFG,"<span style='color:#8AA4AF;font-size:18px'>$1</span><span class='cmd'>$2</span>");
-	// 	return addSpan(cmd);
-	// }
-	// else {
-	// 	return "<span class='cmd'>" + addSpan(cmd) +"</span>";
-	// }
-	//------------------------疑似无用-------------------------------
 
 	var regFG = /([\w() -/[<&:~;…]+[#>\$\]] )(.+)/;	// 思科华为各种模式前缀，如：R1(config-route)# [R1-FastEthernet0/0]
 	if(regFG.test(cmd)) {
@@ -805,8 +777,15 @@ function createCmdInstruT3(instruArr, typeBrand) {
 	createCmdInstru(instruArr, "T3", typeBrand)
 }
 
-function createConfigImg(imgNameList, typeT) {
-	var htmlText = "<div class='divConfigImg" + typeT + "'>";
+function createConfigImg(imgNameList, imgDescribe, typeT) {
+	var htmlText = "<div class='divConfigImg" + typeT
+
+	// console.log(imgDescribe)
+	if(imgDescribe) {
+		htmlText = htmlText + "' imgDescribe='" + imgDescribe
+	}
+
+	htmlText = htmlText + "'>";
 
 	if(imgNameList.indexOf('~') > 0) {
 		var imgNameArr = imgNameList.split("~");
@@ -826,20 +805,20 @@ function createConfigImg(imgNameList, typeT) {
 	document.write(htmlText);
 }
 
-function createConfigImgT0(imgNameList) {
-	createConfigImg(imgNameList, "T0");
+function createConfigImgT0(imgNameList, imgDescribe = null) {
+	createConfigImg(imgNameList, imgDescribe, "T0");
 }
 
-function createConfigImgT1(imgNameList) {
-	createConfigImg(imgNameList, "T1");
+function createConfigImgT1(imgNameList, imgDescribe = null) {
+	createConfigImg(imgNameList, imgDescribe, "T1");
 }
 
-function createConfigImgT2(imgNameList) {
-	createConfigImg(imgNameList, "T2");
+function createConfigImgT2(imgNameList, imgDescribe = null) {
+	createConfigImg(imgNameList, imgDescribe, "T2");
 }
 
-function createConfigImgT3(imgNameList) {
-	createConfigImg(imgNameList, "T3");
+function createConfigImgT3(imgNameList, imgDescribe = null) {
+	createConfigImg(imgNameList, imgDescribe, "T3");
 }
 
 function addSQLSpan(cmd) {
@@ -879,25 +858,6 @@ function splitBR(text) {
 	return [br[1], br[3], br[4]];
 }
 
-function linuxCopy(element) {
-	var txt = element.parentNode.innerHTML.split("复制成功</div>")[1];
-	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
-	// 将使用html符号表示的 空格、>、< 还原
-	txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ').replaceAll('&gt;','>').replaceAll('&lt;','<');
-	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
-	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
-	// \r\n：windows的换行
-
-	const textarea = document.createElement('textarea');	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
-	textarea.value = txt;					// 设置内容
-	document.body.appendChild(textarea);	// 添加临时实例
-	textarea.select();						// 选择实例内容
-	document.execCommand('Copy');			// 执行复制
-	document.body.removeChild(textarea);	// 删除临时实例
-
-	$(element).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
-	setTimeout(function() { $(element).next().fadeOut(500) }, 1000)
-}
 
 function createProtocolWord(protocolSX, protocolQC, protocolZW) {
 	var htmlText = "<div style='display: inline-block'>";
@@ -973,46 +933,13 @@ function createProtocolExplain(words, k, structID, divT) {
 function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, protocolName, divID) {
 	var htmlText = "<div class='divSJ" + divT + "'>";
 	htmlText = htmlText + "<div class='divProtocolStruct'>";
-	// onclinkStr = "\"protocolStructClick(" + imgWidth + "," + imgHeight + "," + SFHeight + ",\'" + imgUrl + "\')\"";
-	// htmlText = htmlText + "<div id='" + divID + "' ondblclick='ddl()' onclick=" + onclinkStr + " style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
-	htmlText = htmlText + "<div id='" + divID + "' protocolName='" + protocolName + "' ondblclick='protocolStructdbClick(this)' onclick='protocolStructClick(this)' " +
-		"style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
-
+	// htmlText = htmlText + "<div protocolName='" + protocolName + "' style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
+	htmlText = htmlText + "<div id='" + divID + "' protocolName='" + protocolName + "' style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
 	htmlText = htmlText + "</div>";
 	htmlText = htmlText + "</div>";
 	document.write(htmlText);
 }
 
-// function protocolStructClick(imgWidth, imgHeight, SFHeight, imgUrl) {
-// 	$('#protocolImg').css("width", imgWidth + "px");
-// 	$('#protocolImg').css("height", imgHeight + "px");
-// 	$('#protocolImg').css("background-image", "url(config_img/" + imgUrl + ".png)");
-// 	$('#divProtocol').css("display", "flex");
-// 	$('#divProtocol').css("width", imgWidth + "px");
-// 	$('#divProtocol').css("height", imgHeight + 25 + "px");
-// 	// $('#divProtocol').css("top", $(window).scrollTop() + "px");
-// 	$('#divProtocol').css("top", 0);
-// 	$('#divProtocol').css("left", "inherit");
-// 	$('#divProtocol').css("right", 0);
-// 	$('#divProtocol').attr("protocolID", '0123');
-// }
-
-var timeFN = null;
-function protocolStructClick(elem) {
-	clearTimeout(timeFN);
-	timeFN = setTimeout(function () {
-		$('#protocolImg').css("width", $(elem).css("width"));
-		$('#protocolImg').css("height", $(elem).css("height"));
-		$('#protocolImg').css("background-image", $(elem).css("background-image"));
-		$('#divProtocol').css("display", "flex");
-		$('#divProtocol').css("width", $(elem).css("width"));
-		$('#divProtocol').css("height", $(elem).css("height") + 25);
-		$('#divProtocol').css("top", 0);
-		$('#divProtocol').css("left", "inherit");
-		$('#divProtocol').css("right", 0);
-		$('#divProtocol').attr("protocolID", elem.id);
-	}, 200);
-}
 
 function protocolMove(e) {
 	e = e || window.event;
@@ -1042,26 +969,9 @@ function getPage(e) {
 	}
 }
 
-function closeProtocol() {
-	$('#divProtocol').css("display", "none");
-}
-
-function protocolStructdbClick(elem) {
-	clearTimeout(timeFN);
-	var protocolWidth = $(elem).css("width");
-	var protocolHeight =  $(elem).css("height");
-	var protocolBgImage = $(elem).css("background-image");
-
-	var protocolHTML = "<title>" + $(elem).attr("protocolName") + "结构</title>" +
-		"<body style='margin: 0; background-color: #494A5F'></body>" +
-		"<div style='font-size: 50px; font-weight: bold; text-align: center; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
-			$(elem).attr("protocolName") + "结构" +
-		"</div>" +
-		"<div style='margin: 20px auto; width:" + protocolWidth + "; height:" + protocolHeight + "; " +	"background-image: " + protocolBgImage + "'></div></body>";
-
-	var nwin = window.open('');
-	nwin.document.writeln(protocolHTML)
-}
+// function closeProtocol() {
+// 	$('#divProtocol').css("display", "none");
+// }
 
 function createHTTPHeadersT1(text, instruT) {
 	createHTTPHeaders(text, "T1");
@@ -1081,7 +991,7 @@ function createHTTPHeaders(cmds, cmdT) {
 	var heads_num = 2;
 
 	if(headers[1].indexOf(": ") == -1) {	// 为了查看方便，第0行为空白行，第1行可能并非首部字段
-		var header = headers[1].replace(/\t/g,'')
+		var header = headers[1].replace(/\t/g,'');
 		var l1 = header.split(' ');
 		if(l1[0] == 'GET') {	// HTTP请求
 			htmlText = htmlText + "<td colspan='3'><span class='spanT'>" + l1[0] + '</span> ';
@@ -1118,7 +1028,7 @@ function createHTTPHeaders(cmds, cmdT) {
 	}
 
 
-	for(var i = heads_num; i < headers.length - 1; i++) {
+	for (var i = heads_num; i < headers.length - 1; i++) {
 		var header = headers[i].replace(/\t/g,'').trim();
 		var headerT = header.split(': ')[0];
 		var headerV = header.split(': ')[1].split('# ')[0];
@@ -1134,16 +1044,18 @@ function createHTTPHeaders(cmds, cmdT) {
 	}
 
 	htmlText = htmlText + "</table></div>";
-	// 将 , ; 配置为白色
-	htmlText = htmlText.replaceAll(",", "<span class='spanW'>,</span>").replaceAll(";", "<span class='spanW'>;</span>");
-	// 由于&nbsp;中包含;，替换回&nbsp;
-	htmlText = htmlText.replaceAll("&nbsp<span class='spanW'>;</span>", "&nbsp;");
+	// 将 , ; 配置为白色															由于&nbsp;中包含;，采用修饰符不匹配&nbsp;中的;
+	htmlText = htmlText.replaceAll(",", "<span class='spanW'>,</span>").replace(/(?<!(&nbsp));/g, "<span class='spanW'>;</span>");
+
 	document.writeln(htmlText);
 }
 
+// 生成单个选择器，支持 单个单元格 或 单行，
+// 为了方便多个选择器的连接，结尾均为 , (空格)
+// HLobj：单个单元格或单行，表示方法如下
+// _c201："#tHeaders .row:nth-child(20) .cell:nth-child(1), ";
+// _r2："#tHeaders .row:nth-child(2) .cell, ";
 function createSelection(tableName, HLobj) {
-    // _c201："#tHeaders .row:nth-child(20) .cell:nth-child(1), ";
-    // _r2："#tHeaders .row:nth-child(2) .cell, ";
     var HLtype = HLobj[1];
     var selectionTXT = tableName;
     if (HLtype == "c") {
@@ -1154,6 +1066,212 @@ function createSelection(tableName, HLobj) {
     if (HLtype == "r") {
         selectionTXT = selectionTXT + " .row:nth-child(" + HLobj.substring(2) + ") .cell, ";
     }
-
     return selectionTXT;
 }
+
+// 生成行选择器，支持单行或连续的多行
+// rowStart：起始行号
+// rowEnd：  终止行号
+function createRowSelection(tableName, rowStart, rowEnd) {
+	var selectionTXT = "";
+	for (var i = rowStart; i <= rowEnd; i++) {
+		selectionTXT = selectionTXT + createSelection(tableName, "_r" + i);
+	}
+
+	return selectionTXT.substring(0, selectionTXT.length - 2);
+}
+
+// 生成部分单元格选择器，支持连接的多个单元格
+// rowStart：起始行号
+// rowEnd：  终止行号
+// colStart：起始列
+// colEnd：  终止列号
+function createCellSelection(tableName, colStart, colEnd, rowStart, rowEnd,) {
+	var selectionTXT = "";
+	for (var i = rowStart; i <= rowEnd; i++) {
+		for (var j = colStart; j <= colEnd; j++) {
+			selectionTXT = selectionTXT + createSelection(tableName, "_c" + i.toString() + j.toString());
+		}
+	}
+
+	return selectionTXT.substring(0, selectionTXT.length - 2);
+}
+
+function createHLTableT0(tWidth, tHeader, tBody, tID = "") {
+	createHLTable(tWidth, tHeader, tBody, "T0", tID);
+}
+
+function createHLTableT1(tWidth, tHeader, tBody, tID = "") {
+	createHLTable(tWidth, tHeader, tBody, "T1", tID);
+}
+
+function createHLTableT2(tWidth, tHeader, tBody, tID = "") {
+	createHLTable(tWidth, tHeader, tBody, "T2", tID);
+}
+
+function createHLTableT3(tWidth, tHeader, tBody, tID = "") {
+	createHLTable(tWidth, tHeader, tBody, "T3", tID);
+}
+
+function createHLTable(tWidth, tHeader, tBody, divT, tID) {
+	var htmlText = "<div class='divSJ" + divT + "'>";
+	var nc = "";
+
+	if(tID != "") {
+		if(tHeader == '') {
+			htmlText = htmlText + "<div class='HLTableS1' id='" + tID + "' style='width:" + tWidth +"px'>";
+		}
+		else {
+			htmlText = htmlText + "<div class='HLTableS2' id='" + tID + "' style='width:" + tWidth +"px'>";
+		}
+	}
+	else {
+		if(tHeader == '') {
+			htmlText = htmlText + "<div class='HLTableS1' style='width:" + tWidth +"px'>";
+		}
+		else {
+			htmlText = htmlText + "<div class='HLTableS2' style='width:" + tWidth +"px'>";
+		}
+	}
+
+	htmlText = htmlText + "<div class='table'>";
+	if(tHeader.length != 0) {
+		htmlText = htmlText + "<div class='row header'>";
+		for(i in tHeader) {
+			htmlText = htmlText + "<div class='cell'>" + tHeader[i] + "</div>";
+		}
+		htmlText = htmlText + "</div>";
+	}
+
+	for(var i in tBody) {
+		htmlText = htmlText + "<div class='row'>";
+		for(var j in tBody[i]) {
+			var tbody = tBody[i][j];
+			htmlText = htmlText + "<div class='cell'>" + tbody + "</div>";
+		}
+		htmlText = htmlText + "</div>";
+	}
+
+	htmlText = htmlText + "</div></div>";
+	htmlText = htmlText + "</div>";
+	document.writeln(htmlText);
+}
+
+
+$(document).ready(function () {
+	// ---------- 可以复制内容的配置文件，右上角复制图标，相关功能 ---- 开始 ----------
+	/*
+		可以复制内容的配置文件，右上角复制图标，复制功能
+		目前配置文件类型：Linux配置文件、yaml文件、cisco Viptela
+	*/
+	$(".divCopy").click(function () {
+		var txt = this.parentNode.innerHTML.split("复制成功</div>")[1];
+		// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
+		// 将使用html符号表示的 空格、>、< 还原
+		txt = txt.replace(/<(\/)?span[^>]*>/g,'').replace(/<br( \/)?>/g,'\r\n').replaceAll('&nbsp;',' ').replaceAll('&gt;','>').replaceAll('&lt;','<');
+		// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
+		// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
+		// \r\n：windows的换行
+
+		const textarea = document.createElement('textarea');	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
+		textarea.value = txt;					// 设置内容
+		document.body.appendChild(textarea);	// 添加临时实例
+		textarea.select();						// 选择实例内容
+		document.execCommand('Copy');			// 执行复制
+		document.body.removeChild(textarea);	// 删除临时实例
+
+		$(this).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
+		setTimeout(function() { $(this).next().fadeOut(500) }, 1000);
+	});
+
+	/*
+		可以复制内容的配置文件，右上角复制图标，鼠标悬浮变白色
+		目前配置文件类型：Linux配置文件、yaml文件、cisco Viptela
+	*/
+	$(".divCopy").mouseover(function () {
+		$(this).children(".CopyImage").css("background-position-x", "23px");
+	});
+
+	/*
+		可以复制内容的配置文件，右上角复制图标，鼠标离开恢复灰色
+		目前配置文件类型：Linux配置文件、yaml文件、cisco Viptela
+	*/
+	$(".divCopy").mouseleave(function () {
+		$(this).children(".CopyImage").css("background-position-x", "0");
+	});
+
+	// ---------- 可以复制内容的配置文件，右上角复制图标，相关功能 ---- 结束 ----------
+	// ---------------------------------------------------------------------------
+	// ---------- 各个协议的结构图，单击、双击事件 ---- 开始 ----------
+	/*
+		各个协议的结构图，单击事件
+		timeFN，为了区分单击和双击的定时器
+	*/
+	var timeFN = null;
+	$('.divProtocolStruct').click(function() {
+		clearTimeout(timeFN);
+		var thisImg = $(this).children();
+		// var thisID = this.childNodes.id;
+		timeFN = setTimeout(function () {
+			$('#protocolImg').css("width", thisImg.css("width"));
+			$('#protocolImg').css("height", thisImg.css("height"));
+			$('#protocolImg').css("background-image", thisImg.css("background-image"));
+			$('#divProtocol').css("display", "flex");
+			$('#divProtocol').css("width", thisImg.css("width"));
+			$('#divProtocol').css("height", thisImg.css("height") + 25);
+			$('#divProtocol').css("top", 0);
+			$('#divProtocol').css("left", "inherit");
+			$('#divProtocol').css("right", 0);
+			$('#divProtocol').attr("protocolID", thisImg.attr("id"));
+		}, 200);
+	});
+
+	/*
+		各个协议的结构图，双击事件
+		timeFN，为了区分单击和双击的定时器
+	*/
+	$('.divProtocolStruct').dblclick(function(){
+		clearTimeout(timeFN);
+		var protocolWidth = $(this).children().css("width");
+		var protocolHeight =  $(this).children().css("height");
+		var protocolBgImage = $(this).children().css("background-image");
+
+		var protocolHTML = "<title>" + $(this).children().attr("protocolName") + "结构</title>" +
+			"<style type='text/css'>body::-webkit-scrollbar{width:8px;height:8px}body::-webkit-scrollbar-thumb{border-radius:5px;background:#CFCFCF}</style>" +
+			"<body style='margin: 0; background-color: #494A5F; text-align: center'></body>" +
+				"<div style='font-size: 50px; font-weight: bold; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
+					$(this).children().attr("protocolName") + "结构" +
+				"</div>" +
+				"<div style='margin: 20px auto; width:" + protocolWidth + "; height:" + protocolHeight + "; " +	"background-image: " + protocolBgImage + "'></div>" +
+			"</body>";
+
+		var nwin = window.open('');
+		nwin.document.writeln(protocolHTML);
+	});
+
+	/*
+		各个协议的结构图，单击后，显示独立的结构图，关闭该结构图
+	*/
+	$('#close').click(function () {
+		$('#divProtocol').css("display", "none");
+	})
+	// ---------- 各个协议的结构图，单击、双击事件 ---- 结束 ----------
+	// ------------------------------------------------------------
+	// ---------- 某些图片双击新标签页单独显示 ---- 开始 ----------
+	$('.divConfigImgT0[imgDescribe], .divConfigImgT1[imgDescribe], .divConfigImgT2[imgDescribe], .divConfigImgT3[imgDescribe]').dblclick(function(){
+		var protocolHTML = "<title>" + $(this).attr("imgDescribe") + "</title>" +
+			"<style type='text/css'>body::-webkit-scrollbar{width:8px;height:8px}body::-webkit-scrollbar-thumb{border-radius:5px;background:#CFCFCF}</style>" +
+			"<body style='margin: 0; background-color: #494A5F; text-align: center'></body>" +
+				"<div style='font-size: 50px; font-weight: bold; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
+					$(this).attr("imgDescribe") +
+				"</div>" +
+				"<img style='margin-top: 20px' src='" + $(this).children("img").attr("src") + "'>" +
+			"</body>";
+
+		var nwin = window.open('');
+		nwin.document.writeln(protocolHTML);
+	});
+
+	// ---------- 某些图片双击新标签页单独显示 ---- 结束 ----------
+	// ---------------------------------------------------------
+});

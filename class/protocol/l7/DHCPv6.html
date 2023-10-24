@@ -4,65 +4,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-DHCPv6</title>
-	<script src="../../../js/public/head.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/dhcpv4.css">
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(dhcpv6);
 	</script>
-	<style type="text/css">
-		#tRAFlag .row.header .cell:nth-child(1),
-		#tRAFlag .row.header .cell:nth-child(2),
-		#tRAFlag .row.header .cell:nth-child(3)
-		{
-			width: 120px;
-		}
-
-		#tRAFlag .row .cell:nth-child(1),
-		#tRAFlag .row .cell:nth-child(2),
-		#tRAFlag .row .cell:nth-child(3)
-		{
-			text-align: center;
-		}
-
-		.HLTableS2 .row:nth-child(n+2) .cell:nth-child(-n+3)
-		{
-			font-weight: bold;
-    		color: #FFFF00;;
-		}
-
-		.HLTableS2 .row:nth-child(n+2):hover .cell:nth-child(-n+3)
-		{
-			font-weight: bold;
-    		color: #8000FF;
-		}
-
-		.HLTableS2 .cell
-		{
-			line-height: 30px;
-			vertical-align: middle;
-		}
-
-
-		#tV6V4 .row.header .cell:nth-child(1)
-		{
-			width: 100px;
-		}
-
-		#tV6V4 .row.header .cell:nth-child(2), #tV6V4 .row.header .cell:nth-child(3)
-		{
-			width: 150px;
-		}
-
-		#tV6V4 .row .cell:nth-child(1), #tV6V4 .row .cell:nth-child(2), #tV6V4 .row .cell:nth-child(3)
-		{
-			text-align: center;
-			padding-left: 0;
-		}
-
-		#tV6V4 .row .cell:nth-child(4)
-		{
-			padding-left: 10px;
-		}
-	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -106,13 +52,13 @@
 
 				createInstruT0("简单的DHCPv6报文交互过程","i2");
 					createInstruT1("SLAAC<br />","i2-1");
-						createConfigImgT1("DHCPv6/SLAAC");
+						createConfigImgT1("DHCPv6/SLAAC", "DHCPv6 SLAAC");
 
 					createInstruT1("Stateless DHCP<br />","i2-2");
-						createConfigImgT1("DHCPv6/Stateless");
+						createConfigImgT1("DHCPv6/Stateless", "DHCPv6 Stateless");
 
 					createInstruT1("Stateful DHCP<br />","i2-3");
-						createConfigImgT1("DHCPv6/Stateful");
+						createConfigImgT1("DHCPv6/Stateful", "DHCPv6 Stateful");
 
 					createInstruT1("Rapid Commit","i2-4");
 						createInstruAllTopT1("Stateful状态时，DHCPv6的交互过程与DHCPv4基本相同，均为4个报文交互获得IP地址（及其它信息）");
@@ -121,7 +67,7 @@
 
 						createInstruAllTopT1("采用两个报文交互获得IP地址（及其它信息），其它报文不变");
 
-						createConfigImgT1("DHCPv6/Rapid-Commit");
+						createConfigImgT1("DHCPv6/Rapid-Commit", "DHCPv6 Rapid-Commit");
 
 
 				createInstruT0("DHCPv6报文与DHCPv4对比<br />","i3");

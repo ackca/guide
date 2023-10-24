@@ -1,0 +1,55 @@
+.divProtocolExplain ul
+{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.divProtocolExplain li
+{
+    background-image: url("../../../img/icon.png");
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.divProtocolExplain li:nth-child(1)
+{
+    margin-top: 0px;
+}
+
+.divProtocolExplain img
+{
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.divSJT1
+{
+    margin-left: 50px;
+}
+
+/*.row .cell:nth-child(1)*/
+/*{*/
+/*	width: 120px;*/
+/*}*/
+
+.row .cell:nth-child(2)
+{
+    width: 70px;
+    padding-left: 25px;
+}
+
+.row.header .cell:nth-child(2)
+{
+    padding-left: inherit;
+}
+
+.row .cell:nth-child(3)
+{
+    padding-left: 20px;
+}
+
+.row.header .cell:nth-child(3)
+{
+    padding-left: inherit;
+}

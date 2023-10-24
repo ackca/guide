@@ -1,0 +1,179 @@
+body, html
+{
+	font-size: 100%;
+	font-size: 1.03em;
+	padding: 0;
+	margin: 0;
+	background: #494A5F;
+	color: #D5D6E2;
+	font-weight: 500;
+	font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
+}
+
+body::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	background: #CFCFCF;
+}
+
+.divProtocol
+{
+	text-align: center;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 80px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.l7tcp, .l7udp
+{
+	font-size: 40px;
+	background-color: #0008FF;
+	color: #FFFFFF
+}
+
+.l7tcp
+{
+	background-color: #0008FF;
+}
+
+.l7udp
+{
+	background-color: #FFC000;
+}
+
+.tcp, .udp
+{
+	border-radius: 8px;
+	line-height: 36px;
+	font-size: 16px;
+	height: 44px;
+}
+
+.tcp
+{
+	border: solid 4px #0008FF;
+	margin-right: 7px;
+}
+
+.udp
+{
+	border: solid 4px #FFC000;
+	margin-left: 7px;
+}
+
+.c1
+{
+	background-color: #9933FF;
+}
+
+.c2
+{
+	background-color: #00CC00;
+}
+
+.c3
+{
+	background-color: #00CCFF;
+}
+
+.c4
+{
+	background-color: #0008FF;
+}
+
+.c5
+{
+	background-color: #FF0000;
+}
+
+.c6
+{
+	background-color: #FFC000;
+}
+
+.l4
+{
+	border-radius: 6px;
+	line-height: 35px;
+	font-size: 16px;
+	height: 35px;
+}
+
+.l3
+{
+	border-radius: 6px;
+	line-height: 40px;
+	font-size: 16px;
+	height: 40px;
+}
+
+.l2
+{
+	border-radius: 6px;
+	line-height: 40px;
+	font-size: 16px;
+	height: 40px;
+}
+
+.two-row-l7
+{
+	font-size: 13px;
+	line-height: 18px;
+}
+
+.two-row-l7 table, .two-row-l3 table
+{
+	margin: 0 auto;
+}
+
+.two-row-l7 td
+{
+	height: 18px;
+	padding-left: 0;
+	text-align: left;
+}
+
+.two-row-l3
+{
+	font-size: 13px;
+	line-height: 20px;
+}
+
+.two-row-l3 td
+{
+	height: 20px;
+	padding-left: 0;
+	text-align: left;
+}
+.col-lg-1, .col-lg-2, .col-lg-3,.col-lg-6
+{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.row a:link
+{
+	color: #FFFFFF;
+}
+
+.row a:visited
+{
+	color: #FFFFFF;
+}
+
+.row a:hover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+.macsec
+{
+	font-size: 15px;
+}

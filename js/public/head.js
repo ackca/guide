@@ -10,12 +10,10 @@ var head = `
     <script type='text/javascript' src='rootpath/js/public/config.js'></script>
     <script type='text/javascript' src='tree.js'></script>
     <script type='text/javascript' src='rootpath/js/public/top_menu.js'></script>
-    <script type='text/javascript' src='rootpath/js/public/HLTable.js'></script>
 `;
 
 // uri：/guide/class/nmap/nmap.html
 var uri = window.location.href.substring(window.location.href.indexOf('/guide'));
-console.log(uri)
 // length -1 获取 uri 中 / 数量，再 -2 即相对根路径级数
 var path_num = uri.split('/').length - 1 - 2;
 

@@ -1,0 +1,54 @@
+#tRAFlag .row.header .cell:nth-child(1),
+#tRAFlag .row.header .cell:nth-child(2),
+#tRAFlag .row.header .cell:nth-child(3)
+{
+    width: 120px;
+}
+
+#tRAFlag .row .cell:nth-child(1),
+#tRAFlag .row .cell:nth-child(2),
+#tRAFlag .row .cell:nth-child(3)
+{
+    text-align: center;
+}
+
+.HLTableS2 .row:nth-child(n+2) .cell:nth-child(-n+3)
+{
+    font-weight: bold;
+    color: #FFFF00;;
+}
+
+.HLTableS2 .row:nth-child(n+2):hover .cell:nth-child(-n+3)
+{
+    font-weight: bold;
+    color: #8000FF;
+}
+
+.HLTableS2 .cell
+{
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+
+#tV6V4 .row.header .cell:nth-child(1)
+{
+    width: 100px;
+}
+
+#tV6V4 .row.header .cell:nth-child(2), #tV6V4 .row.header .cell:nth-child(3)
+{
+    width: 150px;
+}
+
+
+#tV6V4 .row .cell:nth-child(1), #tV6V4 .row .cell:nth-child(2), #tV6V4 .row .cell:nth-child(3)
+{
+    text-align: center;
+    padding-left: 0;
+}
+
+#tV6V4 .row .cell:nth-child(4)
+{
+    padding-left: 10px;
+}

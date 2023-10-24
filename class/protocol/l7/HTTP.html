@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-HTTP</title>
-	<link rel="stylesheet" href="../../../css/private/http.css">
+	<link rel="stylesheet" href="../../../css/private/protocol/http.css">
 	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript" src="../../../js/private/http.js"></script>
 	<script type="text/javascript">
@@ -580,32 +580,129 @@
 
                     createInstruT2("Cookie：向服务器发送的Cookie","i10-7-2");
 	                    htmlheaders = `
-							Cookie: csrftoken=G2HHj0AtH……; session=eyJjc3JmX……;
+							Cookie: csrftoken=G2HHj0AtH……; session=eyJjc3JmX……; odin_tt=963d7488……; ……
 						`
 	                    createHTTPHeadersT2(htmlheaders);
+
+
+            createInstruT0("Cookie","i12");
+                createInstruT1("Cookie作用","i12-1");
+                    createInstruAllTopT1("HTTP是无状态协议，不会对之前发生过的请求和响应进行维护，也就是说，无法根据之前的状态处理本次请求");
+					createInstruAllTopT1("但实际应用中，需要状态化，比如：购物网站的购物车，之前加入购物车的商品，再次登录，仍然可以看到");
+                    createInstruAllTopT1("使用Cookie技术，实现HTTP状态化");
+
+
+                createInstruT1("Cookie工作原理","i12-2");
+                    createInstruAllTopT1("访问某个网站时，服务器会发送Cookie给客户端，多数情况下，登录后才会发送");
+                    htmlheaders = `
+						Set-Cookie: session=eyJhZG1pb……; HttpOnly; Path=/
+					`;
+                    createHTTPHeadersT1(htmlheaders);
+                    createInstruAllTopT1("服务器给客户端的Cookie中，一般只包含ID，其它为对Cookie的限制参数");
+
+                    createInstruAllTopT1("<br />再次请求时，客户端会将其ID以及服务器想了解的信息在Cookie中一并发送给服务器");
+					htmlheaders = `
+						Cookie: csrftoken=G2HHj0AtH……; session=eyJjc3JmX……; odin_tt=963d7488……; ……
+					`
+                    createHTTPHeadersT1(htmlheaders);
+
+
+                createInstruT1("Cookie相关属性","i12-3");
+                    createInstruT2("Cookie相关属性","i12-3-1");
+                        createInstruAllTopT2("当服务器准备开始管理客户端的状态时，会事先靠知各种信息");
+                        htmlheaders = `
+							Set-Cookie: session=eyJhZG1pb……; HttpOnly; Path=/
+						`;
+	                    createHTTPHeadersT2(htmlheaders);
+
+                        createInstruAllTopT2("一个Cookie的内容如下");
+                        htmlheaders = `
+						    "domain": ".ixigua.com",
+						    "expirationDate": 1729149693.457947,
+						    "httpOnly": true,
+						    "name": "odin_tt",
+						    "path": "/",
+						    "sameSite": "unspecified",
+						    "secure": false,
+						    "session": false,
+						    "storeId": "0",
+						    "value": "963d748840……",
+						    "id": 1
+						`;
+	                    createHTTPHeadersT2(htmlheaders);
+
+                        tHeader = [
+							"属性",
+			                "说明",
+						];
+						tBody = [
+							["NAME=VALUE","赋予Cookie的名称和其值，必需"],
+							["expires=DATE","Cookie的有效期，不指定则为关闭浏览器前一直有效"],
+							["path=PATH","Cookie所在目录，不指定则创建Cookie的当前目录"],
+							["domain=DOMAIN","Cookie适用的域名，不指定则为创建Cookie的域名"],
+							["Secure","只能在使用HTTPS时，才会发送Cookie"],
+							["HttpOnly","只允许HTTP处理Cookie"],
+						];
+						createHLTableT2(720, tHeader, tBody, "tCookie");
+
+
+					createInstruT2("<br /><br />expires：Cookie的有效期","i12-3-2");
+                        createInstruAllTopT2("Cookie 的 expires 属性指定浏览器可发送 Cookie 的有效期");
+                        createInstruAllTopT2("当省略 expires 时，其有效期公限于维持浏览器会话（Session）的时间，通常为浏览器关闭之前");
+                        createInstruAllTopT2("一旦服务器发送了Cookie，服务器无法显示删除Cookie，但可以通过覆盖过期的Cookie，实质性删除Cookie");
+
+
+                    createInstruT2("<br /<br />path：Cookie所在目录","i12-3-3");
+                        createInstruAllTopT2("path表示Cookie所在目录，itachi.tech形式域名则为 / ，即根目录");
+                        createInstruAllTopT2("服务器存在多个目录　/security/ASA");
+                        createInstruAllTopT2("　　　　　　　　　　　　　　　　/security/ISE");
+                        createInstruAllTopT2("path 设置 /security 时，/security/ASA、/security/ISE，均可访问，/security/Firepower，也可以");
+						createInstruAllTopT2("path 设置 /securityy/ASA 时，只能 /security/ASA访问");
+
+
+                    createInstruT2("<br /<br />domain：Cookie适用的域名","i12-3-4");
+                        createInstruAllTopT2("domain表示的是Cookie所在的域，默认为请求地址");
+                        createInstruAllTopT2("　　　如：www.itachi.tech/home，domain默认为www.itachi.tech");
+                        createInstruAllTopT2("<br />需要跨域访问时，域A：a.itachi.tech，域B：b.itachi.tech");
+                        createInstruAllTopT2("域A：产生域A和域B都可以访问的Cookie，则 domain 为 .itachi.tech，c.itachi.tech 也可访问");
+                        createInstruAllTopT2("　　　　产生只能域A可以访问的Cookie，则 domain 为 a.itachi.tech，只能a.itachi.tech访问");
+
+
+                    createInstruT2("<br /<br />Secure：只能在HTTPS时发送","i12-3-5");
+                        createInstruAllTopT2("Secure限制Web页面仅在 HTTPS 安全连接时，才可以发送Cookie，不安全HTTP不可以");
+
+
+                    createInstruT2("<br /<br />HttpOnly：只允许HTTP处理","i12-3-6");
+                        createInstruAllTopT2("HttpOnly限制只能通过http处理Cookie，上层协议为http或https均可");
+                        createInstruAllTopT2("被限制的，不允许的主要为javascript，用于防止XSS等攻击");
 
 
             createInstruT0("HTTP认证","i8");
                 createInstruT1("基本认证（Basic auth）","i8-1");
                     createInstruAllTopT1("浏览器弹出窗口认证");
-                    createConfigImgT1("HTTP/basic");
+                    createConfigImgT1("HTTP/basic", "HTTP基本认证");
+
 
                 createInstruT1("散列认证（Digest auth）","i8-2");
                     createInstruAllTopT1("浏览器弹出窗口认证");
-                    createConfigImgT1("HTTP/digest");
+                    createConfigImgT1("HTTP/digest", "HTTP散列认证");
 
-                createInstruT1("表单认证","i8-3");
+
+				createInstruT1("表单认证","i8-3");
                     createInstruAllTopT1("最常见的网站中使用页面登录");
-                    createConfigImgT1("HTTP/form");
+                    createConfigImgT1("HTTP/form", "HTTP表单认证");
 
 
 			createInstruT0("HTTP 版本与历史","i9");
                 createInstruT1("HTTP/1.0","i9-1");
-                    createInstruAllTopT1("一次TCP连接只做一次HTTP请求，完成后TCP关闭");
+                    createInstruAllTopT1("一次TCP连接只做一次HTTP请求，完成后TCP关闭，此时，HTTP为瞬时协议");
 	                createInstruAllTopT1("打开一个页面，需要大量TCP连接，效率较低");
 
-				createInstruT1("<br />HTTP/1.1","i9-2");
+
+                createInstruT1("<br />HTTP/1.1","i9-2");
 					createInstruAllTopT1("使用keep-alive技术，在一次TCP连接中，实现多次HTTP请求");
+                    createInstruAllTopT1("从HTTP/1.1开始，HTTP支持持久连接，TCP连接建立后，除非某一端明确提出断开，则保持TCP连接");
+                    createInstruAllTopT1("实际应用中，客户端或服务器会设置连接时间，长时间没有新的请求，主动通知对端关闭TCP连接");
                     createInstruAllTopT1("但同一时间只进行一次HTTP请求，下次请求必须等待本次请求结束后进行，类似于TFTP，效率仍然较低");
                     createInstruAllTopT1("为了提高效率，主流浏览器同时使用6个并发的TCP连接，但这样会消耗较多的服务器资源");
 

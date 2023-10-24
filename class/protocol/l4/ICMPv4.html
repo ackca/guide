@@ -4,21 +4,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-ICMPv4</title>
-	<script src="../../../js/public/head.js"></script>
-	<script src="../../../js/private/icmp4.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/private/icmp4.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(icmpv4);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-	<link rel="stylesheet" href="../../../css/private/icmp4.css">
+	<link rel="stylesheet" href="../../../css/private/protocol/icmp4.css">
 </head>
 <body>
-	<div id="divProtocol" class="divProtocol">
-		<strong id="close" onclick="closeProtocol()">关闭</strong>
-		<div id="protocolImg" onmousedown="protocolMove()"></div>
-	</div>
 	<div class="container-fluid">
 		<div class="divProtocolWord">
 			<script type="text/javascript">
@@ -32,7 +28,7 @@
 
 		<div class="divBG" style="background-color: #494A5F;width: 800px;height: 10px"></div>
 
-		<div id="zwTable" style="width: 800px">
+		<div id="zwTable" class="HLTableS2" style="width: 800px">
 			<div class="table">
 				<div class="row header">
 					<div class="cell">类型</div>
@@ -50,7 +46,7 @@
 				 	createInstruAllTopT0("ICMP经常被认为是IP层的一个组成部分，它传递差错报文以及其他需要注意的信息，ICMP报文通常被IP层或更高层协议（TCP或UDP）使用，一些ICMP报文把差错报文返回给用户进程");
 					createInstruAllTopT0("ICMP主要用于两点：1、确认网络是否正常工作，2、遇到异常时进行问题诊断");
 
-				createInstruT0("ICMP 通用协议结构","i2");
+				createInstruT0("<br />ICMP 通用协议结构","i2");
 					createProtocolStructT0(
 						"815",
 						"220",
@@ -178,25 +174,25 @@
 						createInstruAllTopT2("3、作为链路层广播的数据报文");
 						createInstruAllTopT2("4、发生IP分片时，只有第一片能引发ICMP差错报文");
 						createInstruAllTopT2("5、源地址为零地址、环回地址、广播或组播地址的IP报文");
-						document.writeln("<br /><br />");
 
-					createInstruT1("多数差错报文结构","i4-2");
-						createConfigImgT1("ICMPv4/error");
+					createInstruT1("<br /><br />多数差错报文结构","i4-2");
+						createConfigImgT1("ICMPv4/error", "ICMPv4 多数差错报文结构");
 
 					createInstruT1("端口不可达（type 3，code 3）","i4-3");
 						createInstruT2("如果访问未开始的UDP端口，会返回ICMP端口不可达报文");
-						document.writeln("<br /><br />");
 
-					createInstruT1("需要分片但是 DF 置位了（type 3，code 4）","i4-4");
+					createInstruT1("<br /><br />需要分片但是 DF 置位了（type 3，code 4）","i4-4");
 						createInstruT2("该报文结构与多数差错报文不同，在反馈相应信息的同时，还会通告此处的MTU");
-						createConfigImgT1("ICMPv4/error34$1~2");
+						createConfigImgT2("ICMPv4/error34$1", "ICMPv4 需要分片但是 DF 置位了报文结构");
+                        createConfigImgT2("ICMPv4/error34$2");
 
 					createInstruT1("网络重定向（type 5，code 0）","i4-5");
 						createInstruT2("在同一个子网内，A去往某处的路由下一跳为B，而B去往同处的路由下一跳为C");
 						createInstruT2("B会向A发送ICMP网络重定向报文，告知A下一跳应该设备C");
 						createInstruT2("A如果有路由能力的设备，一般不与理会，无路由能力会改变路径");
 						createInstruT2("该报文结构与多数差错报文不同，在反馈相应信息的同时，重定向的IP地址");
-						createConfigImgT1("ICMPv4/error50$1~3");
+						createConfigImgT2("ICMPv4/error50$1", "ICMPv4 网络重定向报文结构");
+                        createConfigImgT2("ICMPv4/error50$2~3");
 			</script>
 		</div>
 	</div>
