@@ -212,21 +212,12 @@
 							createCmdInstruT2(instruArr,"docker");
 
 						createInstruT2("通过jq按项查看","i3-2-2");
-							createInstruT3("安装jq","i3-2-2-1");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createLinuxCmd("yum install jq -y");
-								createCmdInstruT3(instruArr,"docker");
+							createInstruAllTopT2("如：查看容器地址：")
 
-							createInstruT3("使用jq","i3-2-2-2");
-								createInstruAllTopT3("docker inspect的输出信息为json类型数据");
-								createInstruAllTopT3("使用　docker　inspect　容器名或ID　|　jq　-r　\"“json方式。\" 将输出转化json使用");
-								createInstruAllTopT3("如：查看容器地址：")
+							instruArr[0] = createLinuxCmd("docker inspect f6 | jq -r \".[0].NetworkSettings.IPAddress\"");
+							createCmdInstruT2(instruArr,"docker");
 
-								instruArr[0] = createLinuxCmd("docker inspect f6 | jq -r \".[0].NetworkSettings.IPAddress\"");
-								createCmdInstruT3(instruArr,"docker");
-
-								createConfigImgT3("basic/i3_2_2_2$1~2");
+							createConfigImgT2("basic/i3_2_2$1~2");
 
 					createInstruT1("删除容器，可删除多个","i3-3");
 						instruArr = null;

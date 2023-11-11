@@ -360,9 +360,16 @@
 
 				createInstruT0("Radius DTLS","i4");
 					createInstruT1("交换机需要申请证书","i4-1");
-						createInstruAllTopT1("详细见 <a href='basic.html#i11-1' style='color:#FFFFFF;text-decoration:underline'>通用配置、申请数字证书</a> 部分");
+						createInstruAllTopT1("详细见 <a href='basic.html#i11' style='color:#FFFFFF;text-decoration:underline'>通用配置、申请数字证书</a> 部分");
 						createInstruAllTopT1("使用Windows证书服务器时，证书模板为 ‘路由器（脱机请求）。");
-						createInstruT2("trustpoint示例");
+
+                        createInstruT2("生成密钥");
+                            instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("SW1(config)# crypto key generate rsa label “DTLS。 modulus “2048。");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("trustpoint");
 							cmd = `
 								crypto pki trustpoint DTLS
 								 enrollment terminal
@@ -372,47 +379,51 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("导入根证书");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("SW(config)# crypto pki authenticate “DTLS。")
+                        createInstruT2("生成个人证书请求");
+							instruArr[0] = createCmdSpan("SW1(config)# crypto pki enroll “DTLS。")
 							createCmdInstruT2(instruArr,"cisco");
-							createConfigImgT2("ISE_SW/i14_1_2$1");
 
-						createInstruT2("生成个人证书请求");
-							instruArr[0] = createCmdSpan("SW(config)# crypto pki enroll “DTLS。")
+						createInstruT2("导入根证书");
+							instruArr[0] = createCmdSpan("SW1(config)# crypto pki authenticate “DTLS。")
 							createCmdInstruT2(instruArr,"cisco");
-							createConfigImgT2("ISE_SW/i14_1_3$1");
 
 						createInstruT2("导入个人证书");
-							instruArr[0] = createCmdSpan("SW(config)# crypto pki import “DTLS。 certificate")
+							instruArr[0] = createCmdSpan("SW1(config)# crypto pki import “DTLS。 certificate")
 							createCmdInstruT2(instruArr,"cisco");
-							createConfigImgT2("ISE_SW/i14_1_4$1");
 
-					createInstruT1("交换机指定ISE的配置","i4-2");
+					createInstruT1("交换机指定ISE的相关配置","i4-2");
 						createInstruT2("配置Radius Server");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("SW1(config)# radius server “ise1。");
-							instruArr[1] = createCmdInstruSpan("“ise1。","Radius Server名");
-							createCmdInstruT2(instruArr,"cisco");
+                            createInstruT3("配置Radius Server");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("SW1(config)# radius server “ise1。");
+								instruArr[1] = createCmdInstruSpan("“ise1。","Radius Server名");
+								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("配置ISE地址");
-							instruArr[0] = createCmdSpan("SW1(config-radius-server)# address “ipv4 10.1.20.241。");
-							instruArr[1] = createCmdInstruSpan("“ipv4 10.1.20.241。","ISE地址或域名");
-							createCmdInstruT2(instruArr,"cisco");
+							createInstruT3("配置ISE地址");
+								instruArr[0] = createCmdSpan("SW1(config-radius-server)# address { “ipv4 10.1.20.241。 | “fqdn pan-p.itachi.tech。 }");
+								instruArr[1] = createCmdInstruSpan("“ipv4 10.1.20.241。","ISE地址");
+	                            instruArr[2] = createCmdInstruSpan("“fqdn pan-p.itachi.tech。","ISE域名");
+								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("配置DLTS端口号");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls port 2083");
-							createCmdInstruT2(instruArr,"cisco");
+							createInstruT3("配置DLTS端口号");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls port 2083");
+								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("配置证书的trustpoint");
-							instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls trustpoint client “DTLS。");
-							instruArr[1] = createCmdSpan("SW1(config-radius-server)# dtls trustpoint server “DTLS。");
-							instruArr[2] = createCmdInstruSpan("“DTLS。","证书请求的trustpoint名");
-							createCmdInstruT2(instruArr,"cisco");
+							createInstruT3("配置证书的trustpoint");
+								instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls trustpoint client “DTLS。");
+								instruArr[1] = createCmdSpan("SW1(config-radius-server)# dtls trustpoint server “DTLS。");
+								instruArr[2] = createCmdInstruSpan("“DTLS。","证书请求的trustpoint名");
+								createCmdInstruT3(instruArr,"cisco");
+
+	                        createInstruT3("配置校验证书的域名");
+								instruArr = null;
+								instruArr = new Array();
+	                            instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls match-server-identity hostname “pan-p.itachi.tech。");
+								instruArr[1] = createCmdInstruSpan("“pan-p.itachi.tech。","ISE域名");
+								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("配置ISE组");
 							instruArr[0] = createCmdSpan("SW1(config)# aaa group server radius “ISE。");
@@ -421,6 +432,12 @@
 							instruArr[3] = createCmdInstruSpan("“ise1。","单个radius服务器名");
 							createCmdInstruT2(instruArr,"cisco");
 
+                        createInstruT2("配置CoA");
+							instruArr[0] = createCmdSpan("SW1(config)# aaa server radius dynamic-author");
+							instruArr[1] = createCmdSpan("SW1(config-locsvr-da-radius)# client “10.1.241.1。 dtls client-tp “DTLS。 server-tp “DTLS。");
+                            instruArr[2] = createCmdInstruSpan("“10.1.241.1。","ISE地址");
+							instruArr[3] = createCmdInstruSpan("“DTLS。","证书请求的trustpoint名");
+							createCmdInstruT2(instruArr,"cisco");
 			</script>
 		</div>
 	</div>

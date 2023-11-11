@@ -13,27 +13,42 @@
 
 
 <!-- 协议首部字段说明的html代码 -->
-<div id="i1" style="margin-top: 280px" class="divProtocolExplain">
+<div class="divProtocolExplain">
 	<dl>
-		<div onmouseover="heightlightField(1,-187.5)" onmouseout="initProtocol()">
-			<dt class="fa fa-files-o">&nbsp;&nbsp;目的MAC地址（Destination）</dt>
+		<div onmouseover="heightlightField(1,-200, '#divProtocolStruct')" onmouseout="initProtocol('#divProtocolStruct')">
+			<dt>
+				<i class="fa-regular fa-file-lines">&nbsp;&nbsp;</i>目的MAC地址（Destination）
+			</dt>
 			<dd>由6字节构成，表示目的MAC地址</dd>
 		</div>
-		<div onmouseover="heightlightField(2,-187.5)" onmouseout="initProtocol()">
-			<dt class="fa fa-files-o">&nbsp;&nbsp;源MAC地址（Source）</dt>
+		<div onmouseover="heightlightField(2,-200, '#divProtocolStruct')" onmouseout="initProtocol('#divProtocolStruct')">
+			<dt>
+				<i class="fa-regular fa-file-lines">&nbsp;&nbsp;</i>源MAC地址（Source）
+			</dt>
 			<dd>由6字节构成，表示源MAC地址</dd>
 		</div>
-		<div onmouseover="heightlightField(3,-187.5)" onmouseout="initProtocol()">
-			<dt class="fa fa-files-o">&nbsp;&nbsp;协议类型（Protocol Type）</dt>
+		<div onmouseover="heightlightField(3,-200, '#divProtocolStruct')" onmouseout="initProtocol('#divProtocolStruct')">
+			<dt>
+				<i class="fa-regular fa-file-lines">&nbsp;&nbsp;</i>协议类型（Protocol Type）
+			</dt>
 			<dd>由2字节构成，表示下一个首部属于哪个协议</dd>
 		</div>
-		<div onmouseover="heightlightField(4,-187.5)" onmouseout="initProtocol()">
-			<dt class="fa fa-files-o">&nbsp;&nbsp;数据部分（Data）</dt>
+		<div onmouseover="heightlightField(4,-200, '#divProtocolStruct')" onmouseout="initProtocol('#divProtocolStruct')">
+			<dt>
+				<i class="fa-regular fa-file-lines">&nbsp;&nbsp;</i>数据部分（Data）
+			</dt>
 			<dd>由46~1500字节构成，如果数据部分较小（如ARP），小于46字节，需要填充0使数据部分达到最小的46字节</dd>
 		</div>
-		<div onmouseover="heightlightField(5,-187.5)" onmouseout="initProtocol()">
-			<dt class="fa fa-files-o">&nbsp;&nbsp;帧校验序列（FCS）</dt>
-			<dd>由4字节构成，对帧完整性的检查</dd><
+		<div onmouseover="heightlightField(5,-200, '#divProtocolStruct')" onmouseout="initProtocol('#divProtocolStruct')">
+			<dt>
+				<i class="fa-regular fa-file-lines">&nbsp;&nbsp;</i>填充（padding）
+			</dt>
+			<dd>长度可变，可能不存在，EtherneII报文数据部分最小46字节，但一此较小的报文，如ARP，数据部分只有28字节，需要填充0使数据部分达到最小的46字节</dd>
+		</div>
+		<div onmouseover="heightlightField(6,-200, '#divProtocolStruct')" onmouseout="initProtocol('#divProtocolStruct')">
+			<dt>
+				<i class="fa-regular fa-file-lines">&nbsp;&nbsp;</i>帧校验序列（FCS）</dt>
+			<dd>由4字节构成，对帧完整性的检查</dd>
 		</div>
 	</dl>
 </div>

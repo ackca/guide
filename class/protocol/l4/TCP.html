@@ -5,14 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-TCP</title>
 	<script type="text/javascript" src="../../../js/public/head.js"></script>
-	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/tcp.css">
 	<script type="text/javascript">
 		window.onload = createNavigation(tcp);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-
+	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/tcp.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -153,37 +152,37 @@
 					createInstruT1("正常情况下的连接建立与终止","i3-2");
 						createConfigImgT1("TCP/TCP连接建立与断开", "TCP连接建立与断开");
 
-                    createInstruT1("2MSL等待时间","i3-3");
-                        createInstruAllTopT1("MSL：Maximum SegmentLifetime，指的是一个TCP报文最大生成时间，不同系统不同");
+					createInstruT1("2MSL等待时间","i3-3");
+						createInstruAllTopT1("MSL：Maximum SegmentLifetime，指的是一个TCP报文最大生成时间，不同系统不同");
 
-                        createInstruAllTopT1("RFC 793中指出MSL为2分钟，目前，系统实际设置的时间应该比这个短");
+						createInstruAllTopT1("RFC 793中指出MSL为2分钟，目前，系统实际设置的时间应该比这个短");
 
-                        createInstruAllTopT1("当TCP主动关闭并发送最后一个ACK后，该连接必须在TIME WAIT状态等待2倍MSL");
+						createInstruAllTopT1("当TCP主动关闭并发送最后一个ACK后，该连接必须在TIME WAIT状态等待2倍MSL");
 
-                        createInstruAllTopT1("如果最后一个ACK意外丢失，还可以再次发送");
+						createInstruAllTopT1("如果最后一个ACK意外丢失，还可以再次发送");
 
-                    createInstruT1("<br /><br />TCP一般由客户端主动关闭连接","i3-4");
-                        createInstruAllTopT1("主动关闭的TCP连接的一端会进入TIME WAIT状态等待2倍MSL，‘这个时间段内，多数系统不允许使用该端口。");
+					createInstruT1("<br /><br />TCP一般由客户端主动关闭连接","i3-4");
+						createInstruAllTopT1("主动关闭的TCP连接的一端会进入TIME WAIT状态等待2倍MSL，‘这个时间段内，多数系统不允许使用该端口。");
 
-                        createInstruAllTopT1("如果由客户端主动关闭，因为使用的是随机高端口，这个不能用，可以用其它端口建立新的连接");
+						createInstruAllTopT1("如果由客户端主动关闭，因为使用的是随机高端口，这个不能用，可以用其它端口建立新的连接");
 
-                        createInstruAllTopT1("但服务器使用的经典端口，这就意味着2倍MSL时间内，服务器无法提供服务");
+						createInstruAllTopT1("但服务器使用的经典端口，这就意味着2倍MSL时间内，服务器无法提供服务");
 
 					createInstruT1("<br /><br />同时开启连接","i3-5");
-                        createInstruAllTopT1("除几乎同时连接对方外，还需要端口也对应，很难实现");
-                        createInstruAllTopT1("　　客户端（10241）　-->　　服务器（80）");
-                        createInstruAllTopT1("　　服务器（80）　　　 -->　　客户端（10241）");
-                        createConfigImgT1("TCP/同时打开", "TCP同时开启连接");
+						createInstruAllTopT1("除几乎同时连接对方外，还需要端口也对应，很难实现");
+						createInstruAllTopT1("　　客户端（10241）　-->　　服务器（80）");
+						createInstruAllTopT1("　　服务器（80）　　　 -->　　客户端（10241）");
+						createConfigImgT1("TCP/同时打开", "TCP同时开启连接");
 
 
-                    createInstruT1("<br /><br />同时关闭连接","i3-6");
-                        createConfigImgT1("TCP/同时关闭", "TCP同时关闭连接");
+					createInstruT1("<br /><br />同时关闭连接","i3-6");
+						createConfigImgT1("TCP/同时关闭", "TCP同时关闭连接");
 
-                    createInstruT1("TCP状态迁移图","i3-7");
-                        createConfigImgT1("TCP/状态迁移图", "TCP状态迁移图");
+					createInstruT1("TCP状态迁移图","i3-7");
+						createConfigImgT1("TCP/状态迁移图", "TCP状态迁移图");
 
 				createInstruT1("<br />TCP伪首部","i4");
-                    createConfigImgT1("TCP/TCP伪首部", "TCP伪首部");
+					createConfigImgT1("TCP/TCP伪首部", "TCP伪首部");
 
 			</script>
 

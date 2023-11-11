@@ -14,25 +14,6 @@
     padding-left: inherit;
 }
 
-.divProtocolExplain ul
-{
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.divProtocolExplain li
-{
-    background-image: url("../../../img/icon.png");
-    background-repeat: no-repeat;
-    padding-left: 30px;
-    margin-top: 20px;
-}
-
-.divProtocolExplain li:nth-child(1)
-{
-    margin-top: 0px;
-}
-
 .divProtocolExplain span
 {
     font-size: 30px;

@@ -130,7 +130,6 @@ dynamic_routing = {
 
 	'i9': {
 		'各种列表': {
-			'i9-1':'acl',
 			'i9-2':'ip-prefix',
 			'i9-3':'route-policy',
 			'i9-4':'as-path-filter',

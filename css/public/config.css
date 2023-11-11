@@ -8,6 +8,16 @@ body, html
 	font-weight: 500;
 }
 
+body::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	background: #CFCFCF;
+}
+
 .main-sidebar
 {
 	position: fixed;
@@ -30,7 +40,7 @@ body, html
 
 .instruT0, .instruT1, .instruT2, .instruT3,
 .cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
-.cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
+.cmdInstruAllBottomT0, .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
 .cmdInstruAllTopImgT2, .cmdInstruAllTopImgT3
 {
 	display: block;
@@ -253,7 +263,7 @@ h4
 
 .cmd, .cmdInstru,
 .cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
-.cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
+.cmdInstruAllBottomT0, .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
 .cmdInstruAllTopImgT2, .cmdInstruAllTopImgT3
 {
 	font-size: 20px;
@@ -271,7 +281,7 @@ h4
 	line-height: 33px;
 }
 
-.cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3
+.cmdInstruAllBottomT0, .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3
 {
 	line-height: 40px;
 }
@@ -281,6 +291,7 @@ h4
 	font-style: italic;
 	background-color: #829BA5;
 	/*background-color: rgba(130, 155, 165, 0.3);*/
+	font-family: inherit;
 	padding-left: 2px;
 	padding-right: 3px;
 	position: relative;
@@ -295,6 +306,11 @@ h4
 .spanR
 {
 	color: #F92672;
+}
+
+.spanBlue
+{
+	color: #63D8EE;
 }
 
 .hwSysname
@@ -395,6 +411,12 @@ h4
 .instruT2 + .instruT3
 {
 	margin-top: -20px;
+}
+
+.cmdInstruAllBottomT0
+{
+	/*margin-top: -30px;*/
+	margin-left: 20px;
 }
 
 .cmdInstruAllBottomT1
@@ -702,16 +724,6 @@ td
 	color: #F92467;
 }
 
-body::-webkit-scrollbar {/*滚动条整体样式*/
-	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
-	height: 8px;
-}
-
-body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-	border-radius: 5px;
-	background: #CFCFCF;
-}
-
 .divSJT0
 {
 	margin-left: 15px;
@@ -763,34 +775,28 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .divCopy
 {
-	padding: 8px;
-	/*padding-top: 2px;*/
+	padding-left: 8px;
+	padding-right: 8px;
 	position: absolute;
 	top: 5px;
 	right: 5px;
 	cursor: pointer;
-	border-radius: 12px;
+	border-radius: 13px;
+	color: #AFB1B3;
+	font-size: 25px;
+	transform: rotateY(180deg);
 }
 
 .divCopy:hover
 {
 	background-color: #4C5052;
+	color: #FFFFFF;
 }
 
 .divCopy:active
 {
 	background-color: #5C6164;
 }
-
-.CopyImage
-{
-	width: 23px;
-	height: 24px;
-	background-image: url("../../img/copy.png");
-	background-size: 46px 24px;
-	background-position-x: 0;
-}
-
 
 .copySuccess
 {
@@ -808,6 +814,29 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	display: none;
 }
 
+.copySuccess .fa-circle-check:before
+{
+	color: #22B14C;
+	font-size: 18px;
+}
+
+/*.copySuccess .fa-circle-check*/
+/*{*/
+/*	z-index: 5;*/
+/*}*/
+
+/*.successBG*/
+/*{*/
+/*	background-color: #FFFFFF;*/
+/*	position: absolute;*/
+/*	width: 18px;*/
+/*	height: 18px;*/
+/*	border-radius: 9px;*/
+/*	top: 0px;*/
+/*	left: 0px;*/
+/*	z-index: 0;*/
+/*}*/
+
 .divProtocolExplain
 {
 	margin-left: 20px;
@@ -819,15 +848,35 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	font-size: 20px;
 }
 
-.divProtocolExplain dt
+.divProtocolExplain  dt
 {
 	color: #FFC000;
+	font-weight: normal;
 }
 
 .divProtocolExplain dd
 {
 	margin-left: 40px;
 	margin-bottom: 30px;
+}
+
+.divProtocolExplain ul
+{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.divProtocolExplain li
+{
+    background-image: url("../../img/icon.png");
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.divProtocolExplain li:nth-child(1)
+{
+    margin-top: 0px;
 }
 
 .divProtocolWord
@@ -894,7 +943,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	padding-right: 10px;
 	line-height: 30px;
 }
-/*divProtocolStruct*/
+
 .divProtocolStruct
 {
 	cursor: pointer;
@@ -903,9 +952,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 #divProtocol
 {
 	display: none;
-	/*position: absolute;*/
-	/*top: 0;*/
-	/*right: 0;*/
 
 	position: fixed;
     top: 0;
@@ -916,7 +962,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	cursor: move;
     background-color: #494A5F;
     z-index: 100;
-	/*opacity: 1.0;*/
 }
 
 #close
@@ -950,14 +995,11 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 #hidden
 {
-	/*width: 1%;*/
-    /*height: 1%;*/
 	width: 1010px;
 	height: 559px;
     position: fixed;
     top: 0;
     left: 0;
-	/*opacity: 1.0;*/
 	z-index: 100;
 }
 

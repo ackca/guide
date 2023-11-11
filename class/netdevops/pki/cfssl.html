@@ -22,7 +22,7 @@
 			<script type="text/javascript">
 				createInstruT0("安装CFSSL","i1");
 					// createInstruT2("CFSSL介绍");
-					//     createInstruAllTopT2("<a class='link' href='cfssl.mhtml' target='_blank'>https://blog.51cto.com/liuzhengwei521/2120535</a><br />");
+					//	 createInstruAllTopT2("<a class='link' href='cfssl.mhtml' target='_blank'>https://blog.51cto.com/liuzhengwei521/2120535</a><br />");
 
 					createInstruT1("下载安装cfssl");
 						createInstruAllTopT1("下载地址：<a class='link' href='https://github.com/cloudflare/cfssl/releases' target='_blank'>https://github.com/cloudflare/cfssl/releases</a>");
@@ -164,33 +164,36 @@
 							{
 								"signing": {
 									"default": {
-										"expiry": "87600h"
+										"expiry": "8760h"
 									},
 									"profiles": {
 										"server": {
-											"expiry": "87600h",
+											"expiry": "8760h",
 											"usages": [
 												"signing",
 												"key encipherment",
 												"server auth"
-											]
+											],
+											"crl_url": "https://certsrv.itachi.tech/crl.crl"
 										},
 										"client": {
-											"expiry": "87600h",
+											"expiry": "8760h",
 											"usages": [
 												"signing",
 												"key encipherment",
 												"client auth"
-											]
+											],
+											"crl_url": "https://certsrv.itachi.tech/crl.crl"
 										},
 										"peer": {
-											"expiry": "87600h",
+											"expiry": "8760h",
 											"usages": [
 												"signing",
 												"key encipherment",
 												"server auth",
 												"client auth"
-											]
+											],
+											"crl_url": "https://certsrv.itachi.tech/crl.crl"
 										}
 									}
 								}
@@ -308,6 +311,26 @@
 						`;
 						createLinuxTxtT1(cmd);
 
+
+				createInstruT0("创建证书吊销列表CRL","i4");
+						createInstruT2("获取被吊销证书的序列号","i4-1");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0]=createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\"");
+							instruArr[1]=createCmdInstruSpan("“abc.pem。","被吊销的证书");
+							createCmdInstruT2(instruArr,"cfssl");
+
+						createInstruT2("将序列号写入文件，多个证书，则每行一个序列号","i4-2");
+							instruArr[0]=createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\" >> “crl.txt。");
+							instruArr[2]=createCmdInstruSpan("“crl.txt。","存储被吊销证书序列号的文件");
+							createCmdInstruT2(instruArr,"cfssl");
+
+						createInstruT2("生成证书吊销列表crl","i4-3");
+							instruArr[0]=createLinuxCmd("cfssl gencrl crl.txt “ca.pem。 “ca-key.pem。 | tee “crl.crl。");
+							instruArr[1]=createCmdInstruSpan("“ca.pem。","根证书");
+							instruArr[2]=createCmdInstruSpan("“ca-key.pem。","根证书的私钥");
+							instruArr[3]=createCmdInstruSpan("“crl.crl。","证书吊销列表crl");
+							createCmdInstruT2(instruArr,"cfssl");
 			</script>
 		</div>
 	</div>

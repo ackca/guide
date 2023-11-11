@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/cert.ico" />
+	<title>NetDevOps-证书服务-OpenSSL</title>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(openssl);
+	</script>
+	<style type="text/css">
+		.tdCliLogo
+		{
+			border-right-color: #E6DB74;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("pkck#12 格式证书管理","i1");
+						createInstruT2("windows中对应证书的扩展名为 .pfx 或 .p12");
+							createConfigImgT2("openssl/pfx");
+
+						createInstruT2("从打包文件中分离私钥","i1-1");
+							createInstruAllTopT2("分离后私钥会被再次加密");
+							instruArr = new Array();
+							instruArr[0]=createLinuxCmd("openssl pkcs12 -in “itachi.pfx。 -nocerts -out “itachi-key-encry.pem。 [ -passin pass”:。“Cisc0123。 -passout pass:“cisco。 ]");
+							instruArr[1]=createCmdInstruSpan("“itachi.pfx。","pkck#12 格式证书");
+							instruArr[2]=createCmdInstruSpan("“itachi-key-encry.pem。","再次被加密的私钥文件");
+							instruArr[3]=createCmdInstruSpan("“Cisc0123。","pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
+							instruArr[4]=createCmdInstruSpan("“cisco。","私钥的加密密码，如果省略这部分，将根据提示输入");
+							createCmdInstruT2(instruArr,"openssl");
+
+						// createInstruT2("私钥解密，得到明文私钥");
+						// 	createInstruAllTopT2("根据提示输入私钥的加密密码");
+						//
+						// 	instruArr[0]=createLinuxCmd("openssl rsa -in “test.itachi.tech-key-encry.pem。 -out “test.itachi.tech-key.pem。");
+						// 	instruArr[1]=createCmdInstruSpan("“test.itachi.tech-key-encry.pem。","加密的私钥文件");
+						// 	instruArr[2]=createCmdInstruSpan("“test.itachi.tech-key.pem。","明文的私钥文件");
+						// 	createCmdInstruT2(instruArr,"openssl");
+
+						createInstruT2("从打包文件中分离证书","i1-2");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0]=createLinuxCmd("openssl pkcs12 -in “itachi.pfx。 -clcerts -nokeys -out “itachi.pem。 [ -passin pass”:。“Cisc0123。 ]");
+							instruArr[1]=createCmdInstruSpan("“itachi.pfx。","pkck#12 格式证书");
+							instruArr[2]=createCmdInstruSpan("“itachi.pem。","证书");
+							instruArr[3]=createCmdInstruSpan("“Cisc0123。","pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
+							createCmdInstruT2(instruArr,"openssl");
+
+						createInstruT2("将证书和私钥打包为 pkck#12 格式证书","i1-3");
+							instruArr[0]=createLinuxCmd("openssl pkcs12 -export -out “itachi.p12。 -inkey “itachi-key.pem。 -in “itachi.pem。 [ -passout pass”:。“Cisc0123。 ]");
+							instruArr[1]=createCmdInstruSpan("“itachi.p12。","pkck#12 格式证书");
+							instruArr[2]=createCmdInstruSpan("“itachi-key.pem。","私钥");
+							instruArr[3]=createCmdInstruSpan("“itachi.pem。","证书");
+							instruArr[4]=createCmdInstruSpan("“Cisc0123。","pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
+							createCmdInstruT2(instruArr,"openssl");
+			</script>
+		</div>
+	</div>
+</body>
+</html>

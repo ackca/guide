@@ -32,93 +32,36 @@
 				createInstruT0("安装配置证书服务<br />","i3");
 					createConfigImgT0("certsrv/i3$1~29");
 
-				createInstruT0("配置证书Web服务","i4");
-					createInstruT1("配置证书服务<br />","i4-1");
+				createInstruT0("配置证书注册Web服务","i4");
+					createInstruT1("配置服务<br />","i4-1");
 						createConfigImgT1("certsrv/i4-1$1~6");
 
-					createInstruT1("验证证书服务","i4-2");
-						createInstruAllTopT1("使用浏览器打开页面 https://计算机名.域名/certsrv");
+					createInstruT1("验证&使用服务","i4-2");
+						createInstruAllTopT1("使用浏览器打开页面 ’https://计算机名.域名/certsrv。");
 						createInstruAllTopT1("输入管理员用户名、密码后能正常打开即可");
 						createConfigImgT1("certsrv/i4-2$1~2");
+
+				createInstruT0("配置证书注册Web服务","i6");
+					createInstruT1("配置服务<br />","i6-1");
+						createConfigImgT1("certsrv/i3$1~4");
+						createConfigImgT1("certsrv/i6-1$1~21");
+
+					createInstruT1("验证&使用服务","i6-2");
+						createInstruAllTopT1("使用浏览器打开页面 ’https://计算机名.域名/certsrv/mscep/mscep.dll。");
+						createInstruAllTopT1("’网络设备的请求URL也为此链接，但协议为。 ‘http。");
+						createInstruAllTopT1("点击页面中的链接，输入用户名、密码后，显示申请证书所需密码");
+						createConfigImgT1("certsrv/i6-2$1~3");
 
 				createInstruT0("配置可导出私钥的证书模板","i5");
 					createInstruT1("配置可导出私钥的证书模板<br />","i5-1");
 						createConfigImgT1("certsrv/i5-1$1~14");
 
-					createInstruT1("配置可导出私钥的证书模板<br />","i5-2");
+					createInstruT1("申请并导出证书<br />","i5-2");
 						createConfigImgT1("certsrv/i5-2$1~23");
 
-					createInstruT1("提取明文的证书和私钥","i5-3");
-						createInstruT2("从打包文件中分离私钥");
-							createInstruAllTopT2("当前导出的文件为证书和私钥打包在一起的文件");
-							createInstruAllTopT2("分离后私钥会被再次加密");
-							createInstruAllTopT2("根据提示输入打包文件的加密密码以及私钥的加密密码（两次）");
-
-							instruArr = new Array();
-							instruArr[0]=createLinuxCmd("openssl pkcs12 -in “test.itachi.tech.pfx。 -nocerts -out “test.itachi.tech-key-encry.pem。");
-							instruArr[1]=createCmdInstruSpan("“test.itachi.tech.pfx。","证书和私钥的打包文件");
-							instruArr[2]=createCmdInstruSpan("“test.itachi.tech-key-encry.pem。","再次被加密的私钥文件");
-							createCmdInstruT2(instruArr,"openssl");
-
-						createInstruT2("私钥解密，得到明文私钥");
-							createInstruAllTopT2("根据提示输入私钥的加密密码");
-
-							instruArr[0]=createLinuxCmd("openssl rsa -in “test.itachi.tech-key-encry.pem。 -out “test.itachi.tech-key.pem。");
-							instruArr[1]=createCmdInstruSpan("“test.itachi.tech-key-encry.pem。","加密的私钥文件");
-							instruArr[2]=createCmdInstruSpan("“test.itachi.tech-key.pem。","明文的私钥文件");
-							createCmdInstruT2(instruArr,"openssl");
-
-						createInstruT2("从打包文件中分离证书");
-							createInstruAllTopT2("根据提示输入打包文件的加密密码");
-
-							instruArr[0]=createLinuxCmd("openssl pkcs12 -in “test.itachi.tech.pfx。 -clcerts -nokeys -out “test.itachi.tech.pem。");
-							instruArr[1]=createCmdInstruSpan("“test.itachi.tech.pfx。","证书和私钥的打包文件");
-							instruArr[2]=createCmdInstruSpan("“test.itachi.tech.pem。","证书文件");
-							createCmdInstruT2(instruArr,"openssl");
-
-						createInstruT2("完整展示");
-							cmd = `
-								ll
-								# 下面为输出
-								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx	# 证书私钥打包文件
-
-								# 从打包文件中分离私钥
-								openssl pkcs12 -in test.itachi.tech.pfx -nocerts -out test.itachi.tech-key-encry.pem
-								# 下面为输出
-								Enter Import Password:				# 输入打包文件加密密码
-								Enter PEM pass phrase:				# 输入私钥加密密码
-								Verifying - Enter PEM pass phrase:	# 再次输入私钥加密密码
-
-								ll
-								# 下面为输出
-								-rw-------. 1 root root 2173  9月 11 16:54 test.itachi.tech-key-encry.pem	  # 加密的私钥
-								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx				# 证书私钥打包文件
-
-								# 私钥解密，得到明文私钥
-								openssl rsa -in test.itachi.tech-key-encry.pem -out test.itachi.tech-key.pem
-								# 下面为输出
-								Enter pass phrase for test.itachi.tech-key-encry.pem:	# 输入私钥加密密码
-								writing RSA key
-
-								ll
-								# 下面为输出
-								-rw-------. 1 root root 2173  9月 11 16:54 test.itachi.tech-key-encry.pem	  # 加密的私钥
-								-rw-------. 1 root root 1704  9月 11 16:54 test.itachi.tech-key.pem			# 明文的私钥
-								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx				# 证书私钥打包文件
-
-								# 从打包文件中分离证书
-								openssl pkcs12 -in test.itachi.tech.pfx -clcerts -nokeys -out test.itachi.tech.pem
-								# 下面为输出
-								Enter Import Password:	# 输入打包文件加密密码
-
-								ll
-								# 下面为输出
-								-rw-------. 1 root root 2173  9月 11 16:54 test.itachi.tech-key-encry.pem	  # 加密的私钥
-								-rw-------. 1 root root 1704  9月 11 16:54 test.itachi.tech-key.pem			# 明文的私钥
-								-rw-------. 1 root root 2072  9月 11 16:55 test.itachi.tech.pem				# 证书
-								-rw-r--r--. 1 root root 4247  9月 10 21:46 test.itachi.tech.pfx				# 证书私钥打包文件
-							`;
-							createLinuxTxtT2(cmd);
+				createInstruT0("IPSec VPN证书模板","i7");
+					createInstruAllTopT0("不同设备的要求不同，为了稳妥，基于标准的 ’IPSec(脱机申请)。 进行修改<br />");
+					createConfigImgT0("certsrv/i7$1");
 
 			</script>
 		</div>

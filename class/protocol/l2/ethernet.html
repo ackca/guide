@@ -48,7 +48,7 @@
 						数据部分（Data）
 						由46~1500字节构成，如果数据部分较小（如ARP），小于46字节，需要填充0使数据部分达到最小的46字节
 
-						填充（Data）
+						填充（padding）
 						长度可变，可能不存在，EtherneII报文数据部分最小46字节，但一此较小的报文，如ARP，数据部分只有28字节，需要填充0使数据部分达到最小的46字节
 
 						帧校验序列（FCS）
@@ -60,7 +60,6 @@
 					createInstruT1("实例为ping报文，如下所示<br />");
 						createConfigImgT1("ethernet/eth_packet");
 			</script>
-
 			<br /><br /><br /><br /><br /><br /><br /><br /><br />
 		</div>
 	</div>

@@ -303,6 +303,11 @@ top_menu = `
                                             <a href="rootpath/class/netdevops/pki/openssl.html">OpenSSL</a>
                                         </div>
                                     </li>
+                                    <li class="cat-item">
+                                        <div class="cat-item-main">
+                                            <a href="rootpath/class/netdevops/pki/certs_mgmt.html">证书管理</a>
+                                        </div>
+                                    </li>
                                 </ul>
 							</h3>
 						</div>

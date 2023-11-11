@@ -668,16 +668,19 @@
 								instruArr[1] = createCmdInstruSpan("“30。","超时时间，单位分钟");
 								createCmdInstruT3(instruArr,"cisco");
 
-					createInstruT1("查看连接","i4-5");
+					createInstruT1("查看连接<br />","i4-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("ASA# show vpn-sessiondb [ webvpn ]");
-						createCmdInstruT2(instruArr,"cisco");
+						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("关闭连接","i4-6");
+					createInstruT1("<br />关闭连接<br />","i4-6");
 						instruArr[0] = createCmdSpan("ASA# vpn-sessiondb logoff ……");
-						createCmdInstruT2(instruArr,"cisco");
+						createCmdInstruT1(instruArr,"cisco");
 			</script>
+			<br /><br /><br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br /><br /><br />
 		</div>
 	</div>
 </body>

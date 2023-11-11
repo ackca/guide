@@ -17,11 +17,12 @@
 {
 	padding: 10px 5px 10px 15px;
 	display: block;
-	border-left: 3px solid transparent;
+	border-left: solid 3px transparent;
 	color: #b8c7ce;
 }
 
-.sidebar-menu > li > a > .fa
+.sidebar-menu > li > a > .fa,
+.sidebar-menu > li > a > .fa-regular
 {
 	width: 25px;
 }
@@ -110,19 +111,22 @@
 	color: #8aa4af;
 }
 
-.sidebar-menu .treeview-menu > li > a > .fa
+.sidebar-menu .treeview-menu > li > a > .fa,
+.sidebar-menu .treeview-menu > li > a > .fa-regular
 {
 	width: 20px;
 	margin-left: 20px;
 	margin-right: 5px;
 }
 
-.sidebar-menu .treeview-menu > li > a > .fa-angle-left, .sidebar-menu .treeview-menu > li > a > .fa-angle-down
+.sidebar-menu .treeview-menu > li > a > .fa-angle-left,
+.sidebar-menu .treeview-menu > li > a > .fa-angle-down
 {
 	width: auto;
 }
 
-.sidebar-menu .treeview-menu > li.active > a, .sidebar-menu .treeview-menu > li > a:hover
+.sidebar-menu .treeview-menu > li.active > a,
+.sidebar-menu .treeview-menu > li > a:hover
 {
 	color: #fff;
 }
@@ -149,4 +153,16 @@
 {
 	border-radius: 5px;
 	background: #595B5D;
+}
+
+/*菜单打开后，图标改为打开的文件夹*/
+.sidebar-menu > li.active > a > .fa-folder:before,
+.menu-open > li.active > a > .fa-folder:before
+{
+    content: "\f07c";
+}
+
+.main-sidebar .fa.pull-right
+{
+	float: right;
 }

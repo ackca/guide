@@ -1,13 +1,13 @@
-.top_navigation, .top_navigation dd, .top_navigation dt, .top_navigation h1, .top_navigation h2,
-.top_navigation h3, .top_navigation h4, .top_navigation h5, .top_navigation h6,
-.top_navigation li, .top_navigation p, .top_navigation ul
+.top_navigation, .top_navigation dd, .top_navigation dt, .top_navigation h1,
+.top_navigation h2, .top_navigation h3, .top_navigation h4, .top_navigation h5,
+.top_navigation h6, .top_navigation li, .top_navigation p, .top_navigation ul
 {
 	margin: 0;
 	padding: 0;
 }
 
-.top_navigation h1, .top_navigation h2, .top_navigation h3, .top_navigation h4,
-.top_navigation h5, .top_navigation h6
+.top_navigation h1, .top_navigation h2, .top_navigation h3,
+.top_navigation h4, .top_navigation h5, .top_navigation h6
 {
 	font-size: 130%;
 	font-weight: 400;
@@ -156,31 +156,31 @@
 	font-size: 20px;
 }
 
-.mod-header-nav .top-cat-arrow
-{
-	content: "";
-	width: 20px;
-	height: 12px;
-	background-image: url(../img/sprite.png);
-	background-position: -331px -158px;
-	transition: -webkit-transform .3s ease;
-	transition: transform .3s ease;
-	transition: transform .3s ease,-webkit-transform .3s ease;
-	-webkit-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	transform: rotate(180deg);
-	display: inline-block;
-	vertical-align: bottom;
-	margin-left: 4px;
-}
+/*.mod-header-nav .top-cat-arrow*/
+/*{*/
+/*	content: "";*/
+/*	width: 20px;*/
+/*	height: 12px;*/
+/*	background-image: url(../img/sprite.png);*/
+/*	background-position: -331px -158px;*/
+/*	transition: -webkit-transform .3s ease;*/
+/*	transition: transform .3s ease;*/
+/*	transition: transform .3s ease,-webkit-transform .3s ease;*/
+/*	-webkit-transform: rotate(180deg);*/
+/*	-ms-transform: rotate(180deg);*/
+/*	transform: rotate(180deg);*/
+/*	display: inline-block;*/
+/*	vertical-align: bottom;*/
+/*	margin-left: 4px;*/
+/*}*/
 
-.mod-header-nav .top-cat.hassub:active .top-cat-arrow,
-.mod-header-nav .top-cat.hassub:hover .top-cat-arrow
-{
-	-webkit-transform: rotate(0deg);
-	-ms-transform: rotate(0deg);
-	transform: rotate(0deg);
-}
+/*.mod-header-nav .top-cat.hassub:active .top-cat-arrow,*/
+/*.mod-header-nav .top-cat.hassub:hover .top-cat-arrow*/
+/*{*/
+/*	-webkit-transform: rotate(0deg);*/
+/*	-ms-transform: rotate(0deg);*/
+/*	transform: rotate(0deg);*/
+/*}*/
 
 .mod-header-nav .slider
 {

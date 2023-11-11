@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/nginx.ico" />
-	<title>NetDevOps-gitlab</title>
+	<title>NetDevOps-nginx</title>
 	<script src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(nginx);
@@ -15,25 +15,119 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("基本配置","i1");
-                    createInstruT1("安装软件","i1-1");
-                        createInstruAllTopT1("软件名为 nginx");
+						createInstruT2("安装软件","i1-1");
+							createInstruAllTopT2("软件名为 nginx");
+							cmd = `
+								dnf install -y nginx
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("启用&&开机启用服务","i1-2");
+							createInstruAllTopT2("服务名为 nginx");
+							cmd = `
+								systemctl start nginx
+								systemctl enable nginx
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("配置文件位置","i1-3");
+							createInstruAllTopT2("主配置文件路径：’/etc/nginx/nginx.conf。");
+							createInstruAllTopT2("自定义配置文件 以 ’.conf。 结尾，保存到 ’/etc/nginx/default.d/ 。");
+
+				createInstruT0("证书相关","i2");
+						createInstruT2("客户端通过证书认证服务器","i2-1");
+							createInstruAllTopT2("只需要证书及私钥");
+							cmd = `
+								server {
+									listen       443 ssl http2;
+									listen       [::]:443 ssl http2;
+									server_name  certsrv.itachi.tech;
+									root         /usr/share/nginx/html;
+
+									ssl_certificate "/opt/certs/certsrv.pem";           # 服务器证书
+									ssl_certificate_key "/opt/certs/certsrv-key.pem";   # 服务器私钥
+									ssl_session_cache shared:SSL:1m;
+									ssl_session_timeout  10m;
+									ssl_ciphers PROFILE=SYSTEM;
+									ssl_prefer_server_ciphers on;
+								}
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("双向证书认证","i2-2");
+							createInstruAllTopT2("校验服务器时，需要证书及私钥，校验客户端时，需要客户端证书的根证书");
+							createInstruAllTopT2("客户端需要对应的证书及私钥，该证书需要支持 ’客户端身份验证。 功能，微软证书服务器则为 用户 证书");
+							cmd = `
+								server {
+									listen       443 ssl http2;
+									listen       [::]:443 ssl http2;
+									server_name  certsrv.itachi.tech;
+									root         /usr/share/nginx/html;
+
+									ssl_certificate "/opt/certs/certsrv.pem";           # 服务器证书
+									ssl_certificate_key "/opt/certs/certsrv-key.pem";   # 服务器证书私钥
+									ssl_session_cache shared:SSL:1m;
+									ssl_session_timeout  10m;
+									ssl_ciphers PROFILE=SYSTEM;
+									ssl_prefer_server_ciphers on;
+
+									ssl_verify_client       on;                 # 启用验证客户端证书功能
+									ssl_client_certificate  /opt/certs/ca.pem;  # 客户端证书的根证书
+								}
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT2("nginx代理https服务，单向认证","i2-3");
+						createInstruAllTopT2("如果https的根证书不被信任，可以不校验，也可以添加根证书信任");
 						cmd = `
-							dnf install -y nginx
-						`;
-						createLinuxTxtT1(cmd);
+							server {
+								listen       443 ssl http2;
+								listen       [::]:443 ssl http2;
+								server_name  certsrv.itachi.tech;
 
-                    createInstruT1("启用&&开机启用服务","i1-2");
-                        createInstruAllTopT1("服务名为 nginx");
+								ssl_certificate "/opt/certs/certsrv.pem";
+								ssl_certificate_key "/opt/certs/certsrv-key.pem";
+								ssl_session_cache shared:SSL:1m;
+								ssl_session_timeout  10m;
+								ssl_ciphers PROFILE=SYSTEM;
+								ssl_prefer_server_ciphers on;
+
+								location / {
+									proxy_pass                      https://in.itachi.tech/;    # 被代理的服务
+									proxy_ssl_verify                on;                         # 启用证书验证功能
+									proxy_ssl_trusted_certificate   /opt/certs/ca.pem;          # 被代理的服务的根证书
+								}
+							}
+						`;
+						createLinuxTxtT2(cmd);
+
+					createInstruT2("nginx代理https服务，双向认证","i2-4");
+						createInstruAllTopT2("如果https的根证书不被信任，可以不校验，也可以添加根证书信任");
+						createInstruAllTopT2("客户端需要证书及私钥，该证书需要支持 ’客户端身份验证。 功能，微软证书服务器则为 用户 证书");
 						cmd = `
-							systemctl start nginx
-							systemctl enable nginx
+							server {
+								listen       443 ssl http2;
+								listen       [::]:443 ssl http2;
+								server_name  certsrv.itachi.tech;
+
+								ssl_certificate "/opt/certs/certsrv.pem";
+								ssl_certificate_key "/opt/certs/certsrv-key.pem";
+								ssl_session_cache shared:SSL:1m;
+								ssl_session_timeout  10m;
+								ssl_ciphers PROFILE=SYSTEM;
+								ssl_prefer_server_ciphers on;
+
+								location / {
+									proxy_pass                      https://in.itachi.tech/;            # 被代理的服务
+									proxy_ssl_verify                on;                                 # 启用证书验证功能
+									proxy_ssl_trusted_certificate   /opt/certs/ca.pem;                  # 被代理的服务的根证书
+
+									proxy_ssl_certificate           /opt/certs/nginx.client.pem;        # 代理服务的客户端证书
+									proxy_ssl_certificate_key       /opt/certs/nginx.client-key.pem;    # 代理服务的客户端证书私钥
+								}
+							}
 						`;
-						createLinuxTxtT1(cmd);
-
-                    createInstruT1("配置文件位置","i1-3");
-                        createInstruAllTopT1("主配置文件路径：<span class='linuxCMD_cmd'>/etc/nginx/nginx.conf</span>");
-                        createInstruAllTopT1("自定义配置文件 以 .conf 结尾，保存到 <span class='linuxCMD_cmd'>/etc/nginx/default.d/</span>");
-
+						createLinuxTxtT2(cmd);
 			</script>
 		</div>
 	</div>

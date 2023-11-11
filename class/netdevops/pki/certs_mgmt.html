@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="shortcut icon" href="../../../img/cert.ico" />
+	<title>NetDevOps-证书服务-证书管理</title>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(certs_mgmt);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("添加受信任的根证书","i1");
+					createInstruT1("Windows系统","i1-1");
+						createConfigImgT1("certs_mgmt/i1-1$1~8");
+
+					createInstruT1("RHEL 7/8/9","i1-2");
+						createInstruAllTopT1("将根证书存入　’/etc/pki/ca-trust/source/anchors/ 。");
+						createInstruAllTopT1("更新受信任的根证书");
+						cmd = `
+							update-ca-trust
+						`;
+						createLinuxTxtT1(cmd);
+						createConfigImgT1("certs_mgmt/i1-2$1");
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

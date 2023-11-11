@@ -19,6 +19,11 @@
 		{
 			border-right-color: #E6DB74;
 		}
+
+		.cmdInstruAllTopT2 + .linuxDivT2
+		{
+			margin-top: inherit;
+		}
 	</style>
 </head>
 <body>
@@ -272,8 +277,26 @@
 												file: ./itachi-pass.txt # 指定某个文件中的内容为信息，单机的docker compose只支持这种方式',
 								`;
 								createYAMLT3(yaml);
+
+						createInstruT2("域名访问容器", "i3-13");
+							createInstruAllTopT2("通常情况，容器间访问使用services名 ，但可能需要基于证书访问，比如访问某容器的https");
+							createInstruAllTopT2("为了申请证书时方便，可以为容器起别名");
+								yaml = `
+									services:
+										in-nginx:
+											images: nginx
+
+										networks:
+											itachi:
+												aliases:
+													- in-nginx.itachi.tech # 其它容器访问时，可以用该域名访问,
+								`;
+								createYAMLT2(yaml);
+
 			</script>
 		</div>
 	</div>
+	<br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br />
 </body>
 </html>

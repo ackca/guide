@@ -337,15 +337,17 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	line-height: 60px;
 }
 
-.span25
-{
-	font-size: 25px;
-}
-
-.spanT
+.group_result span
 {
 	color: #63D8EE;
 }
+
+.span25
+{
+	font-size: 25px;
+	color: #FFFFFF!important;
+}
+
 
 .spanSpace
 {

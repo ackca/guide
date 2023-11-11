@@ -97,7 +97,7 @@ function createTree(tree) {
 		}
 		else {
 			htmlText = htmlText + '<a href="javascript:void(0)" cmd="#' + key + '">' +
-				'<i class="fa fa-files-o"></i><span>' + tree[key] +
+				'<i class="fa-regular fa-file-lines"></i><span>' + tree[key] +
 				'</span></a><ul class="treeview-menu"></ul>';
 		}
 		htmlText = htmlText + '</li>';
@@ -184,43 +184,47 @@ function createInstruAllBottom(text, instruT) {
 }
 
 function createInstruAllTopT0(text, instruT) {
-	createInstruAllTop(text,"T0");
+	createInstruAllTop(text, "T0");
 }
 
 function createInstruAllTopT1(text, instruT) {
-	createInstruAllTop(text,"T1");
+	createInstruAllTop(text, "T1");
 }
 
 function createInstruAllTopT2(text, instruT) {
-	createInstruAllTop(text,"T2");
+	createInstruAllTop(text, "T2");
 }
 
 function createInstruAllTopT3(text, instruT) {
-	createInstruAllTop(text,"T3");
+	createInstruAllTop(text, "T3");
+}
+
+function createInstruAllBottomT0(text, instruT) {
+	createInstruAllBottom(text, "T0");
 }
 
 function createInstruAllBottomT1(text, instruT) {
-	createInstruAllBottom(text,"T1");
+	createInstruAllBottom(text, "T1");
 }
 
 function createInstruAllBottomT2(text, instruT) {
-	createInstruAllBottom(text,"T2");
+	createInstruAllBottom(text, "T2");
 }
 
 function createInstruAllBottomT3(text, instruT) {
-	createInstruAllBottom(text,"T3");
+	createInstruAllBottom(text, "T3");
 }
 
 function createCmdT1(text) {
-	createCmd(text, 'cmdT1');
+	createCmd(text, "cmdT1");
 }
 
 function createCmdT2(text) {
-	createCmd(text, 'cmdT2');
+	createCmd(text, "cmdT2");
 }
 
 function createCmdT3(text) {
-	createCmd(text, 'cmdT3');
+	createCmd(text, "cmdT3");
 }
 
 function createLinuxTxt(cmds, cmdT) {
@@ -231,8 +235,8 @@ function createLinuxTxt(cmds, cmdT) {
 	var path = "../".repeat(url.split('/').length - 3);
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy'><div class='CopyImage'></div></div>" +
-		"<div class='copySuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
+		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
+		"<div class='copySuccess'><i class='fa-solid fa-circle-check'></i>&nbsp;复制成功</div>"
 	var cmd_arr = cmds.split('\n')
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
@@ -250,11 +254,11 @@ function createLinuxTxt(cmds, cmdT) {
 			continue;
 		}
 
-		if(index > 0 ) {	//配置和注释
+		if(index > 0) {	//配置和注释
 			var notZS = 'sed&nbsp;-i&nbsp;\'/&nbsp;swap&nbsp;/&nbsp;s/^\\(.*\\)$/#\\1/g\'&nbsp;/etc/fstab';
-			// var notZS_reg = new RegExp('\\[root@localhost&nbsp;[\\w~/]+\\]#');
-			// if (!notZS_reg.test(cmd_arr[i]) && cmd_arr[i] != notZS) {
-			if (cmd_arr[i] != notZS) {
+			// notZS对应 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab，位于k8s的kubeadm安装
+			// /&nbsp;# 也就是 / #，位于Vault的命令行
+			if (cmd_arr[i] != notZS && !(cmd_arr[i].indexOf("/&nbsp;#") == 0)) {
 				zs = cmd_arr[i].substring(index);	//注释部分
 				cmd = cmd_arr[i].substring(0, index);	//命令部分
 				htmlText = htmlText + "<span>" + cmd + "</span><span class='spanZS'>" + zs + "</span><br />";
@@ -262,12 +266,13 @@ function createLinuxTxt(cmds, cmdT) {
 			}
 		}
 
-		if(cmd_arr[i].indexOf('/*') >= 0 && cmd_arr[i].indexOf('*/') >= 0) {
+		// cisco/*# 位于Vault的policy策略
+		if(cmd_arr[i].indexOf('cisco/*') < 0 && cmd_arr[i].indexOf('/*') >= 0 && cmd_arr[i].indexOf('*/') >= 0) {
 			htmlText = htmlText + "<div class='divZS'>" + cmd_arr[i] + "</div><br />";
 			continue;
 		}
-
-		if(cmd_arr[i].indexOf('/*') >= 0) {
+		// cisco/*# 位于Vault的policy策略
+		if(cmd_arr[i].indexOf('cisco/*') < 0 && cmd_arr[i].indexOf('/*') >= 0) {
 			if(cmd_arr[i] == 'path&nbsp;"itachi/*"&nbsp;{') {
 				htmlText = htmlText + '<span>' + cmd_arr[i].trim() + '</span><br />'
 				continue;
@@ -316,9 +321,8 @@ function createViptelaCLI(cmds, cmdT) {
 	var path = "../".repeat(url.split('/').length - 3);
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy'><div class='CopyImage'></div></div>" +
-		"<div class='copySuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>"
-
+		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
+		"<div class='copySuccess'><i class='fa-solid fa-circle-check'></i>&nbsp;复制成功</div>"
 	var cmd_arr = cmds.split('\n')
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
@@ -382,8 +386,8 @@ function createYAML(cmds, cmdT) {
 	var path = "../".repeat(url.split('/').length - 3);
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy'><div class='CopyImage'></div></div>" +
-		"<div class='copySuccess'><img src='" + path + "img/g.png' />&nbsp;复制成功</div>";
+		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
+		"<div class='copySuccess'><i class='fa-solid fa-circle-check'></i>&nbsp;复制成功</div>";
 	var cmd_arr = cmds.split('\n');
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
@@ -579,6 +583,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
 
 	reg = new RegExp(" ('[^']+')","g");
+	// reg = new RegExp("('[^']+')","g");
 	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
 	
 	if(isDG) {
@@ -668,7 +673,8 @@ function addSpan(text) {
 	/*
 		“ ——> <span class="variable">		包裹可变部分
 		” ——> <span class="bold">			包裹两个可变部分时夹着的符号，突出显示
-		‘ ——> <span class="spanR">			包裹强调部分
+		‘ ——> <span class="spanR">			包裹强调部分，红色
+		’ ——> <span class="spanBlue">		包裹强调部分，蓝色
 		｛ ——> <span class="variableZN">	包裹可变部分的中文描述
 		｝ ——> <span class="variableZN">	包裹Linux的命令参数部分
 		。 ——> </span>						包裹结束
@@ -685,6 +691,7 @@ function addSpan(text) {
 	var regVariable = new RegExp("“","g");
 	var regSpanBold = new RegExp("”","g");
 	var regR = new RegExp("‘","g");
+	var regBlue = new RegExp("’","g");
 	var regZN = new RegExp("｛","g");
 	var regLinuxPara = new RegExp("｝","g");
 	var regEnd = new RegExp("([^/])。","g");
@@ -696,6 +703,7 @@ function addSpan(text) {
 	text = text.replace(regVariable, "<span class='variable'>");
 	text = text.replace(regSpanBold, "<span class='spanBold'>");
 	text = text.replace(regR, "<span class='spanR'>");
+	text = text.replace(regBlue, "<span class='spanBlue'>");
 	text = text.replace(regZN, "<span class='variableZN'>");
 	text = text.replace(regLinuxPara, "<span class='linuxCMD_Para'>");
 	text = text.replace(regEnd, "$1</span>");
@@ -780,7 +788,6 @@ function createCmdInstruT3(instruArr, typeBrand) {
 function createConfigImg(imgNameList, imgDescribe, typeT) {
 	var htmlText = "<div class='divConfigImg" + typeT
 
-	// console.log(imgDescribe)
 	if(imgDescribe) {
 		htmlText = htmlText + "' imgDescribe='" + imgDescribe
 	}
@@ -922,7 +929,7 @@ function createProtocolExplain(words, k, structID, divT) {
 	for(var i = 1,j = 1; i < words_arr.length - 1; i = i + 3, j++){
 		htmlText = htmlText + "<div onMouseOver=\"heightlightField("
 			+ j + "," + k + ", \'#" + structID + "\')\" onMouseOut=\"initProtocol(\'#" + structID + "\')\">";
-		htmlText = htmlText + "<dt class='fa fa-files-o'>&nbsp;&nbsp;" + words_arr[i].trim() + "</dt>";
+		htmlText = htmlText + "<dt><i class='fa-regular fa-file-lines'>&nbsp;&nbsp;</i>" + words_arr[i].trim() + "</dt>";
 		htmlText = htmlText + "<dd>" + words_arr[i + 1].trim() + "</dd></div>";
 	}
 	htmlText = htmlText + "</dl></div>";
@@ -933,7 +940,6 @@ function createProtocolExplain(words, k, structID, divT) {
 function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, protocolName, divID) {
 	var htmlText = "<div class='divSJ" + divT + "'>";
 	htmlText = htmlText + "<div class='divProtocolStruct'>";
-	// htmlText = htmlText + "<div protocolName='" + protocolName + "' style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
 	htmlText = htmlText + "<div id='" + divID + "' protocolName='" + protocolName + "' style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth +"px " + SFHeight + "px' ></div>";
 	htmlText = htmlText + "</div>";
 	htmlText = htmlText + "</div>";
@@ -968,10 +974,6 @@ function getPage(e) {
 		pageY: pageY
 	}
 }
-
-// function closeProtocol() {
-// 	$('#divProtocol').css("display", "none");
-// }
 
 function createHTTPHeadersT1(text, instruT) {
 	createHTTPHeaders(text, "T1");
@@ -1180,24 +1182,9 @@ $(document).ready(function () {
 		document.execCommand('Copy');			// 执行复制
 		document.body.removeChild(textarea);	// 删除临时实例
 
-		$(this).next().fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
-		setTimeout(function() { $(this).next().fadeOut(500) }, 1000);
-	});
-
-	/*
-		可以复制内容的配置文件，右上角复制图标，鼠标悬浮变白色
-		目前配置文件类型：Linux配置文件、yaml文件、cisco Viptela
-	*/
-	$(".divCopy").mouseover(function () {
-		$(this).children(".CopyImage").css("background-position-x", "23px");
-	});
-
-	/*
-		可以复制内容的配置文件，右上角复制图标，鼠标离开恢复灰色
-		目前配置文件类型：Linux配置文件、yaml文件、cisco Viptela
-	*/
-	$(".divCopy").mouseleave(function () {
-		$(this).children(".CopyImage").css("background-position-x", "0");
+		var _copySuccess = $(this).next();
+		_copySuccess.fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
+		setTimeout(function() { _copySuccess.fadeOut(500) }, 1000);
 	});
 
 	// ---------- 可以复制内容的配置文件，右上角复制图标，相关功能 ---- 结束 ----------
