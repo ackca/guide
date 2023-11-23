@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<link rel="shortcut icon" href="../../../img/cisco.ico" />
+	<link rel="icon" href="../../../img/cisco.svg"/>
 	<title>思科-传统企业网-VPN-基于ASA</title>
 	<script src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
@@ -14,107 +14,108 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("L2L IPsec VPN，IKEv1","i1-1");
-					createInstruT1("激活ikev1","i1-1-1");
-						instruArr = new Array();
-						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
-						instruArr[1] = createCmdInstruSpan("“outside。","接口名");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("只有VPN解密后的流量才能查询的路由（选配）","i1-1-2");
-						instruArr[0] = createCmdSpan("ASA(config)# route “inside。 “0。 “0。 “192.168.20.1。 ‘tunneled。");
-						instruArr[1] = createCmdInstruSpan("‘tunneled。","静态路由，通过加tunneled表示");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("配置 IKEv1（ISAKMP）策略","i1-1-3");
-						createInstruT2("创建IKEv1（ISAKMP）策略");
-							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 policy “1。");
-							instruArr[1] = createCmdInstruSpan("“1。","策略编号");
+				createInstruT0("L2L IPsec VPN","i1");
+					createInstruT1("L2L IPsec VPN，IKEv1","i1-1");
+						createInstruT2("激活ikev1","i1-1-1");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
+							instruArr[1] = createCmdInstruSpan("“outside。","接口名");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置加密算法（‘3des。为默认）");
+						createInstruT2("只有VPN解密后的流量才能查询的路由（选配）","i1-1-2");
+							instruArr[0] = createCmdSpan("ASA(config)# route “inside。 “0。 “0。 “192.168.20.1。 ‘tunneled。");
+							instruArr[1] = createCmdInstruSpan("‘tunneled。","静态路由，通过加tunneled表示");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置 IKEv1（ISAKMP）策略","i1-1-3");
+							createInstruT3("创建IKEv1（ISAKMP）策略");
+								instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 policy “1。");
+								instruArr[1] = createCmdInstruSpan("“1。","策略编号");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置加密算法（‘3des。为默认）");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption { aes | des | 3des | … }");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置散列算法（‘sha。为默认）");
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# hash { md5 | sha | … }");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置认证方式（‘pre-share。为默认）");
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# authentication { pre-share | rsa-sig }");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置DH密钥长度(‘group 2。为默认)");
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# group { 1 | 2 | 5 }");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置IKEv1（ISAKMP）的tunnel-group","i1-1-4");
+							createInstruT3("创建tunnel-group，并配置其类型");
+								instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “101.100.1.1。 type ipsec-l2l");
+								instruArr[1] = createCmdInstruSpan("“101.100.1.1。","tunnel-group名，但要和对端IP相同");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("进入tunnel-group属性配置模式");
+								instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “101.100.1.1。 ipsec-attributes");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置预共享密钥");
+								instruArr[0] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev1 pre-shared-key “cisco。");
+								instruArr[1] = createCmdInstruSpan("“cisco。","预共享密钥");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置 IPsec策略（转换集）","i1-1-5");
+							instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev1 transform-set “ipsec-tran。 { esp-aes| esp-des | esp-3des | … }  { esp-md5-hmac | esp- sha- hmac | … }");
+							instruArr[1] = createCmdInstruSpan("“ipsec-tran。","IPsec trasform名称");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置感兴趣流量","i1-1-6");
+							instruArr[0] = createCmdSpan("ASA(config)# access-list “100。 permit ip “192.168.20.0。 “255.255.255.0。  “192.168.10.0。 “255.255.255.0。");
+							instruArr[1] = createCmdInstruSpan("“100。","acl号");
+							instruArr[2] = createCmdInstruSpan("“192.168.20.0。 “255.255.255.0。","本地");
+							instruArr[3] = createCmdInstruSpan("“192.168.10.0。 “255.255.255.0。","对端");
+							createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("创建crypto map","i1-1-7");
+							createInstruT3("匹配感兴趣流量");
+								instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 “1。 match address “100。");
+								instruArr[1] = createCmdInstruSpan("“L2L。","crypto map名");
+								instruArr[2] = createCmdInstruSpan("“1。","IKEv1策略编号");
+								instruArr[3] = createCmdInstruSpan("“100。","标记感兴趣流量的ACL");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("定义对端IP");
+								instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 “1。 set peer “101.100.1.1。");
+								instruArr[3] = createCmdInstruSpan("“101.100.1.1。","对端IP");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("匹配转换集");
+								instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 “1。 set ikev1 transform-set “ipsec-tran。");
+								instruArr[3] = createCmdInstruSpan("“ipsec-tran。","IPsec transform名");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("将 crypto map 应用于接口","i1-1-8");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption { aes | des | 3des | … }");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置散列算法（‘sha。为默认）");
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# hash { md5 | sha | … }");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置认证方式（‘pre-share。为默认）");
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# authentication { pre-share | rsa-sig }");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置DH密钥长度(‘group 2。为默认)");
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# group { 1 | 2 | 5 }");
-							createCmdInstruT2(instruArr,"cisco");
-
-					createInstruT1("配置IKEv1（ISAKMP）的tunnel-group","i1-1-4");
-						createInstruT2("创建tunnel-group，并配置其类型");
-							instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “101.100.1.1。 type ipsec-l2l");
-							instruArr[1] = createCmdInstruSpan("“101.100.1.1。","tunnel-group名，但要和对端IP相同");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("进入tunnel-group属性配置模式");
-							instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “101.100.1.1。 ipsec-attributes");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置预共享密钥");
-							instruArr[0] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev1 pre-shared-key “cisco。");
-							instruArr[1] = createCmdInstruSpan("“cisco。","预共享密钥");
-							createCmdInstruT2(instruArr,"cisco");
-
-					createInstruT1("配置 IPsec策略（转换集）","i1-1-5");
-						instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev1 transform-set “ipsec-tran。 { esp-aes| esp-des | esp-3des | … }  { esp-md5-hmac | esp- sha- hmac | … }");
-						instruArr[1] = createCmdInstruSpan("“ipsec-tran。","IPsec trasform名称");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("配置感兴趣流量","i1-1-6");
-						instruArr[0] = createCmdSpan("ASA(config)# access-list “100。 permit ip “192.168.20.0。 “255.255.255.0。  “192.168.10.0。 “255.255.255.0。");
-						instruArr[1] = createCmdInstruSpan("“100。","acl号");
-						instruArr[2] = createCmdInstruSpan("“192.168.20.0。 “255.255.255.0。","本地");
-						instruArr[3] = createCmdInstruSpan("“192.168.10.0。 “255.255.255.0。","对端");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("创建crypto map","i1-1-7");
-						createInstruT2("匹配感兴趣流量");
-							instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 “1。 match address “100。");
+							instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“L2L。","crypto map名");
-							instruArr[2] = createCmdInstruSpan("“1。","IKEv1策略编号");
-							instruArr[3] = createCmdInstruSpan("“100。","标记感兴趣流量的ACL");
+							instruArr[2] = createCmdInstruSpan("“outside。","应用到的接口名");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("定义对端IP");
-							instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 “1。 set peer “101.100.1.1。");
-							instruArr[3] = createCmdInstruSpan("“101.100.1.1。","对端IP");
+						createInstruT2("当建立VPN的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在","i1-1-9");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("ASA(config)# crypto isakmp nat-traversal [ “10。 ]");
+							instruArr[1] = createCmdInstruSpan("“10。","发送数据包间隔（单位s），默认即为10s");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("匹配转换集");
-							instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 “1。 set ikev1 transform-set “ipsec-tran。");
-							instruArr[3] = createCmdInstruSpan("“ipsec-tran。","IPsec transform名");
-							createCmdInstruT2(instruArr,"cisco");
+					createInstruT1("动态 L2L IPsec VPN，IKEv1","i1-2");
+						createInstruAllTopT1("地址变化端：因对端是静态公有地址，配置方式‘完全同普通的L2L。");
 
-					createInstruT1("将 crypto map 应用于接口","i1-1-8");
-						instruArr = null;
-						instruArr = new Array();
-						instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 interface “outside。");
-						instruArr[1] = createCmdInstruSpan("“L2L。","crypto map名");
-						instruArr[2] = createCmdInstruSpan("“outside。","应用到的接口名");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("当建立VPN的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在","i1-1-9");
-						instruArr = null;
-						instruArr = new Array();
-						instruArr[0] = createCmdSpan("ASA(config)# crypto isakmp nat-traversal [ “10。 ]");
-						instruArr[1] = createCmdInstruSpan("“10。","发送数据包间隔（单位s），默认即为10s");
-						createCmdInstruT1(instruArr,"cisco");
-
-				createInstruT0("动态 L2L IPsec VPN，IKEv1","i1-2");
-					createInstruT1("地址变化端：因对端是静态公有地址，配置方式‘完全同普通的L2L。","i1-2-1");
-
-					createInstruT1("静态公有地址端","i1-2-2");
-						createInstruT2("配置 IKEv1（ISAKMP）策略，‘完全同普通的L2L。","i1-2-2-1");
+						createInstruAllTopT1("静态公有地址端配置如下");
+						createInstruT2("配置 IKEv1（ISAKMP）策略，‘完全同普通的L2L。","i1-2-1");
 						createInstruT2("激活ikev1");
 							instruArr = null;
 							instruArr = new Array();
@@ -146,144 +147,144 @@
 								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# group “2。");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("动态地址使用默认的tunnel group：‘DefaultL2LGroup。","i1-2-2-2");
-						createInstruT2("配置预共享密钥","i1-2-2-3");
+						createInstruT2("动态地址使用默认的tunnel group：‘DefaultL2LGroup。","i1-2-2");
+						createInstruT2("配置预共享密钥","i1-2-3");
 							instruArr[0] = createCmdSpan("ASA(config)# tunnel-group DefaultL2LGroup ipsec-attributes");
 							instruArr[1] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev1 pre-shared-key “cisco。");
 							instruArr[2] = createCmdInstruSpan("“cisco。","预共享密钥");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置 IPsec策略（转换集） ，完全同普通的L2L","i1-2-2-4");
+						createInstruT2("配置 IPsec策略（转换集） ，完全同普通的L2L","i1-2-4");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev1 transform-set “tran。 { esp-aes| esp-des | esp-3des | … }  { esp-md5-hmac | esp- sha- hmac | … }");
 							instruArr[1] = createCmdInstruSpan("“tran。","IPsec trasform名称");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("创建动态crypto map并关联转换集","i1-2-2-5");
+						createInstruT2("创建动态crypto map并关联转换集","i1-2-5");
 							instruArr[0] = createCmdSpan("ASA(config)# crypto dynamic-map “dymap。 “10。 set ikev1 transform-set “tran。");
 							instruArr[1] = createCmdInstruSpan("“dymap。","动态crypto map名");
 							instruArr[2] = createCmdInstruSpan("“10。","编号");
 							instruArr[3] = createCmdInstruSpan("“tran。","转换集名");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("创建静态crypto map并关联动态crypto map","i1-2-2-6");
+						createInstruT2("创建静态crypto map并关联动态crypto map","i1-2-6");
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map “cmap。 “1000。 ipsec-isakmp dynamic “dymap。");
 							instruArr[1] = createCmdInstruSpan("“cmap。","静态态crypto map名");
 							instruArr[2] = createCmdInstruSpan("“1000。","编号");
 							instruArr[3] = createCmdInstruSpan("“dymap。","动态crypto map名");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("将静态crypto map应用到接口","i1-2-2-7");
+						createInstruT2("将静态crypto map应用到接口","i1-2-7");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map cmap interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“outside。","接口名");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("L2L IPsec VPN，IKEv2","i1-3");
-					createInstruT1("激活ikev2","i1-3-1");
-						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev2 enable “outside。");
-						instruArr[1] = createCmdInstruSpan("“outside。","接口名");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("配置ikev2策略","i1-3-2");
-						createInstruT2("创建ikev2策略");
-							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev2 policy “10。");
-							instruArr[1] = createCmdInstruSpan("“10。","策略编号");
+					createInstruT1("L2L IPsec VPN，IKEv2","i1-3");
+						createInstruT2("激活ikev2","i1-3-1");
+							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev2 enable “outside。");
+							instruArr[1] = createCmdInstruSpan("“outside。","接口名");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置加密算法");
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption “3des。");
-							instruArr[1] = createCmdInstruSpan("“3des。","加密算法");
+						createInstruT2("配置ikev2策略","i1-3-2");
+							createInstruT3("创建ikev2策略");
+								instruArr[0] = createCmdSpan("ASA(config)# crypto ikev2 policy “10。");
+								instruArr[1] = createCmdInstruSpan("“10。","策略编号");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置加密算法");
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption “3des。");
+								instruArr[1] = createCmdInstruSpan("“3des。","加密算法");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# hash “sha。");
+								instruArr[1] = createCmdInstruSpan("“sha。","散列算法");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置DH密钥长度");
+								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# group “2。");
+								instruArr[1] = createCmdInstruSpan("“2。","DH组号");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT2("配置prf 算法");
+								instruArr[0] = createCmdSpan("ASA(config-ikev2-policy)# prf “sha。");
+								instruArr[1] = createCmdInstruSpan("“sha。","prf算法");
+								instruArr[2] = createCmdInstruSpan("计算机生成的伪随机数不能直接使用，需要计算散列后才能使用，");
+								instruArr[3] = createCmdInstruSpan("prf定义使用的散列算法，路由器的prf算法默认与完整性校验相同");
+								createCmdInstruT2(instruArr,"cisco");
+
+						createInstruT2("配置tunnel-group","i1-3-3");
+							createInstruT3("创建tunnel-group，并配置其类型");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “100.1.1.1。 type ipsec-l2l");
+								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","tunnel-group名字，但要和对端IP相同");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("进入配置tunnel-group属性配置模式");
+								instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “100.1.1.1。 ipsec-attributes");
+								instruArr[1] = createCmdInstruSpan("“100.1.1.1。","tunnel-group名");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置对端对本地的预共享密钥");
+								instruArr[0] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev2 remote-authentication pre-shared-key “cisco。");
+								instruArr[1] = createCmdInstruSpan("“cisco。","预共享密钥");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置本地对对端的预共享密钥");
+								instruArr[0] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev2 local-authentication pre-shared-key “cisco。");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置ipsec-proposal","i1-3-4");
+							createInstruT3("创建ipsec-proposal");
+								instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev2 ipsec-proposal “ikev2-proposal。");
+								instruArr[1] = createCmdInstruSpan("“ikev2-proposal。","proposal名");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置加密算法");
+								instruArr[0] = createCmdSpan("ASA(config-ipsec-proposal)# protocol esp encryption “3des。");
+								instruArr[1] = createCmdInstruSpan("“3des。","加密算法");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("配置散列算法");
+								instruArr[0] = createCmdSpan("ASA(config-ipsec-proposal)# protocol esp integrity “sha。");
+								instruArr[1] = createCmdInstruSpan("“sha。","散列算法");
+								createCmdInstruT3(instruArr,"cisco");
+
+						createInstruT2("配置感兴趣流量","i1-3-5");
+							instruArr[0] = createCmdSpan("ASA(config)# access-list 100 extended permit ip “192.168.20.0 255.255.255.0。  “192.168.10.0 255.255.255.0。");
+							instruArr[1] = createCmdInstruSpan("“192.168.20.0 255.255.255.0。","本地");
+							instruArr[2] = createCmdInstruSpan("“192.168.10.0 255.255.255.0。","对端");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置散列算法");
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# hash “sha。");
-							instruArr[1] = createCmdInstruSpan("“sha。","散列算法");
-							createCmdInstruT2(instruArr,"cisco");
+						createInstruT2("配置crypto map","i1-3-6");
+							createInstruT3("匹配感兴趣流量");
+								instruArr[0] = createCmdSpan("SA(config)# crypto map “ikev2-map。 “1。 match address “100。");
+								instruArr[1] = createCmdInstruSpan("“ikev2-map。","crypto map名");
+								instruArr[2] = createCmdInstruSpan("“1。","编号");
+								instruArr[3] = createCmdInstruSpan("“100。","acl名");
+								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("配置DH密钥长度");
-							instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# group “2。");
-							instruArr[1] = createCmdInstruSpan("“2。","DH组号");
-							createCmdInstru(instruArr,"cisco");
+							createInstruT3("配置对端IP");
+								instruArr[0] = createCmdSpan("SA(config)# crypto map “ikev2-map。 “1。 set peer “100.1.1.1。");
+								instruArr[3] = createCmdInstruSpan("“100.1.1.1。","对端IP");
+								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("配置prf 算法");
-							instruArr[0] = createCmdSpan("ASA(config-ikev2-policy)# prf “sha。");
-							instruArr[1] = createCmdInstruSpan("“sha。","prf算法");
-							instruArr[2] = createCmdInstruSpan("计算机生成的伪随机数不能直接使用，需要计算散列后才能使用，");
-							instruArr[3] = createCmdInstruSpan("prf定义使用的散列算法，路由器的prf算法默认与完整性校验相同");
-							createCmdInstruT2(instruArr,"cisco");
+							createInstruT3("匹配ipsec-proposal");
+								instruArr[0] = createCmdSpan("SA(config)# crypto map “ikev2-map。 “1。 set ikev2 ipsec-proposal “ipsec-proposal。");
+								instruArr[3] = createCmdInstruSpan("“ipsec-proposal。","ipsec-proposal名");
+								createCmdInstruT3(instruArr,"cisco");
 
-					createInstruT1("配置tunnel-group","i1-3-3");
-						createInstruT2("创建tunnel-group，并配置其类型");
+						createInstruT2("在接口调用crypto map","i1-3-7");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “100.1.1.1。 type ipsec-l2l");
-							instruArr[1] = createCmdInstruSpan("“100.1.1.1。","tunnel-group名字，但要和对端IP相同");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("进入配置tunnel-group属性配置模式");
-							instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “100.1.1.1。 ipsec-attributes");
-							instruArr[1] = createCmdInstruSpan("“100.1.1.1。","tunnel-group名");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置对端对本地的预共享密钥");
-							instruArr[0] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev2 remote-authentication pre-shared-key “cisco。");
-							instruArr[1] = createCmdInstruSpan("“cisco。","预共享密钥");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置本地对对端的预共享密钥");
-							instruArr[0] = createCmdSpan("ASA(config-tunnel-ipsec)# ikev2 local-authentication pre-shared-key “cisco。");
-							createCmdInstruT2(instruArr,"cisco");
-
-					createInstruT1("配置ipsec-proposal","i1-3-4");
-						createInstruT2("创建ipsec-proposal");
-							instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev2 ipsec-proposal “ikev2-proposal。");
-							instruArr[1] = createCmdInstruSpan("“ikev2-proposal。","proposal名");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置加密算法");
-							instruArr[0] = createCmdSpan("ASA(config-ipsec-proposal)# protocol esp encryption “3des。");
-							instruArr[1] = createCmdInstruSpan("“3des。","加密算法");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置散列算法");
-							instruArr[0] = createCmdSpan("ASA(config-ipsec-proposal)# protocol esp integrity “sha。");
-							instruArr[1] = createCmdInstruSpan("“sha。","散列算法");
-							createCmdInstruT2(instruArr,"cisco");
-
-					createInstruT1("配置感兴趣流量","i1-3-5");
-						instruArr[0] = createCmdSpan("ASA(config)# access-list 100 extended permit ip “192.168.20.0 255.255.255.0。  “192.168.10.0 255.255.255.0。");
-						instruArr[1] = createCmdInstruSpan("“192.168.20.0 255.255.255.0。","本地");
-						instruArr[2] = createCmdInstruSpan("“192.168.10.0 255.255.255.0。","对端");
-						createCmdInstruT1(instruArr,"cisco");
-
-					createInstruT1("配置crypto map","i1-3-6");
-						createInstruT2("匹配感兴趣流量");
-							instruArr[0] = createCmdSpan("SA(config)# crypto map “ikev2-map。 “1。 match address “100。");
+							instruArr[0] = createCmdSpan("ASA(config)# crypto map “ikev2-map。 interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“ikev2-map。","crypto map名");
-							instruArr[2] = createCmdInstruSpan("“1。","编号");
-							instruArr[3] = createCmdInstruSpan("“100。","acl名");
+							instruArr[2] = createCmdInstruSpan("“outside。","接口名");
 							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("配置对端IP");
-							instruArr[0] = createCmdSpan("SA(config)# crypto map “ikev2-map。 “1。 set peer “100.1.1.1。");
-							instruArr[3] = createCmdInstruSpan("“100.1.1.1。","对端IP");
-							createCmdInstruT2(instruArr,"cisco");
-
-						createInstruT2("匹配ipsec-proposal");
-							instruArr[0] = createCmdSpan("SA(config)# crypto map “ikev2-map。 “1。 set ikev2 ipsec-proposal “ipsec-proposal。");
-							instruArr[3] = createCmdInstruSpan("“ipsec-proposal。","ipsec-proposal名");
-							createCmdInstruT2(instruArr,"cisco");
-
-					createInstruT1("在接口调用crypto map","i1-3-7");
-						instruArr = null;
-						instruArr = new Array();
-						instruArr[0] = createCmdSpan("ASA(config)# crypto map “ikev2-map。 interface “outside。");
-						instruArr[1] = createCmdInstruSpan("“ikev2-map。","crypto map名");
-						instruArr[2] = createCmdInstruSpan("“outside。","接口名");
-						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("Easy VPN","i2");
 					createInstruT1("激活ikev1","i2-1");

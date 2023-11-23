@@ -35,7 +35,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 {
 	position: relative;
 	margin-left: 380px;
-	margin-top: 24.5px;
+	/*margin-top: 24.5px;*/
 }
 
 .instruT0, .instruT1, .instruT2, .instruT3,
@@ -902,7 +902,7 @@ td
 .protocolQC
 {
 	font-size: 25px;
-	padding-left: 15px;
+	padding-left: 20px;
 	text-align: left;
 	vertical-align: bottom;
 }
@@ -910,7 +910,7 @@ td
 .protocolZW
 {
 	font-size: 22px;
-	padding-left: 15px;
+	padding-left: 20px;
 	text-align: left;
 	vertical-align: top;
 }

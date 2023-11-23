@@ -2,6 +2,7 @@ function createNavigation(tree, offset = 74.5) {
 	var uri = window.location.href.substring(window.location.href.indexOf('/guide'));
 	var path_num = uri.split('/').length - 1 - 2;
 
+	var firstT0 = Object.keys(tree)[0]; // 导航树中的第一个元素ID，也就是第一个instruT0
 	// 顶部导航
 	var htmlText = top_menu.replace(/rootpath\//g, '../'.repeat(path_num));
 
@@ -60,8 +61,15 @@ function createNavigation(tree, offset = 74.5) {
 	document.write(body.replace(/rootpath\//g, '../'.repeat(path_num)).replace('offset', offset));
 
 	$(document).ready(function () {
+		// 每个instruT0前都会有两个<br />，将第一个T0下移位置补回
+		$('#' + firstT0).css('margin-top', '-49.5px');
+
 		if (uri.indexOf('/guide/class/protocol') >= 0) {
-			$('#divCommand').css('margin-top', '84.5px');
+			$('#divCommand').before('<div style="height: 135px"></div>');
+
+		}
+		else {
+			$('#divCommand').before('<div style="height: 74px"></div>');
 		}
 
 		if (uri.indexOf('#') > 0) {
@@ -157,7 +165,7 @@ function addKeywords(text) {
 }
 
 
-function createInstru(text, NO, instruT) {
+function createInstru(text, NO, instruT, isFirst) {
 	text = addSpan(text);
 	if(NO != null) {
 		if(instruT == 'instruT0') {
@@ -508,7 +516,6 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	}
 	// 处理 []、{}中的 | 结束
 
-	console.log('1：' + linuxCmd);
 	var cmds = [linuxCmd];
 	var FGFs = ['|', '&&'];
 
@@ -602,7 +609,6 @@ function splitLinuxCMD(cmd_arrary, FGF) {
 	var cmdss = new Array();
 	for(var i in cmd_arrary) {
 		var cmds = cmd_arrary[i].split(' ' + FGF + ' ');
-		console.log(cmds)
 		for(var j = 0; j < cmds.length -1; j++) {
 			cmdss.push(cmds[j] + ' ' + FGF)
 		}
@@ -736,7 +742,7 @@ function createCmdInstru(instruArr, typeT, typeBrand) {
 	var htmlText = "<table class='cmdTable" + typeT + "'>"
 
 	htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='tdCliLogo'>"
-			 + "<img src='" + imagepath + typeBrand + ".png' class='imgBrand' /></td></tr>"
+			 + "<img src='" + imagepath + typeBrand + ".svg' class='imgBrand' /></td></tr>"
 	htmlText = htmlText + "<tr><td colspan='2'>" + instruArr[0]+"</td></tr>";
 
 	if(instruArr.length > 1) {
@@ -1261,4 +1267,10 @@ $(document).ready(function () {
 
 	// ---------- 某些图片双击新标签页单独显示 ---- 结束 ----------
 	// ---------------------------------------------------------
+	// var divCommandHtml = $('#divCommand').prop('outerHTML');
+	// divCommandHtml = divCommandHtml.replace('<br><br>\n<span class="instruT0"', '\n<span class="instruT0"')
+	// console.log(divCommandHtml)
+	// console.log($('#divCommand').html())
+	// $('#divCommand').html(divCommandHtml);//.replace('<br><br>\n<span class="instruT0"', '\n<span class="instruT0"'));
+	// $('#divCommand').h
 });

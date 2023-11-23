@@ -73,7 +73,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-cisco"></i>
+									<i class="ico-cisco">
+									    <img src="rootpath/img/cisco.svg" />
+                                    </i>
 								</div>
 								<span>传统企业网</span>
 							</h3>
@@ -158,7 +160,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-cisco"></i>
+									<i class="ico-cisco">
+									    <img src="rootpath/img/cisco.svg" />
+                                    </i>
 								</div>
 								<span>数据中心网络 / SDN</span>
 							</h3>
@@ -180,7 +184,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-f5"></i>
+									<div class="ico-f5">
+									    <img src="rootpath/img/f5.svg" />
+                                    </div>
 								</div>
 								<span>BIG-IP</span>
 							</h3>
@@ -206,7 +212,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-huawei"></i>
+									<i class="ico-huawei">
+									    <img src="rootpath/img/huawei.svg" />
+                                    </i>
 								</div>
 								<span>华为</span>
 							</h3>
@@ -253,7 +261,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-h3c"></i>
+									<i class="ico-h3c">
+									    <img src="rootpath/img/h3c.svg" />
+                                    </i>
 								</div>
 								<span>华三</span>
 							</h3>
@@ -284,7 +294,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-certsrv"></i>
+									<i class="ico-cert">
+									    <img src="rootpath/img/cert.svg" />
+                                    </i>
 								</div>
 								<span style="font-size: 20px">证书服务</span>
 								<ul class="cat-list pki">
@@ -316,7 +328,9 @@ top_menu = `
 						        <tr>
 						            <td class="logo">
 						                <h3 class="cat-tit">
-                                            <i class="ico-mysql"></i>
+                                            <i class="ico-mysql">
+                                                <img src="rootpath/img/mysql.svg" />
+                                            </i>
                                         </h3>
                                     </td>
                                     <td>
@@ -326,8 +340,10 @@ top_menu = `
                                     </td>
                                     <td class="logo">
 						                <h3 class="cat-tit">
-                                            <i class="ico-gitlab"></i>
-                                       </h3>
+                                            <i class="ico-gitlab">
+                                                <img src="rootpath/img/gitlab.svg" />
+                                            </i>
+                                        </h3>
                                     </td>
                                     <td>
 						                <h3 class="cat-tit">
@@ -336,7 +352,9 @@ top_menu = `
                                     </td>
                                     <td class="logo">
 						                <h3 class="cat-tit">
-                                            <i class="ico-vault"></i>
+                                            <i class="ico-vault">
+                                                <img src="rootpath/img/vault.svg" />
+                                            </i>
                                         </h3>
                                     </td>
                                     <td>
@@ -348,17 +366,26 @@ top_menu = `
                                 <tr>
                                     <td class="logo">
                                         <h3 class="cat-tit">
-                                            <i class="ico-nginx"></i>
+                                            <div class="cat-ico">
+                                                <i class="ico-nginx">
+                                                    <a href="rootpath/class/netdevops/tool/nginx.html">
+                                                        <img src="rootpath/img/nginx_title.svg" />
+                                                    </a>
+                                                </i>
+                                            </div>
+                                            <span></span>
                                         </h3>
                                     </td>
                                     <td>
                                         <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/netdevops/tool/nginx.html">Nginx</a></span>
+                                            <span></span>
                                         </h3>
                                     </td>
                                     <td class="logo">
                                         <h3 class="cat-tit">
-                                            <i class="ico-regex"></i>
+                                            <i class="ico-regex">
+                                                <img src="rootpath/img/regex.svg" />
+                                            </i>
                                         </h3>
                                     </td>
                                     <td>
@@ -384,7 +411,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-vsphere"></i>
+									<i class="ico-vsphere">
+                                        <img src="rootpath/img/vsphere.svg" />
+                                    </i>
 								</div>
 								<span><a href="rootpath/class/vmware/vsphere7.html">vSphere</a></span>
 							</h3>
@@ -399,9 +428,11 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-nsx"></i>
+									<i class="ico-nsx">
+                                        <img src="rootpath/img/nsx.svg" />
+                                    </i>
 								</div>
-								<span><a href="rootpath/class/vmware/NSX-T3.html">NSX-T</a></span>
+								<span></span>
 							</h3>
 							<ul class="cat-list">
 								<li class="cat-item">
@@ -414,9 +445,11 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-velocloud"></i>
+									<i class="ico-velocloud">
+                                        <img src="rootpath/img/velocloud.svg" />
+                                    </i>
 								</div>
-								<span><a href="rootpath/class/vmware/SDWAN.html">SDWAN</a></span>
+								<span><a style="line-height: 45px" href="rootpath/class/vmware/SDWAN.html">SDWAN</a></span>
 							</h3>
 						</div>
 					</div>
@@ -428,9 +461,11 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-docker"></i>
+									<div class="ico-docker">
+									    <img src="rootpath/img/docker_title.svg" />
+                                    </div>
 								</div>
-								<span>Docker</span>
+								<span></span>
 							</h3>
 							<ul class="cat-list">
 								<li class="cat-item">
@@ -458,9 +493,11 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-k8s"></i>
+									<i class="ico-k8s">
+                                        <img src="rootpath/img/k8s_title.svg" />
+                                    </i>
 								</div>
-								<span>kubernetes</span>
+								<span></span>
 							</h3>
 							<ul class="cat-list">
 								<li class="cat-item">
@@ -489,7 +526,9 @@ top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
-									<i class="ico-redhat"></i>
+									<i class="ico-redhat">
+									    <img src="rootpath/img/redhat_title.svg" />
+                                    </i>
 								</div>
 								<span></span>
                             </h3>

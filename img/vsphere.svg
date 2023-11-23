@@ -1,0 +1,11 @@
+<svg id="vcenter" viewBox="0 1 15 15" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<style>.fscls-1{fill:#FFFFFF}.fscls-2{fill:#60b515}.fscls-3{fill:#ffbb24}</style>
+	</defs>
+	<rect class="fscls-1" width="7" height="8" x="6" y="2" />
+	<rect class="fscls-1" width="7" height="8" x="2" y="7" />
+	<path class="fscls-2" d="M13 3v7H9v4H2V7h4V3h7m1-2H5a1 1 0 0 0-1 1v3H1a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3h3a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+	<!-- <path class="fscls-3" d="M8 5h3v3H8zM4 9h3v3H4z" /> -->
+	<rect class="fscls-3" width="4" height="4" x="7.5" y="4.5" />
+	<rect class="fscls-3" width="4" height="4" x="3.5" y="8.5" />
+</svg>

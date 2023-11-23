@@ -363,127 +363,123 @@
 {
 	width: 60px;
 	height: 32px;
-	background-image: url(../../img/cisco_title.png);
+}
+
+.mod-header .ico-cisco img
+{
+	height: 32px;
 }
 
 .mod-header .ico-h3c
 {
-	width: 70px;
-	height: 18px;
+
+}
+
+.mod-header .ico-h3c img
+{
+	height: 20px;
+	margin-top: -7px;
 	margin-left: -20px;
-	background-image: url(../../img/h3c_title.png);
 }
 
 .mod-header .ico-huawei
 {
-	width: 100px;
-	height: 23px;
-	margin-left: -45px;
-	background-image: url(../../img/huawei_title.png);
+	width: 50px;
 }
 
 .mod-header .ico-f5
 {
 	width: 50px;
 	height: 50px;
-	/*margin-left: -45px;*/
-	background-image: url(../../img/f5_title.png);
-}
-
-.mod-header .ico-nmap
-{
-	width: 80px;
-	height: 43px;
-	margin-left: -25px;
-	background-image: url(../../img/nmap_title.png);
 }
 
 .mod-header .ico-vsphere
 {
-	width: 40px;
-	height: 40px;
-	background-image: url(../../img/vsphere_title.png);
+	width: 50px;
 }
 
 .mod-header .ico-nsx
 {
-	width: 80px;
-	height: 31px;
-	margin-left: -30px;
-	background-image: url(../../img/nsx_title.png);
+
+}
+
+.mod-header .ico-nsx img
+{
+	width: 90px;
+	margin-left: 76px;
+	margin-bottom: 20px;
 }
 
 .mod-header .ico-velocloud
 {
-	width: 130px;
-	height: 29px;
-	margin-left: -80px;
-	background-image: url(../../img/velocloud_title.png);
+	width: 150px;
+	margin-left: -100px;
+	margin-top: -20px;
 }
 
 .mod-header .ico-mysql
 {
 	width: 60px;
-	height: 42px;
-	background-image: url(../../img/mysql_title.png);
 }
 
-.mod-header .ico-certsrv
+.mod-header .ico-cert
 {
 	width: 50px;
-	height: 41px;
-	background-image: url(../../img/cert.png);
 }
 
 .mod-header .ico-gitlab
 {
 	width: 45px;
-	height: 41px;
-	background-image: url(../../img/gitlab_title.png);
 }
 
 .mod-header .ico-nginx
 {
-	width: 44px;
+
+}
+
+.mod-header .ico-nginx img
+{
 	height: 50px;
-	background-image: url(../../img/nginx_title.png);
+	margin-left: 35px;
 }
 
 .mod-header .ico-regex
 {
-	width: 74px;
-	height: 30px;
-	background-image: url(../../img/regex_title.png);
+	width: 90px;
 }
 
 .mod-header .ico-docker
 {
-	width: 100px;
-	height: 26px;
-	margin-left: -40px;
-	background-image: url(../../img/docker_title.png);
+
+}
+
+.mod-header .ico-docker img
+{
+	height: 50px;
+	margin-top: -10px;
+	margin-left: 13px;
 }
 
 .mod-header .ico-k8s
 {
-	width: 38px;
-	height: 37px;
-	margin-left: 20px;
-	background-image: url(../../img/k8s_title.png);
+
+}
+
+.mod-header .ico-k8s img
+{
+	height: 40px;
+	margin-left: 23px;
 }
 
 .mod-header .ico-vault
 {
 	width: 50px;
-	height: 50px;
-	background-image: url(../../img/vault_title.png);
 }
 
 .mod-header .ico-redhat
 {
 	width: 190px;
-	height: 50px;
-	background-image: url(../../img/redhat_title.png);
+	margin-left: 5px;
 }
 
 .ie-placeholder

@@ -450,7 +450,7 @@ asa = {
 };
 
 vpn_router = {
-	"i2": {
+	"i2-1": {
 		"L2L IPSec VPN": {
 			"i2-1": {
 				"L2L IPsec VPN，IKEv1": {
@@ -720,15 +720,13 @@ vpn_asa = {
 
 			"i1-2": {
 				"动态 L2L IPsec VPN，IKEv1": {
-					"i1-2-1": "地址变化端",
-					"i1-2-2": "静态公有地址端",
-					"i1-2-2-1": "配置 IKEv1（ISAKMP）策略，<br />　　　完全同普通的L2L",
-					"i1-2-2-2": "动态地址使用默认的tunnel <br />　　　group：DefaultL2LGroup",
-					"i1-2-2-3": "配置预共享密钥",
-					"i1-2-2-4": "配置 IPsec策略（转换集） ，<br />　　　完全同普通的L2L",
-					"i1-2-2-5": "创建动态crypto map<br />　　　并关联转换集",
-					"i1-2-2-6": "创建静态crypto map<br />　　　并关联动态crypto map",
-					"i1-2-2-7": "将静态crypto map应用到接口",
+					"i1-2-1": "配置 IKEv1（ISAKMP）策略，<br />　　　完全同普通的L2L",
+					"i1-2-2": "动态地址使用默认的tunnel <br />　　　group：DefaultL2LGroup",
+					"i1-2-3": "配置预共享密钥",
+					"i1-2-4": "配置 IPsec策略（转换集） ，<br />　　　完全同普通的L2L",
+					"i1-2-5": "创建动态crypto map<br />　　　并关联转换集",
+					"i1-2-6": "创建静态crypto map<br />　　　并关联动态crypto map",
+					"i1-2-7": "将静态crypto map应用到接口",
 				}
 			},
 

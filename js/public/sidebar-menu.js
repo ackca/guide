@@ -1,6 +1,6 @@
 $.sidebarMenu = function(menu, cmdOffset) {
 	var animationSpeed = 300;
-	// alert(cmdOffset)
+
 	$(menu).on('click', 'li a', function(e) {
 		// console.log(e)
 		var $this = $(this);
@@ -15,7 +15,6 @@ $.sidebarMenu = function(menu, cmdOffset) {
 		$('#divCommand').offset({top:0,left:leftt});	// 每次点击前，将偏移置0
 
 		if (checkElement.is('.treeview-menu') && checkElement.is(':visible')) { //点击已经打开的菜单
-
 			checkElement.slideUp(animationSpeed, function() {
 				checkElement.removeClass('menu-open');
 			});
@@ -43,10 +42,10 @@ $.sidebarMenu = function(menu, cmdOffset) {
 			else {
 				var href = window.location.href.split('#')[0];
 				location.href = href + $this.attr('cmd');
-				var topp = $('#divCommand').offset().top + cmdOffset;
-				leftt = $('#divCommand').offset().left;
+				// var topp = $('#divCommand').offset().top + cmdOffset;
+				// leftt = $('#divCommand').offset().left;
+				$('#divCommand').offset({top:cmdOffset});
 				// $('#divCommand').offset({top:topp,left:leftt});
-				$('#divCommand').offset({top:cmdOffset,left:leftt});
 			}
 		}
 
@@ -54,10 +53,10 @@ $.sidebarMenu = function(menu, cmdOffset) {
 			e.preventDefault();
 			href = window.location.href.split('#')[0];
 			location.href = href + $this.attr('cmd');
-			topp = $('#divCommand').offset().top + cmdOffset;
-			leftt = $('#divCommand').offset().left;
+			// topp = $('#divCommand').offset().top + cmdOffset;
+			// leftt = $('#divCommand').offset().left;
+			$('#divCommand').offset({top:cmdOffset});
 			// $('#divCommand').offset({top:topp,left:leftt});
-			$('#divCommand').offset({top:cmdOffset,left:leftt});
 		}
 	});
 };

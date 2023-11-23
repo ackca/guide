@@ -3,15 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<link rel="shortcut icon" href="../../../img/cisco.ico" />
+	<link rel="icon" href="../../../img/cisco.svg"/>
 	<title>思科-传统企业网-通用配置</title>
 	<script src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(basic);
 	</script>
-	<style type="text/css">
-
-	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -347,23 +344,23 @@
 							instruArr[3] = instruArr[1];
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("DHCP中继，需先启动DHCP服务","i2-3");
+					createInstruT1("DHCP中继，需先启动DHCP服务<br />","i2-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config-if)# ip helper-address “192.168.1.100。");
 						instruArr[1] = createCmdInstruSpan("“192.168.1.100。","DHCP服务器地址");
-						createCmdInstruT2(instruArr,"cisco");
-						createInstruAllBottomT2("<br />配置命令的接口：连接PC（DHCP客户端）的网关接口，及处于备份而有可能成为网关的接口，包括实际接口(三层)和vlan接口等");
-						createInstruAllBottomT2("由于中继后的DHCP返回报文为以网关为源的单播报文，因此需要有路由使报文能够回到网关设备（中继设备）");
+						createCmdInstruT1(instruArr,"cisco");
+						createInstruAllBottomT1("配置命令的接口：连接PC（DHCP客户端）的网关接口，及处于备份而有可能成为网关的接口，包括实际接口(三层)和vlan接口等");
+						createInstruAllBottomT1("由于中继后的DHCP返回报文为以网关为源的单播报文，因此需要有路由使报文能够回到网关设备（中继设备）");
 
-					createInstruT1("DHCP Snooping，dhcp安全配置","i2-4");
+					createInstruT1("<br />DHCP Snooping，dhcp安全配置","i2-4");
 						createInstruT2("见 <a href='catalyst.html#i10-2' style='color:#FF64FF;text-decoration:underline'>交换机配置手册、局域网安全</a> 部分");
 
-					createInstruT1("<br />接口获得DHCP的地址","i2-5");
+					createInstruT1("<br />接口获得DHCP的地址<br />","i2-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config-if)# ip address dhcp");
-						createCmdInstruT2(instruArr,"cisco");
+						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("动态主机配置协议(DHCPv6)","i10");
 					createInstruT1("配置DHCP地址池","i10-1");
@@ -858,7 +855,7 @@
 								instruArr[0] = createCmdSpan("R1(config)# crypto pki authenticate “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。","trustpoint名");
 								createCmdInstruT2(instruArr,"cisco");
-	                            createInstruAllBottomT2("离线时：根据提示粘贴根证书");
+	                            createInstruAllBottomT2("<br />离线时：根据提示粘贴根证书");
 
 							createInstruT2("申请个人证书","i11-2-2");
                                 instruArr[0] = createCmdSpan("R1(config)# crypto pki enroll “IPSecVPN。");
