@@ -71,7 +71,7 @@ var udp_protocol = [
     ["DHCPv6", 2, 2, 'Server&nbsp;/&nbsp;Relay：547', 'Client：546', 'class/protocol/l7/DHCPv6.html'],
     ["LDP Discovery", 2, 1, '646', '', ''],
     ["GDOI&nbsp;(&nbsp;GETVPN&nbsp;)&nbsp;", 2, 1, '848', '', ''],
-    ["Radius", 4, 2, 'Authentication&nbsp;/&nbsp;Authorization：1812&nbsp;(&nbsp;1645&nbsp;)&nbsp;', 'Accounting：1813&nbsp;(&nbsp;1646&nbsp;)&nbsp;', ''],
+    ["RADIUS", 4, 2, 'Authentication&nbsp;/&nbsp;Authorization：1812&nbsp;(&nbsp;1645&nbsp;)&nbsp;', 'Accounting：1813&nbsp;(&nbsp;1646&nbsp;)&nbsp;', ''],
     ["HSRP", 2, 1, '1985', '', ''],
     ["RadSec&nbsp;(&nbsp;Radius over DTLS&nbsp;)&nbsp;", 3, 1, '2083', '', ''],
     ["BFD", 2, 1, '3784', '', ''],
@@ -129,7 +129,7 @@ function createProtocol34(protocol_list, protocol_l) {
             htmlText = htmlText + "</div>";
         }
         else {
-            htmlText = htmlText + "<div class='" + protocol_l + " " + l34_color[i % 6] + "  two-row-" + protocol_l + "'>";
+            htmlText = htmlText + "<div class='" + protocol_l + " " + l34_color[i % 6] + " two-row-" + protocol_l + "'>";
 
             if(protocol_list[index][5] != '') {
                 htmlText = htmlText + "<a href='" + protocol_list[index][5] + "'>";
@@ -197,7 +197,7 @@ function createProtocol7(tcp_list, udp_list, protocol_l) {
             htmlText = htmlText + "</div>";
         }
         else {
-            htmlText = htmlText + "<div class='tcp " + l7_color[i % 3] + "  two-row-" + protocol_l + "'>";
+            htmlText = htmlText + "<div class='tcp " + l7_color[i % 3] + " two-row-" + protocol_l + "'>";
 
             if(tcp_list[index_tcp][5] != '') {
                 htmlText = htmlText + "<a href='" + tcp_list[index_tcp][5] + "'>";
@@ -287,7 +287,7 @@ function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
             htmlText = htmlText + "</div>";
         }
         else {
-            htmlText = htmlText + "<div class='udp " + l7_color[i % 3] + "  two-row-" + protocol_l + "'>";
+            htmlText = htmlText + "<div class='udp " + l7_color[i % 3] + " two-row-" + protocol_l + "'>";
 
             if(udp_list[index_udp][5] != '') {
                 htmlText = htmlText + "<a href='" + udp_list[index_udp][5] + "'>";
@@ -348,12 +348,17 @@ $(document).ready(function () {
 			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
 		</div><br />
 	`;
+    var ll74 = `
+		<div class="row">
+			<div id="ll74" class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
+		</div><br />
+	`;
 	var htmlText = "";
 
 	htmlText = htmlText + createProtocol7(tcp_application, udp_application, 'app');
 	htmlText = htmlText + ll;
 	htmlText = htmlText + createProtocol7(tcp_protocol, udp_protocol, 'l7');
-	htmlText = htmlText + ll;
+	htmlText = htmlText + ll74;
 	htmlText = htmlText + createProtocol34(l4_protocol, 'l4');
 	htmlText = htmlText + ll;
 	htmlText = htmlText + createProtocol34(l3_protocol, 'l3');
@@ -364,5 +369,16 @@ $(document).ready(function () {
 	reverse_protocol('l4');
 	reverse_protocol('l7');
 	reverse_protocol('app');
+
+    var jt_up_top = $('#appr1').offset().top - 10;
+    // console.log(jt_top);
+    $('#jt_up').offset({top:jt_up_top});
+
+    var jt_down_top = $('#ll74').offset().top - 30;
+    $('#jt_down').offset({top:jt_down_top});
+
+    $('#jg').offset({top:(jt_up_top + 24)});
+    $('#jg').css("height", jt_down_top - jt_up_top - 24 + "px");
+
 });
 

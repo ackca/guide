@@ -35,7 +35,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 {
 	position: relative;
 	margin-left: 380px;
-	/*margin-top: 24.5px;*/
 }
 
 .instruT0, .instruT1, .instruT2, .instruT3,
@@ -50,7 +49,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 .instruT0
 {
 	color: #0080FF;
-	/*color: #00BBFF;*/
 	font-size: 35px;
 }
 
@@ -98,7 +96,6 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .instruT1 a, .instruT2 a, .instruT3 a
 {
-	/*font-size: 80%;*/
 	font-weight: normal;
 	color: #AC80FF;
 }
@@ -173,7 +170,6 @@ span .link
 	background-color: #282923;
 	border-radius: 5px;
 	line-height: 1.6;
-	/*margin-top: 10px;*/
 	margin-bottom: 50px;
 	padding-top: 8px;
 	padding-left: 8px;
@@ -290,7 +286,6 @@ h4
 {
 	font-style: italic;
 	background-color: #829BA5;
-	/*background-color: rgba(130, 155, 165, 0.3);*/
 	font-family: inherit;
 	padding-left: 2px;
 	padding-right: 3px;
@@ -385,7 +380,6 @@ h4
 {
 	margin-left: 60px;
 	margin-top: 20px;
-	/*line-height: 40px;*/
 }
 
 .cmdInstruAllTopT3, .cmdInstruAllBottomT3
@@ -415,7 +409,6 @@ h4
 
 .cmdInstruAllBottomT0
 {
-	/*margin-top: -30px;*/
 	margin-left: 20px;
 }
 
@@ -447,6 +440,21 @@ h4
 .imgBrand
 {
 	height: 30px;
+}
+
+.imgBrand.huawei, .imgBrand.f5
+{
+	height: 35px;
+}
+
+.imgBrand.h3c
+{
+	height: 15px;
+}
+
+.imgBrand.vmware, .imgBrand.docker, .imgBrand.k8s, .imgBrand.vault
+{
+	height: 40px;
 }
 
 td
@@ -808,34 +816,17 @@ td
 	font-size: 15px;
 	padding-left: 5px;
 	padding-right: 5px;
-	padding-top: 2px;
+	padding-top: 3px;
 	padding-bottom: 2px;
 	border-radius: 5px;
 	display: none;
 }
 
-.copySuccess .fa-circle-check:before
+.copySuccess img
 {
-	color: #22B14C;
-	font-size: 18px;
+	width: 22px;
+	margin-top: -3px;
 }
-
-/*.copySuccess .fa-circle-check*/
-/*{*/
-/*	z-index: 5;*/
-/*}*/
-
-/*.successBG*/
-/*{*/
-/*	background-color: #FFFFFF;*/
-/*	position: absolute;*/
-/*	width: 18px;*/
-/*	height: 18px;*/
-/*	border-radius: 9px;*/
-/*	top: 0px;*/
-/*	left: 0px;*/
-/*	z-index: 0;*/
-/*}*/
 
 .divProtocolExplain
 {
@@ -868,9 +859,11 @@ td
 
 .divProtocolExplain li
 {
-    background-image: url("../../img/icon.png");
+    background-image: url("../../img/icon.svg");
     background-repeat: no-repeat;
-    padding-left: 30px;
+	background-size: 22px;
+	background-position-y: 11px;
+    padding-left: 35px;
     margin-top: 20px;
 }
 

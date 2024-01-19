@@ -370,6 +370,20 @@
 	height: 32px;
 }
 
+.mod-header .ico-f5
+{
+	width: 50px;
+	height: 50px;
+}
+
+.mod-header .ico-aruba
+{
+	width: 148px;
+	height: 37px;
+	margin-left: 76px;
+	margin-bottom: 10px;
+}
+
 .mod-header .ico-h3c
 {
 
@@ -384,13 +398,7 @@
 
 .mod-header .ico-huawei
 {
-	width: 50px;
-}
-
-.mod-header .ico-f5
-{
-	width: 50px;
-	height: 50px;
+	width: 45px;
 }
 
 .mod-header .ico-vsphere
@@ -527,6 +535,22 @@ div[data-cat~="protocol"] .cat-item-main span
 div[data-cat~="protocol"] .cat-item-row a
 {
 	font-size: 20px;
+}
+
+
+/*分辨率较低时，aruba会被挤到下一行*/
+@media screen and (max-width:1550px) {
+	div[data-cat~="network"] .cat-group:nth-child(3) {
+		width: 300px;
+	}
+
+	div[data-cat~="network"] .cat-group:nth-child(3) .cat-item {
+		width: 200px;
+	}
+
+	div[data-cat~="network"] .cat-group:nth-child(4) {
+		width: 200px;
+	}
 }
 
 div[data-cat~="netdevops"] table

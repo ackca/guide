@@ -9,12 +9,6 @@
 	<script type="text/javascript">
 		window.onload = createNavigation(basic);
 	</script>
-	<style type="text/css">
-		.tdCliLogo img
-        {
-			height: 35px;
-		}
-	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -278,11 +272,10 @@
 							createCmdInstruT2(instruArr,"huawei");
 
 					createInstruT1("DHCP snooping","i2-4");
-						// createInstruT2("见交换机配置手册、局域网安全部分（<a href='Switch.html#i10-2' style='color:#C830A0'>点击跳转</a>）");
-                        createInstruT2("见 <a href='Switch.html#i10-2' style='color:#FF64FF;text-decoration:underline'>交换机配置手册、局域网安全部分</a> 部分");
+						createInstruT2("见 <a href='Switch.html#i10-2' style='color:#FF64FF;text-decoration:underline'>交换机配置手册、局域网安全部分</a> 部分");
 
 
-					createInstruT1("接口获得DHCP的地址","i2-5");
+					createInstruT1("<br />接口获得DHCP的地址","i2-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R1-FastEthernet0/1] ip address dhcp-alloc");

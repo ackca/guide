@@ -23,8 +23,8 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 .divProtocol
 {
 	text-align: center;
-	margin-left: 50px;
-	margin-right: 50px;
+	margin-left: 30px;
+	margin-right: 30px;
 	margin-top: 80px;
 	font-weight: bold;
 	color: #FFFFFF;
@@ -151,6 +151,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	padding-left: 0;
 	text-align: left;
 }
+
 .col-lg-1, .col-lg-2, .col-lg-3,.col-lg-6
 {
 	padding-left: 6px;
@@ -173,7 +174,41 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	text-decoration: underline;
 }
 
+/*Radius*/
+.col-lg-4
+{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
 .macsec
 {
 	font-size: 15px;
+}
+
+@media (max-width: 992px) {
+	#jt_up, #jt_down, #jg
+	{
+		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	#jt_up, #jt_down, #jg
+	{
+		position: absolute;
+		left: 50%;
+		width: 24px;
+		margin-left: -12px;
+	}
+
+	#jt_down
+	{
+		transform:rotate(180deg);
+	}
+
+	#jg
+	{
+		background-color: #494A5F;
+	}
 }

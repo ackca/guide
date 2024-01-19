@@ -243,8 +243,9 @@ function createLinuxTxt(cmds, cmdT) {
 	var path = "../".repeat(url.split('/').length - 3);
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><i class='fa-solid fa-circle-check'></i>&nbsp;复制成功</div>"
+					"<div class='divCopy'><i class='far fa-copy'></i></div>" +
+					"<div class='copySuccess'><img src='" + path +"/img/ok.svg' />&nbsp;复制成功</div>";
+
 	var cmd_arr = cmds.split('\n')
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
@@ -330,7 +331,7 @@ function createViptelaCLI(cmds, cmdT) {
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
 		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><i class='fa-solid fa-circle-check'></i>&nbsp;复制成功</div>"
+		"<div class='copySuccess'><img src='" + path +"/img/ok.svg' />&nbsp;复制成功</div>"
 	var cmd_arr = cmds.split('\n')
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
@@ -395,7 +396,7 @@ function createYAML(cmds, cmdT) {
 
 	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
 		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><i class='fa-solid fa-circle-check'></i>&nbsp;复制成功</div>";
+		"<div class='copySuccess'><img src='" + path +"/img/ok.svg' />&nbsp;复制成功</div>";
 	var cmd_arr = cmds.split('\n');
 	// 为了查看方便，第0行为空白行
 	// 第1行左侧通常有空白，空白数为html的缩进数
@@ -723,26 +724,38 @@ function addSpan(text) {
 
 function createCmdInstru(instruArr, typeT, typeBrand) {
 	//instruArr：命令说明集合，每行为数组中一项，每项中不同说明以中文<>分隔
-	var imagepath = "../../../img/";
+	var imagePath = "../../../img/";
 
 	switch(typeBrand) {
 		case "vmware":
-			imagepath = "../../img/";
+			imagePath = "../../img/";
 			break;
 
 		case "nmap":
-			imagepath = "../../img/";
+			imagePath = "../../img/";
 			break;
 
 		case "redhat":
-			imagepath = "../../img/";
+			imagePath = "../../img/";
 			break;
+
+		case "redhat_cert":
+			// imagepath = "../../img/";
+			typeBrand = "redhat";
+			break;
+
 	}
 
 	var htmlText = "<table class='cmdTable" + typeT + "'>"
 
-	htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='tdCliLogo'>"
-			 + "<img src='" + imagepath + typeBrand + ".svg' class='imgBrand' /></td></tr>"
+	if(typeBrand == "cisco" || typeBrand == "huawei" || typeBrand == "h3c" || typeBrand == "f5" ) {
+		htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='tdCliLogo'>";
+	}
+	else {	// 使用linux命令格式高亮显示的，修改右侧线的颜色
+		htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='tdCliLogo' style='border-right-color: #E6DB74'>";
+	}
+
+	htmlText = htmlText + "<img src='" + imagePath + typeBrand + ".svg' class='imgBrand " + typeBrand + "' /></td></tr>";
 	htmlText = htmlText + "<tr><td colspan='2'>" + instruArr[0]+"</td></tr>";
 
 	if(instruArr.length > 1) {

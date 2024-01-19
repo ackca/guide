@@ -68,7 +68,7 @@ top_menu = `
 				</div>
 			</div>
 			<div class="cat">
-				<div class="cat-box" data-cat="network">
+				<div class="cat-box active" data-cat="network">
 					<div class="layout">
 						<div class="cat-group">
 							<h3 class="cat-tit">
@@ -199,6 +199,28 @@ top_menu = `
 								<li class="cat-item">
 									<div class="cat-item-main">
 										<a href="rootpath/class/network/f5/big-ip.html">设备配置</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="cat-group">
+							<h3 class="cat-tit">
+								<div class="cat-ico">
+									<i class="ico-aruba">
+                                        <img src="rootpath/img/aruba_title.svg" />
+                                    </i>
+								</div>
+								<span></span>
+							</h3>
+							<ul class="cat-list">
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/network/aruba/wireless_basic.html">无线网络架构</a>
+									</div>
+								</li>
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/network/aruba/wireless.html">无线网络配置</a>
 									</div>
 								</li>
 							</ul>
