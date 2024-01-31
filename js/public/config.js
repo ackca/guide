@@ -51,7 +51,7 @@ function createNavigation(tree, offset = 74.5) {
 	document.write(htmlText);
 
 	var body = `
-		<script type='text/javascript' src='rootpath/js/public/ai.js'></script>
+		<script type='text/javascript' src='rootpath/js/public/top_menu.js'></script>
 		<script type='text/javascript' src='rootpath/js/public/sidebar-menu.js'></script>
 		<script type='text/javascript'>
 			$.sidebarMenu($('.sidebar-menu'), offset);

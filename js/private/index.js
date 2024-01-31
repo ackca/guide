@@ -379,6 +379,5 @@ $(document).ready(function () {
 
     $('#jg').offset({top:(jt_up_top + 24)});
     $('#jg').css("height", jt_down_top - jt_up_top - 24 + "px");
-
 });
 
