@@ -89,7 +89,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	margin-top: 20px;
 }
 
-.instruT3 + .linuxDivT3
+.instruT3 + .txtDivT3
 {
 	margin-top: 0;
 }
@@ -114,14 +114,14 @@ span .link
 	font-size: 22px;
 }
 
-.linuxDivT1
+.txtDivT1
 {
 	margin-left: 50px;
 	margin-top: 16px;
 	min-width: 1000px;
 }
 
-.linuxDivT2
+.txtDivT2
 {
 	margin-left: 80px;
 	margin-top: 16px;
@@ -129,14 +129,14 @@ span .link
 	max-width: 1350px;
 }
 
-.linuxDivT3
+.txtDivT3
 {
 	margin-left: 110px;
 	margin-top: 16px;
 	min-width: 970px;
 }
 
-.linuxDivT1, .linuxDivT2, .linuxDivT3
+.txtDivT1, .txtDivT2, .txtDivT3
 {
 	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	font-size: 18px;
@@ -148,7 +148,7 @@ span .link
 	width: fit-content;
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
-	border-radius: 5px;
+	border-radius: 7px;
 	line-height: 1.6;
 	margin-top: 20px;
 	margin-bottom: 50px;
@@ -157,7 +157,7 @@ span .link
 	word-break: break-all;
 }
 
-.linuxDivT1 a, .linuxDivT2 a, .linuxDivT3 a
+.txtDivT1 a, .txtDivT2 a, .txtDivT3 a
 {
 	color: #AE81FF;
 	font-weight: bold;
@@ -396,12 +396,12 @@ h4
 .divConfigImgT3 + br + br + .cmdInstruAllTopT3,
 .cmdTableT2 + .cmdInstruAllTopT2,
 .cmdTableT3 + .cmdInstruAllTopT3,
-.linuxDivT1 + .cmdInstruAllTopT1,
-.linuxDivT1 + .linuxDivT1,
-.linuxDivT2 + .linuxDivT2,
-.linuxDivT2 + .divConfigImgT2,
-.linuxDivT1 + .divConfigImgT1,
-.linuxDivT3 + .divConfigImgT3,
+.txtDivT1 + .cmdInstruAllTopT1,
+.txtDivT1 + .txtDivT1,
+.txtDivT2 + .txtDivT2,
+.txtDivT2 + .divConfigImgT2,
+.txtDivT1 + .divConfigImgT1,
+.txtDivT3 + .divConfigImgT3,
 .instruT2 + .instruT3
 {
 	margin-top: -20px;

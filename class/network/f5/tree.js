@@ -33,9 +33,15 @@ basic = {
 		"HA相关":{
 			"i4-1":{
 				"三种IP角色":{
-					"i4-1":"Config sync IP",
-					"i4-2":"Failover IP",
-					"i4-3":"Mirroring IP",
+					"i4-1-1":"Config sync IP",
+					"i4-1-2":"Failover IP",
+					"i4-1-3":"Mirroring IP",
+				}
+			},
+			"i4-2":{
+				"流量组（Traffic Groups）":{
+					"i4-2-1":"Config sync IP",
+					"i4-2-2":"Failover IP",
 				}
 			}
 		}
@@ -67,6 +73,13 @@ ltm = {
 				}
 			},
 			"i11-3":"Partition",
+			"i11-4":{
+				"安装ip地址数据库":{
+					"i11-4-1":"获取文件",
+					"i11-4-2":"加载文件",
+					"i11-4-3":"查询ip地址信息",
+				}
+			}
 		}
 	},
 

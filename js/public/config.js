@@ -235,14 +235,66 @@ function createCmdT3(text) {
 	createCmd(text, "cmdT3");
 }
 
-function createLinuxTxt(cmds, cmdT) {
+function createLinuxTxtT1(cmds) {
+	initTXT(cmds, "LinuxTxt", "T1");
+}
+
+function createLinuxTxtT2(cmds) {
+	initTXT(cmds, "LinuxTxt", "T2");
+}
+
+function createLinuxTxtT3(cmds) {
+	initTXT(cmds, "LinuxTxt", "T3");
+}
+
+function createYAMLT1(cmds) {
+	initTXT(cmds, "YAML", "T1");
+}
+
+function createYAMLT2(cmds) {
+	initTXT(cmds, "YAML", "T2");
+}
+
+function createYAMLT3(cmds) {
+	initTXT(cmds, "YAML", "T3");
+}
+
+function createViptelaCLIT1(cmds) {
+	initTXT(cmds, "ViptelaCLI", "T1");
+}
+
+function createViptelaCLIT2(cmds) {
+	initTXT(cmds, "ViptelaCLI", "T2");
+}
+
+function createViptelaCLIT3(cmds) {
+	initTXT(cmds, "ViptelaCLI", "T3");
+}
+
+function createTCLT1(cmds) {
+	initTXT(cmds, "TCL", "T1");
+}
+
+function createTCLT2(cmds) {
+	initTXT(cmds, "TCL", "T2");
+}
+
+function createTCLT3(cmds) {
+	initTXT(cmds, "TCL", "T3");
+}
+
+function initTXT(cmds, txtT, cmdT) {
 	cmds = cmds.replace(/</g, '&lt;') // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
+
+	//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
+	// cmds = cmds.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
+	// cmds = cmds.replace(/ /g,'&nbsp;');
 
 	var url = window.location.href
 	url = url.substring(url.indexOf('/guide/class/'));
 	var path = "../".repeat(url.split('/').length - 3);
 
-	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
+	var htmlText = "<div class='txtDiv" + cmdT + "'>" +
 					"<div class='divCopy'><i class='far fa-copy'></i></div>" +
 					"<div class='copySuccess'><img src='" + path +"/img/ok.svg' />&nbsp;复制成功</div>";
 
@@ -251,10 +303,41 @@ function createLinuxTxt(cmds, cmdT) {
 
 	for(var i = 1; i < cmd_arr.length - 1; i++) {
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
-
-		//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
+		if(txtT == "ViptelaCLI" | txtT == "YAML") {
+			continue;
+		}
+		// 由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
+		// 但ViptelaCLI，YAML不需要
 		cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
 		cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
+	}
+
+	switch (txtT) {
+		case "LinuxTxt":
+			createLinuxTxt(cmd_arr, htmlText);
+			break;
+
+		case "YAML":
+			createYAML(cmd_arr, htmlText);
+			break;
+
+		case "ViptelaCLI":
+			createViptelaCLI(cmd_arr, htmlText);
+			break;
+
+		case "TCL":
+			createTCL(cmd_arr, htmlText);
+			break;
+	}
+}
+
+function createLinuxTxt(cmd_arr, htmlText) {
+	for(var i = 1; i < cmd_arr.length - 1; i++) {
+		// cmd_arr[i] = cmd_arr[i].substring(subNum);
+		//
+		// //由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
+		// cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
+		// cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
 
 		var index = cmd_arr[i].indexOf('#');
 
@@ -311,100 +394,8 @@ function createLinuxTxt(cmds, cmdT) {
 	document.writeln(htmlText);
 }
 
-
-function createViptelaCLIT1(cmds) {
-	createViptelaCLI(cmds, "T1");
-}
-
-function createViptelaCLIT2(cmds) {
-	createViptelaCLI(cmds, "T2");
-}
-
-function createViptelaCLIT3(cmds) {
-	createViptelaCLI(cmds, "T3");
-}
-
-function createViptelaCLI(cmds, cmdT) {
-	var url = window.location.href
-	url = url.substring(url.indexOf('/guide/class/'));
-	var path = "../".repeat(url.split('/').length - 3);
-
-	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><img src='" + path +"/img/ok.svg' />&nbsp;复制成功</div>"
-	var cmd_arr = cmds.split('\n')
-	// 为了查看方便，第0行为空白行
-	// 第1行左侧通常有空白，空白数为html的缩进数
-	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length;
-
-	for(var i = 1; i < cmd_arr.length - 1; i++) {
-		cmd_arr[i] = cmd_arr[i].substring(subNum);
-		if(
-			cmd_arr[i].indexOf('config terminal') >= 0 ||
-			cmd_arr[i].indexOf('no shutdown') >= 0
-		) {
-			cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
-			htmlText = htmlText + "<span class='spanB'>" + cmd_arr[i] + "</span><br />";
-			continue;
-		}
-
-		if(cmd_arr[i].indexOf('!') >= 0) {
-			cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
-			htmlText = htmlText + "<span class='sqlWord'>" + cmd_arr[i] + "</span><br />";
-			continue;
-		}
-
-		var reg = new RegExp("(\\s*ip (address|route))(.+)");
-		var clis = cmd_arr[i].match(reg);
-
-		if(clis) {
-			htmlText = htmlText + "<span class='spanB'>" + clis[1].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
-			htmlText = htmlText + "<span>" + clis[3].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
-			continue;
-		}
-
-		reg = new RegExp("(\\s*\\S+)(.*)");
-		clis = cmd_arr[i].match(reg);
-		if(clis) {
-			htmlText = htmlText + "<span class='spanB'>" + clis[1].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
-			htmlText = htmlText + "<span>" + clis[2].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
-		}
-		else  {
-			htmlText = htmlText + "<br />";
-		}
-	}
-	htmlText = htmlText + "</div>";
-	document.writeln(htmlText);
-}
-
-function createLinuxTxtT1(cmds) {
-	createLinuxTxt(cmds, "T1");
-}
-
-function createLinuxTxtT2(cmds) {
-	createLinuxTxt(cmds, "T2");
-}
-
-function createLinuxTxtT3(cmds) {
-	createLinuxTxt(cmds, "T3");
-}
-
-function createYAML(cmds, cmdT) {
-	var url = window.location.href
-	url = url.substring(url.indexOf('/guide/class/'));
-	var path = "../".repeat(url.split('/').length - 3);
-
-	var htmlText = "<div class='linuxDiv" + cmdT + "'>" +
-		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><img src='" + path +"/img/ok.svg' />&nbsp;复制成功</div>";
-	var cmd_arr = cmds.split('\n');
-	// 为了查看方便，第0行为空白行
-	// 第1行左侧通常有空白，空白数为html的缩进数
-	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length;
-
+function createYAML(cmd_arr, htmlText) {
 	for(var i = 1; i < cmd_arr.length - 1; i++){
-		cmd_arr[i] = cmd_arr[i].substring(subNum);
-
 		//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
 		cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;');
 		cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
@@ -460,16 +451,83 @@ function createYAML(cmds, cmdT) {
 	document.writeln(htmlText);
 }
 
-function createYAMLT1(cmds) {
-	createYAML(cmds, "T1");
+function createViptelaCLI(cmd_arr, htmlText) {
+	for(var i = 1; i < cmd_arr.length - 1; i++) {
+		if(
+			cmd_arr[i].indexOf('config terminal') >= 0 ||
+			cmd_arr[i].indexOf('no shutdown') >= 0
+		) {
+			cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
+			htmlText = htmlText + "<span class='spanB'>" + cmd_arr[i] + "</span><br />";
+			continue;
+		}
+
+		if(cmd_arr[i].indexOf('!') >= 0) {
+			cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
+			htmlText = htmlText + "<span class='sqlWord'>" + cmd_arr[i] + "</span><br />";
+			continue;
+		}
+
+		// var reg = new RegExp("");
+		var clis = cmd_arr[i].match(/(\s*ip (address|route))(.+)/);
+
+		if(clis) {
+			htmlText = htmlText + "<span class='spanB'>" + clis[1].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
+			htmlText = htmlText + "<span>" + clis[3].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
+			continue;
+		}
+
+		clis = cmd_arr[i].match(/(\s*\S+)(.*)/);
+		if(clis) {
+			htmlText = htmlText + "<span class='spanB'>" + clis[1].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
+			htmlText = htmlText + "<span>" + clis[2].replace(/ /g,'&nbsp;').replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
+		}
+		else  {
+			htmlText = htmlText + "<br />";
+		}
+	}
+	htmlText = htmlText + "</div>";
+	document.writeln(htmlText);
 }
 
-function createYAMLT2(cmds) {
-	createYAML(cmds, "T2");
-}
+function createTCL(cmd_arr, htmlText) {
+	for(var i = 1; i < cmd_arr.length - 1; i++) {
+		cmd_arr[i] = cmd_arr[i].replace(/(".+")/g, "<span class='spanYH'>$1</span>");
 
-function createYAMLT3(cmds) {
-	createYAML(cmds, "T3");
+		cmd_arr[i] = cmd_arr[i].replace(/(\w+::\w+)/g, "<span class='spanT'>$1</span>");
+
+		var keywords = [
+			"set","switch","-"
+		];
+		var regstr = "(((^(if))|((&nbsp;)+if)";
+		var regstr = "((^((&nbsp;)*if)";
+		for(var j = 0; j < keywords.length; j++) {
+			regstr = regstr + "|(" + keywords[j] + ")";
+		}
+		regstr = regstr + ")(&nbsp;)*)";
+		console.log(regstr)
+		// cmd_arr[i] = cmd_arr[i].replace(/((^((&nbsp;)*if)|(set)|(switch))(&nbsp;)*)/g, "<span class='spanR'>$1</span>");
+		cmd_arr[i] = cmd_arr[i].replace(new RegExp(regstr, "g"), "<span class='spanR'>$1</span>");
+
+		keywords = [
+			"class",
+			"default",
+			"else","elseif",
+			"snat",
+			"when"
+		]
+		regstr = "((";
+		for(var j = 0; j < keywords.length; j++) {
+			regstr = regstr + "(" + keywords[j] + ")|";
+		}
+		regstr = regstr.substring(0, regstr.length - 1) + ")(&nbsp;)+)";
+		// cmd_arr[i] = cmd_arr[i].replace(/(((when)|(elseif)|(else)|(snat)|(class)|(pool)|(default))(&nbsp;)+)/g, "<span class='spanT'>$1</span>");
+		cmd_arr[i] = cmd_arr[i].replace(new RegExp(regstr, "g"), "<span class='spanT'>$1</span>");
+
+		htmlText = htmlText + '<span>' + cmd_arr[i] + '</span><br />'
+	}
+	htmlText = htmlText + "</div>";
+	document.writeln(htmlText);
 }
 
 function createCmd(text, cmdT) {
@@ -588,11 +646,11 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	htmlText = htmlText.replaceAll('@@@', '|').replaceAll('{{', '[').replaceAll('}}', ']');
 
 	reg = new RegExp("(\"[^\"]+\")","g");
-	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
+	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>");
 
 	reg = new RegExp(" ('[^']+')","g");
 	// reg = new RegExp("('[^']+')","g");
-	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>")
+	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>");
 	
 	if(isDG) {
 		return htmlText;
@@ -883,7 +941,6 @@ function splitBR(text) {
 	var br = text.match(reg);
 	return [br[1], br[3], br[4]];
 }
-
 
 function createProtocolWord(protocolSX, protocolQC, protocolZW) {
 	var htmlText = "<div style='display: inline-block'>";

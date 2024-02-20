@@ -78,27 +78,39 @@
 						createConfigImgT1("ltm/i1_3$1~6");
 
 				createInstruT0("基础网络配置","i11");
-                    createInstruT1("配置DNS","i11-1");
-                        createConfigImgT1("ltm/i11_1$1");
+					createInstruT1("配置DNS","i11-1");
+						createConfigImgT1("ltm/i11_1$1");
 
-                    createInstruT1("配置NTP","i11-2");
-                        createInstruT2("配置NTP","i11-2-1");
-                            createConfigImgT2("ltm/i11_2_1$1");
+					createInstruT1("配置NTP","i11-2");
+						createInstruT2("配置NTP","i11-2-1");
+							createConfigImgT2("ltm/i11_2_1$1");
 
-                        createInstruT2("查看NTP状态","i11-2-2");
-                            createConfigImgT2("ltm/i11_2_2$1");
+						createInstruT2("查看NTP状态","i11-2-2");
+							createConfigImgT2("ltm/i11_2_2$1");
 
 					createInstruT1("Partition","i11-3");
-                        createConfigImgT1("ltm/i11_3$1~5");
+						createConfigImgT1("ltm/i11_3$1~5");
+
+					createInstruT1("安装ip地址数据库","i11-4");
+						createInstruT2("获取文件","i11-4-1");
+							createInstruAllTopT2("<a class='link' href='https://my.f5.com/manage/s/article/K11176#download' target='_blank'>https://my.f5.com/manage/s/article/K11176#download</a><br />");
+
+						createInstruT2("加载文件","i11-4-2");
+							createInstruAllTopT2("ltm启用SSH，使用SCP方式将文件上传到设备");
+							createConfigImgT2("ltm/i11_4_2$1");
+
+						createInstruT2("查询ip地址信息","i11-4-3");
+							createConfigImgT2("ltm/i11_4_3$1~3");
 
 
-                createInstruT0("基础网络配置","i2");
+				createInstruT0("基础网络配置","i2");
 					createInstruAllTopT0("网络配置类型于三层交换机（不支持将接口直接配置为三层）");
 
 					createInstruT1("配置vlan","i2-1");
 						createConfigImgT1("ltm/i2_1$1~3");
 
 					createInstruT1("配置接口IP","i2-2");
+						createInstruAllTopT1("allow default的介绍：<a class='link' href='https://my.f5.com/manage/s/article/K17333' target='_blank'>https://my.f5.com/manage/s/article/K17333</a><br />","i1-1");
 						createConfigImgT1("ltm/i2_2$1~2");
 
 					createInstruT1("配置路由","i2-3");
@@ -113,14 +125,14 @@
 							createConfigImgT2("ltm/i2_4_1$1~2");
 
 						createInstruT2("PAT","i2-4-2");
-                            createInstruT3("配置PAT地址池","i2-4-2-1");
+							createInstruT3("配置PAT地址池","i2-4-2-1");
 								createConfigImgT3("ltm/i2_4_2_1$1~2");
 
-                            createInstruT3("配置PAT地址池的idle-timeout","i2-4-2-2");
+							createInstruT3("配置PAT地址池的idle-timeout","i2-4-2-2");
 								createConfigImgT3("ltm/i2_4_2_2$1~2");
 
-                            createInstruT3("配置PAT","i2-4-2-3");
-                                createConfigImgT3("ltm/i2_4_2_3$1~2");
+							createInstruT3("配置PAT","i2-4-2-3");
+								createConfigImgT3("ltm/i2_4_2_3$1~2");
 
 						createInstruT2("NAT相关系统配置","i2-4-3");
 							createConfigImgT2("ltm/i2_4_3$1");
@@ -150,12 +162,12 @@
 						createConfigImgT1("ltm/i8_1$1");
 						createConfigImgT1("ltm/i8_2$1~3");
 
-                createInstruT0("健康检查策略","i9");
+				createInstruT0("健康检查策略","i9");
 					createInstruT1("默认策略","i9-1");
-                        createConfigImgT1("ltm/i9_1$1");
+						createConfigImgT1("ltm/i9_1$1");
 
-                    createInstruT1("创建自定义策略","i9-2");
-                        createConfigImgT1("ltm/i9_2$1~6");
+					createInstruT1("创建自定义策略","i9-2");
+						createConfigImgT1("ltm/i9_2$1~6");
 
 				createInstruT0("会话保持","i4");
 					createInstruAllTopT0("virtual server中配置");
@@ -188,8 +200,8 @@
 							createInstruAllTopT2("仅当存在长连接应用时修改，其它参数不推荐修改");
 							createConfigImgT2("ltm/i10_1_2$1~2");
 
-                    createInstruT1("HTTP优化","i10-2");
-                        createConfigImgT1("ltm/i10_2$1~3");
+					createInstruT1("HTTP优化","i10-2");
+						createConfigImgT1("ltm/i10_2$1~3");
 
 				createInstruT0("HTTPS相关配置","i5");
 					createInstruT1("证书相关配置","i5-1");
@@ -211,7 +223,7 @@
 
 					createInstruT1("服务器侧SSL","i5-3");
 						createInstruAllTopT1("先将客户端HTTPS请求卸载SSL，完成相应的处理，再与后端服务器建立HTTPS连接");
-                        createInstruAllTopT1("使用HTTPS时，为了安全性，推荐使用域名添加，并校验服务器证书");
+						createInstruAllTopT1("使用HTTPS时，为了安全性，推荐使用域名添加，并校验服务器证书");
 						createInstruT2("使用域名关联服务器","i5-3-1");
 
 							createConfigImgT2("ltm/i5_3_1$1~3");
@@ -233,46 +245,63 @@
 							cmd = `
 								tcl:https://[getfield [HTTP::host] : 1][HTTP::uri]
 							`;
-                            createLinuxTxtT2(cmd);
-                            createConfigImgT2("ltm/i5_4_1$1~5");
+							createLinuxTxtT2(cmd);
+							createConfigImgT2("ltm/i5_4_1$1~5");
 
 						createInstruT2("关联策略到http的virtual server","i5-4-2");
 							createConfigImgT2("ltm/i5_4_2$1~3");
 
-                    createInstruT1("不解密https，只负载均衡流量","i5-5");
+					createInstruT1("不解密https，只负载均衡流量","i5-5");
 						createConfigImgT1("ltm/i5_5$1");
 
-				// createInstruT0("WAF","i6");
-				// 	createInstruT1("启用WAF功能","i6-1");
-				// 		createConfigImgT1("ltm/i6_1$1");
-				//
-				// 	createInstruT1("配置并调用策略","i6-2");
-				// 		createConfigImgT1("ltm/i6_2$1~3");
-
 				createInstruT0("出站负载均衡配置","i6");
-                    createInstruT1("配置出接口网关（Node形式）","i6-1");
-                        createInstruAllTopT1("每个运营商配置一个Node");
-                        createConfigImgT1("ltm/i6_1$1~3");
+					createInstruT1("配置出接口网关（Node形式）","i6-1");
+						createInstruAllTopT1("每个运营商配置一个Node");
+						createConfigImgT1("ltm/i6_1$1~3");
 
-                    createInstruT1("配置出接口（Pool形式）","i6-2");
-                        createInstruAllTopT1("每个运营商配置一个pool，pool中该运营商的网关高优先级，其它运营商低优先级");
+					createInstruT1("配置出接口（Pool形式）","i6-2");
+						createInstruAllTopT1("每个运营商配置一个pool，pool中该运营商的网关高优先级，其它运营商低优先级");
 						createInstruAllTopT1("最后配置一个默认pool，所有运营商的网关优先级相同，用于非出口运营商的地址");
-                        createConfigImgT1("ltm/i6_2$1~5");
+						createConfigImgT1("ltm/i6_2$1~5");
 
 
-                    createInstruT1("配置地址组","i6-4");
-                        createConfigImgT1("ltm/i6_4$1~3");
+					createInstruT1("配置地址组","i6-4");
+						createConfigImgT1("ltm/i6_4$1~3");
 
-                    createInstruT1("配置用于选路的iRule","i6-5");
+					createInstruT1("配置用于选路的iRule","i6-5");
+						createInstruAllTopT1("先配置分别使用ISP1、ISP2为出接口的地址，出接口选择ISP1、ISP2");
+						createInstruAllTopT1("然后根据运营商选择出接口，switch中 - 表示和下面的条件使用相同的结果");
+						createInstruAllTopT1("剩余的地址在两条运营商链路间负载分担");
+
+						cmd = `
+							when CLIENT_ACCEPTED {
+								if { [class match [IP::local_addr] equals ISP1] } {
+									pool ISP1_GW_Pool
+								}
+								elseif { [class match [IP::local_addr] equals ISP2] } {
+									pool ISP2_GW_Pool
+								}
+								else {
+									set dest_isp [whereis [IP::local_addr] isp]
+									switch $dest_isp {
+										"*chinanet*" -
+										"*china telecom*" { pool ISP1_GW_Pool }
+										"*unicom*" { pool ISP2_GW_Pool }
+										default { pool Default }
+									}
+								}
+							}
+						`;
+						createTCLT1(cmd);
 
 					createInstruT1("配置用于PAT的iRule","i6-6");
-                        createInstruAllTopT1("如果选路出口的下一跳为61.128.21.254，则使用方尺出口地址做PAT");
+						createInstruAllTopT1("如果选路出口的下一跳为61.128.21.254，则使用出口地址做PAT");
 						createInstruAllTopT1("因只有两个接口，所以出口另一个接口时，也使用其接口地址做PAT");
-                        createInstruAllTopT1("如果需要使用地址池，则为 snatpool ISP1_Outbound_PAT_Pool");
+						createInstruAllTopT1("如果需要使用地址池，则为 ’snatpool ISP1_Outbound_PAT_Pool。");
 
-                        cmd = `
+						cmd = `
 							when LB_SELECTED {
-								if { [IP::addr [LB::server addr] equals 61.128.21.254]} {
+								if { [IP::addr [LB::server addr] equals 61.128.21.254] } {
 									snat automap
 								}
 								else {
@@ -280,13 +309,16 @@
 								}
 							}
 							`;
-							createLinuxTxtT1(cmd);
+							createTCLT1(cmd);
 
-                    createInstruT1("配置vs，关联上述组件","i6-7");
-                        createConfigImgT1("ltm/i6_7$1");
+					createInstruT1("配置vs，关联上述组件","i6-7");
+						createConfigImgT1("ltm/i6_7$1");
 
-                createInstruT0("HA","i7");
+				createInstruT0("HA","i7");
+					createInstruT1("时间需要同步");
+
 					createInstruT1("配置HA相关接口","i7-1");
+						createInstruAllTopT1("‘相应流量为 UDP 1026，接口的Port Lockdown使用Allow Default即可。");
 						createConfigImgT1("ltm/i7_1$1~6");
 
 					createInstruT1("向HA组内添加设备","i7-2");
@@ -296,11 +328,11 @@
 					createInstruT1("配置Failover（Sync-Only）设备组","i7-3");
 						createConfigImgT1("ltm/i7_3$1~2");
 
-                    createInstruT1("配置流量组","i7-6");
-                        createConfigImgT1("ltm/i7_6$1~3");
+					createInstruT1("配置流量组","i7-6");
+						createConfigImgT1("ltm/i7_6$1~3");
 
-                    createInstruT1("手动同步配置","i7-7");
-                        createConfigImgT1("ltm/i7_7$1~2");
+					createInstruT1("手动同步配置","i7-7");
+						createConfigImgT1("ltm/i7_7$1~2");
 
 					createInstruT1("配置接口监控","i7-4");
 						createInstruAllTopT1("默认情况下，接口故障不切换，需要手工配置");

@@ -273,7 +273,7 @@
 
 						createInstruT2("命令行方式","i3-1-2");
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("kubectl taint nodes “node01。” 。“disk。”=。“ssd。”:。“NoSchedule。");
+							instruArr[0] = createLinuxCmd("kubectl taint nodes “node01。” 。“disk。”=。“ssd。”:。“NoSchedule。", 3);
 							instruArr[1] = createCmdInstruSpan("“node01。","污点生效的节点名");
 							instruArr[2] = createCmdInstruSpan("“disk。","污点键");
 							instruArr[3] = createCmdInstruSpan("“ssd。","污点值");
@@ -283,12 +283,12 @@
 					createInstruT1("查看污点<br />","i3-2");
 						instruArr = null;
 						instruArr = new Array();
-						instruArr[0] = createCmdSpan("kubectl get node “node01。 -o json | jq '.spec.taints'");
+						instruArr[0] = createLinuxCmd("kubectl get node “node01。 -o json | jq '.spec.taints'", 3);
 						instruArr[1] = createCmdInstruSpan("“node01。","查看污点的节点名");
 						createCmdInstruT1(instruArr,"k8s");
 
 					createInstruT1("删除污点<br />","i3-3");
-						instruArr[0] = createCmdSpan("kubectl taint nodes “node01。” 。“disk。”-。");
+						instruArr[0] = createLinuxCmd("kubectl taint nodes “node01。” 。“disk。”-。", 3);
 						instruArr[1] = createCmdInstruSpan("“node01。","删除污点的节点名");
 						createCmdInstruT1(instruArr,"k8s");
 
@@ -323,7 +323,7 @@
 
 				createInstruT0("configmap","i5");
 					createInstruT1("创建configmap","i5-1");
-						instruArr[0] = createCmdSpan("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。");
+						instruArr[0] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。", 3);
 						instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
 						instruArr[2] = createCmdInstruSpan("“index.html。","configmap对应的文件");
 						createCmdInstruT1(instruArr,"k8s");
@@ -336,14 +336,14 @@
 							createCmdInstruT2(instruArr,"k8s");
 
 						createInstruT2("查看某个configmap内容","i5-2-2");
-							instruArr[0] = createCmdSpan("kubectl describe cm “configmap-nginx-html。");
+							instruArr[0] = createLinuxCmd("kubectl describe cm “configmap-nginx-html。", 3);
 							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
 							createCmdInstruT2(instruArr,"k8s");
 
 					createInstruT1("修改configmap","i5-3");
 						createInstruT2("方法一：删除后重新建立","i5-3-1");
-							instruArr[0] = createCmdSpan("kubectl delete cm “configmap-nginx-html。");
-							instruArr[1] = createCmdSpan("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。");
+							instruArr[0] = createLinuxCmd("kubectl delete cm “configmap-nginx-html。", 3);
+							instruArr[1] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。", 3);
 							instruArr[2] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
 							instruArr[3] = createCmdInstruSpan("“index.html。","configmap对应的文件");
 							createCmdInstruT2(instruArr,"k8s");
@@ -351,14 +351,14 @@
 						createInstruT2("方法二：直接修改","i5-3-2");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("kubectl edit cm “configmap-nginx-html。");
+							instruArr[0] = createLinuxCmd("kubectl edit cm “configmap-nginx-html。", 3);
 							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
 							createCmdInstruT2(instruArr,"k8s");
 
 						createInstruT2("方法三：覆盖原始的configmap","i5-3-3");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("kubectl create configmap “configmap-nginx-html。 --from-file “index.html。 -o yaml --dry-run | kubectl apply -f -");
+							instruArr[0] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file “index.html。 -o yaml --dry-run | kubectl apply -f -", 3);
 							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
 							instruArr[2] = createCmdInstruSpan("“index.html。","configmap对应的文件");
 							createCmdInstruT2(instruArr,"k8s");
@@ -433,7 +433,7 @@
 						createInstruT2("查看secret列表","i4-2-1");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("kubectl get secrets");
+							instruArr[0] = createLinuxCmd("kubectl get secrets", 3);
 							createCmdInstruT2(instruArr,"k8s");
 
 					createInstruT1("pod中使用secret","i4-4");
