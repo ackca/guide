@@ -91,19 +91,19 @@
 
 							words = `
 								操作码（Opcode）
-								由16 bit构成，表示报文类型<table class="tableProtocolExplain"><tr><th>&nbsp;操作码&nbsp;</th><th>含义</th><th>说明</th></tr><tr><td>1</td><td>RRQ - Read request</td><td>下载文件请求报文</td></tr><tr><td>2</td><td>WRQ - Write request</td><td>上传文件请求报文</td></tr></table>
+								由16 bits构成，表示报文类型<table class="tableProtocolExplain"><tr><th>&nbsp;操作码&nbsp;</th><th>含义</th><th>说明</th></tr><tr><td>1</td><td>RRQ - Read request</td><td>下载文件请求报文</td></tr><tr><td>2</td><td>WRQ - Write request</td><td>上传文件请求报文</td></tr></table>
 
 								文件名（Filename）
 								根据文件名的大小确定长度，表示下载（上传）的文件名
 
 								0
-								由8 bit构成，值为0，表示文件名终止
+								由8 bits构成，值为0，表示文件名终止
 
 								模式（Mode）
 								模式字段是一个ASCII码串netascii或octet（不区分大小写），长度根据值确定
 
 								0
-								由8 bit构成，值为0，表示模式终止
+								由8 bits构成，值为0，表示模式终止
 							`;
 							createProtocolExplainT2(words, -159, 'tftp12');
 
@@ -125,10 +125,10 @@
 
 							words = `
 								操作码（Opcode）
-								由16 bit构成，表示报文类型，Data报文的值为3
+								由16 bits构成，表示报文类型，Data报文的值为3
 
 								块编号（Block Number）
-								16 bit构成，表示发送数据的编号，从1开始累计（0号为下载/上传的请求）
+								16 bits构成，表示发送数据的编号，从1开始累计（0号为下载/上传的请求）
 
 								数据部分（Data）
 								根据TFTP的传输规则，除最后一块外，其余每块均为512字节，因此数据总分最大512字节
@@ -152,10 +152,10 @@
 							document.writeln("<br />");
 							words = `
 								操作码（Opcode）
-								由16 bit构成，表示报文类型，ACK报文的值为4
+								由16 bits构成，表示报文类型，ACK报文的值为4
 
 								块编号（Block Number）
-								16 bit构成，表示被确认的数据的编号，如果为0，则确认客户端的下载/上传的请求
+								16 bits构成，表示被确认的数据的编号，如果为0，则确认客户端的下载/上传的请求
 							`;
 							createProtocolExplainT2(words, -159, 'tftp4');
 
@@ -176,16 +176,16 @@
 							document.writeln("<br />");
 							words = `
 								操作码（Opcode）
-								由16 bit构成，表示报文类型，ERROR报文的值为5
+								由16 bits构成，表示报文类型，ERROR报文的值为5
 
 								差错码（ErrorCode）
-								由16 bit构成，表示差错的编号，取值及对应含义如下<table class="tableProtocolExplain"><tr><td>　0　</td><td>Not defined, see error message (if any)</d></tr><tr><td>　1　</td><td>File not found</td></tr><tr><td>　2　</td><td>Access violation</td></tr><tr><td>　3　</td><td>Disk full or allocation exceeded</td></tr><tr><td>　4　</td><td>Illegal TFTP operation</td></tr><tr><td>　5　</td><td>Unknown transfer ID</td></tr><tr><td>　6　</td><td>File already exists</td></tr><tr><td>　7　</td><td>No such user</td></tr></table>
+								由16 bits构成，表示差错的编号，取值及对应含义如下<table class="tableProtocolExplain"><tr><td>　0　</td><td>Not defined, see error message (if any)</d></tr><tr><td>　1　</td><td>File not found</td></tr><tr><td>　2　</td><td>Access violation</td></tr><tr><td>　3　</td><td>Disk full or allocation exceeded</td></tr><tr><td>　4　</td><td>Illegal TFTP operation</td></tr><tr><td>　5　</td><td>Unknown transfer ID</td></tr><tr><td>　6　</td><td>File already exists</td></tr><tr><td>　7　</td><td>No such user</td></tr></table>
 
 								差错信息（Error Message）
 								表示差错信息，根据差错信息的大小确定长度
 
 								0
-								由8 bit构成，值为0，表示差错信息终止
+								由8 bits构成，值为0，表示差错信息终止
 							`;
 							createProtocolExplainT2(words, -159, 'tftp5');
 

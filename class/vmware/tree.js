@@ -4,6 +4,7 @@ vsphere7 = {
 			"i9-1":"安装文件路径",
 			"i9-2":"第1阶段：部署vCenter Server",
 			"i9-3":"第2阶段：设置vCenter Server",
+			"i9-4":"vCenter管理页面",
 		}
 	},
 
@@ -74,6 +75,8 @@ vsphere7 = {
 	},
 
 	"i7": "配置高可用性",
+
+	"i10": "清除克隆产生windows的ID类信息",
 };
 
 nsxt3 = {

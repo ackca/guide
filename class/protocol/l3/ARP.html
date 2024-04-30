@@ -49,31 +49,31 @@
 					document.writeln("<br />");
 					words = `
 						硬件类型（Hardware Type）
-						由16 bit构成，一般为1，表示以太网（Ethernet）
+						由16 bits构成，一般为1，表示以太网（Ethernet）
 
 						协议类型（Hardware Type）
-						由16 bit构成，一般为IPv4，以IPv4的协议号0x0800表示
+						由16 bits构成，一般为IPv4，以IPv4的协议号0x0800表示
 
 						硬件地址长度（Hardware Address Length）
-						由8 bit构成，单位为字节，因为mac地址为48bit，所以值为6（字节）
+						由8 bits构成，单位为字节，因为mac地址为48bits，所以值为6（字节）
 
 						协议地址长度（Protocol Address Length）
-						由8 bit构成，单位为字节，因为IPv4地址为48bit，所以值为4（字节）
+						由8 bits构成，单位为字节，因为IPv4地址为48bits，所以值为4（字节）
 
 						操作类型（Operation）
-						由16 bit构成，表示ARP类型，1 代表请求（Requset），2代表响应（Response）
+						由16 bits构成，表示ARP类型，1 代表请求（Requset），2代表响应（Response）
 
 						发送方硬件地址（Sender Hardware Address）
-						由48 bit构成，表示发送方MAC地址
+						由48 bits构成，表示发送方MAC地址
 
 						发送方协议地址（Sender Protocol Address）
-						由32 bit构成，表示发送方IPv4地址
+						由32 bits构成，表示发送方IPv4地址
 
 						目标硬件地址（Target Hardware Address）
-						由48 bit构成，表示目标MAC地址
+						由48 bits构成，表示目标MAC地址
 
 						目标协议地址（Target Protocol Address）
-						由32 bit构成，表示目标IPv4地址
+						由32 bits构成，表示目标IPv4地址
 					`;
 					createProtocolExplainT0(words, -470);
 

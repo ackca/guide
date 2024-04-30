@@ -281,6 +281,7 @@
 	min-width: 300px;
 	box-sizing: border-box;
 	margin-left: 25px;
+	margin-top: 5px;
 	padding: 7px 50px 7px 50px;
 	/*padding: 7px 0 7px 50px;*/
 	margin-bottom: 4px;
@@ -363,6 +364,7 @@
 {
 	width: 60px;
 	height: 32px;
+	margin-bottom: 12px;
 }
 
 .mod-header .ico-cisco img
@@ -372,34 +374,41 @@
 
 .mod-header .ico-f5
 {
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
+	margin-bottom: -1px;
 }
 
 .mod-header .ico-aruba
 {
 	width: 148px;
 	height: 37px;
-	margin-left: 76px;
-	margin-bottom: 10px;
+	margin-left: 72px;
+	margin-bottom: 7px;
 }
 
+.ico-aruba img
+{
+	height: 30px;
+}
 
 .mod-header .ico-h3c
 {
-
+	height: 45px;
+	margin-bottom: 1px;
 }
 
 .mod-header .ico-h3c img
 {
 	height: 20px;
-	margin-top: -7px;
+	margin-top: 10px;
 	margin-left: -20px;
 }
 
 .mod-header .ico-huawei
 {
 	width: 45px;
+	height: 46px;
 }
 
 .mod-header .ico-vsphere
@@ -594,7 +603,30 @@ div[data-cat~="netdevops"] tr:not(:first-child) td
 	padding-top: 50px;
 }
 
-.pki li
+div[data-cat~="netdevops"] .cat-item
 {
 	margin-top: 20px;
 }
+
+div[data-cat~="container"] .cat-item:first-child,
+div[data-cat~="linux"] .cat-item:first-child
+{
+	margin-top: 10px;
+}
+
+div[data-cat~="container"] .cat-item:not(:first-child),
+div[data-cat~="linux"] .cat-item:not(:first-child)
+{
+	margin-top: 20px;
+}
+
+/*.top_navigation .cat-group li:not(:first-child)*/
+/*{*/
+/*	margin-top: 10px;*/
+/*}*/
+
+
+/*.cat-item*/
+/*{*/
+/*	background-color: #FFFF00;*/
+/*}*/

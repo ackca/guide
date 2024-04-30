@@ -69,46 +69,46 @@
 
 					words = `
 						闰秒标识器（LI：Leap Indicator）
-						由2 bit构成，值为“11”时表示告警状态，时钟未被同步；其他值时NTP本身不做处理<br />　　0：no warning 未告警<br />　　1：last minute of the day has 61 seconds 最后一分钟有61秒<br />　　2：last minute of the day has 59 seconds 最后一分钟有59秒<br />　　3：unknown (clock unsynchronized) 未知（时钟未同步）<br />
+						由2 bits构成，值为“11”时表示告警状态，时钟未被同步；其他值时NTP本身不做处理<br />　　0：no warning 未告警<br />　　1：last minute of the day has 61 seconds 最后一分钟有61秒<br />　　2：last minute of the day has 59 seconds 最后一分钟有59秒<br />　　3：unknown (clock unsynchronized) 未知（时钟未同步）<br />
 
 						版本号（VN：version num）
-						由3 bit构成，表示NTP的版本号，目前最新版本为4.
+						由3 bits构成，表示NTP的版本号，目前最新版本为4.
 
 						模式（Mode）
-						由3 bit构成，表示NTP的工作模式；不同的值所表示的含义分区是：<br />　　0：reserved 未定义<br />　　1：symmetric active 表示主动对等模式<br />　　2：symmetric passive 表示被动对等模式<br />　　3：client 表示客户模式<br />　　4：server 表示服务器模式<br />　　5：broadcast 表示广播模式或组播模式<br />　　6：NTP control message 表示此报文NTP控制报文<br />　　7：reserved for private use 预留给内部使用<br />
+						由3 bits构成，表示NTP的工作模式；不同的值所表示的含义分区是：<br />　　0：reserved 未定义<br />　　1：symmetric active 表示主动对等模式<br />　　2：symmetric passive 表示被动对等模式<br />　　3：client 表示客户模式<br />　　4：server 表示服务器模式<br />　　5：broadcast 表示广播模式或组播模式<br />　　6：NTP control message 表示此报文NTP控制报文<br />　　7：reserved for private use 预留给内部使用<br />
 
 						层（Stratum）
-						由8 bit构成；表示系统时钟的层数，取值范围1~16，越小越优先，16表示时钟未同步，不能使用
+						由8 bits构成；表示系统时钟的层数，取值范围1~16，越小越优先，16表示时钟未同步，不能使用
 
 						轮询间隔（Poll）
-						由8 bit构成，表示两个NTP报文之间的最大时间间隔
+						由8 bits构成，表示两个NTP报文之间的最大时间间隔
 
 						精度（Precision）
-						由8 bit构成，表示系统时钟的精度
+						由8 bits构成，表示系统时钟的精度
 
 						根时延（Root Delay）
-						由32 bit构成，表示在到参考时钟的总往返的时延
+						由32 bits构成，表示在到参考时钟的总往返的时延
 
 						根离散（Root Dispersion）
-						由32 bit构成，表示本地时钟相对于主参考时钟的最大误差
+						由32 bits构成，表示本地时钟相对于主参考时钟的最大误差
 
 						参考时钟标识符（Reference Identifier）
-						由32 bit构成，用来标识特殊的参考源
+						由32 bits构成，用来标识特殊的参考源
 
 						参考时间戳（Reference Timestamp ），
-						由64 bit构成，系统时钟最后一次被修改的本地时间
+						由64 bits构成，系统时钟最后一次被修改的本地时间
 
 						原始时间戳（Origin Timestamp）
-						由64 bit构成，NTP请求报文离开发送端时发送端的本地时间，即NTP同步原理中的 t<sub>1</sub>
+						由64 bits构成，NTP请求报文离开发送端时发送端的本地时间，即NTP同步原理中的 t<sub>1</sub>
 
 						接受时间戳（Receive Timestamp）
-						由64 bit构成，NTP请求报文到达接收端的本地时间，即NTP同步原理中的 t<sub>2</sub>
+						由64 bits构成，NTP请求报文到达接收端的本地时间，即NTP同步原理中的 t<sub>2</sub>
 
 						传送时间戳（Transmit Timestamp）
-						由64 bit构成，NTP应答报文离开应答者时的应答者本地时间，即NTP同步原理中的 t<sub>3</sub>
+						由64 bits构成，NTP应答报文离开应答者时的应答者本地时间，即NTP同步原理中的 t<sub>3</sub>
 
 						密钥标识符（Key Identifier）
-						由32 bit构成，如果NTP服务启用了认证，则包含该字段，表示密钥的ID
+						由32 bits构成，如果NTP服务启用了认证，则包含该字段，表示密钥的ID
 
 						消息摘要（Message Digest）
 						如果NTP服务启用了认证，则包含该字段，表示用于认证的散列值，不同的散列算法，长度不同

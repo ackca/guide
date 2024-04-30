@@ -78,7 +78,7 @@
 
 					createInstruT1("报文中域名表示方式","i2-2");
 						createInstruAllTopT1("下图即域名 www.jd.com 的表示方式，");
-						createInstruAllTopT1("每个格大小为8 bit，数字表示每个点前字母的数量，随后紧跟字母（以ASCII表示），当出现0时表示域名结束<br />");
+						createInstruAllTopT1("每个格大小为8 bits，数字表示每个点前字母的数量，随后紧跟字母（以ASCII表示），当出现0时表示域名结束<br />");
 
 						createConfigImgT1("DNS/域名表示方式");
 
@@ -123,22 +123,22 @@
 
 						words = `
 							标识（ID：Identification）
-							由16 bit构成，由客户端设置，对同一个请求，多次迭代中保持不变，但递归查询会改变
+							由16 bits构成，由客户端设置，对同一个请求，多次迭代中保持不变，但递归查询会改变
 
 							标志（Flags）
-							由16 bit构成，被划分为若干子字段，如下所示：<br /><ul><li>QR<br/>由1 bit构成，0表示查询，1表示应答</li><li>Opocde<br/>由4 bit构成，通常值为0，表示标准查询，值为1表示反向查询，值为2表示服务器状态请求</li><li>AA（authoritative answer）<br/>由1 bit构成，表示该DNS应答为对应的授权DNS服务器发送</li><li>TC（truncated）<br/>由1 bit构成，表示“可截断”的。使用UDP时，它表示当应答的总长度超过512字节时，只返回前512个字节<br/>当客户端收到这个字段时，会改用TCP与服务器进行DNS查询</li><li>RD（recursion desired）<br/>由1 bit构成，表示“期望递归”。即期望采用递归查询，在查询中设置，并在响应中返回。<br/>当DNS服务器无对应解析项而需要向上级DNS服务器查询不发送期望递归，而采用迭代，因为上级DNS服务器一般不理会递归</li><li>RA（recursion available）<br/>由1 bit构成，表示“可用递归”。如果DNS服务器支持递归查询，则在响应中将该比特设置为1。</li><li>0<br/>由3 bit构成，值为0</li><li>rcode<br/>由4 bit构成。通常的值为<br/>0：没有错误、3：域名错误。域名错误只有会从授权DNS服务器上返回，它表示在查询的域名不存在。</li></ul>
+							由16 bits构成，被划分为若干子字段，如下所示：<br /><ul><li>QR<br/>由1 bit构成，0表示查询，1表示应答</li><li>Opocde<br/>由4 bits构成，通常值为0，表示标准查询，值为1表示反向查询，值为2表示服务器状态请求</li><li>AA（authoritative answer）<br/>由1 bit构成，表示该DNS应答为对应的授权DNS服务器发送</li><li>TC（truncated）<br/>由1 bit构成，表示“可截断”的。使用UDP时，它表示当应答的总长度超过512字节时，只返回前512个字节<br/>当客户端收到这个字段时，会改用TCP与服务器进行DNS查询</li><li>RD（recursion desired）<br/>由1 bit构成，表示“期望递归”。即期望采用递归查询，在查询中设置，并在响应中返回。<br/>当DNS服务器无对应解析项而需要向上级DNS服务器查询不发送期望递归，而采用迭代，因为上级DNS服务器一般不理会递归</li><li>RA（recursion available）<br/>由1 bit构成，表示“可用递归”。如果DNS服务器支持递归查询，则在响应中将该比特设置为1。</li><li>0<br/>由3 bits构成，值为0</li><li>rcode<br/>由4 bits构成。通常的值为<br/>0：没有错误、3：域名错误。域名错误只有会从授权DNS服务器上返回，它表示在查询的域名不存在。</li></ul>
 
 							问题数（Questions）
-							由16 bit构成，表示之后的问题字段中的问题数量，通常为1，因为无论是请求还应答，都会携带这个问题
+							由16 bits构成，表示之后的问题字段中的问题数量，通常为1，因为无论是请求还应答，都会携带这个问题
 
 							资源记录数（Answers）
-							由16 bit构成，表示之后的回答字段中的回答数量
+							由16 bits构成，表示之后的回答字段中的回答数量
 
 							授权资源记录数（Authority）
-							由16 bit构成，表示之后的授权字段中的授权资源数量
+							由16 bits构成，表示之后的授权字段中的授权资源数量
 
 							额外资源记录数（Additional）
-							由16 bit构成，表示之后的额外资源字段中的额外资源数量
+							由16 bits构成，表示之后的额外资源字段中的额外资源数量
 						`;
 						createProtocolExplainT0(words, -285, "DNS_header");
 
@@ -159,10 +159,10 @@
 							即需要DNS解析的域名，长度根据域名长短而改变
 
 							类型（Type）
-							由16 bit构成，表示查询的类型
+							由16 bits构成，表示查询的类型
 
 							类（Class）
-							由16 bit构成，取值为1，表示Internet
+							由16 bits构成，取值为1，表示Internet
 						`;
 						createProtocolExplainT0(words, -220, "DNS_question");
 
@@ -184,16 +184,16 @@
 							即需要DNS解析的域名，长度根据域名长短而改变
 
 							类型（Type）
-							由16 bit构成，表示查询的类型
+							由16 bits构成，表示查询的类型
 
 							类（Class）
-							由16 bit构成，取值为1，表示Internet
+							由16 bits构成，取值为1，表示Internet
 
 							生成时间（Time to Live）
-							由32 bit构成，表示客户端缓存该回答的时间，单位 秒
+							由32 bits构成，表示客户端缓存该回答的时间，单位 秒
 
 							资源数据长度（Data Length）
-							由16 bit构成，表示之后的资源数据长度，单位 字节
+							由16 bits构成，表示之后的资源数据长度，单位 字节
 
 							资源数据长度（Data Length）
 							长度可变，根据不同的响应类型，确定内容，如：A记录则为对应的IPv4地址

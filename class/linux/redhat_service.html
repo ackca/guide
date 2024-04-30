@@ -518,7 +518,7 @@
 					createInstruT1("配置反向解析（IPv6）","i5-5");
 						createInstruT2("生成区域配置文件中的区域名","i5-5-1");
 							instruArr[0] = createLinuxCmd("dig -x “2001:110::。 | grep .ip6.arpa | ") +
-											"<span class='cmd'>{&nbsp;&nbsp;<span class='linuxCMD_cmd'>read</span>&nbsp;&nbsp;v6;&nbsp;&nbsp;<span class='linuxCMD_cmd'>echo</span>&nbsp;&nbsp;${v6<span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='variable' style='background-color: #657382'><span class='spanNum'>33</span></span><span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='variable' style='background-color: #657382'><span class='spanNum'>40</span></span>};&nbsp;&nbsp;}</span>";
+											"<span class='cmd'>{&nbsp;&nbsp;<span class='linuxCMD_cmd'>read</span>&nbsp;&nbsp;v6;&nbsp;&nbsp;<span class='linuxCMD_cmd'>echo</span>&nbsp;&nbsp;${v6<span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='variable'><span class='spanNum'>33</span></span><span class='linuxCMD_pipeline'><b>:</b></span>&nbsp;&nbsp;<span class='variable'><span class='spanNum'>40</span></span>};&nbsp;&nbsp;}</span>";
 							instruArr[1] = createCmdInstruSpan("“2001:110::。","反向解析的IPv6地址的网络位");
 							instruArr[2] = createCmdInstruSpan("“33。","64位网络位对应的取值，计算规则：网络位长度为n，取值为 2((128-n)/4) + 1，实质为截取字符串的起始位置");
 							instruArr[3] = createCmdInstruSpan("“40。","64位网络位对应的取值，计算规则：网络位长度为n，取值为 2(n/4) + 8，实质为截取字符串的长度");

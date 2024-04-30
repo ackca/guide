@@ -96,3 +96,118 @@
 {
     white-space: nowrap;
 }
+
+.sys
+{
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center!important;
+	padding-top: 3px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 3px;
+    border-radius: 7px;
+    display: inline-block;
+    min-width: 115px;
+}
+
+.sys_des
+{
+    font-size: 20px;
+    margin-left: 30px;
+    padding-top: 5px;
+}
+
+.linux_systems .row
+{
+    height: 70px;
+}
+
+.linux_systems .row div:nth-child(1)
+{
+    text-align: right;
+}
+
+._
+{
+	font-size: 40px;
+    padding-top: 5px;
+	padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+	background-color: #282923;
+    min-width: inherit;
+    margin-top: -15px;
+}
+
+._bin
+{
+	background-color: #259E92;
+}
+
+._boot
+{
+	background-color: #FA693D;
+}
+
+._dev
+{
+    background-color: #83B5C2;
+}
+
+._etc
+{
+    background-color: #C7B573;
+}
+
+._home
+{
+    background-color: #E27E6A;
+}
+
+._lib
+{
+    background-color: #DA5C2B;
+}
+
+._media
+{
+    background-color: #869449;
+}
+
+._mnt
+{
+    background-color: #6F1F24;
+}
+
+._opt
+{
+    background-color: #EDC5C4;
+}
+
+._proc
+{
+    background-color: #FB8371;
+}
+
+._root
+{
+    background-color: #ABACA4;
+}
+
+._run
+{
+    background-color: #FB7E5C;
+}
+
+._sbin
+{
+    background-color: #94B2BC;
+}
+
+._srv
+{
+    background-color: #7A5758;
+}
+

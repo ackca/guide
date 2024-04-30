@@ -77,7 +77,7 @@ top_menu = `
 									    <img src="rootpath/img/cisco.svg" />
                                     </i>
 								</div>
-								<span>传统企业网</span>
+								<span>思科</span>
 							</h3>
 							<ul class="cat-list">
 								<li class="cat-item">
@@ -164,7 +164,7 @@ top_menu = `
 									    <img src="rootpath/img/cisco.svg" />
                                     </i>
 								</div>
-								<span>数据中心网络 / SDN</span>
+								<span>思科</span>
 							</h3>
 							<ul class="cat-list">
 								<li class="cat-item">
@@ -218,14 +218,20 @@ top_menu = `
 								<span></span>
 							</h3>
 							<ul class="cat-list">
-								<li class="cat-item">
+							    <li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/aruba/wireless_basic.html">无线网络架构</a>
+										<span>无线</span>
+									</div>
+									<div class="cat-item-sub">
+										<div class="cat-item-row">
+											<a href="rootpath/class/network/aruba/wireless.html">设备配置</a>
+											<a href="rootpath/class/network/aruba/wireless_basic.html">网络架构</a>
+										</div>
 									</div>
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/aruba/wireless.html">无线网络配置</a>
+										<a href="rootpath/class/network/f5/clearpass.html">ClearPass</a>
 									</div>
 								</li>
 							</ul>
@@ -326,7 +332,7 @@ top_menu = `
                                     </i>
 								</div>
 								<span style="font-size: 20px">证书服务</span>
-								<ul class="cat-list pki">
+								<ul class="cat-list">
                                     <li class="cat-item">
                                         <div class="cat-item-main">
                                             <a href="rootpath/class/netdevops/pki/certsrv.html">Windows平台</a>

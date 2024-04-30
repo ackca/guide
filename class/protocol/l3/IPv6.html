@@ -39,28 +39,28 @@
 					document.writeln("<br />");
 					words = `
 						版本（Version）
-						由4 bit构成，表示IP首部的版本号，IPv6的版本号即为6
+						由4 bits构成，表示IP首部的版本号，IPv6的版本号即为6
 
 						流分类（Traffic Class）
-						由8 bit构成，用于QOS，相当于IPv4的TOS
+						由8 bits构成，用于QOS，相当于IPv4的TOS
 
 						流标签（Flow Lable）
-						由20 bit构成，流标签可用来标记特定流的报文，以便在网络层区分不同的报文。转发路径上的路由器可以根据流标签来区分流并进行处理。
+						由20 bits构成，流标签可用来标记特定流的报文，以便在网络层区分不同的报文。转发路径上的路由器可以根据流标签来区分流并进行处理。
 
 						负载长度（Payload Length）
-						由16bit构成，表示IPv6负载的总长度，单位 字节
+						由16 bits构成，表示IPv6负载的总长度，单位 字节
 
 						下一个头部（Next Header）
-						由8 bit构成，表示IPv6头部的下一个头部属于哪个协议，如果有扩展头部，则为扩展头部编号
+						由8 bits构成，表示IPv6头部的下一个头部属于哪个协议，如果有扩展头部，则为扩展头部编号
 
 						跳数限制（Hop Limit）
-						由8 bit构成，用于防环，相当用IPv4中的TTL
+						由8 bits构成，用于防环，相当用IPv4中的TTL
 
 						源地址（Source Address）
-						由128 bit构成，表示发送端的IPv6地址
+						由128 bits构成，表示发送端的IPv6地址
 
 						目的地址（Destination Address）
-						由128 bit构成，表示接收端的IPv6地址
+						由128 bits构成，表示接收端的IPv6地址
 
 						数据部分（Data）
 						IPv6数据部分
@@ -85,22 +85,22 @@
 
 						words = `
 							下一个头部（Next Header）
-							由8 bit构成，表示IPv6分片头部的下一个头部属于哪个协议，也就是分片前的IPv6报文的下一个头部
+							由8 bits构成，表示IPv6分片头部的下一个头部属于哪个协议，也就是分片前的IPv6报文的下一个头部
 
 							保留（Reserved）
-							由8 bit构成，保留字段，为0
+							由8 bits构成，保留字段，为0
 
 							片偏移（Fragment Offset）
-							由13 bit构成，用来标识被分片的每一个分段相对于原始数据的位置，第一个分片对应的值为0，单位为8字节
+							由13 bits构成，用来标识被分片的每一个分段相对于原始数据的位置，第一个分片对应的值为0，单位为8字节
 
 							保留（Reserved）
-							由2 bit构成，保留字段，为0
+							由2 bits构成，保留字段，为0
 
 							更多分片（More Fragmnet）
 							由1 bit构成，表示是否为最后一个报文，0：最后一个分片的报文，1：分片中段的报文
 
 							标识（Identification）
-							由32 bit构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。
+							由32 bits构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。
 						`;
 						createProtocolExplainT1(words, -287, 'protocolStructure1');
 

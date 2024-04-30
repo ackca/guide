@@ -4,7 +4,8 @@ body, html
 	padding: 0;
 	margin: 0;
 	background: #494A5F;
-	color: #FFFFFF;
+	/*color: #FFFFFF;*/
+	color: #F8F8F2;
 	font-weight: 500;
 }
 
@@ -98,6 +99,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 {
 	font-weight: normal;
 	color: #AC80FF;
+	/*font-size: 70%;*/
 }
 
 span .link
@@ -271,6 +273,18 @@ h4
 	padding-left: 0;
 }
 
+.cmdMode
+{
+	font-size: 18px;
+	color: #8AA4AF;
+}
+
+.cmdArubaPath
+{
+	font-size: 18px;
+	color: #7F6FCF;
+}
+
 .cmdInstru
 {
 	text-indent: 2em;
@@ -286,6 +300,7 @@ h4
 {
 	font-style: italic;
 	background-color: #829BA5;
+	color: #FFFFFF;
 	font-family: inherit;
 	padding-left: 2px;
 	padding-right: 3px;
@@ -442,7 +457,7 @@ h4
 	height: 30px;
 }
 
-.imgBrand.huawei, .imgBrand.f5
+.imgBrand.aruba, .imgBrand.huawei, .imgBrand.f5
 {
 	height: 35px;
 }
@@ -492,6 +507,7 @@ td
 	margin-left: 50px;
 }
 
+
 .divConfigImgT2
 {
 	margin-left: 80px;
@@ -500,6 +516,28 @@ td
 .divConfigImgT3
 {
 	margin-left: 110px;
+}
+
+@media screen and (max-width:1550px) {
+	.divConfigImgT0 img
+	{
+		max-width: 1430px;
+	}
+
+	.divConfigImgT1 img
+	{
+		max-width: 1400px;
+	}
+
+	.divConfigImgT2 img
+	{
+		max-width: 1370px;
+	}
+
+	.divConfigImgT3 img
+	{
+		max-width: 1340px;
+	}
 }
 
 .cmdTableT2 + .divConfigImgT2,

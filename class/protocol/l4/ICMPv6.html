@@ -55,13 +55,13 @@
 
 					words = `
 						类型（Type）
-						由8 bit构成，用于区分不同类型的ICMP报文
+						由8 bits构成，用于区分不同类型的ICMP报文
 
 						代码（Code）
-						由8 bit构成，用于区分子不同类型的ICMP报文
+						由8 bits构成，用于区分子不同类型的ICMP报文
 
 						校验和（Checksum）
-						由16 bit构成，计算ICMPv6首部和数据部分以及IPv6伪首部
+						由16 bits构成，计算ICMPv6首部和数据部分以及IPv6伪首部
 
 						与类型相关
 						与类型相关，不同类型的ICMP报文，格式不同
@@ -132,14 +132,14 @@
 
 						words = `
 							类型（Type）
-							由8 bit构成，用于区分不同类型的ICMPv6报文
+							由8 bits构成，用于区分不同类型的ICMPv6报文
 
 							长度（Length）
-							由8 bit构成，表示选项的总长度，单位 8字节
+							由8 bits构成，表示选项的总长度，单位 8字节
 
 							选项内容
 							与类型相关的选项内容
-							`;
+						`;
 						createProtocolExplainT1(words, -154, "option");
 
 						createInstruAllTopT1("常见选项对应关系如下：<br />");
@@ -150,14 +150,49 @@
 							"说明",
 						];
 						tBody = [
-							["1","源链路层地址（Source Link-layer Address）","即发送报文的源mac地址"],
-							["2","目标链路层地址（Target Link-layer Address）",""],
+							["1","源链路层地址（Source Link-layer Address）","发送报文的源mac地址"],
+							["2","目标链路层地址（Target Link-layer Address）","NA报文的响应地址"],
 							["3","前缀信息（Prefix Information）",""],
 							["5","最大传输单元（MTU）",""],
-							["25","递归的DNS服务器（Recursive DNS Server）","即DNS服务器"],
-							["31","DNS搜索列表（DNS Search List）","即域名"],
+							["25","递归的DNS服务器（Recursive DNS Server）","DNS服务器"],
+							["31","DNS搜索列表（DNS Search List）","域名"],
 						];
 						createHLTableT1(800, tHeader, tBody, "tOptions");
+
+                    createInstruT1("<br /><br />类型1/2：源/目标 链路层地址<br />","i5-2");
+						createProtocolStructT1(
+							"815",
+							"190",
+							"380",
+							"ICMPv6/option12",
+							"ICMPv6选项1_2",
+							"option12"
+						);
+
+                        document.writeln("<br />");
+						words = `
+							链路层地址（Link-Layer Address）
+							由48 bits构成，根据选项类型，表示源（目标）mac地址
+						`;
+						createProtocolExplainT1(words, -190, "option12");
+
+
+                    createInstruT1("<br /><br />类型3：前缀信息","i5-3");
+                        createProtocolStructT1(
+							"815",
+							"395",
+							"2765",
+							"ICMPv6/option3",
+							"ICMPv6选项3",
+							"option3"
+						);
+
+                        document.writeln("<br />");
+						words = `
+							链路层地址（Link-Layer Address）
+							由48 bits构成，根据选项类型，表示源（目标）mac地址
+						`;
+						createProtocolExplainT1(words, -395, "option3");
 
 				createInstruT0("回显请求/响应 报文（ping）","i3");
 					createInstruT1("回显请求/响应 报文结构<br />","i3-1");
@@ -172,19 +207,19 @@
 
 						words = `
 							类型（Type）
-							由8 bit构成，ping请求（echo）报文取值为128，ping响应（echo-reply）报文取值为129
+							由8 bits构成，ping请求（echo）报文取值为128，ping响应（echo-reply）报文取值为129
 
 							代码（Code）
-							由8 bit构成，ping请求与响应（echo / echo-reply）取值均为0
+							由8 bits构成，ping请求与响应（echo / echo-reply）取值均为0
 
 							校验和（Checksum）
-							由16 bit构成，计算ICMPv6首部和数据以及IPv6伪头部
+							由16 bits构成，计算ICMPv6首部和数据以及IPv6伪头部
 
 							标识（ID：Identification）
-							由16 bit构成，在同一次的ping请求中，标识保持不变<br />当ping通过PAT时，标识被当作TCP/UDP的端口使用，实现地址复用
+							由16 bits构成，在同一次的ping请求中，标识保持不变<br />当ping通过PAT时，标识被当作TCP/UDP的端口使用，实现地址复用
 
 							序列号（Sequence Number）
-							由16 bit构成，在同一次的ping请求中，序列号随着每个ping报文而增加
+							由16 bits构成，在同一次的ping请求中，序列号随着每个ping报文而增加
 
 							数据（Data）
 							数据部分
@@ -228,13 +263,13 @@
 
 							words = `
 								保留（Reserved）
-								由32 bit构成，保留为0
+								由32 bits构成，保留为0
 
 								目标地址（Target Address）
-								由128 bit构成，表示请求解析的IPv6地址
+								由128 bits构成，表示请求解析的IPv6地址
 
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
-								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
+								由64 bits构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
 							createProtocolExplainT2(words, -374, "NS");
 
@@ -257,16 +292,16 @@
 
 							words = `
 								标志（Flags）
-								由3 bit构成，每位的含义如下：<br /><div class="HLTableS2" id="tNAFlags" style="width:700px"><div class="table"><div class="row header"><div class="cell">位置</div><div class="cell">字段</div><div class="cell">说明</div></div><div class="row"><div class="cell">第1个bit</div><div class="cell">R</div><div class="cell">路由器标记。当置1时，表示发送者是路由器。</div></div><div class="row"><div class="cell">第2个bit</div><div class="cell">S</div><div class="cell">请求标记。当置1时，表示通告被发送以响应NS。</div></div><div class="row"><div class="cell">第3个bit</div><div class="cell">O</div><div class="cell">替代标记。当置1时，表示通告中的信息替代缓存。</div></div></div></div>
+								由3 bits构成，每位的含义如下：<br /><div class="HLTableS2" id="tNAFlags" style="width:700px"><div class="table"><div class="row header"><div class="cell">位置</div><div class="cell">字段</div><div class="cell">说明</div></div><div class="row"><div class="cell">第1个bit</div><div class="cell">R</div><div class="cell">路由器标记。当置1时，表示发送者是路由器。</div></div><div class="row"><div class="cell">第2个bit</div><div class="cell">S</div><div class="cell">请求标记。当置1时，表示通告被发送以响应NS。</div></div><div class="row"><div class="cell">第3个bit</div><div class="cell">O</div><div class="cell">替代标记。当置1时，表示通告中的信息替代缓存。</div></div></div></div>
 
 								保留（Reserved）
-								由29 bit构成，保留为0
+								由29 bits构成，保留为0
 
 								目标地址（Target Address）
-								由128 bit构成，表示请求解析的IPv6地址
+								由128 bits构成，表示请求解析的IPv6地址
 
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
-								由64 bit构成，类型 2，长度 1，值为目标链路层地址，也就是解析到的mac地址
+								由64 bits构成，类型 2，长度 1，值为目标链路层地址，也就是解析到的mac地址
 							`;
 							createProtocolExplainT2(words, -374, "NA");
 
@@ -315,10 +350,10 @@
 
 							words = `
 								保留（Reserved）
-								由32 bit构成，保留为0
+								由32 bits构成，保留为0
 
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
-								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
+								由64 bits构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
 							createProtocolExplainT2(words, -315, "RS");
 
@@ -341,10 +376,10 @@
 
 							words = `
 								保留（Reserved）
-								由32 bit构成，保留为0
+								由32 bits构成，保留为0
 
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
-								由64 bit构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
+								由64 bits构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
 							createProtocolExplainT2(words, -653.6, "RA");
 

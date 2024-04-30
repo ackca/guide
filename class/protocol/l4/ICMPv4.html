@@ -57,13 +57,13 @@
 
 					words = `
 						类型（Type）
-						由8 bit构成，用于区分不同类型的ICMP报文
+						由8 bits构成，用于区分不同类型的ICMP报文
 
 						代码（Code）
-						由8 bit构成，用于区分子不同类型的ICMP报文
+						由8 bits构成，用于区分子不同类型的ICMP报文
 
 						校验和（Checksum）
-						由16 bit构成，计算ICMPv4首部和数据部分
+						由16 bits构成，计算ICMPv4首部和数据部分
 
 						与类型相关
 						与类型相关，不同类型的ICMP报文，格式不同
@@ -133,19 +133,19 @@
 
 						words = `
 							类型（Type）
-							由8 bit构成，ping请求（echo）报文取值为8，ping响应（echo-reply）报文取值为0
+							由8 bits构成，ping请求（echo）报文取值为8，ping响应（echo-reply）报文取值为0
 
 							代码（Code）
-							由8 bit构成，ping请求与响应（echo / echo-reply）取值均为0
+							由8 bits构成，ping请求与响应（echo / echo-reply）取值均为0
 
 							校验和（Checksum）
-							由16 bit构成，计算ICMPv4首部和数据部分
+							由16 bits构成，计算ICMPv4首部和数据部分
 
 							标识（ID：Identification）
-							由16 bit构成，在同一次的ping请求中，标识保持不变<br />当ping通过PAT时，标识被当作TCP/UDP的端口使用，实现地址复用
+							由16 bits构成，在同一次的ping请求中，标识保持不变<br />当ping通过PAT时，标识被当作TCP/UDP的端口使用，实现地址复用
 
 							序列号（Sequence Number）
-							由16 bit构成，在同一次的ping请求中，序列号随着每个ping报文而增加
+							由16 bits构成，在同一次的ping请求中，序列号随着每个ping报文而增加
 
 							数据（Data）
 							数据部分

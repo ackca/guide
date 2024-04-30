@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/cisco.svg"/>
-	<title>思科-传统企业网-ISE的交换机配置</title>
+	<title>思科-ISE的交换机配置</title>
 	<script src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(ise_switch);
@@ -285,9 +285,13 @@
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config-if)# authentication host-mode { multi-auth | multi-domain | multi-host | single-host }")
+								instruArr[1] = createCmdInstruSpan("multi-auth","支持一个语音电话和多个数据主机");
+								instruArr[2] = createCmdInstruSpan("multi-domain","仅支持一个语音电话和一个数据主机，超过后按下项配置处理");
+								instruArr[3] = createCmdInstruSpan("multi-host","可以支持多个主机，一个主机通过认证，所有主机均可通信，不支持DACL");
+								instruArr[4] = createCmdInstruSpan("single-host","只允许单个主机，超过后按下项配置处理");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("接入主机违规后的处理方式");
+							createInstruT3("接入主机违规后的处理方式（single-host，multi-domain模式时有效）");
 								instruArr[0] = createCmdSpan("SW1(config-if)# authentication violation { protect | replace | restrict | shutdown }");
 								instruArr[1] = createCmdInstruSpan("protect","丢弃数据帧，不发警告");
 								instruArr[2] = createCmdInstruSpan("replace","丢弃数据帧，发警告");

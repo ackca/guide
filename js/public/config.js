@@ -712,14 +712,23 @@ function createCmdSpan(cmd) {
 		return "<span class='cmd'>" + addSpan(cmd) +"</span>"
 	}
 
-	var regFG = /([\w() -/[<&:~;…]+[#>\$\]] )(.+)/;	// 思科华为各种模式前缀，如：R1(config-route)# [R1-FastEthernet0/0]
-	if(regFG.test(cmd)) {
-		cmd = cmd.replace(regFG,"<span style='color:#8AA4AF;font-size:18px'>$1</span><span class='cmd'>$2</span>");
+	var regAruba = /(\(\S+\) \^?\[\S+\] )(\(\S+\)#)(.+)/;
+	// console.log(cmd.match(regAruba))
+	if(regAruba.test(cmd)) {
+		cmd = cmd.replace(regAruba,"<span class='cmdArubaPath'>$1</span><span class='cmdMode'>$2</span><span class='cmd'>$3</span>");
 		return addSpan(cmd);
 	}
 	else {
-		return "<span class='cmd'>" + addSpan(cmd) +"</span>";
+		var regFG = /([\w() -/[<&:~;…]+[#>\$\]] )(.+)/;	// 思科华为各种模式前缀，如：R1(config-route)# [R1-FastEthernet0/0]
+		if(regFG.test(cmd)) {
+			cmd = cmd.replace(regFG,"<span class='cmdMode'>$1</span><span class='cmd'>$2</span>");
+			return addSpan(cmd);
+		}
+		else {
+			return "<span class='cmd'>" + addSpan(cmd) +"</span>";
+		}
 	}
+
 }
 
 function createCmdInstruSpan(cmd, text) {
@@ -806,7 +815,7 @@ function createCmdInstru(instruArr, typeT, typeBrand) {
 
 	var htmlText = "<table class='cmdTable" + typeT + "'>"
 
-	if(typeBrand == "cisco" || typeBrand == "huawei" || typeBrand == "h3c" || typeBrand == "f5" ) {
+	if(typeBrand == "cisco" || typeBrand == "aruba" || typeBrand == "huawei" || typeBrand == "h3c" || typeBrand == "f5" ) {
 		htmlText = htmlText + "<tr><td rowspan='" + (instruArr.length + 1) + "' class='tdCliLogo'>";
 	}
 	else {	// 使用linux命令格式高亮显示的，修改右侧线的颜色

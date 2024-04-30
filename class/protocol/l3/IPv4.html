@@ -38,43 +38,43 @@
 					document.writeln("<br />");
 					words = `
 						版本（Version）
-						由4 bit构成，表示IP首部的版本号，IPv4的版本号即为4
+						由4 bits构成，表示IP首部的版本号，IPv4的版本号即为4
 
 						首部长度（IHL：Internet Header Length）
-						由4 bit构成，表明IPv4首部的大小，单位为 4字节，<br />对于没有可选选项的IPv4报文，长度为5，也就是20字节
+						由4 bits构成，表明IPv4首部的大小，单位为 4字节，<br />对于没有可选选项的IPv4报文，长度为5，也就是20字节
 
 						区分服务（ToS：Type of Service）
-						由8 bit构成，用于QOS
+						由8 bits构成，用于QOS
 
 						总长度（Total Length）
-						由16 bit构成，表示IPv4首部与数据部分加起来的总大小，单位 字节，<br />IPv4报文的最大长度为65535（2<sup>16</sup>-1）字节
+						由16 bits构成，表示IPv4首部与数据部分加起来的总大小，单位 字节，<br />IPv4报文的最大长度为65535（2<sup>16</sup>-1）字节
 
 						标识（ID：Identification）
-						由16 bit构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。通常，标识值会随着IPv4报文的发出逐渐增加。即使标识值相同，但源目地址或协议不同，也被认为是不同的分片
+						由16 bits构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。通常，标识值会随着IPv4报文的发出逐渐增加。即使标识值相同，但源目地址或协议不同，也被认为是不同的分片
 
 						标志（Flags）
-						由3 bit构成，表示报文被分片的相同信息<table class="tableProtocolExplain"><tr><td>第1个bit</td><td>保留，目前必须为 0</td></tr><tr><td>第2个bit</td><td>表示是否进行分片<br />0：可以分片<br />1：不能分片</td><tr><td>第3个bit</td><td>表示是否为最后一个报文<br />0：最后一个分片的报文，未分片时也有为0<br />1：分片中段的报文</td></tr></table>
+						由3 bits构成，表示报文被分片的相同信息<table class="tableProtocolExplain"><tr><td>第1个bit</td><td>保留，目前必须为 0</td></tr><tr><td>第2个bit</td><td>表示是否进行分片<br />0：可以分片<br />1：不能分片</td><tr><td>第3个bit</td><td>表示是否为最后一个报文<br />0：最后一个分片的报文，未分片时也有为0<br />1：分片中段的报文</td></tr></table>
 
 						片偏移（FO：Fragment Offset）
-						由13 bit构成，用来标识被分片的每一个分段相对于原始数据的位置，第一个分片对应的值为0，单位为8字节
+						由13 bits构成，用来标识被分片的每一个分段相对于原始数据的位置，第一个分片对应的值为0，单位为8字节
 
 						生存时间（TTL：Time To Live）
-						由8 bit构成，指可以中转多少个路由器，每经过一个路由器，TTL减1，TTL为0时，该被丢弃
+						由8 bits构成，指可以中转多少个路由器，每经过一个路由器，TTL减1，TTL为0时，该被丢弃
 
 						协议（Protocol）
-						由8 bit构成，表示IP首部的下一个首部属于哪个协议
+						由8 bits构成，表示IP首部的下一个首部属于哪个协议
 
 						首部校验和（Header Checksum）
-						由16 bit构成，只计算IPv4首部，不校验数据部分
+						由16 bits构成，只计算IPv4首部，不校验数据部分
 
 						源地址（Source Address）
-						由32 bit构成，表示发送端的IPv4地址
+						由32 bits构成，表示发送端的IPv4地址
 
 						目的地址（Destination Address）
-						由32 bit构成，表示接收端的IPv4地址
+						由32 bits构成，表示接收端的IPv4地址
 
 						可选项（Options）
-						长度可变，最多40字节，通常进行实验或诊断时使用<br /><ul><li>路径记录<br />记录数量过少，使用范围有限</li><li>宽松/严格源站路由<br />可摆脱网络设备对IP路径的控制，有严重安全隐患</li><li>时间戳记录<br />几乎不使用</li></ul>在有可选项的情况下，首部长度可能不是32 bit的整数倍，通过向字段填0，使首部长度变为32 bit的整数倍<br />安全设备很可能去掉选项
+						长度可变，最多40字节，通常进行实验或诊断时使用<br /><ul><li>路径记录<br />记录数量过少，使用范围有限</li><li>宽松/严格源站路由<br />可摆脱网络设备对IP路径的控制，有严重安全隐患</li><li>时间戳记录<br />几乎不使用</li></ul>在有可选项的情况下，首部长度可能不是32 bits的整数倍，通过向字段填0，使首部长度变为32 bits的整数倍<br />安全设备很可能去掉选项
 
 						数据部分（Data）
 						IPv4数据部分
@@ -141,13 +141,13 @@
 
 						words = `
 							代码（code）
-							由8 bit构成，表示IP选项的类型，对应关系如下：<table class="tableProtocolExplain"><tr><td>路径记录</td><td>7</td></tr><tr><td>宽松源站路由</td><td>131</td></tr><tr><td>严格源站路由</td><td>137</td></tr></table>
+							由8 bits构成，表示IP选项的类型，对应关系如下：<table class="tableProtocolExplain"><tr><td>路径记录</td><td>7</td></tr><tr><td>宽松源站路由</td><td>131</td></tr><tr><td>严格源站路由</td><td>137</td></tr></table>
 
 							总长度（len）
-							由8 bit构成，表示IP选项的总长度，不包括填充部分，前3字节固定，后面每有一个IP地址，长度+4
+							由8 bits构成，表示IP选项的总长度，不包括填充部分，前3字节固定，后面每有一个IP地址，长度+4
 
 							指针（ptr）
-							由8 bit构成，表示记录的位置，具体选项在详细说明
+							由8 bits构成，表示记录的位置，具体选项在详细说明
 						`;
 						createProtocolExplainT2(words, -290, 'ipv4_options');
 
