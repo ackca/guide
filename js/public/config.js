@@ -236,15 +236,38 @@ function createCmdT3(text) {
 }
 
 function createLinuxTxtT1(cmds) {
-	initTXT(cmds, "LinuxTxt", "T1");
+	document.writeln(initTXT(cmds, "LinuxTxt", "T1"));
 }
 
 function createLinuxTxtT2(cmds) {
-	initTXT(cmds, "LinuxTxt", "T2");
+	document.writeln(initTXT(cmds, "LinuxTxt", "T2"));
 }
 
 function createLinuxTxtT3(cmds) {
-	initTXT(cmds, "LinuxTxt", "T3");
+	document.writeln(initTXT(cmds, "LinuxTxt", "T3"));
+}
+
+function createLinuxTxtMarkT1(cmds, mark_list) {
+	var htmlText = initTXT(cmds, "LinuxTxtMark", "T1");
+	cmdMark(htmlText, mark_list);
+}
+
+function createLinuxTxtMarkT2(cmds, mark_list) {
+	var htmlText = initTXT(cmds, "LinuxTxt", "T2");
+	cmdMark(htmlText, mark_list);
+}
+
+function createLinuxTxtMarkT3(cmds, mark_list) {
+	var htmlText = initTXT(cmds, "LinuxTxtMark", "T3");
+	cmdMark(htmlText, mark_list);
+}
+
+function cmdMark(htmlText, mark_list) {
+	for(var i = 0; i < mark_list.length; i++) {
+		var reg = new RegExp(mark_list[i], "g");
+		htmlText = htmlText.replace(reg, "<span class='markColor" + (i + 1).toString() + "'>" + mark_list[i] + "</span>");
+	}
+	document.writeln(htmlText);
 }
 
 function createYAMLT1(cmds) {
@@ -314,7 +337,7 @@ function initTXT(cmds, txtT, cmdT) {
 
 	switch (txtT) {
 		case "LinuxTxt":
-			createLinuxTxt(cmd_arr, htmlText);
+			return createLinuxTxt(cmd_arr, htmlText);
 			break;
 
 		case "YAML":
@@ -391,7 +414,8 @@ function createLinuxTxt(cmd_arr, htmlText) {
 		htmlText = htmlText + '<span>' + cmd_arr[i].trim() + '</span><br />'
 	}
 	htmlText = htmlText + "</div>";
-	document.writeln(htmlText);
+	// document.writeln(htmlText);
+	return htmlText;
 }
 
 function createYAML(cmd_arr, htmlText) {
@@ -712,10 +736,9 @@ function createCmdSpan(cmd) {
 		return "<span class='cmd'>" + addSpan(cmd) +"</span>"
 	}
 
-	var regAruba = /(\(\S+\) \^?\[\S+\] )(\(\S+\)#)(.+)/;
-	// console.log(cmd.match(regAruba))
+	var regAruba = /(\(\S+\) \^?\[\S+\])(( \([\S ]+\))? #)(.+)/;
 	if(regAruba.test(cmd)) {
-		cmd = cmd.replace(regAruba,"<span class='cmdArubaPath'>$1</span><span class='cmdMode'>$2</span><span class='cmd'>$3</span>");
+		cmd = cmd.replace(regAruba,"<span class='cmdArubaPath'>$1</span><span class='cmdMode'>$2</span><span class='cmd'>$4</span>");
 		return addSpan(cmd);
 	}
 	else {

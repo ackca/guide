@@ -25,11 +25,6 @@
 					createInstruT1("第2阶段：设置vCenter Server","i9-3");
 						createConfigImgT1("vsphere7/i9_3$1~8");
 
-                    createInstruT1("vCenter Server管理页面","i9-4");
-                        createInstruAllTopT1("https://vCenter的IP或域名:5480");
-                        createInstruAllTopT1("第1阶段部署完成后，也可通过该页面进入第2阶段");
-						createConfigImgT1("vsphere7/i9_4$1");
-
 				createInstruT0("初始化","i1");
 					createInstruT1("新建数据中心","i1-1");
 						createConfigImgT1("vsphere7/i1_1$1~3");
@@ -40,9 +35,49 @@
 					createInstruT1("添加主机","i1-3");
 						createConfigImgT1("vsphere7/i1_3$1~9");
 
+                createInstruT0("虚拟交换机相关逻辑","i11");
+	                    createInstruT2("基本原理","i11-1");
+	                        createInstruAllTopT2("虚拟机的网卡（vNIC）连接到虚拟交换机的端口组（port group），port group相当于普通交换机的vlan，port group可以配置多种属性，这些属性会虚拟机的网卡继承");
+	                        createInstruAllTopT2("虚拟交换机可选上连接口（uplink），多个上连接口可以实现负载分担，uplink天生支持trunk，且无法被配置，流量会根据port group的配置携带相应的vlan id");
+							createInstruAllTopT2("上联交换机配置为trunk，port group配置相应的vlan id，虚拟机流量也就进入相应vlan");
+							createInstruAllTopT2("上联交换机配置为access，不带vlan id的流量进入相应vlan，携带vlan id的流量，一般会被丢弃");
+	                        createInstruAllTopT2("vSwitch不能直接互联，不运行STP，一个vSwitch有多个上联链路时，流量不会从一条流入，再从另一条流出");
+
+                        createInstruT2("<br /><br />网卡类型","i11-2");
+                            createInstruAllTopT2("E1000：千兆的Intel网卡，兼容性最好，支持的所有操作系统，无需安装驱动，但性能也最差");
+	                        createInstruAllTopT2("E1000e：千兆的Intel网卡，兼容性次好，个别系统不支持，性能也很差");
+	                        createInstruAllTopT2("VMXNET、VMXNET2、VMXNET3：vmware的网卡，VMXNET3性能最好，较新的系统一般均支持");
+
+                        createInstruT2("<br /><br />端口组的相关设置","i11-3");
+                            createInstruT3("安全","i11-3-1");
+                                createConfigImgT3("vsphere7/i11_3_1$1");
+                                createInstruAllTopT3("虚拟主机生成时，vcenter会为网卡分配mac地址，主机可以修改mac地址，虚拟主机网络设备时，也会转发其它设备的流量");
+                                var t_sec = `
+                                    <table class="cmdInstruAllTopT3">
+                                        <tr>
+                                            <td style="padding-left: 0">混杂模式：</td>
+                                            <td>拒绝时，只接收广播、组播，目的mac为对应虚拟机的流量，<br />接受时，接收所有流量</td>
+										</tr>
+										<tr>
+                                            <td style="padding-left: 0">MAC地址更改：</td>
+                                            <td>是否接收入方向mac地址不正确的流量</td>
+										</tr>
+										<tr>
+                                            <td style="padding-left: 0">伪传输：</td>
+                                            <td>是否接收出方向mac地址不正确的流量</td>
+										</tr>
+                                    </table>
+                                `
+								// document.writeln(t_sec)
+								createInstruAllTopT3("<br />混杂模式：只接收广播、组播，目的mac为对应虚拟机的流量，接收时，接收所有流量");
+                                createInstruAllTopT3("MAC地址更改：是否接收入方向mac地址不正确的流量");
+                                createInstruAllTopT3("伪传输：是否接收出方向mac地址不正确的流量");
+
+
+
 				createInstruT0("使用标准交换机","i2");
 					createInstruT1("配置新链路，连接到外部网络（链路冗余）","i2-1");
-						createConfigImgT1("vsphere7/i2_1$1~9");
+						createConfigImgT1("vsphere7/i2_1$1~10");
 
 					createInstruT1("配置VMkernel网络适配器","i2-2");
 						createConfigImgT1("vsphere7/i2_1$1");
@@ -78,7 +113,9 @@
 
 				createInstruT0("使用iSCSI存储","i8");
 					createInstruT1("配置iSCSI网络连接","i8-1");
-						createConfigImgT1("vsphere7/i8_1$1~11");
+                        createConfigImgT1("vsphere7/i2_1$1");
+						createConfigImgT1("vsphere7/i2_2$1~3");
+						createConfigImgT1("vsphere7/i8_1$1~7");
 
 					createInstruT1("配置iSCSI适配器","i8-2");
 						createConfigImgT1("vsphere7/i8_2$1~11");
@@ -112,9 +149,20 @@
 				createInstruT0("配置高可用性","i7");
 					createConfigImgT0("vsphere7/i7$1~3");
 
-                createInstruT0("清除克隆产生windows的ID类信息","i10");
-                    createInstruAllTopT0("C:\\&nbsp;windows&nbsp;\\&nbsp;system32&nbsp;\\&nbsp;sysprep&nbsp;\\&nbsp;sysprep.exe<br />");
-					createConfigImgT0("vsphere7/i10$1");
+                createInstruT0("其它功能","i10");
+		                createInstruT2("清除克隆产生windows的ID类信息","i10-1");
+		                    createInstruAllTopT2("C:\\&nbsp;windows&nbsp;\\&nbsp;system32&nbsp;\\&nbsp;sysprep&nbsp;\\&nbsp;sysprep.exe<br />");
+							createConfigImgT2("vsphere7/i10_1$1");
+
+                        createInstruT2("vCenter Server管理页面","i10-2");
+	                        createInstruAllTopT2("https://vCenter的IP或域名:5480");
+	                        createInstruAllTopT2("第1阶段部署完成后，也可通过该页面进入第2阶段");
+							createConfigImgT2("vsphere7/i10_2$1");
+
+                        createInstruT2("vsphere主机，命令行页面","i10-3");
+                            createInstruAllTopT2("进入：’Alt + F1。，退出：’Alt + F2。");
+                            createInstruAllTopT2("默认关闭，需要启用后才能使用，vcenter位置如下");
+                            createConfigImgT2("vsphere7/i10_3$1");
 
 			</script>
 		</div>

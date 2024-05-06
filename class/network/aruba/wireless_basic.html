@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/aruba.svg"/>
+	<title>Aruba-无线架构</title>
+	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(wireless_basic);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("无线架构", "i1");
+						createInstruT2("架构基础", "i1-1");
+							createInstruAllTopT2("共三层设备，在传统的控制器管理AP的前提下，添加了MM，用于管理控制器");
+
+							createInstruAllTopT2("MM（Mobility Master）：统一配置管理平台，专注于资源计算，性能优化等，不用于终结AP");
+
+							createInstruAllTopT2("　　　　　　　　　　　　　　　　　　　　采用VRRP方式实现高可用性");
+
+							createInstruAllTopT2("<br />MD（Managed Devices）：由MM管理的无线控制器，用于终结AP，数据转发");
+
+							createInstruAllTopT2("　　　　　　　　　　　　　　　　　　　　　使用集群方式实现高可用性，并提供无线漫游等功能");
+
+							createConfigImgT2("wireless_basic/i1_1$1");
+
+						createInstruT2("层次化配置", "i1-2");
+							createInstruAllTopT2("下图为CLI的层次化逻辑，根（/）之下关联 mm 和 md");
+
+							createInstruAllTopT2("mm下关联各个MM，每个MM均显示mynode");
+
+							createInstruAllTopT2("md下层次化的关联各个控制器（MC），md之下最多4层");
+
+							createInstruAllTopT2("配置时，在某个路径节点的配置，会被发放到下方的所有节点，在设备节点的配置，只会在此设备节点生效");
+
+							createConfigImgT2("wireless_basic/i1_2$1");
+
+							createInstruAllTopT2("<br /><br />下图为GUI的层次化逻辑，因为GUI页面的配置非常复杂，只有少量配置在GUI进行<br />");
+
+							createConfigImgT2("wireless_basic/i1_2$2");
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

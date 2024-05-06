@@ -299,13 +299,14 @@ h4
 .variable, .variableZN
 {
 	font-style: italic;
-	background-color: #829BA5;
+	/*background-color: #829BA5*/
+	background-color: #667382;
 	color: #FFFFFF;
 	font-family: inherit;
 	padding-left: 2px;
 	padding-right: 3px;
 	position: relative;
-
+	/*opacity: 50%;*/
 }
 
 .variableZN, .explainZN, .spanBold
@@ -561,6 +562,11 @@ td
 .instruT2 + .cmdInstruAllTopT2
 {
 	margin-top: 7px;
+}
+
+.divConfigImgT2 + br + br + .cmdTableT2
+{
+	margin-top: -35px;
 }
 
 .divLogo
@@ -1040,4 +1046,34 @@ td
 .divConfigImgT3[imgDescribe]:hover
 {
 	cursor: pointer;
+}
+
+.markColor1
+{
+	color: #F92672;
+}
+
+.markColor2
+{
+	color: #AE81FF;
+}
+
+.markColor3
+{
+	color: #67D8EF;
+}
+
+.markColor4
+{
+	color: #A5E12E;
+}
+
+.markColor5
+{
+	color: #E6DB74;
+}
+
+.markColor6
+{
+	color: #FD971F;
 }
