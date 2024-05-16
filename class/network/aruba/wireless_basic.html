@@ -43,6 +43,40 @@
 
 							createConfigImgT2("wireless_basic/i1_2$2");
 
+                createInstruT0("无线架构", "i2");
+                        createInstruT2("1：AP静态配置", "i2-1");
+                            createInstruAllTopT2("apboot> setenv master “10.1.1.111。");
+
+                        createInstruT2("<br />2：通过DHCP option 43 & 60 发现", "i2-2");
+                            createInstruAllTopT2("option 43为控制器地址");
+                            createInstruAllTopT2("option 60固定为ArubaAP");
+
+                        createInstruT2("<br />3：通过ADP协议发现", "i2-3");
+                            createInstruAllTopT2("AP控制器处于同一子网");
+
+                        createInstruT2("<br />4：通过域名发现", "i2-4");
+                            createInstruAllTopT2("AP解析域名 aruba-master.“domain.com。，对应IP为控制器地址");
+
+                createInstruT0("Remote AP", "i4");
+                        createInstruT2("RAP概述", "i4-1");
+                            createInstruAllTopT2("一般用于在家办工");
+                            createInstruAllTopT2("AP自身与中心控制器建立IPSec连接，连接到对应WLAN后，可实现与在公司相同的网络，无需连接VPN");
+							createInstruAllTopT2("支持遂道分割，可同时连接中心与互联网");
+                            createInstruAllTopT2("同时还可以创建另一个WLAN，连接后通过家中网络连接互联网");
+							createInstruAllTopT2("即使RAP连接不到控制器，连接互联网的WLAN仍可正常使用");
+
+                        createInstruT2("<br />RAP的网络架构", "i4-2");
+                            createInstruT3("可连接到中心网络的WLAN", "i4-2-1");
+	                            createInstruAllTopT3("中心网络中一般需要为RAP配置两个地址池");
+	                            createInstruAllTopT3("地址池1：RAP连接到中心控制器的地址池，在控制器上看到的’RAP地址。，");
+	                            createInstruAllTopT3("地址池2：RAP有WLAN的地址池，’客户端网卡得到的地址。，也是客户端在中心网络中访问的地址");
+	                            createInstruAllTopT3("连接中心网络时，客户端IP地址为’真实地址。（地址池2地址）");
+	                            createInstruAllTopT3("连接互联网时，客户端IP地址PAT到’RAP物理接口IP地址。后访问");
+
+                            createInstruT3("连接互联网的WLAN", "i4-2-2");
+                                createInstruAllTopT3("客户端与RAP的物理接口一般使用相同地址池，在家中网络配置");
+                                createInstruAllTopT3("客户端流量流出RAP后无转换，通过客户端’真实地址。访问其它");
+
 			</script>
 		</div>
 	</div>

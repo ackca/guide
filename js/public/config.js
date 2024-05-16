@@ -248,7 +248,7 @@ function createLinuxTxtT3(cmds) {
 }
 
 function createLinuxTxtMarkT1(cmds, mark_list) {
-	var htmlText = initTXT(cmds, "LinuxTxtMark", "T1");
+	var htmlText = initTXT(cmds, "LinuxTxt", "T1");
 	cmdMark(htmlText, mark_list);
 }
 
@@ -258,14 +258,18 @@ function createLinuxTxtMarkT2(cmds, mark_list) {
 }
 
 function createLinuxTxtMarkT3(cmds, mark_list) {
-	var htmlText = initTXT(cmds, "LinuxTxtMark", "T3");
+	var htmlText = initTXT(cmds, "LinuxTxt", "T3");
 	cmdMark(htmlText, mark_list);
 }
 
 function cmdMark(htmlText, mark_list) {
 	for(var i = 0; i < mark_list.length; i++) {
 		var reg = new RegExp(mark_list[i], "g");
+		console.log(htmlText)
+		console.log(mark_list[i])
 		htmlText = htmlText.replace(reg, "<span class='markColor" + (i + 1).toString() + "'>" + mark_list[i] + "</span>");
+		console.log(htmlText)
+		console.log("----------------------------")
 	}
 	document.writeln(htmlText);
 }
@@ -793,9 +797,13 @@ function addSpan(text) {
 	var regLinuxPara = new RegExp("｝","g");
 	var regEnd = new RegExp("([^/])。","g");
 	var regEnd2 = new RegExp("([^/])》","g");
-
 	var regJH = new RegExp("/。","g");
 	var regZNKG = new RegExp("　","g");
+
+	// for(var i = 1; i <= 6; i++) {
+	// 	var regMark = new RegExp("!!" + i,"g");
+	// 	text = text.replace(regMark, "<span class='markColor" + i + "'>");
+	// }
 
 	text = text.replace(regVariable, "<span class='variable'>");
 	text = text.replace(regSpanBold, "<span class='spanBold'>");
@@ -805,10 +813,14 @@ function addSpan(text) {
 	text = text.replace(regLinuxPara, "<span class='linuxCMD_Para'>");
 	text = text.replace(regEnd, "$1</span>");
 	text = text.replace(regEnd2, "$1</span></span>");
+
 	text = text.replace(regJH, "。");
 
-	text = text.replace(regZNKG,"&nbsp;&nbsp;");
 
+
+	text = text.replace(regZNKG,"&nbsp;&nbsp;");
+	// console.log(text)
+	// console.log('------------------------------')
 	return text;
 }
 

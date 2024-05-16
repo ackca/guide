@@ -231,7 +231,7 @@ top_menu = `
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/f5/clearpass.html">ClearPass</a>
+										<a href="rootpath/class/network/aruba/clearpass.html">ClearPass</a>
 									</div>
 								</li>
 							</ul>

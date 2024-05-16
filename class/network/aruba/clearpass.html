@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/aruba.svg"/>
+	<title>Aruba-ClearPass</title>
+	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(clearpass);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("安装&初始化", "i1");
+                    createInstruT1("安装clearpass", "i1-1");
+                        createConfigImgT1("clearpass/i1_1$1~2");
+
+                    createInstruT1("系统初始化", "i1-2");
+                        createConfigImgT1("clearpass/i1_2$1~2");
+
+				createInstruT0("基础系统配置", "i2");
+                    createInstruT1("登录方式", "i2-3");
+                        createInstruAllTopT1("底层用户名 ’appadmin。，GUI界面用户名 ’admin。，密码相同，在初始化时设置");
+                        createConfigImgT1("clearpass/i2_3$1~2");
+
+                    createInstruT1("底层查看网络信息", "i2-4");
+                        createInstruAllTopT1("通过 show ip 查看");
+                        createConfigImgT1("clearpass/i2_4$1");
+
+                    createInstruT1("启用审计功能", "i2-5");
+                        createConfigImgT1("clearpass/i2_1$1");
+                        createConfigImgT1("clearpass/i2_5$1~2");
+
+                    createInstruT1("配置域名", "i2-1");
+                        createConfigImgT1("clearpass/i2_1$1~3");
+
+                    createInstruT1("配置NTP", "i2-2");
+                        createConfigImgT1("clearpass/i2_2$1~2");
+
+
+				createInstruT0("配置基本策略，方便客户端设备测试", "i8");
+                    createConfigImgT0("clearpass/i6_4$1");
+					createConfigImgT0("clearpass/i8$1~5");
+
+                createInstruT0("域与证书配置", "i3");
+                    createInstruT1("加载根证书", "i3-1");
+                        createConfigImgT1("clearpass/i3_1$1~3");
+
+                    createInstruT1("上传（替换）证书", "i3-2");
+                        createInstruAllTopT1("需要上传三种证书，使用同一证书即可，类型为Web服务器");
+                        createInstruAllTopT1("EAP证书不支持 *.itachi.tech 类泛域名证书，需要单域名 clearpass.itach.itech");
+                        createConfigImgT1("clearpass/i3_2$1~7");
+
+                    createInstruT1("禁用HTTPS ECC证书", "i3-3");
+                        createInstruAllTopT1("如果证书支持HTTPS ECC，无需禁用");
+                        createConfigImgT1("clearpass/i3_3$1~3");
+
+                    createInstruT1("加入域", "i3-4");
+                        createConfigImgT1("clearpass/i2_1$1");
+                        createConfigImgT1("clearpass/i3_4$1~4");
+
+                    createInstruT1("建立和域的关联", "i3-5");
+                        createConfigImgT1("clearpass/i3_5$1~8");
+
+
+                createInstruT0("ND（Network Device）配置", "i4");
+                    createInstruT1("未配置集群的控制器，修改关联IP", "i4-1");
+                        createInstruAllTopT1("未配置集群的控制器，默认会使用MM的地址关联ClearPass");
+                        createInstruAllTopT1("但如果使用CoA，ClearPass将无法与控制器正常通信");
+                        createInstruAllTopT1("需要将关联IP修改为控制器实际IP，可在控制器上通过 show ip radius nas-ip 查看关联IP<br />");
+
+                        instruArr = new Array();
+						instruArr[0] = createCmdSpan("(MM1) [mynode] (config) # change-config-node “mc。");
+                        instruArr[1] = createCmdSpan("(MM1) [00:0b:86:dd:0b:80] (config) # ip radius nas-ip “10.1.2.1。");
+                        instruArr[2] = createCmdInstruSpan("“10.1.2.1。","控制器的实际IP");
+						createCmdInstruT1(instruArr,"aruba");
+
+                        createConfigImgT1("wireless/i9_1_1$1");
+
+                    createInstruT1("添加设备", "i4-2");
+                        createInstruAllTopT1("由于CoA和方便测试的原因，需要添加多个IP");
+                        createInstruAllTopT1("配置集群的控制器中每个成员的NAS-IP、实际IP，未配置集群的控制器的实际IP");
+                        createConfigImgT1("clearpass/i4_2$1~3");
+
+                createInstruT0("配置本地用户（组）", "i5");
+                    createInstruT1("配置本地用户组", "i5-1");
+                        createConfigImgT1("clearpass/i5_1$1~3");
+
+                    createInstruT1("配置本地用户", "i5-2");
+                        createConfigImgT1("clearpass/i5_2$1~3");
+
+
+                createInstruT0("802.1x", "i6");
+                    createInstruT1("本地组映射到AD组", "i6-1");
+                        createInstruAllTopT1("使用AD中的组为认证源时，需要先在本地创建组，再将本地组映射到AD组");
+                        createConfigImgT1("clearpass/i6_1$1~5");
+
+                    createInstruT1("配置授权结果", "i6-2");
+                        createConfigImgT1("clearpass/i6_2$1~4");
+
+                    createInstruT1("配置授权条件", "i6-3");
+                        createConfigImgT1("clearpass/i6_3$1~9");
+
+                    createInstruT1("配置Service", "i6-4");
+                        createConfigImgT1("clearpass/i6_4$1~9");
+
+                    createInstruT1("配置download user-role", "i6-5");
+                        createInstruT2("创建download user-role用户", "i6-5-1");
+                            createConfigImgT2("clearpass/i6_5_1$1~3");
+
+                        createInstruT2("配置授权结果", "i6-5-2");
+                            createInstruAllTopT2("在授权结果原有的授权 user-role名 处配置");
+                            createInstruAllTopT2("直接配置user-role，与控制器上语法相同");
+                            createConfigImgT2("clearpass/i6_5_2$1");
+
+
+                createInstruT0("中心网页认证", "i7");
+                    createInstruT1("配置登录页面", "i7-1");
+                        createConfigImgT1("clearpass/i7_1$1~5");
+
+                    createInstruT1("配置授权结果", "i7-2");
+                        createInstruAllTopT1("可以不配置，控制器上存在默认授权结果");
+                        createConfigImgT1("clearpass/i7_2$1");
+                        createConfigImgT1("clearpass/i6_2$1");
+                        createConfigImgT1("clearpass/i7_2$2~3");
+
+                    createInstruT1("配置授权条件", "i7-3");
+                        createConfigImgT1("clearpass/i6_3$1");
+                        createConfigImgT1("clearpass/i7_3$1~9");
+
+                    createInstruT1("配置Service", "i7-4");
+                        createConfigImgT1("clearpass/i6_4$1");
+						createConfigImgT1("clearpass/i7_4$1");
+                        createConfigImgT1("clearpass/i8$4");
+						createConfigImgT1("clearpass/i7_4$2~4");
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

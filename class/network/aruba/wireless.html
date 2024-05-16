@@ -287,7 +287,7 @@
 							instruArr[4]=createCmdSpan("(MM1) ^[tj] (Classic Controller Cluster Profile \"tj-cluster\") # controller “10.1.1.1。 priority “200。 vrrp-ip “10.1.1.101。 vrrp-vlan “10。");
 							instruArr[5]=createCmdInstruSpan("“10.1.1.1。","控制器的真实IP");
 							instruArr[6]=createCmdInstruSpan("“200。","控制器优先级");
-							instruArr[7]=createCmdInstruSpan("“10.1.1.101。","控制器的NAS-IP，用于CoA，不同控制器不同");
+							instruArr[7]=createCmdInstruSpan("“10.1.1.101。","控制器的NAS-IP，用于CoA，‘不同控制器不同。");
 							instruArr[8]=createCmdInstruSpan("“10。","控制器的接口vlan");
 							createCmdInstruT2(instruArr,"aruba");
 
@@ -313,7 +313,7 @@
 
 							createInstruT3("配置vrrp id");
 								instruArr[0]=createCmdSpan("(MM1) ^[00:50:56:a1:19:7c] (config-submode) # ip address “10.1.1.111。");
-								instruArr[1]=createCmdInstruSpan("“10.1.1.111。","vrrp的逻辑IP，所有控制器相同");
+								instruArr[1]=createCmdInstruSpan("“10.1.1.111。","vrrp的逻辑IP，‘所有控制器相同。");
 								createCmdInstruT3(instruArr,"aruba");
 
 							createInstruT3("配置认证");
@@ -413,172 +413,1004 @@
 							instruArr[3] = createCmdInstruSpan("“ap-group-tj。","AP所属AP group");
 							createCmdInstruT2(instruArr,"aruba");
 
-                        createInstruT2("GUI中的上述配置","i4-3-3");
-                            createConfigImgT2("wireless/i4_3_3$1~4");
+						createInstruT2("GUI中的上述配置","i4-3-3");
+							createConfigImgT2("wireless/i4_3_3$1~4");
 
-                        createInstruT2("AP高级系统配置","i4-3-4");
-                            createInstruT3("创建配置文件");
-                                instruArr = null;
+						createInstruT2("AP高级系统配置","i4-3-4");
+							createInstruT3("创建配置文件");
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
 								instruArr[1] = createCmdSpan("(MM1) [itachi] (config) # ap system-profile “tj-ap-system-profile。");
-                                instruArr[2] = createCmdInstruSpan("“tj-ap-system-profile。","配置文件名");
+								instruArr[2] = createCmdInstruSpan("“tj-ap-system-profile。","配置文件名");
 								createCmdInstruT3(instruArr,"aruba");
 
-                            createInstruT3("关闭AP上的LED");
-                                instruArr = null;
+							createInstruT3("关闭AP上的LED");
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (AP system profile \"tj-ap-system-profile\") # led-mode off");
 								createCmdInstruT3(instruArr,"aruba");
 
-                            createInstruT3("AP启用SSH（telnet）");
-                                createInstruAllTopT3("无论何种协议，均配置为telnet，AOS 8.6及以前对应telnet，8.7及之后对应ssh");
+							createInstruT3("AP启用SSH（telnet）");
+								createInstruAllTopT3("无论何种协议，均配置为telnet，AOS 8.6及以前对应telnet，8.7及之后对应ssh");
 								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (AP system profile \"tj-ap-system-profile\") # telnet");
 								createCmdInstruT3(instruArr,"aruba");
 
-                            createInstruT3("配置AP密码，用户名为 root");
+							createInstruT3("配置AP密码，用户名为 root");
 								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (AP system profile \"tj-ap-system-profile\") # ap-console-password “Cisc0123。");
-                                instruArr[1] = createCmdInstruSpan("“Cisc0123。","密码");
-                                createCmdInstruT3(instruArr,"aruba");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。","密码");
+								createCmdInstruT3(instruArr,"aruba");
 
-                            createInstruT3("上述配置的密码在show configuration明文显示");
-                                instruArr = null;
+							createInstruT3("上述配置的密码在show configuration明文显示");
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (AP system profile \"tj-ap-system-profile\") # encrypt disable");
 								createCmdInstruT3(instruArr,"aruba");
 
-                            createInstruT3("将配置文件关联到AP所属AP group");
-                                instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
-	                            instruArr[1] = createCmdInstruSpan("“ap-group-tj。","AP所属AP group");
+							createInstruT3("将配置文件关联到AP所属AP group");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
+								instruArr[1] = createCmdInstruSpan("“ap-group-tj。","AP所属AP group");
 								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj\") # ap-system-profile “tj-ap-system-profile。");
-                                instruArr[3] = createCmdInstruSpan("“tj-ap-system-profile。","AP的配置文件名");
-                                createCmdInstruT3(instruArr,"aruba");
+								instruArr[3] = createCmdInstruSpan("“tj-ap-system-profile。","AP的配置文件名");
+								createCmdInstruT3(instruArr,"aruba");
 
-                        createInstruT2("查看控制器关联的AP信息","i4-3-5");
-                            instruArr = null;
-							instruArr = new Array();
-                            instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
-                            instruArr[1] = createCmdSpan("(MM1) [mm] # show ap database [ long ]");
-                            instruArr[2] = createCmdInstruSpan("[ long ]","显示更多信息");
-                            createCmdInstruT2(instruArr,"aruba");
-                            createConfigImgT2("wireless/i4_3_5$1~2");
-
-                        createInstruT2("清空AP配置","i4-3-6");
-                            instruArr[0] = createCmdSpan("(MM1) [mynode] (config) # cd “/mm。");
-                            instruArr[1] = createCmdSpan("(MM1) [mm] (config) # reset-bootinfo { ap-name “AP1。 | ip-addr “10.1.11.4。 | wired-mac “d0:15:a6:c7:df:50。 }");
-                            instruArr[2] = createCmdInstruSpan("ap-name “AP1。","基于AP名");
-                            instruArr[3] = createCmdInstruSpan("ip-addr “10.1.11.4。","基于IP地址");
-                            instruArr[4] = createCmdInstruSpan("wired-mac “d0:15:a6:c7:df:50。","基于AP的mac地址，可在 show ap database long 中查看");
-                            createCmdInstruT2(instruArr,"aruba");
-
-                    createInstruT1("option 43 & 60 配置","i4-4");
-                        createInstruT2("windows平台","i4-4-1");
-                            createInstruT3("创建option 60选项","i4-4-1-1");
-                                createConfigImgT3("wireless/i4_4_1_1$1~4");
-
-                            createInstruT3("添加option 43 & 60","i4-4-1-2");
-                                createConfigImgT3("wireless/i4_4_1_2$1~4");
-
-                createInstruT0("配置PSK认证的WLAN","i5");
-                    createInstruT1("配置总览","i5-1");
-                        createInstruT2("配置位置","i5-1-1");
-                            createInstruAllTopT2("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
-                            instruArr = null;
+						createInstruT2("查看控制器关联的AP信息","i4-3-5");
+							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
-                            createCmdInstruT2(instruArr,"aruba");
+							instruArr[1] = createCmdSpan("(MM1) [mm] # show ap database [ long ]");
+							instruArr[2] = createCmdInstruSpan("[ long ]","显示更多信息");
+							createCmdInstruT2(instruArr,"aruba");
+							createConfigImgT2("wireless/i4_3_5$1~2");
 
-                        createInstruT2("配置总览","i5-1-2");
-                            var cmd = `
+						createInstruT2("清空AP配置","i4-3-6");
+							instruArr[0] = createCmdSpan("(MM1) [mynode] (config) # cd “/mm。");
+							instruArr[1] = createCmdSpan("(MM1) [mm] (config) # reset-bootinfo ap-name “AP1。");
+							instruArr[2] = createCmdInstruSpan("ap-name “AP1。","基于AP名");
+							instruArr[3] = createCmdSpan("(MM1) [mm] (config) # reset-bootinfo ip-addr “10.1.11.4。");
+							instruArr[4] = createCmdInstruSpan("ip-addr “10.1.11.4。","基于IP地址");
+							instruArr[5] = createCmdSpan("(MM1) [mm] (config) # reset-bootinfo wired-mac “d0:15:a6:c7:df:50。");
+							instruArr[6] = createCmdInstruSpan("wired-mac “d0:15:a6:c7:df:50。","基于AP的mac地址，可在 show ap database long 中查看");
+							createCmdInstruT2(instruArr,"aruba");
+
+					createInstruT1("option 43 & 60 配置","i4-4");
+						createInstruT2("windows平台","i4-4-1");
+							createInstruT3("创建option 60选项","i4-4-1-1");
+								createConfigImgT3("wireless/i4_4_1_1$1~4");
+
+							createInstruT3("添加option 43 & 60","i4-4-1-2");
+								createConfigImgT3("wireless/i4_4_1_2$1~4");
+
+				createInstruT0("PSK认证","i5");
+					createInstruT1("配置位置","i5-1");
+						createInstruAllTopT1("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
+						instruArr = null;
+						instruArr = new Array();
+						instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
+						createCmdInstruT1(instruArr,"aruba");
+
+					createInstruT1("<br />配置总览","i5-2");
+						var cmd = `
+							user-role itachi-psk-user-role-allow-all
+							   access-list session logon-control
+							   access-list session allowall
+							!
+							vlan 100
+							!
+							aaa profile "itachi-psk-aaa-profile"
+							   initial-role "itachi-psk-user-role-allow-all"
+							   authentication-dot1x "default-psk"
+							!
+							wlan ssid-profile "itachi-psk-wlan-ssid-profile"
+							   essid "itachi-psk-ssid"
+							   wpa-passphrase Cisc0123
+							   opmode wpa2-psk-aes
+							!
+							wlan virtual-ap "itachi-psk-virtual-ap"
+							   aaa-profile "itachi-psk-aaa-profile"
+							   vlan 100
+							   ssid-profile "itachi-psk-wlan-ssid-profile"
+							!
+							ap-group "ap-group-tj"
+							   virtual-ap "itachi-psk-virtual-ap"
+							!
+						`;
+						var mark_list = [
+							"itachi-psk-user-role-allow-all",
+							"itachi-psk-aaa-profile",
+							"itachi-psk-wlan-ssid-profile",
+							"itachi-psk-virtual-ap",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("配置详解","i5-3");
+						createInstruT2("配置客户端流量的vlan","i5-3-1");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # vlan “100。");
+							instruArr[1] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("配置user-role，对客户端流量进行一定管控","i5-3-2");
+							createInstruAllTopT2("阻止一些异常的控制层面流量，其它均允许");
+							instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # user-role “itachi-psk-user-role-allow-all。");
+							instruArr[1] = createCmdInstruSpan("“itachi-psk-user-role-allow-all。","user-role名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+							instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session allowall");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("配置aaa profile，关联 认证方式 和 user-role","i5-3-3");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa profile “itachi-psk-aaa-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-psk-aaa-profile。","aaa profile名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-aaa-profile-psk\") # initial-role “itachi-psk-user-role-allow-all。");
+							instruArr[3] = createCmdInstruSpan("“itachi-psk-user-role-allow-all。","user-role名");
+							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-aaa-profile-psk\") # authentication-dot1x default-psk");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("配置wlan ssid-profile，wlan相关配置","i5-3-4");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-psk-wlan-ssid-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-psk-wlan-ssid-profile。","wlan ssid-profile名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-psk-wlan-ssid-profile\") # essid “itachi-psk-ssid。");
+							instruArr[3] = createCmdInstruSpan("“itachi-psk-ssid。","SSID");
+							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-psk-wlan-ssid-profile\") # opmode “wpa2-psk-aes。");
+							instruArr[5] = createCmdInstruSpan("“wpa2-psk-aes。","加密方式");
+							instruArr[6] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-psk-wlan-ssid-profile\") # wpa-passphrase “Cisc0123。");
+							instruArr[7] = createCmdInstruSpan("“Cisc0123。","预共享密钥");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("配置virtual-ap，关联上述profile","i5-3-5");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-psk-virtual-ap。");
+							instruArr[1] = createCmdInstruSpan("“itachi-psk-virtual-ap。","virtual-ap名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-psk-virtual-ap\") # aaa-profile “itachi-psk-aaa-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-psk-aaa-profile。","aaa-profile名");
+							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-psk-virtual-ap\") # vlan “100。");
+							instruArr[5] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+							instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-psk-virtual-ap\") # ssid-profile “itachi-psk-wlan-ssid-profile。");
+							instruArr[7] = createCmdInstruSpan("“itachi-psk-wlan-ssid-profile。","wlan ssid-profile名");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("virtual-ap关联到AP group","i5-3-6");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
+							instruArr[1] = createCmdInstruSpan("“ap-group-tj。","启用该wlan的AP所属AP group");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj\") # virtual-ap “itachi-psk-virtual-ap。");
+							instruArr[3] = createCmdInstruSpan("“itachi-psk-virtual-ap。","virtual-ap名");
+							createCmdInstruT2(instruArr,"aruba");
+
+
+					createInstruT0("内部网页认证","i8");
+						createInstruT1("配置位置","i8-1");
+							createInstruAllTopT1("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
+							createCmdInstruT1(instruArr,"aruba");
+
+						createInstruT1("<br />修改认证页面的证书（GUI）","i8-2");
+							createConfigImgT1("wireless/i8_2$1");
+
+						createInstruT1("配置总览","i8-3");
+							cmd = `
+								firewall
+								   allow-tri-session
+								!
+								vlan 100
+								!
+								netdestination itachi-internal-network
+								   network 10.1.1.0 255.255.255.0
+								!
+								ip access-list session itachi-acl-deny-internal-network
+								   user alias itachi-internal-network any deny
+								!
+								user-role itachi-guest-portal-user-role
+								   access-list session logon-control
+								   access-list session itachi-acl-deny-internal-network
+								   access-list session allowall
+								!
+								aaa server-group "itachi-internal-portal-server-group"
+								   auth-server internal
+								!
+								aaa authentication captive-portal "itachi-internal-portal-aaa-authen"
+								   default-role "itachi-guest-portal-user-role"
+								   server-group "itachi-internal-portal-server-group"
+								   redirect-pause 1
+								!
+								user-role itachi-internal-portal-logon-user-role
+								   access-list session logon-control
+								   access-list session captiveportal
+								   captive-portal itachi-internal-portal-aaa-authen
+								!
+								aaa profile "itachi-internal-portal-aaa-profile"
+								   initial-role "itachi-internal-portal-logon-user-role"
+								!
+								wlan ssid-profile "itachi-internal-protal-ssid-profile"
+								   essid "itachi-internal-portal"
+								!
+								wlan virtual-ap "itachi-internal-portal-virtual-ap"
+								   aaa-profile "itachi-internal-portal-aaa-profile"
+								   vlan 100
+								   ssid-profile "itachi-internal-protal-ssid-profile"
+								!
+								ap-group "ap-group-tj"
+								   virtual-ap "itachi-internal-portal-virtual-ap"
+								!
+							`;
+							mark_list = [
+								"itachi-internal-network",
+								"itachi-acl-deny-internal-network",
+								"itachi-guest-portal-user-role",
+								"itachi-internal-portal-server-group",
+								"itachi-internal-portal-aaa-authen",
+								"itachi-internal-portal-logon-user-role",
+								"itachi-internal-portal-aaa-profile",
+								"itachi-internal-protal-ssid-profile",
+								"itachi-internal-portal-virtual-ap",
+							]
+							createLinuxTxtMarkT1(cmd, mark_list);
+
+						createInstruT1("配置详解","i8-4");
+							createInstruT2("启用重定向功能","i8-4-4");
+								instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # firewall");
+								instruArr[1] = createCmdSpan("(MM1) [itachi] (config-submode) # allow-tri-session");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置客户端流量的vlan","i8-4-2");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # vlan “100。");
+								instruArr[1] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置user-role，限制客户端访问范围","i8-4-3");
+								createInstruAllTopT2("连接WLAN后，可以连接互联网，但不能访问内部分网络范围");
+
+								createInstruT3("配置不允许访问部分","i8-4-3-1");
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # netdestination “itachi-internal-network。");
+									instruArr[1] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的子网名");
+									instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # network “10.1.1.0 255.255.255.0。");
+									instruArr[3] = createCmdInstruSpan("“10.1.1.0 255.255.255.0。","不允许访问的子网");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("配置不允许访问部分的ACL","i8-4-3-2");
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ip access-list session “itachi-acl-deny-internal-network。");
+									instruArr[1] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的ACL名");
+									instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # user alias “itachi-internal-network。 any deny");
+									instruArr[3] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的子网名");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("配置不允许访问部分user-role","i8-4-3-3");
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # user-role “itachi-guest-portal-user-role。");
+									instruArr[1] = createCmdInstruSpan("“itachi-guest-portal-user-role。","不允许访问部分user-role");
+									instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+									instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session “itachi-acl-deny-internal-network。");
+									instruArr[4] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的ACL名");
+									instruArr[5] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session allowall");
+									createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT2("配置aaa server-group，指定数据源为本地用户","i8-4-5");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa server-group “itachi-internal-portal-server-group。");
+								instruArr[1] = createCmdInstruSpan("“itachi-guest-portal-user-role。","aaa server-group名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Server Group \"itachi-internal-portal-server-group\") # auth-server internal");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置认证规则","i8-4-6");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa authentication captive-portal itachi-internal-portal-aaa-authen");
+								instruArr[1] = createCmdInstruSpan("“itachi-internal-portal-aaa-authen。","认证规则名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-internal-portal-aaa-authen\") # default-role “itachi-guest-portal-user-role。");
+								instruArr[3] = createCmdInstruSpan("“itachi-guest-portal-user-role。","通过认证后的授权（user-role）");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-internal-portal-aaa-authen\") # server-group “itachi-internal-portal-server-group。");
+								instruArr[5] = createCmdInstruSpan("“itachi-internal-portal-server-group。","server-group名，认证数据源为本地用户");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-internal-portal-aaa-authen\") # redirect-pause 1");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置认证前权限的user-role","i8-4-7");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # user-role “itachi-internal-portal-logon-user-role。");
+								instruArr[1] = createCmdInstruSpan("“itachi-internal-portal-logon-user-role。","认证前权限的user-role名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+								instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session captiveportal");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (config-submode) # captive-portal “itachi-internal-portal-aaa-authen。");
+								instruArr[5] = createCmdInstruSpan("“itachi-internal-portal-aaa-authen。","认证规则名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置aaa profile，关联认证前权限user-role","i8-4-8");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config-submode) # aaa profile “itachi-inter-portal-aaa-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-inter-portal-aaa-profile。","aaa profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-inter-portal-aaa-profile\") # initial-role “itachi-internal-portal-logon-user-role。");
+								instruArr[3] = createCmdInstruSpan("“itachi-internal-portal-logon-user-role。","认证前权限的user-role名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置wlan ssid-profile，指定SSID","i8-4-9");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-internal-protal-ssid-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-internal-protal-ssid-profile。","wlan ssid-profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-internal-protal-ssid-profile\") # essid “itachi-internal-portal。");
+								instruArr[3] = createCmdInstruSpan("“itachi-internal-portal。","SSID");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置virtual-ap，关联相关内容","i8-4-10");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-internal-portal-virtual-ap。");
+								instruArr[1] = createCmdInstruSpan("“itachi-internal-portal-virtual-ap。","virtual ap名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-internal-portal-virtual-ap\") # aaa-profile “itachi-inter-portal-aaa-profile。");
+								instruArr[3] = createCmdInstruSpan("“itachi-inter-portal-aaa-profile。","关联认证前user-role的aaa profile名");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-internal-portal-virtual-ap\") # vlan “100。");
+								instruArr[5] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-internal-portal-virtual-ap\") # ssid-profile “itachi-internal-protal-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-internal-protal-ssid-profile。","ssid profile名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("virtual-ap关联到AP group","i8-4-11");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
+								instruArr[1] = createCmdInstruSpan("“ap-group-tj。","启用该wlan的AP所属AP group");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj\") # virtual-ap “itachi-internal-portal-virtual-ap。");
+								instruArr[3] = createCmdInstruSpan("“itachi-internal-portal-virtual-ap。","virtual-ap名");
+								createCmdInstruT2(instruArr,"aruba");
+
+
+				createInstruT0("Remote AP","i7");
+					createInstruT1("配置位置","i7-1");
+						createInstruAllTopT1("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
+							createCmdInstruT1(instruArr,"aruba");
+
+					createInstruT1("<br />RAP关联前准备","i7-2");
+						createInstruT2("创建RAP所属AP group","i7-2-1");
+							instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # ap-group “ap-group-tj-remote。");
+							instruArr[1] = createCmdInstruSpan("“ap-group-tj-remote。","RAP所属AP group");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("创建RAP的地址池","i7-2-2");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ip local pool “rap-pool。 “172.16.1.1&nbsp;&nbsp;172.16.1.10。");
+							instruArr[1] = createCmdInstruSpan("“rap-pool。","RAP的地址池");
+							instruArr[2] = createCmdInstruSpan("“172.16.1.1&nbsp;&nbsp;172.16.1.10。","RAP的IP地址范围");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("配置地址池用途为RAP","i7-2-3");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # user-role default-vpn-role");
+							instruArr[1] = createCmdSpan("(MM1) ^[itachi] (config-submode) # pool l2tp “rap-pool。");
+							instruArr[2] = createCmdInstruSpan("“rap-pool。","RAP的地址池");
+							createCmdInstruT2(instruArr,"aruba");
+
+						createInstruT2("添加RAP的mac地址，并划入对应AP group","i7-2-4");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # whitelist-db rap add mac-address “fc:7f:f1:c5:3d:f6。 ap-group “ap-group-tj-remote。");
+							instruArr[1] = createCmdInstruSpan("“fc:7f:f1:c5:3d:f6。","RAP的mac地址");
+							instruArr[2] = createCmdInstruSpan("“ap-group-tj-remote。","RAP所属AP group");
+							createCmdInstruT2(instruArr,"aruba");
+
+
+					createInstruT1("胖AP转换为RAP","i7-3");
+						createInstruAllTopT1("胖AP模式下配置，如果为瘦AP，需要手动重置为胖AP");
+						createInstruAllTopT1("胖AP默认用户名为admin，默认密码为设备序列号");
+						createInstruAllTopT1("首次登录需要配置国家代码，修改默认密码");
+						createConfigImgT1("wireless/i7_3$1~2");
+
+					createInstruT1("查看RAP关联信息","i7-4");
+						createInstruT2("查看AP关联","i7-4-1");
+							createConfigImgT2("wireless/i7_4_1$1");
+
+						createInstruT2("查看RAP和控制器间的IPSec，‘控制器上查看。","i7-4-2");
+							createConfigImgT2("wireless/i7_4_2$1~2");
+
+					createInstruT1("配置连接到中心的WLAN","i7-5");
+						createInstruT2("配置总览","i7-5-1");
+							cmd = `
+								netdestination itachi-rap-office-network
+								   network 10.1.1.0 255.255.255.0
+								!
+								ip access-list session itachi-rap-acl
+								   user alias itachi-rap-office-network any permit
+								   alias itachi-rap-office-network user any permit
+								   user any any route src-nat
+								!
+								user-role itachi-rap-user-role
+								   access-list session logon-control
+								   access-list session itachi-rap-acl
+								!
+								vlan 168
+								!
+								aaa profile "itachi-rap-aaa-profile"
+								   initial-role "itachi-rap-user-role"
+								   authentication-dot1x "default-psk"
+								!
+								wlan ssid-profile "itachi-rap-wlan-ssid-profile"
+								   essid "itachi-rap-office-ssid"
+								   wpa-passphrase Cisc0123
+								   opmode wpa2-psk-aes
+								!
+								wlan virtual-ap "itachi-rap-virtual-ap"
+								   aaa-profile "itachi-rap-aaa-profile"
+								   vlan 168
+								   forward-mode split-tunnel
+								   ssid-profile "itachi-rap-wlan-ssid-profile"
+								!
+								ap-group "ap-group-tj-remote"
+								   virtual-ap "itachi-rap-virtual-ap"
+								!
+							`;
+							mark_list = [
+								"itachi-rap-office-network",
+								"itachi-rap-acl",
+								"itachi-rap-user-role",
+								"itachi-rap-aaa-profile",
+								"itachi-rap-wlan-ssid-profile",
+								"itachi-rap-virtual-ap"
+							]
+							createLinuxTxtMarkT2(cmd, mark_list);
+
+						createInstruT2("配置详解","i7-5-2");
+							createInstruT3("配置客户端流量的vlan","i7-5-2-8");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # vlan “168。");
+								instruArr[1] = createCmdInstruSpan("“168。","在中心网络时，客户端流量的vlan id");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("配置中心网络地址","i7-5-2-1");
+								 instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # netdestination “itachi-rap-office-network。");
+								 instruArr[1] = createCmdInstruSpan("“itachi-rap-office-network。","中心网络地址名");
+								 instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # network “10.1.1.0 255.255.255.0。");
+								 instruArr[3] = createCmdInstruSpan("“10.1.1.0 255.255.255.0。","中心网络地址");
+								 createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("配置用于隧道分割的ACL","i7-5-2-2");
+								createInstruAllTopT3("双向放行用户到中心网络的流量，其它流量PAT<br />");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ip access-list session “itachi-rap-acl。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-acl。","ACL名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # user alias “itachi-rap-office-network。 any permit");
+								instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # alias “itachi-rap-office-network。 user any permit");
+								instruArr[4] = createCmdInstruSpan("“itachi-rap-office-network。","中心网络地址名");
+								instruArr[5] = createCmdSpan("(MM1) ^[itachi] (config-submode) # user any any route src-nat");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("配置user-role","i7-5-2-3");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # user-role “itachi-rap-user-role。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-user-role。","user-role名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+								instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session “itachi-rap-acl。");
+								instruArr[4] = createCmdInstruSpan("“itachi-rap-acl。","用于隧道分割的ACL名");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("配置aaa profile，关联 认证方式 和 user-role","i7-5-2-4");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa profile “itachi-rap-aaa-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-aaa-profile。","aaa profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-rap-aaa-profile\") # initial-role “itachi-rap-user-role。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-user-role。","user-role名");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-rap-aaa-profile\") # authentication-dot1x default-psk");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("配置wlan ssid-profile，wlan相关配置","i7-5-2-5");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-rap-wlan-ssid-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-wlan-ssid-profile。","wlan ssid-profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-rap-wlan-ssid-profile\") # essid “itachi-rap-office-ssid。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-office-ssid。","可连接到中心的WLAN的SSID");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-rap-wlan-ssid-profile\") # opmode “wpa2-psk-aes。");
+								instruArr[5] = createCmdInstruSpan("“wpa2-psk-aes。","加密方式");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-rap-wlan-ssid-profile\") # wpa-passphrase “Cisc0123。");
+								instruArr[7] = createCmdInstruSpan("“Cisc0123。","预共享密钥");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("配置virtual-ap，关联上述profile","i7-5-2-6");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-rap-virtual-ap。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-virtual-ap。","virtual-ap名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-virtual-ap\") # aaa-profile “itachi-rap-aaa-profile。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-aaa-profile。","aaa-profile名");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-virtual-ap\") # vlan “168。");
+								instruArr[5] = createCmdInstruSpan("“168。","在中心网络时，客户端流量的vlan id");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-virtual-ap\") # ssid-profile “itachi-rap-wlan-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-rap-wlan-ssid-profile。","wlan ssid-profile名");
+								instruArr[8] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-virtual-ap\") # forward-mode split-tunnel");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT3("virtual-ap关联到AP group","i7-5-2-7");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj-remote。");
+								instruArr[1] = createCmdInstruSpan("“ap-group-tj-remote。","RAP所属AP group");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj-remote\") # virtual-ap “itachi-rap-virtual-ap。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-virtual-ap。","virtual-ap名");
+								createCmdInstruT3(instruArr,"aruba");
+
+					createInstruT1("配置家中上网的WLAN","i7-6");
+						createInstruT2("配置总览","i7-6-1");
+							cmd = `
+								user-role itachi-user-role-allow-all
+								   access-list session logon-control
+								   access-list session allowall
+								!
+								aaa profile "itachi-rap-bridge-aaa-profile"
+								   initial-role "itachi-role-allow-all"
+								   authentication-dot1x "default-psk"
+								!
+								wlan ssid-profile "itachi-rap-bridge-wlan-ssid-profile"
+								   essid "itachi-rap-home-ssid"
+								   wpa-passphrase Cisc0123
+								   opmode wpa2-psk-aes
+								!
+								wlan virtual-ap "itachi-rap-bridge-virtual-ap"
+								   aaa-profile "itachi-rap-bridge-aaa-profile"
+								   vlan 1
+								   ssid-profile "itachi-rap-bridge-wlan-ssid-profile"
+								   forward-mode bridge
+								   rap-operation always
+								!
+								ap-group "ap-group-tj-remote"
+								   virtual-ap "itachi-rap-bridge-virtual-ap"
+							`;
+							mark_list = [
+								"itachi-user-role-allow-all",
+								"itachi-rap-bridge-aaa-profile",
+								"itachi-rap-bridge-wlan-ssid-profile",
+								"itachi-rap-bridge-virtual-ap",
+							]
+							createLinuxTxtMarkT2(cmd, mark_list);
+
+						createInstruT2("配置详解","i7-6-2");
+							createInstruT3("配置user-role，对客户端流量进行一定管控","i7-6-2-1");
+								createInstruAllTopT3("阻止一些异常的控制层面流量，其它均允许");
+								instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # user-role “itachi-user-role-allow-all。");
+								instruArr[1] = createCmdInstruSpan("“itachi-user-role-allow-all。","user-role名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+								instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session allowall");
+								createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT2("配置aaa profile，关联 认证方式 和 user-role","i7-6-2-2");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa profile “itachi-rap-bridge-aaa-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-bridge-aaa-profile。","aaa profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-rap-bridge-profile-psk\") # initial-role “itachi-user-role-allow-all。");
+								instruArr[3] = createCmdInstruSpan("“itachi-psk-user-role-allow-all。","user-role名");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-rap-bridge-profile-psk\") # authentication-dot1x default-psk");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置wlan ssid-profile，wlan相关配置","i7-6-2-3");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-rap-bridge-wlan-ssid-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-bridge-wlan-ssid-profile。","wlan ssid-profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-rap-bridge-wlan-ssid-profile\") # essid “itachi-psk-ssid。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-home-ssid。","在家中使用的WLAN的SSID");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-rap-bridge-wlan-ssid-profile\") # opmode “wpa2-psk-aes。");
+								instruArr[5] = createCmdInstruSpan("“wpa2-psk-aes。","加密方式");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-rap-bridge-wlan-ssid-profile\") # wpa-passphrase “Cisc0123。");
+								instruArr[7] = createCmdInstruSpan("“Cisc0123。","预共享密钥");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置virtual-ap，关联上述profile","i7-6-2-4");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-rap-bridge-virtual-ap。");
+								instruArr[1] = createCmdInstruSpan("“itachi-rap-bridge-virtual-ap。","virtual-ap名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-bridge-virtual-ap\") # aaa-profile “itachi-psk-aaa-profile。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-bridge-aaa-profile。","aaa-profile名");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-bridge-virtual-ap\") # vlan “1。");
+								instruArr[5] = createCmdInstruSpan("“1。","家中网络一般没有trunk，流量无vlan标签");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-bridge-virtual-ap\") # ssid-profile “itachi-psk-wlan-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-rap-bridge-wlan-ssid-profile。","wlan ssid-profile名");
+								instruArr[8] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-bridge-virtual-ap\") # forward-mode bridge");
+								instruArr[9] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-rap-bridge-virtual-ap\") # rap-operation always");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("virtual-ap关联到AP group","i7-6-2-5");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj-remote。");
+								instruArr[1] = createCmdInstruSpan("“ap-group-tj-remote。","启用该wlan的AP所属AP group");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj-remote\") # virtual-ap “itachi-rap-bridge-virtual-ap。");
+								instruArr[3] = createCmdInstruSpan("“itachi-rap-bridge-virtual-ap。","virtual-ap名");
+								createCmdInstruT2(instruArr,"aruba");
+
+
+					createInstruT0("关联外部aaa服务器","i9");
+						createInstruT1("Radius服务器","i9-1");
+							createInstruT2("配置nas-ip","i9-1-1");
+								createInstruT3("配置nas-ip");
+									createInstruAllTopT3("未配置集群的控制器，默认会使用MM的地址关联ClearPass");
+									createInstruAllTopT3("但如果使用CoA，ClearPass将无法与控制器正常通信，需要修改为控制器的物理接口地址");
+										instruArr[0] = createCmdSpan("(MM1) [mynode] (config) # change-config-node “mc。");
+										instruArr[1] = createCmdInstruSpan("“mc。","直接配置对应控制器");
+										instruArr[2] = createCmdSpan("(MM1) [00:0b:86:dd:0b:80] (config) # ip radius nas-ip “10.1.2.1。");
+										instruArr[3] = createCmdInstruSpan("“10.1.2.1。","物理接口地址");
+										createCmdInstruT3(instruArr,"aruba");
+
+									createInstruT3("查看nas-ip");
+										instruArr = null;
+										instruArr = new Array();
+										instruArr[0] = createCmdSpan("(MM1) [mynode] # logon “10.1.2.1。");
+										instruArr[1] = createCmdInstruSpan("“10.1.2.1。","连接到对应控制器查看");
+										instruArr[2] = createCmdSpan("(MC) [MDC] # show ip radius nas-ip");
+										createCmdInstruT3(instruArr,"aruba");
+										createConfigImgT3("wireless/i9_1_1$1");
+
+							createInstruT2("配置Radius服务器","i9-1-2");
+								createInstruT3("配置Radius服务器");
+									instruArr[0] = createCmdSpan("(MM1) [mynode] (config) # cd “/md/itachi。");
+									instruArr[1] = createCmdSpan("(MM1) [itachi] (config) # aaa authentication-server radius “itachi-clearpass-radius。");
+									instruArr[2] = createCmdInstruSpan("“itachi-clearpass-radius。","radius服务器名");
+									instruArr[3] = createCmdSpan("(MM1) ^[itachi] (RADIUS Server \"itachi-clearpass-radius\") # host “10.1.1.100。");
+									instruArr[4] = createCmdInstruSpan("“10.1.1.100。","radius服务器地址");
+									instruArr[5] = createCmdSpan("(MM1) ^[itachi] (RADIUS Server \"itachi-clearpass-radius\") # key “Cisc0123。");
+									instruArr[6] = createCmdInstruSpan("“Cisc0123。","与radius服务器间的预共享密钥");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("使用download user-role时，关联clearpass上配置的Aruba User Role Download角色");
+									instruArr = null;
+									instruArr = new Array();
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (RADIUS Server \"itachi-clearpass-radius\") # cppm username “itachi-download-user-role。 password “Cisc0123。");
+									instruArr[1] = createCmdInstruSpan("“itachi-download-user-role。","Aruba User Role Download角色用户名");
+									instruArr[2] = createCmdInstruSpan("“Cisc0123。","角色密码");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("测试连通性");
+									instruArr[0] = createCmdSpan("(MM1) [mynode] # logon “10.1.2.1。");
+									instruArr[1] = createCmdInstruSpan("“10.1.2.1。","连接到对应控制器测试");
+									instruArr[2] = createCmdSpan("(MC) [MDC] # aaa test-server pap “itachi-clearpass-radius。 “itachi。 “Cisc0123。");
+									instruArr[3] = createCmdInstruSpan("“itachi-clearpass-radius。","radius服务器名");
+									instruArr[4] = createCmdInstruSpan("“itachi。","radius服务器上有效的用户名");
+									instruArr[5] = createCmdInstruSpan("“Cisc0123。","用户名对应密码");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("查看Radius服务器");
+									instruArr[0] = createCmdSpan("(MM1) [mynode] # logon “10.1.2.1。");
+									instruArr[1] = createCmdInstruSpan("“10.1.2.1。","连接到对应控制器查看");
+									instruArr[2] = createCmdSpan("(MC) [MDC] # show aaa authentication-server { all | radius [ “itachi-clearpass-radius。 ] }");
+									instruArr[3] = createCmdInstruSpan("all","查看所有外部AAA服务器，能获得较多信息");
+									instruArr[4] = createCmdInstruSpan("radius","只查看radius服务器，获得信息较少");
+									instruArr[5] = createCmdInstruSpan("itachi-clearpass-radius","查看某个具体radius服务器的信息");
+									createCmdInstruT3(instruArr,"aruba");
+									createConfigImgT3("wireless/i9_1_2$1~3");
+
+
+					createInstruT0("802.1x","i10");
+						createInstruT1("配置位置","i10-1");
+							createInstruAllTopT1("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
+							createCmdInstruT1(instruArr,"aruba");
+
+						createInstruT1("<br />配置总览","i10-2");
+							cmd = `
+								aaa authentication-server radius "itachi-clearpass-radius"
+								   host "10.1.1.100"
+								   key Cisc0123
+								!
 								user-role itachi-psk-user-role-allow-all
+								   access-list session logon-control
+								   access-list session allowall
+								!
+								user-role itachi-802.1x-staff-user-role
 								   access-list session logon-control
 								   access-list session allowall
 								!
 								vlan 100
 								!
-								aaa profile "itachi-psk-aaa-profile"
-								   initial-role "itachi-psk-user-role-allow-all"
-								   authentication-dot1x "default-psk"
+								aaa authentication dot1x "itachi-802.1x-aaa-authen"
 								!
-								wlan ssid-profile "itachi-psk-wlan-ssid-profile"
-								   essid "itachi-psk-ssid"
-								   wpa-passphrase Cisc0123
-								   opmode wpa2-psk-aes
+								aaa server-group "itachi-802.1x-aaa-server-group"
+								   auth-server itachi-clearpass-radius
 								!
-								wlan virtual-ap "itachi-psk-virtual-ap"
-								   aaa-profile "itachi-psk-aaa-profile"
-								   vlan 100
-								   ssid-profile "itachi-psk-wlan-ssid-profile"
+								aaa profile "itachi-802.1x-aaa-profile"
+								   authentication-dot1x "itachi-802.1x-aaa-authen"
+								   dot1x-default-role "itachi-802.1x-staff-user-role"
+								   dot1x-server-group "itachi-802.1x-aaa-server-group"
+								   radius-accounting "itachi-802.1x-aaa-server-group"
+								!
+								wlan ssid-profile "itachi-802.1x-ssid-profile"
+								   essid "itachi-802.1x-ssid"
+								   opmode wpa2-aes
+								!
+								wlan virtual-ap "itachi-802.1x-virtual-ap"
+								   aaa-profile "itachi-802.1x-aaa-profile"
+								   vlan 1
+								   ssid-profile "itachi-802.1x-ssid-profile"
 								!
 								ap-group "ap-group-tj"
-								   virtual-ap "itachi-psk-virtual-ap"
+								   virtual-ap "itachi-802.1x-virtual-ap"
 								!
 							`;
-							var mark_list = [
-                                "itachi-psk-user-role-allow-all",
-								"itachi-psk-aaa-profile",
-								"itachi-psk-wlan-ssid-profile",
-								"itachi-psk-virtual-ap",
+							mark_list = [
+								"itachi-clearpass-radius",
+								"itachi-802.1x-staff-user-role",
+								"itachi-802.1x-aaa-authen",
+								"itachi-802.1x-aaa-server-group",
+								"itachi-802.1x-aaa-profile",
+								"itachi-802.1x-ssid-profile",
+								"itachi-802.1x-virtual-ap",
 							]
-                            createLinuxTxtMarkT2(cmd, mark_list);
+							createLinuxTxtMarkT1(cmd, mark_list);
 
-                    createInstruT1("配置详解","i5-2");
-                        createInstruT2("配置位置","i5-2-1");
-                            createInstruAllTopT2("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
-							instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
-                            createCmdInstruT2(instruArr,"aruba");
+                    createInstruT1("配置详解","i10-3");
+                        createInstruT2("配置客户端流量的vlan","i10-3-1");
+								instruArr = null;
+								instruArr = new Array();
+                                instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # vlan “100。");
+								instruArr[1] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+								createCmdInstruT2(instruArr,"aruba");
 
-                        createInstruT2("配置客户端流量的vlan","i5-2-2");
-                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # vlan “100。");
-                            instruArr[1] = createCmdInstruSpan("“100。","客户端流量的vlan id");
-                            createCmdInstruT2(instruArr,"aruba");
+						createInstruT2("配置默认user-role，通过认证用户的默认user-role","i10-3-2");
+                            instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # user-role “itachi-802.1x-staff-user-role。");
+                            instruArr[1] = createCmdInstruSpan("“itachi-802.1x-staff-user-role。","通过认证用户的默认user-role名");
+							instruArr[2] = createCmdSpan("(MM1) [itachi] (config-submode) # access-list session logon-control");
+							instruArr[3] = createCmdSpan("(MM1) [itachi] (config-submode) # access-list session allowall");
+							createCmdInstruT2(instruArr,"aruba");
 
-                        createInstruT2("配置user-role，对客户端流量进行一定管控","i5-2-3");
-                            createInstruAllTopT2("阻止一些异常的控制层面流量，其它均允许");
-							instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # user-role “itachi-psk-user-role-allow-all。");
-                            instruArr[1] = createCmdInstruSpan("“itachi-psk-user-role-allow-all。","user-role名");
-							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
-							instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session allowall");
-                            createCmdInstruT2(instruArr,"aruba");
-
-                        createInstruT2("配置aaa profile，关联 认证方式 和 user-role","i5-2-4");
-                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa profile “itachi-psk-aaa-profile。");
-	                        instruArr[1] = createCmdInstruSpan("“itachi-psk-aaa-profile。","aaa profile名");
-							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-aaa-profile-psk\") # initial-role “itachi-psk-user-role-allow-all。");
-							instruArr[3] = createCmdInstruSpan("“itachi-psk-user-role-allow-all。","user-role名");
-							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-aaa-profile-psk\") # authentication-dot1x default-psk");
-                            createCmdInstruT2(instruArr,"aruba");
-
-                        createInstruT2("配置wlan ssid-profile，wlan相关配置","i5-2-5");
-                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-psk-wlan-ssid-profile。");
-                            instruArr[1] = createCmdInstruSpan("“itachi-psk-aaa-profile。","wlan ssid-profile名");
-                            instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-psk-wlan-ssid-profile\") # essid “itachi-psk-ssid。");
-							instruArr[3] = createCmdInstruSpan("“itachi-psk-ssid。","SSID");
-							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-psk-wlan-ssid-profile\") # opmode “wpa2-psk-aes。");
-                            instruArr[5] = createCmdInstruSpan("“wpa2-psk-aes。","加密方式");
-                            instruArr[6] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-psk-wlan-ssid-profile\") # wpa-passphrase “Cisc0123。");
-                            instruArr[7] = createCmdInstruSpan("“Cisc0123。","预共享密钥");
-                            createCmdInstruT2(instruArr,"aruba");
-
-                        createInstruT2("配置virtual-ap，关联上述profile","i5-2-6");
-                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-psk-virtual-ap。");
-                            instruArr[1] = createCmdInstruSpan("“itachi-psk-virtual-ap。","virtual-ap名");
-							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-psk-virtual-ap\") # aaa-profile “itachi-psk-aaa-profile。");
-                            instruArr[3] = createCmdInstruSpan("“itachi-psk-aaa-profile。","aaa-profile名");
-							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-psk-virtual-ap\") # vlan “100。");
-							instruArr[5] = createCmdInstruSpan("“100。","客户端流量的vlan id");
-                            instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-psk-virtual-ap\") # ssid-profile “itachi-psk-wlan-ssid-profile。");
-                            instruArr[7] = createCmdInstruSpan("“itachi-psk-wlan-ssid-profile。","wlan ssid-profile名");
-                            createCmdInstruT2(instruArr,"aruba");
-
-                        createInstruT2("virtual-ap关联到AP group","i5-2-7");
+                        createInstruT2("配置802.1x认证方式","i10-3-3");
                             instruArr = null;
 							instruArr = new Array();
-							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
-                            instruArr[1] = createCmdInstruSpan("“ap-group-tj。","启用该wlan的AP所属AP group");
-							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj\") # virtual-ap “itachi-psk-virtual-ap。");
-                            instruArr[3] = createCmdInstruSpan("“itachi-psk-virtual-ap。","virtual-ap名");
+                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa authentication dot1x “itachi-802.1x-aaa-authen。");
+                            instruArr[1] = createCmdInstruSpan("“itachi-802.1x-aaa-authen。","802.1x认证方式名");
 							createCmdInstruT2(instruArr,"aruba");
+
+                        createInstruT2("配置aaa server-group，指定认证服务器为ClearPass","i10-3-4");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa server-group “itachi-external-portal-server-group。");
+							instruArr[1] = createCmdInstruSpan("“itachi-external-portal-server-group。","aaa server-group名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Server Group \"itachi-external-portal-server-group\") # auth-server “itachi-clearpass-radius。");
+							instruArr[3] = createCmdInstruSpan("“itachi-clearpass-radius。","radius（clearpass）服务器名");
+							createCmdInstruT2(instruArr,"aruba");
+
+                        createInstruT2("配置aaa profile，关联认证相关规则","i10-3-5");
+							instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa profile “itachi-802.1x-aaa-profile。");
+                            instruArr[1] = createCmdInstruSpan("“itachi-802.1x-aaa-profile。","aaa profile名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-802.1x-aaa-profile\") # dot1x-default-role “itachi-802.1x-staff-user-role。");
+                            instruArr[3] = createCmdInstruSpan("“itachi-802.1x-staff-user-role。","通过认证用户的默认user-role名");
+							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-802.1x-aaa-profile\") # authentication-dot1x “itachi-802.1x-aaa-authen。");
+                            instruArr[5] = createCmdInstruSpan("“itachi-802.1x-aaa-authen。","802.1x认证方式名");
+							instruArr[6] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-802.1x-aaa-profile\") # dot1x-server-group “itachi-802.1x-aaa-server-group。");
+							instruArr[7] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-802.1x-aaa-profile\") # radius-accounting “itachi-802.1x-aaa-server-group。");
+                            instruArr[8] = createCmdInstruSpan("“itachi-802.1x-aaa-server-group。","aaa server-group名");
+							createCmdInstruT2(instruArr,"aruba");
+
+                        createInstruT2("配置wlan ssid-profile，wlan相关配置","i10-3-6");
+                            instruArr = null;
+							instruArr = new Array();
+                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-802.1x-ssid-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-802.1x-ssid-profile。","wlan ssid-profile名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-802.1x-ssid-profile\") # essid “itachi-802.1x-ssid。");
+							instruArr[3] = createCmdInstruSpan("“itachi-802.1x-ssid。","SSID");
+							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-802.1x-ssid-profile\") # opmode “wpa2-aes。");
+							instruArr[5] = createCmdInstruSpan("“wpa2-psk-aes。","加密方式");
+							createCmdInstruT2(instruArr,"aruba");
+
+                        createInstruT2("配置virtual-ap，关联相关内容","i10-3-7");
+                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-802.1x-virtual-ap。");
+                            instruArr[1] = createCmdInstruSpan("“itachi-802.1x-virtual-ap。","virtual-ap名");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-802.1x-virtual-ap\") # aaa-profile “itachi-802.1x-aaa-profile。");
+                            instruArr[3] = createCmdInstruSpan("“itachi-802.1x-aaa-profile。","aaa profile名");
+							instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-802.1x-virtual-ap\") # vlan “100。");
+                            instruArr[5] = createCmdInstruSpan("“100。","通过认证用户的默认vlan id");
+							instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-802.1x-virtual-ap\") # ssid-profile “itachi-802.1x-ssid-profile。");
+                            instruArr[7] = createCmdInstruSpan("“itachi-802.1x-ssid-profile。","wlan ssid-profile名");
+                            createCmdInstruT2(instruArr,"aruba");
+
+                        createInstruT2("配置virtual-ap，关联相关内容","i10-3-8");
+                            instruArr = null;
+							instruArr = new Array();
+                            instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
+                            instruArr[1] = createCmdInstruSpan("“ap-group-tj。","启用该wlan的AP所属AP group");
+							instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj\") # virtual-ap “itachi-802.1x-virtual-ap。");
+                            instruArr[3] = createCmdInstruSpan("“itachi-802.1x-virtual-ap。","virtual-ap名");
+                            createCmdInstruT2(instruArr,"aruba");
+
+                        createInstruT1("配置download user-role","i10-4");
+                            createInstruT2("Radius服务器中关联download user-role用户","i10-4-1");
+                                instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # aaa authentication-server radius “itachi-clearpass-radius。");
+                                instruArr[1] = createCmdInstruSpan("“itachi-clearpass-radius。","radius（clearpass）服务器名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (RADIUS Server \"itachi-clearpass-radius\") # cppm username “itachi-download-user-role。 password “Cisc0123。");
+                                instruArr[3] = createCmdInstruSpan("“itachi-download-user-role。","download user-role用户名");
+                                instruArr[4] = createCmdInstruSpan("“Cisc0123。","用户密码");
+                                createCmdInstruT1(instruArr,"aruba");
+
+                            createInstruT2("配置 aaa profile，允许download user-role","i10-4-2");
+                                instruArr = null;
+								instruArr = new Array();
+                                instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa profile “itachi-802.1x-aaa-profile。");
+                                instruArr[1] = createCmdInstruSpan("“itachi-802.1x-aaa-profile。","aaa profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-802.1x-aaa-profile\") # download-role");
+                                createCmdInstruT1(instruArr,"aruba");
+
+					createInstruT0("中心网页认证","i11");
+						createInstruT1("配置位置","i11-1");
+							createInstruAllTopT1("基于控制器配置，选择md路径下的某个目录，或某个具体控制器");
+							instruArr = null;
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("(MM1) [mynode] # cd “/md/itachi。");
+							createCmdInstruT1(instruArr,"aruba");
+
+						createInstruT1("<br />配置总览","i11-2");
+							cmd = `
+								firewall
+								   allow-tri-session
+								!
+								vlan 100
+								!
+								aaa authentication-server radius "itachi-clearpass-radius"
+								   host "10.1.1.100"
+								   key Cisc0123
+								!
+								netdestination itachi-internal-network
+								   network 10.1.1.0 255.255.255.0
+								!
+								ip access-list session itachi-acl-deny-internal-network
+								   user alias itachi-internal-network any deny
+								!
+								user-role itachi-guest-portal-user-role
+								   access-list session logon-control
+								   access-list session itachi-acl-deny-internal-network
+								   access-list session allowall
+								!
+								netdestination itachi-clearpass-ip
+								   host 10.1.1.100
+								!
+								aaa server-group "itachi-external-portal-server-group"
+								   auth-server itachi-clearpass-radius
+								!
+								aaa authentication captive-portal "itachi-external-portal-aaa-authen"
+								   default-role "itachi-guest-portal-user-role"
+								   server-group "itachi-external-portal-server-group"
+								   redirect-pause
+								   login-page "https://clearpass.itachi.tech/guest/guest-login-page.php"
+								   allow-list itachi-clearpass-ip
+								!
+								user-role itachi-external-portal-logon-user-role
+								   access-list session logon-control
+								   access-list session captiveportal
+								   captive-portal itachi-external-portal-aaa-authen
+								!
+								aaa profile "itachi-external-portal-aaa-profile"
+								   initial-role "itachi-external-portal-logon-user-role"
+								!
+								wlan ssid-profile "itachi-external-protal-ssid-profile"
+								   essid "itachi-external-portal"
+								!
+								wlan virtual-ap "itachi-external-portal-virtual-ap"
+								   aaa-profile "itachi-external-portal-aaa-profile"
+								   vlan 100
+								   ssid-profile "itachi-external-protal-ssid-profile"
+								!
+								ap-group "ap-group-tj"
+								   virtual-ap "itachi-external-portal-virtual-ap"
+								!
+							`;
+							mark_list = [
+								"itachi-internal-network",
+								"itachi-acl-deny-internal-network",
+								"itachi-guest-portal-user-role",
+								"itachi-clearpass-radius",
+								"itachi-clearpass-ip",
+								"itachi-external-portal-server-group",
+								"itachi-external-portal-aaa-authen",
+								"itachi-external-portal-logon-user-role",
+								"itachi-external-portal-aaa-profile",
+								"itachi-external-protal-ssid-profile",
+								"itachi-external-portal-virtual-ap",
+							]
+							createLinuxTxtMarkT1(cmd, mark_list);
+
+						createInstruT1("配置详解","i11-3");
+							createInstruT2("启用重定向功能","i11-3-1");
+								instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # firewall");
+								instruArr[1] = createCmdSpan("(MM1) [itachi] (config-submode) # allow-tri-session");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置客户端流量的vlan","i11-3-2");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # vlan “100。");
+								instruArr[1] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置user-role，限制客户端访问范围","i11-3-3");
+								createInstruAllTopT2("连接WLAN后，可以连接互联网，但不能访问内部分网络范围");
+
+								createInstruT3("配置不允许访问部分","i11-3-3-1");
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # netdestination “itachi-internal-network。");
+									instruArr[1] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的子网名");
+									instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # network “10.1.1.0 255.255.255.0。");
+									instruArr[3] = createCmdInstruSpan("“10.1.1.0 255.255.255.0。","不允许访问的子网");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("配置不允许访问部分的ACL","i11-3-3-2");
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ip access-list session “itachi-acl-deny-internal-network。");
+									instruArr[1] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的ACL名");
+									instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # user alias “itachi-internal-network。 any deny");
+									instruArr[3] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的子网名");
+									createCmdInstruT3(instruArr,"aruba");
+
+								createInstruT3("配置不允许访问部分user-role","i11-3-3-3");
+									instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # user-role “itachi-guest-portal-user-role。");
+									instruArr[1] = createCmdInstruSpan("“itachi-guest-portal-user-role。","不允许访问部分user-role");
+									instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+									instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session “itachi-acl-deny-internal-network。");
+									instruArr[4] = createCmdInstruSpan("“itachi-internal-network。","不允许访问部分的ACL名");
+									instruArr[5] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session allowall");
+									createCmdInstruT3(instruArr,"aruba");
+
+							createInstruT2("配置ClearPass地址","i11-3-4");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # netdestination “itachi-clearpass-ip。");
+								instruArr[1] = createCmdInstruSpan("“itachi-clearpass-ip。","netdestination名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # host “10.1.1.100。");
+								instruArr[3] = createCmdInstruSpan("“10.1.1.100。","ClearPass的IP地址");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置aaa server-group，指定认证服务器为ClearPass","i11-3-5");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa server-group “itachi-external-portal-server-group。");
+								instruArr[1] = createCmdInstruSpan("“itachi-external-portal-server-group。","aaa server-group名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Server Group \"itachi-external-portal-server-group\") # auth-server “itachi-clearpass-radius。");
+								instruArr[3] = createCmdInstruSpan("“itachi-clearpass-radius。","radius（clearpass）服务器名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置认证规则","i11-3-6");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # aaa authentication captive-portal “itachi-external-portal-aaa-authen");
+								instruArr[1] = createCmdInstruSpan("“itachi-external-portal-aaa-authen。","认证规则名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-external-portal-aaa-authen\") # default-role “itachi-guest-captive-portal-user-role。");
+								instruArr[3] = createCmdInstruSpan("“itachi-guest-captive-portal-user-role。","客户端通过认证后的默认user-role，ClearPass的授权可以覆盖此user-role");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-external-portal-aaa-authen\") # server-group “itachi-external-portal-server-group。");
+								instruArr[5] = createCmdInstruSpan("“itachi-external-portal-server-group。","指定认证服务器为ClearPass的aaa group名");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-external-portal-aaa-authen\") # redirect-pause");
+								instruArr[7] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-external-portal-aaa-authen\") # login-page \"“https://clearpass.itachi.tech/guest/guest-login-page.php。\"");
+								instruArr[8] = createCmdInstruSpan("“https://clearpass.itachi.tech/guest/guest-login-page.php。","认证url，规则为https://“clearpass域名。/guest/“clearpass上配置认证页面名。.php");
+								instruArr[9] = createCmdSpan("(MM1) ^[itachi] (Captive Portal Authentication Profile \"itachi-external-portal-aaa-authen\") # allow-list “itachi-clearpass-ip。");
+								instruArr[10] = createCmdInstruSpan("“itachi-clearpass-ip。","标记ClearPass的netdestination名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置认证前权限的user-role","i11-3-7");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # user-role “itachi-external-portal-logon-user-role。");
+								instruArr[1] = createCmdInstruSpan("“itachi-external-portal-logon-user-role。","认证前权限的user-role名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session logon-control");
+								instruArr[3] = createCmdSpan("(MM1) ^[itachi] (config-submode) # access-list session captiveportal");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (config-submode) # captive-portal “itachi-external-portal-aaa-authen。");
+								instruArr[5] = createCmdInstruSpan("“itachi-external-portal-aaa-authen。","认证规则名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置aaa profile，关联认证前权限user-role","i11-3-8");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config-submode) # aaa profile “itachi-external-portal-aaa-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-inter-portal-aaa-profile。","aaa profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AAA Profile \"itachi-external-portal-aaa-profile\") # initial-role “itachi-external-portal-logon-user-role。");
+								instruArr[3] = createCmdInstruSpan("“itachi-external-portal-logon-user-role。","认证前权限的user-role名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置wlan ssid-profile，指定SSID","i11-3-9");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan ssid-profile “itachi-external-protal-ssid-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-external-protal-ssid-profile。","wlan ssid-profile名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (SSID Profile \"itachi-external-protal-ssid-profile\") # essid “itachi-external-portal。");
+								instruArr[3] = createCmdInstruSpan("“itachi-external-portal。","SSID");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("配置virtual-ap，关联相关内容","i11-3-10");
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # wlan virtual-ap “itachi-internal-portal-virtual-ap。");
+								instruArr[1] = createCmdInstruSpan("“itachi-external-portal-virtual-ap。","virtual ap名");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-internal-portal-virtual-ap\") # aaa-profile “itachi-inter-portal-aaa-profile。");
+								instruArr[3] = createCmdInstruSpan("“itachi-external-portal-aaa-profile。","关联认证前user-role的aaa profile名");
+								instruArr[4] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-internal-portal-virtual-ap\") # vlan “100。");
+								instruArr[5] = createCmdInstruSpan("“100。","客户端流量的vlan id");
+								instruArr[6] = createCmdSpan("(MM1) ^[itachi] (Virtual AP profile \"itachi-internal-portal-virtual-ap\") # ssid-profile “itachi-internal-protal-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-external-protal-ssid-profile。","ssid profile名");
+								createCmdInstruT2(instruArr,"aruba");
+
+							createInstruT2("virtual-ap关联到AP group","i11-3-11");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("(MM1) ^[itachi] (config) # ap-group “ap-group-tj。");
+								instruArr[1] = createCmdInstruSpan("“ap-group-tj。","启用该wlan的AP所属AP group");
+								instruArr[2] = createCmdSpan("(MM1) ^[itachi] (AP group \"ap-group-tj\") # virtual-ap “itachi-external-portal-virtual-ap。");
+								instruArr[3] = createCmdInstruSpan("“itachi-external-portal-virtual-ap。","virtual-ap名");
+								createCmdInstruT2(instruArr,"aruba");
+
+
+
+
+
+
+
+
+
+
 			</script>
 		</div>
 	</div>

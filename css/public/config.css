@@ -301,7 +301,6 @@ h4
 	font-style: italic;
 	/*background-color: #829BA5*/
 	background-color: #667382;
-	color: #FFFFFF;
 	font-family: inherit;
 	padding-left: 2px;
 	padding-right: 3px;
@@ -1060,7 +1059,7 @@ td
 
 .markColor3
 {
-	color: #67D8EF;
+	color: #0080FF;
 }
 
 .markColor4
@@ -1076,4 +1075,30 @@ td
 .markColor6
 {
 	color: #FD971F;
+}
+
+.markColor7
+{
+	color: #D50000;
+}
+
+.markColor8
+{
+	color: #00FFFF;
+}
+
+.markColor9
+{
+	color: #EEEE00;
+}
+
+.markColor10
+{
+	color: #72C373;
+}
+
+.markColor11
+{
+	color: #5A5D6F;
+	font-weight: bold;
 }
