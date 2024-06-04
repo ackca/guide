@@ -27,7 +27,7 @@
 							instruArr[1] = createCmdInstruSpan("“192.168.1.1。","IP地址");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("设置RIP版本(默认为‘V1。)");
+						createInstruT2("设置RIP版本（默认为‘V1。）");
 							instruArr[0] = createCmdSpan("R1(config-route)# version { 1 | 2 }");
 							instruArr[1] = createCmdInstruSpan("1","版本1");
 							instruArr[2] = createCmdInstruSpan("2","版本2");
@@ -40,7 +40,7 @@
 							instruArr[1] = createCmdInstruSpan("默认‘开启。自动汇总");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("手动路由汇总(限‘RIP V2。)");
+						createInstruT2("手动路由汇总（限‘RIP V2。）");
 							instruArr[0] = createCmdSpan("R1(config-if)# ip summary-address rip “192.168.0.0。 “255.255.255.248。");
 							instruArr[1] = createCmdInstruSpan("“192.168.0.0。","汇总地址");
 							instruArr[2] = createCmdInstruSpan("“255.255.255.248。","汇总掩码");
@@ -79,18 +79,18 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("边界（出口）路由器通告默认路由","i4-2");
-						createInstruT2("方法一 (需要有设置好默认静态路由)");
+						createInstruT2("方法一 （需要有设置好默认静态路由）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-router)# redistribute static");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("方法二 (需要有设置好默认静态路由)");
+						createInstruT2("方法二 （需要有设置好默认静态路由）");
 							instruArr[0] = createCmdSpan("R1(config-router)# network 0.0.0.0");
 							createCmdInstruT2(instruArr,"cisco");
 							createInstruAllBottomT2("<br />除通告默认路由外，还会将本路由器上所有UP状态下的接口IP通告，不要轻易使用");
 
-						createInstruT2("方法三 (需要有设置好默认静态路由)");
+						createInstruT2("方法三 （需要有设置好默认静态路由）");
 							instruArr[0] = createCmdSpan("R1(config-router)# default-information originate");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -100,7 +100,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("RIP路径控制","i4-3");
-						createInstruT2("使用偏移列表修改RIP路由条目跳数(调用标准ACL匹配路由条目)");
+						createInstruT2("使用偏移列表修改RIP路由条目跳数（调用标准ACL匹配路由条目）");
 							instruArr[0] = createCmdSpan("R1(config-router)# offset-list “10。 { out | in } “2。 [ f0/1 ]");
 							instruArr[1] = createCmdInstruSpan("“10。","标准ACL号(ACL使用源IP匹配需要修改的路由条目地址)，写0则表示所有路由条目");
 							instruArr[2] = createCmdInstruSpan("out","发送");
@@ -231,7 +231,7 @@
 							instruArr[6] = createCmdInstruSpan("&lt;cr&gt;","参数自动设置为 connected summary");
 							createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("路径控制","i5-4");
+					createInstruT1("<br />路径控制","i5-4");
 						createInstruT2("非等代价负载均衡");
 							instruArr = null;
 							instruArr = new Array();
@@ -272,7 +272,7 @@
 							instruArr[3] = createCmdInstruSpan("“9:55:00 2 apr 2015。","生效起始时间");
 							instruArr[4] = createCmdInstruSpan("infinite","生效后永久有效");
 							instruArr[5] = createCmdInstruSpan("“10:55:00 2 apr 2015。","失效时间");
-							instruArr[6] = createCmdInstruSpan("duration “3600。","有效持续时间(单位s)");
+							instruArr[6] = createCmdInstruSpan("duration “3600。","有效持续时间（单位s）");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("应用密钥");
@@ -325,7 +325,7 @@
 
 						createInstruT2("边界（出口）路由器通告默认路由");
 							instruArr[0] = createCmdSpan("R1(config-router)# default-information originate [ always ] [ metric “100。 ] [ metric-type “1。 ]");
-							instruArr[1] = createCmdInstruSpan("always","无论默认路由是否有效，始终通告(默认不通告)");
+							instruArr[1] = createCmdInstruSpan("always","无论默认路由是否有效，始终通告（默认不通告）");
 							instruArr[2] = createCmdInstruSpan("“100。","路由消耗");
 							instruArr[3] = createCmdInstruSpan("metric-type “1。","路由类型 OE1(1)/OE2(2)，默认OE2，只有外部消耗。OE1包含内部消耗");
 							createCmdInstruT2(instruArr,"cisco");
@@ -343,12 +343,12 @@
 
 						createInstruT2("修改发送Hello周期（Dead周期自动变为其4倍）");
 							instruArr[0] = createCmdSpan("R1(config-if)# ip ospf hello-interval “30。");
-							instruArr[1] = createCmdInstruSpan("“30。","发送Hello周期(单位秒)");
+							instruArr[1] = createCmdInstruSpan("“30。","发送Hello周期（单位秒）");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("修改发送Dead周期（Hello时间不变）");
 							instruArr[0] = createCmdSpan("R1(config-if)# ip ospf dead-interval “120。");
-							instruArr[1] = createCmdInstruSpan("“120。","Dead周期(单位秒)");
+							instruArr[1] = createCmdInstruSpan("“120。","Dead周期（单位秒）");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("设置OSPF接口优先级，默认为1，范围0~255，0表示不参与选举，只能成为DROTHER");
@@ -384,7 +384,7 @@
 							instruArr[1] = createCmdInstruSpan("接口类型可选项");
 							instruArr[2] = createCmdInstruSpan("broadcast","广播");
 							instruArr[3] = createCmdInstruSpan("point-to-point","点到点");
-							instruArr[4] = createCmdInstruSpan("non-broadcast","非广播(NBMA)");
+							instruArr[4] = createCmdInstruSpan("non-broadcast","非广播（NBMA）");
 							instruArr[5] = createCmdInstruSpan("point-to-multipoint","点到多点");
 							instruArr[6] = createCmdInstruSpan("point-to-multipoint non-broadcast","点到多点非广播");
 							createCmdInstruT2(instruArr,"cisco");
@@ -479,7 +479,7 @@
 								instruArr[3] = createCmdSpan("R1(config-if)# ip ospf authentication message-digest");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("区域认证(所有该区域路由器均要配置)");
+						createInstruT2("区域认证（所有该区域路由器均要配置）");
 
 							createInstruAllTopT2("密码配置在接口上，在做认证的区域内，只需链路两端密码一致，区域内的不同链路只要认证方式一致(明文/密文)，密码可以不一致");
 
@@ -608,7 +608,7 @@
 
 						createInstruT2("hello包不填充0（默认会在hello中填充0到达MTU）");
 							createInstruT3("路由协议进程配置");
-								instruArr[0] = createCmdSpan("R1(config-router)# no hello padding [ multi-point | point-to-point ])");
+								instruArr[0] = createCmdSpan("R1(config-router)# no hello padding [ multi-point | point-to-point ]");
 								instruArr[1] = createCmdInstruSpan("multi-point","MA网络不填充");
 								instruArr[2] = createCmdInstruSpan("point-to-point","P2P网络不填充");
 								createCmdInstruT3(instruArr,"cisco");
@@ -735,7 +735,7 @@
 							instruArr[3] = createCmdInstruSpan("“loop 0。","本地更新源接口");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("修改EBGP报文TTL值(默认为1)");
+						createInstruT2("修改EBGP报文TTL值（默认为1）");
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor { “192.168.12.1。 | “IBGP。 } ebgp-multihop [ “5。 ]");
 							instruArr[3] = createCmdInstruSpan("“5。","TTL值，省略会自动设置为255");
 							createCmdInstruT2(instruArr,"cisco");
@@ -1011,18 +1011,18 @@
 						instruArr[1] = createCmdInstruSpan("“pre-list。","前缀列表名");
 						instruArr[2] = createCmdInstruSpan("“5。","列表条目序号，默认序号5、10、15……");
 						instruArr[3] = createCmdInstruSpan("“10.1.0.0。","匹配网络");
-						instruArr[4] = createCmdInstruSpan("“16。","匹配长度(length)");
+						instruArr[4] = createCmdInstruSpan("“16。","匹配长度（length）");
 						instruArr[5] = createCmdInstruSpan("“24。","ge值");
 						instruArr[6] = createCmdInstruSpan("“32。","le值");
-						createCmdInstruT2(instruArr,"cisco");
+						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("as-path访问列表","i9-3");
+					createInstruT1("<br />as-path访问列表","i9-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# ip as-path access-list “1。 { permit | deny } “.*。");
 						instruArr[1] = createCmdInstruSpan("“1。","as-path访问列表编号");
 						instruArr[2] = createCmdInstruSpan("“.*。","正则表达式，用于匹配AS-path");
-						createCmdInstruT2(instruArr,"cisco");
+						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("路由重分发","i10");
 					createInstruT1("重分发到何种动态路由协议，则先进入该动态路由协议");
@@ -1032,20 +1032,20 @@
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-router)# redistribute “ospf。 [ “1。 ] [ metric “3。 ] [ router-map “map-tag。 ]");
 							instruArr[1] = createCmdInstruSpan("“ospf。","外部路由");
-							instruArr[2] = createCmdInstruSpan("“1。","进程号(自治系统号)");
-							instruArr[3] = createCmdInstruSpan("“3。","重分发的路由跳数，需要手工指定(默认为无穷大，不可达)");
+							instruArr[2] = createCmdInstruSpan("“1。","进程号（自治系统号）");
+							instruArr[3] = createCmdInstruSpan("“3。","重分发的路由跳数，需要手工指定（默认为无穷大，不可达）");
 							instruArr[4] = createCmdInstruSpan("“map-tag。","route-map名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("重分发到EIGRP","i10-2");
 							instruArr[0] = createCmdSpan("R1(config-router)# redistribute “ospf。 [ “1。 ] [ metric “10000 100 255 1 1500。 ] [ router-map “map-tag。 ]");
-							instruArr[3] = createCmdInstruSpan("“10000 100 255 1 1500。","重分发的路由度量值，参数依次为 带宽(单位kbit/s) 延迟(单位10ms) 可靠性 负载 最大传输单元(MTU)，需要手工指定(默认为无穷大，不可达)");
+							instruArr[3] = createCmdInstruSpan("“10000 100 255 1 1500。","重分发的路由度量值，参数依次为 带宽(单位kbit/s) 延迟(单位10ms) 可靠性 负载 最大传输单元(MTU)，需要手工指定（默认为无穷大，不可达）");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("重分发到OSPF","i10-3");
 							instruArr[0] = createCmdSpan("R1(config-router)# redistribute “eigrp。 [ “10。 ] [ metric “3。 ] [ metric-type “1。 ] [ router-map “map-tag。 ] subnets");
 							instruArr[1] = createCmdInstruSpan("“eigrp。","外部路由");
-							instruArr[2] = createCmdInstruSpan("“10。","自治系统号(进程号)");
+							instruArr[2] = createCmdInstruSpan("“10。","自治系统号（进程号）");
 							instruArr[3] = createCmdInstruSpan("“3。","路由度量值");
 							instruArr[4] = createCmdInstruSpan("“1。","路由类型 O E1(1)/O E2(2)，默认O E2");
 							instruArr[5] = createCmdInstruSpan("“map-tag。","route-map名");
@@ -1059,7 +1059,7 @@
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-router)# redistribute “eigrp。 [ “10。 ] [ metric “3。 ] [ router-map “map-tag。 ] ");
 								instruArr[1] = createCmdInstruSpan("“eigrp。","外部路由");
-								instruArr[2] = createCmdInstruSpan("“10。","自治系统号(进程号)");
+								instruArr[2] = createCmdInstruSpan("“10。","自治系统号（进程号）");
 								instruArr[3] = createCmdInstruSpan("“3。","路由度量值");
 								instruArr[4] = createCmdInstruSpan("“map-tag。","route-map名");
 								createCmdInstruT3(instruArr,"cisco");
@@ -1363,12 +1363,12 @@
 						instruArr[0] = createCmdSpan("R1(config)# ip multicast-routing");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置 PIM 稀疏模式","i15-2");
+					createInstruT1("<br />配置 PIM 稀疏模式","i15-2");
 						createInstruAllTopT1("在所有互联接口、连接组播源和接收者的接口配置<br />");
 						instruArr[0] = createCmdSpan("R1(config-if)# ip pim sparse-mode");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置RP","i15-3");
+					createInstruT1("<br />配置RP","i15-3");
 						createInstruT2("静态RP","i15-3-1");
 							createInstruAllTopT2("一般配置为环回接口IP，需要网格可达，该接口无需启用pim");
 							createInstruAllTopT2("所有转发组播流量设备均需配置");

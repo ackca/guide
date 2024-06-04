@@ -28,7 +28,7 @@
 
 						createInstruT2("修改mac地址表失效时间");
 							instruArr[0] = createCmdSpan("SW1(config)# mac address-table aging-time “150。 [ vlan “10。 ]");
-							instruArr[1] = createCmdInstruSpan("“150。","失效时间(单位s)");
+							instruArr[1] = createCmdInstruSpan("“150。","失效时间（单位s）");
 							instruArr[2] = createCmdInstruSpan("vlan “10。","vlan号，省略查看全部");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -52,7 +52,7 @@
 
 							createInstruT3("设置接口启用的时间间隔");
 								instruArr[0] = createCmdSpan("SW1(config)# errdisable recovery interval “30。");
-								instruArr[1] = createCmdInstruSpan("“30。","启用时间(单位s)");
+								instruArr[1] = createCmdInstruSpan("“30。","启用时间（单位s）");
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("设置接口的双工状态");
@@ -127,7 +127,7 @@
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport nonegotiate");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("设置本征虚拟局域网(native vlan，双方要同时指定，且native vlan id要相同)");
+						createInstruT2("设置本征虚拟局域网（native vlan，双方要同时指定，且native vlan id要相同）");
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport trunk native vlan “100。");
 							instruArr[1] = createCmdInstruSpan("vlan “100。","本征vlan号");
 							createCmdInstruT2(instruArr,"cisco");
@@ -139,7 +139,7 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config)# vtp domain “vtpName。");
-							instruArr[1] = createCmdInstruSpan("“vtpName。","VTP域名(‘区分大小写。)");
+							instruArr[1] = createCmdInstruSpan("“vtpName。","VTP域名(‘区分大小写。）");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置VTP模式");
@@ -191,7 +191,7 @@
 
 						createInstruT2("创建VTP域名");
 							instruArr[0] = createCmdSpan("SW1(config)# vtp domain “vtpName。");
-							instruArr[1] = createCmdInstruSpan("“vtpName。","VTP域名(‘区分大小写。)");
+							instruArr[1] = createCmdInstruSpan("“vtpName。","VTP域名（‘区分大小写。）");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置VTP版本");
@@ -202,7 +202,7 @@
 
 						createInstruT2("配置vtp密码");
 							instruArr[0] = createCmdSpan("SW1(config)# vtp password “cisco。 [ hiddlen ]");
-							instruArr[1] = createCmdInstruSpan("hiddlen","VTP密码在show vtp password为密文，省略则为明文)");
+							instruArr[1] = createCmdInstruSpan("hiddlen","VTP密码在show vtp password为密文，省略则为明文");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置vlan、RSPAN vlan，私有vlan时，交换机需要配置为 primary server 模式，其它模式无法配置");
@@ -284,7 +284,7 @@
 							instruArr[0] = createCmdSpan("SW1# show vlan private-vlan type");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("私有vlan边界端口(受保护端口)");
+						createInstruT2("私有vlan边界端口（受保护端口）");
 							instruArr[0] = createCmdSpan("SW1(config-if-range)# switchport protected");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -357,11 +357,11 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("路由接口方式");
-							createInstruT3("将交换机出口设置路由模式(‘设置交换机接口为路由器接口。)");
+							createInstruT3("将交换机出口设置路由模式（‘设置交换机接口为路由器接口。）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config)# int “f0/1。");
-								instruArr[1] = createCmdInstruSpan("“f0/1。","接口号(交换机出接口)");
+								instruArr[1] = createCmdInstruSpan("“f0/1。","接口号（交换机出接口）");
 								instruArr[2] = createCmdSpan("SW1(config-if)# no switchport");
 								createCmdInstruT3(instruArr,"cisco");
 
@@ -399,7 +399,7 @@
 							instruArr[0] = createCmdSpan("SW1(config)# no monitor session all ");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("设置目的接口(接收从被监控接口流量的接口，连接分析仪服务器的接口)");
+						createInstruT2("设置目的接口（接收从被监控接口流量的接口，连接分析仪服务器的接口）");
 							instruArr[0] = createCmdSpan("SW1(config)# monitor session “1。 destination int “f0/2。 [ encapsulation { dot1q | replicate } ] [ ingress [ dot1q ] vlan “2。 ]");
 							instruArr[1] = createCmdInstruSpan("“1。","span进程号");
 							instruArr[2] = createCmdInstruSpan("“f0/2。","目的接口");
@@ -883,7 +883,7 @@
 								instruArr[1] = createCmdInstruSpan("“3。","最大地址数，‘默认为1个。");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("自动将mac地址与端口进行绑定(将mac地址保存到该接口的running-config中)");
+							createInstruT3("自动将mac地址与端口进行绑定（将mac地址保存到该接口的running-config中）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config-if)# switchport port-security mac-address sticky");
@@ -912,7 +912,7 @@
 							instruArr[1] = createCmdInstruSpan("“f0/0。","接口号，查看某个具体接口安全");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("来源于某个接口的某个mac地址的所有数据帧全部丢弃(只能是单播数据帧)");
+						createInstruT2("来源于某个接口的某个mac地址的所有数据帧全部丢弃（只能是单播数据帧）");
 							instruArr[0] = createCmdSpan("SW1(config)# mac-address-table static “000c.29a3.8612。 vlan “1。 [ int “f0/1。 ] drop");
 							instruArr[1] = createCmdInstruSpan("“000c.29a3.8612。","mac地址");
 							instruArr[2] = createCmdInstruSpan("“1。","vlan号");

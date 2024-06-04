@@ -707,7 +707,7 @@ vpn_asa = {
 		"L2L IPSec VPN": {
 			"i1-1": {
 				"L2L IPsec VPN，IKEv1": {
-					"i1-1-1": "激活ikev1",
+					"i1-1-1": "激活IKEv1",
 					"i1-1-2": "只有VPN解密后的流量<br />　　　才能查询的路由（选配）",
 					"i1-1-3": "配置 IKEv1（ISAKMP）策略",
 					"i1-1-4": "配置IKEv1（ISAKMP）的<br />　　　tunnel&minus;group",
@@ -748,7 +748,7 @@ vpn_asa = {
 
 	"i2": {
 		"Easy VPN": {
-			"i2-1": "激活ikev1",
+			"i2-1": "激活IKEv1",
 			"i2-2": "配置IKEv1策略",
 			"i2-3": "配置IKEv1的tunnel&minus;group",
 			"i2-4": "配置用户名密码",
@@ -761,7 +761,7 @@ vpn_asa = {
 
 	"i3": {
 		"L2TP over IPSec": {
-			"i3-1": "激活ikev1",
+			"i3-1": "激活IKEv1",
 			"i3-2": "将VPN的识别方式设置为IP地址",
 			"i3-3": "配置IPSec",
 			"i3-4": "配置IP地址池",

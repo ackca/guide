@@ -789,8 +789,8 @@ function addSpan(text) {
 	// text = text.replace(/xnsy/g, "vpn");	// Gitee Pages屏蔽词
 	// text = text.replace(/邻邻邻/g, "邻居");	// Gitee Pages屏蔽词
 
-	var regVariable = new RegExp("“","g");
-	var regSpanBold = new RegExp("”","g");
+	var regVariable = new RegExp("(?<!/)“","g"); // 可以匹配“，但不能匹配/“
+	var regSpanBold = new RegExp("(?<!/)”","g"); // 可以匹配”，但不能匹配/”
 	var regR = new RegExp("‘","g");
 	var regBlue = new RegExp("’","g");
 	var regZN = new RegExp("｛","g");
@@ -798,6 +798,8 @@ function addSpan(text) {
 	var regEnd = new RegExp("([^/])。","g");
 	var regEnd2 = new RegExp("([^/])》","g");
 	var regJH = new RegExp("/。","g");
+	var regSY1 = new RegExp("/“","g");
+	var regSY2 = new RegExp("/”","g");
 	var regZNKG = new RegExp("　","g");
 
 	// for(var i = 1; i <= 6; i++) {
@@ -815,6 +817,8 @@ function addSpan(text) {
 	text = text.replace(regEnd2, "$1</span></span>");
 
 	text = text.replace(regJH, "。");
+	text = text.replace(regSY1, "“");
+	text = text.replace(regSY2, "”");
 
 
 

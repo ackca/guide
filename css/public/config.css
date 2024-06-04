@@ -457,7 +457,7 @@ h4
 	height: 30px;
 }
 
-.imgBrand.aruba, .imgBrand.huawei, .imgBrand.f5
+.imgBrand.huawei, .imgBrand.f5
 {
 	height: 35px;
 }
@@ -470,6 +470,11 @@ h4
 .imgBrand.vmware, .imgBrand.docker, .imgBrand.k8s, .imgBrand.vault
 {
 	height: 40px;
+}
+
+.imgBrand.cfssl
+{
+	height: 20px;
 }
 
 td

@@ -46,14 +46,14 @@
 							instruArr[0]=createCmdSpan("ASA(config)# same-security-traffic permit intra-intraface");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("查看所有接口的IP及开关状态(相当于RS中的show ip int brief)");
+						createInstruT2("查看所有接口的IP及开关状态（相当于RS中的show ip int brief）");
 							instruArr[0]=createCmdSpan("ASA# show int ip brief");
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("配置相关","i1-2");
 						createInstruT2("使用show run all [特定关键字，如tunnel-group] 可查看show run中不显示的默认配置");
 
-						createInstruT2("查看完整配置(使有show run会有一些key以*显示)");
+						createInstruT2("查看完整配置（使有show run会有一些key以*显示）");
 							instruArr[0]=createCmdSpan("ASA# more system:running-config");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -94,7 +94,7 @@
 							instruArr[1]=createCmdInstruSpan("“192.168.1.100。","DNS服务器地址");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("启用日志功能(默认不启用)");
+					createInstruT1("启用日志功能（默认不启用）");
 						instruArr[0]=createCmdSpan("ASA(config)# logging enable");
 						instruArr[1]=createCmdInstruSpan("因为日志功能默认不启用，使用时还需设置将多少级的日志输出到某位置，配置方式同RS");
 						createCmdInstruT1(instruArr,"cisco");
@@ -116,7 +116,7 @@
 						instruArr[5]=createCmdInstruSpan("“1。","管理距离");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("静态路由追踪(sla)","i2-2");
+					createInstruT1("静态路由追踪（sla）","i2-2");
 						createInstruT2("配置监控内容");
 							createInstruT3("创建SLA");
 								instruArr = null;
@@ -220,14 +220,14 @@
 							instruArr[5]=createCmdInstruSpan("‘最低安全级别的接口不支持telnet。");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("修改telnet密码(旧版本默认为cisco，新版本无默认密码)");
+						createInstruT2("修改telnet密码（旧版本默认为cisco，新版本无默认密码）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0]=createCmdSpan("ASA(config)# passwd “cisco123。");
 							instruArr[1]=createCmdInstruSpan("“cisco123。","密码");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("使用本地用户名，密码登录(‘LOCAL必须全大写。)");
+						createInstruT2("使用本地用户名，密码登录（‘LOCAL必须全大写。）");
 							instruArr[0]=createCmdSpan("ASA(config)# aaa authentication { http | telnet | ssh } console LOCAL");
 							instruArr[1]=createCmdInstruSpan("http | telnet | ssh","管理协议");
 							createCmdInstruT2(instruArr,"cisco");
@@ -324,7 +324,7 @@
 						instruArr[2]=createCmdInstruSpan("“3a。","aaa服务器名");
 						createCmdInstruT1(instruArr,"cisco");
 
-				createInstruT0("访问控制列表(ACL)","i6");
+				createInstruT0("访问控制列表（ACL）","i6");
 						createInstruT2("建立ACL");
 							instruArr = null;
 							instruArr = new Array();
@@ -366,7 +366,7 @@
 							instruArr[2]=createCmdInstruSpan("一般只用checkpoint防火墙向ASA迁移时使用，非迁移时不建议使用");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("object-group(object)(将IP、协议信息归组，方便管理使用)");
+						createInstruT2("object-group（object，将IP、协议信息归组，方便管理使用）");
 							createInstruT3("匹配IP");
 								instruArr[0]=createCmdSpan("ASA(config)# object-group network “obj-net。");
 								instruArr[1]=createCmdInstruSpan("“obj-net。","object-group名");
@@ -423,7 +423,7 @@
 							instruArr[0]=createCmdSpan("ASA(config)# clear shun");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("网络地址转换(NAT)","i9");
+				createInstruT0("网络地址转换（NAT）","i9");
 					createInstruT1("object NAT","i9-1");
 						createInstruT2("静态 一对一","i9-1-1");
 							createInstruT3("配置object");
@@ -473,7 +473,7 @@
 								instruArr[3]=createCmdInstruSpan("“in-net。","表示被转换地址的object名");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("动态 多对一(PAT)","i9-1-3");
+						createInstruT2("动态 多对一（PAT）","i9-1-3");
 							createInstruT3("配置被转换的地址");
 								instruArr[0]=createCmdSpan("ASA(config)# object network “in-net。");
 								instruArr[1]=createCmdInstruSpan("“in-net。","表示被转换地址的object名");
@@ -489,14 +489,14 @@
 								instruArr[4]=createCmdInstruSpan("interface","转换到接口（outside）地址");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("修改转换位保留时间(默认为30秒)");
+							createInstruT3("修改转换位保留时间（默认为30秒）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0]=createCmdSpan("ASA(config)# timeout pat-xlate “0:01:00。");
 								instruArr[1]=createCmdInstruSpan("“0:01:00。","保存时间");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("动态 多对多(不转端口，只转IP)","i9-1-4");
+						createInstruT2("动态 多对多（不转端口，只转IP）","i9-1-4");
 							createInstruT3("配置转换后的地址");
 								instruArr[0]=createCmdSpan("ASA(config)# object network “out-pool。");
 								instruArr[1]=createCmdInstruSpan("out-pool。","表示转换后地址的object名");
@@ -526,7 +526,7 @@
 								instruArr[1]=createCmdInstruSpan("“1:00:00。","保存时间");
 								createCmdInstruT3(instruArr,"cisco");
 
-						createInstruT2("动态 多对多(IP、端口均转换)","i9-1-5");
+						createInstruT2("动态 多对多（IP、端口均转换）","i9-1-5");
 							createInstruT3("配置转换后的地址");
 								instruArr[0]=createCmdSpan("ASA(config)# object network “out-pool。");
 								instruArr[1]=createCmdInstruSpan("out-pool。","表示转换后地址的object名");
@@ -570,13 +570,13 @@
 						createCmdInstruT1(instruArr,"cisco");
 
 				createInstruT0("透明防火墙","i10");
-						createInstruT2("查看防火墙类型(路由：Router/透明：Transparent)");
+						createInstruT2("查看防火墙类型（路由：Router/透明：Transparent）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0]=createCmdSpan("ASA# show firewall");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("从路由墙切换为透明墙(切换时会清空配置)，切回路由墙时no掉本条");
+						createInstruT2("从路由墙切换为透明墙（切换时会清空配置），切回路由墙时no掉本条");
 							instruArr[0]=createCmdSpan("ASA(config)# firewall transparent");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -587,7 +587,7 @@
 							instruArr[3]=createCmdInstruSpan("“1。","组号");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置BVI接口IP(相当于交换机里的vlan接口)");
+						createInstruT2("配置BVI接口IP（相当于交换机里的vlan接口）");
 							instruArr[0]=createCmdSpan("ASA(config)# int BVI “1。");
 							instruArr[1]=createCmdInstruSpan("“1。","组号，与bridge-group对应");
 							instruArr[2]=createCmdSpan("ASA(config-if)# ip address “192.168.10.1。 “255.255.255.0。");
@@ -599,7 +599,7 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0]=createCmdSpan("ASA(config)# arp-inspection inside enable [ flood | no-flood ]");
-							instruArr[1]=createCmdInstruSpan("flood","对未知的MAC泛洪(‘默认。)");
+							instruArr[1]=createCmdInstruSpan("flood","对未知的MAC泛洪(‘默认。）");
 							instruArr[2]=createCmdInstruSpan("no-flood ","不泛洪");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -622,7 +622,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("多模式防火墙","i11");
-						createInstruT2("查看防火墙模式(单模式：Single/多模式：Multiple)");
+						createInstruT2("查看防火墙模式（单模式：Single/多模式：Multiple）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0]=createCmdSpan("ASA# show mode");
@@ -646,7 +646,7 @@
 							instruArr[1]=createCmdInstruSpan("“admin。","管理子墙名称，一般设置为admin");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("配置子墙(系统级别)");
+						createInstruT2("配置子墙（系统级别）");
 							createInstruT3("进入子墙配置");
 								instruArr[0]=createCmdSpan("ASA(config)# context “admin。");
 								instruArr[1]=createCmdInstruSpan("“admin。","子墙名称");
@@ -701,8 +701,8 @@
 								instruArr[3]=createCmdInstruSpan("“limit-Mul。","限制策略名");
 								createCmdInstruT3(instruArr,"cisco");
 
-				createInstruT0("高可用性 High Availability (HA)","i12");
-					createInstruT1("以太网通道(EtherChannel)","i12-1");
+				createInstruT0("高可用性 High Availability（HA）","i12");
+					createInstruT1("以太网通道（EtherChannel）","i12-1");
 						createInstruT2("创建通道接口");
 							createInstruT3("支持cluster的设备需要先关闭cluster的etherchannel");
 								instruArr = null;
@@ -765,7 +765,7 @@
 								instruArr[2]=createCmdInstruSpan("“g0/1。","成为failover链路接口的物理接口名");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("设置failover链路密码(可选)");
+							createInstruT3("设置failover链路密码（可选）");
 								instruArr[0]=createCmdSpan("ASA(config)# failover key “cisco。");
 								instruArr[1]=createCmdInstruSpan("“cisco。","密码");
 								createCmdInstruT3(instruArr,"cisco");
@@ -778,7 +778,7 @@
 								instruArr[4]=createCmdInstruSpan("“192.168.10.20。","Secondary端favilover链路接口IP");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("激活failover(上述配置主/备均配置好后再激活)");
+							createInstruT3("激活failover（上述配置主/备均配置好后再激活）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0]=createCmdSpan("ASA(config)# failover");
@@ -872,7 +872,7 @@
 							instruArr[0]=createCmdSpan("ASA(config)# failover active");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("冗余接口(Redundant接口)","i12-3");
+					createInstruT1("冗余接口（Redundant接口）","i12-3");
 						createInstruT2("系列版本8.4以上不建议使用");
 						createInstruT2("创建冗余接口，其余配置同普通接口");
 							instruArr[0]=createCmdSpan("ASA(config)# int redundant “1。");

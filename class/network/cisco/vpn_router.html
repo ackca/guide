@@ -492,49 +492,49 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 
-                createInstruT0("数字签名认证","i14");
-                    createInstruT1("配置certificate map","i14-1");
-                        createInstruT2("创建certificate map");
-                            instruArr[0] = createCmdSpan("R1(config)# crypto pki certificate map “cert-map。 “1。");
-                            instruArr[1] = createCmdInstruSpan("“cert-map。","map名");
-                            instruArr[2] = createCmdInstruSpan("“1。","map内容编号");
-                            createCmdInstruT2(instruArr,"cisco");
+				createInstruT0("数字签名认证","i14");
+					createInstruT1("配置certificate map","i14-1");
+						createInstruT2("创建certificate map");
+							instruArr[0] = createCmdSpan("R1(config)# crypto pki certificate map “cert-map。 “1。");
+							instruArr[1] = createCmdInstruSpan("“cert-map。","map名");
+							instruArr[2] = createCmdInstruSpan("“1。","map内容编号");
+							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("配置限定证书规则");
+						createInstruT2("配置限定证书规则");
 							instruArr[0] = createCmdSpan("R1(ca-certificate-map)# “subject-name co。 “ou=router。");
-                            instruArr[1] = createCmdInstruSpan("“subject-name co。","限定规则，示例意思为证书中包含 ou=router");
-                            instruArr[2] = createCmdInstruSpan("“ou=router。","被限定内容");
-                            createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“subject-name co。","限定规则，示例意思为证书中包含 ou=router");
+							instruArr[2] = createCmdInstruSpan("“ou=router。","被限定内容");
+							createCmdInstruT2(instruArr,"cisco");
 
-                    createInstruT1("配置isakmp profile","i14-2");
-                        createInstruT2("创建isakmp profile");
-                            instruArr = null;
+					createInstruT1("配置isakmp profile","i14-2");
+						createInstruT2("创建isakmp profile");
+							instruArr = null;
 							instruArr = new Array();
-                            instruArr[0] = createCmdSpan("R1(config)# crypto isakmp profile “ikev1-profile。");
-                            instruArr[1] = createCmdInstruSpan("“ikev1-profile。","被匹配内容");
-                            createCmdInstruT2(instruArr,"cisco");
+							instruArr[0] = createCmdSpan("R1(config)# crypto isakmp profile “ikev1-profile。");
+							instruArr[1] = createCmdInstruSpan("“ikev1-profile。","被匹配内容");
+							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("配置申请证书的trust-point");
-                            instruArr[0] = createCmdSpan("R1(conf-isa-prof)# ca trust-point “IPSecVPN。");
-                            instruArr[1] = createCmdInstruSpan("“IPSecVPN。","申请证书的trust-point名");
-                            createCmdInstruT2(instruArr,"cisco");
+						createInstruT2("配置申请证书的trust-point");
+							instruArr[0] = createCmdSpan("R1(conf-isa-prof)# ca trust-point “IPSecVPN。");
+							instruArr[1] = createCmdInstruSpan("“IPSecVPN。","申请证书的trust-point名");
+							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("配置限定证书的certificate map");
-                            instruArr[0] = createCmdSpan("R1(conf-isa-prof)# match certificate “cert-map。");
-                            instruArr[1] = createCmdInstruSpan("“cert-map。","限定证书的certificate map名");
-                            createCmdInstruT2(instruArr,"cisco");
+						createInstruT2("配置限定证书的certificate map");
+							instruArr[0] = createCmdSpan("R1(conf-isa-prof)# match certificate “cert-map。");
+							instruArr[1] = createCmdInstruSpan("“cert-map。","限定证书的certificate map名");
+							createCmdInstruT2(instruArr,"cisco");
 
-                    createInstruT1("将isakmp profile调用到相应位置","i14-3");
-                        createInstruT2("L2L VPN：调用到 crypto map");
-                            instruArr[0] = createCmdSpan("R1(config)#crypto map “L2L。 “1。 ipsec-isakmp");
+					createInstruT1("将isakmp profile调用到相应位置","i14-3");
+						createInstruT2("L2L VPN：调用到 crypto map");
+							instruArr[0] = createCmdSpan("R1(config)#crypto map “L2L。 “1。 ipsec-isakmp");
 							instruArr[1] = createCmdSpan("R1(config-crypto-map)# set isakmp-profile “ikev1-profile。");
-                            instruArr[2] = createCmdInstruSpan("“ikev1-profile。","包含证书内容isakmp profile");
-                            createCmdInstruT2(instruArr,"cisco");
+							instruArr[2] = createCmdInstruSpan("“ikev1-profile。","包含证书内容isakmp profile");
+							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("DMVPN：调用到 ipsec profile");
-                            instruArr[0] = createCmdSpan("R1(config)# crypto ipsec profile “ipsec-profile。");
+						createInstruT2("DMVPN：调用到 ipsec profile");
+							instruArr[0] = createCmdSpan("R1(config)# crypto ipsec profile “ipsec-profile。");
 							instruArr[1] = createCmdSpan("R1(ipsec-profile)# set isakmp-profile “ikev1-profile。");
-                            createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("IPSec VPN优化配置","i3");
 						createInstruT2("激活NAT-T（默认激活）","i3-1");
@@ -1010,14 +1010,14 @@
 								instruArr[1] = createCmdInstruSpan("“ikev2-ipsec-profile。","ipsec profile名");
 								createCmdInstruT3(instruArr,"cisco");
 
-				createInstruT0("PPTP(Point to Point Tunneling Protocol)","i7");
+				createInstruT0("PPTP（Point to Point Tunneling Protocol）","i7");
 					createInstruT1("启用VPDN","i7-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# vpdn enable");
-						createCmdInstruT2(instruArr,"cisco");
+						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置VPDN组","i7-2");
+					createInstruT1("<br />配置VPDN组","i7-2");
 						createInstruT2("建立VPDN组");
 							instruArr[0] = createCmdSpan("R1(config)# vpdn-group “1。");
 							instruArr[1] = createCmdInstruSpan("“1。","组号");
@@ -1044,14 +1044,14 @@
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置地址池","i7-4");
+					createInstruT1("<br />配置地址池","i7-4");
 						instruArr[0] = createCmdSpan("R1(config)# ip local pool “pptppool。 “10.0.0.100。 “10.0.0.200。");
 						instruArr[1] = createCmdInstruSpan("“pptppool。","地址池名");
 						instruArr[2] = createCmdInstruSpan("“10.0.0.100。","起始IP地址");
 						instruArr[3] = createCmdInstruSpan("“10.0.0.200。","终止IP地址");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置虚模板","i7-5");
+					createInstruT1("<br />配置虚模板","i7-5");
 						createInstruT2("建立虚模板，拨入VPN的用户采用模板中的配置");
 							instruArr = null;
 							instruArr = new Array();
@@ -1083,7 +1083,7 @@
 						instruArr[0] = createCmdSpan("R1(config)# vpdn enable");
 						createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("配置VPDN组","i8-2");
+					createInstruT1("<br />配置VPDN组","i8-2");
 						createInstruT2("建立VPDN组");
 							instruArr[0] = createCmdSpan("R1(config)# vpdn-group “1。");
 							instruArr[1] = createCmdInstruSpan("“1。","组号");
@@ -1119,14 +1119,14 @@
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置地址池","i8-4");
+					createInstruT1("<br />配置地址池","i8-4");
 						instruArr[0] = createCmdSpan("R1(config)# ip local pool “l2tppool。 “10.0.0.100。 “10.0.0.200。");
 						instruArr[1] = createCmdInstruSpan("“l2tppool。","地址池名");
 						instruArr[2] = createCmdInstruSpan("“10.0.0.100。","起始IP地址");
 						instruArr[3] = createCmdInstruSpan("“10.0.0.200。","终止IP地址");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置虚模板","i8-5");
+					createInstruT1("<br />配置虚模板","i8-5");
 						createInstruT2("建立虚模板，拨入VPN的用户采用模板中的配置");
 							instruArr = null;
 							instruArr = new Array();
@@ -2372,14 +2372,14 @@
 						instruArr[2] = createCmdInstruSpan("“cisco。","密码");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置本地认证策略","i13-4");
+					createInstruT1("<br />配置本地认证策略","i13-4");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# aaa authentication login “sslvpn。 local");
 						instruArr[1] = createCmdInstruSpan("“sslvpn。","认证策略名");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置context","i13-5");
+					createInstruT1("<br />配置context","i13-5");
 						createInstruT2("创建context");
 							instruArr[0] = createCmdSpan("R1(config)# webvpn context “con。");
 							instruArr[1] = createCmdInstruSpan("“con。","context名");

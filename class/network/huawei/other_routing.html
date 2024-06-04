@@ -14,18 +14,18 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("访问控制列表(ACL)","i1");
-					createInstruT1("基本访问控制列表(Basic ACL)","i1-1");
+				createInstruT0("访问控制列表（ACL）","i1");
+					createInstruT1("基本访问控制列表（Basic ACL）","i1-1");
 						createInstruT2("基于编号");
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] acl [ number ] “2000。");
-							instruArr[1] = createCmdInstruSpan("“2000。","列表编号(‘2000~2999。)");
+							instruArr[1] = createCmdInstruSpan("“2000。","列表编号（‘2000~2999。）");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-2000] rule [ 5 ] { permit | deny } [ source  “192.168.1.0。 “0.0.0.255。 ]");
 							instruArr[3] = createCmdInstruSpan("“5。","acl条目号");
 							instruArr[4] = createCmdInstruSpan("permit","允许");
 							instruArr[5] = createCmdInstruSpan("deny","拒绝");
 							instruArr[6] = createCmdInstruSpan("“192.168.1.0。","源IP地址");
-							instruArr[7] = createCmdInstruSpan("“0.0.0.255。","通配符掩码(反掩码)");
+							instruArr[7] = createCmdInstruSpan("“0.0.0.255。","通配符掩码（反掩码）");
 							createCmdInstruT2(instruArr,"huawei");
 
 						createInstruT2("基于名字");
@@ -37,10 +37,10 @@
 							instruArr[3] = createCmdInstruSpan("参数同上");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("高级访问控制列表(Advanced ACL)","i1-2");
+					createInstruT1("高级访问控制列表（Advanced ACL）","i1-2");
 						createInstruT2("基于编号");
 							instruArr[0] = createCmdSpan("[R1] acl [ number ] “3000。");
-							instruArr[1] = createCmdInstruSpan("“3000。","列表编号(‘3000~3999。)");
+							instruArr[1] = createCmdInstruSpan("“3000。","列表编号（‘3000~3999。）");
 							instruArr[2] = createCmdSpan("[R1-acl-adv-3000] rule [ “5。 ] { permit | deny } { “tcp。 | “6。 } [ source  “192.168.1.0。 “0.0.0.255。 ] [ source-port { eq | qt | lt | range } “源端口号。 ][ destination “172.16.0.0。 “0.0.255.255。 ][ destination-port { “80。 | “http。 }]");
 							instruArr[3] = createCmdInstruSpan("“5。","acl条目号");
 							instruArr[4] = createCmdInstruSpan("permit","允许");
@@ -49,7 +49,7 @@
 							instruArr[7] = createCmdInstruSpan("“6。","协议号");
 							instruArr[8] = createCmdInstruSpan("“192.168.1.0。","源IP地址");
 							instruArr[9] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-							instruArr[10] = createCmdInstruSpan("eq","等于(一般采用此选项)");
+							instruArr[10] = createCmdInstruSpan("eq","等于");
 							instruArr[11] = createCmdInstruSpan("qt","大于");
 							instruArr[12] = createCmdInstruSpan("lt","小于");
 							instruArr[13] = createCmdInstruSpan("range","其后跟两个参数，端口号在两个参数之间");
@@ -81,10 +81,10 @@
 							instruArr[0] = createCmdSpan("[R1] time-range “aclTime。 “11:00。 to “14:00。 “working-day。");
 							instruArr[2] = createCmdInstruSpan("“11:00。","开始时间");
 							instruArr[3] = createCmdInstruSpan("“14:00。","结束时间");
-							instruArr[4] = createCmdInstruSpan("“working-day。","频率限制选项(工作日)");
+							instruArr[4] = createCmdInstruSpan("“working-day。","频率限制选项（工作日）");
 							createCmdInstruT2(instruArr,"huawei");
 
-						createInstruT2("应用于访问控制列表(在原有列表后加 time-range {时间列表名})");
+						createInstruT2("应用于访问控制列表（在原有列表后加 time-range {时间列表名}）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1-acl-adv-3000] “rule permit ip。 time-range “aclTime。");
@@ -92,11 +92,11 @@
 							instruArr[2] = createCmdInstruSpan("“aclTime。","时间列表名");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("二层访问控制列表(L2 ACL)","i1-4");
+					createInstruT1("二层访问控制列表（L2 ACL）","i1-4");
 						createInstruT2("基于编号");
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] acl [ number ] “4000。");
-							instruArr[1] = createCmdInstruSpan("“4000。","列表编号(‘4000~4999。)");
+							instruArr[1] = createCmdInstruSpan("“4000。","列表编号（‘4000~4999。）");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-4000] rule [ “5。 ] { permit | deny } [ “协议。 ][ source-mac “000c-29a3-0000。 “ffff-ffff-0000。 destination-mac “001e-e9a3-7d65。 “ffff-ffff-ffff。 ]");
 							instruArr[3] = createCmdInstruSpan("“5。","acl条目号");
 							instruArr[4] = createCmdInstruSpan("“协议。","协议");
@@ -152,8 +152,8 @@
 							instruArr[2] = createCmdInstruSpan("“3000。","具体某个ACL编号或名");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("自反ACL(类型于防火墙，A可主动访问B，B无法主动访问A)","i1-7");
-						createInstruT2("配置ACL(普通的ACL)");
+					createInstruT1("自反ACL（类型于防火墙，A可主动访问B，B无法主动访问A）","i1-7");
+						createInstruT2("配置ACL（普通的ACL）");
 							instruArr[0] = createCmdSpan("[SW1] acl “3000。");
 							instruArr[1] = createCmdInstruSpan("“3000。","acl号，只能为高级ACL");
 							instruArr[2] = createCmdSpan("[R1-acl-adv-3000] “rule permit tcp。");
@@ -175,9 +175,9 @@
 							instruArr[2] = createCmdInstruSpan("全局和接口下均设置超时时间，接口设置优先");
 							createCmdInstruT2(instruArr,"huawei");
 
-				createInstruT0("网络地址转化(NAT)","i2");
+				createInstruT0("网络地址转化（NAT）","i2");
 					createInstruT1("均在外网接口配置");
-					createInstruT1("一对一的转换(静态NAT)","i2-1");
+					createInstruT1("一对一的转换（静态NAT）","i2-1");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat static global “60.1.1.2。 inside “192.168.10.1。");
@@ -185,8 +185,8 @@
 						instruArr[2] = createCmdInstruSpan("“192.168.10.1。","内网地址");
 						createCmdInstruT1(instruArr,"huawei");
 
-					createInstruT1("多对一的转换(端口地址转换PAT)","i2-2");
-						createInstruT2("定义被转换内网地址的范围(使用访问控制列表)");
+					createInstruT1("多对一的转换（端口地址转换PAT）","i2-2");
+						createInstruT2("定义被转换内网地址的范围（使用访问控制列表）");
 							instruArr[0] = createCmdSpan("[R1] acl “2000。");
 							instruArr[1] = createCmdInstruSpan("“2000。","acl号");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-2000] rule permit “192.168.10.0。 “0.0.0.255。");
@@ -201,7 +201,7 @@
 							instruArr[1] = createCmdInstruSpan("“2000。","acl号");
 							createCmdInstruT2(instruArr,"huawei");
 
-					createInstruT1("服务器转换(将内网设备的某端口转换到外网设备的某端口)","i2-3");
+					createInstruT1("服务器转换（将内网设备的某端口转换到外网设备的某端口）","i2-3");
 						instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat server protocol “tcp。 global “60.1.1.1。 “8088。 inside “192.168.10.1。 “80。");
 						instruArr[1] = createCmdInstruSpan("“tcp。","协议名");
 						instruArr[2] = createCmdInstruSpan("“60.1.1.1。","外网IP");
@@ -210,7 +210,7 @@
 						instruArr[5] = createCmdInstruSpan("“80。","内网端口");
 						createCmdInstruT1(instruArr,"huawei");
 
-					createInstruT1("多对多的转换(动态NAT)","i2-4");
+					createInstruT1("多对多的转换（动态NAT）","i2-4");
 						createInstruT2("定义外网地址池");
 							instruArr = null;
 							instruArr = new Array();
@@ -219,7 +219,7 @@
 							instruArr[2] = createCmdInstruSpan("“60.1.1.1。","外网起始地址");
 							instruArr[3] = createCmdInstruSpan("“60.1.1.50。","外网结束地址");
 							createCmdInstruT2(instruArr,"huawei");
-						createInstruT2("定义内网地址的范围(使用访问控制列表)");
+						createInstruT2("定义内网地址的范围（使用访问控制列表）");
 							instruArr[0] = createCmdSpan("[R1] acl “2000。");
 							instruArr[1] = createCmdInstruSpan("“2000。","acl号");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-2000] rule permit “192.168.10.0。 “0.0.0.255。");
@@ -249,7 +249,7 @@
 					createInstruAllBottomT0("如果不支持同时写，MA网络使用下一跳，P2P网段中使用出接口");
 
 				createInstruT0("链路状态检测","i3");
-					createInstruT1("双向转发检测(BFD)","i3-1");
+					createInstruT1("双向转发检测（BFD）","i3-1");
 						createInstruT2("静态检测","i3-1-1");
 							createInstruT3("两端设备均要配置，且‘本地的对端标识符。要与‘对端的本地标识符。一致");
 
@@ -337,7 +337,7 @@
 								createCmdInstruT3(instruArr,"huawei");
 
 							createInstruT3("检测规则");
-								createInstruAllTopT3("本地实际接收间隔 = MAX(本地接收间隔，对端发送间隔)");
+								createInstruAllTopT3("本地实际接收间隔 = MAX（本地接收间隔，对端发送间隔）");
 								createInstruAllTopT3("本地检测时间 = 对端检测倍数×本地实际接收间隔");
 								createInstruAllTopT3("本地检测时间内收不到对端的BFD包，则BFD session DOWN");
 
@@ -353,7 +353,7 @@
 								instruArr[1] = createCmdInstruSpan("“5。","当接收到BFD后，BFD会话由down转化为up的延时，单位秒，默认为0（立即up）");
 								createCmdInstruT3(instruArr,"huawei");
 
-					createInstruT1("网络质量分析(NQA)","i3-2");
+					createInstruT1("网络质量分析（NQA）","i3-2");
 						createInstruT2("创建NQA");
 							instruArr[0] = createCmdSpan("[R1] nqa test-instance “admin。 “test。");
 							instruArr[1] = createCmdInstruSpan("“admin。","测试用的管理员账号，用admin即可");

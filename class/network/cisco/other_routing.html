@@ -20,11 +20,11 @@
 							createInstruT3("基于编号");
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 { permit | deny } “192.168.1.0。 “0.0.0.255。");
-								instruArr[1] = createCmdInstruSpan("“10。","列表编号(‘1~99，1300~1999。)");
+								instruArr[1] = createCmdInstruSpan("“10。","列表编号（‘1~99，1300~1999。）");
 								instruArr[2] = createCmdInstruSpan("permit","允许");
 								instruArr[3] = createCmdInstruSpan("deny","拒绝");
 								instruArr[4] = createCmdInstruSpan("“192.168.1.0。","源IP地址");
-								instruArr[5] = createCmdInstruSpan("“0.0.0.255。","通配符掩码(反掩码)");
+								instruArr[5] = createCmdInstruSpan("“0.0.0.255。","通配符掩码（反掩码）");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("基于名字");
@@ -39,14 +39,14 @@
 						createInstruT2("扩展访问控制列表","i1-1-2");
 							createInstruT3("基于编号");
 								instruArr[0] = createCmdSpan("R1(config)# access-list “100。 { permit | deny } { “tcp。 | “6。 } “192.168.1.0。 “0.0.0.255。 [{ eq | qt | lt | range } “源端口号。 ] “172.16.0.0。 “0.0.255.255。 [{ eq | qt | lt | range } { “80。 | “http。 }]");
-								instruArr[1] = createCmdInstruSpan("“100。","列表编号(‘100~199，2000~2699。)");
+								instruArr[1] = createCmdInstruSpan("“100。","列表编号（‘100~199，2000~2699。）");
 								instruArr[2] = createCmdInstruSpan("permit","允许");
 								instruArr[3] = createCmdInstruSpan("deny","拒绝");
 								instruArr[4] = createCmdInstruSpan("“tcp。","协议名");
 								instruArr[5] = createCmdInstruSpan("“6。","协议号");
 								instruArr[6] = createCmdInstruSpan("“192.168.1.0。","源IP地址");
 								instruArr[7] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-								instruArr[8] = createCmdInstruSpan("eq","等于(一般采用此选项)");
+								instruArr[8] = createCmdInstruSpan("eq","等于");
 								instruArr[9] = createCmdInstruSpan("qt","大于");
 								instruArr[10] = createCmdInstruSpan("lt","小于");
 								instruArr[11] = createCmdInstruSpan("range","其后跟两个参数，端口号在两个参数之间");
@@ -92,10 +92,10 @@
 								instruArr[0] = createCmdSpan("R1(config-time-range)# periodic “Weekdays。  “9:30。 to “10:00。");
 								instruArr[1] = createCmdInstruSpan("“9:30。","开始时间");
 								instruArr[2] = createCmdInstruSpan("“10:00。","结束时间");
-								instruArr[3] = createCmdInstruSpan("“Weekdays。","频率限制选项(工作日)");
+								instruArr[3] = createCmdInstruSpan("“Weekdays。","频率限制选项（工作日）");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("应用于访问控制列表(在原有列表后加 time-range {时间列表名})");
+							createInstruT3("应用于访问控制列表（在原有列表后加 time-range {时间列表名}）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-ext-nacl)# “permit tcp any any。 time-range “aclTime。");
@@ -174,7 +174,7 @@
 								createCmdInstruT3(instruArr,"cisco");
 
 						createInstruT2("自反ACL（类型于防火墙，A可主动访问B，B无法主动访问A）","i1-1-7");
-							createInstruT3("建立允许A主动访问B的ACL(一般采用基于名字的ACL)");
+							createInstruT3("建立允许A主动访问B的ACL（一般采用基于名字的ACL）");
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list extended “ableAB。");
 								instruArr[1] = createCmdInstruSpan("“ableAB。","允许ACL名");
 								instruArr[2] = createCmdSpan("R1(config-std-nacl)# permit ip host 192.168.13.3 host 192.168.12.2 reflect “pass");
@@ -182,7 +182,7 @@
 								instruArr[4] = createCmdInstruSpan("“pass","自反vce名");
 								createCmdInstruT3(instruArr,"cisco");
 
-							createInstruT3("建立不允许B主动访问A的ACL(一般采用基于名字的ACL)");
+							createInstruT3("建立不允许B主动访问A的ACL（一般采用基于名字的ACL）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list extended “disableBA。");
@@ -258,7 +258,7 @@
 							createInstruT2("根据mac过滤ip流量时，需要‘无对应的mac表项。");
 
 
-						createInstruT1("<br />基于端口的ACL(PACL)","i1-4");
+						createInstruT1("<br />基于端口的ACL（PACL）","i1-4");
 							createInstruT2("应用于二层接口的ACL");
 							createInstruT2("配置和普通RACL相同，但只有入方向");
 
@@ -541,7 +541,7 @@
 						instruArr[4] = createCmdInstruSpan("“10。","route-map名条目编号");
 						createCmdInstruT1(instruArr,"cisco");
 
-					createInstruT1("配置流量匹配","i11-2");
+					createInstruT1("<br />配置流量匹配","i11-2");
 						createInstruT2("基于列表匹配");
 							instruArr = null;
 							instruArr = new Array();

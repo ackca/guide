@@ -55,7 +55,7 @@
 								instruArr[3] = createCmdInstruSpan(" 1 | 2 ","默认情况下为IKEv1和IKEv2，只使用某个则undo另一个");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("匹配IKE安全提议(也可以不配置，匹配默认的IKE安全提议)");
+							createInstruT3("匹配IKE安全提议（也可以不配置，匹配默认的IKE安全提议）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[R1-ike-peer-R2] ike-proposal “10。");
@@ -110,7 +110,7 @@
 								instruArr[0] = createCmdSpan("[R1-ipsec-proposal-ips_pro] ah authentication-algorithm  { sha1 | sha2-256 | md5 | … }");
 								createCmdInstruT3(instruArr,"huawei");
 
-						createInstruT2("定义感兴趣流量(用扩展ACL匹配)","i2-1-4");
+						createInstruT2("定义感兴趣流量（用扩展ACL匹配）","i2-1-4");
 							instruArr[0] = createCmdSpan("[R1] acl number “3000。");
 							instruArr[1] = createCmdInstruSpan("“3000。。","ACL编号");
 							instruArr[2] = createCmdSpan("[R1-acl-adv-3000] rule 5 permit ip source “192.168.10.0 0.0.0.255。 destination “192.168.20.0 0.0.0.255。");
@@ -467,7 +467,7 @@
 								instruArr[1] = createCmdInstruSpan("“10。","发送数据间隔，单位秒，默认启用，为20秒，可以不配置");
 								createCmdInstruT3(instruArr,"huawei");
 
-						createInstruT2("死亡对等体检测(DPD)","i2-3-6");
+						createInstruT2("死亡对等体检测（DPD）","i2-3-6");
 							createInstruT3("进入IKE对等体配置模式");
 								instruArr[0] = createCmdSpan("[R1] ike peer “R2。 v1");
 								instruArr[1] = createCmdInstruSpan("“R2。","IKE对等体名");
@@ -864,7 +864,7 @@
 								instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
+							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU（推荐配置）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[HUB-Tunnel0/0/0] mtu 1400");
@@ -918,7 +918,7 @@
 								instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
+							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU（推荐配置）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[SPOKE-Tunnel0/0/0] mtu 1400");
@@ -1062,7 +1062,7 @@
 								instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ospf network-type broadcast");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("‘SPOKE。节点：使其只能成为DROTHER，HUB节点则成为DR(BDR)");
+							createInstruT3("‘SPOKE。节点：使其只能成为DROTHER，HUB节点则成为DR（BDR）");
 								instruArr[0] = createCmdSpan("[SPOKE1-Tunnel0/0/0] ospf dr-priority 0");
 								createCmdInstruT3(instruArr,"huawei");
 
@@ -1079,7 +1079,7 @@
 								instruArr[0] = createCmdSpan("[R1-Tunnel0/0/0] ospf network-type p2mp");
 								createCmdInstruT3(instruArr,"huawei");
 
-							createInstruT3("‘SPOKE。节点：使其只能成为DROTHER，HUB节点则成为DR(BDR)");
+							createInstruT3("‘SPOKE。节点：使其只能成为DROTHER，HUB节点则成为DR（BDR）");
 								instruArr[0] = createCmdSpan("[SPOKE1-Tunnel0/0/0] ospf dr-priority 0");
 								createCmdInstruT3(instruArr,"huawei");
 			</script>

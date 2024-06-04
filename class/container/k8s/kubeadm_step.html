@@ -15,13 +15,13 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("前期准备","i1");
-					createInstruT1("关闭防火墙(所有节点)");
+					createInstruT1("关闭防火墙（所有节点）");
 						cmd = `
 							systemctl stop firewalld
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("关闭selinux(所有节点)");
+					createInstruT1("关闭selinux（所有节点）");
 						createInstruT2("修改配置文件");
 							cmd = `
 								vim /etc/selinux/config
@@ -44,26 +44,26 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("修改节点主机名为对应角色(所有节点)");
+					createInstruT1("修改节点主机名为对应角色（所有节点）");
 						cmd = `
 							hostnamectl set-hostname Master01
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("禁用swap(所有节点)");
+					createInstruT1("禁用swap（所有节点）");
 						cmd = `
 							swapoff -a
 							sed -i '/ swap / s/^\\(.*\\)$/#\\1/g' /etc/fstab
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("centos 8 安装，阻止安装kubeadmin报错，不安装不影响使用(所有节点)");
+					createInstruT1("centos 8 安装，阻止安装kubeadmin报错，不安装不影响使用（所有节点）");
 						cmd = `
 							dnf install -y iproute-tc
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("激活ipvs(所有节点)");
+					createInstruT1("激活ipvs（所有节点）");
 						cmd = `
 							modprobe -- ip_vs
 							modprobe -- ip_vs_rr
@@ -78,7 +78,7 @@
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("安装docker","i2");
-					createInstruT1("切换国内镜像源并安装相应组件(所有节点)");
+					createInstruT1("切换国内镜像源并安装相应组件（所有节点）");
 						cmd = `
 							yum install -y yum-utils
 
@@ -90,7 +90,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("修改配置文件，并添加私有镜像仓库harbor(所有节点)");
+					createInstruT1("修改配置文件，并添加私有镜像仓库harbor（所有节点）");
 						cmd = `
 							# "graph": "/data/docker",  修改镜像存储位置
 							# "storage-driver": "overlay2", 一种较新的存储方案
@@ -113,7 +113,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("启动并开机运行docker(所有节点)");
+					createInstruT1("启动并开机运行docker（所有节点）");
 						cmd = `
 							systemctl start docker
 							systemctl enable docker
@@ -121,13 +121,13 @@
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("初始化DNS","i3");
-					createInstruT1("安装DNS (dnsca)");
+					createInstruT1("安装DNS （dnsca）");
 						cmd = `
 							yum install -y bind
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("修改配置文件(dnsca)");
+					createInstruT1("修改配置文件（dnsca）");
 						cmd = `
 							cat >/etc/named.conf <<'EOF'
 							options {
@@ -182,13 +182,13 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("检查配置，无输出则正常(dnsca)");
+					createInstruT1("检查配置，无输出则正常（dnsca）");
 						cmd = `
 							named-checkconf
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("配置zone文件(定义两个解析域)(dnsca)");
+					createInstruT1("配置zone文件(定义两个解析域)（dnsca）");
 						cmd = `
 							cat >/etc/named.rfc1912.zones <<'EOF'
 							zone "host.com" IN {
@@ -206,7 +206,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("host域 zone配置文件(dnsca)");
+					createInstruT1("host域 zone配置文件（dnsca）");
 						cmd = `
 							cat > /var/named/host.com.zone <<'EOF'
 							$ORIGIN host.com.
@@ -232,7 +232,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("itachi域 zone配置文件(dnsca)");
+					createInstruT1("itachi域 zone配置文件（dnsca）");
 						cmd = `
 							cat > /var/named/itachi.com.zone <<'EOF'
 							$ORIGIN itachi.com.
@@ -258,20 +258,20 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("再次check配置(dnsca)");
+					createInstruT1("再次check配置（dnsca）");
 						cmd = `
 							named-checkconf
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("启动服务(dnsca)");
+					createInstruT1("启动服务（dnsca）");
 						cmd = `
 							systemctl start named
 							systemctl enable named
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("查看服务(dnsca)");
+					createInstruT1("查看服务（dnsca）");
 						cmd = `
 							netstat -luntp | grep 53
 							# 下面为输出
@@ -279,7 +279,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("修改网卡， 指向DNS (所有主机)");
+					createInstruT1("修改网卡， 指向DNS（所有主机）");
 						cmd = `
 							vim /etc/sysconfig/network-scripts/ifcfg-ens33
 							# 修改内容
@@ -295,7 +295,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("下载安装cfssl(dnsca)");
+					createInstruT1("下载安装cfssl（dnsca）");
 						cmd = `
 							wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -O /usr/bin/cfssl
 							wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -O /usr/bin/cfssl-json
@@ -304,7 +304,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("确认安装(dnsca)");
+					createInstruT1("确认安装（dnsca）");
 						createInstruT2("CFSSL的命令行工具");
 							cmd = `
 								which cfssl
@@ -329,7 +329,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("自签名根证书(10年有效期)(dnsca)");
+					createInstruT1("自签名根证书(10年有效期)（dnsca）");
 						cmd = `
 							mkdir -p /opt/certs
 
@@ -359,7 +359,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("初始化CA(dnsca)");
+					createInstruT1("初始化CA（dnsca）");
 						cmd = `
 							# cfssl gencert -initca ca-csr.json 输出文本(json)结果
 							# cfssl-json -bare ca 把输出文本信息(json), 产生文件
@@ -383,21 +383,21 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("查看证书信息(dnsca)");
+					createInstruT1("查看证书信息（dnsca）");
 						cmd = `
 							cfssl-certinfo -cert ca.pem
 						`;
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("安装私有镜像仓库Harbor","i5");
-					createInstruT1("下载安装docker-compose(dnsca)");
+					createInstruT1("下载安装docker-compose（dnsca）");
 						cmd = `
 							curl -L "https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 							chmod +x /usr/local/bin/docker-compose
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("检查是否安装成功(dnsca)");
+					createInstruT1("检查是否安装成功（dnsca）");
 						cmd = `
 							docker-compose version
 							# 下面为输出
@@ -408,13 +408,13 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("下载离线安装包(dnsca)");
+					createInstruT1("下载离线安装包（dnsca）");
 						cmd = `
 							https://github.com/goharbor/harbor/releases/
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("安装harbor(dnsca)");
+					createInstruT1("安装harbor（dnsca）");
 						createInstruT2("解压缩");
 							cmd = `
 								tar -xvf harbor-offline-installer-v2.1.1.tgz -C /opt/
@@ -429,7 +429,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("修改为带版号的目录(dnsca)");
+						createInstruT2("修改为带版号的目录（dnsca）");
 							cmd = `
 								mv harbor harbor-v2.1.1
 							`;
@@ -478,7 +478,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("配置harbor开机启动(dnsca)");
+					createInstruT1("配置harbor开机启动（dnsca）");
 						cmd = `
 							# 在启动文件 /etc/rc.d/rc.local 增加两行命令
 							cd /opt/harbor
@@ -490,7 +490,7 @@
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("安装 kubeadmin、kubelet、kubectl","i6");
-					createInstruT1("更新yum源为阿里云(所有master、node)");
+					createInstruT1("更新yum源为阿里云（所有master、node（dnsca）");
 						cmd = `
 							# 参考https://developer.aliyun.com/mirror/kubernetes
 							cat <<EOF > /etc/yum.repos.d/kubernetes.repo
@@ -505,20 +505,20 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("安装(所有master、node)");
+					createInstruT1("安装（所有master、node（dnsca）");
 						cmd = `
 							yum install -y kubelet-1.18.9 kubeadm-1.18.9 kubectl-1.18.9
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("开机启动(所有master、node)");
+					createInstruT1("开机启动（所有master、node（dnsca）");
 						cmd = `
 							systemctl enable kubelet && systemctl start kubelet
 						`;
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("部署集群","i7");
-					createInstruT1("获得根证书，并根据规则修改文件名(任意一个master)");
+					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master（dnsca）");
 						cmd = `
 							mkdir -p /etc/kubernetes/pki
 							cd /etc/kubernetes/pki
@@ -527,7 +527,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("创建集群配置文件(任意一个master)");
+					createInstruT1("创建集群配置文件（任意一个master（dnsca）");
 						cmd = `
 							pwd
 							# 下面为输出
@@ -548,7 +548,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("初始化集群(任意一个master)");
+					createInstruT1("初始化集群（任意一个master（dnsca）");
 						cmd = `
 							kubeadm init --config=kubeadm-config.yaml --upload-certs
 						`;
@@ -556,7 +556,7 @@
 
 					createInstruT1("该master完成后，根据提示，先添加其它master，再添加node<br />");
 
-					createInstruT1("配置kubectl正常工作(所有master)");
+					createInstruT1("配置kubectl正常工作（所有master（dnsca）");
 						cmd = `
 							rm -rf /root/.kube/
 							mkdir /root/.kube/
@@ -564,7 +564,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("为node节点打标签(任意一个master)");
+					createInstruT1("为node节点打标签（任意一个master（dnsca）");
 						cmd = `
 							kubectl label node node01 node-role.kubernetes.io/node=
 							kubectl label node node02 node-role.kubernetes.io/node=
@@ -582,8 +582,8 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装calico(任意一个master)","i8");
-					createInstruT1("获得根证书，并根据规则修改文件名(任意一个master)");
+				createInstruT0("安装calico（任意一个master（dnsca）","i8");
+					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master（dnsca）");
 						cmd  = `
 							# 参考 https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises
 							kubectl apply -f calico.yaml	<a href="yaml/kubeadm_step/08_calico/calico.yaml" download="calico.yaml">下载该文件</a>
@@ -634,14 +634,14 @@
 						createLinuxTxtT1(cmd);
 
 					createInstruT1("推荐配置：安装calicoctl，手工设置pod的ip子网");
-						createInstruT2("安装calicoctl(任意一个master)");
+						createInstruT2("安装calicoctl（任意一个master）");
 							cmd = `
 								# 参考 https://docs.projectcalico.org/getting-started/clis/calicoctl/install
 								kubectl apply calicoctl.yaml	<a href="yaml/kubeadm_step/08_calico/calicoctl.yaml" download="calicoctl.yaml">下载该文件</a>
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("给node节点打标签，标签的名和值可自定义(任意一个master)");
+						createInstruT2("给node节点打标签，标签的名和值可自定义（任意一个master）");
 							cmd = `
 								kubectl label nodes node01 rack=1
 								kubectl label nodes node02 rack=2
@@ -649,7 +649,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("查看地址池(任意一个master)");
+						createInstruT2("查看地址池（任意一个master）");
 							cmd = `
 								kubectl exec -it calicoctl -n kube-system -- calicoctl get ippool -o wide
 								# 下面为输出
@@ -658,13 +658,13 @@
 								`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("删除默认的地址池(任意一个master)");
+						createInstruT2("删除默认的地址池（任意一个master）");
 							cmd = `
 								kubectl exec -it calicoctl -n kube-system -- calicoctl delete ippools default-ipv4-ippool
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("应用资源配置清单(任意一个master)");
+						createInstruT2("应用资源配置清单（任意一个master）");
 							cmd = `
 								kubectl exec -it calicoctl -n kube-system -- calicoctl create -f - < node1.yaml	<a href="yaml/kubeadm_step/08_calico/node1.yaml" download="node1.yaml">下载该文件</a>
 								kubectl exec -it calicoctl -n kube-system -- calicoctl create -f - < node2.yaml	<a href="yaml/kubeadm_step/08_calico/node2.yaml" download="node2.yaml">下载该文件</a>
@@ -672,7 +672,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("查看地址池(任意一个master)");
+						createInstruT2("查看地址池（任意一个master）");
 							cmd = `
 								kubectl exec -it calicoctl -n kube-system -- calicoctl get ippool -o wide
 								# 下面为输出
@@ -683,14 +683,14 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("删除按原IP规则生成的pod，根据新规则生成新pod(任意一个master)");
+						createInstruT2("删除按原IP规则生成的pod，根据新规则生成新pod（任意一个master）");
 							cmd = `
 								kubectl get pod -n kube-system -o wide | grep 172.16. | awk '{system("kubectl delete pod "$1" -n kube-system")}
 							`;
 							createLinuxTxtT2(cmd);
 
 				createInstruT0("修改kube-proxy为ipvs模式","i9");
-					createInstruT1("修改kube-proxy模式(任意一个master)");
+					createInstruT1("修改kube-proxy模式（任意一个master）");
 						cmd = `
 							kubectl edit cm kube-proxy -n kube-system
 							# 第43行，修改为ipvs
@@ -698,7 +698,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("删除现有kube-proxy，根据配置生成新pod(任意一个master)");
+					createInstruT1("删除现有kube-proxy，根据配置生成新pod（任意一个master）");
 						cmd = `
 							kubectl get pod -n kube-system | grep kube-proxy | awk '{system("kubectl delete pod "$1" -n kube-system")}'
 
@@ -715,7 +715,7 @@
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("安装ingress","i10");
-					createInstruT1("安装ingress(任意一个master)");
+					createInstruT1("安装ingress（任意一个master）");
 						cmd = `
 							# ds.yaml文件中第26行，设置节点服务器的对应端口，根据需要配置
 							hostPort: 81
@@ -739,7 +739,7 @@
 						createLinuxTxtT1(cmd);
 
 					createInstruT1("配置DNS，增加对应的解析项");
-						createInstruT2("增加 traefik.itachi.com 对应 10.1.1.10 (DNSCA)");
+						createInstruT2("增加 traefik.itachi.com 对应 10.1.1.10（dnsca）");
 							cmd = `
 								# 增加 traefik.itachi.com 对应 10.1.1.10
 
@@ -768,7 +768,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("重启DNS服务(DNSCA)");
+						createInstruT2("重启DNS服务（dnsca）");
 							cmd = `
 								systemctl restart named
 							`;

@@ -16,14 +16,14 @@
 			<script type="text/javascript">
 				createInstruT0("镜像","i6");
 					createInstruT1("端口镜像","i6-1");
-						createInstruT2("SPAN(交换机端口分析仪，分析服务器与被监控端口通过‘同一台。交换机相连)","i6-1-1");
+						createInstruT2("SPAN（交换机端口分析仪，分析服务器与被监控端口通过‘同一台。交换机相连）","i6-1-1");
 							createInstruT3("创建镜像组");
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 local");
 								instruArr[1] = createCmdInstruSpan("“1。","镜像口号");
 								createCmdInstruT3(instruArr,"h3c");
 
-							createInstruT3("设置源接口(被监控的接口)");
+							createInstruT3("设置源接口（被监控的接口）");
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 mirroring-port “f0/1。 { both | inbound | outbound } ");
 								instruArr[1] = createCmdInstruSpan("“1。","镜像组号");
 								instruArr[2] = createCmdInstruSpan("“f0/1。","被监控接口");
@@ -32,7 +32,7 @@
 								instruArr[5] = createCmdInstruSpan("outbound","监控接口的出栈流量");
 								createCmdInstruT3(instruArr,"h3c");
 
-							createInstruT3("设置本地目的接口(接收从被监控接口流量的接口，连接分析仪服务器的接口)");
+							createInstruT3("设置本地目的接口（接收从被监控接口流量的接口，连接分析仪服务器的接口）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 monitor-port “f0/2。");
@@ -78,7 +78,7 @@
 							instruArr[2] = createCmdSpan("[SW1-Bridge-Aggregation1] …");
 							createCmdInstruT2(instruArr,"h3c");
 
-						createInstruT2("配置负载分担方式(仅本地有效，两端不必一致)");
+						createInstruT2("配置负载分担方式（仅本地有效，两端不必一致）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[SW1-Bridge-Aggregation1] link-aggregation load-sharing mode “负载分担方式。");

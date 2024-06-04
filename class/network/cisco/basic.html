@@ -180,7 +180,7 @@
 							instruArr[0] = createCmdSpan("R1# show aliases");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("将明文密码转化为密文(‘只用于防偷窥。，得到密文后可轻松破解)");
+						createInstruT2("将明文密码转化为密文（‘只用于防偷窥。，得到密文后可轻松破解）");
 							instruArr[0] = createCmdSpan("R1(config)#  service password-encryption");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -257,7 +257,7 @@
 							createLinuxTxtT2(cmd);
 
 
-				createInstruT0("动态主机配置协议(DHCP)","i2");
+				createInstruT0("动态主机配置协议（DHCP）","i2");
 					createInstruT1("基本配置","i2-1");
 						createInstruT2("启动DHCP服务");
 							instruArr = null;
@@ -304,12 +304,12 @@
 								instruArr[3] = createCmdInstruSpan("“30。","分");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("配置DHCP option");
-                                instruArr[0] = createCmdSpan("R1(dhcp-config)# option “43。 { hex “f104:0a01:016f。 | ascii “10.1.1.11。 }");
-                                instruArr[1] = createCmdInstruSpan("“43。","option编号");
-                                instruArr[2] = createCmdInstruSpan("hex “f104:0a01:010b。","十六进制形式的option值");
-                                instruArr[3] = createCmdInstruSpan("ascii “10.1.1.11。","自然语言形式的option值");
-                                createCmdInstruT3(instruArr,"cisco");
+							createInstruT3("配置DHCP option");
+								instruArr[0] = createCmdSpan("R1(dhcp-config)# option “43。 { hex “f104:0a01:016f。 | ascii “10.1.1.11。 }");
+								instruArr[1] = createCmdInstruSpan("“43。","option编号");
+								instruArr[2] = createCmdInstruSpan("hex “f104:0a01:010b。","十六进制形式的option值");
+								instruArr[3] = createCmdInstruSpan("ascii “10.1.1.11。","自然语言形式的option值");
+								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("地址分配永不过期");
 								instruArr = null;
@@ -363,7 +363,7 @@
 					createInstruT1("<br />DHCP Snooping，dhcp安全配置","i2-4");
 						createInstruT2("见 <a href='catalyst.html#i10-2' style='color:#FF64FF;text-decoration:underline'>交换机配置手册、局域网安全</a> 部分");
 
-                    createInstruT1("<br />查看地址分配情况<br />","i2-5");
+					createInstruT1("<br />查看地址分配情况<br />","i2-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1# show ip dhcp binding");
@@ -373,7 +373,7 @@
 						instruArr[0] = createCmdSpan("R1(config-if)# ip address dhcp");
 						createCmdInstruT1(instruArr,"cisco");
 
-				createInstruT0("动态主机配置协议(DHCPv6)","i10");
+				createInstruT0("动态主机配置协议（DHCPv6）","i10");
 					createInstruT1("配置DHCP地址池","i10-1");
 						createInstruT2("创建DHCP地址池");
 							instruArr[0] = createCmdSpan("R1(config)# ipv6 dhcp pool “v6pool。");
@@ -458,7 +458,7 @@
 							createCmdInstruT2(instruArr,"cisco");
 
 					createInstruT1("Telnet","i3-2");
-						createInstruT2("先配置好登录方式及所需的用户名密码(如果需要)");
+						createInstruT2("先配置好登录方式及所需的用户名密码（如果需要）");
 						createInstruT2("允许通过telnet登录");
 							instruArr = null;
 							instruArr = new Array();
@@ -503,8 +503,8 @@
 							instruArr[0] = createCmdSpan("R1(config)# ip ssh version 2");
 							createCmdInstruT2(instruArr,"cisco");
 
-					createInstruT1("简单网络管理协议(SNMP)","i3-4");
-						createInstruT2("通用配置(SNMP v1/v2c/v3)","i3-4-1");
+					createInstruT1("简单网络管理协议（SNMP）","i3-4");
+						createInstruT2("通用配置（SNMP v1/v2c/v3）","i3-4-1");
 							createInstruT3("设置地点");
 								instruArr[0] = createCmdSpan("R1(config)#  snmp-server location “tj。");
 								instruArr[1] = createCmdInstruSpan("“tj。","地点");
@@ -587,7 +587,7 @@
 								instruArr[2] = createCmdInstruSpan("“snmpuser。","用户名");
 								createCmdInstruT3(instruArr,"cisco");
 
-				createInstruT0("思科发现协议(CDP)","i4");
+				createInstruT0("思科发现协议（CDP）","i4");
 						createInstruT2("查看设备的CDP状态");
 							instruArr = null;
 							instruArr = new Array();
@@ -628,8 +628,8 @@
 							instruArr[2] = createCmdInstruSpan("“R2。","主机名(‘区分大小写。)，显示对应邻居信息");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("网络时间协议(NTP)","i5");
-					createInstruT1("NTP服务器端配置(用网络中的一台路由器作时间服务器)","i5-1");
+				createInstruT0("网络时间协议（NTP）","i5");
+					createInstruT1("NTP服务器端配置（用网络中的一台路由器作时间服务器）","i5-1");
 						createInstruT2("路由器配置为NTP服务器");
 							instruArr = null;
 							instruArr = new Array();
@@ -678,7 +678,7 @@
 							instruArr[0] = createCmdSpan("R1(config)# no logging console");
 							createCmdInstruT2(instruArr,"cisco");
 
-						createInstruT2("远程登录到设备，输出日志提示(‘默认不输出。)");
+						createInstruT2("远程登录到设备，输出日志提示（‘默认不输出。）");
 							instruArr[0] = createCmdSpan("R1# terminal monitor");
 							createCmdInstruT2(instruArr,"cisco");
 
@@ -740,7 +740,7 @@
 							instruArr[1] = createCmdInstruSpan("“66。","会话号，关闭对应会话");
 							createCmdInstruT2(instruArr,"cisco");
 
-				createInstruT0("钥匙链(key chain)","i8");
+				createInstruT0("钥匙链（key chain）","i8");
 						createInstruT2("创建key chain");
 							instruArr = null;
 							instruArr = new Array();
@@ -796,24 +796,24 @@
 				// 			createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("申请数字证书","i11");
-                    createInstruT1("创建trustpoint（证书申请）","i11-1");
+					createInstruT1("创建trustpoint（证书申请）","i11-1");
 						createInstruT2("配置域名");
-                            instruArr = null;
+							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# ip domain name “itachi.tech。");
 							instruArr[1] = createCmdInstruSpan("“cisco.com。","域名");
 							createCmdInstruT2(instruArr,"cisco");
 
-			            createInstruT2("生成密钥");
+						createInstruT2("生成密钥");
 
 							instruArr[0] = createCmdSpan("R1(config)# crypto key generate rsa label “IPSecVPN。 modulus “2048。");
 							instruArr[1] = createCmdInstruSpan("“IPSecVPN。","密钥名");
-			                instruArr[2] = createCmdInstruSpan("“2048。","密钥长度，推荐至少2048位");
+							instruArr[2] = createCmdInstruSpan("“2048。","密钥长度，推荐至少2048位");
 							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("配置trustpoint");
+						createInstruT2("配置trustpoint");
 							createInstruT3("创建trustpoint");
-                                instruArr = null;
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# crypto pki trustpoint “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。","trustpoint名，只具有本地意义");
@@ -825,15 +825,15 @@
 								instruArr[2] = createCmdInstruSpan("terminal","离线申请");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("配置域名");
-                                instruArr = null;
+							createInstruT3("配置域名");
+								instruArr = null;
 								instruArr = new Array();
-                                instruArr[0] = createCmdSpan("R1(ca-trustpoint)# fqdn “r1.itachi.tech。");
+								instruArr[0] = createCmdSpan("R1(ca-trustpoint)# fqdn “r1.itachi.tech。");
 								instruArr[1] = createCmdInstruSpan("“r1.itachi.tech。","域名");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("配置IP");
-                                instruArr[0] = createCmdSpan("R1(ca-trustpoint)# ip-address “10.1.1.2。");
+							createInstruT3("配置IP");
+								instruArr[0] = createCmdSpan("R1(ca-trustpoint)# ip-address “10.1.1.2。");
 								instruArr[1] = createCmdInstruSpan("“10.1.1.2。","IP");
 								createCmdInstruT3(instruArr,"cisco");
 
@@ -848,7 +848,7 @@
 								instruArr[2] = createCmdInstruSpan("none","不查询，离线只能用不查询，在线也可不查询");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("吊销列表不缓存");
+							createInstruT3("吊销列表不缓存");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(ca-trustpoint)# crl cache none");
@@ -861,50 +861,50 @@
 								instruArr[1] = createCmdInstruSpan("“IPSeCVPN。","密钥对名");
 								createCmdInstruT3(instruArr,"cisco");
 
-                        createInstruT1("管理证书","i11-2");
-	                        createInstruT2("获取根证书","i11-2-1");
+						createInstruT1("管理证书","i11-2");
+							createInstruT2("获取根证书","i11-2-1");
 								instruArr[0] = createCmdSpan("R1(config)# crypto pki authenticate “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。","trustpoint名");
 								createCmdInstruT2(instruArr,"cisco");
-	                            createInstruAllBottomT2("<br />离线时：根据提示粘贴根证书");
+								createInstruAllBottomT2("<br />离线时：根据提示粘贴根证书");
 
 							createInstruT2("申请个人证书","i11-2-2");
-                                instruArr[0] = createCmdSpan("R1(config)# crypto pki enroll “IPSecVPN。");
+								instruArr[0] = createCmdSpan("R1(config)# crypto pki enroll “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。","trustpoint名");
 								createCmdInstruT2(instruArr,"cisco");
-                                createInstruAllBottomT2("<br />在线时：提示输入密码，如果是思科路由器做SCEP服务器则无密码，直接回车即可");
-                                createInstruAllBottomT2("离线时：将在命令行显示证书申请");
+								createInstruAllBottomT2("<br />在线时：提示输入密码，如果是思科路由器做SCEP服务器则无密码，直接回车即可");
+								createInstruAllBottomT2("离线时：将在命令行显示证书申请");
 
-                            createInstruT2("导入个人证书（离线申请）","i11-2-3");
-                                instruArr[0] = createCmdSpan("R1(config)# crypto pki import “IPSecVPN。 certificate");
+							createInstruT2("导入个人证书（离线申请）","i11-2-3");
+								instruArr[0] = createCmdSpan("R1(config)# crypto pki import “IPSecVPN。 certificate");
 								createCmdInstruT2(instruArr,"cisco");
 
 							createInstruT2("立即获取吊销列表","i11-2-4");
-	                            instruArr[0] = createCmdSpan("R1(config)# crypto pki crl request “IPSecVPN。");
+								instruArr[0] = createCmdSpan("R1(config)# crypto pki crl request “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。","trustpoint名");
 								createCmdInstruT2(instruArr,"cisco");
 
-	                    createInstruT1("相关查看命令","i11-3");
-                            createInstruT2("查看证书");
-	                            instruArr = null;
+						createInstruT1("相关查看命令","i11-3");
+							createInstruT2("查看证书");
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1# show crypto pki certificates [ “IPSecVPN。 ]");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。","trustpoint名");
-	                            createCmdInstruT2(instruArr,"cisco");
+								createCmdInstruT2(instruArr,"cisco");
 
-                            createInstruT2("查看吊销列表");
-	                            instruArr = null;
+							createInstruT2("查看吊销列表");
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1# show crypto pki crls");
-	                            createCmdInstruT2(instruArr,"cisco");
+								createCmdInstruT2(instruArr,"cisco");
 
 				createInstruT0("配置为证书服务器（SCEP服务）","i12");
-                    createInstruT1("客户端申请证书的URL","i12-1");
-                        createInstruT2("http://10.1.1.1，直接使用IP或域名访问，http协议");
+					createInstruT1("客户端申请证书的URL","i12-1");
+						createInstruT2("http://10.1.1.1，直接使用IP或域名访问，http协议");
 
 					createInstruT1("<br />创建证书服务器，前提：‘时间已经同步。","i12-2");
 						createInstruT2("开启HTTP服务");
-                            instruArr = null;
+							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("CA(config)# ip http server");
 							createCmdInstruT2(instruArr,"cisco");
@@ -914,22 +914,22 @@
 							instruArr[1] = createCmdInstruSpan("“cisco.com。","域名");
 							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("生成密钥");
+						createInstruT2("生成密钥");
 							instruArr[0] = createCmdSpan("CA(config)# crypto key generate rsa label “CA-KEY。 modulus “2048。");
 							instruArr[1] = createCmdInstruSpan("“CA-KEY。","密钥名");
-                            instruArr[2] = createCmdInstruSpan("“2048。","密钥长度，推荐至少2048位");
+							instruArr[2] = createCmdInstruSpan("“2048。","密钥长度，推荐至少2048位");
 							createCmdInstruT2(instruArr,"cisco");
 
-                        createInstruT2("证书服务指定密钥");
-	                        instruArr[0] = createCmdSpan("CA(config)# crypto pki trustpoint “CA。");
-                            instruArr[1] = createCmdInstruSpan("“CA。","证书服务器名，仅本地有效");
+						createInstruT2("证书服务指定密钥");
+							instruArr[0] = createCmdSpan("CA(config)# crypto pki trustpoint “CA。");
+							instruArr[1] = createCmdInstruSpan("“CA。","证书服务器名，仅本地有效");
 							instruArr[2] = createCmdSpan("CA(ca-trustpoint)# rsakeypair “CA-KEY。");
 							instruArr[3] = createCmdInstruSpan("“CA-KEY。","之前生成的密钥名");
 							createCmdInstruT2(instruArr,"cisco");
 
 						createInstruT2("配置证书服务器");
 							createInstruT3("创建证书服务器");
-                                instruArr = null;
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("CA(config)# crypto pki server “CA。");
 								instruArr[1] = createCmdInstruSpan("“CA。","服务器名，需要与之前的trustpoint相同");
@@ -945,8 +945,8 @@
 								instruArr[1] = createCmdInstruSpan("“730。","根证书有效期，单位天，默认3年");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("配置颁发证书有效期");
-                                instruArr[0] = createCmdSpan("CA(cs-server)# lifetime certificate “365。");
+							createInstruT3("配置颁发证书有效期");
+								instruArr[0] = createCmdSpan("CA(cs-server)# lifetime certificate “365。");
 								instruArr[1] = createCmdInstruSpan("“365。","颁发证书有效期，单位天，默认1年");
 								createCmdInstruT3(instruArr,"cisco");
 
@@ -956,24 +956,24 @@
 								instruArr[0] = createCmdSpan("CA(cs-server)# database level complete");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("证书备份采用PKCS#12格式，并配置密码");
-                                instruArr[0] = createCmdSpan("CA(cs-server)# database archive pkcs12 password “Cisc0123。");
-                                instruArr[1] = createCmdInstruSpan("“Cisc0123。","PKCS#12证书的密码");
+							createInstruT3("证书备份采用PKCS#12格式，并配置密码");
+								instruArr[0] = createCmdSpan("CA(cs-server)# database archive pkcs12 password “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。","PKCS#12证书的密码");
 								createCmdInstruT3(instruArr,"cisco");
 
 							createInstruT3("证书自动颁发（可选）");
-                                instruArr = null;
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("CA(cs-server)# grant auto");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("启用证书服务器");
+							createInstruT3("启用证书服务器");
 								instruArr[0] = createCmdSpan("CA(cs-server)# no shutdown");
 								createCmdInstruT3(instruArr,"cisco");
 
-                    createInstruT1("管理证书", "i12-3");
+					createInstruT1("管理证书", "i12-3");
 						createInstruT2("颁发证书", "i12-3-1");
-	                        createInstruT3("查看证书请求");
+							createInstruT3("查看证书请求");
 								instruArr[0] = createCmdSpan("CA# show crypto pki server “CA。 requests");
 								instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
 								createCmdInstruT3(instruArr,"cisco");
@@ -983,41 +983,41 @@
 								instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
 								instruArr[2] = createCmdInstruSpan("“1。","证书请求编号");
 								createCmdInstruT3(instruArr,"cisco");
-                                createInstruAllBottomT2("<br />离线申请时将在命令行显示证书");
+								createInstruAllBottomT2("<br />离线申请时将在命令行显示证书");
 
-                        createInstruT2("离线申请证书时的导入导出", "i12-3-2");
+						createInstruT2("离线申请证书时的导入导出", "i12-3-2");
 							createInstruT3("在命令行接收证书申请");
-                                instruArr = null;
+								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("CA# crypto pki server “CA。 request pkcs10 terminal");
 								instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
 								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("在命令行输出根证书");
+							createInstruT3("在命令行输出根证书");
 								instruArr[0] = createCmdSpan("CA(config)# crypto pki export CA pem terminal");
-                                instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
-                                createCmdInstruT3(instruArr,"cisco");
-
-                        createInstruT2("吊销证书", "i12-3-3");
-	                        createInstruT3("查看已经颁发的证书");
-	                            instruArr[0] = createCmdSpan("CA# show crypto pki server “CA。 certificates");
 								instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
-	                            createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr,"cisco");
 
-	                        createInstruT3("吊销证书");
-	                            instruArr[0] = createCmdSpan("CA(config)# crypto pki server “CA。 revoke “0x2。");
+						createInstruT2("吊销证书", "i12-3-3");
+							createInstruT3("查看已经颁发的证书");
+								instruArr[0] = createCmdSpan("CA# show crypto pki server “CA。 certificates");
+								instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
+								createCmdInstruT3(instruArr,"cisco");
+
+							createInstruT3("吊销证书");
+								instruArr[0] = createCmdSpan("CA(config)# crypto pki server “CA。 revoke “0x2。");
 								instruArr[2] = createCmdInstruSpan("“0x2。","证书编号，16进制");
-	                            createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr,"cisco");
 
-                            createInstruT3("查看吊销列表");
-	                            instruArr = null;
+							createInstruT3("查看吊销列表");
+								instruArr = null;
 								instruArr = new Array();
-	                            instruArr[0] = createCmdSpan("CA# show crypto pki server “CA。 crl");
+								instruArr[0] = createCmdSpan("CA# show crypto pki server “CA。 crl");
 								instruArr[1] = createCmdInstruSpan("“CA。","服务器名");
-	                            createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr,"cisco");
 
 					createInstruT1("其它查看命令", "i12-4");
-                        createInstruT2("查看证书服务器信息");
+						createInstruT2("查看证书服务器信息");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("CA# show crypto pki server");
