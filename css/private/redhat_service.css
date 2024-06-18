@@ -1,16 +1,16 @@
 .HLTableS1, .HLTableS2
 {
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 .treeview
 {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 #i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(3) .cmd,
 #i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(5) .cmd,
 #i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(7) .cmd
 {
-    line-height: 0;
+	line-height: 0;
 }

@@ -26,8 +26,8 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("TFTP 协议简介","i1");
-					createInstruT1("什么是TFTP","i1-1");
+				createInstruT0("TFTP 协议简介", "i1");
+					createInstruT1("什么是TFTP", "i1-1");
 						createInstruAllTopT1("TFTP用于传输文件的简单协议，运行在UDP 69端口，TFTP被设计得小而简单，容易实施，但缺乏高级特性");
 
 						createInstruAllTopT1("TFTP只能上传或下载文件到服务器，不能列举、删除、重命令文件或目录，也无用户认证功能");
@@ -40,17 +40,17 @@
 
 						createInstruAllTopT1("TFTP使用停止等待方式解决了失序和丢包问题，但效率较低");
 
-					createInstruT1("<br /><br />TFTP 报文交互图解<br />","i1-2");
+					createInstruT1("<br /><br />TFTP 报文交互图解<br />", "i1-2");
 						createConfigImgT1("TFTP/TFTP交互图解" ,"TFTP报文交互过程");
 
-					createInstruT1("TFTP 报文交互实例","i1-3");
+					createInstruT1("TFTP 报文交互实例", "i1-3");
 						createInstruAllTopT1("报文共同部分：42 = 14（以太网首部）+ 20（IP首部）+ 8（UDP首部）");
 						createInstruAllTopT1("Data报文：　　558 = 42 + 2（TFTP操作码：3）+ 2（TFTP块编号）+ 512（TFTP数据部分）");
 						createInstruAllTopT1("ACK报文：　　&nbsp;&nbsp;&nbsp;60 =  42 + 2（TFTP操作码：4）+ 2（TFTP块编号）+ 填充（以太网数据部分最小46字节）<br />");
 						createConfigImgT1("TFTP/TFTP交互实例");
 
-				createInstruT0("TFTP 不同类型报文","i2");
-					createInstruT1("TFTP 报文概述","i2-5");
+				createInstruT0("TFTP 不同类型报文", "i2");
+					createInstruT1("TFTP 报文概述", "i2-5");
 						createProtocolStructT1(
 							"980",
 							"575",
@@ -62,23 +62,23 @@
 						createInstruAllTopT1("除第一字段外，其余字段与第一字段有关");
 						createInstruAllTopT1("第一字段的取值与报文作用关系如下：<br />");
 
-						tHeader = [
+						var tHeader = [
 							"操作码",
 							"含义",
 							"说明",
 						];
-						tBody = [
-							["1","RRQ - Read request","下载文件请求报文"],
-							["2","WRQ - Write request","上传文件请求报文"],
-							["3","Data","文件传输报文"],
-							["4","ACK - Acknowledgment","确认报文"],
-							["5","Error","差错报文"],
+						var tBody = [
+							["1", "RRQ - Read request", "下载文件请求报文"],
+							["2", "WRQ - Write request", "上传文件请求报文"],
+							["3", "Data", "文件传输报文"],
+							["4", "ACK - Acknowledgment", "确认报文"],
+							["5", "Error", "差错报文"],
 						];
 						createHLTableT1(550, tHeader, tBody);
 
 
-					createInstruT1("<br />RRQ / WRQ 报文","i2-1");
-						createInstruT2("RRQ / WRQ 报文结构","i2-1-1");
+					createInstruT1("<br />RRQ / WRQ 报文", "i2-1");
+						createInstruT2("RRQ / WRQ 报文结构", "i2-1-1");
 							createProtocolStructT2(
 								"980",
 								"159",
@@ -107,12 +107,12 @@
 							`;
 							createProtocolExplainT2(words, -159, 'tftp12');
 
-						createInstruT2("RRQ / WRQ 报文实例","i2-1-2");
+						createInstruT2("RRQ / WRQ 报文实例", "i2-1-2");
 							createConfigImgT2("TFTP/TFTP_read");
 							createConfigImgT2("TFTP/TFTP_write");
 
-					createInstruT1("DATA 报文","i2-2");
-						createInstruT2("DATA 报文结构","i2-2-1");
+					createInstruT1("DATA 报文", "i2-2");
+						createInstruT2("DATA 报文结构", "i2-2-1");
 							createProtocolStructT2(
 								"838",
 								"159",
@@ -135,11 +135,11 @@
 							`;
 							createProtocolExplainT2(words, -159, 'tftp3');
 
-						createInstruT2("DATA 报文实例","i2-2-2");
+						createInstruT2("DATA 报文实例", "i2-2-2");
 							createConfigImgT2("TFTP/TFTP_data");
 
-					createInstruT1("ACK 报文","i2-3");
-						createInstruT2("ACK 报文结构","i2-3-1");
+					createInstruT1("ACK 报文", "i2-3");
+						createInstruT2("ACK 报文结构", "i2-3-1");
 							createProtocolStructT2(
 								"497",
 								"159",
@@ -159,11 +159,11 @@
 							`;
 							createProtocolExplainT2(words, -159, 'tftp4');
 
-						createInstruT2("ACK 报文实例","i2-3-2");
+						createInstruT2("ACK 报文实例", "i2-3-2");
 							createConfigImgT2("TFTP/TFTP_ack");
 
-					createInstruT1("ERROR 报文","i2-4");
-						createInstruT2("ERROR 报文结构","i2-4-1");
+					createInstruT1("ERROR 报文", "i2-4");
+						createInstruT2("ERROR 报文结构", "i2-4-1");
 							createProtocolStructT2(
 								"946",
 								"159",
@@ -174,7 +174,7 @@
 							);
 
 							document.writeln("<br />");
-							words = `
+							var words = `
 								操作码（Opcode）
 								由16 bits构成，表示报文类型，ERROR报文的值为5
 
@@ -189,7 +189,7 @@
 							`;
 							createProtocolExplainT2(words, -159, 'tftp5');
 
-						createInstruT2("ERROR 报文实例","i2-4-2");
+						createInstruT2("ERROR 报文实例", "i2-4-2");
 					 		createConfigImgT2("TFTP/TFTP_error");
 
 			</script>

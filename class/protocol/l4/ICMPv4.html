@@ -55,7 +55,7 @@
 						"ICMP通用协议"
 					);
 
-					words = `
+					var words = `
 						类型（Type）
 						由8 bits构成，用于区分不同类型的ICMP报文
 
@@ -71,14 +71,14 @@
 						createProtocolExplainT0(words, -220);
 
 				createInstruT0("ICMPv4 报文类型<br />","i5");
-					tHeader = [
+					var tHeader = [
 						"类型",
 						"代码",
 						"说明",
 						"查询",
 						"差错",
 					];
-					tBody = [
+					var tBody = [
 						["0","0","回显应答（ping 响应）","&radic;",""],
 						["","","<b>目标不可达</b>","",""],
 						["","0","网络不可达","","&radic;"],
@@ -128,7 +128,6 @@
 							"ICMP/ping",
 							"回显请求/响应（ping）报文",
 							"ping",
-
 						);
 
 						words = `

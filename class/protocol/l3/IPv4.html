@@ -26,7 +26,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("IPv4首部字段说明","i1");
+				createInstruT0("IPv4首部字段说明", "i1");
 					createProtocolStructT0(
 						"1000",
 						"500",
@@ -36,7 +36,7 @@
 					);
 
 					document.writeln("<br />");
-					words = `
+					var words = `
 						版本（Version）
 						由4 bits构成，表示IP首部的版本号，IPv4的版本号即为4
 
@@ -81,25 +81,25 @@
 					`;
 					createProtocolExplainT0(words, -500);
 
-				createInstruT0("常规IPv4报文实例实例","i2");
+				createInstruT0("常规IPv4报文实例实例", "i2");
 					createInstruT1("实例为ping报文，如下所示<br />");
 						createConfigImgT1("IPv4/normal");
 
-				createInstruT0("IPv4分片","i3");
-					createInstruT1("需要分片但不允许分片","i3-1");
+				createInstruT0("IPv4分片", "i3");
+					createInstruT1("需要分片但不允许分片", "i3-1");
 						createInstruAllTopT1("在设备的‘出方向。，如果IP报文大于MTU，则需要分片");
 						createInstruAllTopT1("如果需要分片，但DF被置1，则不能分片，该设备会向源出送ICMP相应的差错报文（需要分片但不允许分片）");
 						createInstruAllTopT1("差错报文中的一个字段会告诉源，此处的MTU<br />");
 
 						createConfigImgT1("IPv4/DF$1~2");
 
-					createInstruT1("分片过程","i3-2");
-						createInstruT2("原始报文，IP报文总长度 1400","i3-2-1");
+					createInstruT1("分片过程", "i3-2");
+						createInstruT2("原始报文，IP报文总长度 1400", "i3-2-1");
 							createInstruAllTopT2("实例为ping报文，通过增加icmp数据部分，增加IP报文大小<br />");
 
 							createConfigImgT2("IPv4/fragmentation1");
 
-						createInstruT2("第一次分片，此处MTU为 1000","i3-2-2");
+						createInstruT2("第一次分片，此处MTU为 1000", "i3-2-2");
 							createInstruT3("分片第一片");
 								createInstruAllTopT3("IP首部20字节，IP数据部分最多为980字节");
 								createInstruAllTopT3("根据IP分片的规则，除最后一片外，IP数据部分必须是8字节的整数倍（IP首部中的片偏移量以8字节为单位）");
@@ -114,7 +114,7 @@
 
 								createConfigImgT3("IPv4/fragmentation2$2");
 
-						createInstruT2("第二次分片，此处MTU为 800","i3-2-3");
+						createInstruT2("第二次分片，此处MTU为 800", "i3-2-3");
 							createInstruAllTopT2("再次分片的规则与第一次相同，由于多次分片，可能出现这次分片的最后一片的 更多分片位 置1");
 							createInstruAllTopT2("由于多次分片，分片报文可能失序，实例中第一次分片中的第二片，先到达");
 
@@ -127,8 +127,8 @@
 								createInstruT3("原分片第二片");
 									createConfigImgT3("IPv4/fragmentation3$3");
 
-				createInstruT0("IPv4选项","i4");
-					createInstruT1("IPv4选项结构","i4-1");
+				createInstruT0("IPv4选项", "i4");
+					createInstruT1("IPv4选项结构", "i4-1");
 						createProtocolStructT1(
 							"990",
 							"290",
@@ -151,7 +151,7 @@
 						`;
 						createProtocolExplainT2(words, -290, 'ipv4_options');
 
-					createInstruT1("路径记录选项","i4-2");
+					createInstruT1("路径记录选项", "i4-2");
 						createInstruAllTopT1("对于路径记录选项，PTR表示当前的IP地址记录位置");
 						createInstruAllTopT1("路径记录选项，记录IP报文‘出方向。的IP地址，去回均记录");
 
@@ -162,8 +162,8 @@
 						createInstruAllTopT1("随着逐跳记录出地址，指针不断后移，因定义了共记录9跳，长度始终为39，未记录到地址的位置为0.0.0.0<br />");
 						createConfigImgT2("IPv4/rr$1~6");
 
-					createInstruT1("宽松/严格源站路由选项","i4-3");
-						createInstruT2("选项规则说明","i4-3-1");
+					createInstruT1("宽松/严格源站路由选项", "i4-3");
+						createInstruT2("选项规则说明", "i4-3-1");
 							createInstruAllTopT2("源站路由由发送者指定路由");
 							createInstruAllTopT2("严格源站路由：每一跳均在IP选项中指定，即路径已经确定，如果任何一跳不能实现，则源站路由失败");
 							createInstruAllTopT2("宽松源站路：指定的IP地址只要在路径中经过即可");
@@ -171,7 +171,7 @@
 							createInstruAllTopT2("网络情况如下，存在冗余链路，但调整相关参数，使正常路径往返均不经过R3<br />");
 							createConfigImgT3("IPv4/Topology");
 
-						createInstruT2("严格源站路由","i4-3-2");
+						createInstruT2("严格源站路由", "i4-3-2");
 							createInstruAllTopT2("使用严格源站路由，固定路径为R1-->R2-->R3-->R5-->R3-->R2-->R1");
 							createInstruAllTopT2("除最后一跳在目的地址中指定，任何一跳均在严格源站路由列表中指定（只指定去的路径），即：");
 							createInstruAllTopT2("　　192.168.12.2 192.168.23.3 192.168.35.5");
@@ -181,7 +181,7 @@
 							createInstruAllTopT2("返回报文使用记录的路径进行严格源路由，同时也记录返回的路径<br />");
 							createConfigImgT2("IPv4/ssr$1~6");
 
-						createInstruT2("宽松源站路由","i4-3-3");
+						createInstruT2("宽松源站路由", "i4-3-3");
 							createInstruAllTopT2("使用宽松源站路由，固定路径为R1-->R2-->R3-->R5-->R3-->R2-->R1");
 							createInstruAllTopT2("只需在宽松源站路由中指定通过R3即可，即：");
 							createInstruAllTopT2("　　192.168.23.3");

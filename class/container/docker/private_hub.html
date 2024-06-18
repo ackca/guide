@@ -20,22 +20,21 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("harbar","i2");
-					createInstruT1("安装harbar（需要docker-compose）","i2-1");
+				createInstruT0("harbar", "i2");
+					createInstruT1("安装harbar（需要docker-compose）", "i2-1");
 						createInstruT2("配置docker采用http方式传访问harbar");
 						createInstruAllTopT2("默认https，无需此步，无可信证书时，使用https非常繁琐，建议使用http");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
-								instruArr = null;
-								instruArr = new Array();
+								var instruArr = new Array();
 								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133。\"],");
-								instruArr[1] = createCmdInstruSpan("“192.168.110.133。","harbar的url");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbar的url");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("private_hub/i2_1$1");
 
 							createInstruT3("重启相关服务");
 								instruArr[0] = createLinuxCmd("systemctl daemon-reload");
 								instruArr[1] = createLinuxCmd("systemctl restart docker");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 						createInstruT2("下载离线安装包，<a class='link' target='_blank' href='https://github.com/goharbor/harbor/releases/'>https://github.com/goharbor/harbor/releases/</a>");
 
@@ -43,60 +42,60 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("tar -xvf harbor-offline-installer-v2.1.1.tgz -C /usr/local/");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("推荐操作：目录名添加版本号，再用软链接连回");
 							instruArr[0] = createLinuxCmd("cd /usr/local");
 							instruArr[1] = createLinuxCmd1("mv harbor/ harbor-v2.1.1");
 							instruArr[2] = createLinuxCmd("ln -s harbor-v2.1.1/ harbor");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("复制配置文件");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd1("cd /usr/local/harbor");
 							instruArr[1] = createLinuxCmd1("cp harbor.yml.tmpl harbor.yml");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("编辑配置文件");
 							createInstruT3("无可信https证书");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd1("vim harbor.yml");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("private_hub/i2_1$2");
 
 							createInstruT3("有可信https证书");
 								instruArr[0] = createLinuxCmd1("vim harbor.yml");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("private_hub/i2_1$3");
 
 						createInstruT2("安装&启动harbor");
 							// instruArr[0] = createCmdSpan("./prepare");
 							instruArr[0] = createCmdSpan("./install.sh");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("重启系统后harbor无法自动启动，手动添加启动脚本");
 							createInstruT3("在启动文件（ ‘/etc/rc.d/rc.local。 ）增加两行命令");
 								instruArr[0] = createLinuxCmd1("cd /usr/local/harbor");
 								instruArr[1] = createLinuxCmd("docker-compose up -d");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("增加执行权限");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("chmod +x /etc/rc.d/rc.local");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 						createInstruT2("安装完成后使用浏览器打开即可，默认用户名/密码：admin/Harobr12345<br /><br />");
 
-					createInstruT1("上传 / 下载镜像","i2-2");
+					createInstruT1("上传 / 下载镜像", "i2-2");
 						createInstruT2("镜像的本地命令方式");
 							instruArr[0] = createCmdSpan("“192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。");
-							instruArr[1] = createCmdInstruSpan("“192.168.110.133。","harbor的url");
-							instruArr[2] = createCmdInstruSpan("“itachi。”","harbor中的项目名");
-							instruArr[3] = createCmdInstruSpan("“flask。","镜像名（标识）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbor的url");
+							instruArr[2] = createCmdInstruSpan("“itachi。”", "harbor中的项目名");
+							instruArr[3] = createCmdInstruSpan("“flask。", "镜像名（标识）");
+							createCmdInstruT2(instruArr, "docker");
 							createConfigImgT2("private_hub/i2_2$1");
 
 						createInstruT2("上传 / 下载镜像");
@@ -104,35 +103,35 @@
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker login “192.168.110.133。");
-								instruArr[1] = createCmdInstruSpan("“192.168.110.133。","harbor的url");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbor的url");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("上传 / 下载镜像");
 								instruArr[0] = createLinuxCmd("docker { push | pull } “192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。");
-								instruArr[1] = createCmdInstruSpan("push | pull","上传 / 下载");
-								instruArr[2] = createCmdInstruSpan("“192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。","镜像名");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("push | pull", "上传 / 下载");
+								instruArr[2] = createCmdInstruSpan("“192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。", "镜像名");
+								createCmdInstruT3(instruArr, "docker");
 
-				createInstruT0("docker-registry","i1");
-					createInstruT1("安装docker-registry","i1-1");
+				createInstruT0("docker-registry", "i1");
+					createInstruT1("安装docker-registry", "i1-1");
 						createInstruT2("配置docker采用http方式传访问registry的私有仓库（默认https）");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133:5000。\"],");
-								instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。","私有仓库的url");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。", "私有仓库的url");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("private_hub/i1_1$1");
 
 							createInstruT3("重启相关服务");
 								instruArr[0] = createLinuxCmd("systemctl daemon-reload");
 								instruArr[1] = createLinuxCmd("systemctl restart docker");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 						createInstruT2("获取registry的镜像");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker pull registry");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("运行registry");
 							instruArr = new Array();
@@ -140,27 +139,27 @@
 								"docker run -d -p 5000:5000 --name=registry --restart=always \\ " +
 											"-v /docker-images:/var/lib/registry registry"
 							);
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-					createInstruT1("查看仓库中镜像<br />","i1-2");
+					createInstruT1("查看仓库中镜像<br />", "i1-2");
 						instruArr[0] = createLinuxCmd("curl “192.168.110.133:5000。/v2/_catalog");
-						instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。","私有仓库的url");
-						createCmdInstruT1(instruArr,"docker");
+						instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。", "私有仓库的url");
+						createCmdInstruT1(instruArr, "docker");
 						createConfigImgT1("private_hub/i1_2$1");
 
-					createInstruT1("上传/下载镜像","i1-3");
+					createInstruT1("上传/下载镜像", "i1-3");
 						createInstruT2("镜像的本地命令方式");
 							instruArr[0] = createCmdSpan("“192.168.110.133:5000。”/“flask。");
-							instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。","私有仓库的url");
-							instruArr[2] = createCmdInstruSpan("“flask。","镜像名（标识）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。", "私有仓库的url");
+							instruArr[2] = createCmdInstruSpan("“flask。", "镜像名（标识）");
+							createCmdInstruT2(instruArr, "docker");
 							createConfigImgT2("private_hub/i1_3$1");
 
 						createInstruT2("上传 / 下载镜像");
 							instruArr[0] = createLinuxCmd("docker { push | pull } “192.168.110.133:5000。”/“flask。");
-							instruArr[1] = createCmdInstruSpan("push | pull","上传 / 下载");
-							instruArr[2] = createCmdInstruSpan("“192.168.110.133:5000。”/“flask。","镜像名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("push | pull", "上传 / 下载");
+							instruArr[2] = createCmdInstruSpan("“192.168.110.133:5000。”/“flask。", "镜像名");
+							createCmdInstruT2(instruArr, "docker");
 			</script>
 		</div>
 	</div>

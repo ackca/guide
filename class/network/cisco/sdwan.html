@@ -20,9 +20,9 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("核心设备上线","i1");
-					createInstruT1("初始化核心设备","i1-1");
-						createInstruT2("常规初始化","i1-1-1");
+				createInstruT0("核心设备上线", "i1");
+					createInstruT1("初始化核心设备", "i1-1");
+						createInstruT2("常规初始化", "i1-1-1");
 							createInstruAllTopT2("三种设备初始化命令基本相同，根据实际情况修改host-name、system-ip、site-id以及网络信息");
 								cmd = `
 									config terminal
@@ -51,7 +51,7 @@
 								`;
 								createViptelaCLIT2(cmd);
 
-						createInstruT2("如果没有DNS服务，可以使用host方式（不推荐）","i1-1-2");
+						createInstruT2("如果没有DNS服务，可以使用host方式（不推荐）", "i1-1-2");
 							cmd = `
 								system
 								 vbond vbond.testrabbit.local
@@ -60,7 +60,7 @@
 							`;
 							createViptelaCLIT2(cmd);
 
-						createInstruT2("vBound冗余","i1-1-3");
+						createInstruT2("vBound冗余", "i1-1-3");
 							createInstruAllTopT2("使用DNS时，对应域名配置多个解析结果即可<br />");
 							createInstruAllTopT2("无DNS时，使用如下方式配置");
 
@@ -73,36 +73,36 @@
 							`;
 							createViptelaCLIT2(cmd);
 
-					createInstruT1("vManage基本配置","i1-2");
-						createInstruT2("配置组织名","i1-2-1");
+					createInstruT1("vManage基本配置", "i1-2");
+						createInstruT2("配置组织名", "i1-2-1");
 							createConfigImgT2("sdwan/i1_2_1$1~2");
 
-						createInstruT2("配置vBond地址","i1-2-2");
+						createInstruT2("配置vBond地址", "i1-2-2");
 							createConfigImgT2("sdwan/i1_2_2$1~2");
 
-						createInstruT2("配置控制器根证书","i1-2-3");
+						createInstruT2("配置控制器根证书", "i1-2-3");
 							createConfigImgT2("sdwan/i1_2_3$1~6");
 
-					createInstruT1("核心设备相互关联","i1-3");
-						createInstruT2("添加vBond和vSmart","i1-3-1");
+					createInstruT1("核心设备相互关联", "i1-3");
+						createInstruT2("添加vBond和vSmart", "i1-3-1");
 							createConfigImgT2("sdwan/i1_3_1$1~4");
 
-						createInstruT2("核心设备申请证书","i1-3-2");
+						createInstruT2("核心设备申请证书", "i1-3-2");
 							createInstruAllTopT2("所有核心设备均申请，申请方式相同");
 							createConfigImgT2("sdwan/i1_3_2$1~2");
 
-						createInstruT2("核心设备安装证书","i1-3-3");
+						createInstruT2("核心设备安装证书", "i1-3-3");
 							createInstruAllTopT2("所有核心设备均安装，安装方式相同");
 							createConfigImgT2("sdwan/i1_3_3$1~4");
 
-						createInstruT2("核心设备推送到vBond","i1-3-4");
+						createInstruT2("核心设备推送到vBond", "i1-3-4");
 							createConfigImgT2("sdwan/i1_3_4$1~3");
 
-				createInstruT0("关联Edge（vEdge Cloud）","i2");
-					createInstruT1("加载Edge授权","i2-1");
+				createInstruT0("关联Edge（vEdge Cloud）", "i2");
+					createInstruT1("加载Edge授权", "i2-1");
 						createConfigImgT1("sdwan/i2_1$1~6");
 
-					createInstruT1("初始化Edge","i2-2");
+					createInstruT1("初始化Edge", "i2-2");
 						createInstruAllTopT1("能够连接到vBond即可，其它配置由vManage统一下发");
 
 						cmd = `
@@ -141,157 +141,157 @@
 						createViptelaCLIT1(cmd);
 
 
-					createInstruT1("Edge加载根证书","i2-3");
-						createInstruT2("获取根证书（通过FTP方式获取）","i2-3-1");
+					createInstruT1("Edge加载根证书", "i2-3");
+						createInstruT2("获取根证书（通过FTP方式获取）", "i2-3-1");
 							instruArr = new Array();
-							instruArr[0]=createCmdSpan("Hub_vEdge1# vshell");
-							instruArr[1]=createCmdSpan("Hub_vEdge1:~$ curl -u “anonymous:1@2.net。 '“ftp://202.100.100.200/root.cer。' -o ./root.cer");
-							instruArr[2]=createCmdInstruSpan("“anonymous:1@2.net。","认证信息");
-							instruArr[3]=createCmdInstruSpan("“ftp://202.100.100.200/root.cer。","根证书路径");
-							instruArr[4]=createCmdSpan("Hub_vEdge1:~$ exit");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[0] = createCmdSpan("Hub_vEdge1# vshell");
+							instruArr[1] = createCmdSpan("Hub_vEdge1:~$ curl -u “anonymous:1@2.net。 '“ftp://202.100.100.200/root.cer。' -o ./root.cer");
+							instruArr[2] = createCmdInstruSpan("“anonymous:1@2.net。", "认证信息");
+							instruArr[3] = createCmdInstruSpan("“ftp://202.100.100.200/root.cer。", "根证书路径");
+							instruArr[4] = createCmdSpan("Hub_vEdge1:~$ exit");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("卸载设备原始的根证书","i2-3-2");
+						createInstruT2("卸载设备原始的根证书", "i2-3-2");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0]=createCmdSpan("Hub_vEdge1# request root-cert-chain uninstall");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[0] = createCmdSpan("Hub_vEdge1# request root-cert-chain uninstall");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("加载新获取的根证书","i2-3-3");
-							instruArr[0]=createCmdSpan("Hub_vEdge1# request root-cert-chain install /home/admin/root.cer");
-							createCmdInstruT2(instruArr,"cisco");
+						createInstruT2("加载新获取的根证书", "i2-3-3");
+							instruArr[0] = createCmdSpan("Hub_vEdge1# request root-cert-chain install /home/admin/root.cer");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("Edge上线","i2-4");
-						createInstruT2("获取授权ID及一次性密码","i2-4-1");
+					createInstruT1("Edge上线", "i2-4");
+						createInstruT2("获取授权ID及一次性密码", "i2-4-1");
 							createConfigImgT2("sdwan/i2_4_1$1~3");
 
-						createInstruT2("激活Edge","i2-4-2");
-							instruArr[0]=createCmdSpan("Hub_vEdge1# request vedge-cloud activate chassis-number “8293…。 token “b91e…。");
-							instruArr[1]=createCmdInstruSpan("“8293…。","uuid");
-							instruArr[2]=createCmdInstruSpan("“b91e…。","otp");
-							createCmdInstruT2(instruArr,"cisco");
+						createInstruT2("激活Edge", "i2-4-2");
+							instruArr[0] = createCmdSpan("Hub_vEdge1# request vedge-cloud activate chassis-number “8293…。 token “b91e…。");
+							instruArr[1] = createCmdInstruSpan("“8293…。", "uuid");
+							instruArr[2] = createCmdInstruSpan("“b91e…。", "otp");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("查看Edge状态","i2-4-3");
-							createInstruT3("授权正确分配","i2-4-3-1");
+						createInstruT2("查看Edge状态", "i2-4-3");
+							createInstruT3("授权正确分配", "i2-4-3-1");
 								createConfigImgT3("sdwan/i2_4_3_1$1");
 
-							createInstruT3("Edge关联到vSmart","i2-4-3-2");
+							createInstruT3("Edge关联到vSmart", "i2-4-3-2");
 								instruArr = null;
 								instruArr = new Array();
-								instruArr[0]=createCmdSpan("vSmart# show omp tlocs | tab");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[0] = createCmdSpan("vSmart# show omp tlocs | tab");
+								createCmdInstruT3(instruArr, "cisco");
 								createConfigImgT3("sdwan/i2_4_3_2$1");
 
 
-				createInstruT0("配置命令行模板","i3");
+				createInstruT0("配置命令行模板", "i3");
 					createConfigImgT0("sdwan/i3$1~7");
 
-				createInstruT0("配置Feature模板","i4");
-					createInstruT1("创建Feature模板","i4-1");
+				createInstruT0("配置Feature模板", "i4");
+					createInstruT1("创建Feature模板", "i4-1");
 						createConfigImgT1("sdwan/i4_1$1~4");
 
-					createInstruT1("创建设备模板","i4-2");
+					createInstruT1("创建设备模板", "i4-2");
 						createConfigImgT1("sdwan/i4_2$1~5");
 
-					createInstruT1("推送配置到设备","i4-3");
+					createInstruT1("推送配置到设备", "i4-3");
 						createConfigImgT1("sdwan/i4_3$1~9");
 
-				createInstruT0("配置本地策略","i5");
-					createInstruT1("创建各种列表","i5-1");
-						createInstruT2("团体列表（Community List）","i5-1-2");
+				createInstruT0("配置本地策略", "i5");
+					createInstruT1("创建各种列表", "i5-1");
+						createInstruT2("团体列表（Community List）", "i5-1-2");
 							createConfigImgT2("sdwan/i5_1$1");
 							createConfigImgT2("sdwan/i5_1_2$1~3");
 
-						createInstruT2("数据前缀列表（Data Prefix List）","i5-1-3");
+						createInstruT2("数据前缀列表（Data Prefix List）", "i5-1-3");
 							createConfigImgT2("sdwan/i5_1$1");
 							createConfigImgT2("sdwan/i5_1_3$1~3");
 
-						createInstruT2("前缀列表（Prefix List）","i5-1-8");
+						createInstruT2("前缀列表（Prefix List）", "i5-1-8");
 							createConfigImgT2("sdwan/i5_1$1");
 							createConfigImgT2("sdwan/i5_1_8$1~3");
 
-					createInstruT1("创建ACL","i5-4");
+					createInstruT1("创建ACL", "i5-4");
 						createConfigImgT1("sdwan/i5_4$1~7");
 
-					createInstruT1("创建Route Map","i5-2");
+					createInstruT1("创建Route Map", "i5-2");
 						createConfigImgT1("sdwan/i5_2$1~10");
 
-					createInstruT1("配置本地策略集","i5-3");
+					createInstruT1("配置本地策略集", "i5-3");
 						createInstruAllTopT1("配置的各项策略（如ACL，Route Map），需要先关联本地策略集");
 						createInstruAllTopT1("再将本地策略集分配给设备模板，设备模板关联的Feature模板才能调用具体策略（如ACL，Route Map）<br />");
 
-						createInstruT2("创建本地策略集（以添加Route Map为例）","i5-3-1");
+						createInstruT2("创建本地策略集（以添加Route Map为例）", "i5-3-1");
 							createConfigImgT2("sdwan/i5_3_1$1~10");
 
-						createInstruT2("策略集分配给设备模板","i5-3-2");
+						createInstruT2("策略集分配给设备模板", "i5-3-2");
 							createConfigImgT2("sdwan/i5_3_2$1~2");
 
-				createInstruT0("配置本地策略","i6");
-					createInstruT1("vSmart由vManage管理","i6-1");
+				createInstruT0("配置本地策略", "i6");
+					createInstruT1("vSmart由vManage管理", "i6-1");
 						createInstruAllTopT1("使用命令行模板，获取vSmart配置，无需修改，直接推送到设备即可<br /><br />");
 
-					createInstruT1("创建各种列表","i6-2");
-						createInstruT2("站点列表（Site List）","i6-2-1");
+					createInstruT1("创建各种列表", "i6-2");
+						createInstruT2("站点列表（Site List）", "i6-2-1");
 							createConfigImgT2("sdwan/i6_2$1");
 							createConfigImgT2("sdwan/i6_2_1$1~3");
 
-						createInstruT2("TLOC列表（TLOC List）","i6-2-2");
+						createInstruT2("TLOC列表（TLOC List）", "i6-2-2");
 							createConfigImgT2("sdwan/i6_2$1");
 							createConfigImgT2("sdwan/i6_2_2$1~3");
 
-						createInstruT2("VPN列表（VPN List）","i6-2-3");
+						createInstruT2("VPN列表（VPN List）", "i6-2-3");
 							createConfigImgT2("sdwan/i6_2$1");
 							createConfigImgT2("sdwan/i6_2_3$1~3");
 
-						createInstruT2("应用列表（Applications List）","i6-2-4");
+						createInstruT2("应用列表（Applications List）", "i6-2-4");
 							createConfigImgT2("sdwan/i6_2$1");
 							createConfigImgT2("sdwan/i6_2_4$1~3");
 
-					createInstruT1("配置拓扑策略","i6-3");
-						createInstruT2("入方向拓扑策略","i6-3-1");
+					createInstruT1("配置拓扑策略", "i6-3");
+						createInstruT2("入方向拓扑策略", "i6-3-1");
 							createConfigImgT2("sdwan/i6_3_1$1~15");
 
-						createInstruT2("全互联型出方向拓扑策略","i6-3-2");
+						createInstruT2("全互联型出方向拓扑策略", "i6-3-2");
 							createConfigImgT2("sdwan/i6_3_2$1~4");
 
-						createInstruT2("Hub-Spoke型出方向拓扑策略","i6-3-3");
-							createInstruT3("Hub站点出方向拓扑策略","i6-3-3-1");
+						createInstruT2("Hub-Spoke型出方向拓扑策略", "i6-3-3");
+							createInstruT3("Hub站点出方向拓扑策略", "i6-3-3-1");
 								createConfigImgT3("sdwan/i6_3_3_1$1~3");
 
-							createInstruT3("所有Spoke站点出方向拓扑策略","i6-3-3-2");
+							createInstruT3("所有Spoke站点出方向拓扑策略", "i6-3-3-2");
 								createConfigImgT3("sdwan/i6_3_3_2$1~3");
 
-					createInstruT1("配置中心策略集","i6-4");
-						createInstruT2("全互联型拓扑策略","i6-4-1");
+					createInstruT1("配置中心策略集", "i6-4");
+						createInstruT2("全互联型拓扑策略", "i6-4-1");
 							createConfigImgT2("sdwan/i6_4_1$1~10");
 
-						createInstruT2("Hub-Spoke型拓扑策略","i6-4-2");
+						createInstruT2("Hub-Spoke型拓扑策略", "i6-4-2");
 							createConfigImgT2("sdwan/i6_4_2$1");
 
-					createInstruT1("激活中心策略集","i6-5");
+					createInstruT1("激活中心策略集", "i6-5");
 						createConfigImgT1("sdwan/i6_5$1~5");
 
 
-				createInstruT0("调整流量路径（中心策略）","i7");
+				createInstruT0("调整流量路径（中心策略）", "i7");
 					createInstruAllTopT0("配置分支的特定流量通过Hub连接互联网");
 
 					createInstruAllTopT0("支持通过SDWAN连接到Hub，或通过特定链路（如：Internet或MPLS）连接");
 
-					createInstruT1("<br />调整Hub的默认路由","i7-1");
+					createInstruT1("<br />调整Hub的默认路由", "i7-1");
 						createInstruAllTopT1("常规的 默认路由指向VPN 0，无法通过OMP发送到分支站点");
 						createInstruAllTopT1("推荐将 默认路由指向Null 0，再通过OMP发送到分支站点，最后配置其它策略连接互联网<br />");
 
 						createConfigImgT1("sdwan/i7_1$1~3");
 
-					createInstruT1("配置流量策略","i7-2");
-						createInstruT2("Hub配置策略","i7-2-1");
+					createInstruT1("配置流量策略", "i7-2");
+						createInstruT2("Hub配置策略", "i7-2-1");
 							createConfigImgT2("sdwan/i7_2$1~2");
 							createConfigImgT2("sdwan/i7_2_1$1~5");
 
-						createInstruT2("Spoke配置策略","i7-2-2");
+						createInstruT2("Spoke配置策略", "i7-2-2");
 							createConfigImgT2("sdwan/i7_2_2$1~2");
 
-					createInstruT1("应用策略到中心策略集","i7-3");
+					createInstruT1("应用策略到中心策略集", "i7-3");
 						createConfigImgT1("sdwan/i7_3$1~3");
 
 			</script>

@@ -1,12 +1,12 @@
 .divProtocolExplain img
 {
-    margin-top: 20px;
-    margin-bottom: 25px;
+	margin-top: 20px;
+	margin-bottom: 25px;
 }
 
 .divSJT1
 {
-    margin-left: 50px;
+	margin-left: 50px;
 }
 
 /*.row .cell:nth-child(1)*/
@@ -16,21 +16,21 @@
 
 .row .cell:nth-child(2)
 {
-    width: 70px;
-    padding-left: 25px;
+	width: 70px;
+	padding-left: 25px;
 }
 
 .row.header .cell:nth-child(2)
 {
-    padding-left: inherit;
+	padding-left: inherit;
 }
 
 .row .cell:nth-child(3)
 {
-    padding-left: 20px;
+	padding-left: 20px;
 }
 
 .row.header .cell:nth-child(3)
 {
-    padding-left: inherit;
+	padding-left: inherit;
 }

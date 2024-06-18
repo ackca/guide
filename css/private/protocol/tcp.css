@@ -1,43 +1,43 @@
 .divProtocolExplain li:nth-child(1)
 {
-    margin-top: 0px;
+	margin-top: 0px;
 }
 
 .TCP_flags
 {
-    margin-left: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+	margin-left: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #tTCPoptions .cell:nth-child(1),
 #tTCPoptions .cell:nth-child(2)
 {
-    width: 120px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    line-height: 1.5;
+	width: 120px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	line-height: 1.5;
 }
 
 #tTCPoptions .cell:nth-child(3)
 {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 #tTCPoptions .row .cell:nth-child(1),
 #tTCPoptions .row .cell:nth-child(2)
 {
-    padding-left: 0;
-    text-align: center;
+	padding-left: 0;
+	text-align: center;
 }
 
 #tTCPoptions .row.header .cell:nth-child(1),
 #tTCPoptions .row.header .cell:nth-child(2)
 {
-    padding-left: inherit;
+	padding-left: inherit;
 }
 
 .divConfigImgT1 + br + br + .cmdInstruAllBottomT1
 {
-    margin-top: -40px;
+	margin-top: -40px;
 }

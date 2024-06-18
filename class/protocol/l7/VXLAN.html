@@ -26,7 +26,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("VXLAN报文结构","i1");
+				createInstruT0("VXLAN报文结构", "i1");
 					createProtocolStructT0(
 						"815",
 						"290",
@@ -35,7 +35,7 @@
 						"VXLAN协议"
 					);
 
-					words = `
+					var words = `
 						vxlan 标志（VXLAN Flags）
 						由8 bits构成，固定为 0x08
 
@@ -50,10 +50,10 @@
 					`;
 					createProtocolExplainT0(words, -290);
 
-				createInstruT0("VXLAN 封装方式<br />","i2");
+				createInstruT0("VXLAN 封装方式<br />", "i2");
 					createConfigImgT0("VXLAN/VXLAN封装", "VXLAN 封装方式");
 
-				createInstruT0("VXLAN 实例<br />","i3");
+				createInstruT0("VXLAN 实例<br />", "i3");
 					createConfigImgT0("VXLAN/VXLAN_packet");
 
 			</script>

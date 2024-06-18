@@ -20,10 +20,10 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("安装docker（CentOS 8 在线）","i1");
+				createInstruT0("安装docker（CentOS 8 在线）", "i1");
 					createInstruT1("官方文档地址：<a class='link' href='https://docs.docker.com/engine/install/' target='_blank'>https://docs.docker.com/engine/install/</a>，Server 部分");
 						createInstruT2("删除原有组件");
-							instruArr = new Array();
+							var instruArr = new Array();
 							instruArr[0] = createLinuxCmd(
 								"yum remove docker \\ " +
 											"docker-client \\ " +
@@ -34,466 +34,466 @@
 											"docker-logrotate \\ " +
 											"docker-engine"
 							);
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("安装 yum-utils");
 							instruArr[0] = createLinuxCmd("yum install -y yum-utils");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("配置国内镜像");
 							instruArr[0] = createLinuxCmd(
 								"yum-config-manager --add-repo \\ " +
 									"http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo "
 							);
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("安装其它组件");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("yum install docker-ce docker-ce-cli containerd.io -y　“--nobest。");
-							instruArr[1] = createCmdInstruSpan("“--nobest。","对于 CentOS 8 需要添加参数，默认安装最新版本，导致安装失败，CentOS 7 不需要");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“--nobest。", "对于 CentOS 8 需要添加参数，默认安装最新版本，导致安装失败，CentOS 7 不需要");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("启用服务");
 							instruArr[0] = createLinuxCmd("systemctl start docker");
 							instruArr[1] = createLinuxCmd("systemctl enable docker");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("配置镜像加速服务");
 							createInstruAllTopT2("登录阿里云后，选择镜像加速服务，找到镜像加速器，粘贴相应配置即可（不同账号不同）<br/>");
 							createConfigImgT2("basic/i1$1");
 
-				createInstruT0("镜像相关配置","i2");
-						createInstruT2("从docker hub下载镜像","i2-1");
+				createInstruT0("镜像相关配置", "i2");
+						createInstruT2("从docker hub下载镜像", "i2-1");
 							instruArr[0] = createLinuxCmd("docker pull “centos。[”:。“7。]");
-							instruArr[1] = createCmdInstruSpan("“centos。","镜像名");
-							instruArr[2] = createCmdInstruSpan("“7。","镜像版本，默认为最新（lastest）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“centos。", "镜像名");
+							instruArr[2] = createCmdInstruSpan("“7。", "镜像版本，默认为最新（lastest）");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("查看本地镜像","i2-2");
+						createInstruT2("查看本地镜像", "i2-2");
 							instruArr[0] = createLinuxCmd("docker images [ “centos。 ] -qa");
-							instruArr[1] = createCmdInstruSpan("“centos。","镜像名，添加该参数后只查看本地这个镜像的");
-							instruArr[2] = createCmdInstruSpan("-qa","只查看镜像ID");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“centos。", "镜像名，添加该参数后只查看本地这个镜像的");
+							instruArr[2] = createCmdInstruSpan("-qa", "只查看镜像ID");
+							createCmdInstruT2(instruArr, "docker");
 							createConfigImgT2("basic/i2_2$1~3");
 
-						createInstruT2("删除镜像，可删除多个","i2-3");
+						createInstruT2("删除镜像，可删除多个", "i2-3");
 							instruArr[0] = createLinuxCmd("docker rmi -f { “centos。[”:。“7。] | “7e6257c9f8d8。 }");
-							instruArr[1] = createCmdInstruSpan("-f","强制删除");
-							instruArr[2] = createCmdInstruSpan("“centos。","镜像名");
-							instruArr[3] = createCmdInstruSpan("“7。","镜像版本，默认为最新（lastest）");
-							instruArr[4] = createCmdInstruSpan("“7e6257c9f8d8。","镜像ID，支持缩写");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("-f", "强制删除");
+							instruArr[2] = createCmdInstruSpan("“centos。", "镜像名");
+							instruArr[3] = createCmdInstruSpan("“7。", "镜像版本，默认为最新（lastest）");
+							instruArr[4] = createCmdInstruSpan("“7e6257c9f8d8。", "镜像ID，支持缩写");
+							createCmdInstruT2(instruArr, "docker");
 
 							createInstruT3("按名称删除镜像");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker rmi “centos。");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("按完整ID删除镜像");
 								instruArr[0] = createLinuxCmd("docker rmi “afb6fca791e0。");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("按ID简写删除镜像，简写到可区分即可");
 								instruArr[0] = createLinuxCmd("docker rmi “7e。");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("删除多个镜像");
 								instruArr[0] = createLinuxCmd("docker rmi “0d。 “af。 …");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("删除所有镜像");
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker rmi $(docker images -qa)");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
-						createInstruT2("上传镜像到docker hub","i2-4");
+						createInstruT2("上传镜像到docker hub", "i2-4");
 							createInstruT3("登录docker hub");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker login");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("上传到docker hub");
 								instruArr[0] = createLinuxCmd("docker push “vitachi。/“mysql。");
-								instruArr[1] = createCmdInstruSpan("“vitachi。/“mysql。","镜像名的表示方式为：用户名/镜像名");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("“vitachi。/“mysql。", "镜像名的表示方式为：用户名/镜像名");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("退出登录");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker logout");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
-				createInstruT0("容器相关配置","i3");
-					createInstruT1("运行容器","i3-1");
-						createInstruT2("运行容器","i3-1-1");
+				createInstruT0("容器相关配置", "i3");
+					createInstruT1("运行容器", "i3-1");
+						createInstruT2("运行容器", "i3-1-1");
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker run --name “itachi。 -d -it -e “IF。”=。“eth0。 “centos。[”:。“7。]");
-							instruArr[1] = createCmdInstruSpan("--name “itachi。","为容器起名，itachi为容器名，不配置会自动起一个");
-							instruArr[2] = createCmdInstruSpan("-d","后台运行容器");
-							instruArr[3] = createCmdInstruSpan("-e “IF。”=。“eth0。","-e 指定环境变量");
-							instruArr[4] = createCmdInstruSpan("-it","以交互界面运行容器");
-							instruArr[5] = createCmdInstruSpan("“centos。","镜像名");
-							instruArr[6] = createCmdInstruSpan("“7。","镜像版本，默认为最新（lastest）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("--name “itachi。", "为容器起名，itachi为容器名，不配置会自动起一个");
+							instruArr[2] = createCmdInstruSpan("-d", "后台运行容器");
+							instruArr[3] = createCmdInstruSpan("-e “IF。”=。“eth0。", "-e 指定环境变量");
+							instruArr[4] = createCmdInstruSpan("-it", "以交互界面运行容器");
+							instruArr[5] = createCmdInstruSpan("“centos。", "镜像名");
+							instruArr[6] = createCmdInstruSpan("“7。", "镜像版本，默认为最新（lastest）");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("启动 / 停止 / 暂停 容器","i3-1-2");
+						createInstruT2("启动 / 停止 / 暂停 容器", "i3-1-2");
 							instruArr[0] = createLinuxCmd("docker “操作命令。 { “itachi。 | “b442af988647。 }");
-							instruArr[1] = createCmdInstruSpan("停止","stop");
-							instruArr[2] = createCmdInstruSpan("启动","start");
-							instruArr[3] = createCmdInstruSpan("重新启动","restart");
-							instruArr[4] = createCmdInstruSpan("强制停止","kill");
-							instruArr[5] = createCmdInstruSpan("暂停","pause");
-							instruArr[6] = createCmdInstruSpan("取消暂停","unpause");
-							instruArr[7] = createCmdInstruSpan(" "," ");
-							instruArr[8] = createCmdInstruSpan("“itachi。","容器名");
-							instruArr[9] = createCmdInstruSpan("“b442af988647。","容器ID（可简写）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("停止", "stop");
+							instruArr[2] = createCmdInstruSpan("启动", "start");
+							instruArr[3] = createCmdInstruSpan("重新启动", "restart");
+							instruArr[4] = createCmdInstruSpan("强制停止", "kill");
+							instruArr[5] = createCmdInstruSpan("暂停", "pause");
+							instruArr[6] = createCmdInstruSpan("取消暂停", "unpause");
+							instruArr[7] = createCmdInstruSpan(" ", " ");
+							instruArr[8] = createCmdInstruSpan("“itachi。", "容器名");
+							instruArr[9] = createCmdInstruSpan("“b442af988647。", "容器ID（可简写）");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("进入容器命令行","i3-1-3");
+						createInstruT2("进入容器命令行", "i3-1-3");
 							createInstruAllTopT2("进入容器有两个命令 attach / exec，attach 类似于进入交换机的 console，exec 类似于进入 vty");
 							createInstruAllTopT2(" attach 进入已经在运行的容器命令行");
 							createInstruAllTopT2("因 exec 新开一条线路进入容器，需要前台运行的进程支持<br /><br />");
 							createConfigImgT2("basic/i3_1_3$1");
 
-						createInstruT2("查看容器信息","i3-1-4");
+						createInstruT2("查看容器信息", "i3-1-4");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker ps -a -q");
-							instruArr[1] = createCmdInstruSpan("-a","查看所有容器，包括已经停止的容器");
-							instruArr[2] = createCmdInstruSpan("-q","只查看容器ID");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("-a", "查看所有容器，包括已经停止的容器");
+							instruArr[2] = createCmdInstruSpan("-q", "只查看容器ID");
+							createCmdInstruT2(instruArr, "docker");
 							createConfigImgT2("basic/i3_2$1~2");
 
-						createInstruT2("比较容器与镜像差异","i3-1-5");
+						createInstruT2("比较容器与镜像差异", "i3-1-5");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker diff { “itachi。 | “b442af988647。 }");
-							instruArr[1] = createCmdInstruSpan("“itachi。","容器名");
-							instruArr[2] = createCmdInstruSpan("“b442af988647。","容器ID（可简写）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“itachi。", "容器名");
+							instruArr[2] = createCmdInstruSpan("“b442af988647。", "容器ID（可简写）");
+							createCmdInstruT2(instruArr, "docker");
 							createConfigImgT2("basic/i3_1_8$1");
 
-						createInstruT2("查看容器输出","i3-1-6");
+						createInstruT2("查看容器输出", "i3-1-6");
 							instruArr[0] = createLinuxCmd("docker logs -f -t { “itachi。 | “b442af988647。 }");
-							instruArr[1] = createCmdInstruSpan("-f","跟随容器的输出，持续显示");
-							instruArr[2] = createCmdInstruSpan("-t","在输出前添加时间戳");
-							instruArr[3] = createCmdInstruSpan("“itachi。","容器名");
-							instruArr[4] = createCmdInstruSpan("“b442af988647。","容器ID（可简写）");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("-f", "跟随容器的输出，持续显示");
+							instruArr[2] = createCmdInstruSpan("-t", "在输出前添加时间戳");
+							instruArr[3] = createCmdInstruSpan("“itachi。", "容器名");
+							instruArr[4] = createCmdInstruSpan("“b442af988647。", "容器ID（可简写）");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("复制文件","i3-1-7");
+						createInstruT2("复制文件", "i3-1-7");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker cp “itachi。”:。“/t.sh。 “/root/count.sh。");
-							instruArr[1] = createCmdInstruSpan("“itachi。:“/t.sh。","源文件的路径");
-							instruArr[2] = createCmdInstruSpan("“/root/count.sh。","目的路径");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“itachi。:“/t.sh。", "源文件的路径");
+							instruArr[2] = createCmdInstruSpan("“/root/count.sh。", "目的路径");
+							createCmdInstruT2(instruArr, "docker");
 							document.writeln('<br />')
 							createInstruAllBottomT2("支持双向复制文件，宿主机中的文件 直接写路径，容器中的文件为 “容器名或ID。:“文件路径。");
 
-						createInstruT2("退出但不停止容器，返回宿主机：先ctrl+p，再ctrl+q","i3-1-8");
+						createInstruT2("退出但不停止容器，返回宿主机：先ctrl+p，再ctrl+q", "i3-1-8");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan(" 先 ctrl+p，再 ctrl+q");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-					createInstruT1("<br />查看容器","i3-2");
-						createInstruT2("直接查看（内容过多，查看不便）","i3-2-1");
+					createInstruT1("<br />查看容器", "i3-2");
+						createInstruT2("直接查看（内容过多，查看不便）", "i3-2-1");
 							instruArr[0] = createLinuxCmd("docker inspect “itachi。");
-							instruArr[1] = createCmdInstruSpan("“itachi。","容器名或ID");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“itachi。", "容器名或ID");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("通过jq按项查看","i3-2-2");
+						createInstruT2("通过jq按项查看", "i3-2-2");
 							createInstruAllTopT2("如：查看容器地址：")
 
 							instruArr[0] = createLinuxCmd("docker inspect f6 | jq -r \".[0].NetworkSettings.IPAddress\"");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 							createConfigImgT2("basic/i3_2_2$1~2");
 
-					createInstruT1("删除容器，可删除多个","i3-3");
+					createInstruT1("删除容器，可删除多个", "i3-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("docker rm -f { “itachi。 | “b442af988647。 }");
-						instruArr[1] = createCmdInstruSpan("-f","强制删除，对于正在运行的容器，无法直接删除");
-						instruArr[2] = createCmdInstruSpan("“itachi。","容器名");
-						instruArr[3] = createCmdInstruSpan("“b442af988647。","容器ID");
-						createCmdInstruT1(instruArr,"docker");
+						instruArr[1] = createCmdInstruSpan("-f", "强制删除，对于正在运行的容器，无法直接删除");
+						instruArr[2] = createCmdInstruSpan("“itachi。", "容器名");
+						instruArr[3] = createCmdInstruSpan("“b442af988647。", "容器ID");
+						createCmdInstruT1(instruArr, "docker");
 
 						createInstruT2("按名称删除容器");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker rm “centos。");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("按完整ID删除容器");
 							instruArr[0] = createLinuxCmd("docker rm “afb6fca791e0。");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("按ID简写删除容器，简写到可区分即可");
 							instruArr[0] = createLinuxCmd("docker rm “59。");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("删除多个容器");
 							instruArr[0] = createLinuxCmd("docker rm “81。 “9b。 …");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("删除所有容器");
 							instruArr[0] = createLinuxCmd("docker rm -f $(docker ps -aq)");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-					createInstruT1("映射端口","i3-5");
-						createInstruT2("映射容器端口到宿主机（运行容器时配置）","i3-5-1");
+					createInstruT1("映射端口", "i3-5");
+						createInstruT2("映射容器端口到宿主机（运行容器时配置）", "i3-5-1");
 							instruArr[0] = createLinuxCmd("docker run -it -d -p [“10.0.0.1。]”:。“2222。”:。“22。[“/tcp。] [ -p 53”:。53/udp ] “centos。");
-							instruArr[1] = createCmdInstruSpan("-p","-p 用于添加端口映射信息，映射多个端口时，使用多个 -p");
-							instruArr[2] = createCmdInstruSpan("“10.0.0.1。","映射的宿主机IP，默认所有IP");
-							instruArr[3] = createCmdInstruSpan("“2222。”:。“22。[“/tcp。]","端口映射方式：宿主机端口:容器端口，默认 tcp");
+							instruArr[1] = createCmdInstruSpan("-p", "-p 用于添加端口映射信息，映射多个端口时，使用多个 -p");
+							instruArr[2] = createCmdInstruSpan("“10.0.0.1。", "映射的宿主机IP，默认所有IP");
+							instruArr[3] = createCmdInstruSpan("“2222。”:。“22。[“/tcp。]", "端口映射方式：宿主机端口:容器端口，默认 tcp");
 							instruArr[4] = createCmdInstruSpan("端口可以配置连接端口，如：5000-5010");
-							instruArr[5] = createCmdInstruSpan("“centos。","镜像名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[5] = createCmdInstruSpan("“centos。", "镜像名");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("查看映射信息","i3-5-2");
+						createInstruT2("查看映射信息", "i3-5-2");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker port “itachi。 [ “2222/tcp。 ]");
-							instruArr[1] = createCmdInstruSpan("“itachi。","容器名或ID");
-							instruArr[2] = createCmdInstruSpan("“2222/tcp。","查看某个具体端口的映射情况，端口为容器的端口，默认所有");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“itachi。", "容器名或ID");
+							instruArr[2] = createCmdInstruSpan("“2222/tcp。", "查看某个具体端口的映射情况，端口为容器的端口，默认所有");
+							createCmdInstruT2(instruArr, "docker");
 
-					createInstruT1("资源限制（运行容器时配置）","i3-6");
-						createInstruT2("限制内存使用量","i3-6-1");
+					createInstruT1("资源限制（运行容器时配置）", "i3-6");
+						createInstruT2("限制内存使用量", "i3-6-1");
 							instruArr[0] = createLinuxCmd("docker run -it -d --memory=“1G。 [ --memory-swap=“2G。 ] “centos。");
-							instruArr[1] = createCmdInstruSpan("--memory=“1G。","限制内存使用量");
-							instruArr[2] = createCmdInstruSpan("--memory-swap=“2G。","限制交换内存使用量，默认为内存相同");
-							instruArr[3] = createCmdInstruSpan("“centos。","镜像名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("--memory=“1G。", "限制内存使用量");
+							instruArr[2] = createCmdInstruSpan("--memory-swap=“2G。", "限制交换内存使用量，默认为内存相同");
+							instruArr[3] = createCmdInstruSpan("“centos。", "镜像名");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("限制CPU使用量","i3-6-1");
+						createInstruT2("限制CPU使用量", "i3-6-1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker run -it -d --cpu-shares=“100。 “centos。");
-							instruArr[1] = createCmdInstruSpan("--cpu-shares=“100。","限制CPU使用量，100仅是一个值，多个容器按设置值的比例分配CPU");
-							instruArr[2] = createCmdInstruSpan("“centos。","镜像名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("--cpu-shares=“100。", "限制CPU使用量，100仅是一个值，多个容器按设置值的比例分配CPU");
+							instruArr[2] = createCmdInstruSpan("“centos。", "镜像名");
+							createCmdInstruT2(instruArr, "docker");
 
-					createInstruT1("数据管理","i3-7");
-						createInstruT2("查看数据卷","i3-7-1");
-							createInstruT3("查看数据卷（通过jq查看）","i3-7-1-1");
+					createInstruT1("数据管理", "i3-7");
+						createInstruT2("查看数据卷", "i3-7-1");
+							createInstruT3("查看数据卷（通过jq查看）", "i3-7-1-1");
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker inspect “itachi。 | jq -r \".[0].Mounts\"");
-								instruArr[1] = createCmdInstruSpan("“itachi。","容器名或ID");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("“itachi。", "容器名或ID");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("basic/i3_7_1_1$1");
 
-							createInstruT3("查看所有数据卷","i3-7-1-2");
+							createInstruT3("查看所有数据卷", "i3-7-1-2");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("docker volume ls", 3);
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("basic/i3_7_1_2$1");
 
-							createInstruT3("查看数据卷详情","i3-7-1-3");
+							createInstruT3("查看数据卷详情", "i3-7-1-3");
 								instruArr[0] = createLinuxCmd("docker volume inspect “8309813489 …… c451e74a90。", 3);
-								instruArr[1] = createCmdInstruSpan("“830981348 …… c451e74a90。","数据卷ID（‘不支持简写。）");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("“830981348 …… c451e74a90。", "数据卷ID（‘不支持简写。）");
+								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("basic/i3_7_1_3$1");
 
-						createInstruT2("删除数据卷（不推荐使用linux方式直接删除文件）","i3-7-2", 3);
+						createInstruT2("删除数据卷（不推荐使用linux方式直接删除文件）", "i3-7-2", 3);
 							instruArr[0] = createLinuxCmd("docker volume rm “8309813489 …… c451e74a90。", 3);
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("创建数据卷","i3-7-3");
-							createInstruT3("匿名挂载","i3-7-3-1");
+						createInstruT2("创建数据卷", "i3-7-3");
+							createInstruT3("匿名挂载", "i3-7-3-1");
 								instruArr[0] = createLinuxCmd("docker run -it -d -v “/itachi_data。 --name itachi centos");
-								instruArr[1] = createCmdInstruSpan("-v","使用 -v 参数，设置挂载");
-								instruArr[2] = createCmdInstruSpan("“/itachi_data。","容器内目录，宿主机内随机生成");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[1] = createCmdInstruSpan("-v", "使用 -v 参数，设置挂载");
+								instruArr[2] = createCmdInstruSpan("“/itachi_data。", "容器内目录，宿主机内随机生成");
+								createCmdInstruT3(instruArr, "docker");
 
-							createInstruT3("具名挂载","i3-7-3-2");
+							createInstruT3("具名挂载", "i3-7-3-2");
 								instruArr[0] = createLinuxCmd("docker run -it -d -v { “itachi。 | “/cisco。 }”:。“/itachi_data。[”:。ro ] --name itachi centos");
-								instruArr[2] = createCmdInstruSpan("“itachi。 | “/cisco。","宿主机内目录，<br />  该卷不存在，新建这个卷，并生成容器" +
+								instruArr[2] = createCmdInstruSpan("“itachi。 | “/cisco。", "宿主机内目录，<br />  该卷不存在，新建这个卷，并生成容器" +
 										"<br />  该卷存在，通过该卷生成新容器，多个容器使用相同的卷，实现数据同步");
-								instruArr[3] = createCmdInstruSpan("“itachi。","相对路径，真实路径为  /var/lib/docker/volumes/“itachi。/_data");
-								instruArr[4] = createCmdInstruSpan("“/cisco。","绝对路径，真实路径即为 /cisco");
-								instruArr[5] = createCmdInstruSpan("“/itachi_data。","容器内目录");
-								instruArr[6] = createCmdInstruSpan("ro","容器内卷只读，宿主机内读写，默认为读写rw");
-								createCmdInstruT3(instruArr,"docker");
+								instruArr[3] = createCmdInstruSpan("“itachi。", "相对路径，真实路径为  /var/lib/docker/volumes/“itachi。/_data");
+								instruArr[4] = createCmdInstruSpan("“/cisco。", "绝对路径，真实路径即为 /cisco");
+								instruArr[5] = createCmdInstruSpan("“/itachi_data。", "容器内目录");
+								instruArr[6] = createCmdInstruSpan("ro", "容器内卷只读，宿主机内读写，默认为读写rw");
+								createCmdInstruT3(instruArr, "docker");
 
-							createInstruT3("实例<br />","i3-7-3-3");
+							createInstruT3("实例<br />", "i3-7-3-3");
 								createConfigImgT3("basic/i3_7_3_3$1~3");
 
-				createInstruT0("容器镜像导出导入","i6");
-						createInstruT2("将容器转化为镜像","i6-1");
+				createInstruT0("容器镜像导出导入", "i6");
+						createInstruT2("将容器转化为镜像", "i6-1");
 							instruArr[0] = createLinuxCmd("docker commit -m “\"installed net-tools\"。 -a “v_itachi。 “itachi。 “v_itachi/centos_ifconfig。");
-							instruArr[1] = createCmdInstruSpan("-m “\"installed net-tools\"。","-m 用于添加描述信息");
-							instruArr[2] = createCmdInstruSpan("-a “v_itachi。","-a 用于添加作者信息");
-							instruArr[3] = createCmdInstruSpan("“itachi。","容器名或ID");
-							instruArr[4] = createCmdInstruSpan("“v_itachi/centos_ifconfig。","新镜像名，一般采用 “作者。/“镜像名。");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("-m “\"installed net-tools\"。", "-m 用于添加描述信息");
+							instruArr[2] = createCmdInstruSpan("-a “v_itachi。", "-a 用于添加作者信息");
+							instruArr[3] = createCmdInstruSpan("“itachi。", "容器名或ID");
+							instruArr[4] = createCmdInstruSpan("“v_itachi/centos_ifconfig。", "新镜像名，一般采用 “作者。/“镜像名。");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("重命名镜像","i6-2");
+						createInstruT2("重命名镜像", "i6-2");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker tag “v_itachi/centos_ifconfig。 “v_itachi/centos。");
-							instruArr[1] = createCmdInstruSpan("“v_itachi/centos_ifconfig。","原镜像名");
-							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","新镜像名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“v_itachi/centos_ifconfig。", "原镜像名");
+							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。", "新镜像名");
+							createCmdInstruT2(instruArr, "docker");
 							createConfigImgT2("basic/i3_4_2$1");
 
-						createInstruT2("将容器导出为文件","i6-3");
+						createInstruT2("将容器导出为文件", "i6-3");
 							instruArr[0] = createLinuxCmd("docker export -o “container_itachi.tar。 “itachi。");
-							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。","导出的文件名");
-							instruArr[2] = createCmdInstruSpan("“itachi。","容器名或ID");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。", "导出的文件名");
+							instruArr[2] = createCmdInstruSpan("“itachi。", "容器名或ID");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("将容器文件导入为镜像","i6-4");
+						createInstruT2("将容器文件导入为镜像", "i6-4");
 							instruArr[0] = createLinuxCmd("docker import -o “container_itachi.tar。 “v_itachi/centos。");
-							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。","导入的文件名");
-							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","容器名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“container_itachi.tar。", "导入的文件名");
+							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。", "容器名");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("将镜像导出为文件","i6-5");
+						createInstruT2("将镜像导出为文件", "i6-5");
 							instruArr[0] = createLinuxCmd("docker save -o “image_itachi.tar。 “v_itachi/centos。");
-							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。","导出的文件名");
-							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。","镜像名或ID");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。", "导出的文件名");
+							instruArr[2] = createCmdInstruSpan("“v_itachi/centos。", "镜像名或ID");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("将镜像文件导入为镜像","i6-6");
+						createInstruT2("将镜像文件导入为镜像", "i6-6");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker load -i “image_itachi.tar。");
-							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。","导入的文件名");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“image_itachi.tar。", "导入的文件名");
+							createCmdInstruT2(instruArr, "docker");
 
-				createInstruT0("Dockerfile","i4");
-						createInstruKeyT2("FROM 指定基础镜像","i4-1");
+				createInstruT0("Dockerfile", "i4");
+						createInstruKeyT2("FROM 指定基础镜像", "i4-1");
 							createInstruT3("从0开始，无基础镜像，一般用于centos等底层容器");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("FROM scratch");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("从某个基础镜像开始");
 								instruArr[0] = createCmdSpan("FROM centos");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("从某个基础镜像的特定版本开始");
 								instruArr[0] = createCmdSpan("FROM centos:7");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
-						createInstruKeyT2("LABEL 对容器进行介绍","i4-2");
+						createInstruKeyT2("LABEL 对容器进行介绍", "i4-2");
 							instruArr[0] = createCmdSpan("LABEL maintainer=\"itachi<itachi@Konohagakure.com>\"");
 							instruArr[1] = createCmdSpan("LABEL version=\"1.0\"");
 							instruArr[2] = createCmdSpan("LABEL description=\"itachi first DockerFile\"");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruKeyT2("RUN 执行命令，多条命令建议写在同一个run中，用 && 连接","i4-3");
+						createInstruKeyT2("RUN 执行命令，多条命令建议写在同一个run中，用 && 连接", "i4-3");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("RUN yum -y update [ && yum -y install vim net-tools && …… ]");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruKeyT2("WORKDIR 切换目录，不推荐使用run执行cd命令","i4-4");
+						createInstruKeyT2("WORKDIR 切换目录，不推荐使用run执行cd命令", "i4-4");
 							instruArr[0] = createCmdSpan("WORKDIR /itachi");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruKeyT2("COPY 复制文件到容器中","i4-5");
+						createInstruKeyT2("COPY 复制文件到容器中", "i4-5");
 							instruArr[0] = createCmdSpan("COPY copy_fold /itachi");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruKeyT2("ADD与copy相同，复制文件到容器中，但增加了解压缩功能","i4-6");
+						createInstruKeyT2("ADD与copy相同，复制文件到容器中，但增加了解压缩功能", "i4-6");
 							instruArr[0] = createCmdSpan("ADD Python-3.8.5.tar.xz /itachi/unzip/");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruKeyT2("ENV 设置环境变量","i4-7");
+						createInstruKeyT2("ENV 设置环境变量", "i4-7");
 							createInstruT3("单个环境变量");
 								instruArr[0] = createCmdSpan("ENV IF_NAME eth0");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("多个环境变量");
 								instruArr[0] = createCmdSpan("ENV IF_NAME=eth0 SSH_PORT=22, …");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
-						createInstruKeyT2("VOLUME 设置卷","i4-8");
+						createInstruKeyT2("VOLUME 设置卷", "i4-8");
 							createInstruT3("DockerFile中设置的为匿名卷，可以通过docker run相应参数改为具名挂载");
 
 							createInstruT3("单个卷");
 								instruArr[0] = createCmdSpan("VOLUME /var/itachi");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("多个卷（[]是格式）");
 								instruArr[0] = createCmdSpan("VOLUME [\"/var/itachi\", \"/var/cisco\", …]");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
-						createInstruKeyT2("EXPOSE 声明该容器运行时的服务端口，‘仅声明。，使用时需要手工映射","i4-9");
+						createInstruKeyT2("EXPOSE 声明该容器运行时的服务端口，‘仅声明。，使用时需要手工映射", "i4-9");
 							instruArr[0] = createCmdSpan("EXPOSE 80 [ 8080  … ]");
-							createCmdInstruT2(instruArr,"docker");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruKeyT2("CMD 指定容器在运行时执行的程序及参数","i4-10");
+						createInstruKeyT2("CMD 指定容器在运行时执行的程序及参数", "i4-10");
 							createInstruT3("格式一：shell方式，CMD “命令。");
 								instruArr[0] = createCmdSpan("CMD ifconfig");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("格式二：exec方式，CMD [\"“可执行文件。\",\"“参数1。\",\"“参数2。\"…]（推荐）");
 								instruArr[0] = createCmdSpan("CMD [\"snmp.py\", \"10.1.1.1\", \"Cisc0123\"]");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("docker run里指定的命令会‘覆盖。在CMD中的命令");
 								createInstruAllTopT3("以Centos为基础镜像，安装ifconfg和vim<br /><br />");
 								createConfigImgT3("basic/i4_10$1~2");
 
-						createInstruKeyT2("ENTRYPOINT 指定容器在运行时执行的程序及参数","i4-11");
+						createInstruKeyT2("ENTRYPOINT 指定容器在运行时执行的程序及参数", "i4-11");
 							createInstruT3("格式一：shell方式，ENTRYPOINT “命令。");
 								instruArr[0] = createCmdSpan("ENTRYPOINT ifconfig");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("格式二：exec方式，ENTRYPOINT [\"“可执行文件。\",\"“参数1。\",\"“参数2。\"…]（推荐）");
 								instruArr[0] = createCmdSpan("ENTRYPOINT [\"snmp.py\", \"10.1.1.1\", \"Cisc0123\"]");
-								createCmdInstruT3(instruArr,"docker");
+								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("docker run里指定的命令会‘追加。在ENTRYPOINT的命令后");
 								createInstruAllTopT3("以Centos为基础镜像，安装ifconfg和vim<br />");
 								document.write("<br />")
 								createConfigImgT3("basic/i4_11$1~2");
 
-						createInstruT2("生成镜像","i4-12");
+						createInstruT2("生成镜像", "i4-12");
 							instruArr[0] = createLinuxCmd("docker build [ -f “itachi_docker。 ] -t “itachi/centos_vim_ifconfig。 <b>“.。</b> [ --no-cache ]");
-							instruArr[1] = createCmdInstruSpan("-f&nbsp;&nbsp;“itachi_docker。","指定dockerfile文件文件名，默认为‘Dockerfile。（区分大小写）");
-							instruArr[2] = createCmdInstruSpan("-t&nbsp;&nbsp;“itachi/centos_vim_ifconfig。","指定镜像名");
-							instruArr[3] = createCmdInstruSpan("<b>“.。</b>","文件路径 ");
-							instruArr[4] = createCmdInstruSpan("--no-cache","不使用缓存生成镜像");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("-f&nbsp;&nbsp;“itachi_docker。", "指定dockerfile文件文件名，默认为‘Dockerfile。（区分大小写）");
+							instruArr[2] = createCmdInstruSpan("-t&nbsp;&nbsp;“itachi/centos_vim_ifconfig。", "指定镜像名");
+							instruArr[3] = createCmdInstruSpan("<b>“.。</b>", "文件路径 ");
+							instruArr[4] = createCmdInstruSpan("--no-cache", "不使用缓存生成镜像");
+							createCmdInstruT2(instruArr, "docker");
 
-				createInstruT0("网络配置","i5");
-						createInstruT2("创建自定义网络","i5-1");
+				createInstruT0("网络配置", "i5");
+						createInstruT2("创建自定义网络", "i5-1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker network create -d bridge “uchiha。", 3);
-							instruArr[1] = createCmdInstruSpan("-d bridge","-d 指定网络类型");
-							instruArr[2] = createCmdInstruSpan("“uchiha。","网络名 ");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("-d bridge", "-d 指定网络类型");
+							instruArr[2] = createCmdInstruSpan("“uchiha。", "网络名 ");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("创建容器到自定义网络","i5-2");
+						createInstruT2("创建容器到自定义网络", "i5-2");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker run --name “itachi。 --network “uchiha。 -it -d “centos。");
-							instruArr[1] = createCmdInstruSpan("--network “uchiha。","--network 指定容器所属网络");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("--network “uchiha。", "--network 指定容器所属网络");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("允许容器连接到其它网络","i5-3");
+						createInstruT2("允许容器连接到其它网络", "i5-3");
 							instruArr[0] = createLinuxCmd("docker network connect “uchiha。 “naruto。", 3);
-							instruArr[1] = createCmdInstruSpan("“uchiha。","网络名或ID");
-							instruArr[2] = createCmdInstruSpan("“naruto。","容器名或ID");
-							createCmdInstruT2(instruArr,"docker");
+							instruArr[1] = createCmdInstruSpan("“uchiha。", "网络名或ID");
+							instruArr[2] = createCmdInstruSpan("“naruto。", "容器名或ID");
+							createCmdInstruT2(instruArr, "docker");
 
-						createInstruT2("查看相关信息","i5-4");
-							createInstruT3("查看网络<br />","i5-4-1");
+						createInstruT2("查看相关信息", "i5-4");
+							createInstruT3("查看网络<br />", "i5-4-1");
 								createConfigImgT3("basic/i5_4_1$1");
 
-							createInstruT3("CentOS 8查看bridge与veth-pain的对应关系<br />","i5-4-2");
+							createInstruT3("CentOS 8查看bridge与veth-pain的对应关系<br />", "i5-4-2");
 								createConfigImgT3("basic/i5_4_2$1");
 			</script>
 		</div>

@@ -26,7 +26,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("Etherne II 首部字段说明","i1");
+				createInstruT0("Etherne II 首部字段说明", "i1");
 					createProtocolStructT0(
 						"1274",
 						"200",
@@ -35,7 +35,7 @@
 						"以太网协议",
 					);
 
-					words = `
+					var words = `
 						目的MAC地址（Destination）
 						由6字节构成，表示目的MAC地址
 
@@ -56,7 +56,7 @@
 					`;
 					createProtocolExplainT0(words, -200);
 
-				createInstruT0("Etherne II 实例","i2");
+				createInstruT0("Etherne II 实例", "i2");
 					createInstruT1("实例为ping报文，如下所示<br />");
 						createConfigImgT1("ethernet/eth_packet");
 			</script>

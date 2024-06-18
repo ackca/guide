@@ -1,4 +1,4 @@
-top_menu = `	
+const top_menu = `	
 	<div class="top_navigation">
 		<div class="mod-header">
 			<div class="cat">
@@ -328,7 +328,7 @@ top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-cert">
-									    <img src="rootpath/img/cert.svg" />
+									    <img src="rootpath/img/cert.png" />
                                     </i>
 								</div>
 								<span style="font-size: 20px">证书服务</span>
@@ -581,6 +581,42 @@ top_menu = `
 					</div>
 				</div>
 			</div>
+			<div class="cat">
+				<div class="cat-box" data-cat="others">
+					<div class="layout">
+						<div class="cat-group">
+							<table>
+						        <tr>
+						            <td class="logo">
+						                <h3 class="cat-tit">
+                                            <i class="ico-nmap">
+                                                <img src="rootpath/img/nmap.svg" />
+                                            </i>
+                                        </h3>
+                                    </td>
+                                    <td>
+                                        <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/nmap/nmap.html">NMAP</a></span>
+                                        </h3>
+                                    </td>
+						            <td class="logo">
+						                <h3 class="cat-tit">
+                                            <i class="ico-os">
+                                                <img src="rootpath/img/os.webp" class="ico-os" />
+                                            </i>
+                                        </h3>
+                                    </td>
+                                    <td>
+                                        <h3 class="cat-tit">
+                                            <span><a href="rootpath/class/pxe/pxe.html">系统自动安装脚本</a></span>
+                                        </h3>
+                                    </td>
+                                </tr>
+                            </table>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="layout clearfix">
 				<div class="mod-header-nav">
 					<ul id="jmod-header-nav">
@@ -599,11 +635,6 @@ top_menu = `
 								<a href="javascript:void(0);">国产</a>
 							</h2>
 						</li>
-						<li id="nav-header-nmap" class="top-cat">
-                            <h2>
-                                <a href="rootpath/class/nmap/nmap.html">NMAP</a>
-                            </h2>
-                        </li>
 						<li id="nav-header-vmware" class="top-cat hassub" data-cat="vmware">
 							<h2>
 								<a href="javascript:void(0);">VMware</a>
@@ -624,6 +655,11 @@ top_menu = `
 								<a href="javascript:void(0);">Linux</a>
 							</h2>
 						</li>
+						<li id="nav-header-others" class="top-cat hassub" data-cat="others">
+                            <h2>
+                                <a href="javascript:void(0);">其它</a>
+                            </h2>
+                        </li>
 					</ul>
 					<i class="jmod-nav-slider slider hidden" style="transform: translateX(0px);"></i>
 				</div>

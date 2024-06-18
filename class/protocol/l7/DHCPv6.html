@@ -24,22 +24,22 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("DHCPv6应用原理","i1");
+				createInstruT0("DHCPv6应用原理", "i1");
 					createInstruAllTopT0("由于IPv6具备无状态自动配置功能，DHCPv6的使用与DHCPv4有明显区别");
 
 					createInstruAllTopT0("终端如何获得地址及其它信息由 ICMPv6的RA 报文中3个标志位控制，关系如下：<br />");
 
-					tHeader = [
+					var tHeader = [
 						"标志位A",
 						"标志位O",
 						"标志位M",
 						"状态",
 						"说明",
 					];
-					tBody = [
-						["A=1","O=0","M=0","SLAAC（无状态自动配置）","仅通过RA获得的信息，不通过DHCPv6获得信息"],
-						["A=1","O=1","M=0","Stateless DHCPv6","通过RA获得的信息，再通过DHCPv6获得其它信息"],
-						["A=0","-","M=1","Stateful DHCPv6","仅从RA中获取网关信息，其它信息通过DHCPv6获得"],
+					var tBody = [
+						["A=1", "O=0", "M=0", "SLAAC（无状态自动配置）", "仅通过RA获得的信息，不通过DHCPv6获得信息"],
+						["A=1", "O=1", "M=0", "Stateless DHCPv6", "通过RA获得的信息，再通过DHCPv6获得其它信息"],
+						["A=0", "-", "M=1", "Stateful DHCPv6", "仅从RA中获取网关信息，其它信息通过DHCPv6获得"],
 					];
 					createHLTableT0(1100, tHeader, tBody, "tRAFlag");
 
@@ -50,17 +50,17 @@
 					createInstruAllTopT0("实测：客户端很可能不遵守RA的引导，具体方式由客户端自己确定");
 
 
-				createInstruT0("简单的DHCPv6报文交互过程","i2");
-					createInstruT1("SLAAC<br />","i2-1");
+				createInstruT0("简单的DHCPv6报文交互过程", "i2");
+					createInstruT1("SLAAC<br />", "i2-1");
 						createConfigImgT1("DHCPv6/SLAAC", "DHCPv6 SLAAC");
 
-					createInstruT1("Stateless DHCP<br />","i2-2");
+					createInstruT1("Stateless DHCP<br />", "i2-2");
 						createConfigImgT1("DHCPv6/Stateless", "DHCPv6 Stateless");
 
-					createInstruT1("Stateful DHCP<br />","i2-3");
+					createInstruT1("Stateful DHCP<br />", "i2-3");
 						createConfigImgT1("DHCPv6/Stateful", "DHCPv6 Stateful");
 
-					createInstruT1("Rapid Commit","i2-4");
+					createInstruT1("Rapid Commit", "i2-4");
 						createInstruAllTopT1("Stateful状态时，DHCPv6的交互过程与DHCPv4基本相同，均为4个报文交互获得IP地址（及其它信息）");
 
 						createInstruAllTopT1("由于4个报文交互过程比较繁琐，仅存在一台DHCP服务器时，可以使用Rapid Commit模式");
@@ -70,7 +70,7 @@
 						createConfigImgT1("DHCPv6/Rapid-Commit", "DHCPv6 Rapid-Commit");
 
 
-				createInstruT0("DHCPv6报文与DHCPv4对比<br />","i3");
+				createInstruT0("DHCPv6报文与DHCPv4对比<br />", "i3");
 					tHeader = [
 						"报文类型",
 						"DHCPv6报文",
@@ -78,19 +78,19 @@
 						"说明",
 					];
 					tBody = [
-						["1","Solicit","Discover","DHCPv6客户端使用Solicit报文确定DHCPv6服务器位置。"],
-						["2","Advertise","Offer","DHCPv6服务器发送Advertise报文对Solicit报文进行回应，宣告能够提供DHCPv6服务。"],
-						["3","Request","Request","DHCPv6客户端使用Request报文向DHCPv6服务器请求IPv6地址和配置信息。"],
-						["4","Confirm","-","DHCPv6客户端向任意DHCPv6服务器发送Confirm报文检查目前获得的IPv6地址是否适应于它所连接的链路。"],
-						["5","Renew","Request","DHCPv6客户端向服务器发送Renew报文延长地址的生存周期并更新配置信息。"],
-						["6","Rebind","Request","如果Renew报文没有应答，DHCPv6客户端向任意服务器发送Rebind报文来延长地址的生存周期并更新配置信息。"],
-						["7","Reply","ACK/NAK","DHCPv6服务器会在以下场合发送Reply报文：<br />1、发送携带了地址和配置信息的Reply报文响应客户端发送的Solicit、Request、Renew、Rebind报文。<br />2、发送携带配置信息的Reply消息响应Information-Request报文<br />3、响应客户端发送的Confirm、Release、Decline报文。"],
-						["8","Release","Release","DHCPv6客户端向服务器发送Release报文，表明不再使用一个或多个获取的地址。"],
-						["9","Decline","Decline","DHCPv6服务器向客户端发送Decline报文，表明服务器分配的一个或多个地址在链路上已经被使用了。"],
-						["10","Reconfigure","-","DHCPv6客户端向服务器发送Reconfigure报文，表明服务器上存在新的网络配置信息。"],
-						["11","Information-Request","Inform","DHCPv6客户端向服务器发送Information-Request报文请求除IPv6地址以外的网络配置信息。"],
-						["12","Relay-Forward","-","中继代理通过Relay-Forward向DHCPv6服务器转发请求报文。"],
-						["13","Relay-Reply","-","DHCPv6服务器向中继代理发送Relay-Reply报文转发响应报文。"],
+						["1", "Solicit", "Discover", "DHCPv6客户端使用Solicit报文确定DHCPv6服务器位置。"],
+						["2", "Advertise", "Offer", "DHCPv6服务器发送Advertise报文对Solicit报文进行回应，宣告能够提供DHCPv6服务。"],
+						["3", "Request", "Request", "DHCPv6客户端使用Request报文向DHCPv6服务器请求IPv6地址和配置信息。"],
+						["4", "Confirm", "-", "DHCPv6客户端向任意DHCPv6服务器发送Confirm报文检查目前获得的IPv6地址是否适应于它所连接的链路。"],
+						["5", "Renew", "Request", "DHCPv6客户端向服务器发送Renew报文延长地址的生存周期并更新配置信息。"],
+						["6", "Rebind", "Request", "如果Renew报文没有应答，DHCPv6客户端向任意服务器发送Rebind报文来延长地址的生存周期并更新配置信息。"],
+						["7", "Reply", "ACK/NAK", "DHCPv6服务器会在以下场合发送Reply报文：<br />1、发送携带了地址和配置信息的Reply报文响应客户端发送的Solicit、Request、Renew、Rebind报文。<br />2、发送携带配置信息的Reply消息响应Information-Request报文<br />3、响应客户端发送的Confirm、Release、Decline报文。"],
+						["8", "Release", "Release", "DHCPv6客户端向服务器发送Release报文，表明不再使用一个或多个获取的地址。"],
+						["9", "Decline", "Decline", "DHCPv6服务器向客户端发送Decline报文，表明服务器分配的一个或多个地址在链路上已经被使用了。"],
+						["10", "Reconfigure", "-", "DHCPv6客户端向服务器发送Reconfigure报文，表明服务器上存在新的网络配置信息。"],
+						["11", "Information-Request", "Inform", "DHCPv6客户端向服务器发送Information-Request报文请求除IPv6地址以外的网络配置信息。"],
+						["12", "Relay-Forward", "-", "中继代理通过Relay-Forward向DHCPv6服务器转发请求报文。"],
+						["13", "Relay-Reply", "-", "DHCPv6服务器向中继代理发送Relay-Reply报文转发响应报文。"],
 					];
 					createHLTableT0(1100, tHeader, tBody, "tV6V4");
 

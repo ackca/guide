@@ -26,7 +26,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("UDP 首部字段说明","i1");
+				createInstruT0("UDP 首部字段说明", "i1");
 					createProtocolStructT0(
 						"815",
 						"290",
@@ -35,7 +35,7 @@
 						"UDP协议"
 					);
 
-					words = `
+					var words = `
 						源端口号（Source Port）
 						由16 bits构成，表示发送端端口号<br />没有源端口号的时间该字段的值设置为0，可用于不需要返回的通信中
 
@@ -53,20 +53,19 @@
 					`;
 					createProtocolExplainT0(words, -290);
 
-				createInstruT0("UDP 实例","i2");
+				createInstruT0("UDP 实例", "i2");
 					createInstruT1("实例为tftp报文，如下所示<br />");
 						createConfigImgT1("UDP/UDP_packet");
 
-				createInstruT0("UDP 应用源目端口关系","i3");
+				createInstruT0("UDP 应用源目端口关系", "i3");
 					createInstruAllTopT0("UDP应用源目端口关系复杂，存在多种情况");
 					createInstruAllTopT0("1、客户端端口随机，服务器端口固定，如：SNMP");
 					createInstruAllTopT0("2、客户端端口、服务器端口均固定，但不相同，如：DHCP");
 					createInstruAllTopT0("3、客户端端口、服务器端口均固定，且相同，如：IKE");
-					createInstruAllTopT0("4、特定协议，只由客户端发送到服务器，无响应，如：syslog");
-					document.writeln("<br />");
+					createInstruAllTopT0("4、特定协议，只由客户端发送到服务器，无响应，如：syslog<br />");
 					createConfigImgT0("UDP/UDP_port$1~4");
 
-				createInstruT0("UDP 伪首部<br />","i4");
+				createInstruT0("UDP 伪首部<br />", "i4");
 					createConfigImgT0("UDP/UDP伪首部", "UDP伪首部");
 
 			</script>

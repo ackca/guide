@@ -23,7 +23,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("动态应用FTP","i1");
+				createInstruT0("动态应用FTP", "i1");
 					createInstruAllTopT0("FTP共使用两条信道，控制信道与数据信道，数据信息除用于传输数据外，还用于罗列目录");
 
 					createInstruAllTopT0("控制信息一直存在，数据信道每次使用后关闭，再次使用数据信道时，启用一条新的信道");
@@ -34,41 +34,41 @@
 
 					createInstruAllTopT0("一般情况下，无论是FTP服务器还是客户端均支持这2种模式，默认使用Passive模式");
 
-				createInstruT0("FTP Passive（被动）模式详解","i2");
-					createInstruT1("综述","i2-1");
+				createInstruT0("FTP Passive（被动）模式详解", "i2");
+					createInstruT1("综述", "i2-1");
 						createInstruAllTopT1("被动模式，指的由‘客户端。主动向‘服务器。请求，使用被动模式，由‘服务器。提供数据信道的端口号");
 
 						createInstruAllTopT1("控制信道，由‘客户端。主动向‘服务器。发起，‘源端口号。为‘随机高端口。，‘目的端口号。为‘客户端提供的端口号。<br /><br /><br />");
 
 						createConfigImgT1("FTP/Passive_mode", "FTP被动模式");
 
-					createInstruT1("基于IPv4<br />","i2-2");
+					createInstruT1("基于IPv4<br />", "i2-2");
 						createConfigImgT1("FTP/IPv4_Passive$1~2");
 
-					createInstruT1("基于IPv6<br />","i2-3");
+					createInstruT1("基于IPv6<br />", "i2-3");
 						createConfigImgT1("FTP/IPv6_Passive$1~2");
 
-				createInstruT0("FTP Active（主动）模式详解","i3");
-					createInstruT1("综述","i3-1");
+				createInstruT0("FTP Active（主动）模式详解", "i3");
+					createInstruT1("综述", "i3-1");
 						createInstruAllTopT1("主动模式，指的由‘客户端。主动向‘服务器。请求，使用主动模式，向‘服务器。提供数据信道的端口号");
 
 						createInstruAllTopT1("控制信道，由‘服务器。主动向‘客户端。发起，‘源端口号。为‘20。，‘目的端口号。为‘客户端提供的端口号。<br /><br /><br />");
 
 						createConfigImgT1("FTP/Active_mode", "FTP主动动模式");
 
-					createInstruT1("基于IPv4<br />","i3-2");
+					createInstruT1("基于IPv4<br />", "i3-2");
 						createConfigImgT1("FTP/IPv4_Active$1~2");
 
-					createInstruT1("基于IPv6<br />","i3-3");
+					createInstruT1("基于IPv6<br />", "i3-3");
 						createConfigImgT1("FTP/IPv6_Active");
 
 
-				createInstruT0("FTP与NAT","i4");
+				createInstruT0("FTP与NAT", "i4");
 					createInstruAllTopT0("由于FTP为动态应用，新的信道的信息在FTP报文中有所体现");
 
 					createInstruAllTopT0("经过NAT设备时，需要内报文中的IP地址、端口信息进行修改，以便正常通过NAT设备及防火墙");
 
-				createInstruT0("SFTP与FTPS","i5");
+				createInstruT0("SFTP与FTPS", "i5");
 					createInstruAllTopT0("标准FTP为纯明文协议，为了提高安全性，产生了SFTP和FTPS两种密文协议");
 
 					createInstruAllTopT0("SFTP：FTP over SSH，端口号使用SSH的TCP 22，不再有第二信道，由SSH提供安全保障");
@@ -80,8 +80,6 @@
 					createInstruAllTopT0("　　　　　&nbsp;此外，FTPS还有显示加密与隐示加密两种，显示加密在报文交互过程时，客户端明确提出加密请求");
 
 					createInstruAllTopT0("　　　　　&nbsp;隐示加密则直接进行加密，无请求，而且控制信道改为TCP 990，数据信道逻辑不变");
-
-
 			</script>
 
 			<br /><br /><br /><br /><br /><br /><br />

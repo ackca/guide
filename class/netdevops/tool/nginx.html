@@ -14,15 +14,15 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("基本配置","i1");
-						createInstruT2("安装软件","i1-1");
+				createInstruT0("基本配置", "i1");
+						createInstruT2("安装软件", "i1-1");
 							createInstruAllTopT2("软件名为 nginx");
-							cmd = `
+							var cmd = `
 								dnf install -y nginx
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("启用&&开机启用服务","i1-2");
+						createInstruT2("启用&&开机启用服务", "i1-2");
 							createInstruAllTopT2("服务名为 nginx");
 							cmd = `
 								systemctl start nginx
@@ -30,12 +30,12 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("配置文件位置","i1-3");
+						createInstruT2("配置文件位置", "i1-3");
 							createInstruAllTopT2("主配置文件路径：’/etc/nginx/nginx.conf。");
 							createInstruAllTopT2("自定义配置文件 以 ’.conf。 结尾，保存到 ’/etc/nginx/default.d/ 。");
 
-				createInstruT0("证书相关","i2");
-						createInstruT2("客户端通过证书认证服务器","i2-1");
+				createInstruT0("证书相关", "i2");
+						createInstruT2("客户端通过证书认证服务器", "i2-1");
 							createInstruAllTopT2("只需要证书及私钥");
 							cmd = `
 								server {
@@ -44,17 +44,17 @@
 									server_name  certsrv.itachi.tech;
 									root         /usr/share/nginx/html;
 
-									ssl_certificate "/opt/certs/certsrv.pem";           # 服务器证书
-									ssl_certificate_key "/opt/certs/certsrv-key.pem";   # 服务器私钥
-									ssl_session_cache shared:SSL:1m;
+									ssl_certificate  "/opt/certs/certsrv.pem";           # 服务器证书
+									ssl_certificate_key  "/opt/certs/certsrv-key.pem";   # 服务器私钥
+									ssl_session_cache  shared:SSL:1m;
 									ssl_session_timeout  10m;
-									ssl_ciphers PROFILE=SYSTEM;
-									ssl_prefer_server_ciphers on;
+									ssl_ciphers  PROFILE=SYSTEM;
+									ssl_prefer_server_ciphers  on;
 								}
 							`;
-							createLinuxTxtT2(cmd);
+							createNginxConfigT2(cmd);
 
-						createInstruT2("双向证书认证","i2-2");
+						createInstruT2("双向证书认证", "i2-2");
 							createInstruAllTopT2("校验服务器时，需要证书及私钥，校验客户端时，需要客户端证书的根证书");
 							createInstruAllTopT2("客户端需要对应的证书及私钥，该证书需要支持 ’客户端身份验证。 功能，微软证书服务器则为 用户 证书");
 							cmd = `
@@ -75,9 +75,9 @@
 									ssl_client_certificate  /opt/certs/ca.pem;  # 客户端证书的根证书
 								}
 							`;
-							createLinuxTxtT2(cmd);
+							createNginxConfigT2(cmd);
 
-					createInstruT2("nginx代理https服务，单向认证","i2-3");
+					createInstruT2("nginx代理https服务，单向认证", "i2-3");
 						createInstruAllTopT2("如果https的根证书不被信任，可以不校验，也可以添加根证书信任");
 						cmd = `
 							server {
@@ -99,9 +99,9 @@
 								}
 							}
 						`;
-						createLinuxTxtT2(cmd);
+						createNginxConfigT2(cmd);
 
-					createInstruT2("nginx代理https服务，双向认证","i2-4");
+					createInstruT2("nginx代理https服务，双向认证", "i2-4");
 						createInstruAllTopT2("如果https的根证书不被信任，可以不校验，也可以添加根证书信任");
 						createInstruAllTopT2("客户端需要证书及私钥，该证书需要支持 ’客户端身份验证。 功能，微软证书服务器则为 用户 证书");
 						cmd = `
@@ -127,7 +127,7 @@
 								}
 							}
 						`;
-						createLinuxTxtT2(cmd);
+						createNginxConfigT2(cmd);
 			</script>
 		</div>
 	</div>

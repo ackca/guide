@@ -20,9 +20,9 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("安装&初始化（Docker版）","i1");
-					createInstruT1("运行gitlab（docker-compose）","i1-1");
-						yaml = `
+				createInstruT0("安装&初始化（Docker版）", "i1");
+					createInstruT1("运行gitlab（docker-compose）", "i1-1");
+						var yaml = `
 							version: "3.7"
 							services:
 								itachi_gitlab:
@@ -47,14 +47,14 @@
 						`;
 						createYAMLT1(yaml);
 
-						createInstruT1("运行gitlab（docker-compose）","i1-2");
-							createInstruT2("修改配置文件，对应实际目录：‘/etc/gitlab/gitlab.rb。","i1-2-1");
+						createInstruT1("运行gitlab（docker-compose）", "i1-2");
+							createInstruT2("修改配置文件，对应实际目录：‘/etc/gitlab/gitlab.rb。", "i1-2-1");
 								createInstruAllTopT2("默认内容均为注释，直接添加下面内容即可<br />");
 								instruArr = new Array();
 								instruArr[0] = createLinuxCmd("vim /gitlab/config/gitlab.rb");
 								createCmdInstruT2(instruArr,"gitlab");
 
-								cmd = `
+								var cmd = `
 									external_url 'https://gitlab.itachi.tech'
 									nginx['enable'] = true
 									nginx['redirect_http_to_https'] = true    # http重定向到https
@@ -64,24 +64,24 @@
 								`;
 								createLinuxTxtT2(cmd);
 
-							createInstruT2("将证书放入对应目录中，对应实际目录：‘/etc/gitlab/ssl/ 。<br />","i1-2-2");
+							createInstruT2("将证书放入对应目录中，对应实际目录：‘/etc/gitlab/ssl/ 。<br />", "i1-2-2");
 								createConfigImgT2("gitlab/i1_2_2$1");
 
-							createInstruT2("重启gitlab<br />","i1-2-3");
+							createInstruT2("重启gitlab<br />", "i1-2-3");
 
-						createInstruT1("初始化","i1-3");
-							createInstruT2("用户名为root，查看初始密码，对应实际目录：‘/etc/gitlab/initial_root_password。","i1-3-1");
+						createInstruT1("初始化", "i1-3");
+							createInstruT2("用户名为root，查看初始密码，对应实际目录：‘/etc/gitlab/initial_root_password。", "i1-3-1");
 								instruArr[0] = createLinuxCmd("cat /gitlab/config/initial_root_password");
 								createCmdInstruT2(instruArr,"gitlab");
 								createConfigImgT2("gitlab/i1_3_1$1");
 
-							createInstruT2("修改语言<br />","i1-3-2");
+							createInstruT2("修改语言<br />", "i1-3-2");
 								createConfigImgT2("gitlab/i1_3_2$1~2");
 
-							createInstruT2("修改密码<br />","i1-3-3");
+							createInstruT2("修改密码<br />", "i1-3-3");
 								createConfigImgT2("gitlab/i1_3_3$1~2");
 
-					createInstruT0("安装GitLab Runner","i2");
+					createInstruT0("安装GitLab Runner", "i2");
 						createInstruT1("安装介绍：<a class='link' href='https://docs.gitlab.com/runner/install/linux-repository.html' target='_blank'>https://docs.gitlab.com/runner/install/linux-repository.html</a>");
 
 						createInstruT1("配置仓库<br />");
@@ -92,8 +92,8 @@
 							instruArr[0] = createLinuxCmd("yum install -y gitlab-runner");
 							createCmdInstruT1(instruArr,"gitlab");
 
-					createInstruT0("Docker_DevOps","i3");
-						createInstruT1("项目注册Runner","i3-1");
+					createInstruT0("Docker_DevOps", "i3");
+						createInstruT1("项目注册Runner", "i3-1");
 							cmd = `
 								gitlab-runner register
 
@@ -118,7 +118,7 @@
 
 							createConfigImgT1("gitlab/i3_1$1~4");
 
-						createInstruT1(".gitlab-ci 参考 <a href='yaml/03_docker_devops/.gitlab-ci.yml' download='.gitlab-ci.yml'>下载该文件</a>","i3-2");
+						createInstruT1(".gitlab-ci 参考 <a href='yaml/03_docker_devops/.gitlab-ci.yml' download='.gitlab-ci.yml'>下载该文件</a>", "i3-2");
 							yaml = `
 								stages:
 									- docker_build_flask
@@ -179,8 +179,8 @@
 							`;
 							createYAMLT1(yaml);
 
-						createInstruT1("sudo 相关配置","i3-3");
-							createInstruT2("允许gitlab-runner使用sudo","i3-3-1");
+						createInstruT1("sudo 相关配置", "i3-3");
+							createInstruT2("允许gitlab-runner使用sudo", "i3-3-1");
 								createInstruAllTopT2("GitLab Runner使用gitlab-runner的用户使用shell，允许该用户使用sudo，并无需密码");
 
 								createInstruT3("使用 ‘visudo。 命令配置sudo，增加相应配置");
@@ -188,7 +188,7 @@
 									createCmdInstruT3(instruArr,"gitlab");
 									createConfigImgT3("gitlab/i3_3_1$1~2");
 
-							createInstruT2("解决 ‘sudo: docker-compose：找不到命令。 问题","i3-3-2");
+							createInstruT2("解决 ‘sudo: docker-compose：找不到命令。 问题", "i3-3-2");
 								instruArr[0] = createLinuxCmd("cp -rf /usr/local/bin/docker-compose /usr/bin/docker-compose");
 								createCmdInstruT2(instruArr,"gitlab");
 								createConfigImgT2("gitlab/i3_3_2$1");

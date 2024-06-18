@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<link rel="icon" href="../../../img/cert.svg" />
+	<link rel="icon" href="../../../img/cert.png" />
 	<title>NetDevOps-证书服务-CFSSL</title>
 	<script src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
@@ -14,7 +14,7 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("安装CFSSL","i1");
+				createInstruT0("安装CFSSL", "i1");
 					// createInstruT2("CFSSL介绍");
 					//	 createInstruAllTopT2("<a class='link' href='cfssl.mhtml' target='_blank'>https://blog.51cto.com/liuzhengwei521/2120535</a><br />");
 
@@ -22,7 +22,7 @@
 						createInstruAllTopT1("下载地址：<a class='link' href='https://github.com/cloudflare/cfssl/releases' target='_blank'>https://github.com/cloudflare/cfssl/releases</a>");
 						createInstruAllTopT1("下载 ‘cfssl。、‘cfssljson。、‘cfssl-certinfo。 对应版本的文件，并赋予执行权限");
 
-						cmd = `
+						var cmd = `
 							wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64 -O /usr/bin/cfssl
 
 							wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64 -O /usr/bin/cfssljson
@@ -35,7 +35,7 @@
 
 					createInstruT1("确认安装");
 						createInstruT2("cfssl的命令行工具");
-							cmd = `
+							var cmd = `
 								which cfssl
 								# 下面为输出
 								/usr/bin/cfssl
@@ -58,8 +58,8 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-				createInstruT0("初始化CA","i2");
-					createInstruT1("创建json格式的自签名根证书","i2-1");
+				createInstruT0("初始化CA", "i2");
+					createInstruT1("创建json格式的自签名根证书", "i2-1");
 						cmd = `
 							mkdir -p /opt/certs
 
@@ -89,11 +89,11 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("初始化CA<br/>","i2-2");
-						instruArr = new Array();
-						instruArr[0]=createLinuxCmd("cfssl gencert -initca “ca-csr.json。 | cfssljson -bare “ca。");
-						instruArr[1]=createCmdInstruSpan("“ca-csr.json。","json格式根证书请求");
-						instruArr[2]=createCmdInstruSpan("“ca。","生成的根证书的文件名，扩展名根据文件类型自动添加");
+					createInstruT1("初始化CA<br/>", "i2-2");
+						var instruArr = new Array();
+						instruArr[0] = createLinuxCmd("cfssl gencert -initca “ca-csr.json。 | cfssljson -bare “ca。");
+						instruArr[1] = createCmdInstruSpan("“ca-csr.json。", "json格式根证书请求");
+						instruArr[2] = createCmdInstruSpan("“ca。", "生成的根证书的文件名，扩展名根据文件类型自动添加");
 						createCmdInstruT1(instruArr,"cfssl");
 
 						cmd = `
@@ -148,7 +148,7 @@
 					// 	`;
 					// 	createLinuxTxtT1(cmd);
 
-					createInstruT1("配置证书模板","i2-3");
+					createInstruT1("配置证书模板", "i2-3");
 						cmd = `
 							# server 服务器证书
 							# client 客户证书
@@ -196,10 +196,10 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("申请证书","i3")
+				createInstruT0("申请证书", "i3")
 					createInstruAllTopT0("以申请Web服务器证书为例")
-					createInstruT1("全新申请","i3-1")
-						createInstruT2("创建json格式的证书申请文件","i3-1-1");
+					createInstruT1("全新申请", "i3-1")
+						createInstruT2("创建json格式的证书申请文件", "i3-1-1");
 							cmd = `
 								cat >/opt/certs/web.json <<EOF
 								{
@@ -225,22 +225,22 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("申请证书","i3-1-2");
+						createInstruT2("申请证书", "i3-1-2");
 							instruArr = new Array();
-							instruArr[0]=createLinuxCmd(
+							instruArr[0] = createLinuxCmd(
 								"cfssl gencert -ca “ca.pem。 -ca-key “ca-key.pem。 \\ " +
 													"-config “ca-config.json。 -profile “server。 \\ " +
 													"“web.json。 | cfssljson -bare “web-server。"
 							);
-							// instruArr[0]=createLinuxCmd(
+							// instruArr[0] = createLinuxCmd(
 							// 	"cfssljson -bare “web-server。"
 							// );
-							instruArr[1]=createCmdInstruSpan("“ca.pem。","根证书");
-							instruArr[2]=createCmdInstruSpan("“ca-key.pem。","根证书的私钥");
-							instruArr[3]=createCmdInstruSpan("“ca-config.json。","json格式的证书模板");
-							instruArr[4]=createCmdInstruSpan("“server。","证书类型");
-							instruArr[5]=createCmdInstruSpan("“web.json。","json格式的证书请求");
-							instruArr[6]=createCmdInstruSpan("“web-server。","生成的证书的文件名，扩展名根据文件类型自动添加");
+							instruArr[1] = createCmdInstruSpan("“ca.pem。", "根证书");
+							instruArr[2] = createCmdInstruSpan("“ca-key.pem。", "根证书的私钥");
+							instruArr[3] = createCmdInstruSpan("“ca-config.json。", "json格式的证书模板");
+							instruArr[4] = createCmdInstruSpan("“server。", "证书类型");
+							instruArr[5] = createCmdInstruSpan("“web.json。", "json格式的证书请求");
+							instruArr[6] = createCmdInstruSpan("“web-server。", "生成的证书的文件名，扩展名根据文件类型自动添加");
 							createCmdInstruT2(instruArr,"cfssl");
 
 							cmd = `
@@ -272,14 +272,14 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("已经申请文件csr<br />","i3-2");
-						instruArr[0]=createLinuxCmd(
+					createInstruT1("已经申请文件csr<br />", "i3-2");
+						instruArr[0] = createLinuxCmd(
 							"cfssl sign -ca “ca.pem。 -ca-key “ca-key.pem。 \\ " +
 										"-config “ca-config.json。 -profile “server。 \\ " +
 										"-csr “PAN-P.itachi.tech.csr。 | cfssljson -bare “PAN-P.itachi.tech。"
 						);
-						instruArr[5]=createCmdInstruSpan("“PAN-P.itachi.tech.csr。","证书请求");
-						instruArr[6]=createCmdInstruSpan("“PAN-P.itachi.tech。","生成的证书的文件名，扩展名根据文件类型自动添加");
+						instruArr[5] = createCmdInstruSpan("“PAN-P.itachi.tech.csr。", "证书请求");
+						instruArr[6] = createCmdInstruSpan("“PAN-P.itachi.tech。", "生成的证书的文件名，扩展名根据文件类型自动添加");
 						createCmdInstruT1(instruArr,"cfssl");
 
 						cmd = `
@@ -306,24 +306,24 @@
 						createLinuxTxtT1(cmd);
 
 
-				createInstruT0("创建证书吊销列表CRL","i4");
-						createInstruT2("获取被吊销证书的序列号","i4-1");
+				createInstruT0("创建证书吊销列表CRL", "i4");
+						createInstruT2("获取被吊销证书的序列号", "i4-1");
 							instruArr = null;
 							instruArr = new Array();
-							instruArr[0]=createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\"");
-							instruArr[1]=createCmdInstruSpan("“abc.pem。","被吊销的证书");
+							instruArr[0] = createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\"");
+							instruArr[1] = createCmdInstruSpan("“abc.pem。", "被吊销的证书");
 							createCmdInstruT2(instruArr,"cfssl");
 
-						createInstruT2("将序列号写入文件，多个证书，则每行一个序列号","i4-2");
-							instruArr[0]=createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\" >> “crl.txt。");
-							instruArr[2]=createCmdInstruSpan("“crl.txt。","存储被吊销证书序列号的文件");
+						createInstruT2("将序列号写入文件，多个证书，则每行一个序列号", "i4-2");
+							instruArr[0] = createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\" >> “crl.txt。");
+							instruArr[2] = createCmdInstruSpan("“crl.txt。", "存储被吊销证书序列号的文件");
 							createCmdInstruT2(instruArr,"cfssl");
 
-						createInstruT2("生成证书吊销列表crl","i4-3");
-							instruArr[0]=createLinuxCmd("cfssl gencrl crl.txt “ca.pem。 “ca-key.pem。 | tee “crl.crl。");
-							instruArr[1]=createCmdInstruSpan("“ca.pem。","根证书");
-							instruArr[2]=createCmdInstruSpan("“ca-key.pem。","根证书的私钥");
-							instruArr[3]=createCmdInstruSpan("“crl.crl。","证书吊销列表crl");
+						createInstruT2("生成证书吊销列表crl", "i4-3");
+							instruArr[0] = createLinuxCmd("cfssl gencrl crl.txt “ca.pem。 “ca-key.pem。 | tee “crl.crl。");
+							instruArr[1] = createCmdInstruSpan("“ca.pem。", "根证书");
+							instruArr[2] = createCmdInstruSpan("“ca-key.pem。", "根证书的私钥");
+							instruArr[3] = createCmdInstruSpan("“crl.crl。", "证书吊销列表crl");
 							createCmdInstruT2(instruArr,"cfssl");
 			</script>
 		</div>

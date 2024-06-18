@@ -14,9 +14,9 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("前期准备","i1");
+				createInstruT0("前期准备", "i1");
 					createInstruT1("关闭防火墙（所有节点）");
-						cmd = `
+						var cmd = `
 							systemctl stop firewalld
 						`;
 						createLinuxTxtT1(cmd);
@@ -77,7 +77,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装docker","i2");
+				createInstruT0("安装docker", "i2");
 					createInstruT1("切换国内镜像源并安装相应组件（所有节点）");
 						cmd = `
 							yum install -y yum-utils
@@ -120,7 +120,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("初始化DNS","i3");
+				createInstruT0("初始化DNS", "i3");
 					createInstruT1("安装DNS （dnsca）");
 						cmd = `
 							yum install -y bind
@@ -288,7 +288,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("初始化CA","i4");
+				createInstruT0("初始化CA", "i4");
 					createInstruT1("CFSSL介绍");
 						cmd = `
 							https://blog.51cto.com/liuzhengwei521/2120535
@@ -389,7 +389,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装私有镜像仓库Harbor","i5");
+				createInstruT0("安装私有镜像仓库Harbor", "i5");
 					createInstruT1("下载安装docker-compose（dnsca）");
 						cmd = `
 							curl -L "https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -489,7 +489,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装 kubeadmin、kubelet、kubectl","i6");
+				createInstruT0("安装 kubeadmin、kubelet、kubectl", "i6");
 					createInstruT1("更新yum源为阿里云（所有master、node（dnsca）");
 						cmd = `
 							# 参考https://developer.aliyun.com/mirror/kubernetes
@@ -517,7 +517,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("部署集群","i7");
+				createInstruT0("部署集群", "i7");
 					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master（dnsca）");
 						cmd = `
 							mkdir -p /etc/kubernetes/pki
@@ -582,7 +582,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装calico（任意一个master（dnsca）","i8");
+				createInstruT0("安装calico（任意一个master（dnsca）", "i8");
 					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master（dnsca）");
 						cmd  = `
 							# 参考 https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises
@@ -689,7 +689,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-				createInstruT0("修改kube-proxy为ipvs模式","i9");
+				createInstruT0("修改kube-proxy为ipvs模式", "i9");
 					createInstruT1("修改kube-proxy模式（任意一个master）");
 						cmd = `
 							kubectl edit cm kube-proxy -n kube-system
@@ -714,7 +714,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装ingress","i10");
+				createInstruT0("安装ingress", "i10");
 					createInstruT1("安装ingress（任意一个master）");
 						cmd = `
 							# ds.yaml文件中第26行，设置节点服务器的对应端口，根据需要配置

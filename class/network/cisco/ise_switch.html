@@ -14,8 +14,8 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("配置总览","i1");
-					createInstruT1("全局配置","i1-1");
+				createInstruT0("配置总览", "i1");
+					createInstruT1("全局配置", "i1-1");
 						cmd = `
 							aaa new-model
 							!
@@ -71,7 +71,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("接口配置","i1-2");
+					createInstruT1("接口配置", "i1-2");
 						cmd = `
 							!interface GigabitEthernet1/0/1
 							 switchport access vlan 102
@@ -93,134 +93,134 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("配置详解","i2");
-					createInstruT1("全局配置","i2-1");
-						createInstruT2("启用aaa，并配置线下保护","i2-1-1");
+				createInstruT0("配置详解", "i2");
+					createInstruT1("全局配置", "i2-1");
+						createInstruT2("启用aaa，并配置线下保护", "i2-1-1");
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config)# aaa new-model");
 							instruArr[1] = createCmdSpan("SW1(config)# aaa authentication login “linelogin。 line none");
-							instruArr[2] = createCmdInstruSpan("“linelogin。","用于线下保护的登录策略名");
+							instruArr[2] = createCmdInstruSpan("“linelogin。", "用于线下保护的登录策略名");
 							instruArr[3] = createCmdSpan("SW1(config)# line con 0");
 							instruArr[4] = createCmdSpan("SW1(config-line)# login authentication “linelogin。");
-							instruArr[5] = createCmdInstruSpan("“linelogin。","用于线下保护的登录策略名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[5] = createCmdInstruSpan("“linelogin。", "用于线下保护的登录策略名");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("交换机指定ISE","i2-1-6");
+						createInstruT2("交换机指定ISE", "i2-1-6");
 							createInstruAllTopT2("先配置单个ISE，再加入ISE组中，如果存在冗余，将多个ISE加入组中");
 							createInstruT3("配置单个radius服务器（ISE）地址及相关信息");
 								instruArr[0] = createCmdSpan("SW1(config)# radius server “pan-p。");
-								instruArr[1] = createCmdInstruSpan("“pan-p。","ISE名");
+								instruArr[1] = createCmdInstruSpan("“pan-p。", "ISE名");
 								instruArr[2] = createCmdSpan("SW1(config-radius-server)# address ipv4 “10.1.100.241。 [ auth-port “1812。 acct-port “1813。 ]");
-								instruArr[3] = createCmdInstruSpan("“10.1.100.241。","ISE的IP地址");
-								instruArr[4] = createCmdInstruSpan("“1812。","认证与授权的端口号");
-								instruArr[5] = createCmdInstruSpan("“1813。","审计的端口号");
+								instruArr[3] = createCmdInstruSpan("“10.1.100.241。", "ISE的IP地址");
+								instruArr[4] = createCmdInstruSpan("“1812。", "认证与授权的端口号");
+								instruArr[5] = createCmdInstruSpan("“1813。", "审计的端口号");
 								instruArr[6] = createCmdSpan("SW1(config-radius-server)# key “cisco。");
-								instruArr[7] = createCmdInstruSpan("“cisco。","与ISE间的预共享密匙");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[7] = createCmdInstruSpan("“cisco。", "与ISE间的预共享密匙");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置radius服务器（ISE）组");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config)# aaa group server radius “ISE。");
-								instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
+								instruArr[1] = createCmdInstruSpan("“ISE。", "ISE组名");
 								instruArr[2] = createCmdSpan("SW1(config-sg-radius)# server name “pan-p。");
-								instruArr[3] = createCmdInstruSpan("“pan-p。","单个radius服务器名，如果ISE存在冗余，配置多条 server … 命令");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[3] = createCmdInstruSpan("“pan-p。", "单个radius服务器名，如果ISE存在冗余，配置多条 server … 命令");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("测试与ISE的连通性");
 								instruArr[0] = createCmdSpan("SW1# test aaa group “ISE。 “itachi。 “Cisc0123。 new-code");
-								instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
-								instruArr[2] = createCmdInstruSpan("“itachi。","用户名");
-								instruArr[3] = createCmdInstruSpan("“Cisc0123。","密码");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“ISE。", "ISE组名");
+								instruArr[2] = createCmdInstruSpan("“itachi。", "用户名");
+								instruArr[3] = createCmdInstruSpan("“Cisc0123。", "密码");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("启用802.1x认证、授权与审计","i2-1-2");
+						createInstruT2("启用802.1x认证、授权与审计", "i2-1-2");
 							instruArr[0] = createCmdSpan("SW1(config)# aaa authentication dot1x default group “ISE。");
 							instruArr[1] = createCmdSpan("SW1(config)# aaa authorization network default group “ISE。");
 							instruArr[2] = createCmdSpan("SW1(config)# aaa accounting dot1x default start-stop group “ISE。");
-							instruArr[3] = createCmdInstruSpan("“ISE。","ISE组名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[3] = createCmdInstruSpan("“ISE。", "ISE组名");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("启用CoA","i2-1-3");
+						createInstruT2("启用CoA", "i2-1-3");
 							instruArr[0] = createCmdSpan("SW1(config)# aaa server radius dynamic-author");
 							instruArr[1] = createCmdSpan("SW1(config-locsvr-radius)# client “10.0.0.1。 server-key “cisco。");
-							instruArr[2] = createCmdInstruSpan("“10.0.0.1。","ISE的IP地址，如果ISE存在冗余，配置多条 client … 命令");
-							instruArr[3] = createCmdInstruSpan("“cisco。","与ISE间的预共享密匙");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[2] = createCmdInstruSpan("“10.0.0.1。", "ISE的IP地址，如果ISE存在冗余，配置多条 client … 命令");
+							instruArr[3] = createCmdInstruSpan("“cisco。", "与ISE间的预共享密匙");
+							createCmdInstruT2(instruArr, "cisco");
 							createInstruAllBottomT2("<br />CoA：change of authorization，刚接入的设备因安全配置较差，获得的授权级别较低");
 							createInstruAllBottomT2("修改设备配置后，ISE通过向交换机发送CoA，提高设备的授权级别");
 
-						createInstruT2("交换机全局开启802.1x","i2-1-4");
+						createInstruT2("交换机全局开启802.1x", "i2-1-4");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config)# dot1x system-auth-control");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("开启设备追踪","i2-1-5");
+						createInstruT2("开启设备追踪", "i2-1-5");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config)# ip device tracking");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 							createInstruAllBottomT2("<br />跟踪设备的IP地址，替换download ACL原IP，如果没有跟踪到设备的IP，网络访问会出问题");
 
-						createInstruT2("配置设备追踪策略","i2-1-12");
+						createInstruT2("配置设备追踪策略", "i2-1-12");
 							instruArr[0] = createCmdSpan("SW1(config)# device-tracking policy “IPDT_MAX_10。");
-							instruArr[1] = createCmdInstruSpan("“IPDT_MAX_10。","策略名");
+							instruArr[1] = createCmdInstruSpan("“IPDT_MAX_10。", "策略名");
 							instruArr[2] = createCmdSpan("SW1(config-device-tracking)#limit address-count “10。");
-							instruArr[3] = createCmdInstruSpan("“10。","最多追踪10个设备");
+							instruArr[3] = createCmdInstruSpan("“10。", "最多追踪10个设备");
 							instruArr[4] = createCmdSpan("SW1(config-device-tracking)#tracking enable ");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置radius属性","i2-1-7");
+						createInstruT2("配置radius属性", "i2-1-7");
 							createInstruT3("配置radius属性6");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config)# radius-server attribute 6 on-for-login-auth");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 								createInstruAllBottomT3("<br />接入请求时发送‘服务类型。参数，在登录认证时，发第一个request请求，发送用户名、密码时附上服务类型")
 								createInstruAllBottomT3("AAA服务器根据服务类型决定接入类型（有线或无线）")
 
 							createInstruT3("配置radius属性8");
 								instruArr[0] = createCmdSpan("SW1(config)# radius-server attribute 8 include-in-access-req");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 								createInstruAllBottomT3("<br />接入请求时发送IP地址数据帧，radius服务器也可以根据发送的IP地址进行相关操作")
 
 							createInstruT3("配置radius属性25");
 								instruArr[0] = createCmdSpan("SW1(config)# radius-server attribute 25 access-request include");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 								createInstruAllBottomT3("<br />选配，802.1x无需此属性，一般用于SSL VPN")
 
-						createInstruT2("配置探测radius是否有正常的方式","i2-1-8");
+						createInstruT2("配置探测radius是否有正常的方式", "i2-1-8");
 							instruArr[0] = createCmdSpan("SW1(config)# radius-server dead-criteria time “5。 tries “3。");
-							instruArr[1] = createCmdInstruSpan("“5。","超时时长");
-							instruArr[2] = createCmdInstruSpan("“3。","尝试次数");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“5。", "超时时长");
+							instruArr[2] = createCmdInstruSpan("“3。", "尝试次数");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置认证和授权、审计时发送的vsa","i2-1-9");
+						createInstruT2("配置认证和授权、审计时发送的vsa", "i2-1-9");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config)# radius-server vsa send authentication");
 							instruArr[1] = createCmdSpan("SW1(config)# radius-server vsa send accounting");
 
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 							createInstruAllBottomT2("<br />vsa：‘厂商特殊属性。，不开启radius只会下发标准属性，如 download ACL 等cisco私有属性会无法下发")
 							createInstruAllBottomT2("较新版本已经默认启用")
 
 
-						createInstruT2("配置用于低风险模式的acl","i2-1-10");
+						createInstruT2("配置用于低风险模式的acl", "i2-1-10");
 							instruArr[0] = createCmdSpan("SW1(config)# ip access-list extended “ACL-DEFAULT。");
-							instruArr[1] = createCmdInstruSpan("“ACL-DEFAULT。","ACL名");
+							instruArr[1] = createCmdInstruSpan("“ACL-DEFAULT。", "ACL名");
 							instruArr[2] = createCmdSpan("SW1(config-ext-nacl)# permit udp any eq bootpc any eq bootps");
 							instruArr[3] = createCmdSpan("SW1(config-ext-nacl)# permit udp any any eq domain");
 							instruArr[4] = createCmdSpan("SW1(config-ext-nacl)# permit icmp any any");
 							instruArr[5] = createCmdSpan("SW1(config-ext-nacl)# permit udp any any eq tftp");
 							instruArr[6] = createCmdInstruSpan("tftp用于IP电话");
 							instruArr[7] = createCmdSpan("SW1(config-ext-nacl)# deny ip any any log");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置用于web重定向的acl","i2-1-11");
+						createInstruT2("配置用于web重定向的acl", "i2-1-11");
 							instruArr[0] = createCmdSpan("SW1(config)# ip access-list extended “WEB-REDIRECT。");
-							instruArr[1] = createCmdInstruSpan("“WEB-REDIRECT。","ACL名");
+							instruArr[1] = createCmdInstruSpan("“WEB-REDIRECT。", "ACL名");
 							instruArr[2] = createCmdSpan("SW1(config-ext-nacl)# deny udp any any eq domain");
 							instruArr[3] = createCmdSpan("SW1(config-ext-nacl)# deny udp any host “10.0.0.1。 eq 8905");
 							instruArr[4] = createCmdSpan("SW1(config-ext-nacl)# deny udp any host “10.0.0.1。 eq 8906");
@@ -228,117 +228,117 @@
 							instruArr[6] = createCmdSpan("SW1(config-ext-nacl)# deny tcp any host “10.0.0.1。 eq 8443");
 							instruArr[7] = createCmdSpan("SW1(config-ext-nacl)# deny tcp any host “10.0.0.1。 eq 8905");
 							instruArr[8] = createCmdSpan("SW1(config-ext-nacl)# deny tcp any host “10.0.0.1。 eq 8909");
-							instruArr[9] = createCmdInstruSpan("“10.0.0.1。","ISE的IP地址");
+							instruArr[9] = createCmdInstruSpan("“10.0.0.1。", "ISE的IP地址");
 							instruArr[10] = createCmdSpan("SW1(config-ext-nacl)# deny udp any host “10.0.1.254。 eq 8905");
 							instruArr[11] = createCmdSpan("SW1(config-ext-nacl)# deny tcp any host “10.0.1.254。 eq 8905");
-							instruArr[12] = createCmdInstruSpan("“10.0.1.254。","接入设备的网关地址");
+							instruArr[12] = createCmdInstruSpan("“10.0.1.254。", "接入设备的网关地址");
 							instruArr[13] = createCmdSpan("SW1(config-ext-nacl)# permit ip any any");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 							createInstruAllBottomT2("<br />用于web认证配置时决定什么样的流量做重定向，deny的不需要重定向，permit需要重定向")
 							createInstruAllBottomT2("不需要重定向的流量为准入控制的相关流量")
 
-					createInstruT1("接口配置","i2-2");
-						createInstruT2("常规交换配置","i2-2-1");
+					createInstruT1("接口配置", "i2-2");
+						createInstruT2("常规交换配置", "i2-2-1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport mode access");
 							instruArr[1] = createCmdSpan("SW1(config-if)# switchport access vlan “10。");
-							instruArr[2] = createCmdInstruSpan("“10。","接口的普通vlan");
+							instruArr[2] = createCmdInstruSpan("“10。", "接口的普通vlan");
 							instruArr[3] = createCmdSpan("SW1(config-if)# switchport voice vlan “20。");
-							instruArr[4] = createCmdInstruSpan("“20。","接口的语音vlan");
+							instruArr[4] = createCmdInstruSpan("“20。", "接口的语音vlan");
 							instruArr[5] = createCmdSpan("SW1(config-if)# spanning-tree portfast");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("启用mab","i2-2-2");
+						createInstruT2("启用mab", "i2-2-2");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config-if)# mab");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("启用802.1x","i2-2-3");
+						createInstruT2("启用802.1x", "i2-2-3");
 							instruArr[0] = createCmdSpan("SW1(config-if)# dot1x pae authenticator");
 							instruArr[1] = createCmdInstruSpan("IOS 15 后交换机可以是客户端也可以是认证者，两个交换机互相802.1x认证时，交换机可以客户端，因此需要指定为认证者");
 							instruArr[2] = createCmdSpan("SW1(config-if)# authentication port-control auto");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置认证顺序","i2-2-4");
+						createInstruT2("配置认证顺序", "i2-2-4");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config-if)# authentication order mab dot1x");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置授权顺序","i2-2-5");
+						createInstruT2("配置授权顺序", "i2-2-5");
 							instruArr[0] = createCmdSpan("SW1(config-if)# authentication priority dot1x mab");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置认证的低风险模式","i2-2-6");
+						createInstruT2("配置认证的低风险模式", "i2-2-6");
 							instruArr[0] = createCmdSpan("SW1(config-if)# authentication open");
 							instruArr[1] = createCmdSpan("SW1(config-if)# ip access-group “ACL-DEFAULT。 in")
-							instruArr[2] = createCmdInstruSpan("“ACL-DEFAULT。","ACL名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[2] = createCmdInstruSpan("“ACL-DEFAULT。", "ACL名");
+							createCmdInstruT2(instruArr, "cisco");
 							createInstruAllBottomT2("<br />只使用第一句时，无需认证即可随意访问，但通过认证后会受到相关授权的限制");
 							createInstruAllBottomT2("不使用第一句，在通过认证前任何流量均无法通过，因此需要调用acl使dhcp等流量可以通过");
 							createInstruAllBottomT2("得到授权后，acl被覆盖，不影响正常流量");
 
-						createInstruT2("主机模式相关配置","i2-2-7");
+						createInstruT2("主机模式相关配置", "i2-2-7");
 							createInstruT3("配置主机模式");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config-if)# authentication host-mode { multi-auth | multi-domain | multi-host | single-host }")
-								instruArr[1] = createCmdInstruSpan("multi-auth","支持一个语音电话和多个数据主机");
-								instruArr[2] = createCmdInstruSpan("multi-domain","仅支持一个语音电话和一个数据主机，超过后按下项配置处理");
-								instruArr[3] = createCmdInstruSpan("multi-host","可以支持多个主机，一个主机通过认证，所有主机均可通信，不支持DACL");
-								instruArr[4] = createCmdInstruSpan("single-host","只允许单个主机，超过后按下项配置处理");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("multi-auth", "支持一个语音电话和多个数据主机");
+								instruArr[2] = createCmdInstruSpan("multi-domain", "仅支持一个语音电话和一个数据主机，超过后按下项配置处理");
+								instruArr[3] = createCmdInstruSpan("multi-host", "可以支持多个主机，一个主机通过认证，所有主机均可通信，不支持DACL");
+								instruArr[4] = createCmdInstruSpan("single-host", "只允许单个主机，超过后按下项配置处理");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("接入主机违规后的处理方式（single-host，multi-domain模式时有效）");
 								instruArr[0] = createCmdSpan("SW1(config-if)# authentication violation { protect | replace | restrict | shutdown }");
-								instruArr[1] = createCmdInstruSpan("protect","丢弃数据帧，不发警告");
-								instruArr[2] = createCmdInstruSpan("replace","丢弃数据帧，发警告");
-								instruArr[3] = createCmdInstruSpan("restrict","踢掉之前通过认证的客户端");
-								instruArr[4] = createCmdInstruSpan("shutdown","关闭端口为err-disable状态");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("protect", "丢弃数据帧，不发警告");
+								instruArr[2] = createCmdInstruSpan("replace", "丢弃数据帧，发警告");
+								instruArr[3] = createCmdInstruSpan("restrict", "踢掉之前通过认证的客户端");
+								instruArr[4] = createCmdInstruSpan("shutdown", "关闭端口为err-disable状态");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("应用设备追踪策略","i2-2-10");
+						createInstruT2("应用设备追踪策略", "i2-2-10");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config-if)# device-tracking attach-policy “IPDT_MAX_10。")
-							instruArr[1] = createCmdInstruSpan("“IPDT_MAX_10。","设备追踪策略名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“IPDT_MAX_10。", "设备追踪策略名");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("当认证失败时采用下一种认证方式","i2-2-8");
+						createInstruT2("当认证失败时采用下一种认证方式", "i2-2-8");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config-if)# authentication event fail action next-method")
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("不同情况下，将客户端划入相应vlan","i2-2-9");
+						createInstruT2("不同情况下，将客户端划入相应vlan", "i2-2-9");
 							createInstruT3("‘第一种vlan：。客户端通过认证，获得 正式授权vlan 在认证服务器上配置");
 
 							createInstruT3("‘第二种vlan：。认证服务器故障时，划入指定的vlan，一般只用于重要的接口");
 								instruArr[0] = createCmdSpan("SW1(config-if)# authentication event sever dead action authorize vlan “100。");
-								instruArr[1] = createCmdInstruSpan("“100。","vlan号");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“100。", "vlan号");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("服务器恢复正常时，重新开始认证");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW(config-if)# authentication event sever alive action reinitiaize")
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("‘第三种vlan：。客户端对认证无响应时，将客户端划入指定vlan");
 								instruArr[0] = createCmdSpan("SW(config-if)# authentication event no-response action authorize vlan “200。")
-								instruArr[1] = createCmdInstruSpan("“200。","vlan号，一般划入Guest vlan");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“200。", "vlan号，一般划入Guest vlan");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("‘第四种vlan：。客户端多次尝试，试图猜密码，将客户端划入指定vlan");
 								instruArr[0] = createCmdSpan("SW(config-if)# authentication event fail retry “5。 action authorize vlan “300。")
-								instruArr[1] = createCmdInstruSpan("“5。","尝试次数");
-								instruArr[2] = createCmdInstruSpan("“300。","vlan号，一般为禁止访问其它的vlan");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“5。", "尝试次数");
+								instruArr[2] = createCmdInstruSpan("“300。", "vlan号，一般为禁止访问其它的vlan");
+								createCmdInstruT3(instruArr, "cisco");
 
-				createInstruT0("MACSec","i3");
-					createInstruT1("终端到交换机链路加密","i3-1");
+				createInstruT0("MACSec", "i3");
+					createInstruT1("终端到交换机链路加密", "i3-1");
 						createInstruAllTopT1("连接终端的接口配置");
 						createInstruAllTopT1("不支持普通802.1x的复杂配置，必须为single-host");
 							cmd = `
@@ -355,15 +355,15 @@
 							`;
 							createLinuxTxtT1(cmd);
 
-					createInstruT1("交换机间链路加密","i3-2");
+					createInstruT1("交换机间链路加密", "i3-2");
 						createInstruAllTopT1("交换机间互联接口配置");
 							instruArr[0] = createCmdSpan("SW(config-if)# cts manual");
 							instruArr[1] = createCmdSpan("SW(config-if-cts-manual)# sap pmk “123456。 mode-list gcm-encrypt");
-							instruArr[2] = createCmdInstruSpan("“123456。","预共享密匙");
-							createCmdInstruT1(instruArr,"cisco");
+							instruArr[2] = createCmdInstruSpan("“123456。", "预共享密匙");
+							createCmdInstruT1(instruArr, "cisco");
 
-				createInstruT0("Radius DTLS","i4");
-					createInstruT1("交换机需要申请证书","i4-1");
+				createInstruT0("Radius DTLS", "i4");
+					createInstruT1("交换机需要申请证书", "i4-1");
 						createInstruAllTopT1("详细见 <a href='basic.html#i11' style='color:#FFFFFF;text-decoration:underline'>通用配置、申请数字证书</a> 部分");
 						createInstruAllTopT1("使用Windows证书服务器时，证书模板为 ‘路由器（脱机请求）。");
 
@@ -371,7 +371,7 @@
                             instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1(config)# crypto key generate rsa label “DTLS。 modulus “2048。");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("trustpoint");
 							cmd = `
@@ -385,63 +385,63 @@
 
                         createInstruT2("生成个人证书请求");
 							instruArr[0] = createCmdSpan("SW1(config)# crypto pki enroll “DTLS。")
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("导入根证书");
 							instruArr[0] = createCmdSpan("SW1(config)# crypto pki authenticate “DTLS。")
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("导入个人证书");
 							instruArr[0] = createCmdSpan("SW1(config)# crypto pki import “DTLS。 certificate")
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("交换机指定ISE的相关配置","i4-2");
+					createInstruT1("交换机指定ISE的相关配置", "i4-2");
 						createInstruT2("配置Radius Server");
                             createInstruT3("配置Radius Server");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config)# radius server “ise1。");
-								instruArr[1] = createCmdInstruSpan("“ise1。","Radius Server名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“ise1。", "Radius Server名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置ISE地址");
 								instruArr[0] = createCmdSpan("SW1(config-radius-server)# address { “ipv4 10.1.20.241。 | “fqdn pan-p.itachi.tech。 }");
-								instruArr[1] = createCmdInstruSpan("“ipv4 10.1.20.241。","ISE地址");
-	                            instruArr[2] = createCmdInstruSpan("“fqdn pan-p.itachi.tech。","ISE域名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“ipv4 10.1.20.241。", "ISE地址");
+	                            instruArr[2] = createCmdInstruSpan("“fqdn pan-p.itachi.tech。", "ISE域名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置DLTS端口号");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls port 2083");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置证书的trustpoint");
 								instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls trustpoint client “DTLS。");
 								instruArr[1] = createCmdSpan("SW1(config-radius-server)# dtls trustpoint server “DTLS。");
-								instruArr[2] = createCmdInstruSpan("“DTLS。","证书请求的trustpoint名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[2] = createCmdInstruSpan("“DTLS。", "证书请求的trustpoint名");
+								createCmdInstruT3(instruArr, "cisco");
 
 	                        createInstruT3("配置校验证书的域名");
 								instruArr = null;
 								instruArr = new Array();
 	                            instruArr[0] = createCmdSpan("SW1(config-radius-server)# dtls match-server-identity hostname “pan-p.itachi.tech。");
-								instruArr[1] = createCmdInstruSpan("“pan-p.itachi.tech。","ISE域名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“pan-p.itachi.tech。", "ISE域名");
+								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置ISE组");
 							instruArr[0] = createCmdSpan("SW1(config)# aaa group server radius “ISE。");
-							instruArr[1] = createCmdInstruSpan("“ISE。","ISE组名");
+							instruArr[1] = createCmdInstruSpan("“ISE。", "ISE组名");
 							instruArr[2] = createCmdSpan("SW1(config-sg-radius)# server name “ise1。");
-							instruArr[3] = createCmdInstruSpan("“ise1。","单个radius服务器名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[3] = createCmdInstruSpan("“ise1。", "单个radius服务器名");
+							createCmdInstruT2(instruArr, "cisco");
 
                         createInstruT2("配置CoA");
 							instruArr[0] = createCmdSpan("SW1(config)# aaa server radius dynamic-author");
 							instruArr[1] = createCmdSpan("SW1(config-locsvr-da-radius)# client “10.1.241.1。 dtls client-tp “DTLS。 server-tp “DTLS。");
-                            instruArr[2] = createCmdInstruSpan("“10.1.241.1。","ISE地址");
-							instruArr[3] = createCmdInstruSpan("“DTLS。","证书请求的trustpoint名");
-							createCmdInstruT2(instruArr,"cisco");
+                            instruArr[2] = createCmdInstruSpan("“10.1.241.1。", "ISE地址");
+							instruArr[3] = createCmdInstruSpan("“DTLS。", "证书请求的trustpoint名");
+							createCmdInstruT2(instruArr, "cisco");
 			</script>
 		</div>
 	</div>

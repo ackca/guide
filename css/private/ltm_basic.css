@@ -1,35 +1,35 @@
 #npath span, #snat span, #gw span, #inpath span
 {
-    display: block;
-    margin-top: 20px;
-    font-size: 20px;
+	display: block;
+	margin-top: 20px;
+	font-size: 20px;
 }
 
 #npath div, #snat div, #gw div, #inpath div
 {
-    float: left;
+	float: left;
 }
 
 #npath div:nth-child(2)
 {
-    width: 550px;
-    margin-left: -120px;
-    margin-top: 50px;
+	width: 550px;
+	margin-left: -120px;
+	margin-top: 50px;
 }
 
 #snat div:nth-child(2)
 {
-    width: 500px;
-    margin-left: -120px;
-    margin-top: 50px;
+	width: 500px;
+	margin-left: -120px;
+	margin-top: 50px;
 }
 
 #inpath div:nth-child(2)
 {
-    margin-top: 50px;
+	margin-top: 50px;
 }
 
 .lb
 {
-    color: #A6E22E;
+	color: #A6E22E;
 }

@@ -9,152 +9,166 @@
 	<script type="text/javascript">
 		window.onload = createNavigation(other_routing);
 	</script>
+	<style type="text/css">
+		#tNAT .cell:nth-child(1)
+		{
+			width: 270px;
+		}
+
+		#tNAT .row:not(:first-child) .cell
+		{
+			line-height: 40px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			vertical-align: middle;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("访问控制列表（ACL）","i1");
-					createInstruT1("基于IP的访问控制列表（RACL）","i1-1");
-						createInstruT2("标准访问控制列表","i1-1-1");
+				createInstruT0("访问控制列表（ACL）", "i1");
+					createInstruT1("基于IP的访问控制列表（RACL）", "i1-1");
+						createInstruT2("标准访问控制列表", "i1-1-1");
 							createInstruT3("基于编号");
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 { permit | deny } “192.168.1.0。 “0.0.0.255。");
-								instruArr[1] = createCmdInstruSpan("“10。","列表编号（‘1~99，1300~1999。）");
-								instruArr[2] = createCmdInstruSpan("permit","允许");
-								instruArr[3] = createCmdInstruSpan("deny","拒绝");
-								instruArr[4] = createCmdInstruSpan("“192.168.1.0。","源IP地址");
-								instruArr[5] = createCmdInstruSpan("“0.0.0.255。","通配符掩码（反掩码）");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“10。", "列表编号（‘1~99，1300~1999。）");
+								instruArr[2] = createCmdInstruSpan("permit", "允许");
+								instruArr[3] = createCmdInstruSpan("deny", "拒绝");
+								instruArr[4] = createCmdInstruSpan("“192.168.1.0。", "源IP地址");
+								instruArr[5] = createCmdInstruSpan("“0.0.0.255。", "通配符掩码（反掩码）");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("基于名字");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list standard “aclName。");
-								instruArr[1] = createCmdInstruSpan("“aclName。","列表名");
+								instruArr[1] = createCmdInstruSpan("“aclName。", "列表名");
 								instruArr[2] = createCmdSpan("R1(config-std-nacl)# [ “5。 ] { permit | deny } “192.168.3.0。 “0.0.0.255。");
 								instruArr[3] = createCmdInstruSpan("参数同上");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("扩展访问控制列表","i1-1-2");
+						createInstruT2("扩展访问控制列表", "i1-1-2");
 							createInstruT3("基于编号");
 								instruArr[0] = createCmdSpan("R1(config)# access-list “100。 { permit | deny } { “tcp。 | “6。 } “192.168.1.0。 “0.0.0.255。 [{ eq | qt | lt | range } “源端口号。 ] “172.16.0.0。 “0.0.255.255。 [{ eq | qt | lt | range } { “80。 | “http。 }]");
-								instruArr[1] = createCmdInstruSpan("“100。","列表编号（‘100~199，2000~2699。）");
-								instruArr[2] = createCmdInstruSpan("permit","允许");
-								instruArr[3] = createCmdInstruSpan("deny","拒绝");
-								instruArr[4] = createCmdInstruSpan("“tcp。","协议名");
-								instruArr[5] = createCmdInstruSpan("“6。","协议号");
-								instruArr[6] = createCmdInstruSpan("“192.168.1.0。","源IP地址");
-								instruArr[7] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-								instruArr[8] = createCmdInstruSpan("eq","等于");
-								instruArr[9] = createCmdInstruSpan("qt","大于");
-								instruArr[10] = createCmdInstruSpan("lt","小于");
-								instruArr[11] = createCmdInstruSpan("range","其后跟两个参数，端口号在两个参数之间");
-								instruArr[12] = createCmdInstruSpan("“源端口号。","源端口号一般为随机值，配置时省略");
-								instruArr[13] = createCmdInstruSpan("“172.16.0.0。","目的IP地址");
-								instruArr[14] = createCmdInstruSpan("“0.0.255.255。","通配符掩码");
-								instruArr[15] = createCmdInstruSpan("“80。","目的端口号");
-								instruArr[16] = createCmdInstruSpan("“http。","目的协议名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“100。", "列表编号（‘100~199，2000~2699。）");
+								instruArr[2] = createCmdInstruSpan("permit", "允许");
+								instruArr[3] = createCmdInstruSpan("deny", "拒绝");
+								instruArr[4] = createCmdInstruSpan("“tcp。", "协议名");
+								instruArr[5] = createCmdInstruSpan("“6。", "协议号");
+								instruArr[6] = createCmdInstruSpan("“192.168.1.0。", "源IP地址");
+								instruArr[7] = createCmdInstruSpan("“0.0.0.255。", "通配符掩码");
+								instruArr[8] = createCmdInstruSpan("eq", "等于");
+								instruArr[9] = createCmdInstruSpan("qt", "大于");
+								instruArr[10] = createCmdInstruSpan("lt", "小于");
+								instruArr[11] = createCmdInstruSpan("range", "其后跟两个参数，端口号在两个参数之间");
+								instruArr[12] = createCmdInstruSpan("“源端口号。", "源端口号一般为随机值，配置时省略");
+								instruArr[13] = createCmdInstruSpan("“172.16.0.0。", "目的IP地址");
+								instruArr[14] = createCmdInstruSpan("“0.0.255.255。", "通配符掩码");
+								instruArr[15] = createCmdInstruSpan("“80。", "目的端口号");
+								instruArr[16] = createCmdInstruSpan("“http。", "目的协议名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("基于名字");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list extended “aclName。");
-								instruArr[1] = createCmdInstruSpan("“aclName。","列表名");
+								instruArr[1] = createCmdInstruSpan("“aclName。", "列表名");
 								instruArr[2] = createCmdSpan("R1(config-ext-nacl)# [ “5。 ]{ permit | deny } { “tcp。 | “6。 } “192.168.1.0。 “0.0.0.255。 [{ eq | qt | lt | range } “源端口号。 ] “172.16.0.0。 “0.0.255.255。 [{ eq | qt | lt | range } { “80。 | “http。 }]");
 								instruArr[3] = createCmdInstruSpan("参数同上");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("匹配路由前缀和掩码");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# access-list 100 permit ip host “192.168.1.0。 host “255.255.255.0。");
-							instruArr[1] = createCmdInstruSpan("“192.168.1.0。","路由前缀");
-							instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“192.168.1.0。", "路由前缀");
+							instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("时间控制访问控制列表","i1-1-3");
+						createInstruT2("时间控制访问控制列表", "i1-1-3");
 							createInstruT3("定义时间列表");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# time-range “aclTime。");
-								instruArr[1] = createCmdInstruSpan("“aclTime。","时间列表名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“aclTime。", "时间列表名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("时间日期完整限制");
 								instruArr[0] = createCmdSpan("R1(config-time-range)# absolute start “9:30 23 Apr 2015。 end “10:00 23 Apr 2015。");
-								instruArr[1] = createCmdInstruSpan("“9:30 23 Apr 2015。","开始时间");
-								instruArr[2] = createCmdInstruSpan("“10:00 23 Apr 2015。","结束时间");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“9:30 23 Apr 2015。", "开始时间");
+								instruArr[2] = createCmdInstruSpan("“10:00 23 Apr 2015。", "结束时间");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("每星期按一定频率限制");
 								instruArr[0] = createCmdSpan("R1(config-time-range)# periodic “Weekdays。  “9:30。 to “10:00。");
-								instruArr[1] = createCmdInstruSpan("“9:30。","开始时间");
-								instruArr[2] = createCmdInstruSpan("“10:00。","结束时间");
-								instruArr[3] = createCmdInstruSpan("“Weekdays。","频率限制选项（工作日）");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“9:30。", "开始时间");
+								instruArr[2] = createCmdInstruSpan("“10:00。", "结束时间");
+								instruArr[3] = createCmdInstruSpan("“Weekdays。", "频率限制选项（工作日）");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("应用于访问控制列表（在原有列表后加 time-range {时间列表名}）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-ext-nacl)# “permit tcp any any。 time-range “aclTime。");
-								instruArr[1] = createCmdInstruSpan("“permit tcp any any。","ACL条目");
-								instruArr[2] = createCmdInstruSpan("“aclTime。","时间列表名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“permit tcp any any。", "ACL条目");
+								instruArr[2] = createCmdInstruSpan("“aclTime。", "时间列表名");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("应用ACL","i1-1-4");
+						createInstruT2("应用ACL", "i1-1-4");
 							createInstruT3("将访问控制列表应用于接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","应用ACL的接口号");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "应用ACL的接口号");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip access-group { “10。 | “aclName。 } { in | out }");
-								instruArr[3] = createCmdInstruSpan("“10。","列表编号");
-								instruArr[4] = createCmdInstruSpan("“aclName。","列表名");
-								instruArr[5] = createCmdInstruSpan("in","入方向");
-								instruArr[6] = createCmdInstruSpan("out","出方向，‘只能处理穿越流量。");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[3] = createCmdInstruSpan("“10。", "列表编号");
+								instruArr[4] = createCmdInstruSpan("“aclName。", "列表名");
+								instruArr[5] = createCmdInstruSpan("in", "入方向");
+								instruArr[6] = createCmdInstruSpan("out", "出方向，‘只能处理穿越流量。");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("控制远程登录");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# line vty “0。 [ “4。 ]");
 								instruArr[1] = createCmdSpan("R1(config-line)# access-class { “10。 | “aclName。 } { in | out }");
-								instruArr[2] = createCmdInstruSpan("“10。","列表编号");
-								instruArr[3] = createCmdInstruSpan("“aclName。","列表名");
-								instruArr[4] = createCmdInstruSpan("in","控制外部连入");
-								instruArr[5] = createCmdInstruSpan("out","当已经远程登录后，控制远程登录到其它");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[2] = createCmdInstruSpan("“10。", "列表编号");
+								instruArr[3] = createCmdInstruSpan("“aclName。", "列表名");
+								instruArr[4] = createCmdInstruSpan("in", "控制外部连入");
+								instruArr[5] = createCmdInstruSpan("out", "当已经远程登录后，控制远程登录到其它");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("ACL调整","i1-1-5");
+						createInstruT2("ACL调整", "i1-1-5");
 							createInstruT3("在基于名字的访问控制列表非末尾插入新的条目");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-std-nacl)# “21。 “deny ip host 192.168.1.1 any。");
-								instruArr[1] = createCmdInstruSpan("“21。","新的条目编号");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“21。", "新的条目编号");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("重新调整基于名字的访问控制列表中条目的编号");
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list resequence “user1。 “10。 “5。");
-								instruArr[1] = createCmdInstruSpan("“user1。","列表名");
-								instruArr[2] = createCmdInstruSpan("“10。","列表条目开始编号");
-								instruArr[3] = createCmdInstruSpan("“5。","每条目间隔");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“user1。", "列表名");
+								instruArr[2] = createCmdInstruSpan("“10。", "列表条目开始编号");
+								instruArr[3] = createCmdInstruSpan("“5。", "每条目间隔");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("重置计数器");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# clear access-list counters forccna");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("动态访问控制列表","i1-1-6");
+						createInstruT2("动态访问控制列表", "i1-1-6");
 							createInstruT3("建立ace(一般采用基于名字ACL)，默认不激活");
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list extended “RR。");
-								instruArr[1] = createCmdInstruSpan("“RR。","ACL名");
+								instruArr[1] = createCmdInstruSpan("“RR。", "ACL名");
 								instruArr[1] = createCmdSpan("R1(config-ext-nacl)# dynamic “text。 [ timeout “10。 ] “permit ip any any。");
-								instruArr[2] = createCmdInstruSpan("“text。","ace名");
-								instruArr[3] = createCmdInstruSpan("“10。","超时时间");
-								instruArr[4] = createCmdInstruSpan("“permit ip any any。","ace内容，同普通扩展ACL");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[2] = createCmdInstruSpan("“text。", "ace名");
+								instruArr[3] = createCmdInstruSpan("“10。", "超时时间");
+								instruArr[4] = createCmdInstruSpan("“permit ip any any。", "ace内容，同普通扩展ACL");
+								createCmdInstruT3(instruArr, "cisco");
 								createInstruAllBottomT3("<br />超时时间单位min，超时时间为绝对时间，即动态ACL激活后，无论是否空闲，总有效时间");
 
 							createInstruT3("基于远程登录方式激活");
@@ -162,427 +176,445 @@
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# username “admin。 password “root。");
-								instruArr[1] = createCmdInstruSpan("“admin。","用户名");
-								instruArr[2] = createCmdInstruSpan("“root。","密码");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
+								instruArr[2] = createCmdInstruSpan("“root。", "密码");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置基于本地用户密码的远程登录");
 								instruArr[0] = createCmdSpan("R1(config)# line vty “0。 “4。");
 								instruArr[1] = createCmdSpan("R1(config-line)# login local");
 								instruArr[2] = createCmdSpan("R1(config-line)# autocommand access-enable host [ timeout “10。 ]");
 								instruArr[3] = createCmdInstruSpan("超时时间单位s，超时时间为空间时间");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("自反ACL（类型于防火墙，A可主动访问B，B无法主动访问A）","i1-1-7");
+						createInstruT2("自反ACL（类型于防火墙，A可主动访问B，B无法主动访问A）", "i1-1-7");
 							createInstruT3("建立允许A主动访问B的ACL（一般采用基于名字的ACL）");
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list extended “ableAB。");
-								instruArr[1] = createCmdInstruSpan("“ableAB。","允许ACL名");
+								instruArr[1] = createCmdInstruSpan("“ableAB。", "允许ACL名");
 								instruArr[2] = createCmdSpan("R1(config-std-nacl)# permit ip host 192.168.13.3 host 192.168.12.2 reflect “pass");
 								instruArr[3] = createCmdInstruSpan("ACL内容，同普通ACL");
-								instruArr[4] = createCmdInstruSpan("“pass","自反vce名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[4] = createCmdInstruSpan("“pass", "自反vce名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("建立不允许B主动访问A的ACL（一般采用基于名字的ACL）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip access-list extended “disableBA。");
-								instruArr[1] = createCmdInstruSpan("“disableBA。","不允许的ACL名");
+								instruArr[1] = createCmdInstruSpan("“disableBA。", "不允许的ACL名");
 								instruArr[2] = createCmdSpan("R1(config-std-nacl)# evaluate “pass。");
-								instruArr[3] = createCmdInstruSpan("“pass","自反vce名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[3] = createCmdInstruSpan("“pass", "自反vce名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("允许的ACL应用到A访问B的接口");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config-if)# ip access-group “ableAB。 in");
-								instruArr[1] = createCmdInstruSpan("“ableAB。","允许ACL名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“ableAB。", "允许ACL名");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("不允许的ACL应用到B访问A的接口");
 								instruArr[0] = createCmdSpan("R1(config-if)# ip access-group “disableBA。 in");
-								instruArr[1] = createCmdInstruSpan("“disableBA。","不允许的ACL名");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“disableBA。", "不允许的ACL名");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT1("基于MAC访问控制列表（MACL）","i1-2");
+						createInstruT1("基于MAC访问控制列表（MACL）", "i1-2");
 							createInstruT2("基本与基于IP的ACL相同");
 
 							createInstruT2("定义mac acl");
 								instruArr[0] = createCmdSpan("SW1(config)# mac access-list extended “MACL。");
-								instruArr[1] = createCmdInstruSpan("“MACL。","mac acl 名");
+								instruArr[1] = createCmdInstruSpan("“MACL。", "mac acl 名");
 								instruArr[2] = createCmdSpan("SW1(config-ext-macl)# deny “cc01.0604.0000。 “0000.0000.ffff。 “cc02.0101.0202。 “0000.ffff.ffff。");
-								instruArr[3] = createCmdInstruSpan("“cc01.0604.0000。","源mac");
-								instruArr[4] = createCmdInstruSpan("“0000.0000.ffff。","源mac通配符");
-								instruArr[5] = createCmdInstruSpan("“cc02.0101.0202。","目的mac");
-								instruArr[6] = createCmdInstruSpan(" “0000.ffff.ffff。","目的mac通配符");
+								instruArr[3] = createCmdInstruSpan("“cc01.0604.0000。", "源mac");
+								instruArr[4] = createCmdInstruSpan("“0000.0000.ffff。", "源mac通配符");
+								instruArr[5] = createCmdInstruSpan("“cc02.0101.0202。", "目的mac");
+								instruArr[6] = createCmdInstruSpan(" “0000.ffff.ffff。", "目的mac通配符");
 								instruArr[7] = createCmdInstruSpan("同样支持host 与 any");
-								createCmdInstruT2(instruArr,"cisco");
+								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT2("应用到接口");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config-if)# mac access-group “MACL。 { in | out }");
-								instruArr[1] = createCmdInstruSpan("“MACL。","mac acl 名");
-								instruArr[2] = createCmdInstruSpan("in","入方向");
-								instruArr[3] = createCmdInstruSpan("out","出方向");
-								createCmdInstruT2(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“MACL。", "mac acl 名");
+								instruArr[2] = createCmdInstruSpan("in", "入方向");
+								instruArr[3] = createCmdInstruSpan("out", "出方向");
+								createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT1("VLAN 访问控制列表（VACL）","i1-3");
+						createInstruT1("VLAN 访问控制列表（VACL）", "i1-3");
 							createInstruT2("定义VACL");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("SW1(config)# vlan access-map “vaclName。 “10。");
-								instruArr[1] = createCmdInstruSpan("“vaclName。","vacl名");
-								instruArr[2] = createCmdInstruSpan("“10。","条目编号");
-								createCmdInstruT2(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“vaclName。", "vacl名");
+								instruArr[2] = createCmdInstruSpan("“10。", "条目编号");
+								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT2("匹配条件");
 								instruArr[0] = createCmdSpan("SW1(config-access-map)# match { ip address “ipAcl。 | mac address “macAcl。 }");
-								instruArr[1] = createCmdInstruSpan("“ipAcl。","基于ip的acl名");
-								instruArr[2] = createCmdInstruSpan("“macAcl。","基于mac的acl名");
-								createCmdInstruT2(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“ipAcl。", "基于ip的acl名");
+								instruArr[2] = createCmdInstruSpan("“macAcl。", "基于mac的acl名");
+								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT2("匹配到采取的措施");
 								instruArr[0] = createCmdSpan("SW1(config-access-map)# action { drop | forward }");
-								instruArr[1] = createCmdInstruSpan("drop","丢弃");
-								instruArr[2] = createCmdInstruSpan("forward","转发");
-								createCmdInstruT2(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("drop", "丢弃");
+								instruArr[2] = createCmdInstruSpan("forward", "转发");
+								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT2("应用到vlan");
 								instruArr[0] = createCmdSpan("SW1(config)# vlan filter “vaclName。 vlan-list “1,3,5-10。");
-								instruArr[1] = createCmdInstruSpan("“vaclName。","vacl名");
-								instruArr[2] = createCmdInstruSpan("“1,3,5-10。","生效vlan号");
-								createCmdInstruT2(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“vaclName。", "vacl名");
+								instruArr[2] = createCmdInstruSpan("“1,3,5-10。", "生效vlan号");
+								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT2("ip acl处理IP流量，mac acl处理非IP流量");
 							createInstruT2("arp流量属于非IP流量，无arp，二层也就无法通信");
 							createInstruT2("根据mac过滤ip流量时，需要‘无对应的mac表项。");
 
 
-						createInstruT1("<br />基于端口的ACL（PACL）","i1-4");
+						createInstruT1("<br />基于端口的ACL（PACL）", "i1-4");
 							createInstruT2("应用于二层接口的ACL");
 							createInstruT2("配置和普通RACL相同，但只有入方向");
 
-				createInstruT0("网络地址转换（NAT）","i2");
+				createInstruT0("网络地址转换（NAT）", "i2");
+					createInstruT1("inside/outside版命令", "i2-2");
+						createInstruT2("inside/outside使用场景", "i2-2-7");
+							tHeader = [
+								"命令",
+								"操作"
+							];
 
-					createInstruT1("新版与老版的区别在于增加了NVI接口，不再区分inside或outside接口");
-					createInstruT1("命令上采用ip nat enable，具体转换规则去掉了inside命令","i2-1");
+							tBody = [
+								["ip nat ouside source …", "转换IP报文的源，这些报文从外部传输到内部<br />转换IP报文的目的，这些报文从内部传输到外部"],
+								["ip nat inside source …", "转换IP报文的源，这些报文从内部传输到外部<br />转换IP报文的目的，这些报文从外部传输到内部"],
+							];
+							createHLTableT2(720, tHeader, tBody, "tNAT");
 
-					createInstruT1("新版命令","i2-1");
-						createInstruT2("静态一对一","i2-1-1");
-							createInstruT3("定义地址转化");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config)# ip nat source static “192.168.10.1。 “60.1.1.2。");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.1。","内网地址");
-								instruArr[2] = createCmdInstruSpan("“60.1.1.2。","外网地址");
-								createCmdInstruT3(instruArr,"cisco");
+							createInstruAllTopT2("<br />某些场景下，NAT需要额外添加路由，可以在nat规则的命令中添加 add-route");
+							createInstruAllTopT2("例如：网络中某个设备没有网关，可使用源NAT，并添加路由，使外部可以访问该设备<br />");
 
-							createInstruT3("在相关接口启用nat");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
-								createCmdInstruT3(instruArr,"cisco");
+							instruArr[0] = createCmdSpan("R1(config)# ip nat outside source static “10.1.2.1。 “10.1.1.101。 add-route");
+							instruArr[1] = createCmdInstruSpan("“10.1.2.1。", "外部访问无网关设备的IP");
+							instruArr[2] = createCmdInstruSpan("“10.1.1.101。", "无网关设备的同子网IP");
+							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("静态多对多","i2-1-2");
-							createInstruT3("定义地址转化");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config)# ip nat source static network “192.168.10.0。 “60.1.1.0。 { “/24。 | “255.255.255.0。 }");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.0。","内网地址段");
-								instruArr[2] = createCmdInstruSpan("“60.1.1.0。","外网地址段");
-								instruArr[3] = createCmdInstruSpan("“/24。","子网掩码长度");
-								instruArr[4] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("在相关接口启用nat");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
-								createCmdInstruT3(instruArr,"cisco");
-
-						createInstruT2("多对一的转换（端口地址转换PAT）","i2-1-3");
-							createInstruT3("定义被转换内网地址的范围（使用访问控制列表）");
-								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 permit “192.168.10.0。 “0.0.0.255。");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.0。","被转换IP地址");
-								instruArr[3] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("实现PAT的转换");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config)# ip nat source list “10。 int “f0/1。 overload");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“f0/1。","外网接口");
-								instruArr[3] = createCmdInstruSpan("通过overload将nat转化为pat");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("在相关接口启用nat");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
-								createCmdInstruT3(instruArr,"cisco");
-
-						createInstruT2("端口发布（将内网设备的某端口转换到外网设备的某端口）","i2-1-4");
-							createInstruT3("定义端口发布");
-								instruArr[0] = createCmdSpan("R1(config)# ip nat source static “tcp。 “192.168.10.1。 “80。 “60.1.1.1。 “8088。");
-								instruArr[1] = createCmdInstruSpan("“tcp。","协议名");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.1。","内网IP");
-								instruArr[3] = createCmdInstruSpan("“80。","内网端口");
-								instruArr[4] = createCmdInstruSpan("“60.1.1.1。","外网IP");
-								instruArr[5] = createCmdInstruSpan("“8088。","外网端口");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("在相关接口启用nat");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
-								createCmdInstruT3(instruArr,"cisco");
-
-						createInstruT2("动态多对多","i2-1-5");
-							createInstruT3("定义外网地址池");
-								instruArr[0] = createCmdSpan("R1(config)# ip nat pool “NAT-POOL。 “60.1.1.1。 “60.1.1.50。 netmask “255.255.255.0。");
-								instruArr[1] = createCmdInstruSpan("“NAT-POOL。","地址池名");
-								instruArr[2] = createCmdInstruSpan("“60.1.1.1。","外网起始地址");
-								instruArr[3] = createCmdInstruSpan("“60.1.1.50。","外网结束地址");
-								instruArr[4] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("定义内网地址的范围（使用访问控制列表）");
-								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 permit “192.168.10.0。 “0.0.0.255。");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.0。","被转换IP地址");
-								instruArr[3] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("实现NAT的转换");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config)# ip nat source list “10。 pool “NAT-POOL。 <span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“NAT-POOL。","外网地址池名");
-								instruArr[3] = createCmdInstruSpan("<span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>","转化为PAT");
-								createCmdInstruT3(instruArr,"cisco");
-
-							createInstruT3("在相关接口启用nat");
-								instruArr = null;
-								instruArr = new Array();
-								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
-								createCmdInstruT3(instruArr,"cisco");
-
-						createInstruT2("查看命令","i2-1-6");
-							instruArr[0] = createCmdSpan("R1# show ip nat nvi translations");
-							createCmdInstruT2(instruArr,"cisco");
-
-					createInstruT1("老版命令","i2-2");
-						createInstruT2("一对一的转换（静态NAT）","i2-2-1");
+						createInstruT2("一对一的转换（静态NAT）", "i2-2-1");
 							createInstruT3("定义地址转化");
 								instruArr[0] = createCmdSpan("R1(config)# ip nat inside source static “192.168.10.1。 “60.1.1.2。");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.1。","内网地址");
-								instruArr[2] = createCmdInstruSpan("“60.1.1.2。","外网地址");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "内网地址");
+								instruArr[2] = createCmdInstruSpan("“60.1.1.2。", "外网地址");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义内网接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","内网接口");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "内网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义外网接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “s0/0。");
-								instruArr[1] = createCmdInstruSpan("“s0/0。","外网接口");
+								instruArr[1] = createCmdInstruSpan("“s0/0。", "外网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("静态多对多","i2-2-2");
+						createInstruT2("静态多对多", "i2-2-2");
 							createInstruT3("定义地址转化");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip nat inside source static network “192.168.10.0。 “60.1.1.0。 { “/24。 | “255.255.255.0。 }");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.0。","内网地址段");
-								instruArr[2] = createCmdInstruSpan("“60.1.1.0。","外网地址段");
-								instruArr[3] = createCmdInstruSpan("“/24。","子网掩码长度");
-								instruArr[4] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.0。", "内网地址段");
+								instruArr[2] = createCmdInstruSpan("“60.1.1.0。", "外网地址段");
+								instruArr[3] = createCmdInstruSpan("“/24。", "子网掩码长度");
+								instruArr[4] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义内网接口");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","内网接口");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "内网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义外网接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “s0/0。");
-								instruArr[1] = createCmdInstruSpan("“s0/0。","外网接口");
+								instruArr[1] = createCmdInstruSpan("“s0/0。", "外网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("多对一的转换（端口地址转换PAT）","i2-2-3");
+						createInstruT2("多对一的转换（端口地址转换PAT）", "i2-2-3");
 							createInstruT3("定义被转换内网地址的范围（使用访问控制列表）");
 								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 permit “192.168.10.0。 “0.0.0.255。");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.0。","被转换IP地址");
-								instruArr[3] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.0。", "被转换IP地址");
+								instruArr[3] = createCmdInstruSpan("“0.0.0.255。", "通配符掩码");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("实现PAT的转换");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip nat inside source list “10。 int “s0/1。 overload");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“s0/1。","外网接口");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“s0/1。", "外网接口");
 								instruArr[3] = createCmdInstruSpan("通过overload将nat转化为pat");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义内网接口");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","内网接口");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "内网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义外网接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “s0/1。");
-								instruArr[1] = createCmdInstruSpan("“s0/1。","外网接口");
+								instruArr[1] = createCmdInstruSpan("“s0/1。", "外网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("端口发布（将内网设备的某端口转换到外网设备的某端口）","i2-2-4");
+						createInstruT2("端口发布（将内网设备的某端口转换到外网设备的某端口）", "i2-2-4");
 							createInstruT3("定义端口发布");
 								instruArr[0] = createCmdSpan("R1(config)# ip nat inside source static “tcp。 “192.168.10.1。 “80。 “60.1.1.1。 “8088。");
-								instruArr[1] = createCmdInstruSpan("“tcp。","协议名");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.1。","内网IP");
-								instruArr[3] = createCmdInstruSpan("“80。","内网端口");
-								instruArr[4] = createCmdInstruSpan("“60.1.1.1。","外网IP");
-								instruArr[5] = createCmdInstruSpan("“8088。","外网端口");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“tcp。", "协议名");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.1。", "内网IP");
+								instruArr[3] = createCmdInstruSpan("“80。", "内网端口");
+								instruArr[4] = createCmdInstruSpan("“60.1.1.1。", "外网IP");
+								instruArr[5] = createCmdInstruSpan("“8088。", "外网端口");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义内网接口");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","内网接口");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "内网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义外网接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “s0/0。");
-								instruArr[1] = createCmdInstruSpan("“s0/0。","外网接口");
+								instruArr[1] = createCmdInstruSpan("“s0/0。", "外网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("动态多对多","i2-2-5");
+						createInstruT2("动态多对多", "i2-2-5");
 							createInstruT3("定义内网地址池");
 								instruArr[0] = createCmdSpan("R1(config)# ip nat pool “NAT-POOL。 “60.1.1.1。 “60.1.1.50。 netmask “255.255.255.0。");
-								instruArr[1] = createCmdInstruSpan("“NAT-POOL。","地址池名");
-								instruArr[2] = createCmdInstruSpan("“60.1.1.1。","外网起始地址");
-								instruArr[3] = createCmdInstruSpan("“60.1.1.50。","外网结束地址");
-								instruArr[4] = createCmdInstruSpan("“255.255.255.0。","子网掩码");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“NAT-POOL。", "地址池名");
+								instruArr[2] = createCmdInstruSpan("“60.1.1.1。", "外网起始地址");
+								instruArr[3] = createCmdInstruSpan("“60.1.1.50。", "外网结束地址");
+								instruArr[4] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义内网地址的范围（使用访问控制列表）");
 								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 permit “192.168.10.0。 “0.0.0.255。");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.0。","被转换IP地址");
-								instruArr[3] = createCmdInstruSpan("“0.0.0.255。","通配符掩码");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.0。", "被转换IP地址");
+								instruArr[3] = createCmdInstruSpan("“0.0.0.255。", "通配符掩码");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("实现NAT的转换");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# ip nat inside source list “10。 pool “NAT-POOL。 <span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>");
-								instruArr[1] = createCmdInstruSpan("“10。","acl号");
-								instruArr[2] = createCmdInstruSpan("“NAT-POOL。","外网地址池名");
-								instruArr[3] = createCmdInstruSpan("<span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>","转化为PAT");
-								createCmdInstruT3(instruArr,"cisco");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“NAT-POOL。", "外网地址池名");
+								instruArr[3] = createCmdInstruSpan("<span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>", "转化为PAT");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义内网接口");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","内网接口");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "内网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义外网接口");
 								instruArr[0] = createCmdSpan("R1(config)# int “s0/0。");
-								instruArr[1] = createCmdInstruSpan("“s0/0。","外网接口");
+								instruArr[1] = createCmdInstruSpan("“s0/0。", "外网接口");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip nat inside");
-								createCmdInstruT3(instruArr,"cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("查看命令","i2-2-6");
+						createInstruT2("查看命令", "i2-2-6");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1# show ip nat translations");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-				createInstruT0("静态路由<br />","i3");
+
+					createInstruT1("enable版命令", "i2-1");
+						createInstruAllTopT1("与inside/outside版的区别在于增加了NVI接口，不再区分inside或outside接口");
+						createInstruT2("静态一对一", "i2-1-1");
+							createInstruT3("定义地址转化");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config)# ip nat source static “192.168.10.1。 “60.1.1.2。");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "内网地址");
+								instruArr[2] = createCmdInstruSpan("“60.1.1.2。", "外网地址");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("在相关接口启用nat");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("静态多对多", "i2-1-2");
+							createInstruT3("定义地址转化");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config)# ip nat source static network “192.168.10.0。 “60.1.1.0。 { “/24。 | “255.255.255.0。 }");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.0。", "内网地址段");
+								instruArr[2] = createCmdInstruSpan("“60.1.1.0。", "外网地址段");
+								instruArr[3] = createCmdInstruSpan("“/24。", "子网掩码长度");
+								instruArr[4] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("在相关接口启用nat");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("多对一的转换（端口地址转换PAT）", "i2-1-3");
+							createInstruT3("定义被转换内网地址的范围（使用访问控制列表）");
+								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 permit “192.168.10.0。 “0.0.0.255。");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.0。", "被转换IP地址");
+								instruArr[3] = createCmdInstruSpan("“0.0.0.255。", "通配符掩码");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("实现PAT的转换");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config)# ip nat source list “10。 int “f0/1。 overload");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“f0/1。", "外网接口");
+								instruArr[3] = createCmdInstruSpan("通过overload将nat转化为pat");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("在相关接口启用nat");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("端口发布（将内网设备的某端口转换到外网设备的某端口）", "i2-1-4");
+							createInstruT3("定义端口发布");
+								instruArr[0] = createCmdSpan("R1(config)# ip nat source static “tcp。 “192.168.10.1。 “80。 “60.1.1.1。 “8088。");
+								instruArr[1] = createCmdInstruSpan("“tcp。", "协议名");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.1。", "内网IP");
+								instruArr[3] = createCmdInstruSpan("“80。", "内网端口");
+								instruArr[4] = createCmdInstruSpan("“60.1.1.1。", "外网IP");
+								instruArr[5] = createCmdInstruSpan("“8088。", "外网端口");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("在相关接口启用nat");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("动态多对多", "i2-1-5");
+							createInstruT3("定义外网地址池");
+								instruArr[0] = createCmdSpan("R1(config)# ip nat pool “NAT-POOL。 “60.1.1.1。 “60.1.1.50。 netmask “255.255.255.0。");
+								instruArr[1] = createCmdInstruSpan("“NAT-POOL。", "地址池名");
+								instruArr[2] = createCmdInstruSpan("“60.1.1.1。", "外网起始地址");
+								instruArr[3] = createCmdInstruSpan("“60.1.1.50。", "外网结束地址");
+								instruArr[4] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("定义内网地址的范围（使用访问控制列表）");
+								instruArr[0] = createCmdSpan("R1(config)# access-list “10。 permit “192.168.10.0。 “0.0.0.255。");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.0。", "被转换IP地址");
+								instruArr[3] = createCmdInstruSpan("“0.0.0.255。", "通配符掩码");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("实现NAT的转换");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config)# ip nat source list “10。 pool “NAT-POOL。 <span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>");
+								instruArr[1] = createCmdInstruSpan("“10。", "acl号");
+								instruArr[2] = createCmdInstruSpan("“NAT-POOL。", "外网地址池名");
+								instruArr[3] = createCmdInstruSpan("<span style='border:solid 1px #FFF'>&nbsp;overload&nbsp;</span>", "转化为PAT");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("在相关接口启用nat");
+								instruArr = null;
+								instruArr = new Array();
+								instruArr[0] = createCmdSpan("R1(config-if)# ip nat enable");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("查看命令", "i2-1-6");
+							instruArr[0] = createCmdSpan("R1# show ip nat nvi translations");
+							createCmdInstruT2(instruArr, "cisco");
+
+				createInstruT0("静态路由<br />", "i3");
 					instruArr = new Array();
 					instruArr[0] = createCmdSpan("R1(config)# ip route “192.168.1.0。 “255.255.255.0。 { “f0/1。 | “192.168.2.1。 } [ “50。 ] [ permanent ]");
-					instruArr[1] = createCmdInstruSpan("“192.168.1.0。","路由前缀");
-					instruArr[2] = createCmdInstruSpan("“255.255.255.0。","路由掩码");
-					instruArr[3] = createCmdInstruSpan("“f0/1。","本方出接口");
-					instruArr[4] = createCmdInstruSpan("“192.168.2.1。","下一跳地址");
-					instruArr[5] = createCmdInstruSpan("“50。","管理距离");
-					instruArr[6] = createCmdInstruSpan("permanent","即使接口关闭，路由仍然有效");
-					createCmdInstruT0(instruArr,"cisco");
+					instruArr[1] = createCmdInstruSpan("“192.168.1.0。", "路由前缀");
+					instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "路由掩码");
+					instruArr[3] = createCmdInstruSpan("“f0/1。", "本方出接口");
+					instruArr[4] = createCmdInstruSpan("“192.168.2.1。", "下一跳地址");
+					instruArr[5] = createCmdInstruSpan("“50。", "管理距离");
+					instruArr[6] = createCmdInstruSpan("permanent", "即使接口关闭，路由仍然有效");
+					createCmdInstruT0(instruArr, "cisco");
 					createInstruAllBottomT0("出接口和下一跳建议同时写，而且必须先出接口后下一跳");
 					createInstruAllBottomT0("如果不支持同时写，MA网络使用下一跳，P2P网段中使用出接口");
 
-				createInstruT0("策略路由（PBR）","i11");
-					createInstruT1("创建route-map","i11-1");
+				createInstruT0("策略路由（PBR）", "i11");
+					createInstruT1("创建route-map", "i11-1");
 						instruArr[0] = createCmdSpan("R1(config)# route-map “pbr。 [ permit | deny ] [ “10。 ]");
-						instruArr[1] = createCmdInstruSpan("“pbr。","route-map名");
-						instruArr[2] = createCmdInstruSpan("permit","match到数据包‘基于策略。进行路由转发，默认");
-						instruArr[3] = createCmdInstruSpan("deny","match到数据包‘基于普通方式。进行路由转发");
-						instruArr[4] = createCmdInstruSpan("“10。","route-map名条目编号");
-						createCmdInstruT1(instruArr,"cisco");
+						instruArr[1] = createCmdInstruSpan("“pbr。", "route-map名");
+						instruArr[2] = createCmdInstruSpan("permit", "match到数据包‘基于策略。进行路由转发，默认");
+						instruArr[3] = createCmdInstruSpan("deny", "match到数据包‘基于普通方式。进行路由转发");
+						instruArr[4] = createCmdInstruSpan("“10。", "route-map名条目编号");
+						createCmdInstruT1(instruArr, "cisco");
 
-					createInstruT1("<br />配置流量匹配","i11-2");
+					createInstruT1("<br />配置流量匹配", "i11-2");
 						createInstruT2("基于列表匹配");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-route-map)# match ip address [ “100。 | “acl-name。 | prefix-list “pre-name。 ]");
-							instruArr[1] = createCmdInstruSpan("“100。","ACL编号");
-							instruArr[2] = createCmdInstruSpan("“acl-name。","ACL名");
-							instruArr[3] = createCmdInstruSpan("“pre-name。","前缀列表名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“100。", "ACL编号");
+							instruArr[2] = createCmdInstruSpan("“acl-name。", "ACL名");
+							instruArr[3] = createCmdInstruSpan("“pre-name。", "前缀列表名");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("基于IP包长度匹配");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-route-map)# match length “1400。 “1500。");
-							instruArr[1] = createCmdInstruSpan("“1400。","IP包长度最小值（含）");
-							instruArr[2] = createCmdInstruSpan("“1500。","IP包长度最大值（含）");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“1400。", "IP包长度最小值（含）");
+							instruArr[2] = createCmdInstruSpan("“1500。", "IP包长度最大值（含）");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("配置路由","i11-3");
+					createInstruT1("配置路由", "i11-3");
 						createInstruT2("指定下一跳地址");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-route-map)# set ip next-hop “100.1.1.1。");
-							instruArr[1] = createCmdInstruSpan("“100.1.1.1。","下一跳地址，可配置多个，多个时会选择第一个UP状态的直连接口相对应的IP地址");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“100.1.1.1。", "下一跳地址，可配置多个，多个时会选择第一个UP状态的直连接口相对应的IP地址");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("指定出接口");
 							instruArr[0] = createCmdSpan("R1(config-route-map)# set interface “f0/0。");
-							instruArr[1] = createCmdInstruSpan("“f0/0。","出接口，可配置多个，多个时会选择第一全UP状态的接口");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“f0/0。", "出接口，可配置多个，多个时会选择第一全UP状态的接口");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("应用策略路由","i11-4");
+					createInstruT1("应用策略路由", "i11-4");
 						createInstruT2("应用到接口：接口为被控制流量流入接口");
 							instruArr[0] = createCmdSpan("R1(config-if)# ip policy route-map “pbr。");
-							instruArr[1] = createCmdInstruSpan("“pbr。","route-map名");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“pbr。", "route-map名");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("应用到全局：控制路由器本地产生流量");
 							instruArr[0] = createCmdSpan("R1(config)# ip local policy route-map “pbr。");
-							createCmdInstruT2(instruArr,"cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("查看命令","i11-5");
+					createInstruT1("查看命令", "i11-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1# show route-map");
@@ -590,77 +622,77 @@
 						instruArr[2] = createCmdSpan("R1# show ip policy");
 						instruArr[3] = createCmdSpan("<br />");
 						instruArr[4] = createCmdSpan("R1# debug ip policy");
-						createCmdInstruT1(instruArr,"cisco");
+						createCmdInstruT1(instruArr, "cisco");
 
-				createInstruT0("服务等级协议（SLA）","i12");
-					createInstruT1("配置SLA","i12-1");
+				createInstruT0("服务等级协议（SLA）", "i12");
+					createInstruT1("配置SLA", "i12-1");
 						createInstruT2("创建SLA");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# ip sla “1。");
-							instruArr[1] = createCmdInstruSpan("“1。","SLA编号");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“1。", "SLA编号");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置检测方式，以ping为例");
 							instruArr[0] = createCmdSpan("R1(config-ip-sla)# “icmp-echo。 { “100.1.1.1。 | “www.cisco.com。 } [ source-ip “192.168.10.1。 | source-interface “f0/0。 ]");
-							instruArr[1] = createCmdInstruSpan("icmp-echo","检测方式协议");
-							instruArr[2] = createCmdInstruSpan("“100.1.1.1。","被检测IP");
-							instruArr[3] = createCmdInstruSpan("“www.cisco.com。","被检测域名");
-							instruArr[4] = createCmdInstruSpan("“192.168.10.1。","发包源地址");
-							instruArr[5] = createCmdInstruSpan("“f0/0。","发包源接口");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("icmp-echo", "检测方式协议");
+							instruArr[2] = createCmdInstruSpan("“100.1.1.1。", "被检测IP");
+							instruArr[3] = createCmdInstruSpan("“www.cisco.com。", "被检测域名");
+							instruArr[4] = createCmdInstruSpan("“192.168.10.1。", "发包源地址");
+							instruArr[5] = createCmdInstruSpan("“f0/0。", "发包源接口");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("调整相关参数");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config-ip-sla-echo)# “frequency。 “5。");
-							instruArr[1] = createCmdInstruSpan("“5。","发包间隔，单位 秒");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“5。", "发包间隔，单位 秒");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置SLA启动规则");
 							instruArr[0] = createCmdSpan("R1(config)# ip sla schedule “1。 “start-time。 “now。");
-							instruArr[1] = createCmdInstruSpan("“1。","SLA编号");
-							instruArr[2] = createCmdInstruSpan("“start-time。 “now。","立即启动");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“1。", "SLA编号");
+							instruArr[2] = createCmdInstruSpan("“start-time。 “now。", "立即启动");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("配置track","i12-2");
+					createInstruT1("配置track", "i12-2");
 						createInstruT2("创建track");
 							instruArr[0] = createCmdSpan("R1(config)# track “5。 ip sla “1。 reachability");
-							instruArr[1] = createCmdInstruSpan("“5。","track编号");
-							instruArr[2] = createCmdInstruSpan("“1。","SLA编号");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“5。", "track编号");
+							instruArr[2] = createCmdInstruSpan("“1。", "SLA编号");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("调整track参数");
 							instruArr[0] = createCmdSpan("R1(config-track)# delay down “10。 up “2。");
-							instruArr[1] = createCmdInstruSpan("“10。","延时通过down的时间，单位秒，默认为0，立即down");
-							instruArr[2] = createCmdInstruSpan("“2。","延时通过up的时间，单位秒，默认为0，立即up");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“10。", "延时通过down的时间，单位秒，默认为0，立即down");
+							instruArr[2] = createCmdInstruSpan("“2。", "延时通过up的时间，单位秒，默认为0，立即up");
+							createCmdInstruT2(instruArr, "cisco");
 
-					createInstruT1("应用track","i12-3");
+					createInstruT1("应用track", "i12-3");
 						createInstruT2("应用到静态路由协议");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# ip route “0.0.0.0 0.0.0.0 200.1.1.1。 track “5。");
-							instruArr[1] = createCmdInstruSpan("“5。","track编号");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("“5。", "track编号");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("应用到策略路由");
 							instruArr[0] = createCmdSpan("R1(config-route-map)# set ip next-hop ‘verify-availability。 “202.1.1.10。 “1。 track “5。");
-							instruArr[1] = createCmdInstruSpan("‘verify-availability。","在原有策略路由增加verify-availability关键字");
-							instruArr[2] = createCmdInstruSpan("“1。","下一跳列表编号");
-							instruArr[3] = createCmdInstruSpan("“5。","track编号");
-							createCmdInstruT2(instruArr,"cisco");
+							instruArr[1] = createCmdInstruSpan("‘verify-availability。", "在原有策略路由增加verify-availability关键字");
+							instruArr[2] = createCmdInstruSpan("“1。", "下一跳列表编号");
+							instruArr[3] = createCmdInstruSpan("“5。", "track编号");
+							createCmdInstruT2(instruArr, "cisco");
 
-				createInstruT0("单播反向路径转发（uRPF）<br />","i13");
+				createInstruT0("单播反向路径转发（uRPF）<br />", "i13");
 					instruArr[0] = createCmdSpan("R1(config)# int “f0/0。");
-					instruArr[1] = createCmdInstruSpan("“f0/0。","可能出现地址欺骗流量的流入网口");
+					instruArr[1] = createCmdInstruSpan("“f0/0。", "可能出现地址欺骗流量的流入网口");
 					instruArr[2] = createCmdSpan("R1(config-if)# ip verify unicast source reachable-via { rx | any } [ allow-default ] [ allow-self-ping ] [ “100。 ] ");
-					instruArr[3] = createCmdInstruSpan("rx","严格模式，流量的源IP必须在这个接口有对应路由（不能是默认路由）");
-					instruArr[4] = createCmdInstruSpan("any","宽松模式，流量的源IP在本路由器有对应路由即可（不能是默认路由）");
-					instruArr[5] = createCmdInstruSpan("allow-default","宽松模式时，匹配源IP的路由可以是默认路由");
-					instruArr[6] = createCmdInstruSpan("allow-self-ping","允许路由器自己连通自已的这个接口（不仅仅是ping），默认不为允许，且不推荐使用，会有安全隐患");
-					instruArr[7] = createCmdInstruSpan("“100。","acl编号，对于不合规的流量，再通过acl进行过滤，如果acl的行为permit，也可以转发，如果为deny，不可转发");
-					createCmdInstruT0(instruArr,"cisco");
+					instruArr[3] = createCmdInstruSpan("rx", "严格模式，流量的源IP必须在这个接口有对应路由（不能是默认路由）");
+					instruArr[4] = createCmdInstruSpan("any", "宽松模式，流量的源IP在本路由器有对应路由即可（不能是默认路由）");
+					instruArr[5] = createCmdInstruSpan("allow-default", "宽松模式时，匹配源IP的路由可以是默认路由");
+					instruArr[6] = createCmdInstruSpan("allow-self-ping", "允许路由器自己连通自已的这个接口（不仅仅是ping），默认不为允许，且不推荐使用，会有安全隐患");
+					instruArr[7] = createCmdInstruSpan("“100。", "acl编号，对于不合规的流量，再通过acl进行过滤，如果acl的行为permit，也可以转发，如果为deny，不可转发");
+					createCmdInstruT0(instruArr, "cisco");
 			</script>
 			<br /><br /><br /><br /><br /><br /><br />
 			<br /><br /><br /><br /><br /><br /><br />

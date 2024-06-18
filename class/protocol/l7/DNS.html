@@ -27,8 +27,8 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("DNS相关介绍","i1");
-					createInstruT1("简单DNS解析过程","i1-1");
+				createInstruT0("DNS相关介绍", "i1");
+					createInstruT1("简单DNS解析过程", "i1-1");
 
 						createConfigImgT0("DNS/DNS解析过程", "简单的DNS解析过程");
 						createInstruAllTopT1("以解释www.jd.com为例，不考虑复杂的别名、转发器之类过程");
@@ -50,7 +50,7 @@
 						createInstruAllTopT1("8、PC的DNS服务器随机向一台PC发送若干www.jd.com的IP地址");
 
 
-					createInstruT1("<br /><br />递归查询与迭代查询","i1-2");
+					createInstruT1("<br /><br />递归查询与迭代查询", "i1-2");
 						createInstruAllTopT1("递归查询：直接由DNS服务器返回结果（即使该DNS服务器无对应项，由该DNS服务器向上级DNS服务器查询，最后得到结果，并向客户返回）");
 
 						createInstruAllTopT1("与递归查询对应的为迭代查询，当DNS服务器无对应项，告诉客户端应向哪个上级DNS服务器查询，该DNS服务器只返回上级DNS服务器地址，不返回结果");
@@ -60,13 +60,13 @@
 						createInstruAllTopT1("当DNS服务器无对应解析项而需要向上级DNS服务器查询不发送期望递归，而采用迭代，因为上级DNS服务器一般不理会递归");
 
 
-					createInstruT1("<br /><br />DNS的上层协议问题","i1-3");
+					createInstruT1("<br /><br />DNS的上层协议问题", "i1-3");
 						createInstruAllTopT1("DNS报文小于512字节，使用UDP，大于则使用TCP");
 
 						createInstruAllTopT1("一般的DNS报文较小，使用UDP，基于TCP的DNS一般用于不同DNS服务器间的数据同步（区域同步）");
 
-				createInstruT0("DNS报文格式","i2");
-					createInstruT1("DNS报文格式总览","i2-1");
+				createInstruT0("DNS报文格式", "i2");
+					createInstruT1("DNS报文格式总览", "i2-1");
 					createProtocolStructT1(
 							"1315",
 							"750",
@@ -76,42 +76,42 @@
 							"DNS"
 						);
 
-					createInstruT1("报文中域名表示方式","i2-2");
+					createInstruT1("报文中域名表示方式", "i2-2");
 						createInstruAllTopT1("下图即域名 www.jd.com 的表示方式，");
 						createInstruAllTopT1("每个格大小为8 bits，数字表示每个点前字母的数量，随后紧跟字母（以ASCII表示），当出现0时表示域名结束<br />");
 
 						createConfigImgT1("DNS/域名表示方式");
 
 
-					createInstruT1("查询 / 响应 报文中类型取值含义<br />","i2-3");
-						tHeader = [
+					createInstruT1("查询 / 响应 报文中类型取值含义<br />", "i2-3");
+						var tHeader = [
 							"类型",
 							"编号",
 							"内容",
 						];
-						tBody = [
-							["A","1","主机名的IPv4地址"],
-							["NS","2","域名服务器"],
-							["CNAME","5","主机别名对应的规范名称"],
-							["SOA","6","区域内权威记录起始标示"],
-							["WKS","11","已知的服务"],
-							["PTR","12","IP地址反向解析"],
-							["HINFO","13","主机相关的追加信息"],
-							["MINFO","14","邮箱与邮件组信息"],
-							["MX","15","邮件交换（Mail Exchange）"],
-							["TXT","16","文本"],
-							["SIG","24","安全证书"],
-							["KEY","25","密钥"],
-							["GPOS","27","地址位置"],
-							["AAAA","28","主机名的IPv6地址"],
-							["NXT","30","下一代域名"],
-							["SRV","33","服务器选择"],
-							["*","255","所有缓存记录"]
+						var tBody = [
+							["A", "1", "主机名的IPv4地址"],
+							["NS", "2", "域名服务器"],
+							["CNAME", "5", "主机别名对应的规范名称"],
+							["SOA", "6", "区域内权威记录起始标示"],
+							["WKS", "11", "已知的服务"],
+							["PTR", "12", "IP地址反向解析"],
+							["HINFO", "13", "主机相关的追加信息"],
+							["MINFO", "14", "邮箱与邮件组信息"],
+							["MX", "15", "邮件交换（Mail Exchange）"],
+							["TXT", "16", "文本"],
+							["SIG", "24", "安全证书"],
+							["KEY", "25", "密钥"],
+							["GPOS", "27", "地址位置"],
+							["AAAA", "28", "主机名的IPv6地址"],
+							["NXT", "30", "下一代域名"],
+							["SRV", "33", "服务器选择"],
+							["*", "255", "所有缓存记录"]
 						];
 						createHLTableT1(500, tHeader, tBody);
 
 
-					createInstruT1("<br /><br />DNS报文头部字段说明<br />","i2-4");
+					createInstruT1("<br /><br />DNS报文头部字段说明<br />", "i2-4");
 						createProtocolStructT1(
 							"815",
 							"285",
@@ -121,7 +121,7 @@
 							"DNS_header"
 						);
 
-						words = `
+						var words = `
 							标识（ID：Identification）
 							由16 bits构成，由客户端设置，对同一个请求，多次迭代中保持不变，但递归查询会改变
 
@@ -143,7 +143,7 @@
 						createProtocolExplainT0(words, -285, "DNS_header");
 
 
-					createInstruT1("<br /><br />DNS报文查询字段说明","i2-5");
+					createInstruT1("<br /><br />DNS报文查询字段说明", "i2-5");
 						createProtocolStructT1(
 							"815",
 							"220",
@@ -167,7 +167,7 @@
 						createProtocolExplainT0(words, -220, "DNS_question");
 
 
-					createInstruT1("<br /><br />DNS报文回答、授权、额外信息字段说明<br />","i2-6");
+					createInstruT1("<br /><br />DNS报文回答、授权、额外信息字段说明<br />", "i2-6");
 						document.writeln("");
 						createProtocolStructT1(
 							"815",
@@ -200,14 +200,14 @@
 						`;
 						createProtocolExplainT0(words, -400, "DNS_other");
 
-					createInstruT0("简单解析实例<br />","i4");
+					createInstruT0("简单解析实例<br />", "i4");
 						createConfigImgT0("DNS/DNS_packet$1~2");
 
-					createInstruT0("一个复杂的DNS解析实例","i5");
-						createInstruT1("DNS解析过程_图示","i5-1");
+					createInstruT0("一个复杂的DNS解析实例", "i5");
+						createInstruT1("DNS解析过程_图示", "i5-1");
 							createConfigImgT1("DNS/复杂DNS解析过程", "复杂DNS解析过程");
 
-						createInstruT1("DNS解析过程_说明","i5-2");
+						createInstruT1("DNS解析过程_说明", "i5-2");
 							createInstruAllTopT1("1：<span style='color: #BF8F00'>PC</span>向其<span style='color: #BF8F00'>DNS服务器</span>请求解析<span style='color: #63D8EE'>www.sina.com.cn</span>对应的IP地址");
 
 							createInstruAllTopT1("2：<span style='color: #BF8F00'>DNS服务器</span>无<span style='color: #63D8EE'>www.sina.com.cn</span>对应IP地址的信息，向<span style='color: #BF8F00'>根DNS服务器</span>对应IP地址");

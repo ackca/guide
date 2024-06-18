@@ -104,7 +104,7 @@
 				// </div>
 				createInstruT0("系统工作命令", "i1");
 				createInstruKeyT2("echo – 输出字符串或提取Shell变量的值", "i1-1");
-				instruArr = new Array();
+				var instruArr = new Array();
 				instruArr[0] = createLinuxCmd("echo “RHEL7。");
 				instruArr[1] = createCmdInstruSpan("“RHEL7。", "输出内容");
 				createCmdInstruT2(instruArr, "redhat");
@@ -119,7 +119,7 @@
 
 				createInstruAllTopT3("格式化输出，参数如下：<br />")
 
-				tBody = [
+				var tBody = [
 					["%Y", "年"],
 					["%m", "月（00~12）"],
 					["%d", "日（00~31）"],
@@ -835,13 +835,13 @@
 
 				createInstruT0("<br />重定向<br />", "i7");
 				tBody = [
-					["输入重定向　", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'><</span>&nbsp;&nbsp;文件", "将文件作为命令的标准输入"],
-					["标准输出重定向", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'>></span>&nbsp;&nbsp;文件", "将输出信息重定向到一个文件中（清空原有文件的数据）"],
-					["错误输出重定向", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'>2></span>&nbsp;&nbsp;文件", "将输出的错误信息重定向到一个文件中（清空原有文件的数据）"],
-					["标准和错误输出重定向", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'>&></span>&nbsp;&nbsp;文件", "将输出信息和错误重定向到一个文件中（清空原有文件的数据）"],
-					["追加标准输出重定向", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'>>></span>&nbsp;&nbsp;文件", "将输出信息重定向到一个文件中（追加到原有内容后）"],
-					["追加错误输出重定向", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'>2>></span>&nbsp;&nbsp;文件", "将输出的错误信息重定向到一个文件中（追加到原有内容后）"],
-					["追加标准和错误输出重定向", "命令&nbsp;&nbsp;<span style='color:#FF6A6A;font-weight:bold'>&>></span>&nbsp;&nbsp;文件", "将输出信息和错误重定向到一个文件中（追加到原有内容后）"],
+					["输入重定向　", "命令<span><</span>文件", "将文件作为命令的标准输入"],
+					["标准输出重定向", "命令<span>></span>文件", "将输出信息重定向到一个文件中（清空原有文件的数据）"],
+					["错误输出重定向", "命令<span>2></span>文件", "将输出的错误信息重定向到一个文件中（清空原有文件的数据）"],
+					["标准和错误输出重定向", "命令<span>&></span>文件", "将输出信息和错误重定向到一个文件中（清空原有文件的数据）"],
+					["追加标准输出重定向", "命令<span>>></span>文件", "将输出信息重定向到一个文件中（追加到原有内容后）"],
+					["追加错误输出重定向", "命令<span>2>></span>文件", "将输出的错误信息重定向到一个文件中（追加到原有内容后）"],
+					["追加标准和错误输出重定向", "命令<span>&>></span>文件", "将输出信息和错误重定向到一个文件中（追加到原有内容后）"],
 				];
 				createHLTableT0(1050, '', tBody, 'tRedirect');
 
@@ -936,7 +936,7 @@
 				createInstruAllTopT2("可选的参数如下：");
 				tBody = [
 					["-c", "填写用户账户的备注信息"],
-					["<span class='spanY'>-d -m</span>", "参数-m与参数-d连用，可重新指定用户的家目录并自动把旧的数据转移过去"],
+					["-d -m", "参数-m与参数-d连用，可重新指定用户的家目录并自动把旧的数据转移过去"],
 					["-e", "账户的到期时间，格式为YYYY-MM-DD"],
 					["-g", "变更所属用户组"],
 					["-G", "变更扩展用户组"],

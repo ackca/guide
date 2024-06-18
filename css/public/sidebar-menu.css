@@ -29,7 +29,7 @@
 
 .sidebar-menu > li:hover > a, .sidebar-menu > li.active > a
 {
-	color: #fff;
+	color: #FFFFFF;
 	background: #1e282c;
 	border-left-color: #3c8dbc;
 }
@@ -128,7 +128,7 @@
 .sidebar-menu .treeview-menu > li.active > a,
 .sidebar-menu .treeview-menu > li > a:hover
 {
-	color: #fff;
+	color: #FFFFFF;
 }
 
 .main-sidebar::-webkit-scrollbar /*滚动条整体样式*/

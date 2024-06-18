@@ -27,7 +27,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				 createInstruT0("IPv6 首部字段说明","i1");
+				 createInstruT0("IPv6 首部字段说明", "i1");
 					createProtocolStructT0(
 						"1000",
 						"420",
@@ -37,7 +37,7 @@
 					);
 
 					document.writeln("<br />");
-					words = `
+					var words = `
 						版本（Version）
 						由4 bits构成，表示IP首部的版本号，IPv6的版本号即为6
 
@@ -67,12 +67,12 @@
 					`;
 					createProtocolExplainT0(words, -420);
 
-				createInstruT0("常规IPv6报文实例实例","i2");
+				createInstruT0("常规IPv6报文实例实例", "i2");
 					createInstruT1("实例为ping报文，如下所示<br />");
 						createConfigImgT1("IPv6/normal");
 
-				createInstruT0("IPv6 分片","i3");
-					createInstruT1("IPv6 分片头部","i3-5");
+				createInstruT0("IPv6 分片", "i3");
+					createInstruT1("IPv6 分片头部", "i3-5");
 						createInstruAllTopT1("为了分片，IPv6设计了分片头部，分片头部的大小（8字节）计算在IPv6的负载部分");
 						createProtocolStructT1(
 							"830",
@@ -104,65 +104,65 @@
 						`;
 						createProtocolExplainT1(words, -287, 'protocolStructure1');
 
-					createInstruT1("IPv6 分片只在发送设备分片","i3-1");
+					createInstruT1("IPv6 分片只在发送设备分片", "i3-1");
 						createInstruAllTopT1("在设备的‘出方向。，如果IPv6报文大于MTU，则需要分片");
 						createInstruAllTopT1("与IPv4不同，‘IPv6只能在发送设备进行分片。，中间设备不进行分片");
 						createInstruAllTopT1("如果报文传输过程中需要分片，则发送端根据ICMPv6差错报文，重新发送分片后的报文<br />");
 
-					createInstruT1("起始报文<br />","i3-2");
+					createInstruT1("起始报文<br />", "i3-2");
 						createConfigImgT1("IPv6/fragmentation2$1~2");
 
-					createInstruT1("第一次分片，MTU 1350","i3-3");
+					createInstruT1("第一次分片，MTU 1350", "i3-3");
 						createInstruAllTopT1("与IPv4分片的规则相同，除最后一片外，IPv6分片的数据部分必须是8字节的整数倍");
 						createInstruAllTopT1("因此IPv6数据部分最大为 1350-20-8=1302 字节，8的最大倍数为1296，第一片的数据部分 1296 字节");
 						createInstruAllTopT1("第二片的数据部分 1360-1296=64 字节<br />");
 						createConfigImgT1("IPv6/fragmentation3$1~2");
 
-					createInstruT1("第二次分片，MTU 1280","i3-4");
+					createInstruT1("第二次分片，MTU 1280", "i3-4");
 						createInstruAllTopT1("规则不变，但仍由发送设备基于新的MTU重新分片");
 						createInstruAllTopT1("第一片数据部分最大 1280-40-8=1232 字节，恰好为8的倍数");
 						createInstruAllTopT1("第二片数据部分 1350-1232=128 字节<br />");
 						createConfigImgT1("IPv6/fragmentation4$1~2");
 
-				createInstruT0("IPv6特定用途地址（前缀）<br />","i4");
-					tHeader = [
+				createInstruT0("IPv6特定用途地址（前缀）<br />", "i4");
+					var tHeader = [
 						"地址",
 						"名称",
 						"说明",
 					];
-					tBody = [
-						["33:33:FF/24","IPv6组播mac地址","地址的前24位，后24位为被请求节点的IPv6地址的后24位"],
-						["FE80::/64","链路本地地址","地址的前64位，后64位采用EUI-64生成"],
-						["FF02::1:FF/104","请求节点组播地址","地址的前104位，后24位为请求节点的mac地址的后24位"],
-						["FF02::1","所有节点","相当于IPv4的广播"],
-						["FF02::2","所有路由器",""],
-						["FF02::1:2","所有DHCP代理","所有DHCP服务器及中继代理监听的地址"],
+					var tBody = [
+						["33:33:FF/24", "IPv6组播mac地址", "地址的前24位，后24位为被请求节点的IPv6地址的后24位"],
+						["FE80::/64", "链路本地地址", "地址的前64位，后64位采用EUI-64生成"],
+						["FF02::1:FF/104", "请求节点组播地址", "地址的前104位，后24位为请求节点的mac地址的后24位"],
+						["FF02::1", "所有节点", "相当于IPv4的广播"],
+						["FF02::2", "所有路由器", ""],
+						["FF02::1:2", "所有DHCP代理", "所有DHCP服务器及中继代理监听的地址"],
 					];
 					createHLTableT0(1100, tHeader, tBody, "tV6address");
 
-				createInstruT0("IPv6特定地址的构成方式","i5");
-					createInstruT1("IPv6组播mac地址","i5-1");
+				createInstruT0("IPv6特定地址的构成方式", "i5");
+					createInstruT1("IPv6组播mac地址", "i5-1");
 						createInstruAllTopT1("前24位固定为33:33:FF，后24位为对应的IPv6组播地址的后24位");
 
-					createInstruT1("<br /><br />请求节点组播地址（Solicited-Node Address）","i5-2");
+					createInstruT1("<br /><br />请求节点组播地址（Solicited-Node Address）", "i5-2");
 						createInstruAllTopT1("前104位固定为FF02::1:FF，后24位为被请求节点的IPv6地址的后24位");
 
-					createInstruT1("<br /><br />EUI-64算法","i5-3");
+					createInstruT1("<br /><br />EUI-64算法", "i5-3");
 						createInstruAllTopT1("共64位地址，其中前（后）24位后设备mac地址的前（后）24位，中间16位为FFFE");
 
 						createInstruAllTopT1("随后第7位取反（如果原始为0，则变为1，如果原始为1，则变为0）");
 
-					createInstruT1("<br /><br />链路本地地址（Link-local address）","i5-4");
+					createInstruT1("<br /><br />链路本地地址（Link-local address）", "i5-4");
 						createInstruAllTopT1("前64位固定为FE80::，后64位根据EUI-64计算得到");
 
-					createInstruT1("<br /><br />无状态自动配置地址（SLAAC-Stateless Address Configuration）","i5-5");
+					createInstruT1("<br /><br />无状态自动配置地址（SLAAC-Stateless Address Configuration）", "i5-5");
 						createInstruAllTopT1("前64位与路由器的IPv6地址前64位相同，后64位存在两种方式");
 
 						createInstruAllTopT1("　　第一种：采用EUI-64方式计算得到");
 
 						createInstruAllTopT1("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
 
-				createInstruT0("IPv6伪首部<br />","i6");
+				createInstruT0("IPv6伪首部<br />", "i6");
 					createConfigImgT0("IPv6/IPv6伪首部", "IPv6伪首部");
 
 			</script>

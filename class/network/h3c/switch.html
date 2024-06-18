@@ -14,46 +14,46 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("镜像","i6");
-					createInstruT1("端口镜像","i6-1");
-						createInstruT2("SPAN（交换机端口分析仪，分析服务器与被监控端口通过‘同一台。交换机相连）","i6-1-1");
+				createInstruT0("镜像", "i6");
+					createInstruT1("端口镜像", "i6-1");
+						createInstruT2("SPAN（交换机端口分析仪，分析服务器与被监控端口通过‘同一台。交换机相连）", "i6-1-1");
 							createInstruT3("创建镜像组");
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 local");
-								instruArr[1] = createCmdInstruSpan("“1。","镜像口号");
-								createCmdInstruT3(instruArr,"h3c");
+								instruArr[1] = createCmdInstruSpan("“1。", "镜像口号");
+								createCmdInstruT3(instruArr, "h3c");
 
 							createInstruT3("设置源接口（被监控的接口）");
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 mirroring-port “f0/1。 { both | inbound | outbound } ");
-								instruArr[1] = createCmdInstruSpan("“1。","镜像组号");
-								instruArr[2] = createCmdInstruSpan("“f0/1。","被监控接口");
-								instruArr[3] = createCmdInstruSpan("both","监控接口的入栈和出栈流量");
-								instruArr[4] = createCmdInstruSpan("inbound","监控接口的入栈流量，一般监控此项即可");
-								instruArr[5] = createCmdInstruSpan("outbound","监控接口的出栈流量");
-								createCmdInstruT3(instruArr,"h3c");
+								instruArr[1] = createCmdInstruSpan("“1。", "镜像组号");
+								instruArr[2] = createCmdInstruSpan("“f0/1。", "被监控接口");
+								instruArr[3] = createCmdInstruSpan("both", "监控接口的入栈和出栈流量");
+								instruArr[4] = createCmdInstruSpan("inbound", "监控接口的入栈流量，一般监控此项即可");
+								instruArr[5] = createCmdInstruSpan("outbound", "监控接口的出栈流量");
+								createCmdInstruT3(instruArr, "h3c");
 
 							createInstruT3("设置本地目的接口（接收从被监控接口流量的接口，连接分析仪服务器的接口）");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 monitor-port “f0/2。");
-								instruArr[1] = createCmdInstruSpan("“1。","镜像组号");
-								instruArr[2] = createCmdInstruSpan("“f0/2。","目的接口");
-								createCmdInstruT3(instruArr,"h3c");
+								instruArr[1] = createCmdInstruSpan("“1。", "镜像组号");
+								instruArr[2] = createCmdInstruSpan("“f0/2。", "目的接口");
+								createCmdInstruT3(instruArr, "h3c");
 
-					createInstruT1("查看命令<br />","i6-4");
+					createInstruT1("查看命令<br />", "i6-4");
 							instruArr[0] = createCmdSpan("[SW1] display mirroring-group { all | “1。 | “local。 }");
-							instruArr[1] = createCmdInstruSpan("all","查看所有镜像");
-							instruArr[2] = createCmdInstruSpan("“1。","查看某个镜像组");
-							instruArr[3] = createCmdInstruSpan("“local。","按镜像类型查看");
-							createCmdInstruT2(instruArr,"h3c");
+							instruArr[1] = createCmdInstruSpan("all", "查看所有镜像");
+							instruArr[2] = createCmdInstruSpan("“1。", "查看某个镜像组");
+							instruArr[3] = createCmdInstruSpan("“local。", "按镜像类型查看");
+							createCmdInstruT2(instruArr, "h3c");
 
-				createInstruT0("链路聚合","i8");
+				createInstruT0("链路聚合", "i8");
 						createInstruT2("创建聚合接口");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[SW1] interface Bridge-Aggregation “1。");
-							instruArr[1] = createCmdInstruSpan("“1。","聚合接口号");
-							createCmdInstruT2(instruArr,"h3c");
+							instruArr[1] = createCmdInstruSpan("“1。", "聚合接口号");
+							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("‘默认为静态方式聚合。");
 
@@ -61,32 +61,32 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[SW1-Bridge-Aggregation1] link-aggregation mode dynamic ");
-							createCmdInstruT2(instruArr,"h3c");
+							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("将接口加入聚合接口");
 							instruArr[0] = createCmdSpan("[SW1] int range g1/0/5 g1/0/6");
-							instruArr[1] = createCmdInstruSpan("“g0/0/5 g0/0/6。","成员接口号");
+							instruArr[1] = createCmdInstruSpan("“g0/0/5 g0/0/6。", "成员接口号");
 							instruArr[2] = createCmdSpan("[SW1-if-range] port link-aggregation group “1。");
-							instruArr[3] = createCmdInstruSpan("“1。","聚合接口号");
-							createCmdInstruT2(instruArr,"h3c");
+							instruArr[3] = createCmdInstruSpan("“1。", "聚合接口号");
+							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("接口配置在聚合接口进行");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[SW1] int Bridge-Aggregation “1。");
-							instruArr[1] = createCmdInstruSpan("“1。","聚合接口号");
+							instruArr[1] = createCmdInstruSpan("“1。", "聚合接口号");
 							instruArr[2] = createCmdSpan("[SW1-Bridge-Aggregation1] …");
-							createCmdInstruT2(instruArr,"h3c");
+							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("配置负载分担方式（仅本地有效，两端不必一致）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[SW1-Bridge-Aggregation1] link-aggregation load-sharing mode “负载分担方式。");
-							createCmdInstruT2(instruArr,"h3c");
+							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("查看命令");
 							instruArr[0] = createCmdSpan("[SW1] display link-aggregation verbose");
-							createCmdInstruT2(instruArr,"h3c");
+							createCmdInstruT2(instruArr, "h3c");
 			</script>
 		</div>
 	</div>

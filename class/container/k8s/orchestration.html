@@ -14,11 +14,11 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("资源限制","i1");
+				createInstruT0("资源限制", "i1");
 					createInstruAllTopT1("资源限制位置ds或dp配置文件中，容器的下一级")
 					createInstruAllTopT1("共两种类型 requests（保证），limits（限制）")
 					createInstruAllTopT1("cpu还支持毫核限制，1=1000m，内存为常规的方式")
-					yaml = `
+					var yaml = `
 						apiVersion: apps/v1
 						kind: Deployment
 						metadata:
@@ -48,11 +48,11 @@
 					`;
 					createYAMLT1(yaml);
 
-				createInstruT0("亲和与反亲和","i2");
-					createInstruT1("准备配置亲和","i2-4");
-						createInstruT2("查看相关信息","i2-4-1");
+				createInstruT0("亲和与反亲和", "i2");
+					createInstruT1("准备配置亲和", "i2-4");
+						createInstruT2("查看相关信息", "i2-4-1");
 							createInstruT3("查看节点");
-								cmd = `
+								var cmd = `
 									kubectl get node
 									# 以下为输出
 									NAME       STATUS   ROLES    AGE     VERSION
@@ -77,7 +77,7 @@
 								`;
 								createLinuxTxtT3(cmd);
 
-						createInstruT2("亲和命令","i2-4-2");
+						createInstruT2("亲和命令", "i2-4-2");
 							createInstruT3("亲和调度");
 								yaml = `
 									# 必须和 pod / node 高度在一起
@@ -98,8 +98,8 @@
 								`;
 								createYAMLT3(yaml);
 
-					createInstruT1("节点亲和","i2-1");
-						createInstruT2("方法一：配置节点选择","i2-1-1");
+					createInstruT1("节点亲和", "i2-1");
+						createInstruT2("方法一：配置节点选择", "i2-1-1");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -125,7 +125,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("方法二：配置亲和","i2-1-2");
+						createInstruT2("方法二：配置亲和", "i2-1-2");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -158,8 +158,8 @@
 							`;
 							createYAMLT2(yaml);
 
-					createInstruT1("pod亲和","i2-2");
-						createInstruT2("创建起始pod（后续pod和该pod亲和）","i2-2-1");
+					createInstruT1("pod亲和", "i2-2");
+						createInstruT2("创建起始pod（后续pod和该pod亲和）", "i2-2-1");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -185,7 +185,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("创建后续pod","i2-2-2");
+						createInstruT2("创建后续pod", "i2-2-2");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -219,8 +219,8 @@
 							`;
 							createYAMLT2(yaml);
 
-					createInstruT1("pod反亲和","i2-3");
-						createInstruT2("反亲和配置与亲和基本一致，只需要在后续pod的亲和配置修改为反亲和","i2-3");
+					createInstruT1("pod反亲和", "i2-3");
+						createInstruT2("反亲和配置与亲和基本一致，只需要在后续pod的亲和配置修改为反亲和", "i2-3");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -254,9 +254,9 @@
 							`;
 							createYAMLT2(yaml);
 
-				createInstruT0("污点","i3");
-					createInstruT1("创建污点","i3-1");
-						createInstruT2("配置文件方式","i3-1-1");
+				createInstruT0("污点", "i3");
+					createInstruT1("创建污点", "i3-1");
+						createInstruT2("配置文件方式", "i3-1-1");
 							yaml = `
 								apiVersion: v1
 								kind: Node
@@ -271,28 +271,28 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("命令行方式","i3-1-2");
+						createInstruT2("命令行方式", "i3-1-2");
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("kubectl taint nodes “node01。” 。“disk。”=。“ssd。”:。“NoSchedule。", 3);
-							instruArr[1] = createCmdInstruSpan("“node01。","污点生效的节点名");
-							instruArr[2] = createCmdInstruSpan("“disk。","污点键");
-							instruArr[3] = createCmdInstruSpan("“ssd。","污点值");
-							instruArr[4] = createCmdInstruSpan("“NoSchedule。","污点效果");
-							createCmdInstruT2(instruArr,"k8s");
+							instruArr[1] = createCmdInstruSpan("“node01。", "污点生效的节点名");
+							instruArr[2] = createCmdInstruSpan("“disk。", "污点键");
+							instruArr[3] = createCmdInstruSpan("“ssd。", "污点值");
+							instruArr[4] = createCmdInstruSpan("“NoSchedule。", "污点效果");
+							createCmdInstruT2(instruArr, "k8s");
 
-					createInstruT1("查看污点<br />","i3-2");
+					createInstruT1("查看污点<br />", "i3-2");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("kubectl get node “node01。 -o json | jq '.spec.taints'", 3);
-						instruArr[1] = createCmdInstruSpan("“node01。","查看污点的节点名");
-						createCmdInstruT1(instruArr,"k8s");
+						instruArr[1] = createCmdInstruSpan("“node01。", "查看污点的节点名");
+						createCmdInstruT1(instruArr, "k8s");
 
-					createInstruT1("删除污点<br />","i3-3");
+					createInstruT1("删除污点<br />", "i3-3");
 						instruArr[0] = createLinuxCmd("kubectl taint nodes “node01。” 。“disk。”-。", 3);
-						instruArr[1] = createCmdInstruSpan("“node01。","删除污点的节点名");
-						createCmdInstruT1(instruArr,"k8s");
+						instruArr[1] = createCmdInstruSpan("“node01。", "删除污点的节点名");
+						createCmdInstruT1(instruArr, "k8s");
 
-					createInstruT1("pod容忍污点","i3-4");
+					createInstruT1("pod容忍污点", "i3-4");
 						yaml = `
 							apiVersion: apps/v1
 							kind: Deployment
@@ -321,49 +321,49 @@
 						`;
 						createYAMLT1(yaml);
 
-				createInstruT0("configmap","i5");
-					createInstruT1("创建configmap","i5-1");
+				createInstruT0("configmap", "i5");
+					createInstruT1("创建configmap", "i5-1");
 						instruArr[0] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。", 3);
-						instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
-						instruArr[2] = createCmdInstruSpan("“index.html。","configmap对应的文件");
-						createCmdInstruT1(instruArr,"k8s");
+						instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
+						instruArr[2] = createCmdInstruSpan("“index.html。", "configmap对应的文件");
+						createCmdInstruT1(instruArr, "k8s");
 
-					createInstruT1("查看configmap","i5-2");
-						createInstruT2("查看configmap列表","i5-2-1");
+					createInstruT1("查看configmap", "i5-2");
+						createInstruT2("查看configmap列表", "i5-2-1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("kubectl get cm");
-							createCmdInstruT2(instruArr,"k8s");
+							createCmdInstruT2(instruArr, "k8s");
 
-						createInstruT2("查看某个configmap内容","i5-2-2");
+						createInstruT2("查看某个configmap内容", "i5-2-2");
 							instruArr[0] = createLinuxCmd("kubectl describe cm “configmap-nginx-html。", 3);
-							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
-							createCmdInstruT2(instruArr,"k8s");
+							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
+							createCmdInstruT2(instruArr, "k8s");
 
-					createInstruT1("修改configmap","i5-3");
-						createInstruT2("方法一：删除后重新建立","i5-3-1");
+					createInstruT1("修改configmap", "i5-3");
+						createInstruT2("方法一：删除后重新建立", "i5-3-1");
 							instruArr[0] = createLinuxCmd("kubectl delete cm “configmap-nginx-html。", 3);
 							instruArr[1] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file=“index.html。", 3);
-							instruArr[2] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
-							instruArr[3] = createCmdInstruSpan("“index.html。","configmap对应的文件");
-							createCmdInstruT2(instruArr,"k8s");
+							instruArr[2] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
+							instruArr[3] = createCmdInstruSpan("“index.html。", "configmap对应的文件");
+							createCmdInstruT2(instruArr, "k8s");
 
-						createInstruT2("方法二：直接修改","i5-3-2");
+						createInstruT2("方法二：直接修改", "i5-3-2");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("kubectl edit cm “configmap-nginx-html。", 3);
-							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
-							createCmdInstruT2(instruArr,"k8s");
+							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
+							createCmdInstruT2(instruArr, "k8s");
 
-						createInstruT2("方法三：覆盖原始的configmap","i5-3-3");
+						createInstruT2("方法三：覆盖原始的configmap", "i5-3-3");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file “index.html。 -o yaml --dry-run | kubectl apply -f -", 3);
-							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。","configmap名");
-							instruArr[2] = createCmdInstruSpan("“index.html。","configmap对应的文件");
-							createCmdInstruT2(instruArr,"k8s");
+							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
+							instruArr[2] = createCmdInstruSpan("“index.html。", "configmap对应的文件");
+							createCmdInstruT2(instruArr, "k8s");
 
-					createInstruT1("pod中使用configmap","i5-4");
+					createInstruT1("pod中使用configmap", "i5-4");
 						yaml = `
 							apiVersion: apps/v1
 							kind: Deployment
@@ -400,9 +400,9 @@
 						`;
 						createYAMLT1(yaml);
 
-				createInstruT0("secret","i4");
-					createInstruT1("创建secret","i4-1");
-						createInstruT2("命令行创建","i4-1-1");
+				createInstruT0("secret", "i4");
+					createInstruT1("创建secret", "i4-1");
+						createInstruT2("命令行创建", "i4-1-1");
 							cmd = `
 								# 创建容器镜像仓库的认证
 								kubectl create secrets docker-registry harbor-auth-kubectl \\
@@ -412,7 +412,7 @@
 							`
 							createLinuxTxtT2(cmd)
 
-						createInstruT2("yaml文件方式创建","i4-1-2");
+						createInstruT2("yaml文件方式创建", "i4-1-2");
 							yaml = `
 								# yaml中数据需要为base64编码
 								# 镜像仓库的认证文件为：/root/.docker/config.json
@@ -429,14 +429,14 @@
 							`
 							createYAMLT2(yaml)
 
-					createInstruT1("查看secret列表","i4-2");
-						createInstruT2("查看secret列表","i4-2-1");
+					createInstruT1("查看secret列表", "i4-2");
+						createInstruT2("查看secret列表", "i4-2-1");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createLinuxCmd("kubectl get secrets", 3);
-							createCmdInstruT2(instruArr,"k8s");
+							createCmdInstruT2(instruArr, "k8s");
 
-					createInstruT1("pod中使用secret","i4-4");
+					createInstruT1("pod中使用secret", "i4-4");
 						yaml = `
 							apiVersion: apps/v1
 								kind: Deployment
@@ -462,9 +462,9 @@
 						`;
 						createYAMLT1(yaml);
 
-				createInstruT0("存储","i6");
-					createInstruT1("分布式存储ceph","i6-1");
-						createInstruT2("所有 node 配置新的硬盘","i6-1-1");
+				createInstruT0("存储", "i6");
+					createInstruT1("分布式存储ceph", "i6-1");
+						createInstruT2("所有 node 配置新的硬盘", "i6-1-1");
 							cmd = `
 								lsblk -f
 								# 下面为输出，新加硬盘（sdb）无FSTYPE信息
@@ -478,7 +478,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("安装ceph（任意一个master）","i6-1-2");
+						createInstruT2("安装ceph（任意一个master）", "i6-1-2");
 							cmd = `
 								# 参考 https://github.com/rook/rook
 								#      https://github.com/rook/rook/tree/master/cluster/examples/kubernetes/ceph
@@ -550,19 +550,19 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("创建文件系统（任意一个master）","i6-1-3");
+						createInstruT2("创建文件系统（任意一个master）", "i6-1-3");
 							cmd = `
 								kubectl apply -f filesystem.yaml	<a href="yaml/orchestration/06_storage/filesystem.yaml" download="filesystem.yaml">下载该文件</a>
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("创建存储类（任意一个master）","i6-1-4");
+						createInstruT2("创建存储类（任意一个master）", "i6-1-4");
 							cmd = `
 								kubectl apply -f storageclass.yaml	<a href="yaml/orchestration/06_storage/storageclass.yaml" download="storageclass.yaml">下载该文件</a>
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("创建pvc（任意一个master）","i6-1-5");
+						createInstruT2("创建pvc（任意一个master）", "i6-1-5");
 							yaml = `
 								apiVersion: v1
 								kind: PersistentVolumeClaim
@@ -578,7 +578,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("等待pvc正常运行","i6-1-6");
+						createInstruT2("等待pvc正常运行", "i6-1-6");
 							cmd = `
 								kubectl get pvc
 								NAME               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -586,7 +586,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("创建pod","i6-1-7");
+						createInstruT2("创建pod", "i6-1-7");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
@@ -616,7 +616,7 @@
 							`;
 							createYAMLT2(yaml);
 
-					createInstruT1("空目录","i6-2");
+					createInstruT1("空目录", "i6-2");
 						yaml = `
 							apiVersion: apps/v1
 							kind: Deployment
@@ -651,14 +651,14 @@
 						`;
 						createYAMLT1(yaml);
 
-					createInstruT1("NFS","i6-3");
-						createInstruT2("安装NFS程序（所有node）","i6-3-1");
+					createInstruT1("NFS", "i6-3");
+						createInstruT2("安装NFS程序（所有node）", "i6-3-1");
 							cmd = `
 								yum install nfs-utils -y
 							`;
 							createLinuxTxtT2(cmd);
 
-						createInstruT2("部署 pv","i6-3-2");
+						createInstruT2("部署 pv", "i6-3-2");
 							yaml = `
 								apiVersion: v1
 								kind: PersistentVolume
@@ -677,7 +677,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("部署 pvc","i6-3-3");
+						createInstruT2("部署 pvc", "i6-3-3");
 							yaml = `
 								kind: PersistentVolumeClaim
 								apiVersion: v1
@@ -693,7 +693,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("部署 pod","i6-3-4");
+						createInstruT2("部署 pod", "i6-3-4");
 							yaml = `
 								apiVersion: apps/v1
 								kind: Deployment

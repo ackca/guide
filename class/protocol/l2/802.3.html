@@ -26,7 +26,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("802.3 首部字段说明","i1");
+				createInstruT0("802.3 首部字段说明", "i1");
 					createProtocolStructT0(
 						"1440",
 						"270",
@@ -35,7 +35,7 @@
 						"802.3协议",
 					);
 
-					words = `
+					var words = `
 						目的MAC地址（Destination）
 						由6字节构成，表示目的MAC地址
 
@@ -59,7 +59,7 @@
 					`;
 					createProtocolExplainT0(words, -300);
 
-				createInstruT0("802.3 实例","i2");
+				createInstruT0("802.3 实例", "i2");
 					createInstruT1("实例为CDP报文，如下所示<br />");
 						createConfigImgT1("802.3/802.3_packet");
 			</script>

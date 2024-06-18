@@ -27,7 +27,7 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("syslog 报文结构","i1");
+				createInstruT0("syslog 报文结构", "i1");
 					createProtocolStructT0(
 						"1060",
 						"220",
@@ -36,7 +36,7 @@
 						"syslog协议"
 					);
 
-					words = `
+					var words = `
 						优先级（PRI：Priority）
 						共24 bits，由4部分组成<br /><ul><li><span><</span><br />由8 bits构成，值为<的ASCII，0x3C</li><li>设备（Facility）<br />由5 bits构成，用于区分发送日志的设备类型</li>\t<li>安全级别（Severity）<br />由3 bits构成，用于表示事件的严重程度，越小越严重</li><li><span>></span><br />由8 bits构成，值为>的ASCII，0x3E</li></ul>
 
@@ -45,59 +45,59 @@
 					`;
 					createProtocolExplainT0(words, -220);
 
-				createInstruT0("Facility取值对应关系<br />","i2");
-					tHeader = [
+				createInstruT0("Facility取值对应关系<br />", "i2");
+					var tHeader = [
 						"Num",
 						"Facility",
 					];
-					tBody = [
-						["0","kernel messages"],
-						["1","user-level messages"],
-						["2","mail system"],
-						["3","system daemons"],
-						["4","security/authorization messages (note 1)"],
-						["5","messages generated internally by syslogd"],
-						["6","line printer subsystem"],
-						["7","network news subsystem"],
-						["8","UUCP subsystem"],
-						["9","clock daemon (note 2)"],
-						["10","security/authorization messages (note 1)"],
-						["11","FTP daemon"],
-						["12","NTP subsystem"],
-						["13","log audit (note 1)"],
-						["14","log alert (note 1)"],
-						["15","clock daemon (note 2)"],
-						["16","local use 0  (local0)"],
-						["17","local use 1  (local1)"],
-						["18","local use 2  (local2)"],
-						["19","local use 3  (local3)"],
-						["20","local use 4  (local4)"],
-						["21","local use 5  (local5)"],
-						["22","local use 6  (local6)"],
-						["23","local use 7  (local7)"],
+					var tBody = [
+						["0", "kernel messages"],
+						["1", "user-level messages"],
+						["2", "mail system"],
+						["3", "system daemons"],
+						["4", "security/authorization messages (note 1)"],
+						["5", "messages generated internally by syslogd"],
+						["6", "line printer subsystem"],
+						["7", "network news subsystem"],
+						["8", "UUCP subsystem"],
+						["9", "clock daemon (note 2)"],
+						["10", "security/authorization messages (note 1)"],
+						["11", "FTP daemon"],
+						["12", "NTP subsystem"],
+						["13", "log audit (note 1)"],
+						["14", "log alert (note 1)"],
+						["15", "clock daemon (note 2)"],
+						["16", "local use 0  (local0)"],
+						["17", "local use 1  (local1)"],
+						["18", "local use 2  (local2)"],
+						["19", "local use 3  (local3)"],
+						["20", "local use 4  (local4)"],
+						["21", "local use 5  (local5)"],
+						["22", "local use 6  (local6)"],
+						["23", "local use 7  (local7)"],
 					];
 					createHLTableT0(550, tHeader, tBody);
 					document.writeln("");
 
-				createInstruT0("<br /><br />Severity取值对应关系<br />","i3");
+				createInstruT0("<br /><br />Severity取值对应关系<br />", "i3");
 					tHeader = [
 						"Num",
 						"Secerity",
 					];
 					tBody = [
-						["0","<b>Emergency: </b>system is unusable"],
-						["1","<b>Alert: </b>action must be taken immediately"],
-						["2","<b>Critical: </b>critical conditions"],
-						["3","<b>Error: </b>error conditions"],
-						["4","<b>Warning: </b>warning conditions"],
-						["5","<b>Notice: </b>normal but significant condition"],
-						["6","<b>Informational: </b>informational messages"],
-						["7","<b>Debug: </b>debug-level messages"],
+						["0", "<b>Emergency: </b>system is unusable"],
+						["1", "<b>Alert: </b>action must be taken immediately"],
+						["2", "<b>Critical: </b>critical conditions"],
+						["3", "<b>Error: </b>error conditions"],
+						["4", "<b>Warning: </b>warning conditions"],
+						["5", "<b>Notice: </b>normal but significant condition"],
+						["6", "<b>Informational: </b>informational messages"],
+						["7", "<b>Debug: </b>debug-level messages"],
 					];
 					createHLTableT0(550, tHeader, tBody);
 
 
-				createInstruT0("syslog 报文实例<br />","i4");
+				createInstruT0("syslog 报文实例<br />", "i4");
 					createConfigImgT0("syslog/syslog_packet");
 
 			</script>

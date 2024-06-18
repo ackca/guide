@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<link rel="icon" href="../../../img/cert.svg" />
+	<link rel="icon" href="../../../img/cert.png" />
 	<title>NetDevOps-证书服务-证书管理</title>
 	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
@@ -14,23 +14,23 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("添加受信任的根证书","i1");
-					createInstruT1("Windows系统","i1-1");
+				createInstruT0("添加受信任的根证书", "i1");
+					createInstruT1("Windows系统", "i1-1");
 						createConfigImgT1("certs_mgmt/i1-1$1~8");
 
-					createInstruT1("RHEL 7/8/9","i1-2");
+					createInstruT1("RHEL 7/8/9", "i1-2");
 						createInstruAllTopT1("将根证书存入　’/etc/pki/ca-trust/source/anchors/ 。");
 						createInstruAllTopT1("更新受信任的根证书");
-						instruArr = new Array();
+						var instruArr = new Array();
 						instruArr[0] = createLinuxCmd("update-ca-trust");
-						createCmdInstruT1(instruArr,"redhat_cert");
+						createCmdInstruT1(instruArr, "redhat_cert");
 						createConfigImgT1("certs_mgmt/i1-2$1");
 
-				createInstruT0("windows证书管理工具","i2");
-					createInstruT1("当前用户证书管理：<span style='color: #FFFFFF'>certmgr.msc</span>","i2-1");
+				createInstruT0("windows证书管理工具", "i2");
+					createInstruT1("当前用户证书管理：<span style='color: #FFFFFF'>certmgr.msc</span>", "i2-1");
 						createConfigImgT1("certs_mgmt/i2-1$1~2");
 
-					createInstruT1("本地计算机证书管理：<span style='color: #FFFFFF'>certlm.msc</span>","i2-2");
+					createInstruT1("本地计算机证书管理：<span style='color: #FFFFFF'>certlm.msc</span>", "i2-2");
 						createConfigImgT1("certs_mgmt/i2-2$1~2")
 			</script>
 		</div>

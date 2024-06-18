@@ -1,0 +1,66 @@
+body, html
+{
+	font-size: 1.3em;
+	padding: 0;
+	margin: 0;
+	background: #494A5F;
+	color: #FFFFFF;
+	font-weight: 500;
+
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+body::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	background: #CFCFCF;
+}
+
+.os_options
+{
+	margin: 80px auto;
+}
+
+.os_options label
+{
+	margin-bottom: 10px;
+}
+
+.os_options select,
+.os_options input
+{
+	background-color: #282923;
+	color: #F8F8F2;
+	border-color: #495057;
+	width: 600px;
+	margin-bottom: 20px;
+}
+
+.os_options select
+{
+	--bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.os_options input:focus
+{
+	background-color: #282923;
+	color: #F8F8F2;
+	border-color: #495057;
+}
+
+#lb_os_version, #select_os_version,
+#lb_os_kind, #select_os_kind,
+#lb_os_hostname, #input_os_hostname,
+#lb_os_password, #input_os_password,
+#lb_install, #select_install,
+#lb_partition, #select_partition,
+#lb_partition_install, #select_partition_install
+{
+	display: none;
+}

@@ -27,6 +27,11 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	color: #FFFFFF;
 }
 
+a
+{
+	text-decoration: none;
+}
+
 @media screen and (max-width:1550px)
 {
 	.divProtocol

@@ -1,62 +1,62 @@
 #guide-icon
 {
-    top: 55px;
-    left: 340px;
-    cursor: pointer;
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    transform: rotate(45deg);
-    background-color: transparent;
-    z-index: 10;
+	top: 55px;
+	left: 340px;
+	cursor: pointer;
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	transform: rotate(45deg);
+	background-color: transparent;
+	z-index: 10;
 
-    border-radius: 0 50% 50%;
-    transition: border-radius .5s
+	border-radius: 0 50% 50%;
+	transition: border-radius .5s
 }
 
 #guide-icon > div
 {
-    transform: rotate(-45deg);
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+	transform: rotate(-45deg);
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
 }
 
 #guide-icon span
 {
-    display: block;
-    background-color: #A9C7CE;
-    width: 22px;
-    height: 3px;
-    margin: 3px 0;
-    transition: .5s
+	display: block;
+	background-color: #A9C7CE;
+	width: 22px;
+	height: 3px;
+	margin: 3px 0;
+	transition: .5s
 }
 
 #guide-icon span.open:nth-child(1)
 {
-    transform: rotate(45deg) translate(3px, 3px);
+	transform: rotate(45deg) translate(3px, 3px);
 }
 
 #guide-icon span.open:nth-child(2)
 {
-    transform: rotate(-45deg) translate(3px, -3px);
+	transform: rotate(-45deg) translate(3px, -3px);
 }
 
 #guide-icon span.open:nth-child(3)
 {
-    display: none;
+	display: none;
 }
 
 #guide-icon:hover
 {
-    background-color: #1E282C;
-    background-position: left;
+	background-color: #1E282C;
+	background-position: left;
 }
 
 #guide-icon:hover span
 {
-    background-color: #FAFAFA;
+	background-color: #FAFAFA;
 }

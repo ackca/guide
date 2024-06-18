@@ -1,34 +1,34 @@
 #tICMPv4Type .cell:nth-child(1)
 {
-    padding-left: 0;
+	padding-left: 0;
 }
 
 #tICMPv4Type .row:nth-child(n+2) .cell  /* 表格内容颜色修改为一致 */
 {                                       /* 添加表格线 */
-    border-right: solid 2px #A0A0A0;
-    border-bottom: solid 2px #A0A0A0;
-    background-color: #5A5D6F;
+	border-right: solid 2px #A0A0A0;
+	border-bottom: solid 2px #A0A0A0;
+	background-color: #5A5D6F;
 }
 
 #tICMPv4Type .row:nth-child(n+2):hover .cell  /* 修改高亮颜色 */
 {
-    background-color: #CBCFFF;
+	background-color: #CBCFFF;
 }
 
 #tICMPv4Type .row:nth-child(n+2):hover .cell:nth-child(-n+2)
 {
-    color: #8000FF;
+	color: #8000FF;
 }
 
 #tICMPv4Type .row:nth-child(n+2) .cell:nth-child(1)
 {
-    font-weight: bold;
-    color: #FFFF00;
+	font-weight: bold;
+	color: #FFFF00;
 }
 
 #tICMPv4Type .row:nth-child(n+2) .cell:nth-child(2)
 {
-    color: #FFFF00;
+	color: #FFFF00;
 }
 
 /* 去掉被合并的列单元格的下边框 */
@@ -57,13 +57,13 @@
 #tICMPv4Type .row:nth-child(32) > .cell:nth-child(1),
 #tICMPv4Type .row:nth-child(33) > .cell:nth-child(1)
 {
-    border-bottom-color: #5A5D6F;
+	border-bottom-color: #5A5D6F;
 }
 
 /* 去掉最下侧的表格线 */
 #tICMPv4Type .row:last-child .cell
 {
-    border-bottom: 0;
+	border-bottom: 0;
 }
 
 #tICMPv4Type .row.header .cell,
@@ -72,62 +72,68 @@
 #tICMPv4Type .row:nth-child(29) .cell:nth-child(2),
 #tICMPv4Type .row:nth-child(32) .cell:nth-child(2)
 {
-    border-right: 0;
+	border-right: 0;
 }
 
 #tICMPv4Type .row .cell,
 #zwTable .row .cell
 {
-    text-align: center;
-    width: 80px;
+	text-align: center;
+	width: 80px;
 }
 
 #tICMPv4Type .row .cell:nth-child(3),
 #zwTable .row .cell:nth-child(3)
 {
-    width: auto;
+	width: auto;
 }
 
 #tICMPv4Type .row.header .cell:nth-child(3),
 #zwTable .row.header .cell:nth-child(3)
 {
-    text-align: center;
-    padding-left: inherit;
+	text-align: center;
+	padding-left: inherit;
 }
 
 #tICMPv4Type .row .cell:nth-child(3)
 {
-    text-align: left;
-    padding-left: 10px;
+	text-align: left;
+	padding-left: 10px;
 }
 
 /* 去掉最右侧的表格线 */
 #tICMPv4Type .row .cell:last-child
 {
-    border-right: 0;
+	border-right: 0;
 }
 
 #zwTable
 {
-    /*border-top-right-radius: 10px;*/
-    /*border-top-left-radius: 10px;*/
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border: 0;
-    overflow: hidden;
-    letter-spacing: 1px;
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
 }
 
 #zwTable, .divBG
 {
-    position: fixed;
-    z-index: 10;
-    top: 162px;
-    left: 410px;
-    display: none;
+	position: fixed;
+	z-index: 10;
+	top: 162px;
+	left: 407px;
+	display: none;
 }
 
 #zwTable .cell
 {
-    border-bottom: 0;
+	border-bottom: 0;
+}
+
+.table>:not(caption)>*>*
+{
+	color: inherit;
+	background-color: inherit;
 }

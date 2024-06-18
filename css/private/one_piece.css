@@ -1,0 +1,111 @@
+#zwTable
+{
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
+	width: 1100px
+}
+
+#zwTable, .divBG
+{
+	position: fixed;
+	z-index: 10;
+	top: 100px;
+	left: 410px;
+	display: none;
+}
+
+#zwTable .row .cell
+{
+	text-align: center;
+	width: 80px;
+}
+
+#zwTable .row .cell,
+#tOP tr th
+{
+	width: 150px;
+}
+
+#zwTable .row .cell:nth-child(2),
+#tOP tr th:nth-child(2)
+{
+	width: 650px;
+}
+
+#zwTable .row.header .cell
+{
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#tOP
+{
+	/*display: none;*/
+	/*width: 1100px;*/
+	margin-left: 18px;
+}
+
+#tOP th
+{
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: unset;
+	text-align: center;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	padding-left: 0;
+	padding-right: 0;
+	vertical-align: middle;
+	background-color: #6C7AE0;
+}
+
+#tOP .chapter
+{
+	text-align: left;
+	color: #FFFF00;
+	font-size: 24px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+#tOP table
+{
+	border-collapse: collapse;
+	border: solid 2px #808080;
+	font-size: 18px
+}
+
+#tOP td
+{
+	border:solid 2px #808080;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background-color: #5A5D6F;
+	color: #FFFFFF;
+}
+
+#tOP td:nth-child(1)
+{
+	text-align: left;
+	padding-left: 20px;
+}
+
+#tOP td:nth-last-child(4)
+{
+	text-align: center;
+	padding-left: 1px;
+}
+
+.section
+{
+	text-align: left!important;
+	padding-left: 20px;
+}

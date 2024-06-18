@@ -26,8 +26,8 @@
 
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("NTP 协议简介","i1");
-					createInstruT1("NTP时钟层级","i1-1");
+				createInstruT0("NTP 协议简介", "i1");
+					createInstruT1("NTP时钟层级", "i1-1");
 						createInstruAllTopT1("NTP允许客户端从服务器获取时间，而服务器又从权威时钟源（例如原子钟、GPS）接收精确的时间/。");
 
 						createInstruAllTopT1("NTP以层级来组织模型结构，层级中的每层被称为Stratum/。通常将从权威时钟获得时钟同步的NTP服务器的层数设置为Stratum 1，并将其作为主时间服务器，为网络中其他的设备提供时钟同步/。而Stratum 2则从Stratum 1获取时间，Stratum 3从Stratum 2获取时间，以此类推/。");
@@ -36,7 +36,7 @@
 
 						createConfigImgT1("NTP/stratum");
 
-					createInstruT1("NTP同步原理","i1-2");
+					createInstruT1("NTP同步原理", "i1-2");
 						createInstruAllTopT1("NTP最典型的授时方式是Client / Server方式，如下图所示：<br />");
 
 						createConfigImgT1("NTP/time");
@@ -58,7 +58,7 @@
 
 						createInstruAllTopT1("<br /><br />在要求不高的环境中，直接使用 t<sub>3</sub> 即可/。");
 
-				createInstruT0("NTP报文结构","i2");
+				createInstruT0("NTP报文结构", "i2");
 					createProtocolStructT0(
 						"855",
 						"685",
@@ -67,7 +67,7 @@
 						"NTP协议"
 					);
 
-					words = `
+					var words = `
 						闰秒标识器（LI：Leap Indicator）
 						由2 bits构成，值为“11”时表示告警状态，时钟未被同步；其他值时NTP本身不做处理<br />　　0：no warning 未告警<br />　　1：last minute of the day has 61 seconds 最后一分钟有61秒<br />　　2：last minute of the day has 59 seconds 最后一分钟有59秒<br />　　3：unknown (clock unsynchronized) 未知（时钟未同步）<br />
 
@@ -115,10 +115,10 @@
 					`;
 					createProtocolExplainT0(words, -685);
 
-				createInstruT0("NTP报文实例<br />","i3");
+				createInstruT0("NTP报文实例<br />", "i3");
 					createConfigImgT0("NTP/NTP_packet$1~2");
 
-				createInstruT0("SNTP","i4");
+				createInstruT0("SNTP", "i4");
 					createInstruAllTopT0("SNTP - Simple Network Time Protocol - 简单网络时间协议");
 
 					createInstruAllTopT0("SNTP是NTP的简化版本，计算时间用了简单的算法，性能较高，而精确度也能达到1秒左右");

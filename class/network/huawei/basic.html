@@ -14,381 +14,381 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("基本命令","i1");
-					createInstruT1("模式切换","i1-1");
+				createInstruT0("基本命令", "i1");
+					createInstruT1("模式切换", "i1-1");
 						createInstruT2("用户视图进入系统视图");
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("&lt;R1> system-view");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("退出当前视图，返回上一级");
 							instruArr[0] = createCmdSpan("[R1] quit");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("从任意视图返回用户视图");
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] return");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("查看/保存配置","i1-2");
+					createInstruT1("查看/保存配置", "i1-2");
 						createInstruT2("查看版本信息");
 							instruArr[0] = createCmdSpan("&lt;R1> display version");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看配置");
 							instruArr[0] = createCmdSpan("&lt;R1> display { current-configuration | saved-configuration }");
-							instruArr[1] = createCmdInstruSpan("current-configuration","运行中的配置");
-							instruArr[2] = createCmdInstruSpan("saved-configuration","保存的配置");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("current-configuration", "运行中的配置");
+							instruArr[2] = createCmdInstruSpan("saved-configuration", "保存的配置");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("保存配置");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("&lt;R1> save");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("清除已保存配置，重启后生效");
 							instruArr[0] = createCmdSpan("&lt;R1> reset saved-configuration");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("比较当前配置与下次启动配置是否一致");
 							instruArr[0] = createCmdSpan("[R1] compare configuration");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("查看接口配置","i1-3");
+					createInstruT1("查看接口配置", "i1-3");
 						createInstruT2("查看所有接口的IP及设置状态");
 							instruArr[0] = createCmdSpan("&lt;R1> display ip interface brief");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看接口详细信息");
 							instruArr[0] = createCmdSpan("&lt;R1> display ip int [ “f0/0。 ]");
-							instruArr[1] = createCmdInstruSpan("“f0/0。","接口号，查看某一接口信息");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“f0/0。", "接口号，查看某一接口信息");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("将某个接口的配置清除，还原为默认状态，并shutdown");
 							createInstruT3("系统视图配置");
 								instruArr[0] = createCmdSpan("[R1] clear configuration int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","接口号");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "接口号");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("接口视图配置");
 								instruArr[0] = createCmdSpan("[R1] int “f0/0。");
-								instruArr[1] = createCmdInstruSpan("“f0/0。","接口号");
+								instruArr[1] = createCmdInstruSpan("“f0/0。", "接口号");
 								instruArr[2] = createCmdSpan("[R1-FastEthernet0/1] clear configuration this");
-								createCmdInstruT3(instruArr,"huawei");
+								createCmdInstruT3(instruArr, "huawei");
 
-					createInstruT1("时间日期时区配置","i1-4");
+					createInstruT1("时间日期时区配置", "i1-4");
 						createInstruT2("设置时区");
 							instruArr[0] = createCmdSpan("&lt;R1> clock timezone “beijing。 { add | minus } “8。");
-							instruArr[1] = createCmdInstruSpan("“beijing。","时区名");
-							instruArr[2] = createCmdInstruSpan("{ add | minus }","{ 加 | 减 }");
-							instruArr[3] = createCmdInstruSpan("“8。","与标准时间间隔小时数");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“beijing。", "时区名");
+							instruArr[2] = createCmdInstruSpan("{ add | minus }", "{ 加 | 减 }");
+							instruArr[3] = createCmdInstruSpan("“8。", "与标准时间间隔小时数");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置时间日期");
 							instruArr = null;
 							instruArr = new Array()
 							instruArr[0] = createCmdSpan("&lt;R1> clock datetime  “09:10:00。  “2015-04-02。");
-							instruArr[1] = createCmdInstruSpan("“09:10:00。","时间");
-							instruArr[2] = createCmdInstruSpan("“2015-04-02。","日期");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“09:10:00。", "时间");
+							instruArr[2] = createCmdInstruSpan("“2015-04-02。", "日期");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看时间日期");
 							instruArr = null;
 							instruArr = new Array();
 							document.writeln("<div class='divider'></div>");
 							instruArr[0] = createCmdSpan("&lt;R1> display clock");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("其它基本设置","i1-5");
+					createInstruT1("其它基本设置", "i1-5");
 						createInstruT2("修改主机名");
 							instruArr[0] = createCmdSpan("[Huawei] sysname “R1。");
-							instruArr[1] = createCmdInstruSpan("“R1。","主机名");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“R1。", "主机名");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("关闭域名解析");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] undo dns resolve");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("使用debug");
 							instruArr[0] = createCmdSpan("&lt;R1> terminal debugging");
 							instruArr[1] = createCmdSpan("&lt;R1> debugging “ip icmp。");
 							instruArr[2] = createCmdInstruSpan("先启用debug功能，再设置具体debug项");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-				createInstruT0("动态主机配置协议（DHCP）","i2");
-					createInstruT1("基本配置","i2-1");
+				createInstruT0("动态主机配置协议（DHCP）", "i2");
+					createInstruT1("基本配置", "i2-1");
 						createInstruT2("启动DHCP服务");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] dhcp enable");
 
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置DHCP地址池");
 							createInstruT3("创建DHCP地址池");
 								instruArr[0] = createCmdSpan("[R1] ip pool “DHCP-POOL。");
-								instruArr[1] = createCmdInstruSpan("“DHCP-POOL。","DHCP地址池名");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“DHCP-POOL。", "DHCP地址池名");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置分配的地址");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] network “192.168.10.0。 [ mask “255.255.255.0。 ]");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.0。","IP地址");
-								instruArr[2] = createCmdInstruSpan("“255.255.255.0。","子网掩码，省略按标准的ABC类处理");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.0。", "IP地址");
+								instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "子网掩码，省略按标准的ABC类处理");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置默认网关");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] gateway-list “192.168.10.254。");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.254。","默认网关");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.254。", "默认网关");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置DNS");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] dns-list “202.99.96.68。 [ “114.114.114.114。 ]");
-								instruArr[1] = createCmdInstruSpan("“202.99.96.68。","首先DNS地址");
-								instruArr[2] = createCmdInstruSpan("“114.114.114.114。","备用DNS地址");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“202.99.96.68。", "首先DNS地址");
+								instruArr[2] = createCmdInstruSpan("“114.114.114.114。", "备用DNS地址");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置域");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] domain-name “domain.com。");
-								instruArr[1] = createCmdInstruSpan("“domain.com。","域名");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“domain.com。", "域名");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置租期");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] lease day “0。 hour “8。 minute “30。");
-								instruArr[1] = createCmdInstruSpan("“0。","日");
-								instruArr[2] = createCmdInstruSpan("“8。","时");
-								instruArr[3] = createCmdInstruSpan("“30。","分");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“0。", "日");
+								instruArr[2] = createCmdInstruSpan("“8。", "时");
+								instruArr[3] = createCmdInstruSpan("“30。", "分");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("地址分配永不过期");
 								instruArr = null;
 								instruArr = new Array();
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] lease unlimited");
-								createCmdInstruT3(instruArr,"huawei");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置排除范围");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] excluded-ip-address “192.168.10.1。  [ “192.168.10.100。 ]");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.1。","起始排除范围");
-								instruArr[2] = createCmdInstruSpan("“192.168.10.100。","终止排除范围，省略则只排除一个");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "起始排除范围");
+								instruArr[2] = createCmdInstruSpan("“192.168.10.100。", "终止排除范围，省略则只排除一个");
+								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("配置地址保留");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp] static-bind ip-address “192.168.10.100。 mac-address “5489-9888-7226。");
-								instruArr[1] = createCmdInstruSpan("“192.168.10.100。","IP地址");
-								instruArr[2] = createCmdInstruSpan("“5489-9888-7226。","mac地址");
-								createCmdInstruT3(instruArr,"huawei");
+								instruArr[1] = createCmdInstruSpan("“192.168.10.100。", "IP地址");
+								instruArr[2] = createCmdInstruSpan("“5489-9888-7226。", "mac地址");
+								createCmdInstruT3(instruArr, "huawei");
 
 						createInstruT2("在发送和接收DHCP报文的‘三层。接口启用DHCP，包括实际接口与逻辑接口");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp select global");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("DHCP的接口模式，以接口地址为网关地址，地址段与接口地址段相同","i2-2");
+					createInstruT1("DHCP的接口模式，以接口地址为网关地址，地址段与接口地址段相同", "i2-2");
 						createInstruT2("启用接口模式");
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp select interface");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置DNS");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp server dns-list “202.99.96.68。 [ “114.114.114.114。 ]");
-							instruArr[1] = createCmdInstruSpan("“202.99.96.68。","首先DNS地址");
-							instruArr[2] = createCmdInstruSpan("“114.114.114.114。","备用DNS地址");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“202.99.96.68。", "首先DNS地址");
+							instruArr[2] = createCmdInstruSpan("“114.114.114.114。", "备用DNS地址");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置域");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp server domain-name “domain.com。");
-							instruArr[1] = createCmdInstruSpan("“domain.com。","域名");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“domain.com。", "域名");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置租期");
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp server lease “0。 “8。 “30。");
-							instruArr[1] = createCmdInstruSpan("“0。","日");
-							instruArr[2] = createCmdInstruSpan("“8。","时");
-							instruArr[3] = createCmdInstruSpan("“30。","分");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“0。", "日");
+							instruArr[2] = createCmdInstruSpan("“8。", "时");
+							instruArr[3] = createCmdInstruSpan("“30。", "分");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("地址分配永不过期");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp server lease unlimited");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置排除范围");
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp server excluded-address “192.168.10.1。 “192.168.10.100。");
-							instruArr[1] = createCmdInstruSpan("“192.168.10.1。","起始排除范围");
-							instruArr[2] = createCmdInstruSpan("“192.168.10.100。","终止排除范围");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "起始排除范围");
+							instruArr[2] = createCmdInstruSpan("“192.168.10.100。", "终止排除范围");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置地址保留");
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp server static-bind ip-address “192.168.10.100。 mac-address “5489-9888-7226。");
-							instruArr[1] = createCmdInstruSpan("“192.168.10.100。","IP地址");
-							instruArr[2] = createCmdInstruSpan("“5489-9888-7226。","mac地址");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“192.168.10.100。", "IP地址");
+							instruArr[2] = createCmdInstruSpan("“5489-9888-7226。", "mac地址");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("配置DHCP中继，‘需先启动DHCP服务。","i2-3");
+					createInstruT1("配置DHCP中继，‘需先启动DHCP服务。", "i2-3");
 						createInstruT2("由于中继后的DHCP返回报文为以网关为源的单播报文，因此需要有路由使报文能够回到网关设备（中继设备）");
 
 						createInstruT2("相关接口应用DHCP relay");
 							instruArr[0] = createCmdSpan("[R2-FastEthernet0/1] dhcp select relay");
 							instruArr[1] = createCmdSpan("[R2-FastEthernet0/1] dhcp relay server-ip “10.0.0.1。");
-							instruArr[2] = createCmdInstruSpan("“10.0.0.1。","DHCP服务器地址");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[2] = createCmdInstruSpan("“10.0.0.1。", "DHCP服务器地址");
+							createCmdInstruT2(instruArr, "huawei");
 							createInstruAllBottomT2("<br />配置命令的接口：连接 DHCP客户端 的网关接口及处于备份有可能成为网关的三层接口，包括物理及逻辑接口");
 
-					createInstruT1("查看与重置命令","i2-6");
+					createInstruT1("查看与重置命令", "i2-6");
 						createInstruT2("查看地址分配情况");
 							instruArr[0] = createCmdSpan("[R1] display ip pool [ name “DHCP-POOL。 | interface “GigabitEthernet0/0。 ] [ used | expired | conflict ] [ “192.168.10.1。 “192.168.10.100。 ] [ all ]");
-							instruArr[1] = createCmdInstruSpan("name “DHCP-POOL。","对于全局地址池，使用地址池名");
-							instruArr[2] = createCmdInstruSpan("interface “GigabitEthernet0/0。","对于接口地址池，使用接口名（‘不能简写。）");
-							instruArr[3] = createCmdInstruSpan("used","地址池中 ‘使用中。 的地址");
-							instruArr[4] = createCmdInstruSpan("expired","地址池中 ‘无效 。的地址");
-							instruArr[5] = createCmdInstruSpan("conflict","地址池中 ‘有冲突。 的地址");
-							instruArr[6] = createCmdInstruSpan("“192.168.10.1。 “192.168.10.100。","地址池中一段地址的分配情况");
-							instruArr[7] = createCmdInstruSpan("all","地址池中 ‘所有地址。 ");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("name “DHCP-POOL。", "对于全局地址池，使用地址池名");
+							instruArr[2] = createCmdInstruSpan("interface “GigabitEthernet0/0。", "对于接口地址池，使用接口名（‘不能简写。）");
+							instruArr[3] = createCmdInstruSpan("used", "地址池中 ‘使用中。 的地址");
+							instruArr[4] = createCmdInstruSpan("expired", "地址池中 ‘无效 。的地址");
+							instruArr[5] = createCmdInstruSpan("conflict", "地址池中 ‘有冲突。 的地址");
+							instruArr[6] = createCmdInstruSpan("“192.168.10.1。 “192.168.10.100。", "地址池中一段地址的分配情况");
+							instruArr[7] = createCmdInstruSpan("all", "地址池中 ‘所有地址。 ");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("重置本设备分配的地址");
 							instruArr[0] = createCmdSpan("[R1] reset ip pool [ name “DHCP-POOL。 | interface “GigabitEthernet0/0。 ] [ used | expired | conflict ] [ “192.168.10.1。 “192.168.10.100。 ] [ all ]");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("本设备为中继设备，向DHCP服务器申请重置地址");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] int “g0/0。");
-							instruArr[1] = createCmdInstruSpan("“g0/0。","中继接口");
+							instruArr[1] = createCmdInstruSpan("“g0/0。", "中继接口");
 							instruArr[2] = createCmdSpan("[R1-GigabitEthernet0/0] dhcp relay release “192.168.10.10。 “5489-9888-7226。 “10.1.1.1。");
-							instruArr[3] = createCmdInstruSpan("“192.168.10.10。","被释放的ip地址");
-							instruArr[4] = createCmdInstruSpan("“5489-9888-7226。","被释放的mac地址");
-							instruArr[5] = createCmdInstruSpan("“10.1.1.1。","DHCP服务器地址");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[3] = createCmdInstruSpan("“192.168.10.10。", "被释放的ip地址");
+							instruArr[4] = createCmdInstruSpan("“5489-9888-7226。", "被释放的mac地址");
+							instruArr[5] = createCmdInstruSpan("“10.1.1.1。", "DHCP服务器地址");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("DHCP snooping","i2-4");
+					createInstruT1("DHCP snooping", "i2-4");
 						createInstruT2("见 <a href='Switch.html#i10-2' style='color:#FF64FF;text-decoration:underline'>交换机配置手册、局域网安全部分</a> 部分");
 
 
-					createInstruT1("<br />接口获得DHCP的地址","i2-5");
+					createInstruT1("<br />接口获得DHCP的地址", "i2-5");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R1-FastEthernet0/1] ip address dhcp-alloc");
-						createCmdInstruT2(instruArr,"huawei");
+						createCmdInstruT2(instruArr, "huawei");
 
-				createInstruT0("网管协议","i3");
-					createInstruT1("CLI登录管理","i3-1");
+				createInstruT0("网管协议", "i3");
+					createInstruT1("CLI登录管理", "i3-1");
 						createInstruT2("进入相应的user-interface");
 							instruArr[0] = createCmdSpan("[R1] user-interface { “console 0。 | “vty 0 4。 } ");
-							instruArr[1] = createCmdInstruSpan("“console 0。","console登录生效");
-							instruArr[2] = createCmdInstruSpan("“vty 0 4。","远程登录（Telnet、SSH）生效");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“console 0。", "console登录生效");
+							instruArr[2] = createCmdInstruSpan("“vty 0 4。", "远程登录（Telnet、SSH）生效");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置超时时间");
 							instruArr[0] = createCmdSpan("[R1] user-interface “console 0。");
 							instruArr[1] = createCmdSpan("[R1-ui-console0] idle-timeout “5。 “0。");
-							instruArr[2] = createCmdInstruSpan("“5。 “0。","分 秒，实际中一般设置 5 0");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[2] = createCmdInstruSpan("“5。 “0。", "分 秒，实际中一般设置 5 0");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置登录认证方式");
 							instruArr[0] = createCmdSpan("[R1-ui-console0] authentication-mode { aaa | password | none }");
-							instruArr[1] = createCmdInstruSpan("aaa","aaa认证");
-							instruArr[2] = createCmdInstruSpan("password","密码认证");
-							instruArr[3] = createCmdInstruSpan("none","不认证");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("aaa", "aaa认证");
+							instruArr[2] = createCmdInstruSpan("password", "密码认证");
+							instruArr[3] = createCmdInstruSpan("none", "不认证");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置密码认证密码");
 							instruArr[0] = createCmdSpan("[R1-ui-console0] set authentication password { cipher | simple } “huawei。");
-							instruArr[1] = createCmdInstruSpan("cipher","密码密文存储");
-							instruArr[2] = createCmdInstruSpan("simple","密码明文存储");
-							instruArr[3] = createCmdInstruSpan("“huawei。","密码");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("cipher", "密码密文存储");
+							instruArr[2] = createCmdInstruSpan("simple", "密码明文存储");
+							instruArr[3] = createCmdInstruSpan("“huawei。", "密码");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置登录后提示文字");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] header shell information “@。");
-							instruArr[1] = createCmdInstruSpan("“@。","命令打完后回车，即可输入提示文字，以@表示提示文字结束");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“@。", "命令打完后回车，即可输入提示文字，以@表示提示文字结束");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("Telnet","i3-2");
+					createInstruT1("Telnet", "i3-2");
 						createInstruT2("先配置好登录方式及所需的用户名密码（如果需要）");
 
 						createInstruT2("启用Telent");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] telnet server enable");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("允许通过telnet登录");
 							instruArr[0] = createCmdSpan("[R1-ui-vty0-4] protocol inbound { telnet | all }");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("SSH","i3-3");
+					createInstruT1("SSH", "i3-3");
 						createInstruT2("定义登录用的用户名密码");
 							instruArr[0] = createCmdSpan("[R1] aaa");
 							instruArr[1] = createCmdSpan("[R1-aaa] local-user “admin。 password cipher “root。");
-							instruArr[2] = createCmdInstruSpan("“admin。","用户名");
-							instruArr[3] = createCmdInstruSpan("“root。","密码");
+							instruArr[2] = createCmdInstruSpan("“admin。", "用户名");
+							instruArr[3] = createCmdInstruSpan("“root。", "密码");
 							instruArr[4] = createCmdSpan("[R1-aaa] local-user “admin。 service-type ssh");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置用户的认证方式");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] ssh user “admin。 authentication-type password");
-							instruArr[1] = createCmdInstruSpan("“admin。","用户名");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("生成ssh秘钥");
 							instruArr[0] = createCmdSpan("[R1] rsa local-key-pair create");
 							instruArr[1] = createCmdInstruSpan("回车出会要求输入密钥长度，建议至少1024位");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("启用ssh远程登录，推荐只为允许SSH，不允许不安全的Telnet");
 							instruArr[0] = createCmdSpan("[R1] user-interface vty “0。 [ “4。 ]");
 							instruArr[1] = createCmdSpan("[R1-ui-vty0-4] authentication-mode aaa");
 							instruArr[2] = createCmdSpan("[R1-ui-vty0-4] protocol inbound ssh");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("启用STelent功能，并配置用户的服务类型为STelnet");
 							instruArr[0] = createCmdSpan("[R1] stelnet server enable");
 							instruArr[1] = createCmdSpan("[R1] ssh user “admin。 service-type stelnet");
-							instruArr[2] = createCmdInstruSpan("“admin。","用户名");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[2] = createCmdInstruSpan("“admin。", "用户名");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("允许/不允许 ssh v1登录（v2已经允许）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] [ undo ] ssh server compatible-ssh1x enable");
 							instruArr[1] = createCmdInstruSpan("undo为不允许");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-				createInstruT0("网络时间协议（NTP）","i6");
-					createInstruT1("NTP服务器端配置（用网络中的一台路由器作时间服务器）","i6-1");
+				createInstruT0("网络时间协议（NTP）", "i6");
+					createInstruT1("NTP服务器端配置（用网络中的一台路由器作时间服务器）", "i6-1");
 						createInstruT2("路由器配置为NTP服务器");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] ntp-service refclock-master [ “4。 ]");
-							instruArr[1] = createCmdInstruSpan("“4。","层数，取值1~15，越小越优先，默认8");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“4。", "层数，取值1~15，越小越优先，默认8");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置认证");
 							instruArr[0] = createCmdSpan("[R1] ntp-service authentication-keyid “1。 authentication-mode “md5。 “huawei。");
-							instruArr[1] = createCmdInstruSpan("“1。","key编号");
-							instruArr[2] = createCmdInstruSpan("“md5。","认证算法");
-							instruArr[3] = createCmdInstruSpan("“huawei。","密码");
+							instruArr[1] = createCmdInstruSpan("“1。", "key编号");
+							instruArr[2] = createCmdInstruSpan("“md5。", "认证算法");
+							instruArr[3] = createCmdInstruSpan("“huawei。", "密码");
 							instruArr[4] = createCmdSpan("[R1] ntp-service authentication enable");
 							instruArr[5] = createCmdSpan("[R1] ntp-service reliable authentication-keyid “1。");
-							instruArr[6] = createCmdInstruSpan("“1。","key编号");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[6] = createCmdInstruSpan("“1。", "key编号");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("NTP客户端配置","i6-2");
+					createInstruT1("NTP客户端配置", "i6-2");
 						createInstruT2("客户端需要‘先设置时区。，再同步时间，不然因时区可能造成时间不正确");
 						createInstruT2("设置NTP服务器");
 							createInstruAllTopT2("如果配置认证，先配置认证的相关内容（下一条），再指定NTP服务器<br />");
@@ -396,81 +396,81 @@
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R2] ntp-service unicast-server “192.168.1.1。 [ authentication-keyid “1。 ]");
-							instruArr[1] = createCmdInstruSpan("“192.168.1.1。","NTP服务器IP");
-							instruArr[2] = createCmdInstruSpan("authentication-keyid “1。","需要认证时，key编号");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“192.168.1.1。", "NTP服务器IP");
+							instruArr[2] = createCmdInstruSpan("authentication-keyid “1。", "需要认证时，key编号");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置认证");
 							instruArr[0] = createCmdSpan("[R2] ntp-service authentication-keyid “1。 authentication-mode “md5。 “huawei。");
-							instruArr[1] = createCmdInstruSpan("“1。","key编号");
-							instruArr[2] = createCmdInstruSpan("“md5。","认证算法");
-							instruArr[3] = createCmdInstruSpan("“huawei。","密码");
+							instruArr[1] = createCmdInstruSpan("“1。", "key编号");
+							instruArr[2] = createCmdInstruSpan("“md5。", "认证算法");
+							instruArr[3] = createCmdInstruSpan("“huawei。", "密码");
 							instruArr[4] = createCmdSpan("[R1] ntp-service authentication enable");
 							instruArr[5] = createCmdSpan("[R1] ntp-service reliable authentication-keyid “1。");
-							instruArr[6] = createCmdInstruSpan("“1。","key编号");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[6] = createCmdInstruSpan("“1。", "key编号");
+							createCmdInstruT2(instruArr, "huawei");
 
-					createInstruT1("查看NTP状态","i6-3");
+					createInstruT1("查看NTP状态", "i6-3");
 						instruArr = null;
 						instruArr = new Array();
 						instruArr[0] = createCmdSpan("[R2] display ntp-service status");
-						createCmdInstruT1(instruArr,"huawei");
+						createCmdInstruT1(instruArr, "huawei");
 
-				createInstruT0("日志管理","i4");
+				createInstruT0("日志管理", "i4");
 						createInstruT2("启用日志功能，默认启用");
 							instruArr[0] = createCmdSpan("[R1] info-center enable");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("为某个日志存储channel配置了别名，方便使用");
 							instruArr[0] = createCmdSpan("[R1] info-center channel “0。 name “CLI。");
-							instruArr[1] = createCmdInstruSpan("“0。","channel号");
-							instruArr[2] = createCmdInstruSpan("“CLI。","channel别名");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“0。", "channel号");
+							instruArr[2] = createCmdInstruSpan("“CLI。", "channel别名");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置各个日志存储channel存储的日志类型及级别")
 							instruArr[0] = createCmdSpan("[R1] info-center source “default。 channel { “console。 | “0。 } log level “warning。");
-							instruArr[1] = createCmdInstruSpan("“default。","存储的日志类型");
-							instruArr[2] = createCmdInstruSpan("“console。","channel名，如某个channel配置了别名，只能用别名");
-							instruArr[3] = createCmdInstruSpan("“0。","channel号");
-							instruArr[4] = createCmdInstruSpan("“warning。","日志级别");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“default。", "存储的日志类型");
+							instruArr[2] = createCmdInstruSpan("“console。", "channel名，如某个channel配置了别名，只能用别名");
+							instruArr[3] = createCmdInstruSpan("“0。", "channel号");
+							instruArr[4] = createCmdInstruSpan("“warning。", "日志级别");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("打开或关闭某个日志存储channel的某些内容")
 							instruArr[0] = createCmdSpan("[R1] info-center source “default。 channel { “console。 | “0。 } log state { on | off }")
-							instruArr[4] = createCmdInstruSpan("on","启用");
-							instruArr[5] = createCmdInstruSpan("off","关闭");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[4] = createCmdInstruSpan("on", "启用");
+							instruArr[5] = createCmdInstruSpan("off", "关闭");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("远程登录到设备，输出日志提示（‘默认不输出。）");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("&lt;R1> terminal monitor");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("将日志发送到日志服务器");
 							instruArr[0] = createCmdSpan("[R1] info-center loghost “10.1.1.1。 [ channel { “loghost。 | “2。 } ]");
-							instruArr[1] = createCmdInstruSpan("“10.1.1.1。","日志服务器地址");
-							instruArr[2] = createCmdInstruSpan("channel { “loghost。 | “2。 }","将某个channel的日志信息发送到日志服务器，默认为标准的loghost");
-							instruArr[3] = createCmdInstruSpan("“loghost。 | “2。","channel名，如某个channel配置了别名，只能用别名");
-							instruArr[4] = createCmdInstruSpan("“2。","channel号");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“10.1.1.1。", "日志服务器地址");
+							instruArr[2] = createCmdInstruSpan("channel { “loghost。 | “2。 }", "将某个channel的日志信息发送到日志服务器，默认为标准的loghost");
+							instruArr[3] = createCmdInstruSpan("“loghost。 | “2。", "channel名，如某个channel配置了别名，只能用别名");
+							instruArr[4] = createCmdInstruSpan("“2。", "channel号");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看本地缓存日志");
 							instruArr = null;
 							instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] display logbuffer");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
-				createInstruT0("会话管理","i5");
-					createInstruT1("外部进入本方会话","i5-1");
+				createInstruT0("会话管理", "i5");
+					createInstruT1("外部进入本方会话", "i5-1");
 						createInstruT2("查看会话");
 							instruArr[0] = createCmdSpan("[R1] display users");
-							createCmdInstruT2(instruArr,"huawei");
+							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("关闭会话");
 							instruArr[0] = createCmdSpan("&lt;R1> free user-interface “34。");
-							instruArr[1] = createCmdInstruSpan("“34。","会话号，关闭对应会话");
-							createCmdInstruT2(instruArr,"huawei");
+							instruArr[1] = createCmdInstruSpan("“34。", "会话号，关闭对应会话");
+							createCmdInstruT2(instruArr, "huawei");
 			</script>
 		</div>
 	</div>

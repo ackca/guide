@@ -14,21 +14,21 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("基本命令","i1");
-					createInstruT1("查看基本信息<br />","i1-1");
-						nbsp = "&nbsp;".repeat(16);
-						instruArr = new Array();
+				createInstruT0("基本命令", "i1");
+					createInstruT1("查看基本信息<br />", "i1-1");
+						var nbsp = "&nbsp;".repeat(16);
+						var instruArr = new Array();
 						instruArr[0] = createCmdSpan("kubectl get　类型　类型名称　[ 参数 ]");
-						instruArr[1] = createCmdInstruSpan("类型","");
+						instruArr[1] = createCmdInstruSpan("类型", "");
 						instruArr[2] = createCmdSpan(nbsp + "pod，ns（namespace），deploy（deployment），ds（aemonset）");
 						instruArr[3] = createCmdSpan(nbsp + "svc（service），ingress");
 						instruArr[4] = createCmdSpan("");
 						nbsp = "&nbsp;".repeat(9);
-						instruArr[5] = createCmdInstruSpan("参数","");
-						instruArr[6] = createCmdInstruSpan(nbsp + "-o wide","查看详细信息");
-						instruArr[7] = createCmdInstruSpan(nbsp + "-n “命名空间名。","查看 某个命名空间 中内容");
-						instruArr[8] = createCmdInstruSpan(nbsp + "-A","查看 所有命名空间 中内容");
-						createCmdInstruT1(instruArr,"k8s");
+						instruArr[5] = createCmdInstruSpan("参数", "");
+						instruArr[6] = createCmdInstruSpan(nbsp + "-o wide", "查看详细信息");
+						instruArr[7] = createCmdInstruSpan(nbsp + "-n “命名空间名。", "查看 某个命名空间 中内容");
+						instruArr[8] = createCmdInstruSpan(nbsp + "-A", "查看 所有命名空间 中内容");
+						createCmdInstruT1(instruArr, "k8s");
 
 						createInstruT2("查看namespace");
 						cmd = `
@@ -150,10 +150,10 @@
 						createLinuxTxtT2(cmd);
 
 
-				createInstruT0("部署应用","i2");
-					createInstruT1("部署pod","i2-1");
-						createInstruT2("Deployment方式","i2-1-1");
-							yaml = `
+				createInstruT0("部署应用", "i2");
+					createInstruT1("部署pod", "i2-1");
+						createInstruT2("Deployment方式", "i2-1-1");
+							var yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
 								metadata:
@@ -176,7 +176,7 @@
 							`;
 							createYAMLT2(yaml);
 
-						createInstruT2("DaemonSet方式","i2-1-2");
+						createInstruT2("DaemonSet方式", "i2-1-2");
 							yaml = `
 								apiVersion: apps/v1
 								kind: DaemonSet
@@ -199,7 +199,7 @@
 							`;
 							createYAMLT2(yaml);
 
-					createInstruT1("部署Service","i2-2");
+					createInstruT1("部署Service", "i2-2");
 						yaml = `
 							apiVersion: v1
 							kind: Service
@@ -215,7 +215,7 @@
 							`;
 						createYAMLT1(yaml);
 
-					createInstruT1("部署Ingress","i2-3");
+					createInstruT1("部署Ingress", "i2-3");
 						yaml = `
 							apiVersion: networking.k8s.io/v1beta1
 							kind: Ingress
@@ -233,7 +233,7 @@
 							`;
 							createYAMLT1(yaml);
 
-					createInstruT1("配置DNS","i2-4");
+					createInstruT1("配置DNS", "i2-4");
 						createInstruAllTopT1("将igress中配置的域名映射到api server的负载均衡地址");
 						createInstruAllTopT1("linux方式如下");
 						cmd = `

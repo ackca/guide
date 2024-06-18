@@ -181,11 +181,17 @@
 	position: fixed;
 	z-index: 10;
 	top: 162px;
-	left: 410px;
+	left: 407px;
 	display: none;
 }
 
 #zwTable .cell
 {
 	border-bottom: 0;
+}
+
+.table>:not(caption)>*>*
+{
+	color: inherit;
+	background-color: inherit;
 }

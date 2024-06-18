@@ -25,52 +25,52 @@
 	</div><br />
 	<div id="divCommand">
 		<script type="text/javascript">
-			createInstruT0("HTTP 报文基本结构","i1");
-				createInstruT1("报文基本结构","i1-1");
+			createInstruT0("HTTP 报文基本结构", "i1");
+				createInstruT1("报文基本结构", "i1-1");
 					createConfigImgT1("HTTP/http");
 					createInstruAllTopT1("特定报文不包含 主体，比如 GET Request、204 Respose，但仍然包含空行");
 					createConfigImgT1("HTTP/http_packet");
 
-				createInstruT1("首部结构","i1-2");
+				createInstruT1("首部结构", "i1-2");
 					createInstruAllTopT1("首部采用键值类型，一行为一个首部，一个键，可能包含多个值");
 					createConfigImgT1("HTTP/headers");
 
 
-				createInstruT1("请求首部结构","i1-3");
+				createInstruT1("请求首部结构", "i1-3");
 					createConfigImgT1("HTTP/request_headers");
 					createConfigImgT1("HTTP/request");
 
 
-				createInstruT1("响应首部结构","i1-4");
+				createInstruT1("响应首部结构", "i1-4");
 					createConfigImgT1("HTTP/response_headers");
 					createConfigImgT1("HTTP/response");
 
 
-			createInstruT0("HTTP 方法（methond）<br />","i3");
-				tHeader = [
+			createInstruT0("HTTP 方法（methond）<br />", "i3");
+				var tHeader = [
 					"方法",
 					"作用",
 					"说明"
 				];
 
-				tBody = [
-					["GET","获取资源","可通过URL传输信息"],
-					["POST","传输实体主体","通过主体传输信息，也可实现其它方法功能"],
-					["PATCH","","在REST API中更新对应项部分内容"],
-					["PUT","","在REST API中覆盖对应项全部内容"],
-					["HEAD","获得报文首部",""],
-					["DELETE","删除内容","也可用POST实现删除"],
-					["OPTIONS","询问支持的方法",""],
-					["TRACE","追踪路径",""],
-					["CONNECT","要求用隧道协议连接代理",""],
-					["LINK","建立和资源之间的联系","从HTTP 1.1开始，已废弃"],
-					["UNLINK","断开连接关系","从HTTP 1.1开始，已废弃"],
+				var tBody = [
+					["GET", "获取资源", "可通过URL传输信息"],
+					["POST", "传输实体主体", "通过主体传输信息，也可实现其它方法功能"],
+					["PATCH", "", "在REST API中更新对应项部分内容"],
+					["PUT", "", "在REST API中覆盖对应项全部内容"],
+					["HEAD", "获得报文首部", ""],
+					["DELETE", "删除内容", "也可用POST实现删除"],
+					["OPTIONS", "询问支持的方法", ""],
+					["TRACE", "追踪路径", ""],
+					["CONNECT", "要求用隧道协议连接代理", ""],
+					["LINK", "建立和资源之间的联系", "从HTTP 1.1开始，已废弃"],
+					["UNLINK", "断开连接关系", "从HTTP 1.1开始，已废弃"],
 				];
 				createHLTableT0(820, tHeader, tBody, "tMethod");
 
 
-			createInstruT0("<br />HTTP 状态码","i4");
-				createInstruT1("状态码类型<br />","i4-1");
+			createInstruT0("<br />HTTP 状态码", "i4");
+				createInstruT1("状态码类型<br />", "i4-1");
 					tHeader = [
 						"状态码",
 						"类别",
@@ -78,182 +78,182 @@
 					];
 
 					tBody = [
-						["1XX","Informational（信息性状态码）","可通过URL传输信息"],
-						["2XX","Success（成功状态码）","请求正常处理完毕"],
-						["3XX","Redirection（重定向状态码）","需要进行附加操作以完成请求<br />对于重定向地址通过 Location 字段实现"],
-						["4XX","Client Error（客户端错误状态码）","服务器无法处理请求"],
-						["5XX","Server Error（服务器错误状态码）","服务器处理请求出错"],
+						["1XX", "Informational（信息性状态码）", "可通过URL传输信息"],
+						["2XX", "Success（成功状态码）", "请求正常处理完毕"],
+						["3XX", "Redirection（重定向状态码）", "需要进行附加操作以完成请求<br />对于重定向地址通过 Location 字段实现"],
+						["4XX", "Client Error（客户端错误状态码）", "服务器无法处理请求"],
+						["5XX", "Server Error（服务器错误状态码）", "服务器处理请求出错"],
 					];
 					createHLTableT1(800, tHeader, tBody, "tStatus1");
 
 					document.write("<br /><br />");
 
-				createInstruT1("状态码<br />","i4-6");
+				createInstruT1("状态码<br />", "i4-6");
 					tHeader = [
 						"状态码",
 						"原因短语",
 						"说明"
 					];
 					tBody = [
-						["200","OK","请求已经正常处理"],
-						["201","Created","资源已经成功创建"],
-						["204","No Content","请求已经正常处理，但没有资源返回"],
-						["206","Partial Content","成功返回了部分内容"],
-						["301","Moved Permanently","永久重定向"],
-						["302","Moved Temporarily","临时重定向"],
-						["303","See Other","临时重定向"],
-						["304","Not Modified","继续使用缓存"],
-						["307","Temporary Redirect","临时重定向"],
-						["400","Bad Request","请求存在语法错误"],
-						["401","Unauthorized","需要认证"],
-						["403","Forbidden","请求的资源被拒绝"],
-						["404","Not Found","请求的资源无法找到"],
-						["405","Method Not Allowed","请求的方法不被允许"],
-						["413","Request Fntity Too Large","请求的Body过大"],
-						["500","Internal Server Error","服务器错误"],
-						["503","Service Unavailable","服务器无法响应"],
+						["200", "OK", "请求已经正常处理"],
+						["201", "Created", "资源已经成功创建"],
+						["204", "No Content", "请求已经正常处理，但没有资源返回"],
+						["206", "Partial Content", "成功返回了部分内容"],
+						["301", "Moved Permanently", "永久重定向"],
+						["302", "Moved Temporarily", "临时重定向"],
+						["303", "See Other", "临时重定向"],
+						["304", "Not Modified", "继续使用缓存"],
+						["307", "Temporary Redirect", "临时重定向"],
+						["400", "Bad Request", "请求存在语法错误"],
+						["401", "Unauthorized", "需要认证"],
+						["403", "Forbidden", "请求的资源被拒绝"],
+						["404", "Not Found", "请求的资源无法找到"],
+						["405", "Method Not Allowed", "请求的方法不被允许"],
+						["413", "Request Fntity Too Large", "请求的Body过大"],
+						["500", "Internal Server Error", "服务器错误"],
+						["503", "Service Unavailable", "服务器无法响应"],
 					];
 					createHLTableT1(750, tHeader, tBody, "tStatus2");
 
-				createInstruT1("<br />2XX：成功","i4-2");
-					createInstruT2("200：OK","i4-2-1");
+				createInstruT1("<br />2XX：成功", "i4-2");
+					createInstruT2("200：OK", "i4-2-1");
 						createInstruAllTopT2("最常见状态码，表示请求已经正常处理");
 
 
-					createInstruT2("<br />201：Created","i4-2-2");
+					createInstruT2("<br />201：Created", "i4-2-2");
 						createInstruAllTopT2("表示资源已经成功创建");
 						createInstruAllTopT2("如：使用以下方式创建环回接口，正常返回201");
 						createConfigImgT2("HTTP/201");
 
 
-					createInstruT2("204：No Content","i4-2-3");
+					createInstruT2("204：No Content", "i4-2-3");
 						createInstruAllTopT2("表示请求已经正常处理，但该请求没有资源可以返回");
 
 
-					createInstruT2("<br />206：Partial Content","i4-2-4");
+					createInstruT2("<br />206：Partial Content", "i4-2-4");
 						createInstruAllTopT2("表示客户端进行了范围请求，而服务器成功返回了这部分内容");
 						createInstruAllTopT2("如：客户端想获取一个较大PDF中的部分页面");
 
 
-				createInstruT1("<br />3XX：重定向","i4-3");
-					createInstruT2("301：Moved Permanently","i4-3-1");
+				createInstruT1("<br />3XX：重定向", "i4-3");
+					createInstruT2("301：Moved Permanently", "i4-3-1");
 						createInstruAllTopT2("永久重定向，该状态码表示请求的资源已经被分配了新的URI，以后应使用现在所指的URI");
 						createInstruAllTopT2("一般用于网站搬迁，对仍使用旧URI的用户发送301，告知新URI");
 
 
-					createInstruT2("<br />302：Moved Temporarily","i4-3-2");
+					createInstruT2("<br />302：Moved Temporarily", "i4-3-2");
 						createInstruAllTopT2("临时重定向，该状态码表示请求的资源已经被分配了新的URI，希望本次使用新的URI访问");
 						createInstruAllTopT2("302为HTTP 1.0的旧方案，307为302的替代方案");
 
 
-					createInstruT2("<br />303：See Other","i4-3-3");
+					createInstruT2("<br />303：See Other", "i4-3-3");
 						createInstruAllTopT2("该状态码表示请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源");
 						createInstruAllTopT2("303与302有着相似的功能，但‘303明确表示客户端应当采用GET方法获取资源。");
 
 
-					createInstruT2("<br />304：Not Modified","i4-3-4");
+					createInstruT2("<br />304：Not Modified", "i4-3-4");
 						createInstruAllTopT2("该状态码表示请求对应的资源之前已经发送并要求缓存，本次请求对应的资源没有改变，应继续使用缓存");
 						createInstruAllTopT2("304虽然在3XX系列中，但和重定向无关");
 						createInstruAllTopT2("某些浏览器不支持缓存，如：Chrome，会在请求头部中添加 Cache-Control: no-cache 表明不使用缓存");
 
 
-					createInstruT2("<br />307：Temporary Redirect","i4-3-5");
+					createInstruT2("<br />307：Temporary Redirect", "i4-3-5");
 						createInstruAllTopT2("临时重定向，与302相似，虽然302禁止将原始POST请求变成GET请求到重定向页面，但浏览器未必遵守");
 						createInstruAllTopT2("但307会遵照浏览器标准，原始请求方法与重定向请求方法相同");
 
 
-				createInstruT1("<br />4XX：客户端错误","i4-4");
-					createInstruT2("400：Bad Request","i4-4-1");
+				createInstruT1("<br />4XX：客户端错误", "i4-4");
+					createInstruT2("400：Bad Request", "i4-4-1");
 						createInstruAllTopT2("该状态码表示请求中存在语法错误，如：URL编码无法解析");
 
 
-					createInstruT2("<br />401：Uncuthorized","i4-4-2");
+					createInstruT2("<br />401：Uncuthorized", "i4-4-2");
 						createInstruAllTopT2("该状态码表示发送的请求需要通过有HTTP认证（BASIC认证、DIGEST认证）的认证信息");
 						createInstruAllTopT2("如果之前已经进行过1次请求，则表示用户认证失败");
 						createInstruAllTopT2("返回的401响应中包含适用于被请求资源的WWW Authenticate首部用以质询（challenge）用户信息");
 						createInstruAllTopT2("当浏览器初次接收到401响应，会认证用的对话窗口");
 
 
-					createInstruT2("<br />403：Forbidden","i4-4-3");
+					createInstruT2("<br />403：Forbidden", "i4-4-3");
 						createInstruAllTopT2("该状态码表示请求资源的访问被服务器拒绝");
 						createInstruAllTopT2("服务器没有必要经出拒绝的详细理由，但如果想说明的话，可以在主体部分对原因进行描述");;
 
 
-					createInstruT2("<br />404：Not Found","i4-4-4");
+					createInstruT2("<br />404：Not Found", "i4-4-4");
 						createInstruAllTopT2("该状态码表示请求资源没有找到，也可以在拒绝请求且不想说明理由时使用");
 
 
-					createInstruT2("<br />405：Method Not Allowed","i4-4-5");
+					createInstruT2("<br />405：Method Not Allowed", "i4-4-5");
 						createInstruAllTopT2("该状态码表示请求的方法不被允许");
 
 
-					createInstruT2("<br />413：Request Fntity Too Large","i4-4-6");
+					createInstruT2("<br />413：Request Fntity Too Large", "i4-4-6");
 						createInstruAllTopT2("该状态码表示请求的Body过大，超过了服务器的限制");
 
 
-				createInstruT1("<br />5XX：服务器错误","i4-5");
-					createInstruT2("500：Internal Server Error","i4-5-1");
+				createInstruT1("<br />5XX：服务器错误", "i4-5");
+					createInstruT2("500：Internal Server Error", "i4-5-1");
 						createInstruAllTopT2("该状态码表示服务器在处理请求时发生了错误");
 
 
-					createInstruT2("<br />503：Service Unavailable","i4-5-2");
+					createInstruT2("<br />503：Service Unavailable", "i4-5-2");
 						createInstruAllTopT2("该状态码表示服务器暂时处理超负载或正在进行停机维护");
 
-			createInstruT0("<br />HTTP首部<br />","i11");
+			createInstruT0("<br />HTTP首部<br />", "i11");
 				tHeader = [
 					"首部类型",
 					"首部名称",
 					"首部作用",
 				];
 				tBody = [
-					["","Cache-Control","管理缓存的工作机制"],
-					["","Connection","连接类型"],
-					["通用首部","Date","创建报文的时间日期"],
-					["","Transfer-Encoding","传输文件主体的编码方式"],
-					["","Upgrade","是否可使用更高版本协议通信"],
-					["","Warning","警告信息"],
-					["","Accept","客户端可以接受的资源类型"],
-					["","Accept-Charset","客户端可以接受的字符集"],
-					["","Accept-Encoding","客户端可以接受的内容编码及优先顺序"],
-					["请求首部","Accept-Language","客户端可以接受的语言"],
-					["","Authorization","认证信息"],
-					["","Host","请求资源的主机名和端口号"],
-					["","Peferer","请求的原始资源的URI"],
-					["","User-Agent","浏览器和用户代理等信息"],
-					["","Location","将接收方引导到某个与请求URI位置不同的资源"],
-					["响应首部","Server","HTTP应用程序的信息"],
-					["","WWW-Authenticate","认证方案"],
-					["","Allow","支持的HTTP方法"],
-					["","Content-Encoding","主体部分的编码方式"],
-					["","Content-Language","主体部分的语言"],
-					["实体首部","Content-Type","主体部分的资源类型"],
-					["","Expires","资源的失效日期"],
-					["","Set-Cookie","服务器设置Cookie"],
-					["","Cookie","向服务器发送的Cookie"],
+					["", "Cache-Control", "管理缓存的工作机制"],
+					["", "Connection", "连接类型"],
+					["通用首部", "Date", "创建报文的时间日期"],
+					["", "Transfer-Encoding", "传输文件主体的编码方式"],
+					["", "Upgrade", "是否可使用更高版本协议通信"],
+					["", "Warning", "警告信息"],
+					["", "Accept", "客户端可以接受的资源类型"],
+					["", "Accept-Charset", "客户端可以接受的字符集"],
+					["", "Accept-Encoding", "客户端可以接受的内容编码及优先顺序"],
+					["请求首部", "Accept-Language", "客户端可以接受的语言"],
+					["", "Authorization", "认证信息"],
+					["", "Host", "请求资源的主机名和端口号"],
+					["", "Peferer", "请求的原始资源的URI"],
+					["", "User-Agent", "浏览器和用户代理等信息"],
+					["", "Location", "将接收方引导到某个与请求URI位置不同的资源"],
+					["响应首部", "Server", "HTTP应用程序的信息"],
+					["", "WWW-Authenticate", "认证方案"],
+					["", "Allow", "支持的HTTP方法"],
+					["", "Content-Encoding", "主体部分的编码方式"],
+					["", "Content-Language", "主体部分的语言"],
+					["实体首部", "Content-Type", "主体部分的资源类型"],
+					["", "Expires", "资源的失效日期"],
+					["", "Set-Cookie", "服务器设置Cookie"],
+					["", "Cookie", "向服务器发送的Cookie"],
 				];
 				createHLTableT0(820, tHeader, tBody, "tHeaders");
 
-			createInstruT0("<br />HTTP 通用首部","i5");
-				createInstruT1("通用首部<br />","i5-1");
+			createInstruT0("<br />HTTP 通用首部", "i5");
+				createInstruT1("通用首部<br />", "i5-1");
 					tHeader = [
 						"首部名称",
 						"首部作用",
 					];
 					tBody = [
-						["Cache-Control","管理缓存的工作机制"],
-						["Connection","连接类型"],
-						["Date","创建报文的时间日期"],
-						["Transfer-Encoding","传输文件主体的编码方式"],
-						["Upgrade","是否可使用更高版本协议通信"],
-						["Warning","警告信息"],
+						["Cache-Control", "管理缓存的工作机制"],
+						["Connection", "连接类型"],
+						["Date", "创建报文的时间日期"],
+						["Transfer-Encoding", "传输文件主体的编码方式"],
+						["Upgrade", "是否可使用更高版本协议通信"],
+						["Warning", "警告信息"],
 					];
 					createHLTableT1(550, tHeader, tBody, "tGeneralHeaders");
 
 
-				createInstruT1("<br />Cache-Control：管理缓存的工作机制","i5-2-1");
-					createInstruT2("启用缓存时的工作原理","i5-2-1");
+				createInstruT1("<br />Cache-Control：管理缓存的工作机制", "i5-2-1");
+					createInstruT2("启用缓存时的工作原理", "i5-2-1");
 						createInstruT3("第一次请求与响应");
-							htmlheaders = `
+							var htmlheaders = `
 								GET / HTTP/1.1
 							`;
 							createHTTPHeadersT3(htmlheaders);
@@ -307,14 +307,14 @@
 							`;
 							createHTTPHeadersT3(htmlheaders);
 
-					createInstruT2("不支持缓存","i5-2-2");
+					createInstruT2("不支持缓存", "i5-2-2");
 						htmlheaders = `
 							Cache-Control: private, max-age=0, no-cache
 						`;
 						createHTTPHeadersT2(htmlheaders);
 
 
-				createInstruT1("<br />Connection：连接类型","i5-3");
+				createInstruT1("<br />Connection：连接类型", "i5-3");
 					createInstruT2("目前的HTTP连接均为持久化连接，该首部没有必要");
 						htmlheaders = `
 							Connection: keep-alive
@@ -328,14 +328,14 @@
 						createHTTPHeadersT2(htmlheaders);
 
 
-				createInstruT1("<br />Date：创建报文的时间日期<br />","i5-4");
+				createInstruT1("<br />Date：创建报文的时间日期<br />", "i5-4");
 					htmlheaders = `
 						Date: Thu, 12 Oct 2023 07:42:21 GMT
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Transfer-Encoding：传输文件主体的编码方式","i5-5");
+				createInstruT1("<br />Transfer-Encoding：传输文件主体的编码方式", "i5-5");
 					createInstruT2("一般用于分块传输资源时");
 					htmlheaders = `
 						Transfer-Encoding: chunked
@@ -343,7 +343,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Upgrade：是否可使用更高版本协议通信","i5-6");
+				createInstruT1("<br />Upgrade：是否可使用更高版本协议通信", "i5-6");
 					createInstruAllTopT1("首部字段Upgrade用于检测HTTP协议及其他协议是否可以使用更高的版本进行通信");
 					createInstruAllTopT1("其参数值可以用来指定一个完全不同的通信协议");
 
@@ -362,7 +362,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Warning：警告信息","i5-7");
+				createInstruT1("<br />Warning：警告信息", "i5-7");
 					createInstruAllTopT1("通常会告知用户一些与缓存相关问题的警告");
 					createInstruAllTopT1("<a class='link' href='https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Warning' target='_blank'>https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Warning</a>");
 					createInstruAllTopT1("格式如下，最后的日期时间部分可省略");
@@ -372,26 +372,26 @@
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
-			createInstruT0("<br />HTTP 请求首部","i6");
-				createInstruT1("请求首部<br />","i6-1");
+			createInstruT0("<br />HTTP 请求首部", "i6");
+				createInstruT1("请求首部<br />", "i6-1");
 					tHeader = [
 						"首部名称",
 						"首部作用",
 					];
 					tBody = [
-						["Accept","客户端可以接受的资源类型"],
-						["Accept-Charset","客户端可以接受的字符集"],
-						["Accept-Encoding","客户端可以接受的内容编码及优先顺序"],
-						["Accept-Language","客户端可以接受的语言"],
-						["Authorization","认证信息"],
-						["Host","请求资源的主机名和端口号"],
-						["Peferer","请求的原始资源的URI"],
-						["User-Agent","浏览器和用户代理等信息"],
+						["Accept", "客户端可以接受的资源类型"],
+						["Accept-Charset", "客户端可以接受的字符集"],
+						["Accept-Encoding", "客户端可以接受的内容编码及优先顺序"],
+						["Accept-Language", "客户端可以接受的语言"],
+						["Authorization", "认证信息"],
+						["Host", "请求资源的主机名和端口号"],
+						["Peferer", "请求的原始资源的URI"],
+						["User-Agent", "浏览器和用户代理等信息"],
 					];
 					createHLTableT1(600, tHeader, tBody, "tRequestHeaders");
 
 
-				createInstruT1("<br /><br />Accept：客户端可以接受的资源类型<br />","i6-2");
+				createInstruT1("<br /><br />Accept：客户端可以接受的资源类型<br />", "i6-2");
 					htmlheaders = `
 						Accept: application/json
 					`;
@@ -405,7 +405,7 @@
 					createInstruAllTopT1("不同类型资源的权重使用 q 标识，使用 ; 分隔，默认为1，最大为1，可以精确到小数点后3位");
 
 
-				createInstruT1("<br /><br />Accept-Charset：客户端可以接受的字符集","i6-3");
+				createInstruT1("<br /><br />Accept-Charset：客户端可以接受的字符集", "i6-3");
 					createInstruAllTopT1("由于目前基本上使用utf-8编码，该首部基本淘汰");
 					createInstruAllTopT1("与Accept首部相同，可以使用q，标记不同编码的权重");
 					htmlheaders = `
@@ -414,7 +414,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Accept-Encoding：客户端可以接受的内容编码及优先顺序","i6-4");
+				createInstruT1("<br />Accept-Encoding：客户端可以接受的内容编码及优先顺序", "i6-4");
 					createInstruAllTopT1("非默认编码一般会对原始编码进行压缩");
 					htmlheaders = `
 						Accept-Encoding: gzip, deflate, br
@@ -423,7 +423,7 @@
 					createInstruAllTopT1("可以使用identity，要求服务器不执行压缩或使用不会变化的默认编码");
 
 
-				createInstruT1("<br /><br />Accept-Language：客户端可以接受的语言","i6-5");
+				createInstruT1("<br /><br />Accept-Language：客户端可以接受的语言", "i6-5");
 					createInstruAllTopT1("与Accept首部相同，可以使用q，标记不同语言的权重");
 					htmlheaders = `
 						Accept-Language: zh-CN, zh; q=0.9, en; q=0.8
@@ -431,7 +431,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Authorization：认证信息","i6-6");
+				createInstruT1("<br />Authorization：认证信息", "i6-6");
 					createInstruAllTopT1("用于告知服务器用户的身份认证信息");
 					createInstruAllTopT1("通常，要求通过服务器认证的用户，会在接收到401状态码响应后，把Authorization加入请求中");
 					createInstruAllTopT1("当采用Basic方式认证时，会将 用户名:密码 的通过base64编码发送给服务器");
@@ -441,7 +441,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Host：请求资源的主机名和端口号","i6-7");
+				createInstruT1("<br />Host：请求资源的主机名和端口号", "i6-7");
 					createInstruAllTopT1("从HTTP/1.1起，请求报文必须包含该首部");
 					createInstruAllTopT1("当一台服务器运行多个网站时，可以Host进行访问区分");
 					htmlheaders = `
@@ -455,7 +455,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Peferer：请求的原始资源的URI","i6-8");
+				createInstruT1("<br />Peferer：请求的原始资源的URI", "i6-8");
 					createInstruAllTopT1("首部字段Referer会告知服务器请求的原始资源的URI，也就是这次请求从哪个页面发起的");
 					createInstruAllTopT1("客户端一般会发送Referer，但当直接在浏览器地址输入URI，或出于安全性考虑，也可以不发送");
 					createInstruAllTopT1("通过校验Referer，网站可以实现防盗链功能");
@@ -466,7 +466,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />User-Agent：浏览器和用户代理等信息","i6-9");
+				createInstruT1("<br />User-Agent：浏览器和用户代理等信息", "i6-9");
 					createInstruAllTopT1("默认情况下，会发送浏览器版本，操作系统版本等信息");
 					createInstruAllTopT1("服务器可以通过User-Agent发送合适的页面，如：使用PC或手机访问同一个域名，得到的页面不同");
 					createInstruAllTopT1("可以修改User-Agent，模拟某种方式的访问");
@@ -477,21 +477,21 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-			createInstruT0("<br />HTTP 响应首部","i7");
-				createInstruT1("请求首部<br />","i7-1");
+			createInstruT0("<br />HTTP 响应首部", "i7");
+				createInstruT1("请求首部<br />", "i7-1");
 					tHeader = [
 						"首部名称",
 						"首部作用",
 					];
 					tBody = [
-						["Location","将接收方引导到某个与请求URI位置不同的资源"],
-						["Server","HTTP应用程序的信息"],
-						["WWW-Authenticate","认证方案"],
+						["Location", "将接收方引导到某个与请求URI位置不同的资源"],
+						["Server", "HTTP应用程序的信息"],
+						["WWW-Authenticate", "认证方案"],
 					];
 					createHLTableT1(700, tHeader, tBody, "tResponseHeaders");
 
 
-				createInstruT1("<br /><br />Location：将接收方引导到某个与请求URI位置不同的资源","i7-2");
+				createInstruT1("<br /><br />Location：将接收方引导到某个与请求URI位置不同的资源", "i7-2");
 					createInstruAllTopT1("用于3XX系列的重定向中，通告重定向的URI");
 					htmlheaders = `
 						HTTP/1.1 303 See Other
@@ -501,7 +501,7 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Server：HTTP应用程序的信息<br />","i7-3");
+				createInstruT1("<br />Server：HTTP应用程序的信息<br />", "i7-3");
 					htmlheaders = `
 						Server: nginx/1.20.1
 					`;
@@ -509,7 +509,7 @@
 					createInstruAllTopT1("不推荐这样通告，暴露具体版本，存在安全隐患，仅通告nginx即可");
 
 
-				createInstruT1("<br /><br />WWW-Authenticate：认证方案","i7-4");
+				createInstruT1("<br /><br />WWW-Authenticate：认证方案", "i7-4");
 					createInstruAllTopT1("用于HTTP认证，告知客户端所使用的认证方案");
 					createInstruAllTopT1("使用Basic认证时，首部如下，对应值可以根据需要修改");
 					htmlheaders = `
@@ -517,53 +517,53 @@
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
-			createInstruT0("<br />HTTP 实体首部","i10");
-				createInstruT1("实体首部<br />","i10-1");
+			createInstruT0("<br />HTTP 实体首部", "i10");
+				createInstruT1("实体首部<br />", "i10-1");
 					tHeader = [
 						"首部名称",
 						"首部作用",
 					];
 					tBody = [
-						["Allow","支持的HTTP方法"],
-						["Content-Encoding","主体部分的编码方式"],
-						["Content-Language","主体部分的语言"],
-						["Content-Type","主体部分的资源类型"],
-						["Expires","资源的失效日期"],
-						["Set-Cookie","服务器设置Cookie"],
-						["Cookie","向服务器发送的Cookie"],
+						["Allow", "支持的HTTP方法"],
+						["Content-Encoding", "主体部分的编码方式"],
+						["Content-Language", "主体部分的语言"],
+						["Content-Type", "主体部分的资源类型"],
+						["Expires", "资源的失效日期"],
+						["Set-Cookie", "服务器设置Cookie"],
+						["Cookie", "向服务器发送的Cookie"],
 					];
 					createHLTableT1(500, tHeader, tBody, "tEntityHeaders");
 
 
-				createInstruT1("<br /><br />Allow：支持的HTTP方法<br />","i10-2");
+				createInstruT1("<br /><br />Allow：支持的HTTP方法<br />", "i10-2");
 					htmlheaders = `
 						Allow: GET, POST, HEAD
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Content-Encoding：告知客户端主体部分的编码方式<br />","i10-3");
+				createInstruT1("<br />Content-Encoding：告知客户端主体部分的编码方式<br />", "i10-3");
 					htmlheaders = `
 						Content-Encoding: gzip
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Content-Language：告知客户端主体部分的语言<br />","i10-4");
+				createInstruT1("<br />Content-Language：告知客户端主体部分的语言<br />", "i10-4");
 					htmlheaders = `
 						Content-Language: zh-CN
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Content-Type：主体部分的资源类型<br />","i10-5");
+				createInstruT1("<br />Content-Type：主体部分的资源类型<br />", "i10-5");
 					htmlheaders = `
 						Content-Type: text/html
 					`;
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Expires：资源的失效日期","i10-6");
+				createInstruT1("<br />Expires：资源的失效日期", "i10-6");
 					createInstruAllTopT1("用于缓存相关的机制");
 					htmlheaders = `
 						Expires: Sat, 11 Nov 2023 07:40:26 GMT
@@ -571,28 +571,28 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("<br />Cookie","i10-7");
-					createInstruT2("Set-Cookie：服务器设置Cookie","i10-7-1");
+				createInstruT1("<br />Cookie", "i10-7");
+					createInstruT2("Set-Cookie：服务器设置Cookie", "i10-7-1");
 						htmlheaders = `
 							Set-Cookie: session=eyJhZG1pb……; HttpOnly; Path=/
 						`;
 						createHTTPHeadersT2(htmlheaders);
 
-					createInstruT2("Cookie：向服务器发送的Cookie","i10-7-2");
+					createInstruT2("Cookie：向服务器发送的Cookie", "i10-7-2");
 						htmlheaders = `
 							Cookie: csrftoken=G2HHj0AtH……; session=eyJjc3JmX……; odin_tt=963d7488……; ……
 						`
 						createHTTPHeadersT2(htmlheaders);
 
 
-			createInstruT0("Cookie","i12");
-				createInstruT1("Cookie作用","i12-1");
+			createInstruT0("Cookie", "i12");
+				createInstruT1("Cookie作用", "i12-1");
 					createInstruAllTopT1("HTTP是无状态协议，不会对之前发生过的请求和响应进行维护，也就是说，无法根据之前的状态处理本次请求");
 					createInstruAllTopT1("但实际应用中，需要状态化，比如：购物网站的购物车，之前加入购物车的商品，再次登录，仍然可以看到");
 					createInstruAllTopT1("使用Cookie技术，实现HTTP状态化");
 
 
-				createInstruT1("Cookie工作原理","i12-2");
+				createInstruT1("Cookie工作原理", "i12-2");
 					createInstruAllTopT1("访问某个网站时，服务器会发送Cookie给客户端，多数情况下，登录后才会发送");
 					htmlheaders = `
 						Set-Cookie: session=eyJhZG1pb……; HttpOnly; Path=/
@@ -607,8 +607,8 @@
 					createHTTPHeadersT1(htmlheaders);
 
 
-				createInstruT1("Cookie相关属性","i12-3");
-					createInstruT2("Cookie相关属性","i12-3-1");
+				createInstruT1("Cookie相关属性", "i12-3");
+					createInstruT2("Cookie相关属性", "i12-3-1");
 						createInstruAllTopT2("当服务器准备开始管理客户端的状态时，会事先靠知各种信息");
 						htmlheaders = `
 							Set-Cookie: session=eyJhZG1pb……; HttpOnly; Path=/
@@ -636,23 +636,23 @@
 							"说明",
 						];
 						tBody = [
-							["NAME=VALUE","赋予Cookie的名称和其值，必需"],
-							["expires=DATE","Cookie的有效期，不指定则为关闭浏览器前一直有效"],
-							["path=PATH","Cookie所在目录，不指定则创建Cookie的当前目录"],
-							["domain=DOMAIN","Cookie适用的域名，不指定则为创建Cookie的域名"],
-							["Secure","只能在使用HTTPS时，才会发送Cookie"],
-							["HttpOnly","只允许HTTP处理Cookie"],
+							["NAME=VALUE", "赋予Cookie的名称和其值，必需"],
+							["expires=DATE", "Cookie的有效期，不指定则为关闭浏览器前一直有效"],
+							["path=PATH", "Cookie所在目录，不指定则创建Cookie的当前目录"],
+							["domain=DOMAIN", "Cookie适用的域名，不指定则为创建Cookie的域名"],
+							["Secure", "只能在使用HTTPS时，才会发送Cookie"],
+							["HttpOnly", "只允许HTTP处理Cookie"],
 						];
 						createHLTableT2(720, tHeader, tBody, "tCookie");
 
 
-					createInstruT2("<br /><br />expires：Cookie的有效期","i12-3-2");
+					createInstruT2("<br /><br />expires：Cookie的有效期", "i12-3-2");
 						createInstruAllTopT2("Cookie 的 expires 属性指定浏览器可发送 Cookie 的有效期");
 						createInstruAllTopT2("当省略 expires 时，其有效期公限于维持浏览器会话（Session）的时间，通常为浏览器关闭之前");
 						createInstruAllTopT2("一旦服务器发送了Cookie，服务器无法显示删除Cookie，但可以通过覆盖过期的Cookie，实质性删除Cookie");
 
 
-					createInstruT2("<br /<br />path：Cookie所在目录","i12-3-3");
+					createInstruT2("<br /<br />path：Cookie所在目录", "i12-3-3");
 						createInstruAllTopT2("path表示Cookie所在目录，itachi.tech形式域名则为 / ，即根目录");
 						createInstruAllTopT2("服务器存在多个目录　/security/ASA");
 						createInstruAllTopT2("　　　　　　　　　　　　　　　　/security/ISE");
@@ -660,7 +660,7 @@
 						createInstruAllTopT2("path 设置 /securityy/ASA 时，只能 /security/ASA访问");
 
 
-					createInstruT2("<br /<br />domain：Cookie适用的域名","i12-3-4");
+					createInstruT2("<br /<br />domain：Cookie适用的域名", "i12-3-4");
 						createInstruAllTopT2("domain表示的是Cookie所在的域，默认为请求地址");
 						createInstruAllTopT2("　　　如：www.itachi.tech/home，domain默认为www.itachi.tech");
 						createInstruAllTopT2("<br />需要跨域访问时，域A：a.itachi.tech，域B：b.itachi.tech");
@@ -668,38 +668,38 @@
 						createInstruAllTopT2("　　　　产生只能域A可以访问的Cookie，则 domain 为 a.itachi.tech，只能a.itachi.tech访问");
 
 
-					createInstruT2("<br /<br />Secure：只能在HTTPS时发送","i12-3-5");
+					createInstruT2("<br /<br />Secure：只能在HTTPS时发送", "i12-3-5");
 						createInstruAllTopT2("Secure限制Web页面仅在 HTTPS 安全连接时，才可以发送Cookie，不安全HTTP不可以");
 
 
-					createInstruT2("<br /<br />HttpOnly：只允许HTTP处理","i12-3-6");
+					createInstruT2("<br /<br />HttpOnly：只允许HTTP处理", "i12-3-6");
 						createInstruAllTopT2("HttpOnly限制只能通过http处理Cookie，上层协议为http或https均可");
 						createInstruAllTopT2("被限制的，不允许的主要为javascript，用于防止XSS等攻击");
 
 
-			createInstruT0("HTTP认证","i8");
-				createInstruT1("基本认证（Basic auth）","i8-1");
+			createInstruT0("HTTP认证", "i8");
+				createInstruT1("基本认证（Basic auth）", "i8-1");
 					createInstruAllTopT1("浏览器弹出窗口认证");
 					createConfigImgT1("HTTP/basic", "HTTP基本认证");
 
 
-				createInstruT1("散列认证（Digest auth）","i8-2");
+				createInstruT1("散列认证（Digest auth）", "i8-2");
 					createInstruAllTopT1("浏览器弹出窗口认证");
 					createConfigImgT1("HTTP/digest", "HTTP散列认证");
 
 
-				createInstruT1("表单认证","i8-3");
+				createInstruT1("表单认证", "i8-3");
 					createInstruAllTopT1("最常见的网站中使用页面登录");
 					createConfigImgT1("HTTP/form", "HTTP表单认证");
 
 
-			createInstruT0("HTTP 版本与历史","i9");
-				createInstruT1("HTTP/1.0","i9-1");
+			createInstruT0("HTTP 版本与历史", "i9");
+				createInstruT1("HTTP/1.0", "i9-1");
 					createInstruAllTopT1("一次TCP连接只做一次HTTP请求，完成后TCP关闭，此时，HTTP为瞬时协议");
 					createInstruAllTopT1("打开一个页面，需要大量TCP连接，效率较低");
 
 
-				createInstruT1("<br />HTTP/1.1","i9-2");
+				createInstruT1("<br />HTTP/1.1", "i9-2");
 					createInstruAllTopT1("使用keep-alive技术，在一次TCP连接中，实现多次HTTP请求");
 					createInstruAllTopT1("从HTTP/1.1开始，HTTP支持持久连接，TCP连接建立后，除非某一端明确提出断开，则保持TCP连接");
 					createInstruAllTopT1("实际应用中，客户端或服务器会设置连接时间，长时间没有新的请求，主动通知对端关闭TCP连接");
@@ -707,27 +707,27 @@
 					createInstruAllTopT1("为了提高效率，主流浏览器同时使用6个并发的TCP连接，但这样会消耗较多的服务器资源");
 
 
-				createInstruT1("<br />HTTP/2","i9-3");
-					createInstruT2("核心技术：二进制帧","i9-3-1");
+				createInstruT1("<br />HTTP/2", "i9-3");
+					createInstruT2("核心技术：二进制帧", "i9-3-1");
 						createInstruAllTopT2("HTTP/1.1及以前的HTTP，采用纯文本格式，因此在首部和主体之间需要空行分割");
 						createInstruAllTopT2("而HTTP/2采用二进制帧，可以直接区分首部和数据，不再需要空行");
 						createConfigImgT2("HTTP/http2");
 
 
-					createInstruT2("<br />优势1：一次TCP连接多次HTTP请求","i9-3-2");
+					createInstruT2("<br />优势1：一次TCP连接多次HTTP请求", "i9-3-2");
 						createInstruAllTopT2("stream（流）：　　　一个stream，即一次请求与响应");
 						createInstruAllTopT2("message（信息）：一个stream，包含一个请求的message，以及一个响应的message");
 						createInstruAllTopT2("frame（帧）：　　　　一次请求（响应）中，包含一个 首部的帧，请求（响应）中如果包含主体，还会包含 数据帧");
 						createInstruAllTopT2("一次TCP连接中包含多个stream，一个TCP报文中可能包含多个流的多个帧，接收方根据流ID进行重组装");
 
 
-					createInstruT2("<br />优势2：首部压缩","i9-3-3");
+					createInstruT2("<br />优势2：首部压缩", "i9-3-3");
 						createInstruAllTopT2("打开一个页面会有多次请求，也就需要发送多次首部，很多首部是相同的（如：user-agent），没有必要反复发送");
 						createInstruAllTopT2("HTTP/2首次发送请求时，包含全部首部，同时维护索引表，后续请求中，不变的头部直接发送索引编号即可");
 						createInstruAllTopT2("首部除了使用索引表外，还有压缩功能，进一步减小首部大小");
 
 
-					createInstruT2("<br />优势3：服务推送","i9-3-4");
+					createInstruT2("<br />优势3：服务推送", "i9-3-4");
 						createInstruAllTopT2("通常，一个页面中还包含若干.js .css文件，客户端首先得到主页面，然后再去请求页面中包含的.js .css等其它内容");
 						createInstruAllTopT2("HTTP/2可以在发送主页面时，也把页面中的其它内容一起发送客户端");
 						createInstruAllTopT2("但是，页面中可能存在一些有安全风险的内容，一起发送有安全隐患");
@@ -735,16 +735,16 @@
 						createInstruAllTopT2("因此，主流浏览器并不接受服务推送功能");
 
 
-					createInstruT2("<br />优势4：必须TLS加密","i9-3-5");
+					createInstruT2("<br />优势4：必须TLS加密", "i9-3-5");
 						createInstruAllTopT2("HTTP/2 必须使用TLS加密的https，不加密http为 HTTP/1.1");
 
 
-					createInstruT2("<br />优势5：可以在TLS阶段进行HTTP协商","i9-3-6");
+					createInstruT2("<br />优势5：可以在TLS阶段进行HTTP协商", "i9-3-6");
 						createInstruAllTopT2("HTTP/1.1时，HTTP的相关协商，在TLS隧道建立完成后进行");
 						createInstruAllTopT2("HTTP/2时，TLS协商过程中，同时进行HTTP的相关协商");
 
 
-					createInstruT2("<br />不足","i9-3-7");
+					createInstruT2("<br />不足", "i9-3-7");
 						createInstruAllTopT2("服务推送存在安全隐患，也有可能推送不必要的内容");
 						createInstruAllTopT2("<br />主要问题：");
 						createInstruAllTopT2("　　HTTP/2上层使用TCP协议，又能够在一个TCP连接中进行多次TCP请求");
@@ -752,7 +752,7 @@
 						createInstruAllTopT2("　　如果网络质量较差，多次重次，实际效率还不如HTTP/1.1");
 
 
-				createInstruT1("<br />HTTP/3","i9-4");
+				createInstruT1("<br />HTTP/3", "i9-4");
 					createInstruAllTopT1("HTTP/3上层使用UDP，并使用QUIC技术提供可靠性保障，且必须使用TLS1.3");
 					createInstruAllTopT1("QUIC：Quick UDP Internet Connections，快速的UDP网络连接");
 					createInstruAllTopT1("由于使用UDP封装，一个报文中只包含一个帧，即使丢包，也只需要重传很少的部分");

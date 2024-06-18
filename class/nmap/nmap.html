@@ -15,110 +15,110 @@
  	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("主机扫描","i1");
+				createInstruT0("主机扫描", "i1");
 					createInstruT2("单个主机扫描");
-						instruArr = new Array();
+						var instruArr = new Array();
 						instruArr[0] = createLinuxCmd("nmap “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“192.168.50.1。", "被扫描的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("连续主机扫描");
 						instruArr[0] = createLinuxCmd("nmap “192.168.50.1-10。");
-						instruArr[1] = createCmdInstruSpan("“192.168.50.1-10。","连续的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“192.168.50.1-10。", "连续的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("子网扫描");
 						instruArr[0] = createLinuxCmd("nmap “192.168.50.1。/“24。");
-						instruArr[1] = createCmdInstruSpan("“192.168.50.1。","需要扫描的子网内任意ip");
-						instruArr[2] = createCmdInstruSpan("“24。","该子网通配符掩码长度");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“192.168.50.1。", "需要扫描的子网内任意ip");
+						instruArr[2] = createCmdInstruSpan("“24。", "该子网通配符掩码长度");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("对一个txt中的地址列表扫描");
 						instruArr = null
 						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("namp -iL “host_list.txt。");
-						instruArr[1] = createCmdInstruSpan("“host_list.txt。","txt的文件名，txt中每行为一个ip地址，路径为当前路径");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“host_list.txt。", "txt的文件名，txt中每行为一个ip地址，路径为当前路径");
+						createCmdInstruT2(instruArr, "nmap");
 
-				createInstruT0("活跃主机扫描","i2");
+				createInstruT0("活跃主机扫描", "i2");
 					createInstruT2("只检测主机是否存在，不检测其它");
 						instruArr[0] = createLinuxCmd("nmap -sn “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“192.168.50.1。", "被扫描的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("基于 ‘arp。 检测");
 						instruArr[0] = createLinuxCmd("nmap -PR “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />如不添加 -sn 参数，通过arp确定主机活跃后，还会扫描该主机的其它信息");
 						createInstruAllBottomT2("如果只需要用对应方式检测主机是否活跃，建议添加 -sn 参数，其它活跃主机扫描方式相同");
 
 					createInstruT2("基于 ‘icmp echo。 检测");
 						instruArr[0] = createLinuxCmd("nmap -PE “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("如果nmap与被扫描主机在同一网段，nmap会直接通过arp扫描主机是否活跃，而非设定的参数，其它活跃主机扫描方式相同");
 
 					createInstruT2("基于 ‘icmp 时间戳请求。 检测");
 						instruArr[0] = createLinuxCmd("nmap -PP “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("基于 ‘icmp 地址掩码请求。 检测（多数主机不与理会，一般用于无盘系统）");
 						instruArr[0] = createLinuxCmd("nmap -PM “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("基于 ‘TCP SYN。 检测");
 						instruArr[0] = createLinuxCmd("nmap -PS[“23,25,…。] “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("“23,25,…。","被扫描的主机ip的tcp端口号，默认80");
-						instruArr[2] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“23,25,…。", "被扫描的主机ip的tcp端口号，默认80");
+						instruArr[2] = createCmdInstruSpan("“192.168.50.1。", "被扫描的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 syn 进制检测");
 						createInstruAllBottomT2("主机活跃并开放端口则为 syn -&ndash;&gt; syn + ack ---> rst");
 						createInstruAllBottomT2("主机活跃但未开放端口则为 syn ---> rst");
 
 					createInstruT2("基于 ‘TCP ACK。 检测");
 						instruArr[0] = createLinuxCmd("nmap -PA[“23,25,…。] “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 ack 进制检测");
 						createInstruAllBottomT2("主机活跃无论是否开放端口均为 ack ---> rst");
 
 					createInstruT2("基于 ‘UDP。 检测");
 						instruArr[0] = createLinuxCmd("nmap -PU[“53,67,…。] “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("“53,67,…。","被扫描的主机ip的udp端口号，默认40125");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“53,67,…。", "被扫描的主机ip的udp端口号，默认40125");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送无数据部分的相应udp进制检测");
 						createInstruAllBottomT2("主机活跃并开放端口则 无响应");
 						createInstruAllBottomT2("主机活跃但未开放端口则 udp ---> icmp port unreacheabale");
 
-				createInstruT0("端口扫描","i3");
+				createInstruT0("端口扫描", "i3");
 					createInstruT2("‘TCP SYN。扫描 检测主机开放的tcp端口");
 						instruArr = null
 						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("nmap -sS “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“192.168.50.1。", "被扫描的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 syn 进制检测");
 						createInstruAllBottomT2("主机开放端口 syn -&ndash;&gt; syn + ack ---> rst");
 						createInstruAllBottomT2("主机未开放端口 syn ---> rst");
 
 					createInstruT2("‘TCP Connect。扫描 检测主机开放的tcp端口");
 						instruArr[0] = createLinuxCmd("nmap -sT “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送 syn 进制检测");
 						createInstruAllBottomT2("主机开放端口 syn -&ndash;&gt; syn+ack -&ndash;&gt; syn+ack---> rst");
 						createInstruAllBottomT2("主机未开放端口 syn ---> rst");
 
 					createInstruT2("‘UDP。扫描 检测主机开放的udp端口");
 						instruArr[0] = createLinuxCmd("nmap -sU “192.168.50.1。");
-						createCmdInstruT2(instruArr,"nmap");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />通过向主机的相关端口发送无数据部分的相应udp进制检测");
 						createInstruAllBottomT2("主机开放端口 无响应");
 						createInstruAllBottomT2("主机未开放端口 udp ---> icmp port unreacheabale");
 
 					createInstruT2("扫描检测主机指定的端口号");
 						instruArr[0] = createLinuxCmd("nmap [ -sS | -sT | -sU ] -p “‘T。:23,‘U。:1812。 “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("<span class='linuxCMD_Para'>-sS</span>　|　<span class='linuxCMD_Para'>-sT</span>　|　<span class='linuxCMD_Para'>-sU</span> ","端口扫描方式，依次为tcp syn、tcp connect、udp");
-						instruArr[2] = createCmdInstruSpan("“‘T。:23,‘U。:1812。","被扫描的端口号，T表示TCP，U表示UDP，只扫描TCP或UDP时不加也可");
-						instruArr[3] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("<span class='linuxCMD_Para'>-sS</span>　|　<span class='linuxCMD_Para'>-sT</span>　|　<span class='linuxCMD_Para'>-sU</span> ", "端口扫描方式，依次为tcp syn、tcp connect、udp");
+						instruArr[2] = createCmdInstruSpan("“‘T。:23,‘U。:1812。", "被扫描的端口号，T表示TCP，U表示UDP，只扫描TCP或UDP时不加也可");
+						instruArr[3] = createCmdInstruSpan("“192.168.50.1。", "被扫描的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />支持TCP与UDP在一条命令中扫描，TCP扫描方式在两者中选择一种，同时添加 -sU进行UDP扫描");
 						createInstruAllBottomT2("TCP、UDP同时扫描：" + createLinuxCmd("nmap -sT -sU -p ‘T。:23,‘U。:1812 192.168.50.1"));
 						createInstruAllBottomT2("TCP扫描：　　　　　　　&nbsp;&nbsp;" + createLinuxCmd("nmap -sT -p 23 192.168.50.1"));
@@ -128,87 +128,87 @@
 						instruArr = null
 						instruArr = new Array();
 						instruArr[0] = createLinuxCmd("nmap -sV “192.168.50.1。");
-						instruArr[1] = createCmdInstruSpan("“192.168.50.1。","被扫描的主机ip");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“192.168.50.1。", "被扫描的主机ip");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />用于扫描提供报务的应用程序类型及版本");
 						createInstruAllBottomT2("也可用于当某服务修改了默认端口时，确定某端口对应的真实服务");
 
-				createInstruT0("高级功能","i4");
+				createInstruT0("高级功能", "i4");
 					createInstruT2("伪装源端口");
 						instruArr[0] = createLinuxCmd("nmap { --source-port | -g } “12345。 “其它扫描参数。");
-						instruArr[1] = createCmdInstruSpan("“12345。","扫描数据包的源端口号");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“12345。", "扫描数据包的源端口号");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("修改ttl值");
 						instruArr[0] = createLinuxCmd("nmap --ttl “8。 “其它扫描参数。");
-						instruArr[1] = createCmdInstruSpan("“8。","扫描数据包的ttl值");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“8。", "扫描数据包的ttl值");
+						createCmdInstruT2(instruArr, "nmap");
 
 					createInstruT2("发送扫描数据包时添加随机的数据部分值");
 						instruArr[0] = createLinuxCmd("nmap --data-length “1000。 “其它扫描参数。");
-						instruArr[1] = createCmdInstruSpan("“1000。","数据部分长度");
-						createCmdInstruT2(instruArr,"nmap");
+						instruArr[1] = createCmdInstruSpan("“1000。", "数据部分长度");
+						createCmdInstruT2(instruArr, "nmap");
 						createInstruAllBottomT2("<br />很多扫描包只有头部，没有数据部分，通过该参数添加一定长度的数据");
 
-				createInstruT0("端口状态说明<br />","i5");
-					tBody = [
-						["open：","目标端口可以建立TCP或UDP的连接"],
-						["closed：","目标端口可以连接，但没有程序对该端口进行监听"],
-						["filtered：","存在目标网络数据报文过滤，无法确定是否开放"],
-						["unfiltered：","目标端口可以访问，但无法判断是否有程序对该端口进行监听，通过只在ACK扫描时才会出现"],
-						["open | filtered：","无法确定开放还是被过滤，如：开放但不响应"],
-						["closed | filtered：","无法确定关闭还是被过滤，只有在idle扫描时才会出现"]
+				createInstruT0("端口状态说明<br />", "i5");
+					var tBody = [
+						["open：", "目标端口可以建立TCP或UDP的连接"],
+						["closed：", "目标端口可以连接，但没有程序对该端口进行监听"],
+						["filtered：", "存在目标网络数据报文过滤，无法确定是否开放"],
+						["unfiltered：", "目标端口可以访问，但无法判断是否有程序对该端口进行监听，通过只在ACK扫描时才会出现"],
+						["open | filtered：", "无法确定开放还是被过滤，如：开放但不响应"],
+						["closed | filtered：", "无法确定关闭还是被过滤，只有在idle扫描时才会出现"]
 					];
 					createHLTableT0(1050, '', tBody, 'tStatus');
 
-				createInstruT0("<br /><br />TCP SYN扫描，应答与端口状态关系<br />","i6");
-					tHeader = [
+				createInstruT0("<br /><br />TCP SYN扫描，应答与端口状态关系<br />", "i6");
+					var tHeader = [
 						"目标主机应答",
 						"目标端口状态"
 					];
 
 					tBody = [
-						["SYN/ACK 应答","open"],
-						["RST 应答","closed"],
-						["无应答","filtered"],
-						["ICMP不可达　Type 3<br />Code 1、2、3、4、10、13","filtered"],
+						["SYN/ACK 应答", "open"],
+						["RST 应答", "closed"],
+						["无应答", "filtered"],
+						["ICMP不可达　Type 3<br />Code 1、2、3、4、10、13", "filtered"],
 					];
 					createHLTableT0(500, tHeader, tBody, "tTCP");
 
 					document.writeln("<br /><br />");
 					tBody = [
-						["Code 1：","主机不可达"],
-						["Code 2：","协议不可达"],
-						["Code 3：","端口不可达"],
-						["Code 4：","需要分片，但DF被置位"],
-						["Code 10：","与目标主机的通信被强制禁止"],
-						["Code 13：","由于过滤，通信被强行禁止"],
+						["Code 1：", "主机不可达"],
+						["Code 2：", "协议不可达"],
+						["Code 3：", "端口不可达"],
+						["Code 4：", "需要分片，但DF被置位"],
+						["Code 10：", "与目标主机的通信被强制禁止"],
+						["Code 13：", "由于过滤，通信被强行禁止"],
 
 					];
 					createHLTableT0(600, '', tBody, 'tTCPfiltered');
 
-				createInstruT0("<br /><br />UDP扫描，应答与端口状态关系<br />","i7");
+				createInstruT0("<br /><br />UDP扫描，应答与端口状态关系<br />", "i7");
 					tHeader = [
 						"目标主机应答",
 						"目标端口状态"
 					];
 
 					tBody = [
-						["任意UDP应答","open"],
-						["无应答","open | filtered"],
-						["ICMP端口不可达<br />Type 3　Code 3","closed"],
-						["ICMP不可达　Type 3<br />Code 1、2、9、10、13","filtered"],
+						["任意UDP应答", "open"],
+						["无应答", "open | filtered"],
+						["ICMP端口不可达<br />Type 3　Code 3", "closed"],
+						["ICMP不可达　Type 3<br />Code 1、2、9、10、13", "filtered"],
 					];
 					createHLTableT0(500, tHeader, tBody, "tUDP");
 
 					document.writeln("<br /><br />");
 					tBody = [
-						["Code 1：","主机不可达"],
-						["Code 2：","协议不可达"],
-						["Code 3：","端口不可达"],
-						["Code 9：","与目标网络的通信被强制禁止"],
-						["Code 10：","与目标主机的通信被强制禁止"],
-						["Code 13：","由于过滤，通信被强行禁止"],
+						["Code 1：", "主机不可达"],
+						["Code 2：", "协议不可达"],
+						["Code 3：", "端口不可达"],
+						["Code 9：", "与目标网络的通信被强制禁止"],
+						["Code 10：", "与目标主机的通信被强制禁止"],
+						["Code 13：", "由于过滤，通信被强行禁止"],
 
 					];
 					createHLTableT0(600, '', tBody, 'tUDPfiltered');
