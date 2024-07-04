@@ -1,10 +1,10 @@
-$('#guide-icon, nav ~ ul li').click(function () {
+$("#guide-icon, nav ~ ul li").click(function () {
 	var etop_show = 0;
 	var e, etop_hide;
 	var findDiv = true;
 	var offset_top = document.documentElement.scrollTop;
 
-	$('#divCommand table').each(function () {
+	$("#divCommand table").each(function () {
 		if ($(this).offset().top - offset_top >= 0) {
 			e = $(this);
 			etop_hide = $(this).offset().top;
@@ -13,7 +13,7 @@ $('#guide-icon, nav ~ ul li').click(function () {
 		}
 	});
 	if (findDiv) {
-		$('#divCommand div').each(function () {
+		$("#divCommand div").each(function () {
 			if ($(this).offset().top - offset_top >= 0) {
 				e = $(this);
 				etop_hide = $(this).offset().top;
@@ -22,7 +22,7 @@ $('#guide-icon, nav ~ ul li').click(function () {
 		});
 	}
 
-	if ($('#guide-icon span').hasClass('open')) {
+	if ($("#guide-icon span").hasClass("open")) {
 		/*
 			有些命令或描述较长，造成换行，而隐藏导航后，宽度增大，高度会降低，
 			因此，隐藏导航后divcommand内容相对位置会改变，需要调整
@@ -33,13 +33,13 @@ $('#guide-icon, nav ~ ul li').click(function () {
 			根据显示/隐藏的变化方式与状态，调整divCommand的滚动条，使用元素位置相对不变
 		*/
 		$(".main-sidebar").animate({"width": "0px"});
-		$("#guide-icon").animate({left: '-5px'});
-		$("#divCommand").animate({marginLeft: '50px'}, move_divCommand);
+		$("#guide-icon").animate({left: "-5px"});
+		$("#divCommand").animate({marginLeft: "50px"}, move_divCommand);
 
-		$(".divStruct").animate({marginLeft: '50px'});
+		$(".divStruct").animate({marginLeft: "50px"});
 
 		if (window.location.href.indexOf("ICMPv4.html") > 0 || window.location.href.indexOf("ICMPv6.html") > 0) {
-			$("#zwTable, .divBG").animate({"left": "80px"});
+			$("#zwTable, .divBG").animate({"left": "77.5px"});
 		}
 
 		if (window.location.href.indexOf("DHCPv6.html") > 0) {
@@ -49,15 +49,16 @@ $('#guide-icon, nav ~ ul li').click(function () {
 		if (window.location.href.indexOf("DHCPv4.html") > 0) {
 			$("#tOption53").animate({"width": "1370px"});
 		}
-	} else {
+	}
+	else {
 		$(".main-sidebar").animate({"width": "350px"});
-		$("#guide-icon").animate({left: '340px'});
-		$("#divCommand").animate({marginLeft: '380px'}, move_divCommand);
+		$("#guide-icon").animate({left: "340px"});
+		$("#divCommand").animate({marginLeft: "380px"}, move_divCommand);
 
-		$(".divStruct").animate({marginLeft: '380px'});
+		$(".divStruct").animate({marginLeft: "380px"});
 
 		if (window.location.href.indexOf("ICMPv4.html") > 0 || window.location.href.indexOf("ICMPv6.html") > 0) {
-			$("#zwTable, .divBG").animate({"left": "410px"});
+			$("#zwTable, .divBG").animate({"left": "407px"});
 		}
 
 		if (window.location.href.indexOf("DHCPv6.html") > 0) {
@@ -69,7 +70,7 @@ $('#guide-icon, nav ~ ul li').click(function () {
 		}
 
 	}
-	$('#guide-icon span').toggleClass('open');
+	$("#guide-icon span").toggleClass("open");
 
 	function move_divCommand() {
 		etop_show = e.offset().top;

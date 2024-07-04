@@ -1,15 +1,15 @@
 function toDetail(id) {
-	var href = window.location.href.split('#')[0];
+	var href = window.location.href.split("#")[0];
 	location.href = href + id;
-	var topp = $('#divCommand').offset().top + 160;
+	var topp = $("#divCommand").offset().top + 160;
 
-	var leftt = $('#divCommand').offset().left;
-	$('#divCommand').offset({top: topp, left: leftt});
+	var leftt = $("#divCommand").offset().left;
+	$("#divCommand").offset({top: topp, left: leftt});
 }
 
 $(document).ready(function () {
-	$('#tStatus2 .row').click(function () {
-		var index = $('#tStatus2 .row').index($(this)); // 获取该行在表格中为第几行
+	$("#tStatus2 .row").click(function () {
+		var index = $("#tStatus2 .row").index($(this)); // 获取该行在表格中为第几行
 
 		switch (index) {
 			case 1: // 200 OK

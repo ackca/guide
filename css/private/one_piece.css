@@ -7,16 +7,23 @@
 	border: 0;
 	overflow: hidden;
 	letter-spacing: 1px;
-	width: 1100px
+	top: 99px;
+}
+
+.divBG
+{
+	background-color: #494A5F;
+	height: 60px;
+	top: 50px;
 }
 
 #zwTable, .divBG
 {
+	width: 1102px;
 	position: fixed;
 	z-index: 10;
-	top: 100px;
 	left: 410px;
-	display: none;
+	/*display: none;*/
 }
 
 #zwTable .row .cell
@@ -26,13 +33,13 @@
 }
 
 #zwTable .row .cell,
-#tOP tr th
+#tOP tr:nth-child(2) td
 {
 	width: 150px;
 }
 
 #zwTable .row .cell:nth-child(2),
-#tOP tr th:nth-child(2)
+#tOP tr:nth-child(2) td:nth-child(2)
 {
 	width: 650px;
 }
@@ -46,24 +53,23 @@
 
 #tOP
 {
-	/*display: none;*/
-	/*width: 1100px;*/
 	margin-left: 18px;
+	letter-spacing: 1px;
 }
 
-#tOP th
-{
-	font-size: 20px;
-	line-height: 1.2;
-	font-weight: unset;
-	text-align: center;
-	padding-top: 19px;
-	padding-bottom: 19px;
-	padding-left: 0;
-	padding-right: 0;
-	vertical-align: middle;
-	background-color: #6C7AE0;
-}
+/*#tOP th*/
+/*{*/
+/*	font-size: 20px;*/
+/*	line-height: 1.2;*/
+/*	font-weight: unset;*/
+/*	text-align: center;*/
+/*	padding-top: 19px;*/
+/*	padding-bottom: 19px;*/
+/*	padding-left: 0;*/
+/*	padding-right: 0;*/
+/*	vertical-align: middle;*/
+/*	background-color: #6C7AE0;*/
+/*}*/
 
 #tOP .chapter
 {
@@ -79,7 +85,8 @@
 {
 	border-collapse: collapse;
 	border: solid 2px #808080;
-	font-size: 18px
+	font-size: 18px;
+	margin-top: 35px;
 }
 
 #tOP td
@@ -109,3 +116,4 @@
 	text-align: left!important;
 	padding-left: 20px;
 }
+

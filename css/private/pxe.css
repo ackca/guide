@@ -33,34 +33,79 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 }
 
 .os_options select,
-.os_options input
+.os_options input,
+.os_options textarea
 {
-	background-color: #282923;
-	color: #F8F8F2;
-	border-color: #495057;
-	width: 600px;
+	width: 1000px;
 	margin-bottom: 20px;
 }
 
-.os_options select
+#btn_generate
 {
-	--bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+	width: 1000px;
+	margin-top: 40px;
+	margin-bottom: 30px;
 }
 
-.os_options input:focus
-{
-	background-color: #282923;
-	color: #F8F8F2;
-	border-color: #495057;
-}
+/*.os_options select*/
+/*{*/
+/*	--bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");*/
+/*}*/
 
 #lb_os_version, #select_os_version,
 #lb_os_kind, #select_os_kind,
 #lb_os_hostname, #input_os_hostname,
+#div_is_auto_login,
 #lb_os_password, #input_os_password,
 #lb_install, #select_install,
 #lb_partition, #select_partition,
-#lb_partition_install, #select_partition_install
+#lb_partition_install, #select_partition_install,
+.btn, #txt_auto_install
 {
 	display: none;
+}
+
+#txt_auto_install::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+	background-color: #282923;
+}
+
+#txt_auto_install::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	background: #595B5D;
+}
+
+#btn_download, #btn_copy
+{
+	width: 300px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.div_auto_txt
+{
+	position: relative;
+}
+
+.copySuccess
+{
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #494A5F;
+	font-size: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 7px;
+	border-radius: 8px;
+	display: none;
+}
+
+.copySuccess img
+{
+	width: 40px;
+	margin-top: -3px;
 }

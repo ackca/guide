@@ -59,6 +59,7 @@ const top_menu = `
 											<a href="rootpath/class/protocol/l2/ethernet.html">Ethernet II</a>
 											<a href="rootpath/class/protocol/l2/802.1Q.html">802.1Q</a>
 											<a href="rootpath/class/protocol/l2/802.3.html">802.3</a>
+											<a href="rootpath/class/protocol/l2/wifi.html">802.11 b/a/g/n/ac/ax/be</a>
 										</div>
 									</div>
 								</li>
@@ -98,7 +99,13 @@ const top_menu = `
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/cisco/catalyst.html">交换</a>
+										<span>交换</span>
+									</div>
+									<div class="cat-item-sub">
+										<div class="cat-item-row">
+											<a href="rootpath/class/network/cisco/catalyst.html">Catalyst</a>
+											<a href="rootpath/class/network/cisco/nexus.html">Nexus</a>
+										</div>
 									</div>
 								</li>
 								<li class="cat-item">
@@ -145,16 +152,6 @@ const top_menu = `
 										<a href="rootpath/class/network/cisco/ise21.html">ISE 2.1</a>
 									</div>
 								</li>
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<span>DEVNET</span>
-									</div>
-									<div class="cat-item-sub">
-										<div class="cat-item-row">
-											<a href="rootpath/class/network/cisco/ios-xe.html">IOS-XE</a>
-										</div>
-									</div>
-								</li>
 							</ul>
 						</div>
 						<div class="cat-group">
@@ -169,14 +166,22 @@ const top_menu = `
 							<ul class="cat-list">
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/cisco/nexus.html">Nexus</a>
+										<a href="rootpath/class/network/cisco/sdwan.html">SDWAN</a>
 									</div>
 								</li>
-							</ul>
-							<ul class="cat-list">
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/cisco/sdwan.html">SDWAN</a>
+										<a href="rootpath/class/network/cisco/umbrella.html">Umbrella</a>
+									</div>
+								</li>
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<span>DEVNET</span>
+									</div>
+									<div class="cat-item-sub">
+										<div class="cat-item-row">
+											<a href="rootpath/class/network/cisco/ios-xe.html">IOS-XE</a>
+										</div>
 									</div>
 								</li>
 							</ul>
@@ -426,12 +431,12 @@ const top_menu = `
                                             <span><a href="rootpath/class/netdevops/tool/regex.html">正则表达式</a></span>
                                         </h3>
                                     </td>
-                                    <td class="logo">
-                                    
-                                    </td>
-                                    <td>
-                                    
-                                    </td>
+<!--                                    <td class="logo">-->
+<!--                                    -->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                    -->
+<!--                                    </td>-->
                                 </tr>
                             </table>							
 						</div>
@@ -666,8 +671,7 @@ const top_menu = `
 			</div>
 		</div>
 		<div class="banner jmod_banner">
-			<div class="ban cur" style="background-color:#1C232F;height: 62px;">
-			</div>
+			<div class="ban cur" style="background-color:#1C232F;height: 62px;"></div>
 		</div>
 	</div>
 `

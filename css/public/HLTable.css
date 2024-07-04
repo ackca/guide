@@ -125,3 +125,10 @@
 {
 	background-color: #6C7AE0;
 }
+
+/* bootstarp内容冲突 */
+.table>:not(caption)>*>*
+{
+	color: inherit;
+	background-color: inherit;
+}

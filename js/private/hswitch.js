@@ -2,7 +2,7 @@ $(document).ready(function () {
 	// var tHybird_initTXT = $(".tHybrid").html();
 	// console.log(tHybird_initTXT)
 	// $(".tHybrid td").mouseleave(function (){
-	//     // alert('inin')
+	//     // alert("inin")
 	//     $(".tHybrid").html(tHybird_initTXT);
 	// });
 

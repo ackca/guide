@@ -58,6 +58,7 @@
 #tICMPv6Type .row .cell:nth-child(1)
 {
 	padding-left: 0px;
+	padding-right: 0px;
 }
 
 #tICMPv6Type .row .cell
@@ -188,10 +189,4 @@
 #zwTable .cell
 {
 	border-bottom: 0;
-}
-
-.table>:not(caption)>*>*
-{
-	color: inherit;
-	background-color: inherit;
 }

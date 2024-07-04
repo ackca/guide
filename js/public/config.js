@@ -1,26 +1,26 @@
 function createNavigation(tree, offset = 74.5) {
-	var uri = window.location.href.substring(window.location.href.indexOf('/guide'));
-	var path_num = uri.split('/').length - 1 - 2;
+	var uri = window.location.href.substring(window.location.href.indexOf("/guide"));
+	var path_num = uri.split("/").length - 1 - 2;
 
 	var firstT0 = Object.keys(tree)[0]; // 导航树中的第一个元素ID，也就是第一个instruT0
 	// 顶部导航
-	var htmlText = top_menu.replace(/rootpath\//g, '../'.repeat(path_num));
+	var htmlText = top_menu.replace(/rootpath\//g, "../".repeat(path_num));
 
-	if (tree == 'regex') {
+	if (tree == "regex") {
 		document.write(htmlText);
 		return;
 	}
 	// 左侧导航树 <---- 开始 ---->
 	htmlText = htmlText +
-		'<aside class="main-sidebar">\
-			<section class="sidebar">\
-				<ul class="sidebar-menu">' +
-		createTree(tree) +	// 当左侧导航树内容较多时，即使滚动条无法完全显示，增加了两行不显示的占位内容
-		'<li><a class="zw" cmd="zw">&nbsp;</a></li>\
-		 <li><a class="zw" cmd="zw">&nbsp;</a></li>\
-	</ul>\
-</section>\
-</aside>';
+		"<aside class='main-sidebar'>\
+			<section class='sidebar'>\
+				<ul class='sidebar-menu'>" +
+					createTree(tree) +	// 当左侧导航树内容较多时，即使滚动条无法完全显示，增加了两行不显示的占位内容
+					"<li><a class='zw' cmd='zw'>&nbsp;</a></li>\
+					 <li><a class='zw' cmd='zw'>&nbsp;</a></li>\
+				</ul>\
+			</section>\
+			</aside>";
 	// 左侧导航树 <---- 结束 ---->
 
 	// 关闭/显示左侧导航按钮 <---- 开始 ---->
@@ -36,7 +36,7 @@ function createNavigation(tree, offset = 74.5) {
 	// 关闭/显示左侧导航按钮 <---- 结束 ---->
 
 
-	if (uri.indexOf('/guide/class/protocol') >= 0) {
+	if (uri.indexOf("/guide/class/protocol") >= 0) {
 		offset = 160;
 		// 浮动显示协议结构的div <---- 开始 ---->
 		htmlText = htmlText + `
@@ -48,66 +48,70 @@ function createNavigation(tree, offset = 74.5) {
 		// 浮动显示协议结构的div <---- 结束 ---->
 	}
 
+	if (uri.indexOf("/guide/class/one_piece") >= 0) {
+		offset = 161;
+	}
+
 	document.write(htmlText);
 
 	var body = `
-		<script type='text/javascript' src='rootpath/js/public/top_menu.js'></script>
-		<script type='text/javascript' src='rootpath/js/public/sidebar-menu.js'></script>
-		<script type='text/javascript'>
-			$.sidebarMenu($('.sidebar-menu'), offset);
+		<script type="text/javascript" src="rootpath/js/public/top_menu.js"></script>
+		<script type="text/javascript" src="rootpath/js/public/sidebar-menu.js"></script>
+		<script type="text/javascript">
+			$.sidebarMenu($(".sidebar-menu"), offset);
 		</script>
-		<script type='text/javascript' src='rootpath/js/public/guide-icon.js'></script>
+		<script type="text/javascript" src="rootpath/js/public/guide-icon.js"></script>
 	`
-	document.write(body.replace(/rootpath\//g, '../'.repeat(path_num)).replace('offset', offset));
+	document.write(body.replace(/rootpath\//g, "../".repeat(path_num)).replace("offset", offset));
 
 	$(document).ready(function () {
 		// 每个instruT0前都会有两个<br />，将第一个T0下移位置补回
-		$('#' + firstT0).css('margin-top', '-49.5px');
+		$("#" + firstT0).css("margin-top", "-49.5px");
 
-		if (uri.indexOf('/guide/class/protocol') >= 0) {
-			$('#divCommand').before('<div style="height: 135px"></div>');
+		if (uri.indexOf("/guide/class/protocol") >= 0) {
+			$("#divCommand").before("<div style='height: 135px'></div>");
 		}
 		else {
-			$('#divCommand').before('<div style="height: 74px"></div>');
+			$("#divCommand").before("<div style='height: 74px'></div>");
 		}
 
-		if (uri.indexOf('#') > 0) {
+		if (uri.indexOf("#") > 0) {
 			// 以 DHCP Snooping 为例，#i10-2
-			// ['#i10','2']
-			// 第一次：'#i10'
-			// 第二次：'#i10-2'
-			var linkID = uri.substring(uri.indexOf(('#')));
-			var linkID_arr = linkID.split('-');
-			var link = '';
+			// ["#i10","2"]
+			// 第一次："#i10"
+			// 第二次："#i10-2"
+			var linkID = uri.substring(uri.indexOf(("#")));
+			var linkID_arr = linkID.split("-");
+			var link = "";
 			for (var i = 0; i < linkID_arr.length; i++) {
 				link = link + linkID_arr[i];
-				$('[cmd="' + link + '"]').click();
-				link = link + '-';
+				$("[cmd='" + link + "']").click();
+				link = link + "-";
 			}
 		}
 	})
 }
 
 function createTree(tree) {
-	var htmlText = '';
+	var htmlText = "";
 	for (var key in tree) {
-		htmlText = htmlText + '<li class="treeview">'
+		htmlText = htmlText + "<li class='treeview'>";
 		if (typeof tree[key] != "string") {
-			htmlText = htmlText + '<a href="javascript:void(0)" cmd="#' + key + '"><i class="fa fa-folder"></i><span>';
-			var key_next = '';
+			htmlText = htmlText + "<a href='javascript:void(0)' cmd='#" + key + "'><i class='fa fa-folder'></i><span>";
+			var key_next = "";
 			for (var key_nexts in tree[key]) {
 				key_next = key_nexts;
 			}
 			htmlText = htmlText + key_next +
-				'</span><i class="fa fa-angle-left pull-right"></i></a><ul class="treeview-menu">' +
-				createTree(tree[key][key_next]) + '</ul>';
+				"</span><i class='fa fa-angle-left pull-right'></i></a><ul class='treeview-menu'>" +
+				createTree(tree[key][key_next]) + "</ul>";
 		}
 		else {
-			htmlText = htmlText + '<a href="javascript:void(0)" cmd="#' + key + '">' +
-				'<i class="fa-regular fa-file-lines"></i><span>' + tree[key] +
-				'</span></a><ul class="treeview-menu"></ul>';
+			htmlText = htmlText + "<a href='javascript:void(0)' cmd='#" + key + "'>" +
+				"<i class='fa-regular fa-file-lines'></i><span>" + tree[key] +
+				"</span></a><ul class='treeview-menu'></ul>";
 		}
-		htmlText = htmlText + '</li>';
+		htmlText = htmlText + "</li>";
 	}
 	return htmlText
 }
@@ -167,8 +171,8 @@ function addKeywords(text) {
 function createInstru(text, NO, instruT, isFirst) {
 	text = addSpan(text);
 	if (NO != null) {
-		if (instruT == 'instruT0') {
-			document.writeln('<br /><br />')
+		if (instruT == "instruT0") {
+			document.writeln("<br /><br />");
 		}
 
 		var words = splitBR(text);
@@ -182,12 +186,12 @@ function createInstru(text, NO, instruT, isFirst) {
 
 function createInstruAllTop(text, instruT) {
 	var words = splitBR(addSpan(text));
-	document.writeln(words[0] + '<span class="cmdInstruAllTop' + instruT + '">' + words[1] + '</span>' + words[2]);
+	document.writeln(words[0] + "<span class='cmdInstruAllTop" + instruT + "'>" + words[1] + "</span>" + words[2]);
 }
 
 function createInstruAllBottom(text, instruT) {
 	var words = splitBR(addSpan(text));
-	document.writeln(words[0] + '<span class="cmdInstruAllBottom' + instruT + '">' + words[1] + '</span>' + words[2]);
+	document.writeln(words[0] + "<span class='cmdInstruAllBottom" + instruT + "'>" + words[1] + "</span>" + words[2]);
 }
 
 function createInstruAllTopT0(text, instruT) {
@@ -306,21 +310,21 @@ function createTCLT3(cmds) {
 }
 
 function initTXT(cmds, txtT, cmdT) {
-	cmds = cmds.replace(/</g, '&lt;') // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
+	cmds = cmds.replace(/</g, "&lt;") // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
 
 	//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
-	// cmds = cmds.replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
-	// cmds = cmds.replace(/ /g,'&nbsp;');
+	// cmds = cmds.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
+	// cmds = cmds.replace(/ /g,"&nbsp;");
 
 	var url = window.location.href
-	url = url.substring(url.indexOf('/guide/class/'));
-	var path = "../".repeat(url.split('/').length - 3);
+	url = url.substring(url.indexOf("/guide/class/"));
+	var path = "../".repeat(url.split("/").length - 3);
 
 	var htmlText = "<div class='txtDiv" + cmdT + "'>" +
 		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><img src='" + path + "/img/ok.svg' />&nbsp;复制成功</div>";
+		"<div class='copySuccess'><img src='" + path + "img/ok.svg' />&nbsp;复制成功</div>";
 
-	var cmd_arr = cmds.split('\n')
+	var cmd_arr = cmds.split("\n")
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
@@ -330,8 +334,8 @@ function initTXT(cmds, txtT, cmdT) {
 		}
 		// 由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
 		// 但ViptelaCLI，YAML不需要
-		cmd_arr[i] = cmd_arr[i].replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
-		cmd_arr[i] = cmd_arr[i].replace(/ /g, '&nbsp;');
+		cmd_arr[i] = cmd_arr[i].replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+		cmd_arr[i] = cmd_arr[i].replace(/ /g, "&nbsp;");
 	}
 
 	switch (txtT) {
@@ -362,10 +366,10 @@ function createLinuxTxt(cmd_arr, htmlText) {
 		// cmd_arr[i] = cmd_arr[i].substring(subNum);
 		//
 		// //由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
-		// cmd_arr[i] = cmd_arr[i].replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;');
-		// cmd_arr[i] = cmd_arr[i].replace(/ /g,'&nbsp;');
+		// cmd_arr[i] = cmd_arr[i].replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
+		// cmd_arr[i] = cmd_arr[i].replace(/ /g,"&nbsp;");
 
-		var index = cmd_arr[i].indexOf('#');
+		var index = cmd_arr[i].indexOf("#");
 
 		if (index == 0) {	//纯注释
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
@@ -373,8 +377,8 @@ function createLinuxTxt(cmd_arr, htmlText) {
 		}
 
 		if (index > 0) {	//配置和注释
-			var notZS = 'sed&nbsp;-i&nbsp;\'/&nbsp;swap&nbsp;/&nbsp;s/^\\(.*\\)$/#\\1/g\'&nbsp;/etc/fstab';
-			// notZS对应 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab，位于k8s的kubeadm安装
+			var notZS = "sed&nbsp;-i&nbsp;\'/&nbsp;swap&nbsp;/&nbsp;s/^\\(.*\\)$/#\\1/g\'&nbsp;/etc/fstab";
+			// notZS对应 sed -i "/ swap / s/^\(.*\)$/#\1/g" /etc/fstab，位于k8s的kubeadm安装
 			// /&nbsp;# 也就是 / #，位于Vault的命令行
 			if (cmd_arr[i] != notZS && !(cmd_arr[i].indexOf("/&nbsp;#") == 0)) {
 				zs = cmd_arr[i].substring(index);	//注释部分
@@ -385,36 +389,36 @@ function createLinuxTxt(cmd_arr, htmlText) {
 		}
 
 		// cisco/*# 位于Vault的policy策略
-		if (cmd_arr[i].indexOf('cisco/*') < 0 && cmd_arr[i].indexOf('/*') >= 0 && cmd_arr[i].indexOf('*/') >= 0) {
+		if (cmd_arr[i].indexOf("cisco/*") < 0 && cmd_arr[i].indexOf("/*") >= 0 && cmd_arr[i].indexOf("*/") >= 0) {
 			htmlText = htmlText + "<div class='divZS'>" + cmd_arr[i] + "</div><br />";
 			continue;
 		}
 		// cisco/*# 位于Vault的policy策略
-		if (cmd_arr[i].indexOf('cisco/*') < 0 && cmd_arr[i].indexOf('/*') >= 0) {
-			if (cmd_arr[i] == 'path&nbsp;"itachi/*"&nbsp;{') {
-				htmlText = htmlText + '<span>' + cmd_arr[i].trim() + '</span><br />'
+		if (cmd_arr[i].indexOf("cisco/*") < 0 && cmd_arr[i].indexOf("/*") >= 0) {
+			if (cmd_arr[i] == "path&nbsp;'itachi/*'&nbsp;{") {
+				htmlText = htmlText + "<span>" + cmd_arr[i].trim() + "</span><br />"
 				continue;
 			}
 			htmlText = htmlText + "<div class='divZS'><span>" + cmd_arr[i] + "</span><br />";
 			continue;
 		}
 
-		if (cmd_arr[i].indexOf('*/') >= 0 && cmd_arr[i].indexOf('.*/\\t') < 0) {
+		if (cmd_arr[i].indexOf("*/") >= 0 && cmd_arr[i].indexOf(".*/\\t") < 0) {
 			htmlText = htmlText + "<span>" + cmd_arr[i] + "</span></div/><br />";
 			continue;
 		}
 
-		index = cmd_arr[i].indexOf('&lt;a') // 即<a
+		index = cmd_arr[i].indexOf("&lt;a") // 即<a
 		if (index >= 0) {
 			var link = cmd_arr[i].substring(index);	// 链接
-			link = link.replace(/&lt;/g, '<');		// 将空格和<还原
-			link = link.replace(/&nbsp;/g, ' ');
+			link = link.replace(/&lt;/g, "<");		// 将空格和<还原
+			link = link.replace(/&nbsp;/g, " ");
 
 			var cmd = cmd_arr[i].substring(0, index);	// 命令部分
-			htmlText = htmlText + '<span>' + cmd.trim() + '</span>' + link + '<br />';
+			htmlText = htmlText + "<span>" + cmd.trim() + "</span>" + link + "<br />";
 			continue;
 		}
-		htmlText = htmlText + '<span>' + cmd_arr[i].trim() + '</span><br />'
+		htmlText = htmlText + "<span>" + cmd_arr[i].trim() + "</span><br />"
 	}
 	htmlText = htmlText + "</div>";
 	// document.writeln(htmlText);
@@ -424,11 +428,11 @@ function createLinuxTxt(cmd_arr, htmlText) {
 function createYAML(cmd_arr, htmlText) {
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
 		//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
-		cmd_arr[i] = cmd_arr[i].replace(/\t/g, '&nbsp;&nbsp;');
-		cmd_arr[i] = cmd_arr[i].replace(/ /g, '&nbsp;');
+		cmd_arr[i] = cmd_arr[i].replace(/\t/g, "&nbsp;&nbsp;");
+		cmd_arr[i] = cmd_arr[i].replace(/ /g, "&nbsp;");
 
-		var zs = '';
-		var index = cmd_arr[i].indexOf('#');
+		var zs = "";
+		var index = cmd_arr[i].indexOf("#");
 		if (index == 0) {	//纯注释
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
 			continue;		//纯注释，无需进行后面的分解
@@ -439,8 +443,8 @@ function createYAML(cmd_arr, htmlText) {
 			cmd_arr[i] = cmd_arr[i].substring(0, index);	//配置
 		}
 
-		var fgf_list = [':', '='];
-		var fgf = ''
+		var fgf_list = [":", "="];
+		var fgf = "";
 
 		for (var j in fgf_list) {
 			if (cmd_arr[i].indexOf(fgf_list[j]) != -1) {
@@ -449,7 +453,7 @@ function createYAML(cmd_arr, htmlText) {
 			}
 		}
 
-		if (fgf == '') {	//无分割符
+		if (fgf == "") {	//无分割符
 			htmlText = htmlText + "<span class='spanV'>" + cmd_arr[i] + "</span>";
 		}
 		else {
@@ -465,7 +469,7 @@ function createYAML(cmd_arr, htmlText) {
 			}
 		}
 
-		if (zs != '') {
+		if (zs != "") {
 			htmlText = htmlText + "<span class='spanZS'>" + zs + "</span>";
 		}
 
@@ -473,24 +477,24 @@ function createYAML(cmd_arr, htmlText) {
 	}
 
 	htmlText = htmlText + "</div>";
-	htmlText = htmlText.replace(/((&nbsp;)+\d+(&nbsp;)*)<\/span>/g, '<span class="spanNum">$1</span></span>');
-	htmlText = htmlText.replace(/((&nbsp;)+-(&nbsp;)+)/g, '<span class="spanFGF">$1</span>');
+	htmlText = htmlText.replace(/((&nbsp;)+\d+(&nbsp;)*)<\/span>/g, "<span class='spanNum'>$1</span></span>");
+	htmlText = htmlText.replace(/((&nbsp;)+-(&nbsp;)+)/g, "<span class='spanFGF'>$1</span>");
 	document.writeln(htmlText);
 }
 
 function createViptelaCLI(cmd_arr, htmlText) {
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
 		if (
-			cmd_arr[i].indexOf('config terminal') >= 0 ||
-			cmd_arr[i].indexOf('no shutdown') >= 0
+			cmd_arr[i].indexOf("config terminal") >= 0 ||
+			cmd_arr[i].indexOf("no shutdown") >= 0
 		) {
-			cmd_arr[i] = cmd_arr[i].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+			cmd_arr[i] = cmd_arr[i].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
 			htmlText = htmlText + "<span class='spanT'>" + cmd_arr[i] + "</span><br />";
 			continue;
 		}
 
-		if (cmd_arr[i].indexOf('!') >= 0) {
-			cmd_arr[i] = cmd_arr[i].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+		if (cmd_arr[i].indexOf("!") >= 0) {
+			cmd_arr[i] = cmd_arr[i].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
 			htmlText = htmlText + "<span class='sqlWord'>" + cmd_arr[i] + "</span><br />";
 			continue;
 		}
@@ -499,15 +503,15 @@ function createViptelaCLI(cmd_arr, htmlText) {
 		var clis = cmd_arr[i].match(/(\s*ip (address|route))(.+)/);
 
 		if (clis) {
-			htmlText = htmlText + "<span class='spanT'>" + clis[1].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
-			htmlText = htmlText + "<span>" + clis[3].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
+			htmlText = htmlText + "<span class='spanT'>" + clis[1].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;") + "</span>";
+			htmlText = htmlText + "<span>" + clis[3].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;") + "</span><br />";
 			continue;
 		}
 
 		clis = cmd_arr[i].match(/(\s*\S+)(.*)/);
 		if (clis) {
-			htmlText = htmlText + "<span class='spanT'>" + clis[1].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
-			htmlText = htmlText + "<span>" + clis[2].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') + "</span><br />";
+			htmlText = htmlText + "<span class='spanT'>" + clis[1].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;") + "</span>";
+			htmlText = htmlText + "<span>" + clis[2].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;") + "</span><br />";
 		}
 		else {
 			htmlText = htmlText + "<br />";
@@ -550,7 +554,7 @@ function createTCL(cmd_arr, htmlText) {
 		// cmd_arr[i] = cmd_arr[i].replace(/(((when)|(elseif)|(else)|(snat)|(class)|(pool)|(default))(&nbsp;)+)/g, "<span class='spanT'>$1</span>");
 		cmd_arr[i] = cmd_arr[i].replace(new RegExp(regstr, "g"), "<span class='spanT'>$1</span>");
 
-		htmlText = htmlText + '<span>' + cmd_arr[i] + '</span><br />'
+		htmlText = htmlText + "<span>" + cmd_arr[i] + "</span><br />"
 	}
 	htmlText = htmlText + "</div>";
 	document.writeln(htmlText);
@@ -583,7 +587,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	if (reg.test(linuxCmd)) {
 		var orCMD = linuxCmd.match(reg);
 		while (orCMD.length == 2) {
-			linuxCmd = orCMD[0] + '@@@' + orCMD[1];
+			linuxCmd = orCMD[0] + "@@@" + orCMD[1];
 			orCMD = linuxCmd.match(reg);
 		}
 	}
@@ -595,30 +599,30 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	if (reg.test(linuxCmd)) {
 		var orCMD = linuxCmd.match(reg);
 		while (orCMD.length == 2) {
-			linuxCmd = orCMD[0] + '@@@' + orCMD[1];
+			linuxCmd = orCMD[0] + "@@@" + orCMD[1];
 			orCMD = linuxCmd.match(reg);
 		}
 	}
 	// 处理 []、{}中的 | 结束
 
 	var cmds = [linuxCmd];
-	var FGFs = ['|', '&&'];
+	var FGFs = ["|", "&&"];
 
 	for (var i in FGFs) {
 		cmds = splitLinuxCMD(cmds, FGFs[i]);
 	}
 
-	var htmlText = '';
+	var htmlText = "";
 
 	for (var j in cmds) {
-		var cmd = cmds[j].split(' ');
+		var cmd = cmds[j].split(" ");
 		for (var i in cmd) {
 			if (i == 0) {	// 第一位的只能是命令
 				htmlText = htmlText + "<span class='linuxCMD_cmd'>" + cmd[i] + "</span>";
 			}
 
 			if (i >= 1 && i < cmdNum && cmdNum > 1) {
-				if (cmd[i][0] == '-' || cmd[i][0] == '+') {	// 第二位以 - 或 + 开头，则为参数
+				if (cmd[i][0] == "-" || cmd[i][0] == "+") {	// 第二位以 - 或 + 开头，则为参数
 					htmlText = htmlText + "<span class='linuxCMD_Para'>" + cmd[i] + "</span>";
 				}
 				else {
@@ -632,7 +636,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 			}
 
 			if (i >= cmdNum) {
-				if (cmd[i][0] == '-' || cmd[i][0] == '+') {	// 第三及以后位以 - 或 + 开头，则为参数
+				if (cmd[i][0] == "-" || cmd[i][0] == "+") {	// 第三及以后位以 - 或 + 开头，则为参数
 					htmlText = htmlText + "<span class='linuxCMD_Para'>" + cmd[i] + "</span>";
 				}
 				else {
@@ -645,7 +649,7 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 					htmlText = htmlText + cmd[i];
 				}
 			}
-			htmlText = htmlText + '&nbsp;&nbsp;';
+			htmlText = htmlText + "&nbsp;&nbsp;";
 		}
 	}
 	htmlText = htmlText.substring(0, htmlText.length - 12);
@@ -661,15 +665,15 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 	var num = 0;
 
 	for (var i = 0; i < linuxCMD_cmds.length; i++) {
-		var word = linuxCMD_cmds[i].replaceAll('&nbsp;', '');
+		var word = linuxCMD_cmds[i].replaceAll("&nbsp;", "");
 		num = num + word.length - 34
 	}
 
-	htmlText = htmlText.replaceAll('&nbsp;&nbsp;\\&nbsp;&nbsp;', '&nbsp;&nbsp;\\<br />' + '&nbsp;'.repeat((num + linuxCMD_cmds.length) * 2 - 2));
+	htmlText = htmlText.replaceAll("&nbsp;&nbsp;\\&nbsp;&nbsp;", "&nbsp;&nbsp;\\<br />" + "&nbsp;".repeat((num + linuxCMD_cmds.length) * 2 - 2));
 	// 处理命令命令中的换行部分结束
 
 	// 还原非管道符的 | ，以及 []
-	htmlText = htmlText.replaceAll('@@@', '|').replaceAll('{{', '[').replaceAll('}}', ']');
+	htmlText = htmlText.replaceAll("@@@", "|").replaceAll("{{", "[").replaceAll("}}", "]");
 
 	reg = new RegExp("(\"[^\"]+\")", "g");
 	htmlText = htmlText.replace(reg, "<span class='spanYH'>$1</span>");
@@ -682,20 +686,20 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 		return htmlText;
 	}
 
-	if (htmlText.indexOf('$(') >= 0) {
+	if (htmlText.indexOf("$(") >= 0) {
 		htmlText = spliteDolor(htmlText, cmdNum);
 	}
 
-	htmlText = htmlText.replaceAll('</span></span>', '</span>');
+	htmlText = htmlText.replaceAll("</span></span>", "</span>");
 	return createCmdSpan(htmlText);
 }
 
 function splitLinuxCMD(cmd_arrary, FGF) {
 	var cmdss = new Array();
 	for (var i in cmd_arrary) {
-		var cmds = cmd_arrary[i].split(' ' + FGF + ' ');
+		var cmds = cmd_arrary[i].split(" " + FGF + " ");
 		for (var j = 0; j < cmds.length - 1; j++) {
-			cmdss.push(cmds[j] + ' ' + FGF)
+			cmdss.push(cmds[j] + " " + FGF)
 		}
 		cmdss.push(cmds[cmds.length - 1]);
 	}
@@ -703,12 +707,12 @@ function splitLinuxCMD(cmd_arrary, FGF) {
 }
 
 function spliteDolor(cmd, cmdNum) {
-	if (cmd.indexOf('$(') >= 0) {
-		var dstart = cmd.indexOf('$(');
-		var dend = cmd.indexOf(')');
+	if (cmd.indexOf("$(") >= 0) {
+		var dstart = cmd.indexOf("$(");
+		var dend = cmd.indexOf(")");
 		var son_cmd = cmd.substring(dstart + 2, dend);
 
-		son_cmd = son_cmd.replace(/<(\/)?span[^>]*>/g, '').replace(/<br( \/)?>/g, '\r\n').replaceAll('&nbsp;&nbsp;', ' ').replaceAll('&gt;', '>').replaceAll('&lt;', '<');
+		son_cmd = son_cmd.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
 		cmd = cmd.substring(0, dstart) + "<span class='spanObj'>$(</span>" + createLinuxCmd(son_cmd, cmdNum, true) + "<span class='spanObj'>)</span>" + spliteDolor(cmd.substring(dend + 1));
 	}
 	return cmd;
@@ -720,7 +724,7 @@ function createSQLCmdSpan(cmd) {
 
 	// 有一些内容非关键字，但与字符与关键字相同，
 	// 手动在字符前添加{}区分，返回去掉{}的命令
-	return createCmdSpan(cmd.replace(/{}/g, ''));
+	return createCmdSpan(cmd.replace(/{}/g, ""));
 }
 
 function createSQLCmdInstruSpan(cmd, text) {
@@ -764,7 +768,7 @@ function createCmdInstruSpan(cmd, text) {
 	}
 	else {
 		text = addSpan(text);
-		return cmd + '<>' + text;
+		return cmd + "<>" + text;
 	}
 }
 
@@ -910,7 +914,7 @@ function createConfigImg(imgNameList, imgDescribe, typeT) {
 
 	htmlText = htmlText + "'>";
 
-	if (imgNameList.indexOf('~') > 0) {
+	if (imgNameList.indexOf("~") > 0) {
 		var imgNameArr = imgNameList.split("~");
 		for (i = imgNameArr[0].substr(imgNameArr[0].length - 1); i <= parseInt(imgNameArr[1]); i++) {
 			var eachName = imgNameArr[0].substr(0, imgNameArr[0].length - 1) + i;
@@ -946,31 +950,31 @@ function createConfigImgT3(imgNameList, imgDescribe = null) {
 
 function addSQLSpan(cmd) {
 	const sql_keyword =
-		'alter|all|' +
-		'by|' +
-		'create|' +
-		'drop|' +
-		'from|for|flush|' +
-		'grant|' +
-		'identified|identifity|' +
-		'on|' +
-		'password|privileges|persist|' +
-		'select|set|show|' +
-		'to|' +
-		'update|use|user|' +
-		'variables|' +
-		'where|with';
+		"alter|all|" +
+		"by|" +
+		"create|" +
+		"drop|" +
+		"from|for|flush|" +
+		"grant|" +
+		"identified|identifity|" +
+		"on|" +
+		"password|privileges|persist|" +
+		"select|set|show|" +
+		"to|" +
+		"update|use|user|" +
+		"variables|" +
+		"where|with";
 
-	for (const sElement of reg = '/'
-		+ '(^(' + sql_keyword + ') )|'
-		+ '( (' + sql_keyword + ')$)|'
-		+ '( (' + sql_keyword + ') )|'
-		+ '(“(' + sql_keyword + ')。)' +
-		'/g') {
+	for (const sElement of reg = "/"
+		+ "(^(" + sql_keyword + ") )|"
+		+ "( (" + sql_keyword + ")$)|"
+		+ "( (" + sql_keyword + ") )|"
+		+ "(“(" + sql_keyword + ")。)" +
+		"/g") {
 	}
 	;
 
-	cmd = cmd.replace(/ /g, '  ')
+	cmd = cmd.replace(/ /g, "  ")
 	cmd = cmd.replace(eval(reg), "<span class=\"sqlKeyword\">$&</span>");
 	cmd = cmd.replace(/'[^']+'/g, "<span class=\"sqlWord\">$&</span>");
 	return cmd;
@@ -997,42 +1001,42 @@ function createProtocolWord(protocolSX, protocolQC, protocolZW) {
 	document.write(htmlText);
 }
 
-function createProtocolStructT0(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = 'divProtocolStruct') {
+function createProtocolStructT0(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = "divProtocolStruct") {
 	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T0", protocolName, divID);
 }
 
-function createProtocolStructT1(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = 'divProtocolStruct') {
+function createProtocolStructT1(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = "divProtocolStruct") {
 	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T1", protocolName, divID);
 }
 
-function createProtocolStructT2(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = 'divProtocolStruct') {
+function createProtocolStructT2(imgWidth, imgHeight, SFHeight, imgUrl, protocolName, divID = "divProtocolStruct") {
 	createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, "T2", protocolName, divID);
 }
 
 function heightlightField(protocolField, k, structID) {
-	var y = (k * protocolField).toString() + 'px';
-	$(structID).css('background-position-y', y);
-	if (structID.substring(1) == $('#divProtocol').attr("protocolID")) {
-		$('#protocolImg').css('background-position-y', y);
+	var y = (k * protocolField).toString() + "px";
+	$(structID).css("background-position-y", y);
+	if (structID.substring(1) == $("#divProtocol").attr("protocolID")) {
+		$("#protocolImg").css("background-position-y", y);
 	}
 }
 
 function initProtocol(structID) {
-	$(structID).css('background-position-y', '0px');
-	if (structID.substring(1) == $('#divProtocol').attr("protocolID")) {
-		$('#protocolImg').css('background-position-y', '0px');
+	$(structID).css("background-position-y", "0px");
+	if (structID.substring(1) == $("#divProtocol").attr("protocolID")) {
+		$("#protocolImg").css("background-position-y", "0px");
 	}
 }
 
-function createProtocolExplainT0(words, k, structID = 'divProtocolStruct') {
+function createProtocolExplainT0(words, k, structID = "divProtocolStruct") {
 	createProtocolExplain(words, k, structID, "T0");
 }
 
-function createProtocolExplainT1(words, k, structID = 'divProtocolStruct') {
+function createProtocolExplainT1(words, k, structID = "divProtocolStruct") {
 	createProtocolExplain(words, k, structID, "T1");
 }
 
-function createProtocolExplainT2(words, k, structID = 'divProtocolStruct') {
+function createProtocolExplainT2(words, k, structID = "divProtocolStruct") {
 	createProtocolExplain(words, k, structID, "T2");
 }
 
@@ -1040,7 +1044,7 @@ function createProtocolExplain(words, k, structID, divT) {
 	var htmlText = "<div class='divSJ" + divT + "'>";
 
 	htmlText = htmlText + "<div class='divProtocolExplain'><dl>";
-	var words_arr = words.split('\n');
+	var words_arr = words.split("\n");
 
 	for (var i = 1, j = 1; i < words_arr.length - 1; i = i + 3, j++) {
 		htmlText = htmlText + "<div onMouseOver=\"heightlightField("
@@ -1066,19 +1070,19 @@ function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, proto
 function protocolMove(e) {
 	e = e || window.event;
 	// 盒子的位置
-	var x = getPage(e).pageX - $('#divProtocol').offset().left;
-	var y = getPage(e).pageY - $('#divProtocol').offset().top;
+	var x = getPage(e).pageX - $("#divProtocol").offset().left;
+	var y = getPage(e).pageY - $("#divProtocol").offset().top;
 
 	document.onmousemove = function (e) {
 		e = e || window.event;
-		// pleft = getPage(e).pageX - x + 'px';
-		// ptop = getPage(e).pageY - y + 'px';
+		// pleft = getPage(e).pageX - x + "px";
+		// ptop = getPage(e).pageY - y + "px";
 
-		var pleft = getPage(e).pageX - $(window).scrollLeft() - x + 'px';
-		var ptop = getPage(e).pageY - $(window).scrollTop() - y + 'px';
+		var pleft = getPage(e).pageX - $(window).scrollLeft() - x + "px";
+		var ptop = getPage(e).pageY - $(window).scrollTop() - y + "px";
 
-		$('#divProtocol').css("left", pleft);
-		$('#divProtocol').css("top", ptop);
+		$("#divProtocol").css("left", pleft);
+		$("#divProtocol").css("top", ptop);
 	}
 }
 
@@ -1104,24 +1108,24 @@ function createHTTPHeadersT3(text, instruT) {
 }
 
 function createHTTPHeaders(cmds, cmdT) {
-	var headers = cmds.split('\n');
+	var headers = cmds.split("\n");
 	var htmlText = "<div class='headers" + cmdT + "'><table><tr>";
 	var heads_num = 2;
 
 	if (headers[1].indexOf(": ") == -1) {	// 为了查看方便，第0行为空白行，第1行可能并非首部字段
-		var header = headers[1].replace(/\t/g, '');
-		var l1 = header.split(' ');
-		if (l1[0] == 'GET') {	// HTTP请求
-			htmlText = htmlText + "<td colspan='3'><span class='spanT'>" + l1[0] + '</span> ';
-			htmlText = htmlText + "<span class='spanV'>" + l1[1] + '</span> ';
-			htmlText = htmlText + l1[2] + '</td></tr>';
+		var header = headers[1].replace(/\t/g, "");
+		var l1 = header.split(" ");
+		if (l1[0] == "GET") {	// HTTP请求
+			htmlText = htmlText + "<td colspan='3'><span class='spanT'>" + l1[0] + "</span> ";
+			htmlText = htmlText + "<span class='spanV'>" + l1[1] + "</span> ";
+			htmlText = htmlText + l1[2] + "</td></tr>";
 		}
 
 		if (l1[0].indexOf("HTTP") == 0) {	// HTTP响应
 			htmlText = htmlText + "<td colspan='3'><span class='spanT'>" + l1[0] + "</span> ";
-			var index = header.indexOf(' ')
+			var index = header.indexOf(" ")
 			// var protocol = header.substring(0, index);
-			var status = header.substring(index).split('#');
+			var status = header.substring(index).split("#");
 
 			if (l1[1][0] == "1") {	// 状态码1XX
 				htmlText = htmlText + status[0].trim();
@@ -1138,7 +1142,7 @@ function createHTTPHeaders(cmds, cmdT) {
 			if (status.length > 1) {	// 状态码后有注释
 				htmlText = htmlText + "&nbsp;&nbsp;<span class='spanZS'># " + status[1].trim() + "</span>";
 			}
-			htmlText = htmlText + '</td></tr>';
+			htmlText = htmlText + "</td></tr>";
 		}
 	}
 	else {
@@ -1147,12 +1151,12 @@ function createHTTPHeaders(cmds, cmdT) {
 
 
 	for (var i = heads_num; i < headers.length - 1; i++) {
-		var header = headers[i].replace(/\t/g, '').trim();
-		var headerT = header.split(': ')[0];
-		var headerV = header.split(': ')[1].split('# ')[0];
-		var headerZS = '';
-		if (header.split(': ')[1].indexOf('# ') > 0) {	// 包含注释
-			headerZS = '# ' + header.split(': ')[1].split('# ')[1]
+		var header = headers[i].replace(/\t/g, "").trim();
+		var headerT = header.split(": ")[0];
+		var headerV = header.split(": ")[1].split("# ")[0];
+		var headerZS = "";
+		if (header.split(": ")[1].indexOf("# ") > 0) {	// 包含注释
+			headerZS = "# " + header.split(": ")[1].split("# ")[1];
 		}
 		htmlText = htmlText + "<tr><td><span class='spanT'>" + headerT + "</span><b>:</b> </td>";
 		htmlText = htmlText + "<td><span class='spanV'>" + headerV.trim() + "</span></td>";
@@ -1183,15 +1187,15 @@ function createNginxConfigT3(text) {
 
 function createNginxConfig(cmd_arr, htmlText) {
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
-		var index = cmd_arr[i].indexOf('#');
+		var index = cmd_arr[i].indexOf("#");
 
 		if (index == 0) {	//纯注释
 			htmlText = htmlText + "<span class='spanZS'>" + cmd_arr[i] + "</span><br />";
 			continue;
 		}
 
-		var txtZS = '';			// 注释部分
-		var txtConfig = '';		// 配置部分
+		var txtZS = "";			// 注释部分
+		var txtConfig = "";		// 配置部分
 		if (index > 0) {		// 配置和注释
 			txtZS = cmd_arr[i].substring(index);
 			txtConfig = cmd_arr[i].substring(0, index);
@@ -1205,18 +1209,18 @@ function createNginxConfig(cmd_arr, htmlText) {
 		}
 		else {
 			if (txtConfig.match("\s*}")) {
-				htmlText = htmlText + txtConfig.replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+				htmlText = htmlText + txtConfig.replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
 			}
 			else {
 				var clis = txtConfig.match(/(\s*\S+)(.*)/);
 				if (clis) {
-					htmlText = htmlText + "<span class='spanT'>" + clis[1].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
-					htmlText = htmlText + "<span class='spanV'>" + clis[2].replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;') + "</span>";
+					htmlText = htmlText + "<span class='spanT'>" + clis[1].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;") + "</span>";
+					htmlText = htmlText + "<span class='spanV'>" + clis[2].replace(/ /g, "&nbsp;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;") + "</span>";
 				}
 			}
 		}
 
-		if(txtZS != '') {
+		if(txtZS != "") {
 			htmlText = htmlText + "<span class='spanZS'>" + txtZS + "</span>";
 		}
 		htmlText = htmlText + "<br />";
@@ -1306,7 +1310,7 @@ function createHLTable(tWidth, tHeader, tBody, divT, tID) {
 	var nc = "";
 
 	if (tID != "") {
-		if (tHeader == '') {
+		if (tHeader == "") {
 			htmlText = htmlText + "<div class='HLTableS1' id='" + tID + "' style='width:" + tWidth + "px'>";
 		}
 		else {
@@ -1314,7 +1318,7 @@ function createHLTable(tWidth, tHeader, tBody, divT, tID) {
 		}
 	}
 	else {
-		if (tHeader == '') {
+		if (tHeader == "") {
 			htmlText = htmlText + "<div class='HLTableS1' style='width:" + tWidth + "px'>";
 		}
 		else {
@@ -1356,16 +1360,16 @@ $(document).ready(function () {
 		var txt = this.parentNode.innerHTML.split("复制成功</div>")[1];
 		// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
 		// 将使用html符号表示的 空格、>、< 还原
-		txt = txt.replace(/<(\/)?span[^>]*>/g, '').replace(/<br( \/)?>/g, '\r\n').replaceAll('&nbsp;', ' ').replaceAll('&gt;', '>').replaceAll('&lt;', '<');
+		txt = txt.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
 		// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
 		// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
 		// \r\n：windows的换行
 
-		const textarea = document.createElement('textarea');	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
+		const textarea = document.createElement("textarea");	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
 		textarea.value = txt;					// 设置内容
 		document.body.appendChild(textarea);	// 添加临时实例
 		textarea.select();						// 选择实例内容
-		document.execCommand('Copy');			// 执行复制
+		document.execCommand("Copy");			// 执行复制
 		document.body.removeChild(textarea);	// 删除临时实例
 
 		var _copySuccess = $(this).next();
@@ -1383,21 +1387,21 @@ $(document).ready(function () {
 		timeFN，为了区分单击和双击的定时器
 	*/
 	var timeFN = null;
-	$('.divProtocolStruct').click(function () {
+	$(".divProtocolStruct").click(function () {
 		clearTimeout(timeFN);
 		var thisImg = $(this).children();
 		// var thisID = this.childNodes.id;
 		timeFN = setTimeout(function () {
-			$('#protocolImg').css("width", thisImg.css("width"));
-			$('#protocolImg').css("height", thisImg.css("height"));
-			$('#protocolImg').css("background-image", thisImg.css("background-image"));
-			$('#divProtocol').css("display", "flex");
-			$('#divProtocol').css("width", thisImg.css("width"));
-			$('#divProtocol').css("height", thisImg.css("height") + 25);
-			$('#divProtocol').css("top", 0);
-			$('#divProtocol').css("left", "inherit");
-			$('#divProtocol').css("right", 0);
-			$('#divProtocol').attr("protocolID", thisImg.attr("id"));
+			$("#protocolImg").css("width", thisImg.css("width"));
+			$("#protocolImg").css("height", thisImg.css("height"));
+			$("#protocolImg").css("background-image", thisImg.css("background-image"));
+			$("#divProtocol").css("display", "flex");
+			$("#divProtocol").css("width", thisImg.css("width"));
+			$("#divProtocol").css("height", thisImg.css("height") + 25);
+			$("#divProtocol").css("top", 0);
+			$("#divProtocol").css("left", "inherit");
+			$("#divProtocol").css("right", 0);
+			$("#divProtocol").attr("protocolID", thisImg.attr("id"));
 		}, 200);
 	});
 
@@ -1405,7 +1409,7 @@ $(document).ready(function () {
 		各个协议的结构图，双击事件
 		timeFN，为了区分单击和双击的定时器
 	*/
-	$('.divProtocolStruct').dblclick(function () {
+	$(".divProtocolStruct").dblclick(function () {
 		clearTimeout(timeFN);
 		var protocolWidth = $(this).children().css("width");
 		var protocolHeight = $(this).children().css("height");
@@ -1420,20 +1424,20 @@ $(document).ready(function () {
 			"<div style='margin: 20px auto; width:" + protocolWidth + "; height:" + protocolHeight + "; " + "background-image: " + protocolBgImage + "'></div>" +
 			"</body>";
 
-		var nwin = window.open('');
+		var nwin = window.open("");
 		nwin.document.writeln(protocolHTML);
 	});
 
 	/*
 		各个协议的结构图，单击后，显示独立的结构图，关闭该结构图
 	*/
-	$('#close').click(function () {
-		$('#divProtocol').css("display", "none");
+	$("#close").click(function () {
+		$("#divProtocol").css("display", "none");
 	})
 	// ---------- 各个协议的结构图，单击、双击事件 ---- 结束 ----------
 	// ------------------------------------------------------------
 	// ---------- 某些图片双击新标签页单独显示 ---- 开始 ----------
-	$('.divConfigImgT0[imgDescribe], .divConfigImgT1[imgDescribe], .divConfigImgT2[imgDescribe], .divConfigImgT3[imgDescribe]').dblclick(function () {
+	$(".divConfigImgT0[imgDescribe], .divConfigImgT1[imgDescribe], .divConfigImgT2[imgDescribe], .divConfigImgT3[imgDescribe]").dblclick(function () {
 		var protocolHTML = "<title>" + $(this).attr("imgDescribe") + "</title>" +
 			"<style type='text/css'>body::-webkit-scrollbar{width:8px;height:8px}body::-webkit-scrollbar-thumb{border-radius:5px;background:#CFCFCF}</style>" +
 			"<body style='margin: 0; background-color: #494A5F; text-align: center'></body>" +
@@ -1443,16 +1447,16 @@ $(document).ready(function () {
 			"<img style='margin-top: 20px' src='" + $(this).children("img").attr("src") + "'>" +
 			"</body>";
 
-		var nwin = window.open('');
+		var nwin = window.open("");
 		nwin.document.writeln(protocolHTML);
 	});
 
 	// ---------- 某些图片双击新标签页单独显示 ---- 结束 ----------
 	// ---------------------------------------------------------
-	// var divCommandHtml = $('#divCommand').prop('outerHTML');
-	// divCommandHtml = divCommandHtml.replace('<br><br>\n<span class="instruT0"', '\n<span class="instruT0"')
+	// var divCommandHtml = $("#divCommand").prop("outerHTML");
+	// divCommandHtml = divCommandHtml.replace("<br><br>\n<span class='instruT0'", "\n<span class='instruT0'")
 	// console.log(divCommandHtml)
-	// console.log($('#divCommand').html())
-	// $('#divCommand').html(divCommandHtml);//.replace('<br><br>\n<span class="instruT0"', '\n<span class="instruT0"'));
-	// $('#divCommand').h
+	// console.log($("#divCommand").html())
+	// $("#divCommand").html(divCommandHtml);//.replace("<br><br>\n<span class='instruT0'", "\n<span class='instruT0'"));
+	// $("#divCommand").h
 });

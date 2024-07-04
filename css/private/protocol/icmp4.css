@@ -1,6 +1,7 @@
 #tICMPv4Type .cell:nth-child(1)
 {
 	padding-left: 0;
+	padding-right: 0;
 }
 
 #tICMPv4Type .row:nth-child(n+2) .cell  /* 表格内容颜色修改为一致 */
@@ -130,10 +131,4 @@
 #zwTable .cell
 {
 	border-bottom: 0;
-}
-
-.table>:not(caption)>*>*
-{
-	color: inherit;
-	background-color: inherit;
 }

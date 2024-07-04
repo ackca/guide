@@ -81,7 +81,7 @@
 							instruArr[1] = createCmdInstruSpan("“abcdef。", "注释内容");
 							createCmdInstruT2(instruArr, "huawei");*/
 
-					createInstruT1("配置接口组");
+					createInstruT1("<br />配置接口组");
 						createInstruT2("新建接口组");
 							instruArr[0] = createCmdSpan("[SW1] port-group “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "组号");
@@ -99,11 +99,11 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 				createInstruT0("接口模式", "i2");
-						createInstruT2("查看各接口模式");
-							instruArr[0] = createCmdSpan("[SW1] display port vlan");
-							createCmdInstruT2(instruArr, "huawei");
+					createInstruT1("查看各个接口模式", "i2-6");
+						instruArr[0] = createCmdSpan("[SW1] display port vlan");
+						createCmdInstruT1(instruArr, "huawei");
 
-					createInstruT1("创建vlan", "i2-1");
+					createInstruT1("<br />创建vlan", "i2-1");
 						createInstruT2("创建单个vlan");
 							instruArr[0] = createCmdSpan("[SW1] vlan “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "vlan号");
@@ -507,8 +507,9 @@
 								instruArr[1] = createCmdInstruSpan("“1。", "镜像口号");
 								instruArr[2] = createCmdInstruSpan("“f0/2。", "目的接口");
 								instruArr[3] = createCmdInstruSpan("vlan “2。", "vlan号");
-								instruArr[4] = createCmdInstruSpan("被设置成目的接口的接口默认只能接收监控流量，不接收其他流量，通过配置 vlan “2。可接收对应vlan流量");
 								createCmdInstruT3(instruArr, "huawei");
+
+								createInstruAllBottomT3("<br />被设置成目的接口的接口默认只能接收监控流量，不接收其他流量，通过配置 vlan “2。可接收对应vlan流量");
 
 							createInstruT3("设置源接口（被监控的接口）");
 								instruArr[0] = createCmdSpan("[SW1] int “f0/1。");
