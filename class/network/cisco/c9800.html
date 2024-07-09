@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/cisco.svg"/>
+	<title>思科-WLC-C9800</title>
+	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(c9800);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("设备初始化", "i1");
+						createInstruT2("配置GUI登录用户，基础网络根据实际配置");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("WLC(config)# username “admin。 privilege 15 secret “Cisc0123。");
+							instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
+							instruArr[2] = createCmdInstruSpan("secret", "0级的password不能用于GUI登录");
+							instruArr[3] = createCmdInstruSpan("“Cisc0123。", "密码");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("GUI初始化");
+
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

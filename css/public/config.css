@@ -37,6 +37,8 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 {
 	position: relative;
 	margin-left: 380px;
+	/*display: inline-block;*/
+    /*vertical-align: top;*/
 }
 
 .instruT0, .instruT1, .instruT2, .instruT3,

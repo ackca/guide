@@ -12,8 +12,10 @@ $("#guide-icon, nav ~ ul li").click(function () {
 			return false;
 		}
 	});
+
 	if (findDiv) {
-		$("#divCommand div").each(function () {
+		// :not(.copySuccess)，在umbrella页面，i5-1的官方文档链接较长，由于是隐藏div，无法正确调整滚动条
+		$("#divCommand div:not(.copySuccess)").each(function () {
 			if ($(this).offset().top - offset_top >= 0) {
 				e = $(this);
 				etop_hide = $(this).offset().top;
@@ -32,10 +34,10 @@ $("#guide-icon, nav ~ ul li").click(function () {
 			找到相关元素后，分别纪录在左侧导航显示与隐藏的位置
 			根据显示/隐藏的变化方式与状态，调整divCommand的滚动条，使用元素位置相对不变
 		*/
+
 		$(".main-sidebar").animate({"width": "0px"});
 		$("#guide-icon").animate({left: "-5px"});
 		$("#divCommand").animate({marginLeft: "50px"}, move_divCommand);
-
 		$(".divStruct").animate({marginLeft: "50px"});
 
 		if (window.location.href.indexOf("ICMPv4.html") > 0 || window.location.href.indexOf("ICMPv6.html") > 0) {

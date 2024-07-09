@@ -136,8 +136,8 @@ const top_menu = `
 									</div>
 									<div class="cat-item-sub">
 										<div class="cat-item-row">
-											<a href="rootpath/class/network/cisco/wlc_aireos.html">AireOS</a>
 											<a href="rootpath/class/network/cisco/c9800.html">C9800</a>
+											<a href="rootpath/class/network/cisco/aireos.html">AireOS</a>
 											<a href="rootpath/class/network/cisco/mobility_express.html">Mobility Express</a>
 										</div>
 									</div>

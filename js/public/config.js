@@ -89,7 +89,7 @@ function createNavigation(tree, offset = 74.5) {
 				link = link + "-";
 			}
 		}
-	})
+	});
 }
 
 function createTree(tree) {
@@ -1450,6 +1450,10 @@ $(document).ready(function () {
 		var nwin = window.open("");
 		nwin.document.writeln(protocolHTML);
 	});
+
+	// 图片配置类页面，当左侧菜单关闭时刷新，水平滚动条会保持在原位置，图片被遮挡，将流动条移到最左边
+	$('html, body').animate({scrollLeft: 0});
+
 
 	// ---------- 某些图片双击新标签页单独显示 ---- 结束 ----------
 	// ---------------------------------------------------------

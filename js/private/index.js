@@ -78,7 +78,7 @@ const udp_protocol = [
 	["IKE&nbsp;(&nbsp;NAT-T&nbsp;)&nbsp;", 2, 1, "4500", "", ""],
 	["VXLAN", 2, 1, "4789", "", "class/protocol/l7/VXLAN.html"],
 	["CAPWAP", 2, 2, "Control：5246", "Data：5247", ""],
-	["Mobility Protocol", 2, 1, "16666", "", ""],
+	["Mobility Protocol", 3, 2, "Control：16666", "Data：16667", ""],
 ];
 
 const tcp_application = [

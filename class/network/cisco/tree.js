@@ -790,7 +790,7 @@ const mobility_express = {
 	"i4": "配置AAA overload",
 };
 
-const wlc_AireOS = {
+const AireOS = {
 	"i1": {
 		"命令行配置": {
 			"i1-1": "初始化配置",
@@ -1959,8 +1959,8 @@ const umbrella = {
 			"i2-4": "FW/IPS策略",
 			"i2-5": {
 				"防数据丢失策略": {
-					"i2-5-1": "配置custom identifier",
-					"i2-5-2": "配置data classification",
+					"i2-5-1": "配置自定义归类",
+					"i2-5-2": "配置数据归类",
 					"i2-5-3": "配置数据丢失策略",
 				}
 			},
@@ -1994,5 +1994,8 @@ const umbrella = {
 			"i5-5": "Umbrella关联okta",
 		}
 	},
+};
 
+const c9800 = {
+	"i1": "设备初始化",
 }
