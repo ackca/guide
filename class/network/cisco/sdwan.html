@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -24,7 +24,7 @@
 					createInstruT1("初始化核心设备", "i1-1");
 						createInstruT2("常规初始化", "i1-1-1");
 							createInstruAllTopT2("三种设备初始化命令基本相同，根据实际情况修改host-name、system-ip、site-id以及网络信息");
-								cmd = `
+								let cmd = `
 									config terminal
 
 									system
@@ -143,7 +143,7 @@
 
 					createInstruT1("Edge加载根证书", "i2-3");
 						createInstruT2("获取根证书（通过FTP方式获取）", "i2-3-1");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("Hub_vEdge1# vshell");
 							instruArr[1] = createCmdSpan("Hub_vEdge1:~$ curl -u “anonymous:1@2.net。 '“ftp://202.100.100.200/root.cer。' -o ./root.cer");
 							instruArr[2] = createCmdInstruSpan("“anonymous:1@2.net。", "认证信息");
@@ -152,8 +152,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("卸载设备原始的根证书", "i2-3-2");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Hub_vEdge1# request root-cert-chain uninstall");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -176,8 +175,7 @@
 								createConfigImgT3("sdwan/i2_4_3_1$1");
 
 							createInstruT3("Edge关联到vSmart", "i2-4-3-2");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("vSmart# show omp tlocs | tab");
 								createCmdInstruT3(instruArr, "cisco");
 								createConfigImgT3("sdwan/i2_4_3_2$1");

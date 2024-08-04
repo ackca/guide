@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/cisco.svg"/>
+	<title>思科-802.1x的windows终端配置</title>
+	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(dot1x_windows);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("802.1x连接方式", "i1");
+					createInstruT1("有线802.1x", "i1-1");
+						createInstruT2("启用802.1x功能", "i1-1-1");
+							let cmd = `
+								services.msc
+							`;
+							createLinuxTxtT2(cmd);
+
+							createConfigImgT2("dot1x_windows/i1_1_1$1~3");
+
+						createInstruT2("802.1x认证相关配置", "i1-1-2");
+							createConfigImgT2("dot1x_windows/i1_1_2$1~2");
+
+					createInstruT1("无线802.1x", "i1-2");
+						createConfigImgT1("dot1x_windows/i1_2$1~6");
+			</script>
+		</div>
+	</div>
+</body>
+</html>

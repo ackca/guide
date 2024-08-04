@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -152,7 +152,7 @@
 					createInstruT1("配置登录域前授权的结果", "i9-3");
 						createInstruT2("配置受限制的DACL（除基本流量外，只放行去往域控的流量）", "i9-3-1");
 							createInstruAllTopT2("“10.1.100.200。为域控地址");
-							cmd = `
+							let cmd = `
 								permit icmp any any
 								permit udp any any eq 53
 								permit udp any eq 68 any eq 67
@@ -246,14 +246,15 @@
 
 					createInstruT1("配置策略集", "i11-5");
 						createInstruT2("策略集条件： ‘有线MAB。，允许的协议为默认的 ‘Default Network Access。 即可");
+							createInstruAllTopT2("配置以有线为例，无线与有线基本一致，条件为无线MAB，设备类条件根据实际配置");
 							createConfigImgT2("ISE31/i11_5_1$1");
 
 						createInstruT2("认证策略：使用 ‘内部终端。 为身份源");
-						createInstruT2("由于新加入的设备的mac地址不一定能及时存放到内部终端中，当 ‘未找到时，则继续。");
+							createInstruAllTopT2("由于新加入的设备的mac地址不一定能及时存放到内部终端中，当 ‘未找到时，则继续。");
 							createConfigImgT2("ISE31/i11_5_2$1");
 
 						createInstruT2("授权策略：配置合适的身份源为授权条件，‘通过认证的授权结果。作为授权结果");
-						createInstruT2("默认的授权策略：‘未通过认证的授权结果。作为授权结果");
+							createInstruAllTopT2("默认的授权策略：‘未通过认证的授权结果。作为授权结果");
 							createConfigImgT2("ISE31/i11_5_3$1");
 
 				createInstruT0("Guest Service", "i12");

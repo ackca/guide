@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,7 +18,7 @@
 					createInstruAllTopT1("资源限制位置ds或dp配置文件中，容器的下一级")
 					createInstruAllTopT1("共两种类型 requests（保证），limits（限制）")
 					createInstruAllTopT1("cpu还支持毫核限制，1=1000m，内存为常规的方式")
-					var yaml = `
+					let yaml = `
 						apiVersion: apps/v1
 						kind: Deployment
 						metadata:
@@ -52,7 +52,7 @@
 					createInstruT1("准备配置亲和", "i2-4");
 						createInstruT2("查看相关信息", "i2-4-1");
 							createInstruT3("查看节点");
-								var cmd = `
+								let cmd = `
 									kubectl get node
 									# 以下为输出
 									NAME       STATUS   ROLES    AGE     VERSION
@@ -272,7 +272,7 @@
 							createYAMLT2(yaml);
 
 						createInstruT2("命令行方式", "i3-1-2");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createLinuxCmd("kubectl taint nodes “node01。” 。“disk。”=。“ssd。”:。“NoSchedule。", 3);
 							instruArr[1] = createCmdInstruSpan("“node01。", "污点生效的节点名");
 							instruArr[2] = createCmdInstruSpan("“disk。", "污点键");
@@ -281,8 +281,7 @@
 							createCmdInstruT2(instruArr, "k8s");
 
 					createInstruT1("查看污点<br />", "i3-2");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createLinuxCmd("kubectl get node “node01。 -o json | jq '.spec.taints'", 3);
 						instruArr[1] = createCmdInstruSpan("“node01。", "查看污点的节点名");
 						createCmdInstruT1(instruArr, "k8s");
@@ -330,8 +329,7 @@
 
 					createInstruT1("查看configmap", "i5-2");
 						createInstruT2("查看configmap列表", "i5-2-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("kubectl get cm");
 							createCmdInstruT2(instruArr, "k8s");
 
@@ -349,15 +347,13 @@
 							createCmdInstruT2(instruArr, "k8s");
 
 						createInstruT2("方法二：直接修改", "i5-3-2");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("kubectl edit cm “configmap-nginx-html。", 3);
 							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
 							createCmdInstruT2(instruArr, "k8s");
 
 						createInstruT2("方法三：覆盖原始的configmap", "i5-3-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("kubectl create configmap “configmap-nginx-html。 --from-file “index.html。 -o yaml --dry-run | kubectl apply -f -", 3);
 							instruArr[1] = createCmdInstruSpan("“configmap-nginx-html。", "configmap名");
 							instruArr[2] = createCmdInstruSpan("“index.html。", "configmap对应的文件");
@@ -431,8 +427,7 @@
 
 					createInstruT1("查看secret列表", "i4-2");
 						createInstruT2("查看secret列表", "i4-2-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("kubectl get secrets", 3);
 							createCmdInstruT2(instruArr, "k8s");
 

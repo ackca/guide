@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,7 +25,7 @@
 						createInstruT2("配置docker采用http方式传访问harbar");
 						createInstruAllTopT2("默认https，无需此步，无可信证书时，使用https非常繁琐，建议使用http");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
-								var instruArr = new Array();
+								let instruArr = new Array();
 								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133。\"],");
 								instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbar的url");
 								createCmdInstruT3(instruArr, "docker");
@@ -39,8 +39,7 @@
 						createInstruT2("下载离线安装包，<a class='link' target='_blank' href='https://github.com/goharbor/harbor/releases/'>https://github.com/goharbor/harbor/releases/</a>");
 
 						createInstruT2("将安装包解压");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("tar -xvf harbor-offline-installer-v2.1.1.tgz -C /usr/local/");
 							createCmdInstruT2(instruArr, "docker");
 
@@ -51,16 +50,14 @@
 							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("复制配置文件");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd1("cd /usr/local/harbor");
 							instruArr[1] = createLinuxCmd1("cp harbor.yml.tmpl harbor.yml");
 							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("编辑配置文件");
 							createInstruT3("无可信https证书");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createLinuxCmd1("vim harbor.yml");
 								createCmdInstruT3(instruArr, "docker");
 								createConfigImgT3("private_hub/i2_1$2");
@@ -82,8 +79,7 @@
 								createCmdInstruT3(instruArr, "docker");
 
 							createInstruT3("增加执行权限");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createLinuxCmd("chmod +x /etc/rc.d/rc.local");
 								createCmdInstruT3(instruArr, "docker");
 
@@ -100,8 +96,7 @@
 
 						createInstruT2("上传 / 下载镜像");
 							createInstruT3("登录harbor");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createLinuxCmd("docker login “192.168.110.133。");
 								instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbor的url");
 								createCmdInstruT3(instruArr, "docker");
@@ -116,7 +111,7 @@
 					createInstruT1("安装docker-registry", "i1-1");
 						createInstruT2("配置docker采用http方式传访问registry的私有仓库（默认https）");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133:5000。\"],");
 								instruArr[1] = createCmdInstruSpan("“192.168.110.133:5000。", "私有仓库的url");
 								createCmdInstruT3(instruArr, "docker");
@@ -128,13 +123,11 @@
 								createCmdInstruT3(instruArr, "docker");
 
 						createInstruT2("获取registry的镜像");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("docker pull registry");
 							createCmdInstruT2(instruArr, "docker");
 
 						createInstruT2("运行registry");
-							instruArr = new Array();
 							instruArr[0] = createLinuxCmd(
 								"docker run -d -p 5000:5000 --name=registry --restart=always \\ " +
 											"-v /docker-images:/var/lib/registry registry"

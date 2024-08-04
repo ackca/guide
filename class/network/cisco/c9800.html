@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,16 +15,1450 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("设备初始化", "i1");
+					createInstruT1("GUI", "i1-1");
 						createInstruT2("配置GUI登录用户，基础网络根据实际配置");
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("WLC(config)# username “admin。 privilege 15 secret “Cisc0123。");
+							let instruArr = new Array();
+							instruArr[0] = createCmdSpan("C9800(config)# username “admin。 privilege 15 secret “Cisc0123。");
 							instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
-							instruArr[2] = createCmdInstruSpan("secret", "0级的password不能用于GUI登录");
+							instruArr[2] = createCmdInstruSpan("secret", "0级的password不能用于GUI登录，直接使用secret");
 							instruArr[3] = createCmdInstruSpan("“Cisc0123。", "密码");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("GUI初始化");
+							createConfigImgT2("c9800/i1_2$1~5");
 
+					createInstruT1("CLI", "i1-2");
+
+				createInstruT0("证书相关配置", "i2");
+						createInstruT2("生成密钥对", "i2-1");
+							createConfigImgT2("c9800/i2_1$1~3");
+
+						createInstruT2("创建证书签名讲求", "i2-2");
+							createConfigImgT2("c9800/i2_2$1~2");
+
+						createInstruT2("导入根证书及个人证书", "i2-3");
+							createConfigImgT2("c9800/i2_3$1~5");
+
+						createInstruT2("替换Web管理证书", "i2-4");
+							createConfigImgT2("c9800/i2_4$1~2");
+
+				createInstruT0("关联外部aaa服务器", "i6");
+					createInstruT1("CLI配置", "i6-1");
+						createInstruT2("启用aaa，并配置线下保护");
+							createInstruAllTopT2("见 <a href='ise_switch.html#i2-1-1' style='color:#F8F8F2;text-decoration:underline'>相关专题</a> 部分");
+
+						createInstruT2("<br />关联外部aaa服务器");
+							createInstruAllTopT2("见 <a href='ise_switch.html#i2-1-6' style='color:#F8F8F2;text-decoration:underline'>相关专题</a> 部分");
+
+					createInstruT1("<br />GUI配置", "i6-2");
+						createInstruT2("线下保护保存需要用CLI配置<br />");
+
+						createInstruT2("配置单个aaa服务器");
+							createConfigImgT2("c9800/i6_2_1$1~4");
+
+						createInstruT2("配置aaa服务器组");
+							createConfigImgT2("c9800/i6_2_2$1~3");
+
+
+				createInstruT0("PSK（SAE）认证 — 中心转发", "i3-1");
+					createInstruT1("CLI配置总览", "i3-1-1");
+						let cmd = `
+							vlan 30
+							  name wlc-client-vlan30
+							!
+							wireless profile policy itachi-central-policy-profile
+							 vlan wlc-client-vlan30
+							 no shutdown
+							!
+							wlan itachi-only-wpa2-psk 1 itachi-only-wpa2-psk
+							 security wpa psk set-key ascii 0 Cisc0123
+							 no security wpa akm dot1x
+							 security wpa akm psk
+							 no shutdown
+							!
+							wireless tag policy itachi-central-tag-policy
+							 wlan itachi-only-wpa2-psk policy itachi-central-policy-profile
+							!
+							ap profile itachi-ap-profile
+							 mgmtuser username admin password 0 Cisc0123 secret 0 Cisc0123
+							!
+							wireless tag site itachi-central-site-tag
+							 ap-profile itachi-ap-profile
+							!
+							wireless tag rf itachi-rf-tag
+							 24ghz-rf-policy Typical_Client_Density_rf_24gh
+							 5ghz-rf-policy Typical_Client_Density_rf_5gh
+							!
+							ap location name itachi-central-ap-location
+							 ap-eth-mac 5486.BC48.09E8
+							 ap-eth-mac 0c75.bdb5.fcd0
+							 tag policy itachi-central-tag-policy
+							 tag rf itachi-rf-tag
+							 tag site itachi-central-site-tag
+						`;
+						let mark_list = [
+							"wlc-client-vlan30",
+							"itachi-central-policy-profile",
+							"itachi-only-wpa2-psk",
+							"itachi-central-tag-policy",
+							"itachi-ap-profile",
+							"itachi-central-site-tag",
+							"itachi-rf-tag",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i3-1-2");
+						createInstruT2("配置客户端vlan", "i3-1-2-1");
+							instruArr = new Array();
+							instruArr[0] = createCmdSpan("C9800(config)# vlan “30。");
+							instruArr[1] = createCmdInstruSpan("“30。", "客户端vlan ID");
+							instruArr[2] = createCmdSpan("C9800(config-vlan)# name “wlc-client-vlan30。");
+							instruArr[3] = createCmdInstruSpan("“wlc-client-vlan30。", "后续配置调用vlan名而ID，可自定义vlan名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置policy profile，关联vlan", "i3-1-2-2");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless profile policy “itachi-central-policy-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-central-policy-profile。", "policy profile名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-policy)# vlan “wlc-client-vlan30。");
+							instruArr[3] = createCmdInstruSpan("“wlc-client-vlan30。", "关联的vlan名");
+							instruArr[4] = createCmdSpan("C9800(config-wireless-policy)# no shutdown");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置wlan", "i3-1-2-3");
+							createInstruT3("创建wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
+								instruArr[1] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
+								instruArr[2] = createCmdInstruSpan("“1。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "第1个为wlan的名，‘第2个为wlan的ssid。，可以不相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置PSK");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa psk set-key ascii 0 “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。", "PSK");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用802.1x");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用PSK认证");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("配置tag policy，关联wlan和vlan", "i3-1-2-4");
+							createInstruAllTopT2("一个tag policy可以关联多组wlan和vlan");
+								instruArr[0] = createCmdSpan("C9800(config)# wireless tag policy “itachi-central-tag-policy。");
+								instruArr[1] = createCmdInstruSpan("“itachi-central-tag-policy。", "tag policy名");
+								instruArr[2] = createCmdSpan("C9800(config-policy-tag)# wlan “itachi-only-wpa2-psk。 policy “itachi-central-policy-profile。");
+								instruArr[3] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "wlan名");
+								instruArr[4] = createCmdInstruSpan("“itachi-central-policy-profile。", "policy profile名");
+								createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置ap profile", "i3-1-2-5");
+							instruArr[0] = createCmdSpan("C9800(config)# ap profile “itachi-ap-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-ap-profile。", "ap profile名");
+							instruArr[2] = createCmdSpan("C9800(config-ap-profile)# mgmtuser username “admin。 password 0 “Cisc0123。 secret 0 “Cisc0123。");
+							instruArr[3] = createCmdInstruSpan("“admin。", "ap登录用户名");
+							instruArr[4] = createCmdInstruSpan("“Cisc0123。", "ap登录密码");
+							instruArr[5] = createCmdInstruSpan("“Cisc0123。", "ap登录enable密码");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置site tag，关联ap profile", "i3-1-2-6");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# wireless tag site “itachi-central-site-tag。");
+							instruArr[1] = createCmdInstruSpan("“itachi-central-site-tag。", "site tag名");
+							instruArr[2] = createCmdSpan("C9800(config-site-tag)# ap-profile itachi-ap-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-central-site-tag。", "ap profile名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置rf tag，关联ap profile", "i3-1-2-7");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless tag rf “itachi-rf-tag。");
+							instruArr[1] = createCmdInstruSpan("“itachi-rf-tag。", "rf tag名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-rf-tag)# 24ghz-rf-policy Typical_Client_Density_rf_24gh");
+							instruArr[3] = createCmdInstruSpan("Typical_Client_Density_rf_24gh", "系统内建rf policy");
+							instruArr[4] = createCmdSpan("C9800(config-wireless-rf-tag)# 5ghz-rf-policy Typical_Client_Density_rf_5gh");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置ap location tag，关联上述内容", "i3-1-2-8");
+							instruArr[0] = createCmdSpan("C9800(config)# ap location name “itachi-central-ap-location。");
+							instruArr[1] = createCmdInstruSpan("“itachi-central-ap-location。", "ap location tag名，类似于存放AP的组");
+							instruArr[2] = createCmdSpan("C9800(config-ap-location)# ap-eth-mac “5486.BC48.09E8。");
+							instruArr[3] = createCmdSpan("C9800(config-ap-location)# ap-eth-mac “0c75.bdb5.fcd0。");
+							instruArr[4] = createCmdInstruSpan("“5486.BC48.09E8。　,　“0c75.bdb5.fcd0。", "加入该location的AP mac地址，可以用过show ap summary获得");
+							instruArr[5] = createCmdSpan("C9800(config-ap-location)# tag policy “itachi-central-tag-policy。");
+							instruArr[6] = createCmdInstruSpan("“itachi-central-tag-policy。", "policy tag名");
+							instruArr[7] = createCmdSpan("C9800(config-ap-location)# tag rf “itachi-tag-rf。");
+							instruArr[8] = createCmdInstruSpan("“itachi-tag-rf。", "rf tag名");
+							instruArr[9] = createCmdSpan("C9800(config-ap-location)# tag site “itachi-central-tag-site。");
+							instruArr[10] = createCmdInstruSpan("“itachi-central-tag-site。", "site tag名");
+							createCmdInstruT2(instruArr, "cisco");
+
+					createInstruT1("GUI配置", "i3-1-3");
+						createInstruT2("配置客户端vlan", "i3-1-3-1");
+							createConfigImgT2("c9800/i3_1_3_1$1~4");
+
+						createInstruT2("调用向导配置无线", "i3-1-3-2");
+							createConfigImgT2("c9800/i3_1_3_2$1~3");
+
+						createInstruT2("配置wlan", "i3-1-3-3");
+							createConfigImgT2("c9800/i3_1_3_3$1~3");
+
+						createInstruT2("配置policy profile", "i3-1-3-4");
+							createConfigImgT2("c9800/i3_1_3_4$1~4");
+
+						createInstruT2("配置tag policy，关联wlan和vlan", "i3-1-3-5");
+							createConfigImgT2("c9800/i3_1_3_5$1~5");
+
+						createInstruT2("配置ap profile", "i3-1-3-6");
+							createConfigImgT2("c9800/i3_1_3_6$1~4");
+
+						createInstruT2("配置site tag", "i3-1-3-7");
+							createConfigImgT2("c9800/i3_1_3_7$1~3");
+
+						createInstruT2("配置rf tag", "i3-1-3-8");
+							createConfigImgT2("c9800/i3_1_3_8$1~3");
+
+						createInstruT2("AP关联上述tag", "i3-1-3-9");
+							createConfigImgT2("c9800/i3_1_3_9$1~4");
+
+				createInstruT0("PSK（SAE）认证 — Flexconnect", "i3-2");
+					createInstruT1("CLI配置总览", "i3-2-1");
+						cmd = `
+							vlan 30
+							!
+							wireless profile flex itachi-flex-profile
+							 native-vlan-id 20
+							 vlan-name sw-client-vlan30
+							  vlan-id 30
+							!
+							wireless profile policy itachi-flex-policy-profile
+							 no central dhcp
+							 no central switching
+							 vlan sw-client-vlan30
+							 no shutdown
+							!
+							wlan itachi-only-wpa2-psk 1 itachi-only-wpa2-psk
+							 security wpa psk set-key ascii 0 Cisc0123
+							 no security wpa akm dot1x
+							 security wpa akm psk
+							 no shutdown
+							!
+							wireless tag policy itachi-flex-tag-policy
+							 wlan itachi-only-wpa2-psk policy itachi-flex-policy-profile
+							!
+							ap profile itachi-ap-profile
+							 mgmtuser username admin password 0 Cisc0123 secret 0 Cisc0123
+							!
+							wireless tag site itachi-flex-tag-site
+							 no local-site
+							 ap-profile itachi-ap-profile
+							 flex-profile itachi-flex-profile
+							!
+							wireless tag rf itachi-rf-tag
+							 24ghz-rf-policy Typical_Client_Density_rf_24gh
+							 5ghz-rf-policy Typical_Client_Density_rf_5gh
+							!
+							ap location name itachi-flex-ap-location
+							 ap-eth-mac 5486.BC48.09E8
+							 ap-eth-mac 0c75.bdb5.fcd0
+							 tag policy itachi-flex-tag-policy
+							 tag rf itachi-rf-tag
+							 tag site itachi-flex-site-tag
+						`;
+
+						mark_list = [
+							"itachi-flex-profile",
+							"sw-client-vlan30",
+							"itachi-flex-policy-profile",
+							"itachi-only-wpa2-psk",
+							"itachi-flex-tag-policy",
+							"itachi-ap-profile",
+							"itachi-flex-site-tag",
+							"itachi-rf-tag",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i3-2-2");
+						createInstruT2("配置客户端vlan", "i3-2-2-1");
+							createInstruAllTopT2("Flexconnect模式的客户端vlan在交换机上，但客户端vlan仍需要在控制器存在");
+							createInstruAllTopT2("控制器上的vlan名与后续配置无关，vlan 30的默认名为VLAN0030");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# vlan “30。");
+							instruArr[1] = createCmdInstruSpan("“30。", "客户端vlan ID");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置flex profile，配置客户端vlan相关信息", "i3-2-2-2");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless profile flex “itachi-flex-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-flex-profile。", "flex profile名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-flex-profile)# native-vlan-id “20。");
+							instruArr[3] = createCmdInstruSpan("native-vlan-id “20。", "可选配置，AP通过不打标签的流量关联控制器，根据网络环境配置");
+							instruArr[4] = createCmdSpan("C9800(config-wireless-flex-profile)# vlan-name “sw-client-vlan30。");
+							instruArr[5] = createCmdInstruSpan("“sw-client-vlan30。", "客户端的vlan名");
+							instruArr[6] = createCmdSpan("C9800(config-wireless-flex-profile-vlan)# vlan-id “30。");
+							instruArr[7] = createCmdInstruSpan("“30。", "客户端的vlan id");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置policy profile，配置客户端vlan相关信息及flexconnect相关调整", "i3-2-2-3");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# wireless profile policy “itachi-flex-policy-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-flex-policy-profile。", "policy profile名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-policy)# no central dhcp");
+							instruArr[3] = createCmdSpan("C9800(config-wireless-policy)# no central switching");
+							instruArr[4] = createCmdSpan("C9800(config-wireless-policy)# vlan “sw-client-vlan30。");
+							instruArr[5] = createCmdInstruSpan("“sw-client-vlan30。", "客户端的vlan名");
+							instruArr[6] = createCmdSpan("C9800(config-wireless-policy)# no shutdown");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置wlan", "i3-2-2-4");
+							createInstruT3("创建wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
+								instruArr[1] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
+								instruArr[2] = createCmdInstruSpan("“1。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "第1个为wlan的名，‘第2个为wlan的ssid。，可以不相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置PSK");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa psk set-key ascii 0 “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。", "PSK");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用802.1x");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用PSK认证");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("配置tag policy，关联wlan和vlan", "i3-2-2-5");
+							createInstruAllTopT2("一个tag policy可以关联多组wlan和vlan");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless tag policy “itachi-flex-tag-policy。");
+							instruArr[1] = createCmdInstruSpan("“itachi-flex-tag-policy。", "tag policy名");
+							instruArr[2] = createCmdSpan("C9800(config-policy-tag)# wlan “itachi-only-wpa2-psk。 policy “itachi-flex-policy-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "wlan名");
+							instruArr[4] = createCmdInstruSpan("“itachi-flex-policy-profile。", "policy profile名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置ap profile", "i3-2-2-6");
+							instruArr[0] = createCmdSpan("C9800(config)# ap profile “itachi-ap-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-ap-profile。", "ap profile名");
+							instruArr[2] = createCmdSpan("C9800(config-ap-profile)# mgmtuser username “admin。 password 0 “Cisc0123。 secret 0 “Cisc0123。");
+							instruArr[3] = createCmdInstruSpan("“admin。", "ap登录用户名");
+							instruArr[4] = createCmdInstruSpan("“Cisc0123。", "ap登录密码");
+							instruArr[5] = createCmdInstruSpan("“Cisc0123。", "ap登录enable密码");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置site tag，关联ap profile和flex profile", "i3-2-2-7");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless tag site “itachi-flex-tag-site。");
+							instruArr[1] = createCmdInstruSpan("“itachi-flex-tag-site。", "site tag名");
+							instruArr[2] = createCmdSpan("C9800(config-site-tag)# no local-site");
+							instruArr[3] = createCmdSpan("C9800(config-site-tag)# ap-profile “itachi-ap-profile。");
+							instruArr[4] = createCmdInstruSpan("“itachi-ap-profile。", "ap profile名");
+							instruArr[5] = createCmdSpan("C9800(config-site-tag)# flex-profile “itachi-flex-profile。");
+							instruArr[6] = createCmdInstruSpan("“itachi-flex-profile。", "flex profile名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置rf tag，关联ap profile", "i3-2-2-8");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# wireless tag rf “itachi-rf-tag。");
+							instruArr[1] = createCmdInstruSpan("“itachi-rf-tag。", "rf tag名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-rf-tag)# 24ghz-rf-policy Typical_Client_Density_rf_24gh");
+							instruArr[3] = createCmdInstruSpan("Typical_Client_Density_rf_24gh", "系统内建rf policy");
+							instruArr[4] = createCmdSpan("C9800(config-wireless-rf-tag)# 5ghz-rf-policy Typical_Client_Density_rf_5gh");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置ap location tag，关联上述内容", "i3-2-2-9");
+							instruArr[0] = createCmdSpan("C9800(config)# ap location name “itachi-flex-ap-location。");
+							instruArr[1] = createCmdInstruSpan("“itachi-flex-ap-location。", "ap location tag名，类似于存放AP的组");
+							instruArr[2] = createCmdSpan("C9800(config-ap-location)# ap-eth-mac “5486.BC48.09E8。");
+							instruArr[3] = createCmdSpan("C9800(config-ap-location)# ap-eth-mac “0c75.bdb5.fcd0。");
+							instruArr[4] = createCmdInstruSpan("“5486.BC48.09E8。　,　“0c75.bdb5.fcd0。", "加入该location的AP mac地址，可以用过show ap summary获得");
+							instruArr[5] = createCmdSpan("C9800(config-ap-location)# tag policy “itachi-flex-tag-policy。");
+							instruArr[6] = createCmdInstruSpan("“itachi-central-tag-policy。", "policy tag名");
+							instruArr[7] = createCmdSpan("C9800(config-ap-location)# tag rf “itachi-tag-rf。");
+							instruArr[8] = createCmdInstruSpan("“itachi-tag-rf。", "rf tag名");
+							instruArr[9] = createCmdSpan("C9800(config-ap-location)# tag site “itachi-flex-tag-site。");
+							instruArr[10] = createCmdInstruSpan("“itachi-central-tag-site。", "site tag名");
+							createCmdInstruT2(instruArr, "cisco");
+
+					createInstruT1("GUI配置", "i3-2-3");
+						createInstruT2("配置客户端vlan", "i3-2-3-1");
+							createConfigImgT2("c9800/i3_1_3_1$1~2");
+							createConfigImgT2("c9800/i3_2_3_1$3~4");
+
+						createInstruT2("调用向导配置无线", "i3-2-3-2");
+							createConfigImgT2("c9800/i3_1_3_2$1~3");
+
+						createInstruT2("配置wlan", "i3-2-3-3");
+							createConfigImgT2("c9800/i3_1_3_3$1~3");
+
+						createInstruT2("配置policy profile", "i3-2-3-4");
+							createConfigImgT2("c9800/i3_1_3_4$1");
+							createConfigImgT2("c9800/i3_2_3_4$2~4");
+
+						createInstruT2("配置tag policy，关联wlan和vlan", "i3-2-3-5");
+							createConfigImgT2("c9800/i3_1_3_4$1");
+							createConfigImgT2("c9800/i3_2_3_5$2~5");
+
+						createInstruT2("配置ap profile", "i3-2-3-6");
+							createConfigImgT2("c9800/i3_2_3_6$1");
+							createConfigImgT2("c9800/i3_1_3_6$2~4");
+
+						createInstruT2("配置flex profile，配置客户端vlan相关信息", "i3-2-3-7");
+							createConfigImgT2("c9800/i3_2_3_7$1~5");
+
+						createInstruT2("配置site tag，关联ap profile和flex profile", "i3-2-3-8");
+							createConfigImgT2("c9800/i3_2_3_8$1~3");
+
+						createInstruT2("配置rf tag", "i3-2-3-9");
+							createConfigImgT2("c9800/i3_2_3_9$1");
+							createConfigImgT2("c9800/i3_1_3_8$2~3");
+
+						createInstruT2("AP关联上述tag", "i3-2-3-10");
+							createConfigImgT2("c9800/i3_1_3_9$1~2");
+							createConfigImgT2("c9800/i3_1_3_10$3");
+							createConfigImgT2("c9800/i3_1_3_9$4");
+
+				createInstruT0("wlan的高级功能", "i4");
+					createInstruT1("同时支持WPA2和WPA3的wlan", "i4-1");
+						createInstruT2("CLI配置总览", "i4-1-1");
+							cmd = `
+								wlan itachi-wpa2-wap3-psk 2 itachi-wpa2-wap3-psk
+								 no security ft adaptive
+								 security wpa psk set-key ascii 0 Cisc0123
+								 no security wpa akm dot1x
+								 security wpa akm psk
+								 security wpa akm sae
+								 security wpa wpa3
+								 security pmf mandatory
+								 no shutdown
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("CLI配置详解", "i4-1-2");
+							createInstruT3("创建wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-wpa2-wap3-psk。　“2。　“itachi-wpa2-wap3-psk。");
+								instruArr[1] = createCmdInstruSpan("“itachi-wpa2-wap3-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
+								instruArr[2] = createCmdInstruSpan("“2。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-wpa2-wap3-psk。", "第1个为wlan的名，‘第2个为wlan的ssid。，可以不相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用快速漫游");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security ft adaptive");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置PSK（SAE）");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa psk set-key ascii 0 “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。", "PSK（SAE）");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用802.1x");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用PSK认证（WPA2）");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用SAE认证（WPA3）");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm sae");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用WPA3");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa wpa3");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用保护管理帧");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("GUI配置", "i4-1-3");
+							createConfigImgT2("c9800/i4_1_3$1~5");
+
+					createInstruT1("同时支持WPA2和WPA3的wlan", "i4-2");
+						createInstruT2("CLI配置总览", "i4-2-1");
+							cmd = `
+								wlan itachi-only-wpa3-psk 3 itachi-only-wpa3-psk
+								 no security ft adaptive
+								 no security wpa wpa2
+								 security wpa psk set-key ascii 0 Cisc0123
+								 no security wpa akm dot1x
+								 security wpa akm sae
+								 security wpa wpa3
+								 security pmf mandatory
+								 no shutdown
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("CLI配置详解", "i4-2-2");
+							createInstruT3("创建wlan");
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wap3-psk。　“3。　“itachi-only-wap3-psk。");
+								instruArr[1] = createCmdInstruSpan("“itachi-only-wap3-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
+								instruArr[2] = createCmdInstruSpan("“3。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-only-wap3-psk。", "第1个为wlan的名，‘第2个为wlan的ssid。，可以不相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用快速漫游");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security ft adaptive");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用WPA、WPA2");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置SAE");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa psk set-key ascii 0 “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。", "SAE");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用802.1x");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用SAE认证");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm sae");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用WPA3");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa wpa3");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用保护管理帧");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("GUI配置", "i4-2-3");
+							createConfigImgT2("c9800/i4_1_3$1~2");
+							createConfigImgT2("c9800/i4_2_3$3~4");
+							createConfigImgT2("c9800/i4_1_3$5");
+
+					createInstruT1("MPSK", "i4-3");
+						createInstruT2("MPSK说明", "i4-3-1");
+							createInstruAllTopT2("同一个SSID，支持多个PSK用于认证，最多5个")
+
+						createInstruT2("<br />CLI配置总览", "i4-3-2");
+							cmd = `
+								wlan itachi-only-wpa2-psk 1 itachi-only-wpa2-psk
+								 security wpa wpa2 mpsk
+								  priority 0 set-key ascii 0 Cisc01230
+								  priority 1 set-key ascii 0 Cisc01231
+								 security wpa psk set-key ascii 0 Cisc0123
+								 no security wpa akm dot1x
+								 security wpa akm psk
+								 no shutdown
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("CLI配置详解", "i4-3-3");
+							createInstruT3("创建wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
+								instruArr[1] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
+								instruArr[2] = createCmdInstruSpan("“1。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "第1个为wlan的名，‘第2个为wlan的ssid。，可以不相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用MPSK");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa wpa2 mpsk");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置各个PSK");
+								instruArr[0] = createCmdSpan("C9800(config-mpsk)#  priority “0。 set-key ascii 0 “Cisc01230。");
+								instruArr[1] = createCmdSpan("C9800(config-mpsk)#  priority “1。 set-key ascii 0 “Cisc01231。");
+								instruArr[2] = createCmdInstruSpan("“0。", "PSK编号，最多5个，0~4");
+								instruArr[3] = createCmdInstruSpan("“Cisc01230。", "PSK");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置PSK");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa psk set-key ascii 0 “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“Cisc0123。", "PSK，‘启用MPSK后，这个PSK已无效。");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用802.1x");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用PSK认证");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("GUI配置", "i4-3-4");
+							createConfigImgT2("c9800/i4_3_4$1~3");
+
+					createInstruT1("OWE", "i4-4");
+						createInstruT2("OWE说明", "i4-4-1");
+							createInstruAllTopT2("OWE：Opportunistic Wireless Encryption，适时无线加密");
+							createInstruAllTopT2("接入WiFi时，客户端无需认证，如果客户端支持OWE技术，无线流量仍为加密流量");
+							createInstruAllTopT2("不支持则为传统的无认证不加密流量")
+
+							createInstruAllTopT2("windows系统，可能通过 ’netsh wlan show wirelesscapabilities。 查看是否支持");
+							createConfigImgT2("c9800/i4_4_1$1");
+
+							createInstruAllTopT2("windows系统连接前后状态");
+							createConfigImgT2("c9800/i4_4_1$2~3");
+
+						createInstruT2("CLI配置总览", "i4-4-2");
+							cmd = `
+								wlan itachi-owe-open 4 itachi-owe
+								 no security ft adaptive
+								 no security wpa
+								 no security wpa wpa2
+								 no security wpa wpa2 ciphers aes
+								 no security wpa akm dot1x
+								 security wpa transition-mode-wlan-id 5
+								 no shutdown
+
+								wlan itachi-owe 5 itachi-owe
+								 no broadcast-ssid
+								 no security ft adaptive
+								 no security wpa wpa2
+								 no security wpa akm dot1x
+								 security wpa akm owe
+								 security wpa transition-mode-wlan-id 4
+								 security wpa wpa3
+								 security pmf mandatory
+								 no shutdown
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("CLI配置详解", "i4-4-3");
+							createInstruT3("创建不认证的wlan");
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-owe-open。　“4。　“itachi-owe。");
+								instruArr[1] = createCmdInstruSpan("“itachi-owe-open。", "不认证的wlan名");
+								instruArr[2] = createCmdInstruSpan("“4。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-owe。", "SSID，2个wlan的SSID应相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("关闭2层安全");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security ft adaptive");
+								instruArr[1] = createCmdSpan("C9800(config-wlan)# no security wpa");
+								instruArr[2] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2");
+								instruArr[3] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2 ciphers aes");
+								instruArr[4] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("将客户端转到OWE的wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa transition-mode-wlan-id “5。");
+								instruArr[1] = createCmdInstruSpan("“5。", "OWE的wlan id");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("创建OWE的wlan");
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-owe。　“5。　“itachi-owe。");
+								instruArr[1] = createCmdInstruSpan("“itachi-owe。", "OWE的wlan名");
+								instruArr[2] = createCmdInstruSpan("“5。", "wlan id");
+								instruArr[3] = createCmdInstruSpan("“itachi-owe。", "SSID，2个wlan的SSID应相同");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("关闭SSID广播");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# no broadcast-ssid");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用快速漫游");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security ft adaptive");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用WPA、WPA2");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("禁用802.1x");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用SAE认证");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm sae");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置不认证的wlan id");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa transition-mode-wlan-id “4。");
+								instruArr[1] = createCmdInstruSpan("“4。", "不认证的wlan id");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用WPA3");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa wpa3");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用保护管理帧");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("启用该wlan");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("GUI配置", "i4-4-4");
+							createConfigImgT2("c9800/i4_1_3$1~2");
+							createConfigImgT2("c9800/i4_4_4$1~4");
+							createConfigImgT2("c9800/i4_1_3$5");
+
+				createInstruT0("ACL", "i9");
+					createInstruT1("配置ACL", "i9-1");
+						createInstruT2("CLI", "i9-1-1");
+							createInstruAllTopT2("见 <a href='other_routing.html#i1' style='color:#F8F8F2;text-decoration:underline'>其它路由协议-ACL配置</a> 部分");
+
+						createInstruT2("<br />GUI", "i9-1-2");
+							createConfigImgT2("c9800/i9_1_2$1~5");
+
+					createInstruT1("应用ACL", "i9-2");
+						createInstruT2("不同模式应用位置", "i9-2-1");
+							createInstruAllTopT2("中心转发应用到 policy profile");
+							createInstruAllTopT2("Flexconnect应用到 flex profile");
+
+						createInstruT2("<br />中心转发", "i9-2-2");
+							createInstruT3("CLI");
+								instruArr[0] = createCmdSpan("C9800(config)# wireless profile policy “itachi-central-policy-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-central-policy-profile。", "policy profile名");
+								instruArr[2] = createCmdSpan("C9800(config-wireless-policy)# ipv4 acl “wlan-acl。");
+								instruArr[3] = createCmdInstruSpan("“wlan-acl。", "acl名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("GUI");
+								createConfigImgT3("c9800/i9_2_1$1");
+
+						createInstruT2("Flexconnect", "i9-2-3");
+							createInstruT3("CLI");
+								instruArr[0] = createCmdSpan("C9800(config)# wireless profile flex “itachi-flex-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-flex-profile。", "flex profile名");
+								instruArr[2] = createCmdSpan("C9800(config-wireless-flex-profile)# acl-policy “flex-acl。");
+								instruArr[3] = createCmdInstruSpan("“flex-acl。", "acl名");
+								instruArr[4] = createCmdSpan("C9800(config-wireless-flex-profile)# vlan-name “sw-client-vlan30。");
+								instruArr[5] = createCmdInstruSpan("“sw-client-vlan30。", "应用acl的客户端vlan");
+								instruArr[6] = createCmdSpan("C9800(config-wireless-flex-profile-vlan)#  acl “flex-acl。　“out。");
+								instruArr[7] = createCmdInstruSpan("“flex-acl。", "acl名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("GUI");
+								createConfigImgT3("c9800/i9_2_2$1~4");
+
+				createInstruT0("MAB", "i5");
+					createInstruT1("CLI配置总览", "i5-1");
+						createInstruT2("本地认证", "i5-1-1");
+							cmd = `
+								aaa new-model
+								!
+								aaa authentication login linelogin line none
+								aaa authentication login vtylogin local
+								aaa authorization exec execlocal local
+								!
+								line con 0
+								 login authentication linelogin
+								!
+								line vty 0 4
+								 login authentication vtylogin
+								 authorization exec execlocal
+								!
+								aaa authorization network itachi-local-mac-author local
+								!
+								username 44af28654096 mac wlan-profile itachi-wpa2-wpa3-psk
+								!
+								wlan itachi-wpa2-wpa3-psk 2 itachi-wpa2-wpa3-psk
+								 mac-filtering itachi-local-mac-author
+								 no security ft adaptive
+								 security wpa psk set-key ascii 0 Cisc0123
+								 no security wpa akm dot1x
+								 security wpa akm psk
+								 security wpa akm sae
+								 security wpa wpa3
+								 security pmf mandatory
+								 no shutdown
+							`;
+
+							mark_list = [
+								"itachi-local-mac-author",
+								"itachi-wpa2-wpa3-psk",
+								"linelogin",
+								"vtylogin",
+								"execlocal",
+							]
+							createLinuxTxtMarkT2(cmd, mark_list);
+
+						createInstruT2("中心认证", "i5-1-2");
+							cmd = `
+								aaa new-model
+								!
+								aaa authentication login linelogin line none
+								aaa authentication login vtylogin local
+								aaa authorization exec execlocal local
+								!
+								line con 0
+								 login authentication linelogin
+								!
+								line vty 0 4
+								 login authentication vtylogin
+								 authorization exec execlocal
+								!
+								radius server ise1
+								 address ipv4 10.1.1.30 auth-port 1812 acct-port 1813
+								 pac key Cisc0123
+								!
+								aaa group server radius itachi-radius-ise
+								 server name ise1
+								!
+								aaa authorization network itachi-ise-mac-author group itachi-radius-ise
+								!
+								wlan itachi-wpa2-wpa3-psk 2 itachi-wpa2-wpa3-psk
+								 mac-filtering itachi-ise-mac-author
+								 no security ft adaptive
+								 security wpa psk set-key ascii 0 Cisc0123
+								 no security wpa akm dot1x
+								 security wpa akm psk
+								 security wpa akm sae
+								 security wpa wpa3
+								 security pmf mandatory
+								 no shutdown
+							`;
+
+							mark_list = [
+								"ise1",
+								"itachi-radius-ise",
+								"itachi-ise-mac-author",
+								"linelogin",
+								"vtylogin",
+								"execlocal",
+							]
+							createLinuxTxtMarkT2(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i5-2");
+						createInstruT2("<br />配置授权策略", "i5-2-1");
+							createInstruT3("本地认证");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# aaa authorization network “itachi-local-mac-author。 local");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-mac-author。", "本地授权策略名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("中心认证");
+								instruArr[0] = createCmdSpan("C9800(config)# aaa authorization network “itachi-ise-mac-author。 group “ise。");
+								instruArr[1] = createCmdInstruSpan("“itachi-ise-mac-author。", "中心授权策略名");
+								instruArr[2] = createCmdInstruSpan("“ise。", "外部aaa服务器组名");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("配置mac地址（本地认证）", "i5-2-2");
+							instruArr[0] = createCmdSpan("C9800(config)# username “44af28654096。 mac [ wlan-profile “itachi-wpa2-wpa3-psk。 ]");
+							instruArr[1] = createCmdInstruSpan("“44af28654096。", "无分割符形式的mac地址");
+							instruArr[2] = createCmdInstruSpan("“itachi-wpa2-wpa3-psk。", "该mac地址用于某个特定的wlan");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("wlan启用mac地址认证", "i5-2-3");
+							createInstruAllTopT2("在相关wlan添加mac-filtering …，即可，其它配置无需修改");
+							instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-wpa2-wpa3-psk。　“2。　“itachi-wpa2-wpa3-psk。");
+							instruArr[1] = createCmdInstruSpan("“itachi-wpa2-wpa3-psk。", "启用mac地址认证的wlan");
+							instruArr[2] = createCmdSpan("C9800(config-wlan)# mac-filtering { “itachi-local-mac-author。 | “itachi-ise-mac-author。 }");
+							instruArr[3] = createCmdInstruSpan("“itachi-local-mac-author。", "本地授权策略名");
+							instruArr[4] = createCmdInstruSpan("“itachi-ise-mac-author。", "中心授权策略名");
+							createCmdInstruT2(instruArr, "cisco");
+
+					createInstruT1("GUI配置", "i5-3");
+						createInstruT2("配置授权策略", "i5-3-1");
+							createConfigImgT2("c9800/i6_2_1$1");
+							createConfigImgT2("c9800/i5_3_1$2~5");
+
+						createInstruT2("配置mac地址（本地授权）", "i5-3-2");
+							createConfigImgT2("c9800/i6_2_1$1");
+							createConfigImgT2("c9800/i5_3_2$2~4");
+
+						createInstruT2("wlan启用mac地址认证", "i5-3-3");
+							createConfigImgT2("c9800/i5_3_3$1");
+
+
+				createInstruT0("本地802.1x", "i7");
+					createInstruT1("CLI配置总览", "i7-1");
+						cmd = `
+							no username 44af28654096
+							!
+							aaa new-model
+							!
+							aaa authentication login linelogin line none
+							aaa authentication login vtylogin local
+							aaa authorization exec execlocal local
+							!
+							line con 0
+							 login authentication linelogin
+							!
+							line vty 0 4
+							 login authentication vtylogin
+							 authorization exec execlocal
+							!
+							aaa authentication dot1x itachi-local-eap-authen local
+							aaa authorization network default local
+							aaa authorization credential-download itachi-local-eap-author local
+							aaa local authentication itachi-local-eap-authen authorization itachi-local-eap-author
+							!
+							eap profile itachi-local-eap-profile
+							 method peap
+							 pki-trustpoint mgmt
+							!
+							user-name local-eap-user
+							 password Cisc0123
+							 wlan-profile-name itachi-dot1x
+							!
+							wlan itachi-dot1x 11 itachi-dot1x
+							 security ft
+							 security wpa akm ft dot1x
+							 security wpa wpa3
+							 security pmf mandatory
+							 local-auth itachi-local-eap-profile
+							 security dot1x authentication-list itachi-local-eap-authen
+							 no shutdown
+						`;
+
+						mark_list = [
+							"itachi-local-eap-authen",
+							"itachi-local-eap-author",
+							"itachi-local-eap-profile",
+							"linelogin",
+							"vtylogin",
+							"execlocal",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i7-2");
+						createInstruT2("删除所有客户端mac地址", "i7-2-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# no username “44af28654096。");
+							instruArr[1] = createCmdInstruSpan("“44af28654096。", "mab用户");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置认证与授权策略", "i7-2-2");
+							createInstruT3("配置本地认证策略");
+								instruArr[0] = createCmdSpan("C9800(config)# aaa authentication dot1x “itachi-local-eap-authen。 local");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-eap-authen。", "本地认证策略名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置本地授权策略");
+								instruArr[0] = createCmdSpan("C9800(config)# aaa authorization network default local");
+								instruArr[1] = createCmdSpan("C9800(config)# aaa authorization credential-download “itachi-local-eap-author。 local");
+								instruArr[2] = createCmdInstruSpan("“itachi-local-eap-author。", "本地授权策略名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("关联认证与授权策略");
+								instruArr[0] = createCmdSpan("C9800(config)# aaa local authentication “itachi-local-eap-authen。 authorization “itachi-local-eap-author。")
+								instruArr[1] = createCmdInstruSpan("“itachi-local-eap-authen。", "本地认证策略名");
+								instruArr[2] = createCmdInstruSpan("“itachi-local-eap-author。", "本地授权策略名");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("配置EAP profile", "i7-2-3");
+							instruArr[0] = createCmdSpan("C9800(config)# eap profile “itachi-local-eap-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-local-eap-profile。", "eap profile名");
+							instruArr[2] = createCmdSpan("C9800(config-eap-profile)# method { peap | fast | tls }");
+							instruArr[3] = createCmdInstruSpan("{ peap | fast | tls }", "分别对应 peap、eap-fast、eap-tls，多种认证方式则配置多行");
+							instruArr[4] = createCmdSpan("C9800(config-eap-profile)# pki-trustpoint “mgmt。");
+							instruArr[5] = createCmdInstruSpan("mgmt", "认证证书的trustpoint名，web证书即可，可以使用C9800的web管理证书");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置本地用户", "i7-2-4");
+							instruArr[0] = createCmdSpan("C9800(config)# user-name “local-eap-user。");
+							instruArr[1] = createCmdInstruSpan("“local-eap-user。", "用户名");
+							instruArr[2] = createCmdSpan("C9800(config-user-name)# password “Cisc0123。");
+							instruArr[3] = createCmdInstruSpan("local-eap-user", "密码");
+							instruArr[4] = createCmdSpan("C9800(config-user-name)# wlan-profile-name “itachi-dot1x。");
+							instruArr[5] = createCmdInstruSpan("itachi-dot1x", "标记用户的wlan，仅标记，其它wlan也能使用");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置wlan", "i7-2-5");
+							createInstruT3("配置二层安全");
+								createInstruAllTopT3("二层支持WP2和WP3，认证方式为802.1x和802.1x快速漫游");
+								createInstruAllTopT3("启用保存管理帧和快速漫游");
+
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-dot1x。　“4。　“itachi-dot1x。");
+								instruArr[1] = createCmdInstruSpan("“itachi-dot1x。", "wlan名 / SSID");
+								instruArr[2] = createCmdSpan("C9800(config-wlan)# security ft");
+								instruArr[3] = createCmdSpan("C9800(config-wlan)# security wpa akm ft dot1x");
+								instruArr[4] = createCmdSpan("C9800(config-wlan)# security wpa wpa3");
+								instruArr[5] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置802.1x策略");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# local-auth “itachi-local-eap-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-eap-profile。", "eap profile名");
+								instruArr[2] = createCmdSpan("C9800(config-wlan)# security dot1x authentication-list “itachi-local-eap-authen。");
+								instruArr[3] = createCmdInstruSpan("“itachi-local-eap-authen。", "本地认证策略名");
+								createCmdInstruT3(instruArr, "cisco");
+
+					createInstruT1("GUI配置", "i7-3");
+						createInstruT2("配置EAP profile", "i7-3-1");
+							createConfigImgT2("c9800/i7_3_1$1~4");
+
+						createInstruT2("配置wlan", "i7-3-2");
+							createConfigImgT2("c9800/i7_3_2$1~3");
+
+				createInstruT0("中心802.1x", "i8");
+					createInstruT1("CLI配置总览", "i8-1");
+						cmd = `
+							aaa new-model
+							!
+							aaa authentication login linelogin line none
+							aaa authentication login vtylogin local
+							aaa authorization exec execlocal local
+							!
+							line con 0
+							 login authentication linelogin
+							!
+							line vty 0 4
+							 login authentication vtylogin
+							 authorization exec execlocal
+							!
+							radius server ise1
+							 address ipv4 10.1.1.30 auth-port 1812 acct-port 1813
+							 pac key Cisc0123
+							!
+							aaa group server radius itachi-radius-ise
+							 server name ise1
+							!
+							aaa authentication dot1x itachi-ise-authen group itachi-radius-ise
+							!
+							ip access-list extended wlan-acl
+							 10 deny icmp any host 20.1.1.254
+							 20 permit ip any any
+							!
+							wireless profile flex itachi-flex-profile
+							 acl-policy flex-acl
+							!
+							wlan itachi-dot1x 11 itachi-dot1x
+							 security ft
+							 security wpa akm ft dot1x
+							 security wpa wpa3
+							 security pmf mandatory
+							 security dot1x authentication-list itachi-ise-authen
+							 no shutdown
+							!
+							wireless profile policy itachi-central-policy-profile
+							 aaa-override
+							 nac
+							 vlan wlc-client-vlan30
+							 no shutdown
+						`;
+
+						mark_list = [
+							"ise1",
+							"itachi-radius-ise",
+							"itachi-ise-authen",
+							"linelogin",
+							"vtylogin",
+							"execlocal",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i8-2");
+						createInstruT2("删除所有客户端mac地址", "i8-2-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# no username “44af28654096。");
+							instruArr[1] = createCmdInstruSpan("“44af28654096。", "mab用户");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置认证策略", "i8-2-2");
+							instruArr[0] = createCmdSpan("C9800(config)# aaa authentication dot1x “itachi-ise-authen。 group “itachi-radius-ise。");
+							instruArr[1] = createCmdInstruSpan("“itachi-ise-authen。", "外部认证策略名");
+							instruArr[2] = createCmdInstruSpan("“itachi-radius-ise。", "外部aaa服务器组名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置acl", "i8-2-3");
+							createInstruAllTopT2("C9800不支持download acl，如授权acl，则授权本地acl");
+							createInstruAllTopT2("flexconnect模式时，需要在flex profile先声明ACL，中心转发不需要");
+
+							instruArr[0] = createCmdSpan("C9800(config)# wireless profile flex “itachi-flex-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-flex-profile。", "flex-profile名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-flex-profile)# acl-policy “flex-acl。");
+							instruArr[3] = createCmdInstruSpan("“flex-acl。", "准备授权的acl名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("<br />配置wlan", "i8-3-4");
+							createInstruT3("配置二层安全");
+								createInstruAllTopT3("二层支持WP2和WP3，认证方式为802.1x和802.1x快速漫游");
+								createInstruAllTopT3("启用保存管理帧和快速漫游");
+
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-dot1x。　“4。　“itachi-dot1x。");
+								instruArr[1] = createCmdInstruSpan("“itachi-dot1x。", "wlan名 / SSID");
+								instruArr[2] = createCmdSpan("C9800(config-wlan)# security ft");
+								instruArr[3] = createCmdSpan("C9800(config-wlan)# security wpa akm ft dot1x");
+								instruArr[4] = createCmdSpan("C9800(config-wlan)# security wpa wpa3");
+								instruArr[5] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置802.1x策略");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security dot1x authentication-list “itachi-ise-authen。");
+								instruArr[1] = createCmdInstruSpan("“itachi-ise-authen。", "外部认证策略名");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("配置policy profile", "i8-2-5");
+							createInstruAllTopT2("允许radius覆盖本地wlan配置，并启用CoA");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless profile policy “itachi-central-policy-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-central-policy-profile。", "policy profile名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-policy)# aaa-override");
+							instruArr[3] = createCmdSpan("C9800(config-wireless-policy)# nac");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT1("GUI配置", "i8-3");
+							createInstruT2("配置wlan", "i8-3-1");
+								createConfigImgT2("c9800/i7_3_2$1~2");
+								createConfigImgT2("c9800/i8_3_1$3");
+
+							createInstruT2("配置policy profile", "i8-3-2");
+								createConfigImgT2("c9800/i3_1_3_4$2~3");
+								createConfigImgT2("c9800/i8_3_2$4");
+
+							createInstruT2("配置flex profile（flexconnect）", "i8-3-3");
+								createInstruAllTopT2("C9800不支持download acl，如授权acl，则授权本地acl");
+								createInstruAllTopT2("flexconnect模式时，需要在flex profile先声明ACL，中心转发不需要");
+
+								createConfigImgT2("c9800/i9_2_2$1~2");
+
+				createInstruT0("本地网页认证", "i10");
+					createInstruT1("CLI配置总览", "i10-1");
+						cmd = `
+							no username 44af28654096
+							!
+							aaa new-model
+							!
+							aaa authentication login linelogin line none
+							aaa authentication login vtylogin local
+							aaa authorization exec execlocal local
+							!
+							line con 0
+							 login authentication linelogin
+							!
+							line vty 0 4
+							 login authentication vtylogin
+							 authorization exec execlocal
+							!
+							aaa authentication login itachi-local-portal-authen local
+							aaa authorization network default local
+							!
+							user-name local-portal-user
+							 password Cisc0123
+							 wlan-profile-name itachi-portal
+							!
+							parameter-map type webauth global
+							 type webauth
+							 virtual-ip ipv4 192.0.2.1 virtual-host portal.wireless.itachi.tech
+							 trustpoint portal
+							!
+							wlan itachi-portal 5 itachi-portal
+							 no security ft adaptive
+							 no security wpa
+							 no security wpa wpa2
+							 no security wpa wpa2 ciphers aes
+							 no security wpa akm dot1x
+							 security web-auth
+							 security web-auth authentication-list itachi-local-portal-authen
+							 security web-auth parameter-map global
+							 no shutdown
+						`;
+
+						mark_list = [
+							"itachi-local-portal-authen",
+							"itachi-portal",
+							"linelogin",
+							"vtylogin",
+							"execlocal",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i10-2");
+						createInstruT2("删除所有客户端mac地址", "i10-2-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# no username “44af28654096。");
+							instruArr[1] = createCmdInstruSpan("“44af28654096。", "mab用户");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置网页认证策略", "i10-2-2");
+							instruArr[0] = createCmdSpan("C9800(config)# aaa authentication login “itachi-local-portal-authen。 local");
+							instruArr[1] = createCmdInstruSpan("“itachi-local-portal-authen。", "认证策略名");
+							instruArr[2] = createCmdSpan("C9800(config)# aaa authorization network default local");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置网页认证用户", "i10-2-3");
+							instruArr[0] = createCmdSpan("C9800(config)# user-name “itachi-portal-user。");
+							instruArr[1] = createCmdInstruSpan("“itachi-portal-user。", "用户名");
+							instruArr[2] = createCmdSpan("WLC(config-user-name)# password “Cisc0123。");
+							instruArr[3] = createCmdInstruSpan("“Cisc0123。", "密码");
+							instruArr[4] = createCmdSpan("WLC(config-user-name)# wlan-profile-name “itachi-portal。");
+							instruArr[5] = createCmdInstruSpan("“itachi-portal。", "标记用户的wlan，仅标记，其它wlan也能使用");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("修改认证页面", "i10-2-4");
+							instruArr[0] = createCmdSpan("C9800(config)# parameter-map type webauth global");
+							instruArr[1] = createCmdSpan("C9800(config-params-parameter-map)# type webauth");
+							instruArr[2] = createCmdSpan("C9800(config-params-parameter-map)# virtual-ip ipv4 “192.0.2.1。 virtual-host “portal.wireless.itachi.tech。");
+							instruArr[3] = createCmdInstruSpan("“192.0.2.1。", "认证页面的虚拟地址，设备初始化时配置");
+							instruArr[4] = createCmdInstruSpan("“portal.wireless.itachi.tech。", "认证页面域名");
+							instruArr[5] = createCmdSpan("C9800(config-params-parameter-map)# trustpoint “portal。");
+							instruArr[6] = createCmdInstruSpan("“portal。", "认证页面证书");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置wlan采用网页认证", "i10-2-5");
+							createInstruT3("创建wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-portal。　“5。　“itachi-portal。");
+								instruArr[1] = createCmdInstruSpan("“itachi-portal。", "wlan名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("关闭2层安全");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security ft adaptive");
+								instruArr[1] = createCmdSpan("C9800(config-wlan)# no security wpa");
+								instruArr[2] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2");
+								instruArr[3] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2 ciphers aes");
+								instruArr[4] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("使用网页认证");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security web-auth");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置网页认证页面");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security web-auth parameter-map global");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置网页认证策略");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# security web-auth authentication-list “itachi-local-portal-authen。");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-portal-authen。", "网页认证策略");
+								createCmdInstruT3(instruArr, "cisco");
+
+					createInstruT1("GUI配置", "i10-3");
+						createInstruT2("修改认证页面", "i10-3-1");
+							createConfigImgT2("c9800/i10_3_1$1~3");
+
+						createInstruT2("配置wlan", "i10-3-2");
+							createConfigImgT2("c9800/i10_3_2$1~2");
+
+				createInstruT0("中心网页认证", "i11");
+					createInstruT1("CLI配置总览", "i11-1");
+						cmd = `
+							no username 44af28654096
+							!
+							aaa new-model
+							!
+							aaa authentication login linelogin line none
+							aaa authentication login vtylogin local
+							aaa authorization exec execlocal local
+							!
+							line con 0
+							 login authentication linelogin
+							!
+							line vty 0 4
+							 login authentication vtylogin
+							 authorization exec execlocal
+							!
+							radius server ise1
+							 address ipv4 10.1.1.30 auth-port 1812 acct-port 1813
+							 pac key Cisc0123
+							!
+							aaa group server radius itachi-radius-ise
+							 server name ise1
+							!
+							aaa authorization network itachi-ise-portal-author group itachi-radius-ise
+							!
+							ip access-list extended init-portal-acl
+							 permit udp any any eq 53
+							 permit icmp any any
+							 permit tcp any any eq 80
+							 permit tcp any any eq 443
+							 permit tcp any host 10.1.1.30 eq 8443
+							 permit tcp any host 10.1.1.30 eq 8905
+							 permit tcp any host 10.1.1.30 eq 8909
+							 permit udp any host 10.1.1.30 eq 8905
+							 permit udp any host 10.1.1.30 eq 8906
+							 permit udp any host 10.1.1.30 eq 8909
+							!
+							ip access-list extended web-redirect
+							 deny udp any any eq 53
+							 deny ip any host 10.1.1.30
+							 permit tcp any any eq 80
+							 permit tcp any any eq 443
+							!
+							wlan itachi-portal 5 itachi-portal
+							 mac-filtering itachi-ise-portal-author
+							 no security ft adaptive
+							 no security wpa
+							 no security wpa wpa2
+							 no security wpa wpa2 ciphers aes
+							 no security wpa akm dot1x
+							 no shutdown
+							!
+							wireless profile policy itachi-central-policy-profile
+							 aaa-override
+							 nac
+							 vlan wlc-client-vlan30
+							 no shutdown
+						`;
+
+						mark_list = [
+							"ise1",
+							"itachi-radius-ise",
+							"itachi-ise-portal-author",
+							"itachi-portal",
+							"linelogin",
+							"vtylogin",
+							"execlocal",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i11-2");
+						createInstruT2("删除所有客户端mac地址", "i11-2-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# no username “44af28654096。");
+							instruArr[1] = createCmdInstruSpan("“44af28654096。", "mab用户");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置授权策略", "i11-2-2");
+							instruArr[0] = createCmdSpan("C9800(config)# aaa authorization network “itachi-ise-portal-author。 group “itachi-radius-ise。");
+							instruArr[1] = createCmdInstruSpan("“itachi-ise-portal-author。", "授权策略名");
+							instruArr[2] = createCmdInstruSpan("“itachi-radius-ise。", "外部aaa服务器组名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置ACL", "i11-2-3");
+							createInstruAllTopT2("由于C9800不支持Download ACL，认证前放行基本流量 及 重定向 两种列表均需要配置");
+							createInstruAllTopT2("10.1.1.30为ISE地址，flexconnet模式时，ACL需要在fex profile中声明");
+
+						createInstruT2("<br >配置wlan，实质是中心认证的mab，ISE配置不同区别两种认证", "i11-2-4");
+							createInstruT3("创建wlan");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-portal。　“5。　“itachi-portal。");
+								instruArr[1] = createCmdInstruSpan("“itachi-portal。", "wlan名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("关闭2层安全");
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# no security ft adaptive");
+								instruArr[1] = createCmdSpan("C9800(config-wlan)# no security wpa");
+								instruArr[2] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2");
+								instruArr[3] = createCmdSpan("C9800(config-wlan)# no security wpa wpa2 ciphers aes");
+								instruArr[4] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("在相关wlan添加mac-filtering …，即可，其它配置无需修改");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config-wlan)# mac-filtering “itachi-ise-portal-author。");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-mac-author。", "中心授权策略名");
+								createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置policy profile", "i11-2-5");
+							createInstruAllTopT2("允许radius覆盖本地wlan配置，并启用CoA");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless profile policy “itachi-central-policy-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-central-policy-profile。", "policy profile名");
+							instruArr[2] = createCmdSpan("C9800(config-wireless-policy)# aaa-override");
+							instruArr[3] = createCmdSpan("C9800(config-wireless-policy)# nac");
+							createCmdInstruT2(instruArr, "cisco");
+
+					createInstruT1("GUI配置", "i11-3");
+						createInstruT2("配置wlan", "i11-3-1");
+								createConfigImgT2("c9800/i11_3_1$1");
+
+							createInstruT2("配置policy profile", "i11-3-2");
+								createConfigImgT2("c9800/i8_3_2$4");
+
+
+				createInstruT0("无线漫游", "i12");
+					createInstruT1("配置漫游组", "i12-1");
+						createInstruT2("GUI", "i12-1-1");
+							createConfigImgT2("c9800/i12_1_1$1~6");
+
+						createInstruT2("CLI", "i12-1-2");
+
+
+					createInstruT1("配置漫游锚", "i12-2");
+						createInstruT2("GUI", "i12-2-1");
+							createInstruAllTopT2("编辑对对应policy profile");
+
+							createInstruT3("锚WLC");
+								createConfigImgT3("c9800/i12_2_1_1$1~2");
+
+							createInstruT3("其它WLC");
+								createConfigImgT3("c9800/i12_2_1_2$1~2");
+
+						createInstruT2("CLI", "i12-2-2");
+
+
+				createInstruT0("WLC的HA", "i13");
+					createInstruT1("GUI", "i13-1");
+						createInstruT2("配置HA", "i13-1-1");
+							createConfigImgT2("c9800/i13_1_1$1~6");
+
+						createInstruT2("查看HA状态", "i13-1-2");
+							createConfigImgT2("c9800/i13_1_2$1~2");
+
+					createInstruT1("CLI", "i13-2");
+						createInstruT2("配置HA", "i13-2-1");
+							createInstruT3("配置redundancy，两台WLC相同");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# redundancy");
+								instruArr[1] = createCmdSpan("C9800(config-red)# mode sso");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置设备优先级");
+								createInstruAllTopT3("Active设备配置");
+									instruArr = [];
+									instruArr[0] = createCmdSpan("C9800-1# chassis 1 priority 2");
+									createCmdInstruT3(instruArr, "cisco");
+
+								createInstruAllTopT3("Standby设备配置");
+									instruArr = [];
+									instruArr[0] = createCmdSpan("C9800-2# chassis 1 renumber 2");
+									createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置RMI HA，两台WLC相同");
+								instruArr[0] = createCmdSpan("C9800# chassis redundancy ha-interface “gigabitEthernet 3。");
+								instruArr[1] = createCmdInstruSpan("“gigabitEthernet 3。", "专用于HA的接口");
+								instruArr[2] = createCmdSpan("C9800(config)# redun-management interface “vlan 100。 chassis 1 address “100.1.1.201。 chassis 2 address “100.1.1.202。");
+								instruArr[3] = createCmdInstruSpan("“vlan 100。", "RMI接口，一般为关联AP接口");
+								instruArr[4] = createCmdInstruSpan("“100.1.1.201。", "Active WLC RMI接口IP，接口IP自动配置，无需手工配置");
+								instruArr[5] = createCmdInstruSpan("“100.1.1.201。", "Standby WLC RMI接口IP，接口IP自动配置，无需手工配置");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("两台WLC相同保存重启");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800# write");
+								instruArr[1] = createCmdSpan("C9800# reload");
+								createCmdInstruT3(instruArr, "cisco");
+
+						createInstruT2("查看HA状态", "i13-2-2");
+							instruArr[0] = createCmdSpan("C9800-1# show redundancy [ states ]");
+							instruArr[1] = createCmdSpan("");
+							instruArr[2] = createCmdSpan("C9800-1# show chassis rmi");
+							createCmdInstruT2(instruArr, "cisco");
 
 			</script>
 		</div>

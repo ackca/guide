@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,7 +22,7 @@
 			<script type="text/javascript">
 				createInstruT0("安装&初始化（Docker版）", "i1");
 					createInstruT1("运行gitlab（docker-compose）", "i1-1");
-						var yaml = `
+						let yaml = `
 							version: "3.7"
 							services:
 								itachi_gitlab:
@@ -50,11 +50,11 @@
 						createInstruT1("运行gitlab（docker-compose）", "i1-2");
 							createInstruT2("修改配置文件，对应实际目录：‘/etc/gitlab/gitlab.rb。", "i1-2-1");
 								createInstruAllTopT2("默认内容均为注释，直接添加下面内容即可<br />");
-								instruArr = new Array();
+								let instruArr = new Array();
 								instruArr[0] = createLinuxCmd("vim /gitlab/config/gitlab.rb");
 								createCmdInstruT2(instruArr,"gitlab");
 
-								var cmd = `
+								let cmd = `
 									external_url 'https://gitlab.itachi.tech'
 									nginx['enable'] = true
 									nginx['redirect_http_to_https'] = true    # http重定向到https

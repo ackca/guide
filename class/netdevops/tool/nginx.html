@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
 				createInstruT0("基本配置", "i1");
 						createInstruT2("安装软件", "i1-1");
 							createInstruAllTopT2("软件名为 nginx");
-							var cmd = `
+							let cmd = `
 								dnf install -y nginx
 							`;
 							createLinuxTxtT2(cmd);

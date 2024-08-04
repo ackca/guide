@@ -1,26 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>协议-802.11 b/a/g/n/ac/ax/be</title>
+	<title>协议-无线协议</title>
 	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(wifi);
-		document.onmouseup = function () {
-			document.onmousemove = null;
-		};
 	</script>
-	<style type="text/css">
-		#tWiFi1 .row.header .cell,
-		#tWiFi2 .row.header .cell
-		{
-			line-height: 25px;
-			padding-top: 14px;
-			padding-bottom: 14px;
-		}
-
-	</style>
+	<link rel="stylesheet" href="../../../css/private/protocol/wifi.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -37,7 +25,7 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("wifi标准<br />", "i1");
-					var tHeader = [
+					let tHeader = [
 						"协议",
 						"802.11b",
 						"802.11a",
@@ -45,13 +33,14 @@
 						"Wi-Fi 4<br />802.11n",
 						"Wi-Fi 5<br />802.11ac",
 					];
-					var tBody = [
+					let tBody = [
 						["发布时间", "1999", "1999", "2003", "2009", "2014"],
-						["频段", "2.4GHz", "5GHz", "2.4GHz", "2.4GHz/5GHz", "5GHz"],
-						["频道宽度", "20MHz", "20MHz", "20MHz", "20MHz，40MHz"],
-						["最大速度", "发送方MAC地址", "发送方MAC地址", "发送方MAC地址"],
+						["频段", "2.4GHz", "5GHz", "2.4GHz", "2.4GHz&nbsp;/&nbsp;5GHz", "5GHz"],
+						["频道宽度", "20MHz", "20MHz", "20MHz", "20MHz，40MHz", "20MHz，40MHz，80MHz，<br />80+80MHz，160MHz"],
+						["最大速度", "11Mbps", "54Mbps", "54Mbps", "600Mbps", "6.9Gbps"],
+						["MIMO", "1空间流", "1空间流", "1空间流", "SU-MIMO<br />至多4空间流", "MU-MIMO<br />至多8空间流"],
 					];
-					createHLTableT0(1200, tHeader, tBody, "tWiFi1");
+					createHLTableT0(1000, tHeader, tBody, "tWiFi1");
 
 					document.writeln("<br /><br />");
 					tHeader = [
@@ -62,11 +51,168 @@
 					];
 					tBody = [
 						["发布时间", "2019", "2021", "2024"],
-						["频段", "2.4GHz/5GHz", "2.4GHz/5GHz/6GHz", "2.4GHz/5GHz/6GHz"],
-						["频道宽度", "20MHz, 40MHz，80MHz，160MHz", "20MHz, 40MHz，80MHz，160MHz"],
-						["最大速度", "发送方IP地址", "全0", "发送方IP地址"],
+						["频段", "2.4GHz&nbsp;/&nbsp;5GHz", "2.4GHz&nbsp;/&nbsp;5GHz&nbsp;/&nbsp;6GHz", "2.4GHz&nbsp;/&nbsp;5GHz&nbsp;/&nbsp;6GHz"],
+						["频道宽度", "2, 5, 10, 20MHz, <br />40，80，80+80，160MHz", "2, 5, 10, 20MHz, <br />40，80，80+80，160MHz", "制定中"],
+						["最大速度", "9.6Gbps", "9.6Gbps", "46Gbps"],
+						["MIMO", "MU-MIMO<br />最多8空间流", "MU-MIMO<br />最多8空间流", "MU-MIMO<br />最多16空间流"],
 					];
-					createHLTableT0(1400, tHeader, tBody, "tWiFi2");
+					createHLTableT0(1000, tHeader, tBody, "tWiFi2");
+
+					let t_wifi = `
+						<div class="divSJT0">
+							<div class="HLTableS2" id="tWiFi1">
+								<div class="table">
+									<div class="row header">
+										<div class="cell">协议</div>
+										<div class="cell">802.11b</div>
+										<div class="cell">802.11a</div>
+										<div class="cell">802.11g</div>
+										<div class="cell">Wi-Fi 4<br>802.11n</div>
+										<div class="cell">Wi-Fi 5<br>802.11ac<br><div class="wifi5"><div>&nbsp;&nbsp;Wave1</div><div>&nbsp;&nbsp;Wave2</div></div></div>
+									</div>
+									<div class="row">
+										<div class="cell">发布时间</div>
+										<div class="cell">1999</div>
+										<div class="cell">1999</div>
+										<div class="cell">2003</div>
+										<div class="cell">2009</div>
+										<div class="cell ac"><div>2013</div><div>2016</div></div>
+									</div>
+									<div class="row">
+										<div class="cell">频段</div>
+										<div class="cell">2.4GHz</div>
+										<div class="cell">5GHz</div>
+										<div class="cell">2.4GHz</div>
+										<div class="cell">2.4GHz&nbsp;/&nbsp;5GHz</div>
+										<div class="cell" style="text-align: center">5GHz</div>
+									</div>
+									<div class="row">
+										<div class="cell">频道宽度</div>
+										<div class="cell">20MHz</div>
+										<div class="cell">20MHz</div>
+										<div class="cell">20MHz</div>
+										<div class="cell">20MHz，40MHz</div>
+										<div class="cell ac"><div>20MHz，40MHz，<br />80MHz</div><div>20MHz，40MHz，<br />80MHz，160MHz</div></div>
+									</div>
+									<div class="row">
+										<div class="cell">最大速度</div>
+										<div class="cell">11Mbps</div>
+										<div class="cell">54Mbps</div>
+										<div class="cell">54Mbps</div>
+										<div class="cell">600Mbps</div>
+										<div class="cell">6Gbps</div>
+									</div>
+									<div class="row">
+										<div class="cell">MIMO</div>
+										<div class="cell">仅单天线有效</div>
+										<div class="cell">仅单天线有效</div>
+										<div class="cell">仅单天线有效</div>
+										<div class="cell">SU-MIMO</div>
+										<div class="cell ac"><div>SU-MIMO</div><div>MI-MIMO</div></div>
+									</div>
+								</div>
+							</div>
+						</div><br /><br />
+
+						<div class="divSJT0">
+							<div class="HLTableS2" id="tWiFi2">
+								<div class="table">
+									<div class="row header">
+										<div class="cell">协议</div>
+										<div class="cell">Wi-Fi 6<br>802.11ax</div>
+										<div class="cell">Wi-Fi 6E<br>802.11ax</div>
+										<div class="cell">Wi-Fi 7<br>802.11be</div>
+									</div>
+									<div class="row">
+										<div class="cell">发布时间</div>
+										<div class="cell">2019</div>
+										<div class="cell">2021</div>
+										<div class="cell">2024</div>
+									</div>
+									<div class="row">
+										<div class="cell">频段</div>
+										<div class="cell">2.4GHz&nbsp;/&nbsp;5GHz</div>
+										<div class="cell">2.4GHz&nbsp;/&nbsp;5GHz&nbsp;/&nbsp;6GHz</div>
+										<div class="cell">2.4GHz&nbsp;/&nbsp;5GHz&nbsp;/&nbsp;6GHz</div>
+									</div>
+									<div class="row">
+										<div class="cell">频道宽度</div>
+										<div class="cell">2MHz，5MHz，10MHz，<br>20MHz，40MHz，80MHz，160MHz</div>
+										<div class="cell">2MHz，5MHz，10MHz，<br>20MHz，40MHz，80MHz，160MHz</div>
+									</div>
+									<div class="row">
+										<div class="cell">最大速度</div>
+										<div class="cell">发送方IP地址</div>
+										<div class="cell">全0</div>
+										<div class="cell">发送方IP地址</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					`;
+					// document.writeln(t_wifi);
+				createInstruT0("无线信道", "i2");
+						createInstruT2("无线信道说明", "i2-1");
+							createInstruAllTopT2("信道如下所示，图中为2.4G信道图");
+							createConfigImgT2("wifi/2.4g$1");
+							createInstruAllTopT2("信道概念：无线信道是空间中无线电波传输的通道，如果随意使用频谱资源，会带来大量干扰问题，因此精确划分出频率范围，每个频率范围就是信道，不同国家开放的信道不同");
+							createInstruAllTopT2("重叠信道：如图中信道1和2互为重叠信道，在一个空间内同时存在重叠信道，就会产生干扰问题");
+							createInstruAllTopT2("非重叠信道：频段范围内不重叠的信道");
+
+						createInstruT2("信道绑定", "i2-2");
+							createInstruAllTopT2("如图所示，在同一空间中，相邻的AP，需要使用不重叠信道");
+							createConfigImgT2("wifi/xdbd1");
+							createInstruAllTopT2("通过将相邻的两个或多个不重叠信道绑定到一起，作为一个信道使用，可以成倍提高传输速率");
+							createInstruAllTopT2("但实际使用中，由于使用无线设备较多，干扰等因素，能够绑定信道数较少，强行绑定多个，也会因为干扰等原因，造成实际速率还不如不绑定");
+							createConfigImgT2("wifi/xdbd2");
+
+						createInstruT2("2.4G信道图", "i2-3");
+							createInstruAllTopT2("14号信道仅日本开放，且只用于802.11b");
+							createInstruAllTopT2("工作在2.4G设备非常多，而且只有3个不重叠信道，基本不存在信道绑定的可能");
+							createConfigImgT2("wifi/2.4g$1~2");
+
+						createInstruT2("5G信道图", "i2-4");
+							createConfigImgT2("wifi/5g");
+
+						createInstruT2("6G信道图", "i2-5");
+							createInstruAllTopT2("第一个20MHz的信道为1号，后续编号为连接的间隔4递增，1、5、9 …… 233");
+							createInstruAllTopT2("中国大陆目前完全没开放6G，且已经一部分已被分配出去");
+							createConfigImgT2("wifi/6g");
+
+				createInstruT0("空间流", "i3");
+					createInstruAllTopT0("空间流使用发射端的天线进行发送，每个空间流通过不同的路径到达接收端/。无线系统能够发送和接收空间流，并能够区分发往或来自不同空间方位的信号/。");
+
+					createInstruAllTopT0("通常情况下，一根发送天线和一根接收天线间可以建立一个空间流，/。无线系统能够发送和接收空间流，并能够区分发往或来自不同空间方位的信号，比较AP有4个天线，同时接收端也有4个天线，那么同时就有4个空间流/。");
+
+					createInstruAllTopT0("802.11ac最大8个空间流，就算AP有12根天线，也只能有8个空间流/。<br />");
+
+					createConfigImgT0("wifi/kjl");
+
+				createInstruT0("相关计算公式", "i4");
+						createInstruT2("功率计算：单位dbm", "i4-1");
+							createInstruAllTopT2("常规的功率w，对于无线而言太大，使用不便，使用单位dbm，计算方式如下");
+							createInstruAllTopT2("10×lg(功率值/1mW)");
+
+						createInstruT2("<br /><br />香农定理", "i4-2");
+							createInstruAllTopT2("计算最大信息传送速度C公式：C=B×lg2(1+S/N)");
+							createInstruAllTopT2("其中，B为信道带宽，S为信号功率，N为噪声功能");
+							createInstruAllTopT2("从公式中可以得到，信道容量与信道带成正比，信噪比较小速度越快");
+
+				createInstruT0("MIMO", "i5");
+					createInstruAllTopT0("从802.11n（WiFi-4）开始支持，之前即使AP有多根天线，但在同一时刻，只有一根有效，多根天线信号中较好的有效");
+					createInstruAllTopT0("802.11n支持SU-MIMO，同一时刻，AP的多根天线，只有和同一个客户端的多根天线通信");
+					createInstruAllTopT0("802.11ac及之后支持MI-MIMO，同一时刻，AP的多根天线，可以和多个客户端的多根天线通信<br />");
+					createConfigImgT0("wifi/mimo");
+
+				createInstruT0("OFDMA", "i6");
+					createInstruAllTopT0("从802.11ax（WiFi-6）开始支持，由于物联网的兴起，而物联网设备多工作在2.4G，2.4G重新被支持");
+					createInstruAllTopT0("物联网设备的带宽需要较小，但设备较多，而2.4G只有3个不重叠的信道");
+					createInstruAllTopT0("为了更好的支持物联网设备，OFDMA将信道划分为更小的子信道，频宽最小为2MHz");
+					createInstruAllTopT0("这样能容纳更多的设备同时进行通信，有效的支持高密度、低带宽需求的应用场景<br />");
+					createConfigImgT0("wifi/ofdma");
+
+
+
 			</script>
 			<br /><br /><br /><br /><br /><br /><br />
 			<br /><br /><br /><br /><br /><br /><br />

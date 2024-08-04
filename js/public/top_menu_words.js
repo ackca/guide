@@ -1,4 +1,4 @@
-const top_menu = `	
+const top_menu = `
 	<div class="top_navigation">
 		<div class="mod-header">
 			<div class="cat">
@@ -75,8 +75,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-cisco">
-									    <img src="rootpath/img/cisco.svg" />
-                                    </i>
+										<img src="rootpath/img/cisco.svg" />
+									</i>
 								</div>
 								<span>思科</span>
 							</h3>
@@ -115,7 +115,7 @@ const top_menu = `
 									<div class="cat-item-sub">
 										<div class="cat-item-row">
 											<a href="rootpath/class/network/cisco/asa.html">ASA</a>
-											<a href="#">Firepower</a>
+											<a href="rootpath/class/network/cisco/firepower.html">Firepower</a>
 										</div>
 									</div>
 								</li>
@@ -127,6 +127,7 @@ const top_menu = `
 										<div class="cat-item-row">
 											<a href="rootpath/class/network/cisco/vpn_router.html">基于路由器</a>
 											<a href="rootpath/class/network/cisco/vpn_asa.html">基于ASA</a>
+											<a href="rootpath/class/network/cisco/vpn_firepower.html">基于Firepower</a>
 										</div>
 									</div>
 								</li>
@@ -143,13 +144,14 @@ const top_menu = `
 									</div>
 								</li>
 								<li class="cat-item">
-								    <div class="cat-item-main">
+									<div class="cat-item-main">
 										<span>ISE</span>
 									</div>
 									<div class="cat-item-sub">
-									    <a href="rootpath/class/network/cisco/ise_switch.html">交换机配置</a>
-									    <a href="rootpath/class/network/cisco/ise31.html">ISE 3.1</a>
+										<a href="rootpath/class/network/cisco/ise_switch.html">交换机配置</a>
+										<a href="rootpath/class/network/cisco/ise31.html">ISE 3.1</a>
 										<a href="rootpath/class/network/cisco/ise21.html">ISE 2.1</a>
+										<a href="rootpath/class/network/cisco/ise_windows.html">windows</a>
 									</div>
 								</li>
 							</ul>
@@ -158,8 +160,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-cisco">
-									    <img src="rootpath/img/cisco.svg" />
-                                    </i>
+										<img src="rootpath/img/cisco.svg" />
+									</i>
 								</div>
 								<span>思科</span>
 							</h3>
@@ -189,9 +191,47 @@ const top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
+									<i class="ico-okta">
+										<a href="rootpath/class/network/okta/okta.html"><img src="rootpath/img/okta_title.svg" /></a>
+									</i>
+								</div>
+								<span></span>
+							</h3>
+							<div class="cat-group inner-aruba">
+								<h3 class="cat-tit">
+									<div class="cat-ico">
+										<i class="ico-aruba">
+											<img src="rootpath/img/aruba_title.svg" />
+										</i>
+									</div>
+									<span></span>
+								</h3>
+								<ul class="cat-list">
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<span>无线</span>
+										</div>
+										<div class="cat-item-sub">
+											<div class="cat-item-row">
+												<a href="rootpath/class/network/aruba/wireless.html">设备配置</a>
+												<a href="rootpath/class/network/aruba/wireless_basic.html">网络架构</a>
+											</div>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/network/aruba/clearpass.html">ClearPass</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="cat-group">
+							<h3 class="cat-tit">
+								<div class="cat-ico">
 									<div class="ico-f5">
-									    <img src="rootpath/img/f5.svg" />
-                                    </div>
+										<img src="rootpath/img/f5.svg" />
+									</div>
 								</div>
 								<span>F5</span>
 							</h3>
@@ -213,34 +253,6 @@ const top_menu = `
 								</li>
 							</ul>
 						</div>
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-aruba">
-                                        <img src="rootpath/img/aruba_title.svg" />
-                                    </i>
-								</div>
-								<span></span>
-							</h3>
-							<ul class="cat-list">
-							    <li class="cat-item">
-									<div class="cat-item-main">
-										<span>无线</span>
-									</div>
-									<div class="cat-item-sub">
-										<div class="cat-item-row">
-											<a href="rootpath/class/network/aruba/wireless.html">设备配置</a>
-											<a href="rootpath/class/network/aruba/wireless_basic.html">网络架构</a>
-										</div>
-									</div>
-								</li>
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<a href="rootpath/class/network/aruba/clearpass.html">ClearPass</a>
-									</div>
-								</li>
-							</ul>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -251,8 +263,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-huawei">
-									    <img src="rootpath/img/huawei.svg" />
-                                    </i>
+										<img src="rootpath/img/huawei.svg" />
+									</i>
 								</div>
 								<span>华为</span>
 							</h3>
@@ -300,8 +312,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-h3c">
-									    <img src="rootpath/img/h3c.svg" />
-                                    </i>
+										<img src="rootpath/img/h3c.svg" />
+									</i>
 								</div>
 								<span>华三</span>
 							</h3>
@@ -333,112 +345,112 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-cert">
-									    <img src="rootpath/img/cert.png" />
-                                    </i>
+										<img src="rootpath/img/cert.png" />
+									</i>
 								</div>
 								<span style="font-size: 20px">证书服务</span>
 								<ul class="cat-list">
-                                    <li class="cat-item">
-                                        <div class="cat-item-main">
-                                            <a href="rootpath/class/netdevops/pki/certsrv.html">Windows平台</a>
-                                        </div>
-                                    </li>
-                                    <li class="cat-item">
-                                        <div class="cat-item-main">
-                                            <a href="rootpath/class/netdevops/pki/cfssl.html">CFSSL</a>
-                                        </div>
-                                    </li>
-                                    <li class="cat-item">
-                                        <div class="cat-item-main">
-                                            <a href="rootpath/class/netdevops/pki/openssl.html">OpenSSL</a>
-                                        </div>
-                                    </li>
-                                    <li class="cat-item">
-                                        <div class="cat-item-main">
-                                            <a href="rootpath/class/netdevops/pki/certs_mgmt.html">证书管理</a>
-                                        </div>
-                                    </li>
-                                </ul>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/netdevops/pki/certsrv.html">Windows平台</a>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/netdevops/pki/cfssl.html">CFSSL</a>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/netdevops/pki/openssl.html">OpenSSL</a>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/netdevops/pki/certs_mgmt.html">证书管理</a>
+										</div>
+									</li>
+								</ul>
 							</h3>
 						</div>
 						<div class="cat-group">
-						    <table>
-						        <tr>
-						            <td class="logo">
-						                <h3 class="cat-tit">
-                                            <i class="ico-mysql">
-                                                <img src="rootpath/img/mysql.svg" />
-                                            </i>
-                                        </h3>
-                                    </td>
-                                    <td>
-						                <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/netdevops/tool/mysql8.html">MySQL 8</a></span>
-                                        </h3>
-                                    </td>
-                                    <td class="logo">
-						                <h3 class="cat-tit">
-                                            <i class="ico-gitlab">
-                                                <img src="rootpath/img/gitlab.svg" />
-                                            </i>
-                                        </h3>
-                                    </td>
-                                    <td>
-						                <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/netdevops/tool/gitlab.html">GitLab</a></span>
-                                        </h3>
-                                    </td>
-                                    <td class="logo">
-						                <h3 class="cat-tit">
-                                            <i class="ico-vault">
-                                                <img src="rootpath/img/vault.svg" />
-                                            </i>
-                                        </h3>
-                                    </td>
-                                    <td>
-						                <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/netdevops/tool/vault.html">Vault</a></span>
-                                        </h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="logo">
-                                        <h3 class="cat-tit">
-                                            <div class="cat-ico">
-                                                <i class="ico-nginx">
-                                                    <a href="rootpath/class/netdevops/tool/nginx.html">
-                                                        <img src="rootpath/img/nginx_title.svg" />
-                                                    </a>
-                                                </i>
-                                            </div>
-                                            <span></span>
-                                        </h3>
-                                    </td>
-                                    <td>
-                                        <h3 class="cat-tit">
-                                            <span></span>
-                                        </h3>
-                                    </td>
-                                    <td class="logo">
-                                        <h3 class="cat-tit">
-                                            <i class="ico-regex">
-                                                <img src="rootpath/img/regex.svg" />
-                                            </i>
-                                        </h3>
-                                    </td>
-                                    <td>
-                                        <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/netdevops/tool/regex.html">正则表达式</a></span>
-                                        </h3>
-                                    </td>
-<!--                                    <td class="logo">-->
-<!--                                    -->
-<!--                                    </td>-->
-<!--                                    <td>-->
-<!--                                    -->
-<!--                                    </td>-->
-                                </tr>
-                            </table>							
+							<table>
+								<tr>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<i class="ico-mysql">
+												<img src="rootpath/img/mysql.svg" />
+											</i>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span><a href="rootpath/class/netdevops/tool/mysql8.html">MySQL 8</a></span>
+										</h3>
+									</td>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<i class="ico-gitlab">
+												<img src="rootpath/img/gitlab.svg" />
+											</i>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span><a href="rootpath/class/netdevops/tool/gitlab.html">GitLab</a></span>
+										</h3>
+									</td>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<i class="ico-vault">
+												<img src="rootpath/img/vault.svg" />
+											</i>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span><a href="rootpath/class/netdevops/tool/vault.html">Vault</a></span>
+										</h3>
+									</td>
+								</tr>
+								<tr>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<div class="cat-ico">
+												<i class="ico-nginx">
+													<a href="rootpath/class/netdevops/tool/nginx.html">
+														<img src="rootpath/img/nginx_title.svg" />
+													</a>
+												</i>
+											</div>
+											<span></span>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span></span>
+										</h3>
+									</td>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<i class="ico-regex">
+												<img src="rootpath/img/regex.svg" />
+											</i>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span><a href="rootpath/class/netdevops/tool/regex.html">正则表达式</a></span>
+										</h3>
+									</td>
+<!--									<td class="logo">-->
+<!--									-->
+<!--									</td>-->
+<!--									<td>-->
+<!--									-->
+<!--									</td>-->
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -450,8 +462,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-vsphere">
-                                        <img src="rootpath/img/vsphere.svg" />
-                                    </i>
+										<img src="rootpath/img/vsphere.svg" />
+									</i>
 								</div>
 								<span><a href="rootpath/class/vmware/vsphere7.html">vSphere</a></span>
 							</h3>
@@ -467,8 +479,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-nsx">
-                                        <img src="rootpath/img/nsx.svg" />
-                                    </i>
+										<img src="rootpath/img/nsx.svg" />
+									</i>
 								</div>
 								<span></span>
 							</h3>
@@ -484,8 +496,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-velocloud">
-                                        <img src="rootpath/img/velocloud.svg" />
-                                    </i>
+										<img src="rootpath/img/velocloud.svg" />
+									</i>
 								</div>
 								<span><a style="line-height: 45px" href="rootpath/class/vmware/SDWAN.html">SDWAN</a></span>
 							</h3>
@@ -500,8 +512,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<div class="ico-docker">
-									    <img src="rootpath/img/docker_title.svg" />
-                                    </div>
+										<img src="rootpath/img/docker_title.svg" />
+									</div>
 								</div>
 								<span></span>
 							</h3>
@@ -532,8 +544,8 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-k8s">
-                                        <img src="rootpath/img/k8s_title.svg" />
-                                    </i>
+										<img src="rootpath/img/k8s_title.svg" />
+									</i>
 								</div>
 								<span></span>
 							</h3>
@@ -565,23 +577,23 @@ const top_menu = `
 							<h3 class="cat-tit">
 								<div class="cat-ico">
 									<i class="ico-redhat">
-									    <img src="rootpath/img/redhat_title.svg" />
-                                    </i>
+										<img src="rootpath/img/redhat_title.svg" />
+									</i>
 								</div>
 								<span></span>
-                            </h3>
-                            <ul class="cat-list">
-                                <li class="cat-item">
-                                    <div class="cat-item-main">
-                                        <a href="rootpath/class/linux/redhat_basic.html">基础命令</a>
-                                    </div>
-                                </li>
-                                <li class="cat-item">
-                                    <div class="cat-item-main">
-                                        <a href="rootpath/class/linux/redhat_service.html">基础服务</a>
-                                    </div>
-                                </li>
-                            </ul>
+							</h3>
+							<ul class="cat-list">
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/linux/redhat_basic.html">基础命令</a>
+									</div>
+								</li>
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/linux/redhat_service.html">基础服务</a>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -591,33 +603,33 @@ const top_menu = `
 					<div class="layout">
 						<div class="cat-group">
 							<table>
-						        <tr>
-						            <td class="logo">
-						                <h3 class="cat-tit">
-                                            <i class="ico-nmap">
-                                                <img src="rootpath/img/nmap.svg" />
-                                            </i>
-                                        </h3>
-                                    </td>
-                                    <td>
-                                        <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/nmap/nmap.html">NMAP</a></span>
-                                        </h3>
-                                    </td>
-						            <td class="logo">
-						                <h3 class="cat-tit">
-                                            <i class="ico-os">
-                                                <img src="rootpath/img/os.webp" class="ico-os" />
-                                            </i>
-                                        </h3>
-                                    </td>
-                                    <td>
-                                        <h3 class="cat-tit">
-                                            <span><a href="rootpath/class/pxe/pxe.html">系统自动安装脚本</a></span>
-                                        </h3>
-                                    </td>
-                                </tr>
-                            </table>
+								<tr>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<i class="ico-nmap">
+												<img src="rootpath/img/nmap.svg" />
+											</i>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span><a href="rootpath/class/nmap/nmap.html">NMAP</a></span>
+										</h3>
+									</td>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<i class="ico-os">
+												<img src="rootpath/img/os.webp" class="ico-os" />
+											</i>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span><a href="rootpath/class/pxe/pxe.html">系统自动安装脚本</a></span>
+										</h3>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -661,10 +673,10 @@ const top_menu = `
 							</h2>
 						</li>
 						<li id="nav-header-others" class="top-cat hassub" data-cat="others">
-                            <h2>
-                                <a href="javascript:void(0);">其它</a>
-                            </h2>
-                        </li>
+							<h2>
+								<a href="javascript:void(0);">其它</a>
+							</h2>
+						</li>
 					</ul>
 					<i class="jmod-nav-slider slider hidden" style="transform: translateX(0px);"></i>
 				</div>

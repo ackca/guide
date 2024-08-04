@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
 				createInstruT0("访问控制列表（ACL）", "i1");
 					createInstruT1("基本访问控制列表（Basic ACL）", "i1-1");
 						createInstruT2("基于编号");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] acl [ number ] “2000。");
 							instruArr[1] = createCmdInstruSpan("“2000。", "列表编号（‘2000~2999。）");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-2000] rule [ 5 ] { permit | deny } [ source  “192.168.1.0。 “0.0.0.255。 ]");
@@ -29,8 +29,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("基于名字");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] acl name “aclNmae。 basic");
 							instruArr[1] = createCmdInstruSpan("“aclNmae。", "acl名");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-aclName] rule [ “5。 ] { permit | deny } [ source  “192.168.1.0。 “0.0.0.255。 ]");
@@ -61,8 +60,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("基于名字");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] acl name “aclName。 ");
 							instruArr[1] = createCmdInstruSpan("“aclNmae。", "acl名");
 							instruArr[2] = createCmdSpan("[R1-acl-adv-aclName] rule [ “5。 ] { permit | deny } { “tcp。 | “6。 } [ source  “192.168.1.0。 “0.0.0.255。 ] [ source-port { eq | qt | lt | range } “源端口号。 ] [ destination “172.16.0.0。 “0.0.255.255。 ] [ destination-port { “80。 | “http。 }]");
@@ -85,8 +83,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("应用于访问控制列表（在原有列表后加 time-range {时间列表名}）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-acl-adv-3000] “rule permit ip。 time-range “aclTime。");
 							instruArr[1] = createCmdInstruSpan("“rule permit ip。", "ACL条目");
 							instruArr[2] = createCmdInstruSpan("“aclTime。", "时间列表名");
@@ -94,7 +91,7 @@
 
 					createInstruT1("二层访问控制列表（L2 ACL）", "i1-4");
 						createInstruT2("基于编号");
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] acl [ number ] “4000。");
 							instruArr[1] = createCmdInstruSpan("“4000。", "列表编号（‘4000~4999。）");
 							instruArr[2] = createCmdSpan("[R1-acl-basic-4000] rule [ “5。 ] { permit | deny } [ “协议。 ][ source-mac “000c-29a3-0000。 “ffff-ffff-0000。 destination-mac “001e-e9a3-7d65。 “ffff-ffff-ffff。 ]");
@@ -103,12 +100,11 @@
 							instruArr[5] = createCmdInstruSpan("“000c-29a3-0000。", "源MAC地址");
 							instruArr[6] = createCmdInstruSpan("“ffff-ffff-0000。", "通配符掩码");
 							instruArr[7] = createCmdInstruSpan("“001e-e9a3-7d65。", "目的MAC地址");
-							instruArr[7] = createCmdInstruSpan("“ffff-ffff-ffff。", "通配符掩码");
+							instruArr[8] = createCmdInstruSpan("“ffff-ffff-ffff。", "通配符掩码");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("基于名字");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] acl name “aclNmae。 link");
 							instruArr[1] = createCmdInstruSpan("“aclNmae。", "acl名");
 							instruArr[2] = createCmdSpan("[R1-L2-aclName] rule [ “5。 ] { permit | deny } [ “协议。 ][ source-mac “000c-29a3-0000。 “ffff-ffff-0000。 destination-mac “001e-e9a3-7d65。 “ffff-ffff-ffff。 ]");
@@ -127,8 +123,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("控制远程登录");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] user-interface vty “0。 [ “4。 ]");
 							instruArr[1] = createCmdSpan("[R1-ui-vty0] acl “2000。 { inbound | outbound }");
 							instruArr[2] = createCmdInstruSpan("“2000。", "列表编号");
@@ -138,8 +133,7 @@
 
 					createInstruT1("ACL调整", "i1-6");
 						createInstruT2("调整每个ACL条目的编号间隔");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-acl-adv-3000] step “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "编号间隔");
 							createCmdInstruT2(instruArr, "huawei");
@@ -168,8 +162,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置全局超时时间");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] traffic-reflect timeout “6000。");
 							instruArr[1] = createCmdInstruSpan("“6000。", "全局超时时间，单位 秒");
 							instruArr[2] = createCmdInstruSpan("全局和接口下均设置超时时间，接口设置优先");
@@ -178,8 +171,7 @@
 				createInstruT0("网络地址转化（NAT）", "i2");
 					createInstruT1("均在外网接口配置");
 					createInstruT1("一对一的转换（静态NAT）", "i2-1");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat static global “60.1.1.2。 inside “192.168.10.1。");
 						instruArr[1] = createCmdInstruSpan("“60.1.1.2。", "外网地址");
 						instruArr[2] = createCmdInstruSpan("“192.168.10.1。", "内网地址");
@@ -195,8 +187,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("实现PAT的转换");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat outbound “2000。");
 							instruArr[1] = createCmdInstruSpan("“2000。", "acl号");
 							createCmdInstruT2(instruArr, "huawei");
@@ -212,8 +203,7 @@
 
 					createInstruT1("多对多的转换（动态NAT）", "i2-4");
 						createInstruT2("定义外网地址池");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] nat address-group “1。 “60.1.1.10。 “60.1.1.50。");
 							instruArr[1] = createCmdInstruSpan("“1。", "地址池编号");
 							instruArr[2] = createCmdInstruSpan("“60.1.1.1。", "外网起始地址");
@@ -228,8 +218,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("实现NAT的转换");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] nat outbound “2000。 address-group “1。 no-pat");
 							instruArr[1] = createCmdInstruSpan("“2000。", "acl号");
 							instruArr[2] = createCmdInstruSpan("“1。", "地址池编号");
@@ -254,7 +243,7 @@
 							createInstruT3("两端设备均要配置，且‘本地的对端标识符。要与‘对端的本地标识符。一致");
 
 							createInstruT3("全局启用BFD");
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -275,8 +264,7 @@
 								createInstruAllBottomT3("多跳检测时：只写IP，且不能使用组播");
 
 							createInstruT3("配置本地标识符");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bfd-session-a2b] discriminator local “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "本地标识符");
 								createCmdInstruT3(instruArr, "huawei");
@@ -287,8 +275,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("启用这个BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R2-bfd-session-a2b] commit");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -308,15 +295,13 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("配置本地标识符");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bfd-session-a2b] discriminator local “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "本地标识符");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("启用这个BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R2-bfd-session-a2b] commit");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -342,8 +327,7 @@
 								createInstruAllTopT3("本地检测时间内收不到对端的BFD包，则BFD session DOWN");
 
 							createInstruT3("配置会话关联恢复延时");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bfd-session-a2b] wtr  “1。");
 								instruArr[1] = createCmdInstruSpan("“1。", "当BFD会话由down转化为up后，向联动协议（如静态路由）发送up的延时，单位分钟，默认为0（立即up）");
 								createCmdInstruT3(instruArr, "huawei");
@@ -361,15 +345,13 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置测试协议");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-nqa-admin-test] test-type “icmp。");
 							instruArr[1] = createCmdInstruSpan("“icmp。", "测试协议，之后配置的均以icmp为例");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置测试的目的地址");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-nqa-admin-test] destination-address ipv4 “192.168.10.1。");
 							instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "目的地址");
 							createCmdInstruT2(instruArr, "huawei");
@@ -397,8 +379,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置测试源接口");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-nqa-admin-test] source-interface “g0/0/0。");
 							instruArr[1] = createCmdInstruSpan("“g0/0/0。", "源接口名");
 							createCmdInstruT2(instruArr, "huawei");
@@ -414,8 +395,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("立即启用NQA测试");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-nqa-admin-test] start now");
 							createCmdInstruT2(instruArr, "huawei");
 

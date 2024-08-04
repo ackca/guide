@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -29,14 +29,14 @@
 
 					createInstruAllTopT0("终端如何获得地址及其它信息由 ICMPv6的RA 报文中3个标志位控制，关系如下：<br />");
 
-					var tHeader = [
+					let tHeader = [
 						"标志位A",
 						"标志位O",
 						"标志位M",
 						"状态",
 						"说明",
 					];
-					var tBody = [
+					let tBody = [
 						["A=1", "O=0", "M=0", "SLAAC（无状态自动配置）", "仅通过RA获得的信息，不通过DHCPv6获得信息"],
 						["A=1", "O=1", "M=0", "Stateless DHCPv6", "通过RA获得的信息，再通过DHCPv6获得其它信息"],
 						["A=0", "-", "M=1", "Stateful DHCPv6", "仅从RA中获取网关信息，其它信息通过DHCPv6获得"],
@@ -93,8 +93,6 @@
 						["13", "Relay-Reply", "-", "DHCPv6服务器向中继代理发送Relay-Reply报文转发响应报文。"],
 					];
 					createHLTableT0(1100, tHeader, tBody, "tV6V4");
-
-
 			</script>
 
 			<br /><br /><br /><br /><br /><br /><br />

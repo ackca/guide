@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -53,7 +53,7 @@
 						"ICMP通用协议"
 					);
 
-					var words = `
+					let words = `
 						类型（Type）
 						由8 bits构成，用于区分不同类型的ICMP报文
 
@@ -70,12 +70,12 @@
 
 				createInstruT0("ICMPv6 报文类型","i8");
 					createInstruAllTopT0("ICMPv6报文被分为 信息类报文（类型 128~255）和 差错报文（类型 0~127），具体如下：<br />");
-						var tHeader = [
+						let tHeader = [
 							"类型",
 							"代码",
 							"说明",
 						];
-						var tBody = [
+						let tBody = [
 							["","","<b>目标不可达</b>"],
 							["","0","没有路由到达目的地"],
 							["","1","与目的地的通信由于管理被禁止"],

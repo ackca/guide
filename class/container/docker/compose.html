@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -31,7 +31,7 @@
 
 						createInstruT2("下载，软件版本参考官方文档");
 							createInstruT3("官方下载");
-								var instruArr = new Array();
+								let instruArr = new Array();
 								instruArr[0] = createLinuxCmd("curl -L \"https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
 								// instruArr[0] = createLinuxCmd("curl -L \"https:/-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose");
 
@@ -70,11 +70,10 @@
 
 				createInstruT0("yaml文件配置", "i3");
 						createInstruKeyT2("version 声明配置文件版本", "i3-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("版本配置方法：<a class='link' href='https://docs.docker.com/compose/compose-file/' target='_blank'>https://docs.docker.com/compose/compose-file/</a>");
 							createCmdInstruT2(instruArr, "docker");
-							var yaml = `
+							let yaml = `
 								version: "3.7"
 							`;
 							createYAMLT2(yaml);
@@ -91,8 +90,7 @@
 							createYAMLT2(yaml);
 
 						createInstruKeyT2("container_name 配置容器名", "i3-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("将容器名确定，而非上面的组合");
 							createCmdInstruT2(instruArr, "docker");
 							yaml = `
@@ -233,8 +231,7 @@
 
 						createInstruKeyT2("command 覆盖容器启动后默认执行的命令", "i3-11");
 							createInstruT3("例如 mysql，使用docker run方式时，配置相应参数支持中文");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("");
 								instruArr[1] = createLinuxCmd("docker run --name itachi -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Cisc0123! -d mysql \\ --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci");
 								createCmdInstruT3(instruArr, "docker");

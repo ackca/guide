@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,7 +18,7 @@
 					createInstruT1("两边配置除对端IP外一致");
 					createInstruT1("配置VPN的设备如同时配置有NAT时，在NAT匹配ACL中需要先deny感兴趣流量");
 					createInstruT1("激活IKEv1（ISAKMP），默认激活");
-						instruArr = new Array();
+						let instruArr = new Array();
 						instruArr[0] = createCmdSpan("R1(config)# crypto isakmp enable");
 						createCmdInstruT1(instruArr, "cisco");
 
@@ -29,8 +29,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置加密算法（‘des。为默认）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption { aes | des | 3des | … }");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -45,8 +44,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置DH密钥长度（‘1。为默认）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-isakmp)# group { 1 | 2 | 5 }");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -60,8 +58,7 @@
 
 					createInstruT1("<br />配置 IPsec策略（转换集）", "i2-1-3");
 						createInstruT2("创建IPsec transform");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “ccie。 { esp-aes | esp-des | esp-3des | … }  { esp-md5-hmac | esp-sha-hmac | … }");
 							instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 							instruArr[2] = createCmdInstruSpan("esp-aes | esp-des | esp-3des | …", "加密算法");
@@ -69,8 +66,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置IPsec模式");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(cfg-crypto-trans)# mode tunnel");
 							instruArr[1] = createCmdInstruSpan("默认即为tunnel可不配");
 							createCmdInstruT2(instruArr, "cisco");
@@ -85,16 +81,14 @@
 
 					createInstruT1("<br />配置crypto map", "i2-1-5");
 						createInstruT2("创建crypto map");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto map “L2L。 “1。 ipsec-isakmp");
 							instruArr[1] = createCmdInstruSpan("“L2L。", "crypto map 名");
 							instruArr[2] = createCmdInstruSpan("“1。", "编号");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置对端IP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-crypto-map)# set peer “202.100.1.2。");
 							instruArr[1] = createCmdInstruSpan("“202.100.1.2。", "对端IP");
 							createCmdInstruT2(instruArr, "cisco");
@@ -110,8 +104,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置PFS（选配，1为默认）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-crypto-map)# set pfs group { 1 | 2 | 5 }");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -122,8 +115,7 @@
 
 					createInstruT1("<br />相关查看与清理命令", "i2-1-7");
 						createInstruT2("查看IKEv1（ISAKMP）策略");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show crypto isakmp policy");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -190,8 +182,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置 IPsec策略（转换集），‘完全同普通的L2L。", "i2-2-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “ccie。 “esp-aes。  “esp-sha-hmac。");
 							instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 							instruArr[2] = createCmdInstruSpan("“esp-aes。", "加密算法");
@@ -200,16 +191,14 @@
 
 						createInstruT2("配置动态crypto map，调用转换集", "i2-2-4");
 							createInstruT3("创建动态crypto map");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto dynamic-map “dymap。 “1。");
 								instruArr[1] = createCmdInstruSpan("“dymap。", "动态crypto map名");
 								instruArr[2] = createCmdInstruSpan("“1。", "编号");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("匹配转换集");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-crypto-map)# set transform-set “ccie。");
 								instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -223,8 +212,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将静态crypto map应用于接口", "i2-2-6");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# crypto map “smap。");
 							instruArr[1] = createCmdInstruSpan("“smap。", "静态crypto map名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -272,8 +260,7 @@
 
 					createInstruT1("配置isakmp profile", "i2-3-3");
 						createInstruT2("创建isakmp profile");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto isakmp profile “ikev1-profile。");
 							instruArr[1] = createCmdInstruSpan("“ikev1-profile", "isakmp profile名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -304,16 +291,14 @@
 
 					createInstruT1("配置crypto map", "i2-3-6");
 						createInstruT2("创建crypto map");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto map “L2L。 “1。 ipsec-isakmp");
 							instruArr[1] = createCmdInstruSpan("“L2L。", "crypto map 名");
 							instruArr[2] = createCmdInstruSpan("“1。", "编号");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置对端IP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-crypto-map)# set peer “200.100.1.1。");
 							instruArr[1] = createCmdInstruSpan("“202.100.1.2。", "对端IP");
 							createCmdInstruT2(instruArr, "cisco");
@@ -341,8 +326,7 @@
 				createInstruT0("L2L IPsec VPN，IKEv2", "i2-4");
 					createInstruT1("配置IKEv2 proposal", "i2-4-1");
 						createInstruT2("创建IKEv2 proposal");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto ikev2 proposal “ikev2-proposal。");
 							instruArr[1] = createCmdInstruSpan("“ikev2-proposal。", "proposal名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -411,8 +395,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置对端对本地的认证方式");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-ikev2-profile)# authentication remote pre-share");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -448,8 +431,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置对端IP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-crypto-map)# set peer “202.100.1.2。");
 							instruArr[1] = createCmdInstruSpan("“202.100.1.2。", "对端IP");
 							createCmdInstruT2(instruArr, "cisco");
@@ -476,8 +458,7 @@
 
 					createInstruT1("相关查看命令", "i2-4-9");
 						createInstruT2("查看IKEv2 proposal");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show crypto ikev2 proposal");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -508,8 +489,7 @@
 
 					createInstruT1("配置isakmp profile", "i14-2");
 						createInstruT2("创建isakmp profile");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto isakmp profile “ikev1-profile。");
 							instruArr[1] = createCmdInstruSpan("“ikev1-profile。", "被匹配内容");
 							createCmdInstruT2(instruArr, "cisco");
@@ -538,8 +518,7 @@
 
 				createInstruT0("IPSec VPN优化配置", "i3");
 						createInstruT2("激活NAT-T（默认激活）", "i3-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto ipsec nat-transparency udp-encapsulation");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -584,8 +563,7 @@
 
 				createInstruT0("反向路由注入（RRI）", "i4");
 						createInstruT2("启用RRI");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto map “cmap。 “1。 ipsec-isakmp");
 							instruArr[1] = createCmdInstruSpan("“cmap。", "crypto map名");
 							instruArr[2] = createCmdInstruSpan("“1。", "编号");
@@ -593,8 +571,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("建议配置，为注入的路由添加一个标记，重分发进动态路由协议时方便");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-crypto-map)# set reverse-route tag “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "标记号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -607,8 +584,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("匹配被标记的注入路由");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-route-map)# match tag “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "标记号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -625,8 +601,7 @@
 
 					createInstruT1("配置tunnel", "i5-1");
 						createInstruT2("创建tunnel");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# int tunnel “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "接口号，只有本地意义，两边不必一致");
 							createCmdInstruT2(instruArr, "cisco");
@@ -644,8 +619,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置目的IP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# tunnel destination “200.1.1.1。");
 							instruArr[1] = createCmdInstruSpan("“200.1.1.1。", "对端IP地址");
 							createCmdInstruT2(instruArr, "cisco");
@@ -658,8 +632,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption “aes。");
 								instruArr[1] = createCmdInstruSpan("“aes。", "加密算法");
 								createCmdInstruT3(instruArr, "cisco");
@@ -689,8 +662,7 @@
 
 						createInstruT2("配置 IPsec策略（转换集）");
 							createInstruT3("创建IPsec transform");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “ccie。 “esp-aes。 “esp-sha-hmac。");
 								instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 								instruArr[2] = createCmdInstruSpan("“esp-aes。", "加密算法");
@@ -698,8 +670,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置为传输模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(cfg-crypto-trans)# mode transport");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -728,8 +699,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption “aes。");
 								instruArr[1] = createCmdInstruSpan("“aes。", "加密算法");
 								createCmdInstruT3(instruArr, "cisco");
@@ -759,8 +729,7 @@
 
 						createInstruT2("配置 IPsec策略（转换集）");
 							createInstruT3("创建IPsec transform");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “ccie。 “esp-aes。 “esp-sha-hmac。");
 								instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 								instruArr[2] = createCmdInstruSpan("“esp-aes。", "加密算法");
@@ -768,8 +737,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置为传输模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(cfg-crypto-trans)# mode transport");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -782,16 +750,14 @@
 
 						createInstruT2("配置crypto map");
 							createInstruT3("创建crypto map");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto map “greIPSec。 “1。 ipsec-isakmp");
 								instruArr[1] = createCmdInstruSpan("“greIPSec。", "crypto map 名");
 								instruArr[2] = createCmdInstruSpan("“1。", "编号");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置对端IP");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-crypto-map)# set peer “200.100.1.2。");
 								instruArr[1] = createCmdInstruSpan("“200.100.1.1。", "对端IP");
 								createCmdInstruT3(instruArr, "cisco");
@@ -820,8 +786,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption “aes。");
 								instruArr[1] = createCmdInstruSpan("“aes。", "加密算法");
 								createCmdInstruT3(instruArr, "cisco");
@@ -850,8 +815,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置 IPsec策略（转换集）", "i6-1-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “ccie。 “esp-aes。 “esp-sha-hmac。");
 							instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 							instruArr[2] = createCmdInstruSpan("“esp-aes。", "加密算法");
@@ -860,8 +824,7 @@
 
 						createInstruT2("配置 ipsec profile", "i6-1-4");
 							createInstruT3("创建ipsec profile");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto ipsec profile “ipsec-profile。");
 								instruArr[1] = createCmdInstruSpan("“ipsec-profile。", "ipsec profile名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -890,15 +853,13 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置目的IP");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# tunnel destination “200.1.1.1。");
 								instruArr[1] = createCmdInstruSpan("“200.1.1.1。", "对端IP地址L");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置tunnel模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# tunnel mode ipsec ipv4");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -948,8 +909,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置对端对本地的认证方式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-ikev2-profile)# authentication remote pre-share");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -993,15 +953,13 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置目的IP");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# tunnel destination “200.1.1.1。");
 								instruArr[1] = createCmdInstruSpan("“200.1.1.1。", "对端IP地址L");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置tunnel模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# tunnel mode ipsec ipv4");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1012,8 +970,7 @@
 
 				createInstruT0("PPTP（Point to Point Tunneling Protocol）", "i7");
 					createInstruT1("启用VPDN", "i7-1");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# vpdn enable");
 						createCmdInstruT1(instruArr, "cisco");
 
@@ -1024,8 +981,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("接受拨入");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-vpdn)# accept-dialin");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1053,8 +1009,7 @@
 
 					createInstruT1("<br />配置虚模板", "i7-5");
 						createInstruT2("建立虚模板，拨入VPN的用户采用模板中的配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# interface virtual-template “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "虚模板编号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -1108,8 +1063,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("无需认证");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-vpdn)# no l2tp tunnel authentication");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1128,8 +1082,7 @@
 
 					createInstruT1("<br />配置虚模板", "i8-5");
 						createInstruT2("建立虚模板，拨入VPN的用户采用模板中的配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# interface virtual-template “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "虚模板编号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -1156,8 +1109,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption 3des");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1186,8 +1138,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置为传输模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(cfg-crypto-trans)# mode transport");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1200,8 +1151,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("调用转换集");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-crypto-map)# set transform-set “tran。");
 								instruArr[1] = createCmdInstruSpan("“tran。", "转换集名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1217,8 +1167,7 @@
 					createInstruT1("HUB节点（除IP地址、源IP地址外、映射其它HUB地址外，所有节点一致）", "i9-1");
 						createInstruT2("配置mGRE");
 							createInstruT3("创建tunnel接口");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config)# int Tunnel “0。");
 								instruArr[1] = createCmdInstruSpan("“0。", "接口号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1236,8 +1185,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置tunnel模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config-if)# tunnel mode gre multipoint");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1247,8 +1195,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config-if)# ip mtu 1400");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1259,8 +1206,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("动态接收组播映射");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config-if)# ip nhrp map multicast dynamic");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1277,8 +1223,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("手动映射组播到其它HUB节点");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config-if)# ip nhrp map multicast “61.128.1.2。");
 								instruArr[1] = createCmdInstruSpan("“61.128.1.2。", "物理接口IP");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1303,8 +1248,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置tunnel模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("spoke(config-if)# tunnel mode gre multipoint");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1314,8 +1258,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("spoke(config-if)# ip mtu 1400");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1337,8 +1280,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("手动映射组播到HUB节点，有多个HUB则配置多个映射");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("spoke(config-if)# ip nhrp map multicast “61.128.1.1。");
 								instruArr[1] = createCmdInstruSpan("“61.128.1.1。", "物理接口IP");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1395,8 +1337,7 @@
 
 						createInstruT2("配置 IPsec策略（转换集）", "i17-6-3");
 							createInstruT3("创建转换集");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “ccie。 “esp-aes。 “esp-sha-hmac。");
 								instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 								instruArr[2] = createCmdInstruSpan("“esp-aes。", "加密算法");
@@ -1404,8 +1345,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置为传输模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(cfg-crypto-trans)# mode transport");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1430,8 +1370,7 @@
 					createInstruT1("第二阶段 动态路由协议优化", "i9-4");
 						createInstruT2("RIP");
 							createInstruT3("‘HUB节点：。关闭水平分割");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Hub(config)# int tunnel “0。");
 								instruArr[1] = createCmdInstruSpan("“0。", "接口号");
 								instruArr[2] = createCmdSpan("hub(config-if)# no ip split-horizon");
@@ -1447,8 +1386,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("‘HUB节点：。关闭EIGRP的下一跳指向自己");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config-if)# no ip next-hop-self eigrp “1。");
 								instruArr[1] = createCmdInstruSpan("“1。", "eigrp as号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1461,8 +1399,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("‘SPOKE节点：。将优先级调为0，使其只能成为DROTHER，HUB节点则成为DR(BDR)");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("spoke(config-if)# ip ospf priority 0");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1486,8 +1423,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("由于DMVPN支持树状结构，第一层的SPOKE有可能是下一层的HUB，所以SPOKE也要配置nhrp转发，如果是最底层的纯Spoke，可以不配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("spoke(config-if)# ip nhrp redirect");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1503,8 +1439,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看密钥");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1# show crypto key mypubkey rsa");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1517,16 +1452,14 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("导入key");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-2(config)# crypto key import rsa “GETVPN-KEY。 pem terminal “cisco123");
 								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。", "密钥名");
 								instruArr[2] = createCmdInstruSpan("“3des。", "加密算法");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("将可导出key转化为不可导出（单向）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1(config)# crypto key move rsa “GETVPN-KEY。 non-exportable");
 								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。", "密钥名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1576,8 +1509,7 @@
 
 
 						createInstruT2("如果使用组播rekey，需要配置组播的列表", "i10-1-5");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("KS-1(config)# ip access-list extended “rekey-multicast-acl。");
 							instruArr[1] = createCmdInstruSpan("“rekey-multicast-acl。", "acl名");
 							instruArr[2] = createCmdSpan("KS-1(config-ext-nacl)# permit udp host “10.1.1.1。 eq 848 host “239.0.1.2。 eq 848");
@@ -1586,8 +1518,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置转换集", "i10-1-6");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("KS-1(config)# crypto ipsec transform-set “ccie。 “esp-aes。 “esp-sha-hmac。");
 							instruArr[1] = createCmdInstruSpan("“ccie。", "转换集名");
 							instruArr[2] = createCmdInstruSpan("“esp-aes。", "加密算法");
@@ -1596,8 +1527,7 @@
 
 						createInstruT2("配置 ipsec profile", "i10-1-7");
 							createInstruT3("创建ipsec profile");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1(config)# crypto ipsec profile “ipsec-profile。");
 								instruArr[1] = createCmdInstruSpan("“ipsec-profile。", "ipsec profile名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1620,8 +1550,7 @@
 
 						createInstruT2("配置rekey（在GDOI组下配置）", "i10-1-9");
 							createInstruT3("配置为本地服务器");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1(config-gdoi-group)# server local");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1646,15 +1575,13 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("定义使用‘单播rekey。");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1(gdoi-local-server)# rekey transport unicast");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置KS备份（在GDOI组下的server local配置）", "i10-1-10");
 							createInstruT3("启用备份");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1(gdoi-local-server)# redundancy");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1669,8 +1596,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看KS备份");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS-1# show crypto gdoi ks coop");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1718,8 +1644,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置认证方式，预共享密钥");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GM-1(config-isakmp)# authentication pre-share");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1731,8 +1656,7 @@
 
 						createInstruT2("配置GDOI组", "i10-2-3");
 							createInstruT3("创建GDOI组");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GM-1(config)# crypto gdoi group “gdoigroup。");
 								instruArr[1] = createCmdInstruSpan("“gdoigroup。", "组名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1755,8 +1679,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("匹配gdoi组");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GM-1(config-crypto-map)# set group “gdoigroup。");
 								instruArr[1] = createCmdInstruSpan("“gdoigroup。", "gdoi组名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1786,8 +1709,7 @@
 					createInstruT1("相关查看命令", "i10-3");
 						createInstruT2("KS端", "i10-3-1");
 							createInstruT3("查看主备KS及其相关信息");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("KS# show crypto gdoi ks coop");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1806,8 +1728,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看IPSec sa");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GM# show crypto gdoi ipsec sa");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1833,8 +1754,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置DH密钥长度");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config-isakmp)# group ‘2。");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1844,8 +1764,7 @@
 
 						createInstruT2("配置组名、密码，及其它相关策略", "i11-1-2");
 							createInstruT3("创建组");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# crypto isakmp client configuration group “EzVPN-group。");
 								instruArr[1] = createCmdInstruSpan("“EzVPN-group。", "组名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1861,8 +1780,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("允许客户端保存密码");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config-isakmp-group)# save-password");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1883,8 +1801,7 @@
 
 						createInstruT2("启用AAA，并配置线下保护", "i11-1-3");
 							createInstruT3("启用AAA");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# aaa new-model");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1903,8 +1820,7 @@
 
 						createInstruT2("配置xauth的用户名和密码", "i11-1-4");
 							createInstruT3("创建本地认证策略");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# aaa authentication login “EzVPN-xauth。 local");
 								instruArr[1] = createCmdInstruSpan("“EzVPN-xauth。", "认证策略名称");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1917,8 +1833,7 @@
 
 						createInstruT2("授权策略使用本地策略", "i11-1-5");
 							createInstruT3("创建本地授权策略");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# aaa authorization network “EzVPN-author。 local");
 								instruArr[1] = createCmdInstruSpan("“EzVPN-author。", "授权策略名称");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1945,8 +1860,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("激活mode config");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# client configuration address respond");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1959,16 +1873,14 @@
 
 						createInstruT2("配置动态crypto map", "i11-1-8");
 							createInstruT3("创建动态crypto map");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# crypto dynamic-map “dymap。　“1。");
 								instruArr[1] = createCmdInstruSpan("“dymap。", "动态crypto map名");
 								instruArr[2] = createCmdInstruSpan("“1。", "编号");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("匹配转换集");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config-crypto-map)#set transform-set “tran。");
 								instruArr[1] = createCmdInstruSpan("“tran。", "转换集名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1987,8 +1899,7 @@
 
 						createInstruT2("相关查看命令", "i11-1-11");
 							createInstruT3("查看连接的客户");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW# show crypto session");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2001,8 +1912,7 @@
 
 						createInstruT2("配置ipsec client", "i11-2-1");
 							createInstruT3("创建ipsec client");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Client(config)# crypto ipsec client ezvpn “EzVPN-Client。");
 								instruArr[1] = createCmdInstruSpan("“EzVPN-Client。", "client名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -2021,8 +1931,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置客户端模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# mode { client | network-extension | network-plus }");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2039,8 +1948,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("外部接口应用ipsec client", "i11-2-2");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezvpn “EzVPN-Client。 outside");
 							instruArr[1] = createCmdInstruSpan("“EzVPN-Client。", "client名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -2061,8 +1969,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("查看Easy VPN状态", "i11-2-5");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Client# show crypto ipsec client ezvpn");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -2089,8 +1996,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置DH密钥长度");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config-isakmp)# group ‘2。");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2116,8 +2022,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("允许客户端保存密码");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config-isakmp-group)# save-password");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2133,8 +2038,7 @@
 
 						createInstruT2("启用AAA，并配置线下保护", "i12-1-3");
 							createInstruT3("启用AAA");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# aaa new-model");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2153,8 +2057,7 @@
 
 						createInstruT2("配置xauth的用户名和密码", "i12-1-4");
 							createInstruT3("创建本地认证策略");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# aaa authentication login “dvti-xauth。 local");
 								instruArr[1] = createCmdInstruSpan("“dvti-xauth。", "认证策略名称");
 								createCmdInstruT3(instruArr, "cisco");
@@ -2167,8 +2070,7 @@
 
 						createInstruT2("授权策略使用本地策略", "i12-1-5");
 							createInstruT3("创建本地授权策略");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# aaa authorization network “dvti-author。 local");
 								instruArr[1] = createCmdInstruSpan("“dvti-author。", "授权策略名称");
 								createCmdInstruT3(instruArr, "cisco");
@@ -2200,8 +2102,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("激活mode config");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(conf-isa-prof)# client configuration address respond");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2214,8 +2115,7 @@
 
 						createInstruT2("配置ipsec profile", "i12-1-8");
 							createInstruT3("创建ipsec profile");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config)# crypto ipsec profile “ipsec-profile。");
 								instruArr[1] = createCmdInstruSpan("ipsec-profile。", "ipsec-profile名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -2248,8 +2148,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置虚模版模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("GW(config-if)# tunnel mode ipsec ipv4");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2277,8 +2176,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置自动连接");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# connect auto");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2289,8 +2187,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置模式为网络扩展");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Client(config-crypto-ezvpn)# mode network-extension");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2311,8 +2208,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("外部接口应用ipsec client", "i12-2-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Client(config-if)# crypto ipsec client ezvpn “dvti-client。 outside");
 							instruArr[1] = createCmdInstruSpan("“dvti-client。", "client名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -2335,8 +2231,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将http自动重定向到https");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-gateway)# http-redirect port 80");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -2346,8 +2241,7 @@
 
 					createInstruT1("启用AAA，并配置线下保护", "i13-2");
 						createInstruT2("启用AAA");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# aaa new-model");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -2365,16 +2259,14 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("配置用户名密码", "i13-3");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# username “ssluser。 password “cisco。");
 						instruArr[1] = createCmdInstruSpan("“ssluser。", "用户名");
 						instruArr[2] = createCmdInstruSpan("“cisco。", "密码");
 						createCmdInstruT1(instruArr, "cisco");
 
 					createInstruT1("<br />配置本地认证策略", "i13-4");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# aaa authentication login “sslvpn。 local");
 						instruArr[1] = createCmdInstruSpan("“sslvpn。", "认证策略名");
 						createCmdInstruT1(instruArr, "cisco");
@@ -2396,8 +2288,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("启用context");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# inservice");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -2423,8 +2314,7 @@
 
 						createInstruT2("配置policy group");
 							createInstruT3("创建policy group");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-webvpn-context)# policy group “gp。");
 								instruArr[1] = createCmdInstruSpan("“gp。", "policy group 名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -2435,8 +2325,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("隐藏地址栏");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-webvpn-group)# hide-url-bar");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -2461,8 +2350,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关联到policy group");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# policy group “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp", "policy group名");
 							instruArr[2] = createCmdSpan("R1(config-webvpn-group)# port-forward “inside-telnet。");
@@ -2470,8 +2358,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将policy group关联到context");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# default-group-policy “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp。", "policy group名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -2491,16 +2378,14 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关联IP地址池");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-group)# svc address-pool “sslpool。 [ netmask “255.255.255.0。 ]");
 							instruArr[1] = createCmdInstruSpan("“sslpool。", "IP地址池名");
 							instruArr[2] = createCmdInstruSpan("[ netmask “255.255.255.0。 ]", "子网掩码，省略按标准的主类地址处理");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("保持客户端在电脑（不配置采用默认的，下线后会卸载）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-group)# svc keep-client-installed");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -2522,8 +2407,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("将policy group关联到context");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# default-group-policy “gp。");
 							instruArr[1] = createCmdInstruSpan("“gp。", "policy group名");
 							createCmdInstruT2(instruArr, "cisco");

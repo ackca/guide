@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -50,15 +50,15 @@
 					createConfigImgT1("DHCPv4/DHCP端状态迁移图", "DHCPv4端状态迁移图");
 
 				createInstruT0("DHCP协议结构", "i3");
-						createProtocolStructT1(
-							"1000",
-							"860",
-							"15480",
-							"DHCPv4/DHCP",
-							"DHCPv4协议"
-						);
+					createProtocolStructT0(
+						"1000",
+						"860",
+						"15480",
+						"DHCPv4/DHCP",
+						"DHCPv4协议"
+					);
 
-					var words = `
+					let words = `
 						操作码（Operation）
 						由8 bits构成，表示报文的类型<br />　1：客户端请求报文<br />　2：服务器响应报文
 
@@ -137,12 +137,12 @@
 							createInstruT2("Message Type(53)", "i4-2-1");
 								createInstruAllTopT2("确定DHCP报文类型的选项，选项内容为报文类型对应的编号，对应关系如下：<br />");
 
-								var tHeader = [
+								let tHeader = [
 									"报文<br />类型",
 									"Message<br />Type",
 									"说明",
 								];
-								var tBody = [
+								let tBody = [
 									["discover", "1", "因为DHCP客户端在请求IP地址时并不知道DHCP服务器的位置，因此DHCP客户端会在本地网络以广播方式发送discover请求报文，以发现网络中的DHCP服务器，所有收到discover报文的DHCP服务器都会发送应答报文。"],
 									["offer", "2", "DHCP服务器收到discover报文后，就会在所配置的地址中查找一个合适的IP地址，加上相应的租约期限和其它配置信息，构造一个offer报文，发送给DHCP客户端，告知用户本服务器可以为其提供的IP地址，但这个报文只是告诉DHCP客户端可以提供IP地址，最终还需要客户端检测该IP地址是否重复。"],
 									["request", "3", "DHCP客户端可能会收到很多offer请求报文，所以必须在这些应答中选择一个。通常是选择第一个offer应该报文的服务器作为自己的目标服务器，并向该服务器发送一个广播的request请求报文，通告选择的服务器，希望获得所分配的IP地址。<br />DHCP客户端在成功获取IP地址后，在地址使用租期过去1/2，也会向DHCP服务器发送单播request请求报文请求续期，发果没有收到ack报文，在租期过去7/8时，会再次发送广播的request请求报文以请求续延租约"],

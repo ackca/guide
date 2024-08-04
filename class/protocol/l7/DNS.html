@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -68,13 +68,13 @@
 				createInstruT0("DNS报文格式", "i2");
 					createInstruT1("DNS报文格式总览", "i2-1");
 					createProtocolStructT1(
-							"1315",
-							"750",
-							"750",
-							"DNS/DNS",
-							"DNS协议",
-							"DNS"
-						);
+						"1315",
+						"750",
+						"750",
+						"DNS/DNS",
+						"DNS协议",
+						"DNS"
+					);
 
 					createInstruT1("报文中域名表示方式", "i2-2");
 						createInstruAllTopT1("下图即域名 www.jd.com 的表示方式，");
@@ -84,12 +84,12 @@
 
 
 					createInstruT1("查询 / 响应 报文中类型取值含义<br />", "i2-3");
-						var tHeader = [
+						let tHeader = [
 							"类型",
 							"编号",
 							"内容",
 						];
-						var tBody = [
+						let tBody = [
 							["A", "1", "主机名的IPv4地址"],
 							["NS", "2", "域名服务器"],
 							["CNAME", "5", "主机别名对应的规范名称"],
@@ -121,7 +121,7 @@
 							"DNS_header"
 						);
 
-						var words = `
+						let words = `
 							标识（ID：Identification）
 							由16 bits构成，由客户端设置，对同一个请求，多次迭代中保持不变，但递归查询会改变
 
@@ -168,7 +168,6 @@
 
 
 					createInstruT1("<br /><br />DNS报文回答、授权、额外信息字段说明<br />", "i2-6");
-						document.writeln("");
 						createProtocolStructT1(
 							"815",
 							"400",
@@ -195,13 +194,13 @@
 							资源数据长度（Data Length）
 							由16 bits构成，表示之后的资源数据长度，单位 字节
 
-							资源数据长度（Data Length）
-							长度可变，根据不同的响应类型，确定内容，如：A记录则为对应的IPv4地址
+							资源数据（Data）
+							长度可变，根据不同的响应类型，确定内容，如：A记录为对应的IPv4地址，MX记录中域名及域名的优先级
 						`;
 						createProtocolExplainT0(words, -400, "DNS_other");
 
 					createInstruT0("简单解析实例<br />", "i4");
-						createConfigImgT0("DNS/DNS_packet$1~2");
+						createConfigImgT0("DNS/DNS_packet$1~3");
 
 					createInstruT0("一个复杂的DNS解析实例", "i5");
 						createInstruT1("DNS解析过程_图示", "i5-1");

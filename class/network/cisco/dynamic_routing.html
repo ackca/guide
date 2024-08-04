@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,8 +17,7 @@
 				createInstruT0("路由选择信息协议（RIP）", "i4");
 					createInstruT1("基本配置", "i4-1");
 						createInstruT2("启用RIP");
-							instruArr = null;
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1(config)# router rip");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -34,8 +33,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭自动汇总");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-route)# no auto-summary");
 							instruArr[1] = createCmdInstruSpan("默认‘开启。自动汇总");
 							createCmdInstruT2(instruArr, "cisco");
@@ -57,8 +55,7 @@
 
 						createInstruT2("设置被动接口");
 							createInstruAllTopT2("阻止以组播和广播形式发送的路由更新消息从该接口发送，单播更新不影响，任何形式的接收更新无影响<br />");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# passive-interface { “f0/0。 | default }");
 							instruArr[1] = createCmdInstruSpan("“f0/0。", "具体接口");
 							instruArr[2] = createCmdInstruSpan("default", "所有启用rip接口");
@@ -66,22 +63,19 @@
 
 						createInstruT2("RIP使用单播发送更新");
 							createInstruAllTopT2("使用被动接口和单播更新实现RIP的纯单播更新，一般用于MA网络(多路访问网络)，可单向配置<br />");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “192.168.12.2。");
 							instruArr[1] = createCmdInstruSpan("“192.168.12.2。", "邻居IP地址");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("使用广播发送 RIP V2 的更新");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip rip v2-broadcast");
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("边界（出口）路由器通告默认路由", "i4-2");
 						createInstruT2("方法一 （需要有设置好默认静态路由）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# redistribute static");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -120,8 +114,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("启用认证（接口启用）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip rip authentication mode { text | md5 }");
 							instruArr[1] = createCmdInstruSpan("text", "明文认证");
 							instruArr[2] = createCmdInstruSpan("md5", "密文认证");
@@ -132,8 +125,7 @@
 				createInstruT0("增强内部网关路由协议（EIGRP）", "i5");
 					createInstruT1("基本配置", "i5-1");
 						createInstruT2("启用EIGRP，并定义自治系统编号");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# router eigrp “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "自治系统编号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -143,8 +135,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭自动汇总");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-route)# no auto-summary");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -157,23 +148,20 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置被动接口，EIGRP报文均既不能接也不能发");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# passive-interface { “s0/0。 | default }");
 							instruArr[1] = createCmdInstruSpan("“s0/0。", "接口号，对应接口设置为被动接口");
 							instruArr[2] = createCmdInstruSpan("default", "所有接口均设置为被动接口");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭水平分割");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-subif)# no ip split-horizon [ eigrp “10。 ]");
 							instruArr[1] = createCmdInstruSpan("“10。", "自治系统号");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("显示邻居列表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show ip eigrp neighbors");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -184,8 +172,7 @@
 
 					createInstruT1("边界（出口）路由器通告默认路由", "i5-2");
 						createInstruT2("方法一（需要有设置好默认静态路由）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config–router)# redistribute static");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -208,15 +195,13 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("宣告该主类地址");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# network “60.0.0.0。");
 								instruArr[1] = createCmdInstruSpan("“60.0.0.0。", "主类地址");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("方法四 边界路由器连接内网接口的通过使用路由聚合");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip summary-address eigrp “10。 0.0.0.0 0.0.0.0");
 							instruArr[1] = createCmdInstruSpan("“10。", "自治系统号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -233,8 +218,7 @@
 
 					createInstruT1("<br />路径控制", "i5-4");
 						createInstruT2("非等代价负载均衡");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# variance “4。");
 							instruArr[1] = createCmdInstruSpan("“4。", "variance值");
 							createCmdInstruT2(instruArr, "cisco");
@@ -250,8 +234,7 @@
 
 					createInstruT1("EIGRP认证（只支持密文认证）", "i5-5");
 						createInstruT2("设置认证信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# key chain “R1key。")
 							instruArr[1] = createCmdInstruSpan("“R1key。", "认证名称");
 							instruArr[2] = createCmdSpan("R1(config-keychain)# key “10。");
@@ -259,8 +242,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("创建密钥链");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-keychain-key)# key-string “cisco。");
 							instruArr[1] = createCmdInstruSpan("“cisco。", "密码");
 							createCmdInstruT2(instruArr, "cisco");
@@ -288,8 +270,7 @@
 				createInstruT0("开放式最短路径优先（OSPF）", "i6");
 					createInstruT1("基本配置", "i6-1");
 						createInstruT2("启用OSPF");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# router ospf “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "ospf进程号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -303,23 +284,20 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("方法二：接口宣告");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# ip ospf “1。 area “0。");
 								instruArr[1] = createCmdInstruSpan("“1。", "ospf进程号");
 								instruArr[2] = createCmdInstruSpan("“0。", "区域号");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("指定router-id");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R4(config-router)# router-id “1.1.1.1。");
 							instruArr[1] = createCmdInstruSpan("“1.1.1.1。", "Router ID，IPv4地址形式");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("忽略MTU不一致，建立OSPF邻接关系，链路一端设置即可，最好两端均设置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip ospf mtu-ignore");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -331,8 +309,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将环回口IP还原为设置的子网掩码（默认为/32）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip ospf network point-to-point");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -374,8 +351,7 @@
 							createInstruAllBottomT2("默认为100Mbps/链路带宽(Mbps)，配置修改公式中的分子值，当网络中带宽大于100Mbps时修改，将分子值改为链路最大带宽");
 
 						createInstruT2("重启OSPF进程（设置后Router Id后，需重启OSPF）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# clear ip ospf process");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -391,8 +367,7 @@
 
 					createInstruT1("多区域配置", "i6-2");
 						createInstruT2("区域边界路由器（ABR）：汇总区域路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# area “1。 range “172.16.0.0。 “255.255.248.0。 [ cost “50。 | not-advertise ]");
 							instruArr[1] = createCmdInstruSpan("“1。", "区域ID");
 							instruArr[2] = createCmdInstruSpan("“172.16.0.0。", "区域汇总地址");
@@ -406,8 +381,7 @@
 							//createInstruAll("ABR_01上汇总为area 1 range ……，ABR_02上汇总为area 0 range ……");
 
 						createInstruT2("自治系统边界路由器（ASBR）：汇总外部路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# summary-address “172.16.8.0。 “255.255.248.0。 [ not-advertise ]");
 							instruArr[1] = createCmdInstruSpan("“172.16.8.0。", "汇总地址");
 							instruArr[2] = createCmdInstruSpan("“255.255.248.0。", "汇总掩码");
@@ -416,16 +390,14 @@
 
 						createInstruT2("末节（完全末节）区域");
 							createInstruT3("区域边界路由器的设置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# area “2。 stub [ no-summary ]");
 								instruArr[1] = createCmdInstruSpan("“2。", "区域号");
 								instruArr[2] = createCmdInstruSpan("no summary", "完全末节区域，省略为末节区域");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("区域内部路由器的设置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# area “2。 stub");
 								instruArr[1] = createCmdInstruSpan("“2。", "区域号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -450,8 +422,7 @@
 								createInstruAllBottomT3("<br />本NSSA区域内为类型为N，其它区域为类型为E");
 
 							createInstruT3("区域内部路由器的设置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# area “2。 nssa");
 								instruArr[1] = createCmdInstruSpan("“2。", "区域号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -465,8 +436,7 @@
 					createInstruT1("OSPF认证", "i6-3");
 						createInstruT2("链路认证（链路两端均要配置）");
 							createInstruT3("明文认证");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# ip ospf authentication-key “cisco。");
 								instruArr[1] = createCmdInstruSpan("“cisco。", "密码");
 								instruArr[2] = createCmdSpan("R1(config-if)# ip ospf authentication");
@@ -510,8 +480,7 @@
 							createInstruT3("当area 0做了认证时，虚链路也要做认证才有效");
 
 							createInstruT3("明文认证");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R3(config-router)# area “1。 virtual-link “1.1.1.1。 authentication-key “cisco。");
 								instruArr[1] = createCmdSpan("R3(config-router)# area “1。 virtual-link “1.1.1.1。 authentication");
 								instruArr[2] = createCmdInstruSpan("“1。", "虚链路穿越区域的区域号");
@@ -528,8 +497,7 @@
 
 					createInstruT1("相关查看命令", "i6-4");
 						createInstruT2("查看 ospf 状态");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show ip ospf");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -543,8 +511,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看拓扑数据库");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show ip ospf database");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -559,8 +526,7 @@
 				createInstruT0("中间系统到中间系统（IS-IS）", "i7");
 					createInstruT1("基本配置", "i7-1");
 						createInstruT2("启用IS-IS");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# router isis");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -575,8 +541,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("宣告网络（接口宣告）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip router isis");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -595,8 +560,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("修改接口优先级");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# isis priority “100。 [ level-1 | level-2 ]");
 							instruArr[1] = createCmdInstruSpan("“10。", "接口优先级");
 							createCmdInstruT2(instruArr, "cisco");
@@ -614,8 +578,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("接口配置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# no isis hello padding");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -634,8 +597,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置IS-IS度量值类型");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# metric-style { narrow | wide | transition }");
 							instruArr[1] = createCmdInstruSpan("narrow", "窄度量值");
 							instruArr[2] = createCmdInstruSpan("wide", "宽度量值");
@@ -644,16 +606,14 @@
 
 					createInstruT1("查看与清理", "i7-2");
 						createInstruT2("查看邻居");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show clns neighbors");
 							instruArr[1] = createCmdSpan("R1# show clns is-neighbors");
 							instruArr[2] = createCmdSpan("R1# show isis neighbors [detail]");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看IS-IS信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show isis database [ verbose ]");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -683,8 +643,7 @@
 
 						createInstruT2("老版，均为明文认证");
 							createInstruT3("链路认证");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# isis password “cisco。");
 								instruArr[1] = createCmdInstruSpan("“cisco。", "认证密钥");
 								createCmdInstruT3(instruArr, "cisco");
@@ -700,8 +659,7 @@
 				createInstruT0("边界网关协议（BGP）", "i8");
 					createInstruT1("基本配置", "i8-1");
 						createInstruT2("启用BGP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# router bgp “65510。");
 							instruArr[1] = createCmdInstruSpan("“65510。", "自治系统号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -741,8 +699,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置通过BGP发送明细路由表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# network “1.1.1.0。 mask “255.255.255.0。");
 							instruArr[1] = createCmdInstruSpan("“1.1.1.0。", "路由前缀");
 							instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "路由掩码");
@@ -750,16 +707,14 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置通过BGP发送路由表（汇总通告）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# network “1.0.0.0。");
 							instruArr[1] = createCmdInstruSpan("“1.0.0.0。", "主类地址段");
 							instruArr[2] = createCmdInstruSpan("路由表中所有符合该主类地址段的路由表都会发送");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将从其它EBGP对等体的路由传送给IBGP对等体（组）时，把下一跳改为本地对等体的更新源");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor { “192.168.12.1。 | “IBGP。 } next-hop-self");
 							instruArr[1] = createCmdInstruSpan("“192.168.12.1。", "对等体的IP");
 							instruArr[2] = createCmdInstruSpan("“IBGP。", "对等体组名称");
@@ -770,15 +725,13 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭同步性原则");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# no synchronization");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("路由聚合");
 							createInstruT3("配置路由聚合");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# aggregate-address “192.168.8.0。 “255.255.252.0。 [ summary-only ] [ as-set ] [ suppress-map “mapName。 ]");
 								instruArr[1] = createCmdInstruSpan("“192.168.8.0。", "聚合地址");
 								instruArr[2] = createCmdInstruSpan("“255.255.252.0。", "聚合掩码");
@@ -789,8 +742,7 @@
 								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT3("设置summary-only时仍要发送的路由条目");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “192.168.12.2。 unsuppress-map “mapName。");
 								instruArr[1] = createCmdInstruSpan("“192.168.12.2。", "邻居地址");
 								instruArr[2] = createCmdInstruSpan("“mapName。", "route-map名，用于配置发送的路由");
@@ -807,8 +759,7 @@
 
 					createInstruT1("查看与重置命令", "i8-2");
 						createInstruT2("查看邻居表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show ip bgp summary");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -828,8 +779,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置路由器存储接收邻居发送的路由信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “192.168.12.2。 soft-reconfiguration inbound");
 							instruArr[1] = createCmdInstruSpan("“192.168.12.2。", "邻居IP地址");
 							createCmdInstruT2(instruArr, "cisco");
@@ -858,8 +808,7 @@
 					createInstruT1("选路属性（按比较先后顺序排列属性）", "i8-3");
 						createInstruT2("修改权重（weight）", "i8-3-1");
 							createInstruT3("修改某一路由条目");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-map “mapName。 in");
 								instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "传送路由邻居IP地址");
 								instruArr[2] = createCmdInstruSpan("“mapName。", "route-map名，通过set weight { 权重值 } 修改");
@@ -877,8 +826,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("修改‘本地产生（本地通告及重分发）。的及‘EBGP。路由");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# bgp default local-preference “110。");
 								instruArr[1] = createCmdInstruSpan("“110。", "local preference值");
 								createCmdInstruT3(instruArr, "cisco");
@@ -893,15 +841,13 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置as-path最大接收长度，as-path长度超过的路由将被丢弃");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# bgp maxas-limit “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "as-path最大长度");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("不比较as-path属性，‘不建议设置。");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# bgp bestpath as-path ignore");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -918,8 +864,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("将MED设置为最大值（默认为最小值）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# bgp bestpath med missing-as-worst");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -954,8 +899,7 @@
 
 					createInstruT1("路由反射器 Router Reflector", "i8-5");
 						createInstruT2("指定邻居为Client，自己自动成为Server，路由属性不改变，客户端无需额外配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# neighbor “2.2.2.2。 route-reflector-client");
 							instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "传送路由邻居IP地址");
 							createCmdInstruT2(instruArr, "cisco");
@@ -992,8 +936,7 @@
 				createInstruT0("各类路由控制列表", "i9");
 					createInstruT1("分发列表（distribute-list）", "i9-1");
 						createInstruT2("控制接收的路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# distribute-list {  “100。  |  “acl-name。  | prefix “pre-name。  }  in  [  “f0/0。  ]");
 							instruArr[1] = createCmdInstruSpan("“100。", "ACL编号");
 							instruArr[2] = createCmdInstruSpan("“acl-name。", "ACL名");
@@ -1017,8 +960,7 @@
 						createCmdInstruT1(instruArr, "cisco");
 
 					createInstruT1("<br />as-path访问列表", "i9-3");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# ip as-path access-list “1。 { permit | deny } “.*。");
 						instruArr[1] = createCmdInstruSpan("“1。", "as-path访问列表编号");
 						instruArr[2] = createCmdInstruSpan("“.*。", "正则表达式，用于匹配AS-path");
@@ -1028,8 +970,7 @@
 					createInstruT1("重分发到何种动态路由协议，则先进入该动态路由协议");
 
 						createInstruT2("重分发到RIP", "i10-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-router)# redistribute “ospf。 [ “1。 ] [ metric “3。 ] [ router-map “map-tag。 ]");
 							instruArr[1] = createCmdInstruSpan("“ospf。", "外部路由");
 							instruArr[2] = createCmdInstruSpan("“1。", "进程号（自治系统号）");
@@ -1055,8 +996,7 @@
 
 						createInstruT2("重分发到BGP", "i10-5");
 							createInstruT3("重分发‘非OSPF。到BGP", "i10-5");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# redistribute “eigrp。 [ “10。 ] [ metric “3。 ] [ router-map “map-tag。 ] ");
 								instruArr[1] = createCmdInstruSpan("“eigrp。", "外部路由");
 								instruArr[2] = createCmdInstruSpan("“10。", "自治系统号（进程号）");
@@ -1075,8 +1015,7 @@
 				createInstruT0("多协议标签交换（MPLS）", "i14");
 					createInstruT1("配置标签分发协议（LDP）", "i14-1");
 						createInstruT2("启用cef，默认启用");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip cef");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1101,15 +1040,13 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("对客户隐藏P设备，CE及P设备不受影响，‘PE设备。配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# no mpls ip propagate-ttl forwarded")
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置LDP与IGP的同步，只支持链路状态协议");
 							createInstruT3("启用同步，IGP进程下");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# mpls ldp sync");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1119,8 +1056,7 @@
 
 						createInstruT2("控制发送的标签");
 							createInstruT3("配置发送的标签")
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# no mpls ldp advertise-labels")
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1137,8 +1073,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("被动端配置，响应端")
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R3(config)# mpls ldp discovery targeted-hello accept");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1154,8 +1089,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看标签转发表")
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show mpls forwarding-table");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1188,8 +1122,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("接口加入VRF");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ip vrf forwarding “VPN1。");
 							instruArr[1] = createCmdInstruSpan("“VPN1。", "vrf名，配置vrf后，接口的IP地址会被清除");
 							createCmdInstruT2(instruArr, "cisco");
@@ -1202,8 +1135,7 @@
 
 					createInstruT1("配置MP-BGP", "i14-3");
 						createInstruT2("启用MP-BGP（默认只为ipv4单播提供路由）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# router bgp “100。");
 							instruArr[1] = createCmdInstruSpan("“100。", "AS号");
 							instruArr[2] = createCmdSpan("R1(config-router)# no bgp default ipv4-unicast");
@@ -1224,8 +1156,7 @@
 
 					createInstruT1("配置MPLS VPN中客户路由协议", "i14-4");
 						createInstruT2("静态路由", "i14-4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip route vrf “VPN1。　“10.10.10.10。　“255.255.255.255。　“f0/1。　“10.1.10.10。");
 							instruArr[1] = createCmdInstruSpan("“VPN1。", "vrf名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -1247,8 +1178,7 @@
 
 						createInstruT2("OSPF", "i14-4-4");
 							createInstruT3("基本配置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# router ospf “1。 vrf “VPN1。");
 								instruArr[1] = createCmdInstruSpan("“VPN1。", "vrf名");
 								instruArr[2] = createCmdSpan("R1(config-router)# ……");
@@ -1263,14 +1193,12 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看sham-link");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1# show ip ospf sham-links");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("启用vrf-lite（CE配置）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# capability vrf-lite");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1293,8 +1221,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("‘被动方案，CE配置。，配置可以接收的路由中AS-path中与本AS号相同的次数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R2(config-router)# neighbor “10.1.12.1。 allowas-in [ “1。 ]");
 								instruArr[1] = createCmdInstruSpan("“10.1.12.1。", "CE的更新源地址");
 								instruArr[2] = createCmdInstruSpan("“1。", "可以接收的次数，默认为3");
@@ -1340,8 +1267,7 @@
 							createInstruT3("不同AS间互为CE/PE(使用BGP转发路由)，AS间为IP转发，‘只适用于VPN较少的情况。");
 							createInstruT3("各AS内部配置方式与普通域内MPLS VPN相同，且不同AS内的vrf的‘RT值无需匹配。");
 							createInstruT3("ASBR间链路需要将接口加入对应的vpn-instance");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-if)# ip vrf forwarding “AS-A-VPN。");
 								instruArr[1] = createCmdInstruSpan("R1为域A的ASBR，接口为与域B连接的接口，AS-A-VPN为客户在域A中vrf名");
 								instruArr[2] = createCmdSpan("　");
@@ -1350,16 +1276,14 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("ASBR间BGP的在相应的vrf地址族建立邻居");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config-router)# address-family ipv4 vrf “AS-A-VPN。");
 								instruArr[1] = createCmdSpan("R1(config-router)# neighbor ……");
 								createCmdInstruT3(instruArr, "cisco");
 
 				createInstruT0("组播", "i15");
 					createInstruT1("启用组播路由", "i15-1");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# ip multicast-routing");
 						createCmdInstruT1(instruArr, "cisco");
 
@@ -1388,8 +1312,7 @@
 
 							createInstruT3("配置候选RP", "i15-3-2-2");
 								createInstruAllTopT3("一般配置为环回接口IP，需要网格可达，该接口需要启用pim");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# ip pim rp-candidate “loop0。 [ priority “10。 ]");
 								instruArr[1] = createCmdInstruSpan("“loop0。", "候选RP的接口");
 								instruArr[2] = createCmdInstruSpan("“10。", "优先级，越小越优先，默认为0");
@@ -1412,8 +1335,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置MA，所有转发组播流量设置均需配置", "i15-3-3-3");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# ip pim autorp listener");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1434,8 +1356,7 @@
 
 					createInstruT1("配置扩展SSM", "i15-4");
 						createInstruT2("配置IGMPv3，仅需在连接组播接收者的接口配置", "i15-4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R2(config-if)# ip igmp version 3");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1448,8 +1369,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("PIM协议应用SSM策略", "i15-4-2-2");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# ip pim ssm range SSM");
 								instruArr[1] = createCmdInstruSpan("“SSM。", "匹配组播地址的ACL名");
 								createCmdInstruT3(instruArr, "cisco");

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
 				createInstruT0("基本配置", "i1");
 					createInstruT1("模式切换", "i1-1");
 						createInstruT2("用户模式进入特权模式");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("R1> enable");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -29,8 +29,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("特权模式进入全局配置模式");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# configure terminal");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -51,24 +50,21 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show { running-config | startup-config }");
 							instruArr[1] = createCmdInstruSpan("running-config", "运行中的配置");
 							instruArr[2] = createCmdInstruSpan("startup-config", "保存的配置");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("保存配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# copy running-config startup-config");
 							instruArr[1] = createCmdSpan("R1# write");
 							createCmdInstruT2(instruArr, "cisco");
 							document.writeln("<div class='divider'></div>");
 
 						createInstruT2("清除已保存配置，重启后生效");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# write erase");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -97,16 +93,14 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置时区");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# clock timezone “beijing。 “+8。");
 							instruArr[1] = createCmdInstruSpan("“beijing。", "时区名");
 							instruArr[2] = createCmdInstruSpan("“+8。", "与标准时间间隔");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看时间日期");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show clock");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -117,15 +111,13 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置DNS服务器");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip name-server “202.99.96.68。");
 							instruArr[1] = createCmdInstruSpan("“202.99.96.68。", "DNS服务器地址");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭域名解析");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# no ip domain-lookup");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -138,16 +130,14 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置本地用户级别，默认为0");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# username “admin。 privilege “15。");
 							instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
 							instruArr[2] = createCmdInstruSpan("“15。", "用户级别");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看本机开放端口号");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show control-plane host open-ports");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -162,8 +152,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("如果命令中需要输入？，而不是查看命令的帮助");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("先ctrl+V 再输入？");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -175,8 +164,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看所有命令别名");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show aliases");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -197,7 +185,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("DHCPv6相关", "i9-2");
-						tt = `
+						let cmd = `
 							<table class="cmdInstruAllTopT1" style="line-height: 40px;margin-top: 0">
 								<tr>
 									<td>SLAAC：</td>
@@ -213,11 +201,10 @@
 								</tr>
 							</table>
 						`
-						document.writeln(tt);
+						document.writeln(cmd);
 
 						createInstruT2("标志位 A：默认为 1，配置为 0");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-if)# ipv6 nd prefix default no-autoconfig");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -260,8 +247,7 @@
 				createInstruT0("动态主机配置协议（DHCP）", "i2");
 					createInstruT1("基本配置", "i2-1");
 						createInstruT2("启动DHCP服务");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)#  service dhcp");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -278,8 +264,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置默认网关");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# default-route “192.168.101.254。");
 								instruArr[1] = createCmdInstruSpan("“192.168.101.254。", "默认网关");
 								createCmdInstruT3(instruArr, "cisco");
@@ -291,8 +276,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置域");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# domain-name “domain.com。");
 								instruArr[1] = createCmdInstruSpan("“domain.com。", "域名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -312,8 +296,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("地址分配永不过期");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# lease infinite");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -325,8 +308,7 @@
 
 					createInstruT1("地址保留", "i2-2");
 						createInstruT2("建立一个dhcp地址池");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip dhcp pool “staticIP。");
 							instruArr[1] = createCmdInstruSpan("“staticIP。", "地址池名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -338,8 +320,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("绑定mac地址");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(dhcp-config)# client-identifie 01“00.0c29.a386.12。");
 							instruArr[1] = createCmdInstruSpan("01“00.0c29.a386.12。", "000c.29a3.8612为设备的mac地址，绑定时需要在mac地址之前加入01，同从前到后每4个写1个点");
 							createCmdInstruT2(instruArr, "cisco");
@@ -352,8 +333,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("DHCP中继，需先启动DHCP服务<br />", "i2-3");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config-if)# ip helper-address “192.168.1.100。");
 						instruArr[1] = createCmdInstruSpan("“192.168.1.100。", "DHCP服务器地址");
 						createCmdInstruT1(instruArr, "cisco");
@@ -364,8 +344,7 @@
 						createInstruT2("见 <a href='catalyst.html#i10-2' style='color:#FF64FF;text-decoration:underline'>交换机配置手册、局域网安全</a> 部分");
 
 					createInstruT1("<br />查看地址分配情况<br />", "i2-5");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1# show ip dhcp binding");
 						createCmdInstruT1(instruArr, "cisco");
 
@@ -388,8 +367,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置DNS，多个DNS，重复本条即可");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-dhcpv6)# dns-server “2400::1。");
 							instruArr[1] = createCmdInstruSpan("“2400::1。", "DNS服务器地址");
 							createCmdInstruT2(instruArr, "cisco");
@@ -406,15 +384,13 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("DHCP中继", "i10-3");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config-if)# ipv6 dhcp relay destination “2001:110::2。");
 						instruArr[1] = createCmdInstruSpan("“2001:110::2。", "DHCPv6服务器地址");
 						createCmdInstruT1(instruArr, "cisco");
 
 					createInstruT1("<br />接口获得DHCP的地址", "i10-5");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config-if)# ipv6 address dhcp [ rapid-commit ]");
 						instruArr[1] = createCmdInstruSpan("rapid-commit", "是否启用rapid-commit模式");
 						createCmdInstruT1(instruArr, "cisco");
@@ -428,8 +404,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置会话同步");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-line)# logging synchronous");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -446,8 +421,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置登录后用户级别（可选，默认为0）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-line)# privilege level “15。");
 							instruArr[1] = createCmdInstruSpan("“15。", "用户级别");
 							createCmdInstruT2(instruArr, "cisco");
@@ -460,8 +434,7 @@
 					createInstruT1("Telnet", "i3-2");
 						createInstruT2("先配置好登录方式及所需的用户名密码（如果需要）");
 						createInstruT2("允许通过telnet登录");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-line)# transport input { telnet | all }");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -473,8 +446,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("定义域名");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip domain-name “cisco.com。");
 							instruArr[1] = createCmdInstruSpan("“cisco.com。", "域名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -491,15 +463,13 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("兼容ssh v1/v2登录");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip ssh rsa keypair-name “R1.cisco.com。");
 							instruArr[1] = createCmdInstruSpan("“R1.cisco.com。", "主机名.域名");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("只允许使用ssh v2登录");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip ssh version 2");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -525,8 +495,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置发送SNMP trap信息的协议");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)#  snmp-server enable traps [ “协议。 ]");
 								instruArr[1] = createCmdInstruSpan("[ “协议。 ]", "省略则全部");
 								createCmdInstruT3(instruArr, "cisco");
@@ -551,8 +520,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置view，即允许被用户读取/修改的集合");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)#  snmp-server view “snmpview。 “system。 included");
 								instruArr[1] = createCmdInstruSpan("“snmpview。", "view名");
 								instruArr[2] = createCmdInstruSpan("“system。", "允许读取/修改的MIB结点名");
@@ -569,14 +537,12 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看用户（show run中无）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1# show snmp user");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置发送SNMP trap信息的协议");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)#  snmp-server enable traps [ “协议。 ]");
 								instruArr[1] = createCmdInstruSpan("[ “协议。 ]", "省略则全部");
 								createCmdInstruT3(instruArr, "cisco");
@@ -589,8 +555,7 @@
 
 				createInstruT0("思科发现协议（CDP）", "i4");
 						createInstruT2("查看设备的CDP状态");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show cdp");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -604,8 +569,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭整个设备的CDP功能");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# no cdp run");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -616,8 +580,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("显示所有邻居的CDP信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show cdp neighbors [ detail ]");
 							instruArr[1] = createCmdInstruSpan("detail", "显示详细信息");
 							createCmdInstruT2(instruArr, "cisco");
@@ -631,8 +594,7 @@
 				createInstruT0("网络时间协议（NTP）", "i5");
 					createInstruT1("NTP服务器端配置（用网络中的一台路由器作时间服务器）", "i5-1");
 						createInstruT2("路由器配置为NTP服务器");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ntp master [ “4。 ]");
 							instruArr[1] = createCmdInstruSpan("“4。", "层数，取值1~15，越小越优先，默认8");
 							createCmdInstruT2(instruArr, "cisco");
@@ -650,8 +612,7 @@
 					createInstruT1("NTP客户端配置", "i5-2");
 						createInstruT2("客户端需要‘先设置时区。，再同步时间，不然因时区可能造成时间不正确");
 						createInstruT2("设置NTP服务器");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R2(config)# ntp server “192.168.1.1。 [ key “1。 ]");
 							instruArr[1] = createCmdInstruSpan("“192.168.1.1。", "NTP服务器IP");
 							instruArr[2] = createCmdInstruSpan("[ key “1。 ]", "需要认证时，key编号");
@@ -668,8 +629,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("查看NTP状态", "i5-3");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R2# show ntp status");
 						createCmdInstruT1(instruArr, "cisco");
 
@@ -689,8 +649,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("显示缓存日志提示信息");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1# show logging");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -708,8 +667,7 @@
 				createInstruT0("会话管理", "i7");
 					createInstruT1("本方连接外部会话", "i7-1");
 						createInstruT2("挂起当前会话");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("先按Ctrl+Shirft+6，松开后再按x");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -730,8 +688,7 @@
 
 					createInstruT1("外部进入本方会话", "i7-2");
 						createInstruT2("查看会话");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1# show users");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -742,8 +699,7 @@
 
 				createInstruT0("钥匙链（key chain）", "i8");
 						createInstruT2("创建key chain");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# key chain “keylist。");
 							instruArr[1] = createCmdInstruSpan("“keylist。", "key chain名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -798,8 +754,7 @@
 				createInstruT0("申请数字证书", "i11");
 					createInstruT1("创建trustpoint（证书申请）", "i11-1");
 						createInstruT2("配置域名");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip domain name “itachi.tech。");
 							instruArr[1] = createCmdInstruSpan("“cisco.com。", "域名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -813,8 +768,7 @@
 
 						createInstruT2("配置trustpoint");
 							createInstruT3("创建trustpoint");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# crypto pki trustpoint “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名，只具有本地意义");
 								createCmdInstruT3(instruArr, "cisco");
@@ -826,8 +780,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置域名");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(ca-trustpoint)# fqdn “r1.itachi.tech。");
 								instruArr[1] = createCmdInstruSpan("“r1.itachi.tech。", "域名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -849,14 +802,12 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("吊销列表不缓存");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(ca-trustpoint)# crl cache none");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("匹配密钥对");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(ca-trustpoint)# rsakeypair “IPSecVPN。");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "密钥对名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -886,15 +837,13 @@
 
 						createInstruT1("相关查看命令", "i11-3");
 							createInstruT2("查看证书");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1# show crypto pki certificates [ “IPSecVPN。 ]");
 								instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
 								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT2("查看吊销列表");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1# show crypto pki crls");
 								createCmdInstruT2(instruArr, "cisco");
 
@@ -904,8 +853,7 @@
 
 					createInstruT1("<br />创建证书服务器，前提：‘时间已经同步。", "i12-2");
 						createInstruT2("开启HTTP服务");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("CA(config)# ip http server");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -929,8 +877,7 @@
 
 						createInstruT2("配置证书服务器");
 							createInstruT3("创建证书服务器");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("CA(config)# crypto pki server “CA。");
 								instruArr[1] = createCmdInstruSpan("“CA。", "服务器名，需要与之前的trustpoint相同");
 								createCmdInstruT3(instruArr, "cisco");
@@ -951,8 +898,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("颁发的证书包括完整信息");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("CA(cs-server)# database level complete");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -962,8 +908,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("证书自动颁发（可选）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("CA(cs-server)# grant auto");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -987,8 +932,7 @@
 
 						createInstruT2("离线申请证书时的导入导出", "i12-3-2");
 							createInstruT3("在命令行接收证书申请");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("CA# crypto pki server “CA。 request pkcs10 terminal");
 								instruArr[1] = createCmdInstruSpan("“CA。", "服务器名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1010,16 +954,14 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看吊销列表");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("CA# show crypto pki server “CA。 crl");
 								instruArr[1] = createCmdInstruSpan("“CA。", "服务器名");
 								createCmdInstruT3(instruArr, "cisco");
 
 					createInstruT1("其它查看命令", "i12-4");
 						createInstruT2("查看证书服务器信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("CA# show crypto pki server");
 							createCmdInstruT2(instruArr, "cisco");
 			</script>

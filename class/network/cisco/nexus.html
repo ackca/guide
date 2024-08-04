@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
 				createInstruT0("与IOS的配置区别", "i1");
 					createInstruT1("基本配置", "i1-4");
 						createInstruT2("保存配置，‘不支持 wr。", "i1-4-1");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("Nexus# copy running-config startup-config");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -37,8 +37,7 @@
 
 					createInstruT1("HSRP", "i1-2");
 						createInstruT2("需要通过feature启用");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus(config)# feature hsrp");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -66,8 +65,7 @@
 
 					createInstruT1("PIM", "i1-5");
 						createInstruT2("静态RP时，环回接口需要配置pim", "i1-5-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus(config-if)# ip pim sparse-mode");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -82,8 +80,7 @@
 								createCmdInstruT2(instruArr, "cisco");
 
 							createInstruT3("调用template");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Nexus(config-router)# neighbor “10.3.3.3。");
 								instruArr[1] = createCmdSpan("Nexus(config-router-neighbor)# inherit peer “leaf。");
 								instruArr[2] = createCmdInstruSpan("“leaf。", "模板名");
@@ -92,16 +89,14 @@
 				createInstruT0("系统管理", "i2");
 					createInstruT1("基本功能", "i2-1");
 						createInstruT2("为管理接口IP配路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus(config)# vrf context management");
 							instruArr[1] = createCmdSpan("Nexus(config-vrf)# ip route “0.0.0.0/0 mgmt0 192.168.100.250。");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("复杂性密码要求");
 							createInstruT3("启用复杂性密码要求");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Nexus(config)# password strength-check");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -135,8 +130,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看状态");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Nexus# show environment power");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -207,8 +201,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置CPU份额", "i3-1-5");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("N7K-admin(config-vdc)# cpu-share “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "CPU份额");
 							createCmdInstruT2(instruArr, "cisco");
@@ -232,8 +225,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("default VDC 转化为 admin VDC，不支持逆向操作", "i3-1-8");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("N7K(config)# system admin-vdc migrate “N7K-VDC2。");
 							instruArr[1] = createCmdInstruSpan("“N7K-VDC2。", "数据功能被分配到的新VDC");
 							createCmdInstruT2(instruArr, "cisco");
@@ -245,8 +237,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("普通VDC 到 管理VDC", "i3-2-2");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("N7K-VDC1# switchback");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -272,8 +263,7 @@
 				createInstruT0("FEX", "i4");
 					createInstruT1("PortChannel方式", "i4-1");
 						createInstruT2("激活FEX", "i4-1-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus(config)# feature fex");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -298,8 +288,7 @@
 
 					createInstruT1("Staic Pinning方式", "i4-2");
 						createInstruT2("激活FEX", "i4-2-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus(config)# feature fex");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -322,8 +311,7 @@
 
 					createInstruT1("查看相关信息", "i4-3");
 						createInstruT2("查看FEX信息", "i4-3-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus# show fex [ “101。 ] detail");
 							instruArr[1] = createCmdInstruSpan("“101。", "FEX id");
 							createCmdInstruT2(instruArr, "cisco");
@@ -349,8 +337,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置peer link链路（必须使用port-channel链路）", "i5-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Nexus(config)# interface “e1/1 - 2。");
 							instruArr[1] = createCmdSpan("Nexus(config-if-range)# channel-group “1。 mode active");
 							instruArr[2] = createCmdSpan("Nexus(config-if-range)# int port-channel “1。");
@@ -368,8 +355,7 @@
 				createInstruT0("vxlan-single pod", "i6");
 					createInstruT1("Spine节点", "i6-1");
 						createInstruT2("启用EVPN控制平面", "i6-1-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Spine1(config)# nv overlay evpn");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -389,8 +375,7 @@
 
 					createInstruT1("Leaf节点", "i6-2");
 						createInstruT2("启用EVPN控制平面", "i6-2-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Leaf1(config)# nv overlay evpn");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -413,8 +398,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置任意网关的mac地址", "i6-2-11");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Leaf1(config)# fabric forwarding anycast-gateway-mac “0000.2222.3333。");
 							instruArr[1] = createCmdInstruSpan("“0000.2222.3333。", "任意网关的mac地址");
 							createCmdInstruT2(instruArr, "cisco");
@@ -432,8 +416,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置与‘3层。vni相关联的vlan", "i6-2-5");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Leaf1(config)# vlan “111。");
 							instruArr[1] = createCmdSpan("Leaf1(config-vlan)# name “l3VNi。");
 							instruArr[2] = createCmdSpan("Leaf1(config-vlan)# vn-segment “11111。");
@@ -452,8 +435,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置与‘2层。vni对应的vlan接口", "i6-2-7");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Leaf1(config)# int vlan “100。");
 							instruArr[1] = createCmdSpan("Leaf1(config-if)# no shutdown");
 							instruArr[2] = createCmdSpan("Leaf1(config-if)# vrf member “T1。");
@@ -491,8 +473,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("与‘3层。vni相关联", "i6-2-9-3");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Leaf1(config-if-nve)# member vni “11111。 associate-vrf");
 								instruArr[1] = createCmdInstruSpan("“11111。", "3层vni");
 								createCmdInstruT3(instruArr, "cisco");
@@ -509,8 +490,7 @@
 						createInstruT2("‘不同Pod间使用不同的AS。");
 						createInstruT2("配置route map", "i7-1");
 							createInstruAllTopT3("EBGP默认会更改一跳，需要保持下一跳为本端Leaf的VTEP地址");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Spine1(config)# route-map mulpod permit 10");
 							instruArr[1] = createCmdSpan("Spine1(config-route-map)# set ip next-hop unchanged ");
 							createCmdInstruT3(instruArr, "cisco");
@@ -543,8 +523,7 @@
 					createInstruT1("配置MB-BGP", "i8-2");
 						createInstruT2("配置route map", "i8-2-1");
 							createInstruAllTopT2("EBGP默认会更改一跳，需要保持下一跳为本端的VTEP地址");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("BGW(config)# route-map “BGW。 permit 10");
 							instruArr[1] = createCmdSpan("BGW(config-route-map)# set ip next-hop unchanged ");
 							createCmdInstruT3(instruArr, "cisco");
@@ -573,8 +552,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 					createInstruT1("配置多站点", "i8-3");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("BGW(config)# evpn multisite border-gateway “11。");
 						instruArr[1] = createCmdInstruSpan("“11。", "站点id，不同站点不同");
 						instruArr[2] = createCmdSpan("BGW(config-evpn-msite-bgw)# delay-restore time “30。");
@@ -583,8 +561,7 @@
 
 					createInstruT1("配置NVE接口", "i8-4");
 						createInstruT2("配置VIP地址", "i8-4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("BGW(config-if-nve)# multisite border-gateway interface “loop 100。");
 							instruArr[1] = createCmdInstruSpan("“loop 100。", "VIP地址接口");
 							createCmdInstruT2(instruArr, "cisco");
@@ -631,8 +608,7 @@
 
 						createInstruT2("BGP和外部路由协议重分发（外部路由协议以OSPF为例），仅需在BorderLeaf配置", "i9-2-3");
 							createInstruT3("配置 OSPF 重分发到 BGP 的route map", "i9-2-3-1");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("BorderLeaf(config)# route-map “O2B。 permit “10。");
 								instruArr[1] = createCmdInstruSpan("“O2B。", " OSPF 重分发到 BGP 的route map");
 								createCmdInstruT3(instruArr, "cisco");
@@ -665,8 +641,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("租户间互通（所有leaf均配置）", "i9-2-4");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("Leaf(config)# vrf context “T1。");
 							instruArr[1] = createCmdInstruSpan("“T1。", "所有互通的租户均需要配置");
 							instruArr[2] = createCmdSpan("Leaf(config-vrf)# address-family ipv4 unicast");
@@ -677,8 +652,7 @@
 
 						createInstruT2("同一leaf，租户间直接连通", "i9-2-5");
 							createInstruT3("配置route map", "i9-2-5-1");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("Leaf(config)# route-map “rm-hmm。 permit 10");
 								instruArr[1] = createCmdInstruSpan("“rm-hmm。", "互相重分发的route map");
 								createCmdInstruT3(instruArr, "cisco");

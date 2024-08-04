@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
 				createInstruT0("L2L IPsec VPN", "i1");
 					createInstruT1("L2L IPsec VPN，IKEv1", "i1-1");
 						createInstruT2("激活IKEv1", "i1-1-1");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
 							instruArr[1] = createCmdInstruSpan("“outside。", "接口名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -34,8 +34,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法（‘3des。为默认）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption { aes | des | 3des | … }");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -97,16 +96,14 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("将 crypto map 应用于接口", "i1-1-8");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map “L2L。 interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“L2L。", "crypto map名");
 							instruArr[2] = createCmdInstruSpan("“outside。", "应用到的接口名");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("当建立VPN的设备在PAT后时，每隔一定时间发送数据包，保持PAT转换位一直存在", "i1-1-9");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto isakmp nat-traversal [ “10。 ]");
 							instruArr[1] = createCmdInstruSpan("“10。", "发送数据包间隔（单位s），默认即为10s");
 							createCmdInstruT2(instruArr, "cisco");
@@ -117,8 +114,7 @@
 						createInstruAllTopT1("静态公有地址端配置如下");
 						createInstruT2("配置 IKEv1（ISAKMP）策略，‘完全同普通的L2L。", "i1-2-1");
 						createInstruT2("激活IKEv1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
 							instruArr[1] = createCmdInstruSpan("“outside。", "接口名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -130,8 +126,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption “3des。");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -155,8 +150,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置 IPsec策略（转换集） ，完全同普通的L2L", "i1-2-4");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev1 transform-set “tran。 { esp-aes| esp-des | esp-3des | … }  { esp-md5-hmac | esp- sha- hmac | … }");
 							instruArr[1] = createCmdInstruSpan("“tran。", "IPsec trasform名称");
 							createCmdInstruT2(instruArr, "cisco");
@@ -176,8 +170,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将静态crypto map应用到接口", "i1-2-7");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map cmap interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“outside。", "接口名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -218,8 +211,7 @@
 
 						createInstruT2("配置tunnel-group", "i1-3-3");
 							createInstruT3("创建tunnel-group，并配置其类型");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# tunnel-group “100.1.1.1。 type ipsec-l2l");
 								instruArr[1] = createCmdInstruSpan("“100.1.1.1。", "tunnel-group名字，但要和对端IP相同");
 								createCmdInstruT3(instruArr, "cisco");
@@ -279,8 +271,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("在接口调用crypto map", "i1-3-7");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map “ikev2-map。 interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“ikev2-map。", "crypto map名");
 							instruArr[2] = createCmdInstruSpan("“outside。", "接口名");
@@ -288,8 +279,7 @@
 
 				createInstruT0("Easy VPN", "i2");
 						createInstruT2("激活IKEv1", "i2-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
 							instruArr[1] = createCmdInstruSpan("“outside。", "接口名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -301,8 +291,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置加密算法");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config-ikev1-policy)# encryption “3des。");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -337,8 +326,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置用户名密码", "i2-4");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# username “admin。 password “cisco。");
 							instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
 							instruArr[2] = createCmdInstruSpan("“cisco。", "密码");
@@ -366,8 +354,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置转换集将静态crypto应用到接口", "i2-8");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map “cmap。 interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“cmap。", "静态crypto map名");
 							instruArr[2] = createCmdInstruSpan("“outside。", "接口名");
@@ -375,8 +362,7 @@
 
 				createInstruT0("L2TP over IPSec", "i3");
 					createInstruT1("激活IKEv1", "i3-1");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("ASA(config)# crypto ikev1 enable “outside。");
 						instruArr[1] = createCmdInstruSpan("“outside。", "接口名");
 						createCmdInstruT1(instruArr, "cisco");
@@ -400,8 +386,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置为传输模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# crypto ipsec ikev1 transform-set “tran。 mode transport");
 								instruArr[1] = createCmdInstruSpan("“tran。", "转换集名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -421,8 +406,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将静态crypto应用到接口", "i2-8");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# crypto map “cmap。 interface “outside。");
 							instruArr[1] = createCmdInstruSpan("“cmap。", "静态crypto map名");
 							instruArr[2] = createCmdInstruSpan("“outside。", "接口名");
@@ -437,8 +421,7 @@
 						createCmdInstruT1(instruArr, "cisco");
 
 					createInstruT1("<br />配置用户名密码", "i3-5");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("ASA(config)# username “l2tpuser。 password “cisco。 mschap");
 						instruArr[1] = createCmdInstruSpan("“l2tpuser。", "用户名");
 						instruArr[2] = createCmdInstruSpan("“cisco。", "密码");
@@ -448,8 +431,7 @@
 					createInstruT1("<br />配置tunnel group", "i3-6");
 						createInstruT2("L2TP over IPSec 使用默认的tunnel group：‘DefaultRAGroup。");
 						createInstruT2("关联地址池");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# tunnel-group DefaultRAGroup general-attributes");
 							instruArr[1] = createCmdSpan("ASA(config-tunnel-general)# address-pool “l2tppool。");
 							instruArr[2] = createCmdInstruSpan("“l2tppool。", "地址池名");
@@ -470,8 +452,7 @@
 
 				createInstruT0("SSL VPN", "i4");
 					createInstruT1("配置登录用的用户名和密码", "i4-1");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# username “ssluser。 password “cisco。");
 						instruArr[1] = createCmdInstruSpan("“ssluser。", "用户名");
 						instruArr[2] = createCmdInstruSpan("“cisco。", "密码");
@@ -496,7 +477,21 @@
 							instruArr[3] = createCmdInstruSpan("“gp。", "group-policy名");
 							createCmdInstruT2(instruArr, "cisco");
 
+						createInstruT2("隧道分割");
+							instruArr[0] = createCmdSpan("ASA(config)# access-list “split。 permit 10.1.1.0 255.255.255.0");
+							instruArr[1] = createCmdInstruSpan("“split。", "隧道分割列表名");
+							instruArr[2] = createCmdSpan("group-policy “gp。 attributes");
+							instruArr[3] = createCmdInstruSpan("“gp。", "group-policy名");
+							instruArr[4] = createCmdSpan("ASA(config-group-policy)# split-tunnel-policy { tunnelspecified | tunnelall | excludespecified }");
+							instruArr[5] = createCmdInstruSpan("tunnelspecified", "特定流量由中心转发，其余流量本地转发，一般选择此项");
+							instruArr[6] = createCmdInstruSpan("excludespecified", "特定流量本地转发，其余流量由中心转发");
+							instruArr[7] = createCmdInstruSpan("tunnelall", "所有流量由中心转发，不隧道分割，默认");
+							instruArr[8] = createCmdSpan("ASA(config-group-policy)# split-tunnel-network-list value “split。");
+							instruArr[9] = createCmdInstruSpan("“split。", "隧道分割列表名");
+							createCmdInstruT2(instruArr, "cisco");
+
 						createInstruT2("去掉地址栏");
+							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# group-policy “gp。 attributes");
 							instruArr[1] = createCmdInstruSpan("“gp。", "group-policy名");
 							instruArr[2] = createCmdSpan("ASA(config-group-policy)# webvpn");
@@ -506,16 +501,14 @@
 
 						createInstruT2("Java plugin clientless");
 							createInstruT3("导入相关插件");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# import webvpn plug-in protocol “ssh。 “flash:/ssh-plugin.080430.jar。");
 								instruArr[1] = createCmdInstruSpan("“ssh。", "协议名");
 								instruArr[2] = createCmdInstruSpan("“flash:/ssh-plugin.080430.jar。", "该协议的插件路径");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("关闭此功能");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# revert webvpn all");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -530,8 +523,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("将与port forwarding与group-policy关联");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# group-policy “gp。 attributes");
 								instruArr[1] = createCmdInstruSpan("“gp。", "group-policy名");
 								instruArr[2] = createCmdSpan("ASA(config-group-policy)# webvpn");
@@ -559,8 +551,7 @@
 						createInstruT2("3层工作模型，PC需要安装客户端，直接使用IP层连接");
 							createInstruT3("用于登录的用户名、密码已经创建，SSL VPN已启用");
 							createInstruT3("ASA加载anyconnect软件，并启用");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# webvpn");
 								instruArr[1] = createCmdSpan("ASA(config-webvpn)# anyconnect image “disk0:/anyconnect-win-3.0.0629-k9.pkg。");
 								instruArr[2] = createCmdInstruSpan("“disk0:/anyconnect-win-3.0.0629-k9.pkg。", "anyconnect存储路径");
@@ -568,8 +559,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("创建客户端用的地址池");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# ip local pool “sslpool。 “10.1.1.100。-“10.1.1.200。");
 								instruArr[1] = createCmdInstruSpan("“sslpool。", "地址池名");
 								instruArr[2] = createCmdInstruSpan("“10.1.1.100。-“10.1.1.200。", "地址池");
@@ -582,8 +572,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("激活SVC");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config-group-policy)# vpn-tunnel-protocol ssl-client ssl-clientless");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -602,8 +591,7 @@
 					createInstruT1("访问控制", "i4-4");
 						createInstruT2("7层工作模型，webtype acl，控制为目的地址");
 							createInstruT3("配置acl");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# access-list “web-acl。 webtype “permit tcp host 192.168.10.1 eq 80。");
 								instruArr[1] = createCmdSpan("ASA(config)# access-list “web-acl。 webtype “permit url http://192.168.10.1。");
 								instruArr[2] = createCmdInstruSpan("“web-acl。", "acl名");
@@ -617,10 +605,9 @@
 								instruArr[4] = createCmdInstruSpan("“web-acl。", "acl名");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("3层工作模型，网络类型 acl，就是普通的acl(anyconnect,EZVPN均有效)");
+						createInstruT2("3层工作模型，网络类型 acl，就是普通的acl（anyconnect，EZVPN均有效）");
 							createInstruT3("配置acl");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("ASA(config)# access-list “net-acl。 “permit ip host 100.1.1.1 any。");
 								instruArr[1] = createCmdInstruSpan("“net-acl。", "acl名");
 								createCmdInstruT3(instruArr, "cisco");
@@ -632,7 +619,7 @@
 								instruArr[3] = createCmdInstruSpan("“net-acl。", "acl名");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("限制登录时间(无法登录，但不提示不在有效时间内)");
+						createInstruT2("限制登录时间（无法登录，但不提示不在有效时间内）");
 							createInstruT3("配置时间规则");
 								instruArr[0] = createCmdSpan("ASA(config)# time-range “ssl-time。");
 								instruArr[1] = createCmdInstruSpan("“ssl-time。", "时间规则名");
@@ -670,8 +657,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 					createInstruT1("查看连接<br />", "i4-5");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("ASA# show vpn-sessiondb [ webvpn ]");
 						createCmdInstruT1(instruArr, "cisco");
 

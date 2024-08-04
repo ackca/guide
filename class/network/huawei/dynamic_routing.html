@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,37 +17,32 @@
 				createInstruT0("路由选择信息协议（RIP）", "i5");
 					createInstruT1("基本配置", "i5-1");
 						createInstruT2("启用RIP");
-							instruArr = null;
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] rip [ “1。 ]");
 							instruArr[1] = createCmdInstruSpan("“1。", "rip进程号，省略为默认1");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("宣告网络");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-rip-1] network “172.16.0.0。");
 							instruArr[1] = createCmdInstruSpan("“172.16.0.0。", "标准的主类路由前缀");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置RIP版本（默认为‘V1。）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-rip-1] version { 1 | 2 }");
 							instruArr[1] = createCmdInstruSpan("1", "版本1");
 							instruArr[2] = createCmdInstruSpan("2", "版本2");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("关闭自动汇总");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-rip-1] summary");
 							instruArr[1] = createCmdInstruSpan("默认‘关闭。自动汇总，开启命令summary always");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("手动路由汇总（限‘RIP V2。，华为支持CIDR）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/0] rip summary-address “192.168.0.0。 “255.255.255.0。");
 							instruArr[1] = createCmdInstruSpan("“192.168.0.0。", "汇总地址");
 							instruArr[2] = createCmdInstruSpan("“255.255.248.0。", "汇总掩码");
@@ -60,8 +55,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("边界(出口)路由器通告默认路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-rip-1] default-route originate cost “2。");
 							instruArr[1] = createCmdInstruSpan("“2。", "引入的默认路由cost值");
 							createCmdInstruT2(instruArr, "huawei");
@@ -80,22 +74,19 @@
 
 						createInstruT2("RIP使用单播发送更新");
 							createInstruAllTopT2("使用被动接口和单播更新实现RIP的纯单播更新，一般用于MA网络(多路访问网络)，可单向配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-rip-1] peer “192.168.12.2。");
 							instruArr[1] = createCmdInstruSpan("“192.168.12.2。", "邻居IP地址");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("使用广播发送 RIP V2 的更新");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/0] rip version 2 broadcast");
 							createCmdInstruT2(instruArr, "huawei");
 
 					createInstruT1("路径控制", "i5-2");
 						createInstruT2("在RIP报文发出(接收)接口修改路由跳数");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/1] rip { metricin | metricout } [ “2000。 | acl-name “aclName。 | ip-prefix “preName。 ] “2。");
 							instruArr[1] = createCmdInstruSpan("metricin", "修改接收到路由");
 							instruArr[2] = createCmdInstruSpan("metricout", "修改发出路由");
@@ -117,8 +108,7 @@
 
 					createInstruT1("RIP认证", "i5-4");
 						createInstruT2("明文认证");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/1] rip authentication-mode simple “huawei。");
 							instruArr[1] = createCmdInstruSpan("“huawei。", "密码");
 							createCmdInstruT2(instruArr, "huawei");
@@ -137,8 +127,7 @@
 					createInstruT1("与BFD联动，用于某条链路的‘单跳检测，不支持多跳。", "i5-5");
 						createInstruT2("动态全局模式，所有启用RIP的接口都生效", "i5-5-1");
 							createInstruT3("启用BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -153,16 +142,14 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("调整BFD参数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-rip-1] bfd all-interfaces “参数。 “参数值。");
 								instruArr[1] = createCmdInstruSpan("参数含义同普通BFD");
 								createCmdInstruT3(instruArr, "huawei");
 
 						createInstruT2("动态接口模式", "i5-5-2");
 							createInstruT3("启用BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -173,8 +160,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("调整BFD参数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/1] rip bfd “参数。 “参数值。");
 								instruArr[1] = createCmdInstruSpan("参数含义同普通BFD");
 								createCmdInstruT3(instruArr, "huawei");
@@ -212,16 +198,14 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置被动接口，OSPF报文均既不能接也不能发");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-ospf-1] silent-interface { “f0/0。 | all }");
 							instruArr[1] = createCmdInstruSpan("“f0/0。", "具体接口");
 							instruArr[2] = createCmdInstruSpan("all", "所有启用ospf接口");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("修改发送Hello周期（Dead周期自动变为其4倍）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/1] ospf timer hello “20。");
 							instruArr[1] = createCmdInstruSpan("“20。", "发送Hello周期（单位s）");
 							createCmdInstruT2(instruArr, "huawei");
@@ -268,8 +252,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("指定OSPF邻居地址，单向指定即可");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-ospf-1] peer “192.168.1.1。 [ dr-priority “10。 ]");
 							instruArr[1] = createCmdInstruSpan("“192.168.1.1。", "邻居地址");
 							instruArr[2] = createCmdInstruSpan("“10。", "优先级");
@@ -287,8 +270,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("自治系统边界路由器(ASBR)：汇总外部路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-ospf-1] asbr-summary “192.168.0.0。 “255.255.252.0。 [ not-advertise ] ");
 							instruArr[1] = createCmdInstruSpan("“192.168.0.0。", "区域路由汇总地址");
 							instruArr[2] = createCmdInstruSpan("“255.255.252.0。", "路由汇总掩码");
@@ -297,15 +279,13 @@
 
 						createInstruT2("末节(stub)区域");
 							createInstruT3("‘区域边界。路由器的设置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ospf-1-area-0.0.0.2] stub [ no-summary ]");
 								instruArr[1] = createCmdInstruSpan("no-summary", "完全末节区域");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("‘区域内部。路由器的设置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ospf-1-area-0.0.0.2] stub");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -317,8 +297,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("‘区域内部。路由器的设置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ospf-1-area-0.0.0.2] nssa [ default-route-advertise ]");
 								instruArr[1] = createCmdInstruSpan("default-route-advertise", "如果本nssa区域内的非ABR设备上，引入了默认路由，区域内其它路由器仍只有指向ABR的默认路由，配置此参数后，才有指向非ABR设备的默认路由，指向ABR的默认路由仍存在");
 								createCmdInstruT3(instruArr, "huawei");
@@ -345,8 +324,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("‘ABR。配置，控制‘本区域接收的路由。");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ospf-1-area-0.0.0.0] filter { “2000。 | acl-name “acl_ospf。 | ip-prefix “pre_ospf。 | route-policy “rp_ospf。 } import");
 								instruArr[1] = createCmdInstruSpan("“2000。", "使用标准ACL匹配，标准ACL号");
 								instruArr[2] = createCmdInstruSpan("“acl_ospf。", "使用命名的ACL匹配，ACL名");
@@ -362,8 +340,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("‘ABR。配置，控制‘本区域发出的路由。");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ospf-1-area-0.0.0.0] filter { “2000。 | acl-name “acl_ospf。 | ip-prefix “pre_ospf。 | route-policy “rp_ospf。 } export");
 								instruArr[1] = createCmdInstruSpan("“2000。", "使用标准ACL匹配，标准ACL号");
 								instruArr[2] = createCmdInstruSpan("“acl_ospf。", "使用命名的ACL匹配，ACL名");
@@ -391,8 +368,7 @@
 
 					createInstruT1("相关查看命令", "i6-5");
 						createInstruT2("查看OSPF路由信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] display ospf routing");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -411,8 +387,7 @@
 					createInstruT1("与BFD联动，用于某条链路的‘单跳检测，不支持多跳。", "i6-6");
 						createInstruT2("动态全局模式，所有启用OSPF的接口都生效", "i6-6-1");
 							createInstruT3("启用BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -427,8 +402,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("调整BFD参数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ospf-1] bfd all-interfaces “参数。  [ “参数值。 ]");
 								instruArr[1] = createCmdInstruSpan("参数含义同普通BFD");
 								instruArr[2] = createCmdInstruSpan("OSPF的BFD增加了个 frr-binding ，启用后，当BFD session DOWN后，接口也会DOWN");
@@ -436,8 +410,7 @@
 
 						createInstruT2("动态接口模式", "i6-6-2");
 							createInstruT3("启用BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -448,8 +421,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("调整BFD参数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/1] ospf bfd “参数。 “参数值。");
 								instruArr[1] = createCmdInstruSpan("参数含义同普通BFD");
 								instruArr[2] = createCmdInstruSpan("OSPF的BFD增加了个 frr-binding ，启用后，当BFD session DOWN后，接口也会DOWN");
@@ -458,8 +430,7 @@
 				createInstruT0("中间系统到中间系统（IS-IS）", "i7");
 					createInstruT1("基本配置", "i7-1");
 						createInstruT2("启用IS-IS");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] isis [ “1。 ]");
 							instruArr[1] = createCmdInstruSpan("“1。", "进程ID");
 							createCmdInstruT2(instruArr, "huawei");
@@ -471,15 +442,13 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("宣告网络（接口宣告）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] isis enable [ “1。 ]");
 							instruArr[1] = createCmdInstruSpan("“1。", "进程ID");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("修改路由器类型");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-isis-1] is-level { level-1 | level-1-2 | level-2 }");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -517,15 +486,13 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("修改接口优先级");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] isis dis-priority  “100。 [ level-1 | level-2 ]");
 							instruArr[1] = createCmdInstruSpan("“10。", "接口优先级");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("hello包不填充0（默认会在hello中填充0到达MTU）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] isis small-hello ");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -550,8 +517,7 @@
 
 						createInstruT2("度量值设置");
 							createInstruT3("设置度量值类型");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-isis-1] cost-style { narrow | narrow-compatible | wide | wide-compatible | compatible }");
 								instruArr[1] = createCmdInstruSpan("narrow", "只发送和接收窄度量值");
 								instruArr[2] = createCmdInstruSpan("narrow-compatible", "接收宽和窄度量值，只发送窄度量值");
@@ -561,8 +527,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置度量值自动计算（度量值类型仅 wide / wide-compatible 时有效）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-isis-1] bandwidth-reference “1000。");
 								instruArr[1] = createCmdInstruSpan("“1000。", "带宽参考值，度量值=带宽参考值/带宽*10");
 								instruArr[2] = createCmdSpan("[R1-isis-1] auto-cost enable");
@@ -570,8 +535,7 @@
 
 					createInstruT1("认证", "i7-2");
 						createInstruT2("链路认证");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/0] isis authentication-mode { { simple | md5 } [ cipher | plain ] “huawei。 | keychain “isis-key。 } [ level-1 | level-2 ]");
 							instruArr[1] = createCmdInstruSpan("simple", "明文认证");
 							instruArr[2] = createCmdInstruSpan("md5", "密文认证");
@@ -582,8 +546,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("区域认证（‘不影响邻居关系，只影响level-1的路由。）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-isis-1] area-authentication-mode { { simple | md5 } [ cipher | plain ] “huawei。 | keychain “isis-key。 }");
 							instruArr[1] = createCmdInstruSpan("simple", "明文认证");
 							instruArr[2] = createCmdInstruSpan("md5", "密文认证");
@@ -599,8 +562,7 @@
 					createInstruT1("与BFD联动", "i7-3");
 						createInstruT2("动态全局模式，所有启用RIP的接口都生效", "i7-3-1");
 							createInstruT3("启用BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -615,8 +577,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("调整BFD参数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-isis-1] bfd all-interfaces “参数。 “参数值。");
 								instruArr[1] = createCmdInstruSpan("参数含义同普通BFD");
 								instruArr[1] = createCmdInstruSpan("isis的BFD增加了个 frr-binding ，启用后，当BFD session DOWN后，接口也会DOWN");
@@ -624,8 +585,7 @@
 
 						createInstruT2("动态接口模式", "i7-3-2");
 							createInstruT3("启用BFD");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] bfd");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -636,8 +596,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("调整BFD参数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0/1] isis bfd “参数。 “参数值。");
 								instruArr[1] = createCmdInstruSpan("参数含义同普通BFD");
 								instruArr[1] = createCmdInstruSpan("isis的BFD增加了个 frr-binding ，启用后，当BFD session DOWN后，接口也会DOWN");
@@ -655,8 +614,7 @@
 				createInstruT0("边界网关协议（BGP）", "i8");
 					createInstruT1("基本配置", "i8-1");
 						createInstruT2("启用BGP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] bgp “65510。");
 							instruArr[1] = createCmdInstruSpan("“65510。", "自治系统号");
 							createCmdInstruT2(instruArr, "huawei");
@@ -700,8 +658,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("将EBGP报文传送给IBGP对等体(组)时，把下一跳改为本地对等体的更新源");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] peer { “192.168.12.1。 | “bgp-group。 } next-hop-local");
 							instruArr[1] = createCmdInstruSpan("“192.168.12.1。", "对等体更新源");
 							instruArr[2] = createCmdInstruSpan("“bgp-group。", "对等体组名称");
@@ -717,8 +674,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("宣告网络");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] network “192.168.10.1。 [ “24。 | “255.255.255.0。 ]");
 							instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "宣告的网络");
 							instruArr[2] = createCmdInstruSpan("“24。", "子网掩码长度");
@@ -728,8 +684,7 @@
 
 					createInstruT1("查看与重置命令", "i8-8");
 						createInstruT2("查看邻居表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] display bgp peer");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -760,8 +715,7 @@
 
 					createInstruT1("路由聚合", "i8-9");
 						createInstruT2("自动聚合");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] summary automatic");
 							instruArr[1] = createCmdInstruSpan("只能聚合本地重分发进BGP的路由，network的路由无效，且只能聚合为标准的A、B、C类");
 							createCmdInstruT2(instruArr, "huawei");
@@ -779,8 +733,7 @@
 
 					createInstruT1("团体属性", "i8-10");
 						createInstruT2("通过 route-policy 配置用于控制路由的团体属性", "i8-10-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-route-policy] apply community { no-export | no-export-subconfed | no-advertise }");
 							instruArr[1] = createCmdInstruSpan("no-export", "路由不传递出本AS，AS为真实的AS，联邦的子AS间可以传递路由");
 							instruArr[2] = createCmdInstruSpan("no-export-subconfed", "路由不传递出联邦的子AS，真实AS也不可以");
@@ -788,8 +741,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("通过 route-policy 配置用于标记路由的团体属性", "i8-10-2");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R4-route-policy] apply community “100:4。");
 							instruArr[1] = createCmdInstruSpan("“100:4。", "路由标记，一般用路由的AS号:某个数值表示");
 							createCmdInstruT2(instruArr, "huawei");
@@ -810,8 +762,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("通过 route-policy 获取community-filter匹配的路由，并做相应处理");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-route-policy] if-match community-filter “10。 ");
 								instruArr[1] = createCmdInstruSpan("“10。", "community-filter号");
 								instruArr[2] = createCmdSpan("[R1-route-policy] apply “…。 ");
@@ -820,8 +771,7 @@
 					createInstruT1("BGP选路属性", "i8-2");
 						createInstruT2("修改优先数值（preferred-value，相当于思科的weight）", "i8-2-1");
 							createInstruT3("通过route-policy选取路由条目进行修改");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] peer “2.2.2.2。 route-policy “policyName。 import");
 								instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "对等体更新源地址");
 								instruArr[2] = createCmdInstruSpan("“policyName。", "route-policy名<br />通过 apply preferred-value { “优先数值。 } 修改");
@@ -839,8 +789,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("修改‘本地产生。(‘本地通告及重分发。)的及‘EBGP路由。");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] default local-preference “110。");
 								instruArr[1] = createCmdInstruSpan("“110。", "local preference值");
 								createCmdInstruT3(instruArr, "huawei");
@@ -856,15 +805,13 @@
 								createInstruAllBottomT3("<br />为防止影响路由传递，as-path列表中可使用私有AS号，或重复在原as-path中已经存在的AS号<br />");
 
 							createInstruT3("设置as-path最大接收长度，as-path长度超过的路由将被丢弃");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] as-path-limit “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "as-path最大长度");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("向对等体发送的路由中去掉as-path中的私有as号");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] peer “12.1.1.1。 public-as-only");
 								instruArr[1] = createCmdInstruSpan("“12.1.1.1。", "对等体更新源地址");
 								createCmdInstruT3(instruArr, "huawei");
@@ -872,8 +819,7 @@
 								createInstruAllBottomT3("在私有AS设备上配置无效，对等体为私有AS设备时配置无效，其它情况生效");
 
 							createInstruT3("不比较as-path属性，‘不建议设置。");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] bestpath as-path-ignore");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -887,16 +833,14 @@
 
 						createInstruT2("修改多出口鉴别器属性（MED）", "i8-2-5");
 							createInstruT3("修改MED，只能在‘发送EBGP路由的出方向。配置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] peer “2.2.2.2。 route-policy “policyName。 export");
 								instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "对等体更新源地址");
 								instruArr[2] = createCmdInstruSpan("“policyName。", "route-policy名，通过apply cost  { “MED值。 } 修改");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("无论来源是否为相同AS均比较MED（默认只有来自相同AS的不同路径路由才比较MED）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] compare-different-as-med");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -910,8 +854,7 @@
 
 					createInstruT1("路由反射器（Router Reflector）", "i8-3");
 						createInstruT2("指定对等体为Client，自己成为Server，未指定的对等体为Non-Client，路由属性不改变，客户端无需额外配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] peer “2.2.2.2。 reflect-client");
 							instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "对等体更新源地址");
 							createCmdInstruT2(instruArr, "huawei");
@@ -923,8 +866,7 @@
 							createInstruAllBottomT2("当反射器不止一个，所有反射器就配置相同的集群ID，用于防环");
 
 						createInstruT2("BGP路由不加载到本地路由表，不影响其它");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] bgp-rib-only");;
 							createCmdInstruT2(instruArr, "huawei");
 							createInstruAllBottomT2("只是本地路由表中不显示，可以用display bgp routing查看");
@@ -971,8 +913,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("‘基于对等体(对等体组)。，根据as-path控制");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] peer { “2.2.2.2。 | “bgp-group。 } as-path-filter { “10。 | “as_filter。 } { export | import }");
 							instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "对等体更新源");
 							instruArr[2] = createCmdInstruSpan("“bgp-group。", "对等体组名称");
@@ -983,8 +924,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("‘基于对等体(对等体组)。，根据route-policy控制");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] peer { “2.2.2.2。 | “bgp-group。 } route-policy “rp_bgp。 { export | import }");
 							instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "对等体更新源");
 							instruArr[2] = createCmdInstruSpan("“bgp-group。", "对等体组名称");
@@ -1003,16 +943,14 @@
 
 					createInstruT1("与BFD联动", "i8-7");
 						createInstruT2("基于对等体(对等体组)启用");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] peer { “2.2.2.2。 | “bgp-group。 } bfd enable");
 							instruArr[1] = createCmdInstruSpan("“2.2.2.2。", "对等体更新源");
 							instruArr[2] = createCmdInstruSpan("“bgp-group。", "对等体组名称");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("基于对等体组启用时，某些对等体不启用");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] peer “3.3.3.3。 bfd block");
 							instruArr[1] = createCmdInstruSpan("“3.3.3.3。", "不启用BFD的对等体更新源");
 							createCmdInstruT2(instruArr, "huawei");
@@ -1036,8 +974,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("as-path-filter", "i9-4");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] ip as-path-filter { “10。 | “as_list。 } permit “^10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "as-path-filter号");
 							instruArr[2] = createCmdInstruSpan("“as_list。", "as-path-filter名");
@@ -1047,8 +984,7 @@
 				createInstruT0("多协议标签交换（MPLS）", "i10");
 					createInstruT1("配置标签分发协议（LDP）", "i10-1");
 						createInstruT2("配置lsr-id，本设备上的环回接口地址，需要在本AS全局可达");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] mpls lsr-id “11.1.1.1。");
 							instruArr[1] = createCmdInstruSpan("“11.1.1.1。", "lsr-id");
 							createCmdInstruT2(instruArr, "huawei");
@@ -1077,8 +1013,7 @@
 
 						createInstruT2("配置LDP与IGP的同步，只支持链路状态协议");
 							createInstruT3("启用同步，接口下配置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/1] { ospf | isis } ldp-sync ");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1111,22 +1046,19 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看/验证命令");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] display mpls ldp session");
 							instruArr[1] = createCmdInstruSpan("‘Operational。为正常状态");
 							instruArr[2] = createCmdSpan("[R1] display mpls ldp peer");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看标签转发表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] display mpls lsp");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("验证LSP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] tracert lsp ip “44.1.1.1。 32");
 							instruArr[1] = createCmdInstruSpan("“44.1.1.1。", "目的地址，‘华为默认只对32位路由分标签。");
 							createCmdInstruT2(instruArr, "huawei");
@@ -1155,8 +1087,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 						createInstruT2("接口加入vpn-instance");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0] ip binding vpn-instance “VPN1。");
 							instruArr[1] = createCmdInstruSpan("“VPN1。", "vpn-instance名，配置vpn-instance后，接口的IP地址会被清除");
 							createCmdInstruT2(instruArr, "huawei");
@@ -1177,8 +1108,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("产生相应的vpn-instance路由");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-bgp] ipv4-family vpn-instance “VPN1。 ");
 							instruArr[1] = createCmdInstruSpan("“VPN1。", "vpn-instance名");
 							instruArr[2] = createCmdSpan("[R1-bgp-VPN1] network ……");
@@ -1187,8 +1117,7 @@
 
 					createInstruT1("配置MPLS VPN中客户路由协议", "i10-4");
 						createInstruT2("静态路由", "i10-4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] ip route-static vpn-instance “VPN1。　“10.1.1.0。　“255.255.255.0。　“g0/0。　“10.1.18.8。");
 							instruArr[1] = createCmdInstruSpan("“VPN1。", "vpn-instance名");
 							createCmdInstruT2(instruArr, "huawei");
@@ -1214,8 +1143,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("查看sham-link");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] display ospf sham-link");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1240,8 +1168,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("‘被动方案，CE配置。，配置可以接收的路由中AS-path中与本AS号相同的次数");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R2-bgp] peer “10.1.12.1。 allow-as-loop [ “1。 ]");
 								instruArr[1] = createCmdInstruSpan("“10.1.12.1。", "CE的更新源地址");
 								instruArr[2] = createCmdInstruSpan("“1。", "可以接收的次数，默认为1");
@@ -1265,8 +1192,7 @@
 							createInstruT3("不同AS间互为CE/PE(使用BGP转发路由)，AS间为IP转发，‘只适用于VPN较少的情况。");
 							createInstruT3("各AS内部配置方式与普通域内MPLS VPN相同，且不同AS内的vpn-instance的‘RT值无需匹配。");
 							createInstruT3("ASBR间链路需要将接口加入对应的vpn-instance");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0] ip binding vpn-instance “AS-A-VPN。");
 								instruArr[1] = createCmdInstruSpan("R1为域A的ASBR，g0/0与为域B连接的接口，AS-A-VPN为客户在域A中vpn-instance名");
 								instruArr[2] = createCmdSpan("　");
@@ -1275,8 +1201,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("ASBR间建立BGP相应的vpn-instance地址族的邻居");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] ipv4-family vpn-instance “AS-A-VPN。");
 								instruArr[1] = createCmdSpan("[R1-bgp-VPN1] peer ……");
 								createCmdInstruT3(instruArr, "huawei");
@@ -1284,8 +1209,7 @@
 						createInstruT2("optionB", "i10-6-2");
 							createInstruT3("不同AS内的vpn-instance的‘RT值需要匹配。");
 							createInstruT3("ASBR间链路只启用MPLS（不启用LDP）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R2-GigabitEthernet0/0] mpls");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1296,8 +1220,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("所有ASBR上BGP的VPNv4地址族关闭RT匹配功能");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-bgp] ipv4-family vpnv4");
 								instruArr[1] = createCmdSpan("[R1-bgp-af-vpnv4] undo policy vpn-target");
 								createCmdInstruT3(instruArr, "huawei");
@@ -1312,8 +1235,7 @@
 						createInstruT2("optionC", "i10-6-3");
 							createInstruT3("不同AS内的vpn-instance的‘RT值需要匹配。");
 							createInstruT3("不同AS的PE间建立VPNv4邻居");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R3-bgp] ipv4-family vpnv4");
 								instruArr[1] = createCmdSpan("[R3-bgp-af-vpnv4] peer “7.7.7.7。 enable");
 								instruArr[2] = createCmdInstruSpan("“7.7.7.7。", "对端AS中PE的更新源地址");
@@ -1335,8 +1257,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("ASBR间链路只启用MPLS（不启用LDP）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-GigabitEthernet0/0] mpls");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1366,8 +1287,7 @@
 
 				createInstruT0("组播", "i11");
 					createInstruT1("启用组播路由", "i11-1");
-						instruArr = null;
-						instruArr = new Array();
+						instruArr = [];
 						instruArr[0] = createCmdSpan("[R1] multicast routing-enable");
 						createCmdInstruT1(instruArr, "huawei");
 
@@ -1402,8 +1322,7 @@
 
 							createInstruT3("配置候选RP", "i11-3-2-2");
 								createInstruAllTopT3("一般配置为环回接口IP，需要网格可达，该接口需要启用pim");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] pim");
 								instruArr[1] = createCmdSpan("[R1-pim] c-rp “loop0。 [ priority “10。 ]");
 								instruArr[2] = createCmdInstruSpan("“loop0。", "候选BSR的接口");
@@ -1414,8 +1333,7 @@
 							createInstruT3("配置RP", "i11-3-3-1");
 								createInstruAllTopT3("在两个设备上，分别配置环回接口，配置为相同的32主机地址，接口无需启用pim");
 								createInstruAllTopT3("将该地址在所有组播设备上配置为静态RP");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1] pim");
 								instruArr[1] = createCmdSpan("[R1-pim] static-rp “11.11.11.11。");
 								instruArr[2] = createCmdInstruSpan("“11.11.11.11。", "静态RP地址");
@@ -1431,8 +1349,7 @@
 
 					createInstruT1("配置扩展SSM", "i11-4");
 						createInstruT2("配置IGMPv3，仅需在连接组播接收者的接口配置", "i11-4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R2-GigabitEthernet0/0/1] igmp enable");
 							instruArr[1] = createCmdSpan("[R2-GigabitEthernet0/0/1] igmp version 3");
 							createCmdInstruT2(instruArr, "huawei");
@@ -1446,8 +1363,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("PIM协议应用SSM策略", "i11-4-2-2");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R3] pim");
 								instruArr[1] = createCmdSpan("[R3-pim] ssm-policy acl-name “SSM。");
 								instruArr[2] = createCmdInstruSpan("“SSM。", "匹配组播地址的ACL名");

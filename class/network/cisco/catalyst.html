@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,8 +16,7 @@
 			<script type="text/javascript">
 				createInstruT0("交换机基本配置", "i1");
 						createInstruT2("显示mac地址表");
-							instruArr = null;
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("SW1# show mac-address-table");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -33,16 +32,14 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("err-disable状态的手动处理方法（先关闭再打开）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# shutdown");
 							instruArr[1] = createCmdSpan("SW1(config-if)# no shutdown");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置err-disable的自动处理（默认不处理）");
 							createInstruT3("查看接口errdisable");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1# show interfaces status");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -63,8 +60,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置接口的速度");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# speed { auto | 10 | 100 | 1000 | …… }");
 							instruArr[1] = createCmdInstruSpan("数值单位Mbps");
 							createCmdInstruT2(instruArr, "cisco");
@@ -76,8 +72,7 @@
 
 						createInstruT2("进入组接口，配置相同命令");
 							createInstruT3("接口连续");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# interface range “f0/1。 - “12。");
 								instruArr[1] = createCmdInstruSpan("“f0/1。", "起始接口");
 								instruArr[2] = createCmdInstruSpan("“f0/12。", "终止接口");
@@ -108,8 +103,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看vlan");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show vlan [ brief ]");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -122,8 +116,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("关闭DTP，当链路两端均设置为trunk/access，可关闭DTP，减小消耗");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport nonegotiate");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -136,8 +129,7 @@
 					createInstruT1("在任何版本的VTP中：‘交换机只在trunk链路中接收和发送VTP数据。");
 					createInstruT1("VTP v1/v2", "i3-1");
 						createInstruT2("创建VTP域名");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# vtp domain “vtpName。");
 							instruArr[1] = createCmdInstruSpan("“vtpName。", "VTP域名(‘区分大小写。）");
 							createCmdInstruT2(instruArr, "cisco");
@@ -152,15 +144,13 @@
 
 						createInstruT2("配置VTP版本（在server和transparent中配置，client无法配置）");
 							createInstruAllTopT2("低版本的IOS中版本1的VTP中透明模式不会传递vlan信息，需修改为版本2，高版本IOS无此问题");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# vtp version “2。");
 							instruArr[1] = createCmdInstruSpan("2", "VTP版本号");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("开启VTP剪枝");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# vtp pruning");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -170,8 +160,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看VTP密码");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show vtp password");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -195,8 +184,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置VTP版本");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# vtp version 3");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -219,15 +207,13 @@
 							createInstruAllBottomT2("<br />需要先将vtp的mst实例配置为server（默认为transparent）模式，再配置为primary server ，才能传播mstp");
 
 						createInstruT2("查看加入vtp域中设备");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show vtp devices");
 							createCmdInstruT2(instruArr, "cisco");
 
 				createInstruT0("私有vlan（Private VLAN）", "i4");
 						createInstruT2("前提：VTP如果为v1/v2，则需要为透明模式");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# vtp mode transparent");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -247,8 +233,7 @@
 
 						createInstruT2("主vlan物理接口配置");
 							createInstruT3("将相应接口设置混杂模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if)# switchport mode private-vlan promiscuous");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -260,8 +245,7 @@
 
 						createInstruT2("内部vlan物理接口配置");
 							createInstruT3("设置接口模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if-range)# switchport mode private-vlan host");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -279,8 +263,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看接口的私有vlan角色");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show vlan private-vlan type");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -291,16 +274,14 @@
 				createInstruT0("vlan间通信", "i5");
 					createInstruT1("单臂路由法", "i5-1");
 						createInstruT2("创建需要通信的vlan对应子接口（本征vlan无需子接口，使用主接口即可）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# int “f0/0。.“10。");
 							instruArr[1] = createCmdInstruSpan("“f0/0。", "与交换机相连接口号");
 							instruArr[2] = createCmdInstruSpan("“10。", "子接口号，一般与vlan相同");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置为干道链路（必须先封装再设置IP）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-subif)# encapsulation dot1Q “10。 [ native ]");
 							instruArr[1] = createCmdInstruSpan("“10。", "一般与vlan号相同");
 							instruArr[2] = createCmdInstruSpan("native", "表示为本征vlan");
@@ -308,8 +289,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置接口IP为对应网关");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-subif)# ip address “192.168.1.254。 “255.255.255.0。");
 							instruArr[1] = createCmdInstruSpan("“192.168.1.254。", "网关地址");
 							instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
@@ -325,30 +305,26 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("开户交换机的路由功能");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# ip routing");
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("vlan连接外部", "i5-3");
 						createInstruT2("通用方式");
 							createInstruT3("添加用于与外部相连的vlan（‘此vlan接口相当于路由器接口。）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# vlan “100。");
 								instruArr[1] = createCmdInstruSpan("vlan “100。", "vlan号");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("将交换机出口加入vlan");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if)# switchport access vlan “100。");
 								instruArr[1] = createCmdInstruSpan("vlan “100。", "用于连接外网vlan号");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置vlan地址");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# int vlan “100");
 								instruArr[1] = createCmdInstruSpan("vlan “100。", "用于连接外网vlan号");
 								instruArr[2] = createCmdSpan("SW1(config-if)# ip address “192.168.1.254。 “255.255.255.0。");
@@ -358,16 +334,14 @@
 
 						createInstruT2("路由接口方式");
 							createInstruT3("将交换机出口设置路由模式（‘设置交换机接口为路由器接口。）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# int “f0/1。");
 								instruArr[1] = createCmdInstruSpan("“f0/1。", "接口号（交换机出接口）");
 								instruArr[2] = createCmdSpan("SW1(config-if)# no switchport");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置IP地址");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if)# ip address “192.168.1.254。 “255.255.255.0。");
 								instruArr[1] = createCmdInstruSpan("“192.168.1.254。", "IP地址");
 								instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
@@ -375,8 +349,7 @@
 
 					createInstruT1("trunk链路只允许某些vlan通过", "i5-4");
 						createInstruT2("基本设置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport trunk allowed vlan “10-20,30。");
 							instruArr[1] = createCmdInstruSpan("vlan “10-20,30。", "允许通过的vlan号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -394,8 +367,7 @@
 					createInstruT1("SPAN（交换机端口分析仪）", "i6-1");
 						createInstruT2("分析服务器与被监控端口通过‘同一台。交换机相连");
 						createInstruT2("配置前应先清空span进程");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# no monitor session all ");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -409,8 +381,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("设置源接口（被监控的接口）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# monitor session “1。 source { int “f0/0-2。 | vlan “2。 } [ rx | tx | both ] ");
 							instruArr[1] = createCmdInstruSpan("“1。", "span进程号");
 							instruArr[2] = createCmdInstruSpan("“f0/0-2。", "被监控接口");
@@ -421,8 +392,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("显示span信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show monitor session “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "span进程号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -449,8 +419,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("与分析服务器相连的交换机配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW2(config)# monitor session “1。 source vlan “1000。");
 							instruArr[1] = createCmdInstruSpan("“1。", "rspan进程号");
 							instruArr[2] = createCmdInstruSpan("vlan “1000。", "传递流量的vlan号");
@@ -463,8 +432,7 @@
 						createInstruT2("被监控流量被封装进GRE，分析服务器与被监控端口间可通过‘三层设备进行多次路由。");
 						createInstruT2("与被监控端口相连的交换机配置");
 							createInstruT3("创建监控进程");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# monitor session “1。 type erspan-source");
 								instruArr[1] = createCmdInstruSpan("“1。", "erspan进程号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -478,8 +446,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("启用ERSPAN");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-mon-erspan-src)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -495,8 +462,7 @@
 
 						createInstruT2("与分析服务器相连的交换机配置");
 							createInstruT3("创建监控进程");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW2(config)# monitor session “1。 type erspan-destination");
 								instruArr[1] = createCmdInstruSpan("“1。", "erspan进程号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -507,8 +473,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("启用ERSPAN");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW2(config-mon-erspan-dst)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -523,8 +488,7 @@
 				createInstruT0("生成树协议（STP，RSTP，MSTP）", "i7");
 					createInstruT1("基础配置", "i7-1");
 						createInstruT2("设置交换机采用生成树协议");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# spanning-tree mode { pvst | rapid-pvst | mst }");
 							instruArr[1] = createCmdInstruSpan("pvst", "STP");
 							instruArr[2] = createCmdInstruSpan("rapid-pvst", "RSTP");
@@ -533,8 +497,7 @@
 
 						createInstruT2("设置MSTP");
 							createInstruT3("进入MSTP配置模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# spanning-tree mst configuration");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -555,8 +518,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看MSTP配置");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-mst)# show pending");
 								instruArr[1] = createCmdSpan("SW1# show spanning-tree mst configuration");
 								createCmdInstruT3(instruArr, "cisco");
@@ -576,15 +538,13 @@
 
 						createInstruT2("配置快速端口（portfast），只能连接主机，不然可能造成环路");
 							createInstruT3("将端口设置为快速端口");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if)# spanning-tree portfast [ trunk ]");
 								instruArr[1] = createCmdInstruSpan("trunk", "用于配置为trunk模式，连接拥有多个vlan的终端接口，如：服务器、wlc");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("交换机上所有access模式接口均设置为快速端口");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# spanning-tree portfast default");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -625,8 +585,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("接入层交换机的一条上行链路down，另一条立即切换为forwarding，接入层交换机上配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# spanning-tree uplinkfast");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -648,8 +607,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看inconsistency（防护生效后的接口状态）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show spanning-tree inconsistentports");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -692,8 +650,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置通道接口");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# int port-channel [ “1。 ]");
 							instruArr[1] = createCmdInstruSpan("“1。", "通道号");
 							instruArr[2] = createCmdSpan("SW1(config-if)# ……");
@@ -717,8 +674,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("显示通道信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show interfaces port-channel [ “1。 ]");
 							instruArr[1] = createCmdInstruSpan("“1。", "具体通道号");
 							instruArr[2] = createCmdSpan("SW1# show etherchannel");
@@ -730,8 +686,7 @@
 					createInstruT1("一般用于光纤链路");
 					createInstruT1("常规模式，发生单向链路时仅报错");
 						createInstruT2("接口启用");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# udld port");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -760,8 +715,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置虚拟网关地址");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if)# standby “10。 ip “192.168.10.254。");
 								instruArr[1] = createCmdInstruSpan("“10。", "组号");
 								instruArr[2] = createCmdInstruSpan("“192.168.10.254。", "虚拟网关地址");
@@ -787,8 +741,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("显示HSRP信息");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1# show standby [ brief ]");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -812,8 +765,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("跟踪链路，基于‘SLA。的跟踪");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(config)# track “1。 ip sla “5。 reachability ");
 								instruArr[1] = createCmdInstruSpan("“1。", "track号");
 								instruArr[2] = createCmdInstruSpan("“5。", "sla号");
@@ -824,8 +776,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("设置抢占，活动网关上行链路不通时，备份网关成为活动网关");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW2(config-if)# standby “10。 preempt");
 								instruArr[1] = createCmdInstruSpan("“10。", "组号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -860,8 +811,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("修改网关权重");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# glbp “1。 weighting “10。");
 							instruArr[1] = createCmdInstruSpan("“1。", "组号");
 							instruArr[2] = createCmdInstruSpan("“10。", "权重值");
@@ -871,8 +821,7 @@
 
 					createInstruT1("端口安全", "i10-1");
 						createInstruT2("启用端口安全");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport mode access");
 							instruArr[1] = createCmdSpan("SW1(config-if)# switchport port-security");
 							createCmdInstruT2(instruArr, "cisco");
@@ -884,8 +833,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("自动将mac地址与端口进行绑定（将mac地址保存到该接口的running-config中）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config-if)# switchport port-security mac-address sticky");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -902,8 +850,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("查看安全mac地址表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show port-security address");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -925,8 +872,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("阻止未知帧（目的mac不在mac地址表中的帧）发送");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# switchport block { unicast | multicast }");
 							instruArr[1] = createCmdInstruSpan("unicast", "单播");
 							instruArr[2] = createCmdInstruSpan("multicast", "组播");
@@ -943,8 +889,7 @@
 
 					createInstruT1("DHCP Snooping，dhcp安全配置", "i10-2");
 						createInstruT2("全局启用dhcp snooping");
-							instruArr=null;
-							instruArr=new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# ip dhcp snooping");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -955,8 +900,7 @@
 
 						createInstruT2("将与合法DHCP服务器接口设置为信任接口");
 						createInstruT2("&nbsp;&nbsp;&nbsp;&nbsp;DHCP服务器与客户端之间如果不只一台交换机，那么交换机间连接路线两端端口均应设置为信任接口");
-							instruArr=null;
-							instruArr=new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# ip dhcp snooping trust");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -971,8 +915,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("客户端连接思科路由器做的DHCP服务器时会报错，需要关闭DHCP Snoopong的Option 82");
-							instruArr=null;
-							instruArr=new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# no ip dhcp snooping information option ");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -984,8 +927,7 @@
 					createInstruT1("动态ARP监控（DAI）", "i10-3");
 						createInstruT2("如果使用多个交换机，那么交换机间连接路线两端端口均应设置为信任接口");
 						createInstruT2("将接口设置信任接口，不检查arp");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# ip arp inspection trust");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1006,8 +948,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("在相应vlan上调用arp acl");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("SW1(config)# ip arp inspection filter “arp-acl。 vlan “2。 [ static ]");
 								instruArr[1] = createCmdInstruSpan("“arp-acl。", "arp acl名");
 								instruArr[2] = createCmdInstruSpan("“2。", "vlan号");
@@ -1015,8 +956,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("启用arp监控");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# ip arp inspection vlan “2。");
 							instruArr[1] = createCmdInstruSpan("“2。", "vlan号");
 							createCmdInstruT2(instruArr, "cisco");
@@ -1030,8 +970,7 @@
 
 						createInstruT2("只能在DHCP Snooping的untrust接口上配置");
 						createInstruT3("只限制IP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config-if)# ip verify source");
 							createCmdInstruT3(instruArr, "cisco");
 
@@ -1051,8 +990,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("查看数据库");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1# show ip verify source");
 							createCmdInstruT2(instruArr, "cisco");
 			</script>

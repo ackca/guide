@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
 				createInstruT0("网管协议", "i3");
 					createInstruT1("SSH", "i3-3");
 						createInstruT2("定义登录用的用户名");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("[R1] local-user “admin。");
 							instruArr[1] = createCmdInstruSpan("“admin。", "用户名");
 							createCmdInstruT2(instruArr, "h3c");
@@ -28,8 +28,7 @@
 							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("配置用户用于SSH");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-luser-manage-admin] service-type ssh");
 							createCmdInstruT2(instruArr, "h3c");
 
@@ -56,8 +55,7 @@
 							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("允许/不允许 ssh v1登录（v2已经允许)");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] [ undo ] ssh server compatible-ssh1x enable");
 							instruArr[1] = createCmdInstruSpan("undo为不允许");
 							createCmdInstruT2(instruArr, "h3c");

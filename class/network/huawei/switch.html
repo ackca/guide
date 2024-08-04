@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -19,14 +19,13 @@
 				createInstruT0("交换机基本配置", "i1");
 					createInstruT1("mac地址表相关");
 						createInstruT2("查看mac地址表");
-							instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("[SW1] display mac-address vlan “10。");
 							instruArr[1] = createCmdInstruSpan("vlan “10。", "vlan号，省略查看全部");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看mac地址表失效时间");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display mac-address aging-time");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -43,8 +42,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置黑洞mac地址表，类似于黑洞路由，来自此mac的帧直接丢弃");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] mac-address blackhole “000c-29a3-8612。 vlan “1。");
 							instruArr[1] = createCmdInstruSpan("“000c-29a3-8612。", "mac地址");
 							instruArr[2] = createCmdInstruSpan("“1。", "vlan号");
@@ -62,25 +60,6 @@
 						instruArr[2] = createCmdInstruSpan("“300。", "自动启用时间间隔");
 						createCmdInstruT1(instruArr, "huawei");
 
-						/*createInstruT2("设置接口的双工状态（一般采用不同厂商设备时设置，同厂商采用默认‘auto。）");
-							instruArr[0] = createCmdSpan("SW1(config-if)#duplex { auto | full | half }");
-							instruArr[1] = createCmdInstruSpan("auto", "自动协商");
-							instruArr[2] = createCmdInstruSpan("full", "全双工");
-							instruArr[3] = createCmdInstruSpan("half", "半双工");
-							createCmdInstru(instruArr, "T2", "cisco");
-
-						createInstruT2("设置接口的速度（一般采用不同厂商设备时设置，同厂商采用默认‘auto。）");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("SW1(config-if)#speed { auto | 10 | 100 | 1000 | …… }");
-							instruArr[1] = createCmdInstruSpan("数值单位Mbps");
-							createCmdInstru(instruArr, "T2", "cisco");
-
-						createInstruT2("接口加注释");
-							instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] description “abcdef。");
-							instruArr[1] = createCmdInstruSpan("“abcdef。", "注释内容");
-							createCmdInstruT2(instruArr, "huawei");*/
-
 					createInstruT1("<br />配置接口组");
 						createInstruT2("新建接口组");
 							instruArr[0] = createCmdSpan("[SW1] port-group “1。");
@@ -93,8 +72,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("配置好成员后，继续在接口组下配置，配置命令对所有接口成员有效");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-port-group-1] ……");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -112,8 +90,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("创建多个vlan");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] vlan batch “10。 to “20。 “25。");
 							instruArr[1] = createCmdInstruSpan("“10。 to “20。", "使用to创建多个连续vlan");
 							instruArr[2] = createCmdInstruSpan("“25。", "不连续vlan单个创建");
@@ -149,8 +126,7 @@
 
 					createInstruT1("hybrid", "i2-4");
 						createInstruT2("将接口设置为hybrid模式");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] port link-type hybrid");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -165,7 +141,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("hybrid接口对流量的处理方式");
-							tHybrid = `
+							const tHybrid = `
 								<table class="tHybrid">
 									<tr>
 										<th class="c11">数据帧流向</th>
@@ -229,15 +205,13 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("进入相应的接口视图");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] int “g0/0/1。");
 								instruArr[1] = createCmdInstruSpan("“g0/0/1。", "接口号");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("将接口设置为hybrid模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] port link-type hybrid");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -247,8 +221,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("将基于mac地址划分的vlan设置为优先（默认）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] vlan precedence mac-vlan");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -271,15 +244,13 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("进入相应的接口视图");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] int “g0/0/1。");
 								instruArr[1] = createCmdInstruSpan("“g0/0/1。", "接口号");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("将接口设置为hybrid模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] port link-type hybrid");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -289,8 +260,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("将基于IP地址划分的vlan设置为优先");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] vlan precedence ip-subnet-vlan");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -313,15 +283,13 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("进入相应的接口视图");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] int “g0/0/1。");
 								instruArr[1] = createCmdInstruSpan("“g0/0/1。", "接口号");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("将接口设置为hybrid模式");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] port link-type hybrid");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -331,8 +299,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("查看基于策略的vlan划分");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] display policy-vlan all");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -364,15 +331,13 @@
 				createInstruT0("扩展vlan", "i4");
 					createInstruT1("Mux-vlan（对应用思科私有vlan）", "i4-1");
 						createInstruT2("在主vlan视图下配置");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] vlan “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "主vlan号");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("将该vlan设置为主vlan");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-vlan10] mux-vlan");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -394,8 +359,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看mux-vlan");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display mux-vlan");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -413,15 +377,13 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("指定相应指定为Sub-vlan");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-vlan10] access-vlan “2 to 3。");
 							instruArr[1] = createCmdInstruSpan("“2 to 3。", "Sub-vlan号");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("在Super-vlan的SVI启用代理arp，使不同Sub-vlan间设备可通信（‘可选。）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-Vlanif10] arp-proxy inter-sub-vlan-proxy enable");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -442,16 +404,14 @@
 				createInstruT0("vlan间通信", "i5");
 					createInstruT1("单臂路由法", "i5-1");
 						createInstruT2("创建需要通信的vlan对应子接口（虚拟）（本征vlan无需子接口，使用主接口即可）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] int “f0/0。.“10。");
 							instruArr[1] = createCmdInstruSpan("“f0/0。", "与交换机相连接口号");
 							instruArr[2] = createCmdInstruSpan("“10。", "子接口号，一般与vlan相同");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置为干道链路（必须先封装再设置IP）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/0.10] dot1q termination vid “10。");
 							instruArr[1] = createCmdInstruSpan("“10。", "vlan号");
 							createCmdInstruT2(instruArr, "huawei");
@@ -463,8 +423,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("接收ARP");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/0.10] arp broadcast enable ");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -479,8 +438,7 @@
 
 					createInstruT1("vlan连接外部", "i5-3");
 						createInstruT2("添加用于与外部相连的vlan（‘此vlan接口相当于路由器接口。）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] vlan “100。");
 							instruArr[1] = createCmdInstruSpan("vlan “100。", "vlan号");
 							createCmdInstruT2(instruArr, "huawei");
@@ -523,8 +481,7 @@
 
 						createInstruT2("RSPAN（远程交换机端口分析仪，分析服务器与被监控端口通过‘若干台。交换机相连）", "i6-1-2");
 							createInstruT3("创建一个vlan，用于在交换机间传递监控流量");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] vlan “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "vlan号");
 								createCmdInstruT3(instruArr, "huawei");
@@ -548,8 +505,7 @@
 
 						createInstruT2("ERSPAN（封装的远程交换机端口分析仪，分析服务器与被监控端口通过三层相连）", "i6-1-3");
 							createInstruT3("设置三层远程目的接口（监控流量从该接口发出，最终到达分析服务器）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] observe-port “1。 interface “g0/0/2。 destination-ip “10.1.1.1。 source-ip “192.168.10.1。");
 								instruArr[1] = createCmdInstruSpan("“1。", "镜像口号");
 								instruArr[2] = createCmdInstruSpan("“g0/0/2。", "三层远程目的接口号");
@@ -571,8 +527,7 @@
 					createInstruT1("vlan镜像", "i6-2");
 						createInstruT2("SPAN（交换机端口分析仪，分析服务器与被监控vlan通过‘同一台。交换机相连）", "i6-2-1");
 							createInstruT3("设置本地目的接口（接收从被监控接口流量的接口，连接分析仪服务器的接口）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] observe-port “1。 interface “f0/2。");
 								instruArr[1] = createCmdInstruSpan("“1。", "镜像口号");
 								instruArr[2] = createCmdInstruSpan("“f0/2。", "目的接口");
@@ -587,8 +542,7 @@
 
 						createInstruT2("RSPAN（远程交换机端口分析仪，分析服务器与被监控vlan通过‘若干台。交换机相连）", "i6-2-2");
 							createInstruT3("创建一个vlan，用于在交换机间传递监控流量");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] vlan “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "vlan号");
 								createCmdInstruT3(instruArr, "huawei");
@@ -610,8 +564,7 @@
 					createInstruT1("mac地址镜像", "i6-3");
 						createInstruT2("SPAN（交换机端口分析仪，分析服务器与被监控mac通过‘同一台。交换机相连）", "i6-3-1");
 							createInstruT3("设置本地目的接口（接收从被监控接口流量的接口，连接分析仪服务器的接口）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] observe-port “1。 interface “f0/2。");
 								instruArr[1] = createCmdInstruSpan("“1。", "镜像口号");
 								instruArr[2] = createCmdInstruSpan("“f0/2。", "目的接口");
@@ -627,8 +580,7 @@
 
 						createInstruT2("RSPAN（远程交换机端口分析仪，分析服务器与被监控mac通过‘若干台。交换机相连）", "i6-3-2");
 							createInstruT3("创建一个vlan，用于在交换机间传递监控流量");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] vlan “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "vlan号");
 								createCmdInstruT3(instruArr, "huawei");
@@ -650,22 +602,19 @@
 
 					createInstruT1("查看命令", "i6-4");
 						createInstruT2("查看目的接口");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display observe-port");
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看源接口");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display mirror-port");
 							createCmdInstruT2(instruArr, "huawei");
 
 				createInstruT0("生成树协议（STP，RSTP，MSTP）", "i7");
 					createInstruT1("基础配置", "i7-1");
 						createInstruT2("设置交换机采用生成树协议");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] stp mode { stp | rstp | mstp }");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -697,8 +646,7 @@
 							createInstruT3("接口连接后立即forwarding，用于连接主机，但如果收到BPDU，还原为普通接口，参与生成树计算");
 
 							createInstruT3("接口启用");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-FastEthernet0/1] stp edged-port enable");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -718,8 +666,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置交换机的优先级（只能为4096的倍数）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] stp [ instance “1。 ] priority “4096。");
 							instruArr[1] = createCmdInstruSpan("instance “1。", "MSTP实例号，省略时对0生效，配置STP、RSTP时使用");
 							instruArr[2] = createCmdInstruSpan("“4096。", "优先级数值");
@@ -747,8 +694,7 @@
 					createInstruT1("边缘端口（edged-port）误连接交换机的处理机制", "i7-3");
 						createInstruT2("BPDU保护（BPDU Protection）");
 							createInstruT3("边缘端口接收到BPDU后，将端口设置为error-down");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] stp bpdu-protection");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -775,8 +721,7 @@
 
 					createInstruT2("将接口（接口组）加入聚合接口");
 						createInstruT3("Eth-trunk视图下加入");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-Eth-Trunk1] trunkport “g 0/0/1 to 0/0/5。");
 							instruArr[1] = createCmdInstruSpan("“g 0/0/1 to 0/0/5。", "成员接口号");
 							createCmdInstruT3(instruArr, "huawei");
@@ -799,8 +744,7 @@
 
 				createInstruT0("虚拟路由冗余协议（VRRP）", "i9");
 						createInstruT2("设置实际网关地址");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] int Vlanif “10。");
 							instruArr[1] = createCmdInstruSpan("Vlanif “10。", "对应vlan号");
 							instruArr[2] = createCmdSpan("[SW1-Vlanif10] ip address “192.168.10.251。 “24。");
@@ -809,8 +753,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("设置虚拟网关地址");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-Vlanif10] vrrp vrid “10。 virtual-ip “192.168.10.254。");
 							instruArr[1] = createCmdInstruSpan("“10。", "组号");
 							instruArr[2] = createCmdInstruSpan("“192.168.10.254。", "虚拟网关地址");
@@ -831,8 +774,7 @@
 
 						createInstruT2("如果使用路由器配置VRRP，并使用子接口，需要其它配置");
 							createInstruT3("接口封装为trunk，并指定发送接收的tag");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-FastEthernet0/0.10] dot1q termination vid “10。");
 								instruArr[1] = createCmdInstruSpan("“10。", "vlan号");
 								createCmdInstruT3(instruArr, "huawei");
@@ -843,8 +785,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("接收ARP");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-FastEthernet0/0.10] arp broadcast enable ");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -871,8 +812,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("终端无法ping通虚拟网关（对网络无影响）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] undo vrrp virtual-ip ping enable");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -893,8 +833,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("自动将mac地址与端口进行绑定");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/2] port-security mac-address sticky");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -912,49 +851,13 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 						createInstruT2("查看绑定的mac地址表");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display mac-address sticky");
 							createCmdInstruT2(instruArr, "huawei");
 
-						/*createInstruT2("查看所有端口安全");
-							instruArr[0] = createCmdSpan("SW1#show port-security [ int “f0/0。 ]");
-							instruArr[1] = createCmdInstruSpan("“f0/0。", "接口号，查看某个具体接口安全");
-							createCmdInstru(instruArr, "T2", "cisco");
-
-						createInstruT2("来源于某个接口的某个mac地址的所有数据帧全部丢弃（只能是单播数据帧）");
-							instruArr[0] = createCmdSpan("SW1(config)#mac-address-table static “000c-29a3-8612。 vlan “1。 [ int “f0/1。 ] drop");
-							instruArr[1] = createCmdInstruSpan("“000c-29a3-8612。", "mac地址");
-							instruArr[2] = createCmdInstruSpan("“1。", "vlan号");
-							instruArr[3] = createCmdInstruSpan("“f0/1。", "接口号，不指定则所任意接口号");
-							createCmdInstru(instruArr, "T2", "cisco");
-
-						createInstruT2("mac地址与端口手动绑定");
-							instruArr[0] = createCmdSpan("SW1(config)#mac-address-table static “000c-29a3-8612。 vlan “1。 int “f0/1。");
-							instruArr[3] = createCmdInstruSpan("“f0/1。", "接口号");
-							createCmdInstru(instruArr, "T2", "cisco");
-
-						createInstruT2("阻止未知帧（目的mac不在mac地址表中的帧）发送");
-							instruArr = null;
-							instruArr = new Array();
-							instruArr[0] = createCmdSpan("SW1(config-if)#switchport block { unicast | multicast }");
-							instruArr[1] = createCmdInstruSpan("unicast", "单播");
-							instruArr[2] = createCmdInstruSpan("multicast", "组播");
-							createCmdInstru(instruArr, "T2", "cisco");
-
-						createInstruT2("风暴控制");
-							instruArr[0] = createCmdSpan("SW1(config-if)#storm-control { unicast | multicast | broadcast } level “30。 [ “20。 ]");
-							instruArr[3] = createCmdInstruSpan("broadcast", "广播");
-							instruArr[4] = createCmdInstruSpan("“30。", "上限");
-							instruArr[5] = createCmdInstruSpan("“20。", "下限");
-							instruArr[6] = createCmdInstruSpan("上(下)限均为占用带宽的百分比");
-							instruArr[7] = createCmdInstruSpan("当接口的 单播/广播/组播 流量发送超过带宽的上限(带宽的30%)，不再处理任何单播/广播/组播流量，低于下限(带宽的20%)时恢复处理，下限省略时，超过上限不处理，低于上限时恢复处理");
-							createCmdInstru(instruArr, "T2", "cisco");*/
-
 					createInstruT1("DHCP Snooping，dhcp安全配置", "i10-2");
 						createInstruT2("全局启用dhcp snooping（需要先启用DHCP），仅启用功能未生效");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] ip dhcp snooping");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -965,8 +868,7 @@
 
 						createInstruT2("将与合法DHCP服务器接口设置为信任接口");
 						createInstruT2("&nbsp;&nbsp;&nbsp;&nbsp;DHCP服务器与客户端之间如果不只一台交换机，那么交换机间连接路线两端端口均应设置为信任接口");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/1] dhcp snooping trusted");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -985,8 +887,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("启用因限速造成的DHCP请求包丢弃告警功能");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/2] dhcp snooping alarm dhcp-rate enable");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1002,8 +903,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 						createInstruT2("查看dhcp snooping信息");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display dhcp snooping user-bind all");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -1020,8 +920,7 @@
 
 						createInstruT2("基于vlan，限制接口、IP地址、mac地址中一个或多个元素");
 							createInstruT3("启用DAI")
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-vlan10] arp anti-attack check user-bind enable");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1077,13 +976,11 @@
 									createCmdInstruT3(instruArr, "huawei");*/
 
 							createInstruT3("启用因限速造成的ARP包丢弃告警功能");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-GigabitEthernet0/0/2] arp anti-attack rate-limit alarm enable");
 								createCmdInstruT3(instruArr, "huawei");
 								/*createInstruT3("基于全局");
-									instruArr = null;
-									instruArr = new Array();
+									instruArr = [];
 									instruArr[0] = createCmdSpan("[SW1] arp anti-attack rate-limit alarm enable");
 									createCmdInstruT3(instruArr, "huawei");
 
@@ -1118,8 +1015,7 @@
 								createCmdInstru(instruArr, "T2", "cisco");*/
 
 						createInstruT2("查看数据库");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display user-bind all");
 							createCmdInstruT2(instruArr, "huawei");
 
@@ -1136,8 +1032,7 @@
 
 						createInstruT2("基于vlan，限制接口、IP地址、mac地址中一个或多个元素");
 							createInstruT3("启用IP Source guard")
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1-vlan10] ip source check user-bind enable");
 								createCmdInstruT3(instruArr, "huawei");
 
@@ -1156,8 +1051,7 @@
 								createCmdInstruT3(instruArr, "huawei");
 
 						createInstruT2("查看数据库");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] display user-bind all");
 							createCmdInstruT2(instruArr, "huawei");
 			</script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -36,7 +36,7 @@
 						"TCP协议"
 					);
 
-					var words = `
+					let words = `
 						源端口号（Source Port）
 						由16 bits构成，表示发送端端口号
 
@@ -83,13 +83,13 @@
 
 				createInstruT0("TCP 选项","i2");
 					createInstruT1("常见TCP选项<br />","i2-1");
-						var tHeader = [
+						let tHeader = [
 							"类型<br />（kind）",
 							"长度<br />（length）",
 							"含义"
 						];
 
-						var tBody = [
+						let tBody = [
 							["0","-","表示选项列表结束（EOL）"],
 							["1","-","用于填充（NOP）"],
 							["2","4","最大报文段长度（MSS：Maximum segment size）"],

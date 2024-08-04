@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -45,14 +45,13 @@
 							createConfigImgT2("mysql8/i1_2$1~2");
 
 						createInstruT2("添加yum源");
-							var instruArr = new Array();
+							let instruArr = new Array();
 							instruArr[0] = createLinuxCmd1("wget https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm");
 							instruArr[1] = createLinuxCmd("rpm -ivh mysql80-community-release-el8-1.noarch.rpm");
 							createCmdInstruT2(instruArr, "mysql");
 
 						createInstruT2("更新yum源");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("yum clean all && yum makecache");
 							createCmdInstruT2(instruArr, "mysql");
 
@@ -67,7 +66,7 @@
 						createInstruT2("修改配置文件");
 							instruArr[0] = createLinuxCmd("vim /etc/my.cnf");
 							createCmdInstruT2(instruArr, "mysql");
-							var cmd = `
+							let cmd = `
 								[mysql]
 								port=3306
 
@@ -93,8 +92,7 @@
 
 						createInstruT2("修改密码");
 							createInstruT3("查看初始随机密码");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createLinuxCmd("grep \"A temporary password\" /var/log/mysqld.log");
 								createCmdInstruT3(instruArr, "mysql");
 
@@ -109,8 +107,7 @@
 
 				createInstruT0("安装&初始化（Docker版）", "i4");
 						createInstruT2("docker run版", "i4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd(
 								"docker run --name itachi -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Cisc0123! \\ " +
 											"--volume /root/mysql-init:/docker-entrypoint-initdb.d \\ " +
@@ -150,8 +147,7 @@
 						createInstruAllTopT1("存储连接地址的信息位于 mysql数据库中的user表 ，列user 为用户名，列host 为连接地址");
 
 						createInstruT2("切换到mysql数据库");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createSQLCmdSpan("use mysql;");
 							createCmdInstruT2(instruArr, "mysql");
 
@@ -175,8 +171,7 @@
 							createCmdInstruT2(instruArr, "mysql");
 
 						createInstruT2("刷新权限");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createSQLCmdSpan("FLUSH PRIVILEGES;");
 							createCmdInstruT2(instruArr, "mysql");
 
@@ -194,8 +189,7 @@
 							createCmdInstruT2(instruArr, "mysql");
 
 						createInstruT2("删除用户", "i2-2-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createSQLCmdSpan("drop user '“devnet。'@'“192.168.10.10。';");
 							instruArr[1] = createSQLCmdInstruSpan("'“devnet。'", "用户名");
 							instruArr[2] = createSQLCmdInstruSpan("'“192.168.10.10。'", "允许连接地址");
@@ -204,8 +198,7 @@
 					createInstruT1("使用TLS加密连接", "i2-4");
 						createInstruT2("查看相关信息", "i2-4-1");
 							createInstruT3("查看是否已经启用TLS");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createSQLCmdSpan("show variables like '%ssl%';");
 								createCmdInstruT3(instruArr, "mysql");
 								createConfigImgT3("mysql8/i2_4$1");
@@ -213,11 +206,11 @@
 							createInstruT3("自动生成的证书位置");
 								createInstruAllTopT3("/var/lib/mysql<br />");
 
-								tHeader = [
+								let tHeader = [
 									"文件名",
 									"描述",
 								];
-								tBody = [
+								let tBody = [
 									["ca-key.pem", "CA私钥"],
 									["ca.pem", "自签名的CA证书"],
 									["client-key.pem", "连接服务器提供的私钥"],
@@ -274,8 +267,7 @@
 								createCmdInstruT3(instruArr, "mysql");
 
 							createInstruT3("‘全局。授权，授权所有权限，信息在 mysql.user 表中");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createSQLCmdSpan("grant all on *.* to '“devnet。'@'“192.168.10.10。';");
 								instruArr[1] = createSQLCmdInstruSpan("'“devnet。'", "用户名");
 								instruArr[2] = createSQLCmdInstruSpan("'“192.168.10.10。'", "允许连接地址");
@@ -308,8 +300,7 @@
 				createInstruT0("备份与恢复", "i3");
 					createInstruT1("使用MySQLdump命令备份", "i3-1");
 						createInstruT2("备份某个数据库中的所有表", "i3-1-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("mysqldump -u “root。 -p “shop。 > “/shop.sql。");
 							instruArr[1] = createCmdInstruSpan("“root。", "有相关权限的用户");
 							instruArr[2] = createCmdInstruSpan("“shop。", "数据库名");
@@ -323,8 +314,7 @@
 							createCmdInstruT2(instruArr, "mysql");
 
 						createInstruT2("备份多个数据库", "i3-1-3");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("mysqldump -u “root。 -p --databases “db_test。[ “shop。]…… > “/mul_db.sql。");
 							instruArr[1] = createCmdInstruSpan("“root。", "有相关权限的用户");
 							instruArr[2] = createCmdInstruSpan("“db_test。[ “shop。]", "备份的数据库名，至少一个，多个数据库中间有空格");
@@ -332,8 +322,7 @@
 							createCmdInstruT2(instruArr, "mysql");
 
 						createInstruT2("备份所有数据库", "i3-1-4");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("mysqldump -u root -p --all-databases > “/all_db.sql。");
 							instruArr[1] = createCmdInstruSpan("“root。", "有相关权限的用户");
 							instruArr[2] = createCmdInstruSpan("“/all_db.sql。", "备份文件的存储路径");

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,7 +18,7 @@
 					createInstruT1("端口镜像", "i6-1");
 						createInstruT2("SPAN（交换机端口分析仪，分析服务器与被监控端口通过‘同一台。交换机相连）", "i6-1-1");
 							createInstruT3("创建镜像组");
-								instruArr = new Array();
+								let instruArr = new Array();
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 local");
 								instruArr[1] = createCmdInstruSpan("“1。", "镜像口号");
 								createCmdInstruT3(instruArr, "h3c");
@@ -33,8 +33,7 @@
 								createCmdInstruT3(instruArr, "h3c");
 
 							createInstruT3("设置本地目的接口（接收从被监控接口流量的接口，连接分析仪服务器的接口）");
-								instruArr = null;
-								instruArr = new Array();
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] mirroring-group “1。 monitor-port “f0/2。");
 								instruArr[1] = createCmdInstruSpan("“1。", "镜像组号");
 								instruArr[2] = createCmdInstruSpan("“f0/2。", "目的接口");
@@ -49,8 +48,7 @@
 
 				createInstruT0("链路聚合", "i8");
 						createInstruT2("创建聚合接口");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] interface Bridge-Aggregation “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "聚合接口号");
 							createCmdInstruT2(instruArr, "h3c");
@@ -58,8 +56,7 @@
 						createInstruT2("‘默认为静态方式聚合。");
 
 						createInstruT2("配置为使用LACP聚合");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-Bridge-Aggregation1] link-aggregation mode dynamic ");
 							createCmdInstruT2(instruArr, "h3c");
 
@@ -71,16 +68,14 @@
 							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("接口配置在聚合接口进行");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1] int Bridge-Aggregation “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "聚合接口号");
 							instruArr[2] = createCmdSpan("[SW1-Bridge-Aggregation1] …");
 							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("配置负载分担方式（仅本地有效，两端不必一致）");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("[SW1-Bridge-Aggregation1] link-aggregation load-sharing mode “负载分担方式。");
 							createCmdInstruT2(instruArr, "h3c");
 

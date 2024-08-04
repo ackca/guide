@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,7 +22,7 @@
 						createInstruAllTopT1("下载地址：<a class='link' href='https://github.com/cloudflare/cfssl/releases' target='_blank'>https://github.com/cloudflare/cfssl/releases</a>");
 						createInstruAllTopT1("下载 ‘cfssl。、‘cfssljson。、‘cfssl-certinfo。 对应版本的文件，并赋予执行权限");
 
-						var cmd = `
+						let cmd = `
 							wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssl_1.6.3_linux_amd64 -O /usr/bin/cfssl
 
 							wget https://github.com/cloudflare/cfssl/releases/download/v1.6.3/cfssljson_1.6.3_linux_amd64 -O /usr/bin/cfssljson
@@ -35,7 +35,7 @@
 
 					createInstruT1("确认安装");
 						createInstruT2("cfssl的命令行工具");
-							var cmd = `
+							cmd = `
 								which cfssl
 								# 下面为输出
 								/usr/bin/cfssl
@@ -90,7 +90,7 @@
 						createLinuxTxtT1(cmd);
 
 					createInstruT1("初始化CA<br/>", "i2-2");
-						var instruArr = new Array();
+						let instruArr = new Array();
 						instruArr[0] = createLinuxCmd("cfssl gencert -initca “ca-csr.json。 | cfssljson -bare “ca。");
 						instruArr[1] = createCmdInstruSpan("“ca-csr.json。", "json格式根证书请求");
 						instruArr[2] = createCmdInstruSpan("“ca。", "生成的根证书的文件名，扩展名根据文件类型自动添加");
@@ -308,8 +308,7 @@
 
 				createInstruT0("创建证书吊销列表CRL", "i4");
 						createInstruT2("获取被吊销证书的序列号", "i4-1");
-							instruArr = null;
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createLinuxCmd("cfssl-certinfo -cert “abc.pem。 | jq -r \".serial_number\"");
 							instruArr[1] = createCmdInstruSpan("“abc.pem。", "被吊销的证书");
 							createCmdInstruT2(instruArr,"cfssl");

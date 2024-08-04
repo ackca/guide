@@ -58,10 +58,10 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .instruT1
 {
+	color: #A6E22E;
 	font-size: 26px;
 	margin-left: 30px;
 	margin-top: 20px;
-	color: #A6E22E;
 }
 
 .instruT2
@@ -75,9 +75,9 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .instruT3
 {
+	color: #FD971F;
 	margin-left: 90px;
 	line-height: 60px;
-	color: #FD971F;
 	font-size: 20px;
 }
 
@@ -250,7 +250,6 @@ span .link
 {
 	margin-top: -40px;
 }
-
 
 h4
 {

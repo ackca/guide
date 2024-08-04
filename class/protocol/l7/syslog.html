@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -36,7 +36,7 @@
 						"syslog协议"
 					);
 
-					var words = `
+					let words = `
 						优先级（PRI：Priority）
 						共24 bits，由4部分组成<br /><ul><li><span><</span><br />由8 bits构成，值为<的ASCII，0x3C</li><li>设备（Facility）<br />由5 bits构成，用于区分发送日志的设备类型</li>\t<li>安全级别（Severity）<br />由3 bits构成，用于表示事件的严重程度，越小越严重</li><li><span>></span><br />由8 bits构成，值为>的ASCII，0x3E</li></ul>
 
@@ -46,11 +46,11 @@
 					createProtocolExplainT0(words, -220);
 
 				createInstruT0("Facility取值对应关系<br />", "i2");
-					var tHeader = [
+					let tHeader = [
 						"Num",
 						"Facility",
 					];
-					var tBody = [
+					let tBody = [
 						["0", "kernel messages"],
 						["1", "user-level messages"],
 						["2", "mail system"],

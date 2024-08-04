@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,145 +15,145 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("基本命令", "i1");
-					createInstruT1("查看基本信息<br />", "i1-1");
-						var nbsp = "&nbsp;".repeat(16);
-						var instruArr = new Array();
-						instruArr[0] = createCmdSpan("kubectl get　类型　类型名称　[ 参数 ]");
-						instruArr[1] = createCmdInstruSpan("类型", "");
-						instruArr[2] = createCmdSpan(nbsp + "pod，ns（namespace），deploy（deployment），ds（aemonset）");
-						instruArr[3] = createCmdSpan(nbsp + "svc（service），ingress");
-						instruArr[4] = createCmdSpan("");
-						nbsp = "&nbsp;".repeat(9);
-						instruArr[5] = createCmdInstruSpan("参数", "");
-						instruArr[6] = createCmdInstruSpan(nbsp + "-o wide", "查看详细信息");
-						instruArr[7] = createCmdInstruSpan(nbsp + "-n “命名空间名。", "查看 某个命名空间 中内容");
-						instruArr[8] = createCmdInstruSpan(nbsp + "-A", "查看 所有命名空间 中内容");
-						createCmdInstruT1(instruArr, "k8s");
+						createInstruT2("查看基本信息<br />", "i1-1");
+							let nbsp = "&nbsp;".repeat(16);
+							let instruArr = new Array();
+							instruArr[0] = createCmdSpan("kubectl get　类型　类型名称　[ 参数 ]");
+							instruArr[1] = createCmdInstruSpan("类型", "");
+							instruArr[2] = createCmdSpan(nbsp + "pod，ns（namespace），deploy（deployment），ds（aemonset）");
+							instruArr[3] = createCmdSpan(nbsp + "svc（service），ingress");
+							instruArr[4] = createCmdSpan("");
+							nbsp = "&nbsp;".repeat(9);
+							instruArr[5] = createCmdInstruSpan("参数", "");
+							instruArr[6] = createCmdInstruSpan(nbsp + "-o wide", "查看详细信息");
+							instruArr[7] = createCmdInstruSpan(nbsp + "-n “命名空间名。", "查看 某个命名空间 中内容");
+							instruArr[8] = createCmdInstruSpan(nbsp + "-A", "查看 所有命名空间 中内容");
+							createCmdInstruT2(instruArr, "k8s");
 
 						createInstruT2("查看namespace");
-						cmd = `
-							kubectl get ns
-							# 以下为输出
-							NAME              STATUS   AGE
-							default           Active   6d21h
-							kube-node-lease   Active   6d21h
-							kube-public       Active   6d21h
-							kube-system       Active   6d21h
-						`;
-						createLinuxTxtT2(cmd);
+							let cmd = `
+								kubectl get ns
+								# 以下为输出
+								NAME              STATUS   AGE
+								default           Active   6d21h
+								kube-node-lease   Active   6d21h
+								kube-public       Active   6d21h
+								kube-system       Active   6d21h
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("查看pod");
-						cmd = `
-							kubectl get pod
-							# 默认只查看 命名空间 default 中的pod
-							NAME                             READY   STATUS    RESTARTS   AGE
-							itachi-pod-dp-84c95b488f-x2lbf   1/1     Running   0          57m
-							itachi-pod-ds-r7zf7              1/1     Running   0          2m15s
-							itachi-pod-ds-s7g5f              1/1     Running   0          2m15s
-							itachi-pod-ds-xkl4f              1/1     Running   0          2m16s
+							cmd = `
+								kubectl get pod
+								# 默认只查看 命名空间 default 中的pod
+								NAME                             READY   STATUS    RESTARTS   AGE
+								itachi-pod-dp-84c95b488f-x2lbf   1/1     Running   0          57m
+								itachi-pod-ds-r7zf7              1/1     Running   0          2m15s
+								itachi-pod-ds-s7g5f              1/1     Running   0          2m15s
+								itachi-pod-ds-xkl4f              1/1     Running   0          2m16s
 
-							# 查看pod的详细信息
-							kubectl get pod -o wide
+								# 查看pod的详细信息
+								kubectl get pod -o wide
 
-							NAME                             READY   STATUS    RESTARTS   AGE     IP              NODE     NOMINATED NODE   READINESS GATES
-							itachi-pod-dp-84c95b488f-x2lbf   1/1     Running   0          59m     172.16.203.38   node03   <none>           <none>
-							itachi-pod-ds-r7zf7              1/1     Running   0          3m36s   172.16.202.33   node02   <none>           <none>
-							itachi-pod-ds-s7g5f              1/1     Running   0          3m36s   172.16.203.40   node03   <none>           <none>
-							itachi-pod-ds-xkl4f              1/1     Running   0          3m37s   172.16.201.28   node01   <none>           <none>
+								NAME                             READY   STATUS    RESTARTS   AGE     IP              NODE     NOMINATED NODE   READINESS GATES
+								itachi-pod-dp-84c95b488f-x2lbf   1/1     Running   0          59m     172.16.203.38   node03   <none>           <none>
+								itachi-pod-ds-r7zf7              1/1     Running   0          3m36s   172.16.202.33   node02   <none>           <none>
+								itachi-pod-ds-s7g5f              1/1     Running   0          3m36s   172.16.203.40   node03   <none>           <none>
+								itachi-pod-ds-xkl4f              1/1     Running   0          3m37s   172.16.201.28   node01   <none>           <none>
 
-							# 查看某个命名空间的中的pod
-							kubectl get pod -n kube-system
+								# 查看某个命名空间的中的pod
+								kubectl get pod -n kube-system
 
-							NAME                                       READY   STATUS    RESTARTS   AGE
-							calico-kube-controllers-7dbc97f587-jbnb5   1/1     Running   10         6d4h
-							calico-node-4w878                          1/1     Running   8          6d6h
-							calicoctl                                  1/1     Running   9          6d5h
-							coredns-6b4b4997cc-2nn5j                   1/1     Running   8          6d4h
-							etcd-master01                              1/1     Running   10         6d22h
-							etcd-master02                              1/1     Running   9          6d20h
-							etcd-master03                              1/1     Running   9          6d20h
-							kube-apiserver-master01                    1/1     Running   15         6d22h
-							kube-apiserver-master02                    1/1     Running   12         6d20h
-							kube-apiserver-master03                    1/1     Running   15         6d20h
-							kube-controller-manager-master01           1/1     Running   17         6d22h
-							kube-controller-manager-master02           1/1     Running   16         6d20h
-							kube-controller-manager-master03           1/1     Running   16         6d20h
-							kube-proxy-99dz4                           1/1     Running   16         6d6h
-							kube-scheduler-master01                    1/1     Running   15         6d22h
-							kube-scheduler-master02                    1/1     Running   15         6d20h
-							kube-scheduler-master03                    1/1     Running   17         6d20h
-							traefik-ingress-9ctbf                      1/1     Running   8          6d4h
+								NAME                                       READY   STATUS    RESTARTS   AGE
+								calico-kube-controllers-7dbc97f587-jbnb5   1/1     Running   10         6d4h
+								calico-node-4w878                          1/1     Running   8          6d6h
+								calicoctl                                  1/1     Running   9          6d5h
+								coredns-6b4b4997cc-2nn5j                   1/1     Running   8          6d4h
+								etcd-master01                              1/1     Running   10         6d22h
+								etcd-master02                              1/1     Running   9          6d20h
+								etcd-master03                              1/1     Running   9          6d20h
+								kube-apiserver-master01                    1/1     Running   15         6d22h
+								kube-apiserver-master02                    1/1     Running   12         6d20h
+								kube-apiserver-master03                    1/1     Running   15         6d20h
+								kube-controller-manager-master01           1/1     Running   17         6d22h
+								kube-controller-manager-master02           1/1     Running   16         6d20h
+								kube-controller-manager-master03           1/1     Running   16         6d20h
+								kube-proxy-99dz4                           1/1     Running   16         6d6h
+								kube-scheduler-master01                    1/1     Running   15         6d22h
+								kube-scheduler-master02                    1/1     Running   15         6d20h
+								kube-scheduler-master03                    1/1     Running   17         6d20h
+								traefik-ingress-9ctbf                      1/1     Running   8          6d4h
 
-							# 查看所有命名空间的中的pod
-							kubectl get pod -A
-							NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
-							default       itachi-pod-dp-84c95b488f-x2lbf             1/1     Running   0          61m
-							default       itachi-pod-ds-r7zf7                        1/1     Running   0          6m10s
-							kube-system   calico-kube-controllers-7dbc97f587-jbnb5   1/1     Running   10         6d4h
-							kube-system   calico-node-xznh4                          1/1     Running   8          6d6h
-							kube-system   calicoctl                                  1/1     Running   9          6d5h
-							kube-system   coredns-6b4b4997cc-2nn5j                   1/1     Running   8          6d4h
-							kube-system   etcd-master01                              1/1     Running   10         6d22h
-							kube-system   etcd-master02                              1/1     Running   9          6d20h
-							kube-system   etcd-master03                              1/1     Running   9          6d20h
-							kube-system   kube-apiserver-master01                    1/1     Running   15         6d22h
-							kube-system   kube-apiserver-master02                    1/1     Running   12         6d20h
-							kube-system   kube-apiserver-master03                    1/1     Running   15         6d20h
-							kube-system   kube-controller-manager-master01           1/1     Running   17         6d22h
-							kube-system   kube-controller-manager-master02           1/1     Running   16         6d20h
-							kube-system   kube-controller-manager-master03           1/1     Running   16         6d20h
-							kube-system   kube-proxy-99dz4                           1/1     Running   16         6d6h
-							kube-system   kube-scheduler-master01                    1/1     Running   15         6d22h
-							kube-system   kube-scheduler-master02                    1/1     Running   15         6d20h
-							kube-system   kube-scheduler-master03                    1/1     Running   17         6d20h
-							kube-system   traefik-ingress-9ctbf                      1/1     Running   8          6d4h
-						`;
-						createLinuxTxtT2(cmd);
-
-						createInstruT2("查看daemonset");
-						cmd = `
-							kubectl get ds
-							# 以下为输出
-							NAME            DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-							itachi-pod-ds   3         3         3       3            3           <none>          57m
-						`;
-						createLinuxTxtT2(cmd);
+								# 查看所有命名空间的中的pod
+								kubectl get pod -A
+								NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
+								default       itachi-pod-dp-84c95b488f-x2lbf             1/1     Running   0          61m
+								default       itachi-pod-ds-r7zf7                        1/1     Running   0          6m10s
+								kube-system   calico-kube-controllers-7dbc97f587-jbnb5   1/1     Running   10         6d4h
+								kube-system   calico-node-xznh4                          1/1     Running   8          6d6h
+								kube-system   calicoctl                                  1/1     Running   9          6d5h
+								kube-system   coredns-6b4b4997cc-2nn5j                   1/1     Running   8          6d4h
+								kube-system   etcd-master01                              1/1     Running   10         6d22h
+								kube-system   etcd-master02                              1/1     Running   9          6d20h
+								kube-system   etcd-master03                              1/1     Running   9          6d20h
+								kube-system   kube-apiserver-master01                    1/1     Running   15         6d22h
+								kube-system   kube-apiserver-master02                    1/1     Running   12         6d20h
+								kube-system   kube-apiserver-master03                    1/1     Running   15         6d20h
+								kube-system   kube-controller-manager-master01           1/1     Running   17         6d22h
+								kube-system   kube-controller-manager-master02           1/1     Running   16         6d20h
+								kube-system   kube-controller-manager-master03           1/1     Running   16         6d20h
+								kube-system   kube-proxy-99dz4                           1/1     Running   16         6d6h
+								kube-system   kube-scheduler-master01                    1/1     Running   15         6d22h
+								kube-system   kube-scheduler-master02                    1/1     Running   15         6d20h
+								kube-system   kube-scheduler-master03                    1/1     Running   17         6d20h
+								kube-system   traefik-ingress-9ctbf                      1/1     Running   8          6d4h
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("查看daemonset");
-						cmd = `
-							kubectl get deploy
-							# 以下为输出
-							NAME            READY   UP-TO-DATE   AVAILABLE   AGE
-							itachi-pod-dp   1/1     1            1           15m
-						`;
-						createLinuxTxtT2(cmd);
+							cmd = `
+								kubectl get ds
+								# 以下为输出
+								NAME            DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+								itachi-pod-ds   3         3         3       3            3           <none>          57m
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("查看daemonset");
+							cmd = `
+								kubectl get deploy
+								# 以下为输出
+								NAME            READY   UP-TO-DATE   AVAILABLE   AGE
+								itachi-pod-dp   1/1     1            1           15m
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("查看service");
-						cmd = `
-							kubectl get svc
-							# 以下为输出
-							NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)     AGE
-							itachi-dp-service   ClusterIP   192.168.184.6    <none>        10080/TCP   5d3h
-							itachi-ds-service   ClusterIP   192.168.10.201   <none>        10080/TCP   5d3h
-							kubernetes          ClusterIP   192.168.0.1      <none>        443/TCP     6d21h
-						`;
-						createLinuxTxtT2(cmd);
+							cmd = `
+								kubectl get svc
+								# 以下为输出
+								NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)     AGE
+								itachi-dp-service   ClusterIP   192.168.184.6    <none>        10080/TCP   5d3h
+								itachi-ds-service   ClusterIP   192.168.10.201   <none>        10080/TCP   5d3h
+								kubernetes          ClusterIP   192.168.0.1      <none>        443/TCP     6d21h
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("查看ingress");
-						cmd = `
-							kubectl get ingress
-							# 以下为输出
-							NAME                CLASS    HOSTS                  ADDRESS   PORTS   AGE
-							itachi-dp-ingress   <none>   itachi-dp.itachi.com             80      5d1h
-							itachi-ds-ingress   <none>   itachi-ds.itachi.com             80      5d1h
-						`;
-						createLinuxTxtT2(cmd);
+							cmd = `
+								kubectl get ingress
+								# 以下为输出
+								NAME                CLASS    HOSTS                  ADDRESS   PORTS   AGE
+								itachi-dp-ingress   <none>   itachi-dp.itachi.com             80      5d1h
+								itachi-ds-ingress   <none>   itachi-ds.itachi.com             80      5d1h
+							`;
+							createLinuxTxtT2(cmd);
 
 
 				createInstruT0("部署应用", "i2");
 					createInstruT1("部署pod", "i2-1");
 						createInstruT2("Deployment方式", "i2-1-1");
-							var yaml = `
+							let yaml = `
 								apiVersion: apps/v1
 								kind: Deployment
 								metadata:

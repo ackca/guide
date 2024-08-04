@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -191,10 +191,11 @@
 							createLinuxTxtT2(cmd);
 
 						createInstruT2("AD关联okta", "i5-4");
-							createConfigImgT2("umbrella/i5_4$1~30");
+																// 获取顶部导航中okta页面的相对路径，i1为集成AD部分
+							createInstruAllTopT2("见 <a href='" + $(".ico-okta a").attr('href') + "#i1" + "' style='color:#FFFFFF;text-decoration:underline'>okta-集成AD</a> 部分");
 
-						createInstruT2("Umbrella关联okta", "i5-5");
-							createConfigImgT2("umbrella/i5_5$1~23");
+						createInstruT2("<br /><br />Umbrella关联okta", "i5-5");
+							createConfigImgT2("umbrella/i5_5$1~22");
 
 			</script>
 		</div>

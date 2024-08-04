@@ -19,7 +19,7 @@
 						createConfigImgT1("AireOS/i1-1$1");
 
 					createInstruT1("查看接口配置", "i1-2");
-						instruArr = new Array();
+						let instruArr = new Array();
 						instruArr[0] = createCmdSpan("(Cisco Controller) > show interface summary");
 						createCmdInstruT1(instruArr, "cisco");
 
@@ -152,8 +152,7 @@
 
 					createInstruT1("Sniffer模式", "i11-4");
 						createInstruT2("关闭IP-MAC地址绑定", "i11-4-1");
-							instruArr = null
-							instruArr = new Array();
+							instruArr = [];
 							instruArr[0] = createCmdSpan("(Cisco Controller) > config network ip-mac-binding disable");
 							createCmdInstruT2(instruArr, "cisco");
 

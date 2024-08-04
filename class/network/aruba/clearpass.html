@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -72,7 +72,7 @@
 						createInstruAllTopT1("但如果使用CoA，ClearPass将无法与控制器正常通信");
 						createInstruAllTopT1("需要将关联IP修改为控制器实际IP，可在控制器上通过 show ip radius nas-ip 查看关联IP<br />");
 
-						instruArr = new Array();
+						let instruArr = new Array();
 						instruArr[0] = createCmdSpan("(MM1) [mynode] (config) # change-config-node “mc。");
 						instruArr[1] = createCmdSpan("(MM1) [00:0b:86:dd:0b:80] (config) # ip radius nas-ip “10.1.2.1。");
 						instruArr[2] = createCmdInstruSpan("“10.1.2.1。", "控制器的实际IP");

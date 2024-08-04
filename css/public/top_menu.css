@@ -372,11 +372,27 @@
 	height: 32px;
 }
 
-.mod-header .ico-f5
+.mod-header .ico-okta
 {
-	width: 45px;
+
+}
+
+.mod-header .ico-okta img
+{
 	height: 45px;
-	margin-bottom: -1px;
+	filter: invert(95%);
+}
+
+.inner-aruba
+{
+	/*border-top: solid 2px red;*/
+	margin-top: 20px;
+}
+
+.inner-aruba h3,
+.inner-aruba ul
+{
+	margin-left: -24px;
 }
 
 .mod-header .ico-aruba
@@ -390,6 +406,14 @@
 .ico-aruba img
 {
 	height: 30px;
+}
+
+
+.mod-header .ico-f5
+{
+	width: 45px;
+	height: 45px;
+	margin-bottom: -1px;
 }
 
 .mod-header .ico-h3c

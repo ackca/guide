@@ -43,7 +43,7 @@ function createNavigation(tree, offset = 74.5) {
 			<div id="divProtocol" protocolID="" class="divProtocol">
 				<strong id="close">✕</strong>
 				<div id="protocolImg" onmousedown="protocolMove()"></div>
-				</div>
+			</div>
 		`;
 		// 浮动显示协议结构的div <---- 结束 ---->
 	}
@@ -268,7 +268,8 @@ function createLinuxTxtMarkT3(cmds, mark_list) {
 function cmdMark(htmlText, mark_list) {
 	for (var i = 0; i < mark_list.length; i++) {
 		var reg = new RegExp(mark_list[i], "g");
-		htmlText = htmlText.replace(reg, "<span class='markColor" + (i + 1).toString() + "'>" + mark_list[i] + "</span>");
+		// htmlText = htmlText.replace(reg, "<span class='markColor" + (i + 1).toString() + "'>" + mark_list[i] + "</span>");
+		htmlText = htmlText.replace(reg, "<span class='markColor" + (i + 1).toString() + "'>$&</span>");
 	}
 	document.writeln(htmlText);
 }
@@ -310,13 +311,13 @@ function createTCLT3(cmds) {
 }
 
 function initTXT(cmds, txtT, cmdT) {
-	cmds = cmds.replace(/</g, "&lt;") // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
+	cmds = cmds.replace(/</g, "&lt;"); // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
 
 	//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
 	// cmds = cmds.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
 	// cmds = cmds.replace(/ /g,"&nbsp;");
 
-	var url = window.location.href
+	var url = window.location.href;
 	url = url.substring(url.indexOf("/guide/class/"));
 	var path = "../".repeat(url.split("/").length - 3);
 
@@ -324,7 +325,7 @@ function initTXT(cmds, txtT, cmdT) {
 		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
 		"<div class='copySuccess'><img src='" + path + "img/ok.svg' />&nbsp;复制成功</div>";
 
-	var cmd_arr = cmds.split("\n")
+	var cmd_arr = cmds.split("\n");
 	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
 
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
@@ -421,7 +422,6 @@ function createLinuxTxt(cmd_arr, htmlText) {
 		htmlText = htmlText + "<span>" + cmd_arr[i].trim() + "</span><br />"
 	}
 	htmlText = htmlText + "</div>";
-	// document.writeln(htmlText);
 	return htmlText;
 }
 
@@ -843,7 +843,6 @@ function createCmdInstru(instruArr, typeT, typeBrand) {
 			// imagepath = "../../img/";
 			typeBrand = "redhat";
 			break;
-
 	}
 
 	var htmlText = "<table class='cmdTable" + typeT + "'>"
@@ -1451,16 +1450,33 @@ $(document).ready(function () {
 		nwin.document.writeln(protocolHTML);
 	});
 
-	// 图片配置类页面，当左侧菜单关闭时刷新，水平滚动条会保持在原位置，图片被遮挡，将流动条移到最左边
-	$('html, body').animate({scrollLeft: 0});
-
-
 	// ---------- 某些图片双击新标签页单独显示 ---- 结束 ----------
 	// ---------------------------------------------------------
-	// var divCommandHtml = $("#divCommand").prop("outerHTML");
-	// divCommandHtml = divCommandHtml.replace("<br><br>\n<span class='instruT0'", "\n<span class='instruT0'")
-	// console.log(divCommandHtml)
-	// console.log($("#divCommand").html())
-	// $("#divCommand").html(divCommandHtml);//.replace("<br><br>\n<span class='instruT0'", "\n<span class='instruT0'"));
-	// $("#divCommand").h
+	// ---------- 图片配置类页面，当左侧菜单关闭时刷新，水平滚动条会保持在原位置，图片被遮挡，将流动条移到最左边 ---- 开始 ----------
+	setTimeout(function () {
+		$('html, body').animate({scrollLeft: 0});
+	}, 0);
+
+	// ---------- 图片配置类页面，当左侧菜单关闭时刷新，水平滚动条会保持在原位置，图片被遮挡，将流动条移到最左边 ---- 结束 ----------
+	// ---------------------------------------------------------
+	// ---------- 少量带锚的链接，跳转后距离不对，调整 ---- 开始 ----------
+	if (window.location.hash) {
+							 // 获取不含#的锚点名
+		let target = $('#' + window.location.hash.substring(1));
+		if (target.length > 0) {
+			let offset = 50;	// 思科、华为的通用配置中DHCP snooping跳转到交换机配置的对应内容
+			if (window.location.href.indexOf("/guide/class/protocol") >= 0) {
+				offset = 75;	// IPv6分片首部
+			}
+
+			// 在滚动条原有位置上，减小移动距离
+			$('html, body').animate({
+				scrollTop: target.offset().top - offset
+			});
+		}
+	}
+
+	// ---------- 少量带锚的链接，跳转后距离不对，调整 ---- 结束 ----------
+	// ---------------------------------------------------------
+
 });
