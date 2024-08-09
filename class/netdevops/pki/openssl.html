@@ -18,38 +18,37 @@
 						createInstruT2("windows中对应证书的扩展名为 .pfx 或 .p12");
 							createConfigImgT2("openssl/pfx");
 
-						createInstruT2("从打包文件中分离私钥", "i1-1");
-							createInstruAllTopT2("分离后私钥会被再次加密");
+						createInstruT2("从打包文件中分离证书", "i1-1");
 							let instruArr = new Array();
-							instruArr[0] = createLinuxCmd("openssl pkcs12 -in “itachi.pfx。 -nocerts -out “itachi-key-encry.pem。 [ -passin pass”:。“Cisc0123。 -passout pass:“cisco。 ]");
-							instruArr[1] = createCmdInstruSpan("“itachi.pfx。", "pkck#12 格式证书");
-							instruArr[2] = createCmdInstruSpan("“itachi-key-encry.pem。", "再次被加密的私钥文件");
-							instruArr[3] = createCmdInstruSpan("“Cisc0123。", "pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
-							instruArr[4] = createCmdInstruSpan("“cisco。", "私钥的加密密码，如果省略这部分，将根据提示输入");
-							createCmdInstruT2(instruArr,"openssl");
-
-						// createInstruT2("私钥解密，得到明文私钥");
-						// 	createInstruAllTopT2("根据提示输入私钥的加密密码");
-						//
-						// 	instruArr[0] = createLinuxCmd("openssl rsa -in “test.itachi.tech-key-encry.pem。 -out “test.itachi.tech-key.pem。");
-						// 	instruArr[1] = createCmdInstruSpan("“test.itachi.tech-key-encry.pem。", "加密的私钥文件");
-						// 	instruArr[2] = createCmdInstruSpan("“test.itachi.tech-key.pem。", "明文的私钥文件");
-						// 	createCmdInstruT2(instruArr,"openssl");
-
-						createInstruT2("从打包文件中分离证书", "i1-2");
-							instruArr = [];
 							instruArr[0] = createLinuxCmd("openssl pkcs12 -in “itachi.pfx。 -clcerts -nokeys -out “itachi.pem。 [ -passin pass”:。“Cisc0123。 ]");
 							instruArr[1] = createCmdInstruSpan("“itachi.pfx。", "pkck#12 格式证书");
 							instruArr[2] = createCmdInstruSpan("“itachi.pem。", "证书");
 							instruArr[3] = createCmdInstruSpan("“Cisc0123。", "pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
 							createCmdInstruT2(instruArr,"openssl");
 
-						createInstruT2("将证书和私钥打包为 pkck#12 格式证书", "i1-3");
+						createInstruT2("从打包文件中分离私钥", "i1-2");
+							instruArr[0] = createLinuxCmd("openssl pkcs12 -in “itachi.pfx。 -nocerts [ -nodes ] -out “itachi-key.pem。 [ -passin pass”:。“Cisc0123。 -passout pass:“cisco。 ]");
+							instruArr[1] = createCmdInstruSpan("“itachi.pfx。", "pkck#12 格式证书");
+							instruArr[2] = createCmdInstruSpan("[ -nodes ]", "省略，私钥会在提取后再次加密，不省略，得到明文私钥")
+							instruArr[3] = createCmdInstruSpan("“itachi-key.pem。", "私钥文件（明文 / 加密）");
+							instruArr[4] = createCmdInstruSpan("“Cisc0123。", "pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
+							instruArr[5] = createCmdInstruSpan("“cisco。", "私钥的加密密码，如果省略这部分，将根据提示输入");
+							createCmdInstruT2(instruArr,"openssl");
+
+						createInstruT2("私钥解密，得到明文私钥", "i1-3");
+							createInstruAllTopT2("根据提示输入私钥的加密密码");
+							instruArr = [];
+							instruArr[0] = createLinuxCmd("openssl rsa -in “test.itachi.tech-key-encry.pem。 -out “test.itachi.tech-key.pem。");
+							instruArr[1] = createCmdInstruSpan("“test.itachi.tech-key-encry.pem。", "加密的私钥文件");
+							instruArr[2] = createCmdInstruSpan("“test.itachi.tech-key.pem。", "明文的私钥文件");
+							createCmdInstruT2(instruArr,"openssl");
+
+						createInstruT2("将证书和私钥打包为 pkck#12 格式证书", "i1-4");
 							instruArr[0] = createLinuxCmd("openssl pkcs12 -export -out “itachi.p12。 -inkey “itachi-key.pem。 -in “itachi.pem。 [ -certfile “ca.pem。 ] [ -passout pass”:。“Cisc0123。 ]");
 							instruArr[1] = createCmdInstruSpan("“itachi.p12。", "pkck#12 格式证书");
 							instruArr[2] = createCmdInstruSpan("“itachi-key.pem。", "私钥");
 							instruArr[3] = createCmdInstruSpan("“itachi.pem。", "证书");
-							instruArr[4] = createCmdInstruSpan("“ca.pem。", "根证书，也可以将根证书加入文件");
+							instruArr[4] = createCmdInstruSpan("“ca.pem。", "根证书，某些场景下，需要将根证书一起加入");
 							instruArr[5] = createCmdInstruSpan("“Cisc0123。", "pkck#12 格式证书的加密密码，如果省略这部分，将根据提示输入");
 							createCmdInstruT2(instruArr,"openssl");
 			</script>

@@ -32,7 +32,8 @@
 
 						createInstruT2("配置文件位置", "i1-3");
 							createInstruAllTopT2("主配置文件路径：’/etc/nginx/nginx.conf。");
-							createInstruAllTopT2("自定义配置文件 以 ’.conf。 结尾，保存到 ’/etc/nginx/default.d/ 。");
+							createInstruAllTopT2("自定义配置文件 以 ’.conf。 结尾，保存到 ’/etc/nginx/conf.d/ 。");
+							createInstruAllTopT2("为了实现自定义配置文件 在主配置文件中需要包含 include /etc/nginx/conf.d/*.conf; ，在http下一级，与server同级");
 
 				createInstruT0("证书相关", "i2");
 						createInstruT2("客户端通过证书认证服务器", "i2-1");

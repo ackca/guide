@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/cisco.svg"/>
+	<title>思科-VPN-基于Firepower</title>
+	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(vpn_firepower);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("IPSec VPN", "i1");
+					createInstruAllTopT1("以SVTI为例，其它类型根据向导提示信息修改");
+					createConfigImgT1("vpn_firepower/i1$1~10");
+
+				createInstruT0("SSL VPN", "i2");
+					createInstruT1("配置本地用户", "i2-1");
+						createConfigImgT1("vpn_firepower/i2_1$1~4");
+
+					createInstruT1("配置地址池", "i2-2");
+						createConfigImgT1("vpn_firepower/i2_2$1~4");
+
+					createInstruT1("按向导配置SSL VPN", "i2-3");
+						createConfigImgT1("vpn_firepower/i2_3$1~12");
+
+					createInstruT1("修改connect profile", "i2-4");
+						createInstruAllTopT1("为了用户使用方便，不推荐由用户选择tunnel-group，只保留默认的connect profile")
+						createConfigImgT1("vpn_firepower/i2_4$1~8");
+
+					createInstruT1("配置group policy", "i2-5");
+						createConfigImgT1("vpn_firepower/i2_2$1");
+						createConfigImgT1("vpn_firepower/i2_5$2~4");
+
+					createInstruT1("动态授权时，关联group policy到SSL VPN profile", "i2-6");
+						createConfigImgT1("vpn_firepower/i2_6$1~4");
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

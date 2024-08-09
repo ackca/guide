@@ -28,6 +28,22 @@
 							createConfigImgT2("c9800/i1_2$1~5");
 
 					createInstruT1("CLI", "i1-2");
+						createInstruT2("配置用于AP关联的接口");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# wireless management interface “vlan 100。");
+							instruArr[1] = createCmdInstruSpan("“vlan 100。", "用于AP关联的接口名");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置用于AP关联的证书");
+							instruArr[0] = createCmdSpan("C9800# wireless config vwlc-ssc key-size “2048。 signature-algo “sha256。 password 0 “Cisc0123。");
+							instruArr[1] = createCmdInstruSpan("“Cisc0123。", "证书密钥");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置网页认证的虚拟地址");
+							instruArr[0] = createCmdSpan("C9800(config)# parameter-map type webauth global");
+							instruArr[1] = createCmdSpan("C9800(config-params-parameter-map)# virtual-ip ipv4 “192.0.2.1。");
+							instruArr[2] = createCmdInstruSpan("“192.0.2.1。", "网页认证的虚拟地址，GUI向导时系统提供的默认值");
+							createCmdInstruT2(instruArr, "cisco");
 
 				createInstruT0("证书相关配置", "i2");
 						createInstruT2("生成密钥对", "i2-1");
@@ -39,8 +55,18 @@
 						createInstruT2("导入根证书及个人证书", "i2-3");
 							createConfigImgT2("c9800/i2_3$1~5");
 
-						createInstruT2("替换Web管理证书", "i2-4");
-							createConfigImgT2("c9800/i2_4$1~2");
+						createInstruT2("直接导入pkcs#12证书，证书中需包含根证书", "i2-4");
+							createConfigImgT2("c9800/i2_1$1");
+							createConfigImgT2("c9800/i2_4$2~5");
+
+						createInstruT2("替换Web管理证书", "i2-5");
+							createConfigImgT2("c9800/i2_5$1~2");
+
+						createInstruT2("配置Web管理证书（CLI）", "i2-6");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("C9800(config)# ip http secure-trustpoint “star.pfx。");
+							instruArr[1] = createCmdInstruSpan("“star.pfx。", "证书的trustpoint名");
+							createCmdInstruT2(instruArr, "cisco");
 
 				createInstruT0("关联外部aaa服务器", "i6");
 					createInstruT1("CLI配置", "i6-1");

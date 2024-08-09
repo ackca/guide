@@ -480,7 +480,7 @@
 						createInstruT2("隧道分割");
 							instruArr[0] = createCmdSpan("ASA(config)# access-list “split。 permit 10.1.1.0 255.255.255.0");
 							instruArr[1] = createCmdInstruSpan("“split。", "隧道分割列表名");
-							instruArr[2] = createCmdSpan("group-policy “gp。 attributes");
+							instruArr[2] = createCmdSpan("ASA(config)# group-policy “gp。 attributes");
 							instruArr[3] = createCmdInstruSpan("“gp。", "group-policy名");
 							instruArr[4] = createCmdSpan("ASA(config-group-policy)# split-tunnel-policy { tunnelspecified | tunnelall | excludespecified }");
 							instruArr[5] = createCmdInstruSpan("tunnelspecified", "特定流量由中心转发，其余流量本地转发，一般选择此项");

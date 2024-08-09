@@ -756,7 +756,7 @@
 						createInstruT2("配置域名");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config)# ip domain name “itachi.tech。");
-							instruArr[1] = createCmdInstruSpan("“cisco.com。", "域名");
+							instruArr[1] = createCmdInstruSpan("“itachi.tech。", "域名");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("生成密钥");
@@ -813,26 +813,33 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT1("管理证书", "i11-2");
-							createInstruT2("获取根证书", "i11-2-1");
-								instruArr[0] = createCmdSpan("R1(config)# crypto pki authenticate “IPSecVPN。");
-								instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
-								createCmdInstruT2(instruArr, "cisco");
-								createInstruAllBottomT2("<br />离线时：根据提示粘贴根证书");
+							createInstruT2("申请并导入证书", "i11-2-1");
+								createInstruT3("获取根证书");
+									createInstruAllTopT3("离线时：根据提示粘贴根证书");
+									instruArr[0] = createCmdSpan("R1(config)# crypto pki authenticate “IPSecVPN。");
+									instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
+									createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT2("申请个人证书", "i11-2-2");
-								instruArr[0] = createCmdSpan("R1(config)# crypto pki enroll “IPSecVPN。");
-								instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
-								createCmdInstruT2(instruArr, "cisco");
-								createInstruAllBottomT2("<br />在线时：提示输入密码，如果是思科路由器做SCEP服务器则无密码，直接回车即可");
-								createInstruAllBottomT2("离线时：将在命令行显示证书申请");
+								createInstruT3("申请个人证书");
+									createInstruAllTopT3("在线时：提示输入密码，如果是思科路由器做SCEP服务器则无密码，直接回车即可");
+									createInstruAllTopT3("离线时：将在命令行显示证书申请");
+									instruArr[0] = createCmdSpan("R1(config)# crypto pki enroll “IPSecVPN。");
+									instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
+									createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT2("导入个人证书（离线申请）", "i11-2-3");
-								instruArr[0] = createCmdSpan("R1(config)# crypto pki import “IPSecVPN。 certificate");
-								createCmdInstruT2(instruArr, "cisco");
+								createInstruT3("导入个人证书（离线申请）");
+									instruArr[0] = createCmdSpan("R1(config)# crypto pki import “IPSecVPN。 certificate");
+									createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT2("立即获取吊销列表", "i11-2-4");
-								instruArr[0] = createCmdSpan("R1(config)# crypto pki crl request “IPSecVPN。");
-								instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
+								createInstruT3("立即获取吊销列表");
+									instruArr[0] = createCmdSpan("R1(config)# crypto pki crl request “IPSecVPN。");
+									instruArr[1] = createCmdInstruSpan("“IPSecVPN。", "trustpoint名");
+									createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT2("直接导入pkcs#12证书，证书需包含根证书", "i11-2-2");
+								instruArr[0] = createCmdSpan("R1(config)# crypto pki import “c9800。 pkcs12 terminal password “Cisc0123。");
+								instruArr[1] = createCmdInstruSpan("“c9800。", "trustpoint名");
+								instruArr[2] = createCmdInstruSpan("“Cisc0123。", "证书加密密钥");
 								createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT1("相关查看命令", "i11-3");
