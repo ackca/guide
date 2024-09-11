@@ -81,8 +81,8 @@
 						createInstruT2("RRQ / WRQ 报文结构", "i2-1-1");
 							createProtocolStructT2(
 								"980",
-								"159",
-								"954",
+								"148",
+								"892",
 								"TFTP/TFTP12",
 								"TFTP协议 RRQ/WRQ（读/写）报文",
 								"tftp12"
@@ -105,7 +105,7 @@
 								0
 								由8 bits构成，值为0，表示模式终止
 							`;
-							createProtocolExplainT2(words, -159, 'tftp12');
+							createProtocolExplainT2(words, -148.7, 'tftp12');
 
 						createInstruT2("RRQ / WRQ 报文实例", "i2-1-2");
 							createConfigImgT2("TFTP/TFTP_read");
@@ -114,9 +114,9 @@
 					createInstruT1("DATA 报文", "i2-2");
 						createInstruT2("DATA 报文结构", "i2-2-1");
 							createProtocolStructT2(
-								"838",
-								"159",
-								"636",
+								"840",
+								"148",
+								"594",
 								"TFTP/TFTP3",
 								"TFTP协议 DATA（数据）报文",
 								"tftp3"
@@ -133,7 +133,7 @@
 								数据部分（Data）
 								根据TFTP的传输规则，除最后一块外，其余每块均为512字节，因此数据总分最大512字节
 							`;
-							createProtocolExplainT2(words, -159, 'tftp3');
+							createProtocolExplainT2(words, -148.5, 'tftp3');
 
 						createInstruT2("DATA 报文实例", "i2-2-2");
 							createConfigImgT2("TFTP/TFTP_data");
@@ -141,9 +141,9 @@
 					createInstruT1("ACK 报文", "i2-3");
 						createInstruT2("ACK 报文结构", "i2-3-1");
 							createProtocolStructT2(
-								"497",
-								"159",
-								"477",
+								"500",
+								"133",
+								"399",
 								"TFTP/TFTP4",
 								"TFTP协议 ACK（确认）报文",
 								"tftp4"
@@ -157,7 +157,7 @@
 								块编号（Block Number）
 								16 bits构成，表示被确认的数据的编号，如果为0，则确认客户端的下载/上传的请求
 							`;
-							createProtocolExplainT2(words, -159, 'tftp4');
+							createProtocolExplainT2(words, -133, 'tftp4');
 
 						createInstruT2("ACK 报文实例", "i2-3-2");
 							createConfigImgT2("TFTP/TFTP_ack");
@@ -165,9 +165,9 @@
 					createInstruT1("ERROR 报文", "i2-4");
 						createInstruT2("ERROR 报文结构", "i2-4-1");
 							createProtocolStructT2(
-								"946",
-								"159",
-								"795",
+								"940",
+								"139",
+								"694",
 								"TFTP/TFTP5",
 								"TFTP协议 ERROR（错误）报文",
 								"tftp5"
@@ -187,7 +187,7 @@
 								0
 								由8 bits构成，值为0，表示差错信息终止
 							`;
-							createProtocolExplainT2(words, -159, 'tftp5');
+							createProtocolExplainT2(words, -138.8, 'tftp5');
 
 						createInstruT2("ERROR 报文实例", "i2-4-2");
 					 		createConfigImgT2("TFTP/TFTP_error");

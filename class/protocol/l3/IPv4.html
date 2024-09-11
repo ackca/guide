@@ -29,8 +29,8 @@
 				createInstruT0("IPv4首部字段说明", "i1");
 					createProtocolStructT0(
 						"1000",
-						"500",
-						"7500",
+						"490",
+						"7362",
 						"IPv4/IPv4",
 						"IPv4协议",
 					);
@@ -79,7 +79,7 @@
 						数据部分（Data）
 						IPv4数据部分
 					`;
-					createProtocolExplainT0(words, -500);
+					createProtocolExplainT0(words, -490.8);
 
 				createInstruT0("常规IPv4报文实例实例", "i2");
 					createInstruT1("实例为ping报文，如下所示<br />");
@@ -131,8 +131,8 @@
 					createInstruT1("IPv4选项结构", "i4-1");
 						createProtocolStructT1(
 							"990",
-							"290",
-							"1450",
+							"281",
+							"1124",
 							"IPv4/options",
 							"IPv4选项",
 							"ipv4_options"
@@ -149,7 +149,7 @@
 							指针（ptr）
 							由8 bits构成，表示记录的位置，具体选项在详细说明
 						`;
-						createProtocolExplainT2(words, -290, 'ipv4_options');
+						createProtocolExplainT2(words, -281, 'ipv4_options');
 
 					createInstruT1("路径记录选项", "i4-2");
 						createInstruAllTopT1("对于路径记录选项，PTR表示当前的IP地址记录位置");

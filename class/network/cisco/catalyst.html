@@ -128,10 +128,10 @@
 				createInstruT0("虚拟局域网干道协议（VTP）", "i3");
 					createInstruT1("在任何版本的VTP中：‘交换机只在trunk链路中接收和发送VTP数据。");
 					createInstruT1("VTP v1/v2", "i3-1");
-						createInstruT2("创建VTP域名");
+						createInstruT2("配置VTP域名");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("SW1(config)# vtp domain “vtpName。");
-							instruArr[1] = createCmdInstruSpan("“vtpName。", "VTP域名(‘区分大小写。）");
+							instruArr[1] = createCmdInstruSpan("“vtpName。", "VTP域名（‘区分大小写。）");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置VTP模式");

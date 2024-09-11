@@ -301,6 +301,15 @@
 							instruArr[1] = createCmdInstruSpan("“@。", "命令打完后回车，即可输入提示文字，以@表示提示文字结束");
 							createCmdInstruT2(instruArr, "huawei");
 
+						createInstruT2("配置登录后输出不分屏");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[R1-ui-vty0-4] screen-length 0");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("登录后，本次输出不分屏");
+							instruArr[0] = createCmdSpan("&lt;R1> screen-length 0 temporary");
+							createCmdInstruT2(instruArr, "huawei");
+
 					createInstruT1("Telnet", "i3-2");
 						createInstruT2("先配置好登录方式及所需的用户名密码（如果需要）");
 

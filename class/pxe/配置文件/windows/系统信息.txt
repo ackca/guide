@@ -1,0 +1,30 @@
+Windows Server 2012
+Windows Server 2012 R2
+Windows Server 2016
+Windows Server 2019
+Windows Server 2022
+
+标准版（核心安装）：SERVERSTANDARDCORE
+标准版（带GUI）：SERVERSTANDARD
+数据中心版（核心安装）：SERVERDATACENTERCORE
+数据中心版（带GUI）：SERVERDATACENTER
+
+
+2012 标准版 安装密钥：VDNYM-JBKJ7-DC4X9-BT3QR-JHRGY
+2012 数据中心版 安装密钥：BH9T4-4N7CW-67J3M-64J36-WW98Y
+
+2012 R2 标准版 安装密钥：78NJB-CB3WX-GWPCM-VMKG7-94QWW
+2012 R2 数据中心版 安装密钥：TVNTG-VFJQ3-FQXFP-DVCP6-D3VJ8
+
+2016 标准版 安装密钥：P96NB-8TJQB-BW47F-TQRMX-T839R
+2016 数据中心版 安装密钥：6CNGG-BJP34-H923Y-6DMWR-37BMF
+
+Windows 10
+Windows 11
+
+企业版：Enterprise
+教育版：Education
+专业版：Pro
+专业教育版：Pro Education
+专业工作站版：Pro For Workstations
+

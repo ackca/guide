@@ -52,8 +52,8 @@
 				createInstruT0("DHCP协议结构", "i3");
 					createProtocolStructT0(
 						"1000",
-						"860",
-						"15480",
+						"852",
+						"14490",
 						"DHCPv4/DHCP",
 						"DHCPv4协议"
 					);
@@ -107,14 +107,14 @@
 						选项（Options）
 						长度可变，为DHCP选项的相关内容
 					`;
-					createProtocolExplainT0(words, -860);
+					createProtocolExplainT0(words, -852.3);
 
 					createInstruT0("DHCP选项", "i4");
 						createInstruT1("DHCP选项结构", "i4-1");
 							createProtocolStructT1(
 								"780",
-								"170",
-								"850",
+								"154",
+								"615",
 								"DHCPv4/option",
 								"DHCPv4选项",
 								"dhcp_option"
@@ -131,7 +131,7 @@
 								长度可变，与选项类型相关
 
 							`;
-							createProtocolExplainT1(words, -170, "dhcp_option");
+							createProtocolExplainT1(words, -153.7, "dhcp_option");
 
 						createInstruT1("重要选项介绍", "i4-2");
 							createInstruT2("Message Type(53)", "i4-2-1");

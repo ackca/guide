@@ -39,17 +39,22 @@
 							instruArr[1] = createCmdInstruSpan("“Cisc0123。", "证书密钥");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置网页认证的虚拟地址");
+						createInstruT2("配置国家代码");
+							instruArr[0] = createCmdSpan("C9800(config)# wireless country “CN。");
+							instruArr[1] = createCmdInstruSpan("“CN。", "国家代码");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置虚拟地址");
 							instruArr[0] = createCmdSpan("C9800(config)# parameter-map type webauth global");
 							instruArr[1] = createCmdSpan("C9800(config-params-parameter-map)# virtual-ip ipv4 “192.0.2.1。");
-							instruArr[2] = createCmdInstruSpan("“192.0.2.1。", "网页认证的虚拟地址，GUI向导时系统提供的默认值");
+							instruArr[2] = createCmdInstruSpan("“192.0.2.1。", "虚拟地址，GUI向导时系统提供的默认值");
 							createCmdInstruT2(instruArr, "cisco");
 
 				createInstruT0("证书相关配置", "i2");
 						createInstruT2("生成密钥对", "i2-1");
 							createConfigImgT2("c9800/i2_1$1~3");
 
-						createInstruT2("创建证书签名讲求", "i2-2");
+						createInstruT2("创建证书签名请求", "i2-2");
 							createConfigImgT2("c9800/i2_2$1~2");
 
 						createInstruT2("导入根证书及个人证书", "i2-3");
@@ -77,8 +82,6 @@
 							createInstruAllTopT2("见 <a href='ise_switch.html#i2-1-6' style='color:#F8F8F2;text-decoration:underline'>相关专题</a> 部分");
 
 					createInstruT1("<br />GUI配置", "i6-2");
-						createInstruT2("线下保护保存需要用CLI配置<br />");
-
 						createInstruT2("配置单个aaa服务器");
 							createConfigImgT2("c9800/i6_2_1$1~4");
 
@@ -761,11 +764,7 @@
 
 				createInstruT0("ACL", "i9");
 					createInstruT1("配置ACL", "i9-1");
-						createInstruT2("CLI", "i9-1-1");
-							createInstruAllTopT2("见 <a href='other_routing.html#i1' style='color:#F8F8F2;text-decoration:underline'>其它路由协议-ACL配置</a> 部分");
-
-						createInstruT2("<br />GUI", "i9-1-2");
-							createConfigImgT2("c9800/i9_1_2$1~5");
+						createConfigImgT1("c9800/i9_1$1~6");
 
 					createInstruT1("应用ACL", "i9-2");
 						createInstruT2("不同模式应用位置", "i9-2-1");

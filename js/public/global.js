@@ -6,57 +6,55 @@ function createNavigation(tree, offset = 74.5) {
 	// 顶部导航
 	var htmlText = top_menu.replace(/rootpath\//g, "../".repeat(path_num));
 
-	if (tree == "regex") {
-		document.write(htmlText);
-		return;
-	}
-	// 左侧导航树 <---- 开始 ---->
-	htmlText = htmlText +
-		"<aside class='main-sidebar'>\
-			<section class='sidebar'>\
-				<ul class='sidebar-menu'>" +
-					createTree(tree) +	// 当左侧导航树内容较多时，即使滚动条无法完全显示，增加了两行不显示的占位内容
-					"<li><a class='zw' cmd='zw'>&nbsp;</a></li>\
-					 <li><a class='zw' cmd='zw'>&nbsp;</a></li>\
-				</ul>\
-			</section>\
-			</aside>";
-	// 左侧导航树 <---- 结束 ---->
+	if (tree) {		// 包含左侧导航树的页面执行
+		// 左侧导航树 <---- 开始 ---->
+		htmlText = htmlText +
+			"<aside class='main-sidebar'>\
+				<section class='sidebar'>\
+					<ul class='sidebar-menu'>" +
+						createTree(tree) +	// 当左侧导航树内容较多时，即使滚动条无法完全显示，增加了两行不显示的占位内容
+						"<li><a class='zw' cmd='zw'>&nbsp;</a></li>\
+						 <li><a class='zw' cmd='zw'>&nbsp;</a></li>\
+					</ul>\
+				</section>\
+				</aside>";
+		// 左侧导航树 <---- 结束 ---->
 
-	// 关闭/显示左侧导航按钮 <---- 开始 ---->
-	htmlText = htmlText + `
-		<div id="guide-icon">
-			<div>
-				<span class="open"></span>
-				<span class="open"></span>
-				<span class="open"></span>
-			</div>
-		</div>
-	`;
-	// 关闭/显示左侧导航按钮 <---- 结束 ---->
-
-
-	if (uri.indexOf("/guide/class/protocol") >= 0) {
-		offset = 160;
-		// 浮动显示协议结构的div <---- 开始 ---->
+		// 关闭/显示左侧导航按钮 <---- 开始 ---->
 		htmlText = htmlText + `
-			<div id="divProtocol" protocolID="" class="divProtocol">
-				<strong id="close">✕</strong>
-				<div id="protocolImg" onmousedown="protocolMove()"></div>
+			<div id="guide-icon">
+				<div>
+					<span class="open"></span>
+					<span class="open"></span>
+					<span class="open"></span>
+				</div>
 			</div>
 		`;
-		// 浮动显示协议结构的div <---- 结束 ---->
-	}
+		// 关闭/显示左侧导航按钮 <---- 结束 ---->
 
-	if (uri.indexOf("/guide/class/one_piece") >= 0) {
-		offset = 161;
-	}
 
+		if (uri.indexOf("/guide/class/protocol") >= 0) {
+			offset = 160;
+			// 浮动显示协议结构的div <---- 开始 ---->
+			htmlText = htmlText + `
+				<div id="divProtocol" protocolID="" class="divProtocol">
+					<strong id="close">✕</strong>
+					<div id="protocolImg" onmousedown="protocolMove()"></div>
+				</div>
+			`;
+			// 浮动显示协议结构的div <---- 结束 ---->
+		}
+
+		if (uri.indexOf("/guide/class/one_piece") >= 0) {
+			offset = 161;
+		}
+	}
 	document.write(htmlText);
 
 	var body = `
 		<script type="text/javascript" src="rootpath/js/public/top_menu.js"></script>
 		<script type="text/javascript" src="rootpath/js/public/sidebar-menu.js"></script>
+		<script type="text/javascript" src="rootpath/js/private/certs_edit.js"></script>
 		<script type="text/javascript">
 			$.sidebarMenu($(".sidebar-menu"), offset);
 		</script>
@@ -67,7 +65,7 @@ function createNavigation(tree, offset = 74.5) {
 	$(document).ready(function () {
 		// 每个instruT0前都会有两个<br />，将第一个T0下移位置补回
 		$("#" + firstT0).css("margin-top", "-49.5px");
-
+		// alert(12);
 		if (uri.indexOf("/guide/class/protocol") >= 0) {
 			$("#divCommand").before("<div style='height: 135px'></div>");
 		}
@@ -87,6 +85,12 @@ function createNavigation(tree, offset = 74.5) {
 				link = link + linkID_arr[i];
 				$("[cmd='" + link + "']").click();
 				link = link + "-";
+			}
+
+			var alink = $("a[cmd='#i3-5']");
+			if (alink.length > 0) {
+				// 使用 jQuery 触发点击事件
+				alink.trigger("click");
 			}
 		}
 	});
@@ -321,12 +325,23 @@ function initTXT(cmds, txtT, cmdT) {
 	url = url.substring(url.indexOf("/guide/class/"));
 	var path = "../".repeat(url.split("/").length - 3);
 
-	var htmlText = "<div class='txtDiv" + cmdT + "'>" +
-		"<div class='divCopy'><i class='far fa-copy'></i></div>" +
-		"<div class='copySuccess'><img src='" + path + "img/ok.svg' />&nbsp;复制成功</div>";
+	// var htmlText = "<div class='txtDiv" + cmdT + "'>" +
+	// 	"<div class='divGet'><i class='fa-solid fa-download' title='下载'></i>" +
+	// 	"<i class='far fa-copy' title='复制'></i></div>" +
+	// 	"<div class='copySuccess'><img src='" + path + "img/ok.svg' />&nbsp;复制成功</div>";
+
+	let htmlText = "<div class='txtDiv" + cmdT + "'>" +
+						"<div class='divGet'>" +
+							"<i class='fa-solid fa-download' title='下载'></i>" +
+							"<i class='far fa-copy' title='复制'></i>" +
+						"</div>" +
+						"<div class='copySuccess'>" +
+							"<img src='" + path + "img/ok.svg' />&nbsp;复制成功" +
+						"</div>";
+
 
 	var cmd_arr = cmds.split("\n");
-	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; //第一行左侧通常没有空白，空白数为html的缩进数
+	var subNum = cmd_arr[1].length - cmd_arr[1].replace(/^\s*/g, "").length; // 第一行左侧通常没有空白，空白数为html的缩进数
 
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
 		cmd_arr[i] = cmd_arr[i].substring(subNum);
@@ -1059,7 +1074,10 @@ function createProtocolExplain(words, k, structID, divT) {
 function createProtocolStruct(imgWidth, imgHeight, SFHeight, imgUrl, divT, protocolName, divID) {
 	var htmlText = "<div class='divSJ" + divT + "'>";
 	htmlText = htmlText + "<div class='divProtocolStruct'>";
-	htmlText = htmlText + "<div id='" + divID + "' protocolName='" + protocolName + "' style='width: " + imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/" + imgUrl + ".png); background-size: " + imgWidth + "px " + SFHeight + "px' ></div>";
+	htmlText = htmlText + "<div id='" + divID + "' protocolName='" + protocolName + "' style='width: "
+							+ imgWidth + "px; height: " + imgHeight + "px; background-image: url(config_img/"
+							+ imgUrl + ".png); background-size: " + imgWidth + "px " + SFHeight + "px' ></div>";
+
 	htmlText = htmlText + "</div>";
 	htmlText = htmlText + "</div>";
 	document.write(htmlText);
@@ -1355,27 +1373,81 @@ $(document).ready(function () {
 		可以复制内容的配置文件，右上角复制图标，复制功能
 		目前配置文件类型：Linux配置文件、yaml文件、cisco Viptela
 	*/
-	$(".divCopy").click(function () {
-		var txt = this.parentNode.innerHTML.split("复制成功</div>")[1];
-		// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
-		// 将使用html符号表示的 空格、>、< 还原
-		txt = txt.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
-		// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
-		// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
-		// \r\n：windows的换行
+
+	function getTXT(elem) {
+		// console.log(elem.parent().parent())
+		let uri = window.location.href;
+		let txt = "";
+
+		// 编辑证书页面，使用textarea而非div存放base64编码的证书，不需要处理内容，可直接复制
+		if (uri.search("/guide/class/netdevops/pki/certs_edit") == -1) {
+			txt = elem.parent().parent().html().split("复制成功</div>")[1];
+			// console.log($(this).parent().parent().html())
+			// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
+			// 将使用html符号表示的 空格、>、< 还原
+			txt = txt.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
+			// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
+			// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
+			// \r\n：windows的换行
+		}
+		else {
+			// 当前为复制按钮，下一个同级为，复制成功的提示，再下一个为存放BASE64证书的textarea
+			txt = elem.parent().next().next().val();
+		}
+
+		return txt;
+	}
+
+	$(".divGet .fa-copy").click(function () {
+		// let uri = window.location.href;
+		// let txt = "";
+		//
+		// // 编辑证书页面，使用textarea而非div存放base64编码的证书，不需要处理内容，可直接复制
+		// if (uri.search("/guide/class/netdevops/pki/certs_edit") == -1) {
+		// 	txt = $(this).parent().parent().html().split("复制成功</div>")[1];
+		// 	console.log($(this).parent().parent().html())
+		// 	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
+		// 	// 将使用html符号表示的 空格、>、< 还原
+		// 	txt = txt.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
+		// 	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
+		// 	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
+		// 	// \r\n：windows的换行
+		// }
+		// else {
+		// 	// 当前为复制按钮，下一个同级为，复制成功的提示，再下一个为存放BASE64证书的textarea
+		// 	txt = $(this).nextAll().eq(1).val();
+		// }
 
 		const textarea = document.createElement("textarea");	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
-		textarea.value = txt;					// 设置内容
+		textarea.value = getTXT($(this));		// 设置内容
 		document.body.appendChild(textarea);	// 添加临时实例
 		textarea.select();						// 选择实例内容
 		document.execCommand("Copy");			// 执行复制
 		document.body.removeChild(textarea);	// 删除临时实例
 
-		var _copySuccess = $(this).next();
+		let _copySuccess = $(this).parent().next();
 		_copySuccess.fadeIn(500);	// 显示复制成功的div是下一项元素，经历0.5s逐渐显示，等待1s后，经历0.5s逐渐消失
 		setTimeout(function () {
 			_copySuccess.fadeOut(500)
 		}, 1000);
+	});
+
+
+	$(".divGet .fa-download").click(function () {
+		// 将字符串转换为 Blob 对象
+		let blob = new Blob([getTXT($(this))], {type: "text/plain"});
+		// let blob = new Blob([txt], {type: "application/octet-stream"});
+
+		// 创建一个隐藏的 <a> 元素
+		let link = document.createElement("a");
+		link.href = window.URL.createObjectURL(blob);
+		link.download = "download";		// 下载文件的文件名
+
+		// 触发点击事件以下载文件
+		link.click();
+
+		// 释放 URL 对象
+		window.URL.revokeObjectURL(link.href);
 	});
 
 	// ---------- 可以复制内容的配置文件，右上角复制图标，相关功能 ---- 结束 ----------
@@ -1385,10 +1457,10 @@ $(document).ready(function () {
 		各个协议的结构图，单击事件
 		timeFN，为了区分单击和双击的定时器
 	*/
-	var timeFN = null;
+	let timeFN = null;
 	$(".divProtocolStruct").click(function () {
 		clearTimeout(timeFN);
-		var thisImg = $(this).children();
+		let thisImg = $(this).children();
 		// var thisID = this.childNodes.id;
 		timeFN = setTimeout(function () {
 			$("#protocolImg").css("width", thisImg.css("width"));
@@ -1410,20 +1482,20 @@ $(document).ready(function () {
 	*/
 	$(".divProtocolStruct").dblclick(function () {
 		clearTimeout(timeFN);
-		var protocolWidth = $(this).children().css("width");
-		var protocolHeight = $(this).children().css("height");
-		var protocolBgImage = $(this).children().css("background-image");
+		let protocolWidth = $(this).children().css("width");
+		let protocolHeight = $(this).children().css("height");
+		let protocolBgImage = $(this).children().css("background-image");
 
-		var protocolHTML = "<title>" + $(this).children().attr("protocolName") + "结构</title>" +
+		let protocolHTML = "<title>" + $(this).children().attr("protocolName") + "结构</title>" +
 			"<style type='text/css'>body::-webkit-scrollbar{width:8px;height:8px}body::-webkit-scrollbar-thumb{border-radius:5px;background:#CFCFCF}</style>" +
-			"<body style='margin: 0; background-color: #494A5F; text-align: center'></body>" +
+			"<body style='margin: 0; background-color: #3A3B4C; text-align: center'></body>" +
 			"<div style='font-size: 50px; font-weight: bold; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
 			$(this).children().attr("protocolName") + "结构" +
 			"</div>" +
 			"<div style='margin: 20px auto; width:" + protocolWidth + "; height:" + protocolHeight + "; " + "background-image: " + protocolBgImage + "'></div>" +
 			"</body>";
 
-		var nwin = window.open("");
+		let nwin = window.open("");
 		nwin.document.writeln(protocolHTML);
 	});
 
@@ -1437,16 +1509,16 @@ $(document).ready(function () {
 	// ------------------------------------------------------------
 	// ---------- 某些图片双击新标签页单独显示 ---- 开始 ----------
 	$(".divConfigImgT0[imgDescribe], .divConfigImgT1[imgDescribe], .divConfigImgT2[imgDescribe], .divConfigImgT3[imgDescribe]").dblclick(function () {
-		var protocolHTML = "<title>" + $(this).attr("imgDescribe") + "</title>" +
+		let protocolHTML = "<title>" + $(this).attr("imgDescribe") + "</title>" +
 			"<style type='text/css'>body::-webkit-scrollbar{width:8px;height:8px}body::-webkit-scrollbar-thumb{border-radius:5px;background:#CFCFCF}</style>" +
-			"<body style='margin: 0; background-color: #494A5F; text-align: center'></body>" +
+			"<body style='margin: 0; background-color: #3A3B4C; text-align: center'></body>" +
 			"<div style='font-size: 50px; font-weight: bold; letter-spacing: 2px; margin-top: 20px; color: #FFC000'>" +
 			$(this).attr("imgDescribe") +
 			"</div>" +
 			"<img style='margin-top: 20px' src='" + $(this).children("img").attr("src") + "'>" +
 			"</body>";
 
-		var nwin = window.open("");
+		let nwin = window.open("");
 		nwin.document.writeln(protocolHTML);
 	});
 
@@ -1454,7 +1526,7 @@ $(document).ready(function () {
 	// ---------------------------------------------------------
 	// ---------- 图片配置类页面，当左侧菜单关闭时刷新，水平滚动条会保持在原位置，图片被遮挡，将流动条移到最左边 ---- 开始 ----------
 	setTimeout(function () {
-		$('html, body').animate({scrollLeft: 0});
+		$("html, body").animate({scrollLeft: 0});
 	}, 0);
 
 	// ---------- 图片配置类页面，当左侧菜单关闭时刷新，水平滚动条会保持在原位置，图片被遮挡，将流动条移到最左边 ---- 结束 ----------
@@ -1462,21 +1534,49 @@ $(document).ready(function () {
 	// ---------- 少量带锚的链接，跳转后距离不对，调整 ---- 开始 ----------
 	if (window.location.hash) {
 							 // 获取不含#的锚点名
-		let target = $('#' + window.location.hash.substring(1));
+		let target = $("#" + window.location.hash.substring(1));
 		if (target.length > 0) {
-			let offset = 50;	// 思科、华为的通用配置中DHCP snooping跳转到交换机配置的对应内容
+			let offset = 50;	// 思科、华为的配置中的跳转
 			if (window.location.href.indexOf("/guide/class/protocol") >= 0) {
-				offset = 75;	// IPv6分片首部
+				offset = 95;	// IPv6分片首部
 			}
 
 			// 在滚动条原有位置上，减小移动距离
-			$('html, body').animate({
+			$("html, body").animate({
 				scrollTop: target.offset().top - offset
 			});
 		}
 	}
-
+	// console.log($("#divCommand").offset().top)
 	// ---------- 少量带锚的链接，跳转后距离不对，调整 ---- 结束 ----------
 	// ---------------------------------------------------------
+	// $("#divCommand").offset({top: "1000"});
+	// console.log("qaz")
+	// $('html, body').animate({
+	// 	scrollTop: $('#i3-5').offset().top
+	// }, 1000);
+	// var container = document.getElementById('i3-5');
+	//
+	// // 滚动到指定位置
+	// container.scrollTo({
+	// 	top: 200,
+	// 	behavior: 'smooth'  // 平滑滚动
+	// });
+	// window.scrollBy({
+	// 	top: 500,  // 向下滚动100px
+	// 	left: 0,   // 不改变X轴
+	// 	behavior: 'smooth'  // 平滑滚动
+	// });
+	// console.log("wsx")
 
+	$("textarea").mousemove(function(e) {
+		const isOnVerticalScrollbar = e.offsetX > this.clientWidth; // 检查是否在垂直滚动条上
+		const isOnHorizontalScrollbar = e.offsetY > this.clientHeight; // 检查是否在水平滚动条上
+
+		if (isOnVerticalScrollbar || isOnHorizontalScrollbar) {
+			this.style.cursor = "default";
+		} else {
+			this.style.cursor = "text";
+		}
+	});
 });

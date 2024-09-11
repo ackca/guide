@@ -87,3 +87,9 @@ const certs_mgmt = {
 		}
 	},
 }
+
+const certs_edit = {
+	"url:certs_edit1.html": "提取 PKCS#12 格式证书内容",
+	"url:certs_edit2.html": "打包生成 PKCS#12 格式证书",
+	"url:certs_edit3.html": "获取 PKCS#12 格式证书的BASE64编码",
+}

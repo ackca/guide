@@ -77,7 +77,7 @@
 								instruArr[2] = createCmdInstruSpan("“leaf。", "模板名");
 								instruArr[3] = createCmdSpan("Nexus(config-router-neighbor)# remote-as “65101。");
 								instruArr[4] = createCmdSpan("Nexus(config-router-neighbor)# update-source “loop 0。");
-								createCmdInstruT2(instruArr, "cisco");
+								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("调用template");
 								instruArr = [];
@@ -489,11 +489,11 @@
 				createInstruT0("vxlan — multi pod", "i7");
 						createInstruT2("‘不同Pod间使用不同的AS。");
 						createInstruT2("配置route map", "i7-1");
-							createInstruAllTopT3("EBGP默认会更改一跳，需要保持下一跳为本端Leaf的VTEP地址");
+							createInstruAllTopT2("EBGP默认会更改一跳，需要保持下一跳为本端Leaf的VTEP地址");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("Spine1(config)# route-map mulpod permit 10");
 							instruArr[1] = createCmdSpan("Spine1(config-route-map)# set ip next-hop unchanged ");
-							createCmdInstruT3(instruArr, "cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("不同pod的spine建立BGP EVPN连接", "i7-2");
 							instruArr[0] = createCmdSpan("Spine1(config)# router bgp “65501。");
@@ -526,7 +526,7 @@
 							instruArr = [];
 							instruArr[0] = createCmdSpan("BGW(config)# route-map “BGW。 permit 10");
 							instruArr[1] = createCmdSpan("BGW(config-route-map)# set ip next-hop unchanged ");
-							createCmdInstruT3(instruArr, "cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置BGP", "i8-2-2");
 							createInstruAllTopT2("与 本DC的Spine 的邻居配置相同，与 对端DC的BGW 配置有所改变");
@@ -559,7 +559,7 @@
 						instruArr[3] = createCmdInstruSpan("“30。", "站点延时启动时间，站点内部相关配置正常启动后，再启动站点间配置，适当调小");
 						createCmdInstruT1(instruArr, "cisco");
 
-					createInstruT1("配置NVE接口", "i8-4");
+					createInstruT1("<br />配置NVE接口", "i8-4");
 						createInstruT2("配置VIP地址", "i8-4-1");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("BGW(config-if-nve)# multisite border-gateway interface “loop 100。");

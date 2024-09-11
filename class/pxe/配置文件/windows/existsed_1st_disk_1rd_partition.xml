@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<SetupUILanguage>
+				<UILanguage>zh-CN</UILanguage>
+			</SetupUILanguage>
+			<InputLocale>zh-CN</InputLocale>
+			<UILanguage>zh-CN</UILanguage>
+			<SystemLocale>zh-CN</SystemLocale>
+			<UserLocale>zh-CN</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<DiskConfiguration>
+				<Disk wcm:action="add">
+					<DiskID>0</DiskID>
+
+					<ModifyPartitions>
+						<ModifyPartition wcm:action="add">
+							<Format>NTFS</Format>
+							<Order>1</Order>
+							<PartitionID>2</PartitionID>
+						</ModifyPartition>
+					</ModifyPartitions>
+				</Disk>
+			</DiskConfiguration>
+			<ImageInstall>
+				<OSImage>
+					<InstallFrom>
+						<MetaData wcm:action="add">
+							<Key>/IMAGE/NAME</Key>
+							<!-- 操作系统名称 -->
+							<Value>Windows Server 2022 SERVERSTANDARD</Value>
+						</MetaData>
+					</InstallFrom>
+					<InstallTo>
+						<!-- 安装系统 硬盘 编号，从0开始 -->
+						<DiskID>0</DiskID>
+						<!-- 安装系统 分区 编号，从1开始 -->
+						<PartitionID>2</PartitionID>
+					</InstallTo>
+				</OSImage>
+			</ImageInstall>
+			
+			<UserData>
+				<AcceptEula>true</AcceptEula>
+				<FullName>-</FullName>
+				<Organization>-</Organization>
+				<!-- 安装系统 序列号 ，目前 2012/2012 R2/2016 需要-->
+				<!-- <ProductKey>
+					<Key>6CNGG-BJP34-H923Y-6DMWR-37BMF</Key>
+				</ProductKey> -->
+			</UserData>
+		</component>
+	</settings>
+	<settings pass="specialize">
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<ComputerName>MyPC</ComputerName>
+			<TimeZone>China Standard Time</TimeZone>
+			<RegisteredOrganization>-</RegisteredOrganization>
+		</component>
+	</settings>
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<OOBE>
+				<HideEULAPage>true</HideEULAPage>
+				<NetworkLocation>Work</NetworkLocation>
+				<ProtectYourPC>3</ProtectYourPC>
+				<SkipMachineOOBE>true</SkipMachineOOBE>
+				<SkipUserOOBE>true</SkipUserOOBE>
+			</OOBE>
+			<!-- 自动登录，登录账户Administrator 
+			账户存在密码 <Value>1q!</Value>，无密码 <Value/> -->
+			<!-- <AutoLogon>
+				<Password>
+					<Value/>
+					<PlainText>true</PlainText>
+				</Password>
+				<Enabled>true</Enabled>
+				<Username>Administrator</Username>
+			</AutoLogon> -->
+			<UserAccounts>
+				<!-- 账户名 Administrator，默认即为管理员
+				使用密码 <Value>1q!</Value>，无密码 <Value/> -->
+				<AdministratorPassword>
+					<Value>1q!</Value>
+					<PlainText>true</PlainText>
+				</AdministratorPassword>
+			</UserAccounts>
+			<RegisteredOrganization>-</RegisteredOrganization>
+			<RegisteredOwner>-</RegisteredOwner>
+		</component>
+	</settings>
+</unattend>

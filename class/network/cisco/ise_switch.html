@@ -76,7 +76,18 @@
 							 limit address-count 10
 							 tracking enable
 						`;
-						createLinuxTxtT1(cmd);
+
+						let mark_list = [
+							"pan-p",
+							"ISE",
+							"ACL-DEFAULT",
+							"IPDT_MAX_10",
+							"linelogin",
+							"vtylogin",
+							"execlocal",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+						// createLinuxTxtT1(cmd);
 
 					createInstruT1("接口配置", "i1-2");
 						cmd = `
@@ -98,7 +109,16 @@
 							 dot1x pae authenticator
 							 spanning-tree portfast
 						`;
-						createLinuxTxtT1(cmd);
+
+						mark_list = [
+							null,
+							null,
+							"ACL-DEFAULT",
+							"IPDT_MAX_10",
+						]
+						createLinuxTxtMarkT1(cmd, mark_list);
+						// createLinuxTxtT1(cmd);
+
 
 				createInstruT0("配置详解", "i2");
 					createInstruT1("全局配置", "i2-1");
@@ -181,9 +201,9 @@
 						createInstruT2("配置设备追踪策略", "i2-1-12");
 							instruArr[0] = createCmdSpan("SW1(config)# device-tracking policy “IPDT_MAX_10。");
 							instruArr[1] = createCmdInstruSpan("“IPDT_MAX_10。", "策略名");
-							instruArr[2] = createCmdSpan("SW1(config-device-tracking)#limit address-count “10。");
+							instruArr[2] = createCmdSpan("SW1(config-device-tracking)# limit address-count “10。");
 							instruArr[3] = createCmdInstruSpan("“10。", "最多追踪10个设备");
-							instruArr[4] = createCmdSpan("SW1(config-device-tracking)#tracking enable ");
+							instruArr[4] = createCmdSpan("SW1(config-device-tracking)# tracking enable ");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("配置radius属性", "i2-1-7");

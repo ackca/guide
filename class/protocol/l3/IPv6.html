@@ -30,8 +30,8 @@
 				 createInstruT0("IPv6 首部字段说明", "i1");
 					createProtocolStructT0(
 						"1000",
-						"420",
-						"4200",
+						"417",
+						"4166",
 						"IPv6/IPv6",
 						"IPv6协议"
 					);
@@ -65,7 +65,7 @@
 						数据部分（Data）
 						IPv6数据部分
 					`;
-					createProtocolExplainT0(words, -420);
+					createProtocolExplainT0(words, -416.6);
 
 				createInstruT0("常规IPv6报文实例实例", "i2");
 					createInstruT1("实例为ping报文，如下所示<br />");
@@ -76,8 +76,8 @@
 						createInstruAllTopT1("为了分片，IPv6设计了分片头部，分片头部的大小（8字节）计算在IPv6的负载部分");
 						createProtocolStructT1(
 							"830",
-							"287",
-							"2009",
+							"286",
+							"2002",
 							"IPv6/IPv6_Fragment",
 							"IPv6分片头部",
 							"protocolStructure1"
@@ -102,7 +102,7 @@
 							标识（Identification）
 							由32 bits构成，用于分片重组。同一个分片的标识值相同，不同分片的标识值不同。
 						`;
-						createProtocolExplainT1(words, -287, 'protocolStructure1');
+						createProtocolExplainT1(words, -286, 'protocolStructure1');
 
 					createInstruT1("IPv6 分片只在发送设备分片", "i3-1");
 						createInstruAllTopT1("在设备的‘出方向。，如果IPv6报文大于MTU，则需要分片");

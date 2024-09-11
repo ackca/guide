@@ -1,25 +1,10 @@
 body, html
 {
 	font-size: 1.3em;
-	padding: 0;
-	margin: 0;
-	background: #494A5F;
 	color: #FFFFFF;
-	font-weight: 500;
-
 	display: flex;
 	justify-content: center;
 	height: 100vh;
-}
-
-body::-webkit-scrollbar {/*滚动条整体样式*/
-	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
-	height: 8px;
-}
-
-body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-	border-radius: 5px;
-	background: #CFCFCF;
 }
 
 .os_options
@@ -65,15 +50,14 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	display: none;
 }
 
-#txt_auto_install::-webkit-scrollbar {/*滚动条整体样式*/
-	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
-	height: 8px;
-	background-color: #282923;
+#txt_auto_install
+{
+	display: none;
+	resize: none;		/* 去年右下角调大小的箭头 */
 }
 
-#txt_auto_install::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-	border-radius: 5px;
-	background: #595B5D;
+#txt_auto_install::-webkit-scrollbar {	/* 滚动条整体样式 */
+	background-color: #212529;
 }
 
 #btn_download, #btn_copy

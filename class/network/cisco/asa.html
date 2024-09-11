@@ -29,7 +29,7 @@
 							createInstruT3("设置接口的安全级别");
 								instruArr[0] = createCmdSpan("ASA(config-if)# security-level “100。");
 								instruArr[1] = createCmdInstruSpan("“100。", "安全级别");
-								instruArr[2] = createCmdInstruSpan("安全级别取值范围 [0，100] 除命名为inside(不区分大小写)默认为100外，其余均为0");
+								instruArr[2] = createCmdInstruSpan("安全级别取值范围 [0，100] 除命名为inside（不区分大小写）默认为100外，其余均为0");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("查看各接口安全级别");
@@ -148,7 +148,7 @@
 							instruArr[0] = createCmdSpan("ASA(config)# sla monitor schedule “1。 life forever start-time now");
 							instruArr[1] = createCmdInstruSpan("“1。", "sla编号");
 							instruArr[2] = createCmdInstruSpan("可根据需要进行修改，在某段时间开始");
-							createCmdInstruT3(instruArr, "cisco");
+							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("开启可达性跟踪");
 							instruArr[0] = createCmdSpan("ASA(config)# track “2。 rtr “1。 reachability");
@@ -549,7 +549,7 @@
 						createCmdInstruT1(instruArr, "cisco");
 
 				createInstruT0("透明防火墙", "i10");
-						createInstruT2("查看防火墙类型（路由：Router/透明：Transparent）");
+						createInstruT2("查看防火墙类型（路由：Router / 透明：Transparent）");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA# show firewall");
 							createCmdInstruT2(instruArr, "cisco");
@@ -576,7 +576,7 @@
 						createInstruT2("启用ARP 监控");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA(config)# arp-inspection inside enable [ flood | no-flood ]");
-							instruArr[1] = createCmdInstruSpan("flood", "对未知的MAC泛洪(‘默认。）");
+							instruArr[1] = createCmdInstruSpan("flood", "对未知的MAC泛洪（‘默认。）");
 							instruArr[2] = createCmdInstruSpan("no-flood ", "不泛洪");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -598,7 +598,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 				createInstruT0("多模式防火墙", "i11");
-						createInstruT2("查看防火墙模式（单模式：Single/多模式：Multiple）");
+						createInstruT2("查看防火墙模式（单模式：Single / 多模式：Multiple）");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("ASA# show mode");
 							createCmdInstruT2(instruArr, "cisco");

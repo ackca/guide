@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/cert.png" />
+	<title>NetDevOps-证书服务-编辑证书</title>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(certs_edit);
+	</script>
+	<style type="text/css">
+		.sidebar-menu li:nth-child(2)
+		{
+			background-color: #FFFFFF;
+		}
+
+		.sidebar-menu li:nth-child(2) a
+		{
+			color: #FFFFFF;
+			background: #1E282C;
+			border-left-color: #3C8DBC;
+		}
+
+		.btn-success
+		{
+			font-size: 1.25rem;
+			font-weight: bolder;
+			height: 100%;
+			display: inline-block;
+			width: 300px;
+			padding: 0.625rem 1.25rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<h1 class="certs_edit_type">打包生成 PKCS#12 证书</h1>
+
+			<div class="certs">
+				<div class="id-cert">
+					<div>个人证书：</div>
+					<div class="divbase64">
+						<textarea class="form-control txt_base64" id="txt_personal" wrap="off" rows="6"></textarea>
+					</div>
+				</div>
+			</div><br />
+
+			<div class="certs">
+				<div class="primary-key">
+					<div class="row align-items-top">
+						<div class="col-2">个人证书私钥：　</div>
+						<div class="divbase64">
+							<div class="div_password">
+								<span class="span_password">私钥密码（如果加密）：</span>
+								<input type="password" class="txt_password" id="password_private_key" />
+								<i class="fa-solid fa-eye eye_password eye_private_key"></i>
+							</div>
+						</div>
+					</div>
+					<textarea class="form-control txt_base64" id="txt_primary_key" wrap="off" rows="6"></textarea>
+				</div>
+			</div><br />
+
+			<div class="certs">
+				<div class="root-cert">
+					<div>根证书：</div>
+					<div class="divbase64">
+						<textarea class="form-control txt_base64" id="txt_root" wrap="off" rows="6"></textarea>
+					</div>
+				</div>
+			</div><br />
+
+			<div class="div_password">
+				<span class="span_password">PKCS#12证书密码：</span>
+				<input type="password" class="txt_password" id="password_p12" />
+				<i class="fa-solid fa-eye eye_password eye_p12"></i>
+			</div><br /><br />
+
+			<button class="btn btn-success" type="button" onclick="exP12Cert()">生成PKCS#12证书</button>
+		</div>
+	</div>
+</body>
+</html>

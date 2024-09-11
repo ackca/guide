@@ -30,12 +30,13 @@
 				createInstruT0("syslog 报文结构", "i1");
 					createProtocolStructT0(
 						"1060",
-						"220",
-						"660",
+						"199",
+						"597",
 						"syslog/syslog",
 						"syslog协议"
 					);
 
+					document.writeln("<br />");
 					let words = `
 						优先级（PRI：Priority）
 						共24 bits，由4部分组成<br /><ul><li><span><</span><br />由8 bits构成，值为<的ASCII，0x3C</li><li>设备（Facility）<br />由5 bits构成，用于区分发送日志的设备类型</li>\t<li>安全级别（Severity）<br />由3 bits构成，用于表示事件的严重程度，越小越严重</li><li><span>></span><br />由8 bits构成，值为>的ASCII，0x3E</li></ul>
@@ -43,7 +44,7 @@
 						日志内容
 						由于syslog的协议规范制定比较晚，而且是推荐标准，所有实际的日志格式多样，基本只有PRI遵循规范
 					`;
-					createProtocolExplainT0(words, -220);
+					createProtocolExplainT0(words, -199);
 
 				createInstruT0("Facility取值对应关系<br />", "i2");
 					let tHeader = [

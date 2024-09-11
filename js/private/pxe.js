@@ -1,74 +1,74 @@
 $(document).ready(function () {
 	const windows_xml = `<?xml version="1.0" encoding="utf-8"?>
-			<unattend xmlns="urn:schemas-microsoft-com:unattend">
-				<settings pass="windowsPE">
-					<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-						<SetupUILanguage>
-							<UILanguage>zh-CN</UILanguage>
-						</SetupUILanguage>
-						<InputLocale>zh-CN</InputLocale>
+		<unattend xmlns="urn:schemas-microsoft-com:unattend">
+			<settings pass="windowsPE">
+				<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<SetupUILanguage>
 						<UILanguage>zh-CN</UILanguage>
-						<SystemLocale>zh-CN</SystemLocale>
-						<UserLocale>zh-CN</UserLocale>
-					</component>
-					<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-						<DiskConfiguration>
-							!!disk_partition!!
-						</DiskConfiguration>
-						<ImageInstall>
-							<OSImage>
-								<InstallFrom>
-									<MetaData wcm:action="add">
-										<Key>/IMAGE/NAME</Key>
-										<Value>!!os_name!!</Value>
-									</MetaData>
-								</InstallFrom>
-								<InstallTo>
-									!!os_inside!!
-								</InstallTo>
-							</OSImage>
-						</ImageInstall>
+					</SetupUILanguage>
+					<InputLocale>zh-CN</InputLocale>
+					<UILanguage>zh-CN</UILanguage>
+					<SystemLocale>zh-CN</SystemLocale>
+					<UserLocale>zh-CN</UserLocale>
+				</component>
+				<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<DiskConfiguration>
+						!!disk_partition!!
+					</DiskConfiguration>
+					<ImageInstall>
+						<OSImage>
+							<InstallFrom>
+								<MetaData wcm:action="add">
+									<Key>/IMAGE/NAME</Key>
+									<Value>!!os_name!!</Value>
+								</MetaData>
+							</InstallFrom>
+							<InstallTo>
+								!!os_inside!!
+							</InstallTo>
+						</OSImage>
+					</ImageInstall>
 
-						<UserData>
-							<AcceptEula>true</AcceptEula>
-							<FullName>-</FullName>
-							<Organization>-</Organization>
-							!!os_license!!
-						</UserData>
-					</component>
-				</settings>
-				<settings pass="specialize">
-					<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-						<ComputerName>!!os_hostname!!</ComputerName>
-						<TimeZone>China Standard Time</TimeZone>
-						<RegisteredOrganization>-</RegisteredOrganization>
-					</component>
-				</settings>
-				<settings pass="oobeSystem">
-					<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-						<OOBE>
-							<HideEULAPage>true</HideEULAPage>
-							<NetworkLocation>Work</NetworkLocation>
-							<ProtectYourPC>3</ProtectYourPC>
-							<SkipMachineOOBE>true</SkipMachineOOBE>
-							<SkipUserOOBE>true</SkipUserOOBE>
-						</OOBE>
-						!!os_auto_login!!
-						<UserAccounts>
-							<AdministratorPassword>
-								!!os_admin_password!!
-								<PlainText>true</PlainText>
-							</AdministratorPassword>
-						</UserAccounts>
-						<RegisteredOrganization>-</RegisteredOrganization>
-						<RegisteredOwner>-</RegisteredOwner>
-					</component>
-				</settings>
-			</unattend>`;
+					<UserData>
+						<AcceptEula>true</AcceptEula>
+						<FullName>-</FullName>
+						<Organization>-</Organization>
+						!!os_license!!
+					</UserData>
+				</component>
+			</settings>
+			<settings pass="specialize">
+				<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<ComputerName>!!os_hostname!!</ComputerName>
+					<TimeZone>China Standard Time</TimeZone>
+					<RegisteredOrganization>-</RegisteredOrganization>
+				</component>
+			</settings>
+			<settings pass="oobeSystem">
+				<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<OOBE>
+						<HideEULAPage>true</HideEULAPage>
+						<NetworkLocation>Work</NetworkLocation>
+						<ProtectYourPC>3</ProtectYourPC>
+						<SkipMachineOOBE>true</SkipMachineOOBE>
+						<SkipUserOOBE>true</SkipUserOOBE>
+					</OOBE>
+					!!os_auto_login!!
+					<UserAccounts>
+						<AdministratorPassword>
+							!!os_admin_password!!
+							<PlainText>true</PlainText>
+						</AdministratorPassword>
+					</UserAccounts>
+					<RegisteredOrganization>-</RegisteredOrganization>
+					<RegisteredOwner>-</RegisteredOwner>
+				</component>
+			</settings>
+		</unattend>`;
 
 	window.formatXML = function (xml) {
-		var formatted = "", indent = "";
-		var tab = "\t";
+		let formatted = "", indent = "";
+		let tab = "\t";
 		xml.split(/>\s*</).forEach(function (node) {
 			if (node.match(/^\/\w/)) indent = indent.substring(tab.length);
 			formatted += indent + "<" + node + ">\r\n";
@@ -253,7 +253,7 @@ $(document).ready(function () {
 
 			if (partition_type == "1") {	// GPT分区需要创建100M的EFI分区，第2个分区安装系统
 											// 硬盘从0开始，分区从1开始
-					os_install_xml = "<DiskID>0</DiskID><PartitionID>2</PartitionID>";
+				os_install_xml = "<DiskID>0</DiskID><PartitionID>2</PartitionID>";
 			}
 
 			if (partition_type == "2") {	// MBR可直接安装系统
@@ -458,5 +458,14 @@ $(document).ready(function () {
 		document.body.removeChild(a_down);
 	});
 
+	$("textarea").mousemove(function(e) {
+		const isOnVerticalScrollbar = e.offsetX > this.clientWidth; // 检查是否在垂直滚动条上
+		const isOnHorizontalScrollbar = e.offsetY > this.clientHeight; // 检查是否在水平滚动条上
 
+		if (isOnVerticalScrollbar || isOnHorizontalScrollbar) {
+			this.style.cursor = "default";
+		} else {
+			this.style.cursor = "text";
+		}
+	});
 });

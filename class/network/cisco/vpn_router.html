@@ -22,7 +22,7 @@
 						instruArr[0] = createCmdSpan("R1(config)# crypto isakmp enable");
 						createCmdInstruT1(instruArr, "cisco");
 
-					createInstruT1("配置 IKEv1（ISAKMP）策略", "i2-1-1");
+					createInstruT1("<br />配置 IKEv1（ISAKMP）策略", "i2-1-1");
 						createInstruT2("创建IKEv1(ISAKMP)策略");
 							instruArr[0] = createCmdSpan("R1(config)# crypto isakmp policy “1。");
 							instruArr[1] = createCmdInstruSpan("“1。", "策略编号");
@@ -39,7 +39,7 @@
 
 						createInstruT2("配置认证方式（‘rsa-sig。为默认）");
 							instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication { pre-share | rsa-sig }");
-							instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+							instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 							instruArr[2] = createCmdInstruSpan("rsa-sig", "数字签名");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -170,7 +170,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("定义IKEv1（ISAKMP）的预共享密钥", "i2-2-2");
@@ -243,7 +243,7 @@
 
 						createInstruT2("配置认证方式");
 							instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-							instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+							instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("配置keyring", "i2-3-2");
@@ -649,7 +649,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置预共享密钥，及对端IP");
@@ -716,7 +716,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置预共享密钥，及对端IP");
@@ -803,7 +803,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置预共享密钥，及对端IP", "i6-1-2");
@@ -1035,8 +1035,9 @@
 
 				createInstruT0("L2TP（Layer 2 Tunneling Protocol） over IPSec", "i8");
 					createInstruT1("启用VPDN", "i8-1");
+						instruArr = [];
 						instruArr[0] = createCmdSpan("R1(config)# vpdn enable");
-						createCmdInstruT2(instruArr, "cisco");
+						createCmdInstruT1(instruArr, "cisco");
 
 					createInstruT1("<br />配置VPDN组", "i8-2");
 						createInstruT2("建立VPDN组");
@@ -1045,6 +1046,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("接受拨入");
+							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-vpdn)# accept-dialin");
 							createCmdInstruT2(instruArr, "cisco");
 
@@ -1110,20 +1112,20 @@
 
 							createInstruT3("配置加密算法");
 								instruArr = [];
-								instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption 3des");
+								instruArr[0] = createCmdSpan("R1(config-isakmp)# encryption “3des。");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置散列算法");
-								instruArr[0] = createCmdSpan("R1(config-isakmp)# hash sha");
+								instruArr[0] = createCmdSpan("R1(config-isakmp)# hash “sha。");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置DH密钥长度");
-								instruArr[0] = createCmdSpan("R1(config-isakmp)# group 2");
+								instruArr[0] = createCmdSpan("R1(config-isakmp)# group “2。");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置预共享密钥");
@@ -1133,7 +1135,7 @@
 
 						createInstruT2("配置转换集");
 							createInstruT3("创建转换集");
-								instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “tran。 esp-3des esp-sha-hmac");
+								instruArr[0] = createCmdSpan("R1(config)# crypto ipsec transform-set “tran。 “esp-3des。 “esp-sha-hmac。");
 								instruArr[1] = createCmdInstruSpan("“tran。", "转换集名");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -1194,7 +1196,7 @@
 								instruArr[1] = createCmdInstruSpan("“12345。", "一个编号，用于标识tunnel，各个节点应一致");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU(推荐配置)");
+							createInstruT3("为防止数据包添加GRE、ESP头部后数据包超过1500字节，造成转发时分片，效率降低，调整MTU（推荐配置）");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("hub(config-if)# ip mtu 1400");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1324,7 +1326,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("R1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置预共享密钥，及对端IP", "i17-6-2");
@@ -1444,16 +1446,16 @@
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("导出key");
-								instruArr[0] = createCmdSpan("KS-1(config)# crypto key export rsa “GETVPN-KEY。 pem terminal “3des。 “cisco123。");
+								instruArr[0] = createCmdSpan("KS-1(config)# crypto key export rsa “GETVPN-KEY。 pem terminal “3des。 “Cisc0123。");
 								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。", "密钥名");
 								instruArr[2] = createCmdInstruSpan("“3des。", "加密算法");
-								instruArr[3] = createCmdInstruSpan("“cisco123。", "加密密钥");
-								instruArr[4] = createCmdInstruSpan("明文的密钥太不安全，对密钥进行加密");
+								instruArr[3] = createCmdInstruSpan("“Cisc0123。", "加密密钥");
+								instruArr[4] = createCmdInstruSpan("明文的密钥不安全，对密钥进行加密");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("导入key");
 								instruArr = [];
-								instruArr[0] = createCmdSpan("KS-2(config)# crypto key import rsa “GETVPN-KEY。 pem terminal “cisco123");
+								instruArr[0] = createCmdSpan("KS-2(config)# crypto key import rsa “GETVPN-KEY。 pem terminal “Cisc0123");
 								instruArr[1] = createCmdInstruSpan("“GETVPN-KEY。", "密钥名");
 								instruArr[2] = createCmdInstruSpan("“3des。", "加密算法");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1487,7 +1489,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("KS-1(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置预共享密钥，及对端IP", "i10-1-3");
@@ -1643,7 +1645,7 @@
 								instruArr[1] = createCmdInstruSpan("“2。", "DH组");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("配置认证方式，预共享密钥");
+							createInstruT3("配置认证方式，预共享密钥认证");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("GM-1(config-isakmp)# authentication pre-share");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1791,7 +1793,7 @@
 
 							createInstruT3("配置备份网关");
 								instruArr[0] = createCmdSpan("GW(config-isakmp-group)#  backup-gateway “202.100.10.1");
-								instruArr[1] = createCmdInstruSpan("“202.100.10.1", "备份网关地址，IP域名均可");
+								instruArr[1] = createCmdInstruSpan("“202.100.10.1。", "备份网关地址，IP域名均可");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置banner（软件客户端拨入的提示信息）");
@@ -1874,7 +1876,7 @@
 						createInstruT2("配置动态crypto map", "i11-1-8");
 							createInstruT3("创建动态crypto map");
 								instruArr = [];
-								instruArr[0] = createCmdSpan("GW(config)# crypto dynamic-map “dymap。　“1。");
+								instruArr[0] = createCmdSpan("GW(config)# crypto dynamic-map “dymap。 “1。");
 								instruArr[1] = createCmdInstruSpan("“dymap。", "动态crypto map名");
 								instruArr[2] = createCmdInstruSpan("“1。", "编号");
 								createCmdInstruT3(instruArr, "cisco");
@@ -1893,6 +1895,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将静态crypto map调用到接口", "i11-1-10");
+							instruArr = [];
 							instruArr[0] = createCmdSpan("GW(config-if)# crypto map “cmap。");
 							instruArr[1] = createCmdInstruSpan("“cmap。", "静态crypto map名");
 							createCmdInstruT2(instruArr, "cisco");
@@ -2002,7 +2005,7 @@
 
 							createInstruT3("配置认证方式");
 								instruArr[0] = createCmdSpan("GW(config-isakmp)# authentication pre-share");
-								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥");
+								instruArr[1] = createCmdInstruSpan("pre-share", "预共享密钥认证");
 								createCmdInstruT3(instruArr, "cisco");
 
 						createInstruT2("配置组名、密码，及其它相关策略", "i12-1-2");
@@ -2352,7 +2355,7 @@
 						createInstruT2("关联到policy group");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-webvpn-context)# policy group “gp。");
-							instruArr[1] = createCmdInstruSpan("“gp", "policy group名");
+							instruArr[1] = createCmdInstruSpan("“gp。", "policy group名");
 							instruArr[2] = createCmdSpan("R1(config-webvpn-group)# port-forward “inside-telnet。");
 							instruArr[3] = createCmdInstruSpan("“inside-telnet。", "port-forward名");
 							createCmdInstruT2(instruArr, "cisco");

@@ -93,17 +93,17 @@ const udp_application = [];
 
 const l34_color = ["c1", "c4", "c6", "c3", "c5", "c2"];
 const l7_color = ["c1", "c2", "c3"];
-var index_tcp = 0;
-var index_udp = 0;
+let index_tcp = 0;
+let index_udp = 0;
 
 function createProtocol34(protocol_list, protocol_l) {
-	var i = 0;  // 用户颜色数组
-	var j = 1;  // 用于行ID
-	var k = 0;  // 用于列
-	var htmlText = "<div class='row' id='" + protocol_l + "r" + j + "'>";
-	for (var index in protocol_list) {
+	let i = 0;  // 用户颜色数组
+	let j = 1;  // 用于行ID
+	let k = 0;  // 用于列
+	let htmlText = "<div class='row' id='" + protocol_l + "r" + j + "'>";
+	for (let index in protocol_list) {
 		if (k + protocol_list[index][1] > 12) {
-			j++
+			j++;
 			htmlText = htmlText + "</div><br />";
 			htmlText = htmlText + "<div class='row' id='" + protocol_l + "r" + j + "'>";
 			i = 0;
@@ -120,12 +120,14 @@ function createProtocol34(protocol_list, protocol_l) {
 
 			if (protocol_list[index][5] == "") {
 				htmlText = htmlText + protocol_list[index][0] + "：" + protocol_list[index][3];
-			} else {
+			}
+			else {
 				htmlText = htmlText + "<a href='" + protocol_list[index][5] + "' >" + protocol_list[index][0] + '：' + protocol_list[index][3] + "</a>";
 			}
 
 			htmlText = htmlText + "</div>";
-		} else {
+		}
+		else {
 			htmlText = htmlText + "<div class='" + protocol_l + " " + l34_color[i % 6] + " two-row-" + protocol_l + "'>";
 
 			if (protocol_list[index][5] != "") {
@@ -161,12 +163,13 @@ function createProtocol34(protocol_list, protocol_l) {
 }
 
 function createProtocol7(tcp_list, udp_list, protocol_l) {
-	var i = 0;  // 用户颜色数组
-	var j = 1;  // 用于行ID
-	var k = 0;  // 用于列
-	var htmlText = "<div class='row' id='" + protocol_l + "r" + j + "'>";
+	let i = 0;  // 用户颜色数组
+	let j = 1;  // 用于行ID
+	let k = 0;  // 用于列
+	let htmlText = "<div class='row' id='" + protocol_l + "r" + j + "'>";
 	index_tcp = 0;
 	index_udp = 0
+
 	for (; index_tcp < tcp_list.length; index_tcp++) {
 		if (k + tcp_list[index_tcp][1] > 6) {
 			j++;
@@ -191,7 +194,8 @@ function createProtocol7(tcp_list, udp_list, protocol_l) {
 			}
 
 			htmlText = htmlText + "</div>";
-		} else {
+		}
+		else {
 			htmlText = htmlText + "<div class='tcp " + l7_color[i % 3] + " two-row-" + protocol_l + "'>";
 
 			if (tcp_list[index_tcp][5] != "") {
@@ -228,13 +232,15 @@ function createProtocol7(tcp_list, udp_list, protocol_l) {
 			if (k > 0) {
 				htmlText = createProtocol7u(htmlText, udp_list, k, protocol_l);
 				k = 0;
-			} else {
+			}
+			else {
 				htmlText = htmlText + "</div><br />";
 				j++;
 				htmlText = htmlText + "<div class='row' id='" + protocol_l + "r" + j + "'>";
 				htmlText = createProtocol7u(htmlText, udp_list, 0, protocol_l);
 			}
-		} else {
+		}
+		else {
 			break;
 		}
 	}
@@ -243,12 +249,12 @@ function createProtocol7(tcp_list, udp_list, protocol_l) {
 }
 
 function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
-	var i = 0;  // 用户颜色数组
-	var j = 1;  // 用于行ID
-	var k = 0;  // 用于列
-	for (var l = 0; index_udp < udp_list.length; index_udp++) {
+	let i = 0;  // 用户颜色数组
+	let j = 1;  // 用于行ID
+	let k = 0;  // 用于列
+	for (let l = 0; index_udp < udp_list.length; index_udp++) {
 		if (k + udp_list[index_udp][1] > 6) {
-			j++
+			j++;
 			i = 0;
 			k = 0;
 			break
@@ -272,12 +278,14 @@ function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
 
 			if (udp_list[index_udp][5] == "") {
 				htmlText = htmlText + udp_list[index_udp][0] + "：" + udp_list[index_udp][3];
-			} else {
+			}
+			else {
 				htmlText = htmlText + "<a href='" + udp_list[index_udp][5] + "' >" + udp_list[index_udp][0] + "：" + udp_list[index_udp][3] + "</a>";
 			}
 
 			htmlText = htmlText + "</div>";
-		} else {
+		}
+		else {
 			htmlText = htmlText + "<div class='udp " + l7_color[i % 3] + " two-row-" + protocol_l + "'>";
 
 			if (udp_list[index_udp][5] != "") {
@@ -312,37 +320,38 @@ function createProtocol7u(htmlText, udp_list, offset, protocol_l) {
 }
 
 function reverse_protocol(protocol_l) {
-	var row_id = [];
-	var row_innerHTML = [];
+	let row_id = [];
+	let row_innerHTML = [];
 
-	for (var i = 1; ; i++) {
-		var element = document.getElementById(protocol_l + "r" + i);
+	for (let i = 1; ; i++) {
+		let element = document.getElementById(protocol_l + "r" + i);
 		if (element) {
 			row_id.push(protocol_l + "r" + i);
 			row_innerHTML.push(element.innerHTML);
-		} else {
+		}
+		else {
 			break;
 		}
 	}
 
-	for (var i = 0; i < row_id.length; i++) {
+	for (let i = 0; i < row_id.length; i++) {
 		document.getElementById(row_id[i]).innerHTML = row_innerHTML[row_innerHTML.length - i - 1];
 	}
 }
 
 
 $(document).ready(function () {
-	var ll = `
+	let ll = `
 		<div class="row">
 			<div class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
 		</div><br />
 	`;
-	var ll74 = `
+	let ll74 = `
 		<div class="row">
 			<div id="ll74" class="col-lg-12" style="border-bottom: dashed 4px #829BA5"></div>
 		</div><br />
 	`;
-	var htmlText = "";
+	let htmlText = "";
 
 	htmlText = htmlText + createProtocol7(tcp_application, udp_application, "app");
 	htmlText = htmlText + ll;
@@ -359,13 +368,12 @@ $(document).ready(function () {
 	reverse_protocol("l7");
 	reverse_protocol("app");
 
-	var jt_up_top = $("#appr1").offset().top - 10;
+	let jt_up_top = $("#appr1").offset().top - 10;
 	$("#jt_up").offset({top: jt_up_top});
 
-	var jt_down_top = $("#ll74").offset().top - 30;
+	let jt_down_top = $("#ll74").offset().top - 30;
 	$("#jt_down").offset({top: jt_down_top});
 
 	$("#jg").offset({top: (jt_up_top + 24)});
 	$("#jg").css("height", jt_down_top - jt_up_top - 24 + "px");
 });
-

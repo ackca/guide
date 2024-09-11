@@ -17,7 +17,7 @@
 {
 	padding: 10px 5px 10px 15px;
 	display: block;
-	border-left: solid 3px transparent;
+	border-left: solid 4px transparent;
 	color: #b8c7ce;
 }
 
@@ -27,7 +27,8 @@
 	width: 25px;
 }
 
-.sidebar-menu > li:hover > a, .sidebar-menu > li.active > a
+.sidebar-menu > li:hover > a,
+.sidebar-menu > li.active > a
 {
 	color: #FFFFFF;
 	background: #1e282c;
@@ -131,29 +132,29 @@
 	color: #FFFFFF;
 }
 
+/*.main-sidebar::-webkit-scrollbar !*滚动条整体样式*!*/
+/*{*/
+/*	width: 10px;     !*高宽分别对应横竖滚动条的尺寸*!*/
+/*	height: 4px;*/
+/*}*/
+
+/*.main-sidebar::-webkit-scrollbar-thumb !*滚动条里面小方块*!*/
+/*{*/
+/*	border-radius: 5px;*/
+/*	background: #595B5D;*/
+/*}*/
+
 .main-sidebar::-webkit-scrollbar /*滚动条整体样式*/
 {
-	width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
-	height: 4px;
+	width: 6px;     /*高宽分别对应横竖滚动条的尺寸*/
+	/*height: 8px;*/
 }
 
-.main-sidebar::-webkit-scrollbar-thumb /*滚动条里面小方块*/
-{
-	border-radius: 5px;
-	background: #595B5D;
-}
-
-.sidebar::-webkit-scrollbar /*滚动条整体样式*/
-{
-	width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
-	height: 8px;
-}
-
-.sidebar::-webkit-scrollbar-thumb /*滚动条里面小方块*/
-{
-	border-radius: 5px;
-	background: #595B5D;
-}
+/*.sidebar::-webkit-scrollbar-thumb !*滚动条里面小方块*!*/
+/*{*/
+/*	border-radius: 5px;*/
+/*	background: #595B5D;*/
+/*}*/
 
 /*菜单打开后，图标改为打开的文件夹*/
 .sidebar-menu > li.active > a > .fa-folder:before,

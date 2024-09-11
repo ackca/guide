@@ -49,12 +49,12 @@
 				createInstruT0("<br />ICMP 通用协议结构","i2");
 					createProtocolStructT0(
 						"815",
-						"220",
-						"1100",
+						"211",
+						"1054",
 						"ICMP/ICMP",
 						"ICMP通用协议"
 					);
-
+					document.writeln("<br />");
 					let words = `
 						类型（Type）
 						由8 bits构成，用于区分不同类型的ICMP报文
@@ -68,7 +68,7 @@
 						与类型相关
 						与类型相关，不同类型的ICMP报文，格式不同
 						`;
-						createProtocolExplainT0(words, -220);
+						createProtocolExplainT0(words, -210.8);
 
 				createInstruT0("ICMPv4 报文类型<br />","i5");
 					let tHeader = [

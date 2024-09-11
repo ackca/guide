@@ -112,7 +112,7 @@
 							instruArr[2] = createCmdSpan("[SW1-FastEthernet0/1] port link-type trunk");
 							createCmdInstruT2(instruArr, "huawei");
 
-						createInstruT2("设置pvid（对应思科本征vlan，双方要同时指定，且相同）");
+						createInstruT2("设置pvid（对应思科本征vlan）");
 							instruArr[0] = createCmdSpan("[SW1-FastEthernet0/1] port trunk pvid vlan “100。");
 							instruArr[1] = createCmdInstruSpan("vlan “100。", "本征vlan号");
 							createCmdInstruT2(instruArr, "huawei");
@@ -307,13 +307,13 @@
 					createInstruT1("‘单向隔离。，A的报文不可以到达B，但B的报文可以达到A");
 					createInstruT1("‘不同于防火墙，B的报文可以达到A，但A的回包仍不能达到B。");
 
-					createInstruT1("启用端口隔离");
+					createInstruT1("全局启用端口隔离");
 						instruArr[0] = createCmdSpan("[SW1] port-isolate mode { all | l2 }");
 						instruArr[1] = createCmdInstruSpan("all", "三层三层均隔离");
 						instruArr[2] = createCmdInstruSpan("l2", "仅二层隔离，三层可以互通");
-						createCmdInstruT2(instruArr, "huawei");
+						createCmdInstruT1(instruArr, "huawei");
 
-					createInstruT1("启用端口隔离");
+					createInstruT1("<br />启用端口隔离");
 						createInstruT2("基于接口的端口隔离");
 							instruArr[0] = createCmdSpan("[SW1] int “g0/0/1。");
 							instruArr[1] = createCmdInstruSpan("“g0/0/1。", "需要与其它接口隔离的接口");

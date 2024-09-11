@@ -4,7 +4,8 @@ body, html
 	font-size: 1.03em;
 	padding: 0;
 	margin: 0;
-	background: #494A5F;
+	/*background: #494A5F;*/
+	background-color: #3A3B4C;
 	color: #D5D6E2;
 	font-weight: 500;
 	font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
@@ -207,6 +208,11 @@ a
 	font-size: 15px;
 }
 
+#jg
+{
+	background-color: #3A3B4C;
+}
+
 @media (max-width: 992px) {
 	#jt_up, #jt_down, #jg
 	{
@@ -226,10 +232,5 @@ a
 	#jt_down
 	{
 		transform:rotate(180deg);
-	}
-
-	#jg
-	{
-		background-color: #494A5F;
 	}
 }

@@ -3,7 +3,8 @@ body, html
 	font-size: 1.03em;
 	padding: 0;
 	margin: 0;
-	background: #494A5F;
+	/*background: #494A5F;*/
+	background-color: #3A3B4C;
 	color: #FFFFFF;
 	font-weight: 500;
 }
@@ -15,7 +16,7 @@ body::-webkit-scrollbar {/*滚动条整体样式*/
 
 body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	border-radius: 5px;
-	background: #CFCFCF;
+	background: #676767;
 }
 
 .runoob-page-content
@@ -34,7 +35,8 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .row
 {
-	background-color: #494A5F;
+	/*background-color: #494A5F;*/
+	/*background-color: #3A3B4C;*/
 }
 
 #compiler
@@ -52,7 +54,8 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 .card-body
 {
-	background-color: #494A5F;
+	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
 	padding: 0;
 }
 
@@ -64,6 +67,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	border-radius: 4px;
 	box-sizing:border-box;
 	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
 }
 
 /*#exp, */
@@ -77,6 +81,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	resize: vertical;
 	color: #FFFFFF;
 	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
 }
 
 .runoob-regex-test
@@ -224,7 +229,7 @@ body::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 
 #grammar::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
 	border-radius: 5px;
-	background: #CFCFCF;
+	background: #676767;
 }
 
 #tGrammar

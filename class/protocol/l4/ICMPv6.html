@@ -120,11 +120,11 @@
 						createHLTableT0(600, tHeader, tBody, "tICMPv6Type");
 
 				createInstruT0("ICMPv6 选项","i5");
-					createInstruT1("ICMPv6 选项结构<br />","i5-1");
+					createInstruT1("ICMPv6 选项结构","i5-1");
 						createProtocolStructT1(
-							"675",
-							"154",
-							"616",
+							"670",
+							"150",
+							"601",
 							"ICMPv6/option",
 							"ICMPv6选项",
 							"option"
@@ -140,7 +140,7 @@
 							选项内容
 							与类型相关的选项内容
 						`;
-						createProtocolExplainT1(words, -154, "option");
+						createProtocolExplainT1(words, -150.2, "option");
 
 						createInstruAllTopT1("常见选项对应关系如下：<br />");
 
@@ -162,8 +162,8 @@
 					createInstruT1("<br /><br />类型1/2：源/目标 链路层地址<br />","i5-2");
 						createProtocolStructT1(
 							"815",
-							"190",
-							"380",
+							"180",
+							"360",
 							"ICMPv6/option12",
 							"ICMPv6选项1_2",
 							"option12"
@@ -174,14 +174,14 @@
 							链路层地址（Link-Layer Address）
 							由48 bits构成，根据选项类型，表示源（目标）mac地址
 						`;
-						createProtocolExplainT1(words, -190, "option12");
+						createProtocolExplainT1(words, -180, "option12");
 
 
-					createInstruT1("<br /><br />类型3：前缀信息","i5-3");
+					createInstruT1("<br /><br />类型3：前缀信息<br />","i5-3");
 						createProtocolStructT1(
 							"815",
-							"395",
-							"2765",
+							"390",
+							"2731",
 							"ICMPv6/option3",
 							"ICMPv6选项3",
 							"option3"
@@ -192,7 +192,7 @@
 							链路层地址（Link-Layer Address）
 							由48 bits构成，根据选项类型，表示源（目标）mac地址
 						`;
-						createProtocolExplainT1(words, -395, "option3");
+						createProtocolExplainT1(words, -390.1, "option3");
 
 				createInstruT0("回显请求/响应 报文（ping）","i3");
 					createInstruT1("回显请求/响应 报文结构<br />","i3-1");
@@ -253,9 +253,9 @@
 
 						createInstruT2("ICMPv6 NS 报文结构","i4-2-1");
 							createProtocolStructT2(
-								"958",
-								"374",
-								"1496",
+								"950",
+								"358",
+								"1433",
 								"ICMPv6/ns",
 								"ICMPv6 NS报文",
 								"NS"
@@ -271,7 +271,7 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bits构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
-							createProtocolExplainT2(words, -374, "NS");
+							createProtocolExplainT2(words, -358.2, "NS");
 
 						createInstruT2("<br />ICMPv6 NS 报文实例","i4-2-2");
 							createConfigImgT2("ICMPv6/ns_packet");
@@ -282,9 +282,9 @@
 
 						createInstruT2("ICMPv6 NA 报文结构","i4-3-1");
 							createProtocolStructT2(
-								"958",
-								"374",
-								"1870",
+								"950",
+								"360",
+								"1798",
 								"ICMPv6/na",
 								"ICMPv6 NA报文",
 								"NA"
@@ -303,7 +303,7 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bits构成，类型 2，长度 1，值为目标链路层地址，也就是解析到的mac地址
 							`;
-							createProtocolExplainT2(words, -374, "NA");
+							createProtocolExplainT2(words, -359.6, "NA");
 
 						createInstruT2("<br />ICMPv6 NA 报文实例","i4-3-2");
 							createConfigImgT2("ICMPv6/na_packet");
@@ -340,14 +340,15 @@
 
 						createInstruT2("ICMPv6 RS 报文结构","i6-2-1");
 							createProtocolStructT2(
-								"958",
-								"315",
-								"945",
+								"950",
+								"298",
+								"894",
 								"ICMPv6/rs",
 								"ICMPv6 RS报文",
 								"RS"
 							);
 
+							document.writeln("<br />");
 							words = `
 								保留（Reserved）
 								由32 bits构成，保留为0
@@ -355,7 +356,7 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bits构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
-							createProtocolExplainT2(words, -315, "RS");
+							createProtocolExplainT2(words, -298, "RS");
 
 						createInstruT2("<br />ICMPv6 RS 报文实例","i6-2-2");
 							createConfigImgT2("ICMPv6/rs_packet");
@@ -366,9 +367,9 @@
 
 						createInstruT2("ICMPv6 RA 报文结构","i6-3-1");
 							createProtocolStructT2(
-								"1368",
-								"653.6",
-								"11111",
+								"1360",
+								"632",
+								"5685",
 								"ICMPv6/ra",
 								"ICMPv6 RA报文",
 								"RA"
@@ -381,7 +382,7 @@
 								ICMPv6选项，源链路层地址（Source Link-Layer Address）
 								由64 bits构成，类型 1，长度 1，值为源链路层地址，也就是源mac地址
 							`;
-							createProtocolExplainT2(words, -653.6, "RA");
+							createProtocolExplainT2(words, -631.6, "RA");
 
 
 				createInstruT0("ICMPv6差错报文（Type 0~127）","i7");

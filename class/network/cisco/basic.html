@@ -403,32 +403,41 @@
 							instruArr[2] = createCmdInstruSpan("“vty 0 4。", "远程登录（Telnet、SSH）生效");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("设置会话同步");
+						createInstruT2("配置会话同步");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-line)# logging synchronous");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("设置超时时间");
+						createInstruT2("配置超时时间");
 							instruArr[0] = createCmdSpan("R1(config-line)# exec-timeout “5。 “0。");
 							instruArr[1] = createCmdInstruSpan("“5。 “0。", "分 秒，实际中一般设置 5 0");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("设置登录认证方式");
+						createInstruT2("配置登录认证方式");
 							instruArr[0] = createCmdSpan("R1(config-line)# { no login | login | login local }");
 							instruArr[1] = createCmdInstruSpan("no login", "不认证");
 							instruArr[2] = createCmdInstruSpan("login", "线下密码认证");
 							instruArr[3] = createCmdInstruSpan("login local", "本地用户名密码认证");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("设置登录后用户级别（可选，默认为0）");
+						createInstruT2("配置登录后用户级别（可选，默认为0）");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("R1(config-line)# privilege level “15。");
 							instruArr[1] = createCmdInstruSpan("“15。", "用户级别");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("设置登录后提示文字");
+						createInstruT2("配置登录后提示文字");
 							instruArr[0] = createCmdSpan("R1(config)# banner motd “@。");
 							instruArr[1] = createCmdInstruSpan("“@。", "命令打完后回车，即可输入提示文字，以@表示提示文字结束");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("配置登录后输出不分屏");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("R1(config-line)# length 0");
+							createCmdInstruT2(instruArr, "cisco");
+
+						createInstruT2("登录后，本次输出不分屏");
+							instruArr[0] = createCmdSpan("R1# terminal length 0");
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("Telnet", "i3-2");
@@ -451,7 +460,7 @@
 							instruArr[1] = createCmdInstruSpan("“cisco.com。", "域名");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("生成ssh秘钥");
+						createInstruT2("生成ssh密钥");
 							instruArr[0] = createCmdSpan("R1(config)# crypto key generate rsa modulus “1024。");
 							instruArr[1] = createCmdInstruSpan("“1024。", "密钥长度，建议至少1024位");
 							createCmdInstruT2(instruArr, "cisco");

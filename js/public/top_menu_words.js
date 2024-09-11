@@ -367,7 +367,12 @@ const top_menu = `
 									</li>
 									<li class="cat-item">
 										<div class="cat-item-main">
-											<a href="rootpath/class/netdevops/pki/certs_mgmt.html">证书管理</a>
+											<a href="rootpath/class/netdevops/pki/certs_mgmt.html">系统证书管理</a>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/netdevops/pki/certs_edit1.html">证书编辑</a>
 										</div>
 									</li>
 								</ul>

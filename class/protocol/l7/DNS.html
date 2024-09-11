@@ -31,7 +31,7 @@
 					createInstruT1("简单DNS解析过程", "i1-1");
 
 						createConfigImgT0("DNS/DNS解析过程", "简单的DNS解析过程");
-						createInstruAllTopT1("以解释www.jd.com为例，不考虑复杂的别名、转发器之类过程");
+						createInstruAllTopT1("以解析www.jd.com为例，不考虑复杂的别名、转发器之类过程");
 
 						createInstruAllTopT1("1、PC向配置的DNS服务器请求解析www.jd.com的IP地址");
 
@@ -114,8 +114,8 @@
 					createInstruT1("<br /><br />DNS报文头部字段说明<br />", "i2-4");
 						createProtocolStructT1(
 							"815",
-							"285",
-							"1995",
+							"271",
+							"1901",
 							"DNS/header",
 							"DNS报文头部",
 							"DNS_header"
@@ -140,14 +140,14 @@
 							额外资源记录数（Additional）
 							由16 bits构成，表示之后的额外资源字段中的额外资源数量
 						`;
-						createProtocolExplainT0(words, -285, "DNS_header");
+						createProtocolExplainT0(words, -271.5, "DNS_header");
 
 
 					createInstruT1("<br /><br />DNS报文查询字段说明", "i2-5");
 						createProtocolStructT1(
 							"815",
-							"220",
-							"880",
+							"223",
+							"894",
 							"DNS/question",
 							"DNS报文查询",
 							"DNS_question"
@@ -164,14 +164,14 @@
 							类（Class）
 							由16 bits构成，取值为1，表示Internet
 						`;
-						createProtocolExplainT0(words, -220, "DNS_question");
+						createProtocolExplainT0(words, -223.5, "DNS_question");
 
 
-					createInstruT1("<br /><br />DNS报文回答、授权、额外信息字段说明<br />", "i2-6");
+					createInstruT1("<br /><br />DNS报文回答、授权、额外信息字段说明", "i2-6");
 						createProtocolStructT1(
 							"815",
 							"400",
-							"2800",
+							"2794",
 							"DNS/other",
 							"DNS报文回答、授权、额外信息",
 							"DNS_other"
@@ -197,7 +197,7 @@
 							资源数据（Data）
 							长度可变，根据不同的响应类型，确定内容，如：A记录为对应的IPv4地址，MX记录中域名及域名的优先级
 						`;
-						createProtocolExplainT0(words, -400, "DNS_other");
+						createProtocolExplainT0(words, -399.1, "DNS_other");
 
 					createInstruT0("简单解析实例<br />", "i4");
 						createConfigImgT0("DNS/DNS_packet$1~3");
