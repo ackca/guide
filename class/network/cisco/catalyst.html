@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/cisco.svg"/>
 	<title>思科-交换</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(catalyst);
 	</script>
@@ -429,7 +429,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("ERSPAN（封装的远程交换机端口分析仪）", "i6-3");
-						createInstruT2("被监控流量被封装进GRE，分析服务器与被监控端口间可通过‘三层设备进行多次路由。");
+						createInstruT2("封装的远程交换机端口分析仪，分析服务器与被监控端口的交换机通过三层相连");
 						createInstruT2("与被监控端口相连的交换机配置");
 							createInstruT3("创建监控进程");
 								instruArr = [];

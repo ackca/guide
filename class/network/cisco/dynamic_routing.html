@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/cisco.svg"/>
 	<title>思科-动态路由协议</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(dynamic_routing);
 	</script>
@@ -181,7 +181,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 							createInstruAllBottomT2("<br />除通告默认路由外，还会将本路由器上所有UP状态下的接口IP通告，不要轻易使用");
 
-						createInstruT2("方法三（需要有设置好默认静态路由0）");
+						createInstruT2("方法三（需要有设置好默认静态路由）");
 							createInstruT3("设置默认路由");
 								instruArr[0] = createCmdSpan("R1(config)# ip default-network “60.0.0.0。");
 								instruArr[1] = createCmdInstruSpan("“60.0.0.0。", "出口IP，需要为主类地址，非主类地址转化为对应主类地址");
@@ -305,7 +305,7 @@
 							instruArr[0] = createCmdSpan("R1(config-router)# default-information originate [ always ] [ metric “100。 ] [ metric-type “1。 ]");
 							instruArr[1] = createCmdInstruSpan("always", "无论默认路由是否有效，始终通告（默认不通告）");
 							instruArr[2] = createCmdInstruSpan("“100。", "路由消耗");
-							instruArr[3] = createCmdInstruSpan("metric-type “1。", "路由类型 OE1(1)/OE2(2)，默认OE2，只有外部消耗。OE1包含内部消耗");
+							instruArr[3] = createCmdInstruSpan("metric-type “1。", "路由类型 OE1（1）&nbsp;/&nbsp;OE2（2），默认OE2，只有外部消耗。OE1包含内部消耗");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("将环回口IP还原为设置的子网掩码（默认为/32）");

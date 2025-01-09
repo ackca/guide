@@ -317,18 +317,9 @@ function createTCLT3(cmds) {
 function initTXT(cmds, txtT, cmdT) {
 	cmds = cmds.replace(/</g, "&lt;"); // 由于浏览器的原因，< 输出存在问题，替换为对应的hmtl编号
 
-	//由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
-	// cmds = cmds.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
-	// cmds = cmds.replace(/ /g,"&nbsp;");
-
 	var url = window.location.href;
 	url = url.substring(url.indexOf("/guide/class/"));
 	var path = "../".repeat(url.split("/").length - 3);
-
-	// var htmlText = "<div class='txtDiv" + cmdT + "'>" +
-	// 	"<div class='divGet'><i class='fa-solid fa-download' title='下载'></i>" +
-	// 	"<i class='far fa-copy' title='复制'></i></div>" +
-	// 	"<div class='copySuccess'><img src='" + path + "img/ok.svg' />&nbsp;复制成功</div>";
 
 	let htmlText = "<div class='txtDiv" + cmdT + "'>" +
 						"<div class='divGet'>" +
@@ -379,12 +370,6 @@ function initTXT(cmds, txtT, cmdT) {
 
 function createLinuxTxt(cmd_arr, htmlText) {
 	for (var i = 1; i < cmd_arr.length - 1; i++) {
-		// cmd_arr[i] = cmd_arr[i].substring(subNum);
-		//
-		// //由于浏览器的原因，多个手打的tab或空格可能不正常输出，替换为tab或空格的hmtl符号
-		// cmd_arr[i] = cmd_arr[i].replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
-		// cmd_arr[i] = cmd_arr[i].replace(/ /g,"&nbsp;");
-
 		var index = cmd_arr[i].indexOf("#");
 
 		if (index == 0) {	//纯注释
@@ -655,12 +640,6 @@ function createLinuxCmd(linuxCmd, cmdNum = 2, isDG = false) {
 					htmlText = htmlText + "<span class='linuxCMD_Para'>" + cmd[i] + "</span>";
 				}
 				else {
-					// if(/^[A-z]$/.test(cmd[i][0])) {	// 第三及以后位以英文字母开头，则为命令
-					// 	htmlText = htmlText + cmd[i];
-					// }
-					// else {	// 其它情况为命令对象
-					// 	htmlText = htmlText + cmd[i];
-					// }
 					htmlText = htmlText + cmd[i];
 				}
 			}
@@ -819,11 +798,6 @@ function addSpan(text) {
 	const regSY2 = new RegExp(/\\”/g);
 	const regZNKG = new RegExp("　", "g");
 
-	// for(var i = 1; i <= 6; i++) {
-	// 	var regMark = new RegExp("!!" + i,"g");
-	// 	text = text.replace(regMark, "<span class='markColor" + i + "'>");
-	// }
-	// console.log(text)
 	text = text.replace(regVariable, "<span class='variable'>");
 	text = text.replace(regSpanBold, "<span class='spanBold'>");
 	text = text.replace(regR, "<span class='spanR'>");
@@ -1384,8 +1358,13 @@ $(document).ready(function () {
 			txt = elem.parent().parent().html().split("复制成功</div>")[1];
 			// console.log($(this).parent().parent().html())
 			// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
-			// 将使用html符号表示的 空格、>、< 还原
-			txt = txt.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
+			// 将使用html符号表示的 空格、>、< 、& 还原
+			txt = txt.replace(/<(\/)?span[^>]*>/g, "")
+				.replace(/<br( \/)?>/g, "\r\n")
+				.replaceAll("&nbsp;", " ")
+				.replaceAll("&gt;", ">")
+				.replaceAll("&lt;", "<")
+				.replaceAll("&amp;", "&");
 			// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
 			// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
 			// \r\n：windows的换行
@@ -1399,25 +1378,6 @@ $(document).ready(function () {
 	}
 
 	$(".divGet .fa-copy").click(function () {
-		// let uri = window.location.href;
-		// let txt = "";
-		//
-		// // 编辑证书页面，使用textarea而非div存放base64编码的证书，不需要处理内容，可直接复制
-		// if (uri.search("/guide/class/netdevops/pki/certs_edit") == -1) {
-		// 	txt = $(this).parent().parent().html().split("复制成功</div>")[1];
-		// 	console.log($(this).parent().parent().html())
-		// 	// 用于点击复制的图片及显示复制成功的div位于整体div的最前面，去掉这两项
-		// 	// 将使用html符号表示的 空格、>、< 还原
-		// 	txt = txt.replace(/<(\/)?span[^>]*>/g, "").replace(/<br( \/)?>/g, "\r\n").replaceAll("&nbsp;", " ").replaceAll("&gt;", ">").replaceAll("&lt;", "<");
-		// 	// 为了显示工整，添加大量html标签，去掉这些标签并且维持排版
-		// 	// <(\/)?span[^>]*>：注释的内容包含class，如：<span class="spanZS">，同时匹配</span>
-		// 	// \r\n：windows的换行
-		// }
-		// else {
-		// 	// 当前为复制按钮，下一个同级为，复制成功的提示，再下一个为存放BASE64证书的textarea
-		// 	txt = $(this).nextAll().eq(1).val();
-		// }
-
 		const textarea = document.createElement("textarea");	// 直接构建textarea，为了实现换行，需要创建textarea，如果用input的话，实现不了换行。」
 		textarea.value = getTXT($(this));		// 设置内容
 		document.body.appendChild(textarea);	// 添加临时实例
@@ -1435,8 +1395,8 @@ $(document).ready(function () {
 
 	$(".divGet .fa-download").click(function () {
 		// 将字符串转换为 Blob 对象
-		let blob = new Blob([getTXT($(this))], {type: "text/plain"});
-		// let blob = new Blob([txt], {type: "application/octet-stream"});
+		// let blob = new Blob([getTXT($(this))], {type: "text/plain"}); // 下载的文件扩展名为.txt
+		let blob = new Blob([getTXT($(this))], {type: "application/octet-stream"});  // 下载的文件无扩展名
 
 		// 创建一个隐藏的 <a> 元素
 		let link = document.createElement("a");

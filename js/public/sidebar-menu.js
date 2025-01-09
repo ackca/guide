@@ -54,7 +54,7 @@ $.sidebarMenu = function (menu, cmdOffset) {
 		if (checkElement.is(".treeview-menu") || $this.children().length == 2) {
 			e.preventDefault();
 
-			console.log($this.attr("cmd"))
+			// console.log($this.attr("cmd"))
 			if($this.attr("cmd").indexOf("#url:") == 0) {
 				let uri = window.location.href.substring(window.location.href.indexOf("/guide"));
 				window.location.href = $this.attr("cmd").substring(5);

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/h3c.svg" />
 	<title>华三-交换</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(h3switch);
 	</script>
@@ -61,7 +61,7 @@
 							createCmdInstruT2(instruArr, "h3c");
 
 						createInstruT2("将接口加入聚合接口");
-							instruArr[0] = createCmdSpan("[SW1] int range g1/0/5 g1/0/6");
+							instruArr[0] = createCmdSpan("[SW1] int range “g1/0/5 g1/0/6。");
 							instruArr[1] = createCmdInstruSpan("“g0/0/5 g0/0/6。", "成员接口号");
 							instruArr[2] = createCmdSpan("[SW1-if-range] port link-aggregation group “1。");
 							instruArr[3] = createCmdInstruSpan("“1。", "聚合接口号");

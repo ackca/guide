@@ -257,50 +257,47 @@
 								instruArr[1] = createCmdInstruSpan("“DHCP-POOL。", "地址池名");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("设置分配的地址");
+							createInstruT3("配置分配的地址");
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# network “192.168.101.0。 “255.255.255.0。");
 								instruArr[1] = createCmdInstruSpan("“192.168.101.0。", "IP地址");
 								instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "子网掩码");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("设置默认网关");
+							createInstruT3("配置默认网关");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# default-route “192.168.101.254。");
 								instruArr[1] = createCmdInstruSpan("“192.168.101.254。", "默认网关");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("设置DNS");
+							createInstruT3("配置DNS");
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# dns-server “202.99.96.68。 [ “114.114.114.114。 ]");
 								instruArr[1] = createCmdInstruSpan("“202.99.96.68。", "首先DNS地址");
 								instruArr[2] = createCmdInstruSpan("“114.114.114.114。", "备用DNS地址");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("设置域");
+							createInstruT3("配置域");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# domain-name “domain.com。");
 								instruArr[1] = createCmdInstruSpan("“domain.com。", "域名");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("设置租期");
-								instruArr[0] = createCmdSpan("R1(dhcp-config)# lease “0。 “8。 “30。");
+							createInstruT3("配置租期");
+								instruArr[0] = createCmdSpan("R1(dhcp-config)# lease { “0。 “8。 “30。 | infinite }");
 								instruArr[1] = createCmdInstruSpan("“0。", "日");
 								instruArr[2] = createCmdInstruSpan("“8。", "时");
 								instruArr[3] = createCmdInstruSpan("“30。", "分");
+								instruArr[4] = createCmdInstruSpan("infinite", "地址分配永不过期");
 								createCmdInstruT3(instruArr, "cisco");
 
 							createInstruT3("配置DHCP option");
+								instruArr = [];
 								instruArr[0] = createCmdSpan("R1(dhcp-config)# option “43。 { hex “f104:0a01:016f。 | ascii “10.1.1.11。 }");
 								instruArr[1] = createCmdInstruSpan("“43。", "option编号");
 								instruArr[2] = createCmdInstruSpan("hex “f104:0a01:010b。", "十六进制形式的option值");
 								instruArr[3] = createCmdInstruSpan("ascii “10.1.1.11。", "自然语言形式的option值");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("地址分配永不过期");
-								instruArr = [];
-								instruArr[0] = createCmdSpan("R1(dhcp-config)# lease infinite");
-								createCmdInstruT3(instruArr, "cisco");
-
-							createInstruT3("设置排除范围");
+							createInstruT3("配置排除范围");
 								instruArr[0] = createCmdSpan("R1(config)# ip dhcp excluded-address “192.168.101.1。 [ “192.168.101.100。 ]");
 								instruArr[1] = createCmdInstruSpan("“192.168.101.1。", "起始排除范围");
 								instruArr[2] = createCmdInstruSpan("“192.168.101.100。", "终止排除范围，省略则只排除一个");

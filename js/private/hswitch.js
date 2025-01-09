@@ -1,11 +1,4 @@
 $(document).ready(function () {
-	// var tHybird_initTXT = $(".tHybrid").html();
-	// console.log(tHybird_initTXT)
-	// $(".tHybrid td").mouseleave(function (){
-	//     // alert("inin")
-	//     $(".tHybrid").html(tHybird_initTXT);
-	// });
-
 	$(".c21").mouseover(function () {
 		$(".c21, .c22, .c23, .c33, .c42, .c43, .c53, .c62, .c63, .c73").css("background-color", "#CBCFFF").css("color", "#000000");
 	});

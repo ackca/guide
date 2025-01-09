@@ -10,25 +10,10 @@ body, html
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/*body::-webkit-scrollbar	!* 滚动条整体样式 *!*/
-/*{*/
-/*	width: 8px;     !* 高宽分别对应横竖滚动条的尺寸 *!*/
-/*	height: 8px;*/
-/*}*/
-
 body::-webkit-scrollbar-thumb	/*滚动条里面小方块*/
 {
 	background: #CFCFCF;
 }
-
-/*body::-webkit-scrollbar-button	!* 隐藏上下左右箭头 *!*/
-/*{*/
-/*	display: none;*/
-/*}*/
-
-/*body::-webkit-scrollbar-corner {*/
-/*    background: transparent;	!* 设置为透明 *!*/
-/*}*/
 
 ::-webkit-scrollbar {	/* 滚动条整体样式 */
 	width: 8px;     	/* 高宽分别对应横竖滚动条的尺寸 */
@@ -67,18 +52,6 @@ textarea::-webkit-scrollbar-track
 {
   background-color: #282923;
 }
-
-/*textarea:hover, textarea:valid,*/
-/*textarea:focus:not(:hover)*/
-/*{*/
-/*	background-color: #282923;*/
-/*	color: #F8F8F2;*/
-/*}*/
-
-/*textarea::-webkit-scrollbar*/
-/*{	!* 滚动条整体样式 *!*/
-/*	background-color: #212529;*/
-/*}*/
 
 .main-sidebar
 {
@@ -119,6 +92,7 @@ textarea::-webkit-scrollbar-track
 .instruT1
 {
 	color: #A6E22E;
+	/*color: #FF6EFF;*/
 	font-size: 26px;
 	margin-left: 30px;
 	margin-top: 20px;
@@ -127,6 +101,8 @@ textarea::-webkit-scrollbar-track
 .instruT2
 {
 	color: #FF6EFF;
+	/*color: #63B72B;*/
+	/*font-weight: bold;*/
 	font-size: 22px;
 	margin-left: 60px;
 	margin-top: 20px;
@@ -476,6 +452,7 @@ h4
 .divConfigImgT1 + br + br + .cmdInstruAllTopT1,
 .divConfigImgT2 + br + br + .cmdInstruAllTopT2,
 .divConfigImgT3 + br + br + .cmdInstruAllTopT3,
+.instruT2 + br + .instruT2,
 .cmdTableT2 + .cmdInstruAllTopT2,
 .cmdTableT3 + .cmdInstruAllTopT3,
 .txtDivT1 + .cmdInstruAllTopT1,
@@ -501,8 +478,8 @@ h4
 
 .cmdInstruAllBottomT2
 {
-	margin-top: -50px;
-	margin-bottom: 50px;
+	margin-top: -35px;
+	/*margin-bottom: 50px;*/
 }
 
 .cmdInstruAllBottomT3
@@ -517,6 +494,7 @@ h4
 	text-align: center;
 	padding-left: 0;
 	border-right: solid 3px #0080FF;
+	/*border-right: solid 3px #E6DB74;*/
 }
 
 .imgBrand
@@ -589,7 +567,8 @@ td
 	margin-left: 110px;
 }
 
-@media screen and (max-width:1550px) {
+/*@media screen and (max-width:1550px) {*/
+@media screen and (max-width:1560px) {
 	.divConfigImgT0 img
 	{
 		max-width: 1430px;
@@ -782,13 +761,6 @@ td
 	color: #FFFFFF;
 }
 
-/*.spanB*/
-/*{*/
-/*	color: #67D8EF;*/
-/*	font-size: 18px;*/
-/*	line-height: 1.6em;*/
-/*}*/
-
 .spanNum
 {
 	color: #AC80FF;
@@ -902,13 +874,13 @@ td
 	top: 5px;
 	right: 5px;
 	color: #AFB1B3;
-	font-size: 25px;
+	font-size: 20px;
 	transform: rotateY(180deg);
 }
 
 .divGet i
 {
-	padding: 8px;
+	padding: 6px;
 	cursor: pointer;
 	border-radius: 13px;
 }
@@ -942,7 +914,7 @@ td
 	transform: translate(-50%, -50%);
 	/*background-color: #494A5F;*/
 	background-color: #3A3B4C;
-	font-size: 15px;
+	font-size: 18px;
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-top: 3px;

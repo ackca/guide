@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/huawei.svg"/>
 	<title>华为-通用配置</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(basic);
 	</script>
@@ -127,43 +127,40 @@
 								instruArr[1] = createCmdInstruSpan("“DHCP-POOL。", "DHCP地址池名");
 								createCmdInstruT3(instruArr, "huawei");
 
-							createInstruT3("设置分配的地址");
+							createInstruT3("配置分配的地址");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] network “192.168.10.0。 [ mask “255.255.255.0。 ]");
 								instruArr[1] = createCmdInstruSpan("“192.168.10.0。", "IP地址");
 								instruArr[2] = createCmdInstruSpan("“255.255.255.0。", "子网掩码，省略按标准的ABC类处理");
 								createCmdInstruT3(instruArr, "huawei");
 
-							createInstruT3("设置默认网关");
+							createInstruT3("配置默认网关");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] gateway-list “192.168.10.254。");
 								instruArr[1] = createCmdInstruSpan("“192.168.10.254。", "默认网关");
 								createCmdInstruT3(instruArr, "huawei");
 
-							createInstruT3("设置DNS");
+							createInstruT3("配置DNS");
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] dns-list “202.99.96.68。 [ “114.114.114.114。 ]");
 								instruArr[1] = createCmdInstruSpan("“202.99.96.68。", "首先DNS地址");
 								instruArr[2] = createCmdInstruSpan("“114.114.114.114。", "备用DNS地址");
 								createCmdInstruT3(instruArr, "huawei");
 
-							createInstruT3("设置域");
+							createInstruT3("配置域");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] domain-name “domain.com。");
 								instruArr[1] = createCmdInstruSpan("“domain.com。", "域名");
 								createCmdInstruT3(instruArr, "huawei");
 
-							createInstruT3("设置租期");
-								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] lease day “0。 hour “8。 minute “30。");
+							createInstruT3("配置租期");
+								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] lease { day “0。 hour “8。 minute “30。 | unlimited }");
 								instruArr[1] = createCmdInstruSpan("“0。", "日");
 								instruArr[2] = createCmdInstruSpan("“8。", "时");
 								instruArr[3] = createCmdInstruSpan("“30。", "分");
-								createCmdInstruT3(instruArr, "huawei");
-
-							createInstruT3("地址分配永不过期");
-								instruArr = [];
-								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] lease unlimited");
+								instruArr[4] = createCmdInstruSpan("unlimited", "地址分配永不过期");
 								createCmdInstruT3(instruArr, "huawei");
 
 							createInstruT3("设置排除范围");
+								instruArr = [];
 								instruArr[0] = createCmdSpan("[R1-ip-pool-dhcp-pool] excluded-ip-address “192.168.10.1。  [ “192.168.10.100。 ]");
 								instruArr[1] = createCmdInstruSpan("“192.168.10.1。", "起始排除范围");
 								instruArr[2] = createCmdInstruSpan("“192.168.10.100。", "终止排除范围，省略则只排除一个");

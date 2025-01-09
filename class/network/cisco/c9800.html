@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/cisco.svg"/>
 	<title>思科-WLC-C9800</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(c9800);
 	</script>
@@ -1422,6 +1422,45 @@
 							createConfigImgT2("c9800/i12_1_1$1~6");
 
 						createInstruT2("CLI", "i12-1-2");
+							createInstruT3("查看漫游mac地址");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800# show wireless mobility summary");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("查看ssc-hash，对应项为Certificate Hash");
+								instruArr[0] = createCmdSpan("C9800# show wireless management trustpoint");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置对端信息");
+								instruArr[0] = createCmdSpan("C9800(config)# wireless mobility group member mac-address “001e.49dd.3cff。 ip “100.1.1.101 public-ip。 “100.1.1.101。 group “itachi。  [ data-link-encryption ssc-hash “e327…。 ]");
+								instruArr[1] = createCmdInstruSpan("“001e.49dd.3cff。", "对端mac地址");
+								instruArr[2] = createCmdInstruSpan("“100.1.1.101。", "对端设备实际IP地址");
+								instruArr[3] = createCmdInstruSpan("“100.1.1.101。", "与对端连接的IP地址");
+								instruArr[4] = createCmdInstruSpan("“itachi。", "漫游组名");
+								instruArr[5] = createCmdInstruSpan("“e327…。", "可选链接加密，对端的ssc-hash值");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置漫游组");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800(config)# wireless mobility group name “itachi。");
+								instruArr[1] = createCmdInstruSpan("“itachi。", "漫游组名");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置本端mac地址");
+								instruArr[0] = createCmdSpan("C9800(config)# wireless mobility mac-address “001e.bdc0.20ff。");
+								instruArr[1] = createCmdInstruSpan("“001e.bdc0.20ff。", "本端mac地址");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("配置组播地址");
+								instruArr[0] = createCmdSpan("C9800(config)# wireless mobility multicast ipv4 “239.1.1.1。");
+								instruArr[1] = createCmdInstruSpan("“239.1.1.1。", "组播地址");
+								createCmdInstruT3(instruArr, "cisco");
+
+							createInstruT3("查看漫游组信息，等待至漫游组正确建立");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("C9800# show wireless mobility summary");
+								createCmdInstruT3(instruArr, "cisco");
+
 
 
 					createInstruT1("配置漫游锚", "i12-2");
@@ -1435,7 +1474,22 @@
 								createConfigImgT3("c9800/i12_2_1_2$1~2");
 
 						createInstruT2("CLI", "i12-2-2");
+							createInstruT3("锚WLC");
+								instruArr[0] = createCmdSpan("C9800-1(config)# wireless profile policy “itachi-central-policy-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-central-policy-profile。", "profile policy名");
+								instruArr[2] = createCmdSpan("C9800-1(config-wireless-policy)# shutdown");
+								instruArr[3] = createCmdSpan("C9800-1(config-wireless-policy)# mobility anchor");
+								instruArr[4] = createCmdSpan("C9800-2(config-wireless-policy)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
 
+							createInstruT3("其它WLC");
+								instruArr[0] = createCmdSpan("C9800-2(config)# wireless profile policy “itachi-central-policy-profile。");
+								instruArr[2] = createCmdSpan("C9800-2(config-wireless-policy)# shutdown");
+								instruArr[3] = createCmdSpan("C9800-2(config-wireless-policy)# mobility anchor “100.1.1.101。 priority “3。");
+								instruArr[4] = createCmdInstruSpan("“100.1.1.101。", "该锚优先级，可配置多个锚，越小越优先");
+								instruArr[5] = createCmdInstruSpan("“3。", "锚设备地址");
+								instruArr[6] = createCmdSpan("C9800-2(config-wireless-policy)# no shutdown");
+								createCmdInstruT3(instruArr, "cisco");
 
 				createInstruT0("WLC的HA", "i13");
 					createInstruT1("GUI", "i13-1");

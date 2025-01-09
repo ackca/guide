@@ -113,13 +113,15 @@
 
 					createInstruT1("<br /><br />DNS报文头部字段说明<br />", "i2-4");
 						createProtocolStructT1(
-							"815",
-							"271",
-							"1901",
+							"912",
+							"304",
+							"2128",
 							"DNS/header",
 							"DNS报文头部",
 							"DNS_header"
 						);
+
+						document.writeln("<br />");
 
 						let words = `
 							标识（ID：Identification）
@@ -140,7 +142,7 @@
 							额外资源记录数（Additional）
 							由16 bits构成，表示之后的额外资源字段中的额外资源数量
 						`;
-						createProtocolExplainT0(words, -271.5, "DNS_header");
+						createProtocolExplainT0(words, -304, "DNS_header");
 
 
 					createInstruT1("<br /><br />DNS报文查询字段说明", "i2-5");

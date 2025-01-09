@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/huawei.svg"/>
 	<title>华为-动态路由协议</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(dynamic_routing);
 	</script>
@@ -85,7 +85,7 @@
 							createCmdInstruT2(instruArr, "huawei");
 
 					createInstruT1("路径控制", "i5-2");
-						createInstruT2("在RIP报文发出(接收)接口修改路由跳数");
+						createInstruAllTopT1("在RIP报文发出(接收)接口修改路由跳数");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1-FastEthernet0/1] rip { metricin | metricout } [ “2000。 | acl-name “aclName。 | ip-prefix “preName。 ] “2。");
 							instruArr[1] = createCmdInstruSpan("metricin", "修改接收到路由");
@@ -94,7 +94,7 @@
 							instruArr[4] = createCmdInstruSpan("acl-name “aclName。", "匹配ACL名");
 							instruArr[5] = createCmdInstruSpan("ip-prefix “preName。", "匹配前缀列表名");
 							instruArr[6] = createCmdInstruSpan("“2。", "增加跳数，匹配方式均省略则在该接口的对应方向所有路由均增加");
-							createCmdInstruT2(instruArr, "huawei");
+							createCmdInstruT1(instruArr, "huawei");
 
 					createInstruT1("控制路由更新", "i5-3");
 						instruArr[0] = createCmdSpan("[R1-rip-1] filter-policy { “2000。 | acl-name “acl_rip。 | ip-prefix “pre_rip。 } { import | export } [ “g0/0/0。 ]");
@@ -104,7 +104,7 @@
 						instruArr[4] = createCmdInstruSpan("import", "控制接收的路由");
 						instruArr[5] = createCmdInstruSpan("export", "控制发出的路由");
 						instruArr[6] = createCmdInstruSpan("“g0/0/0。", "接收或发出路由的接口，省略对所有路由生效");
-						createCmdInstruT2(instruArr, "huawei");
+						createCmdInstruT1(instruArr, "huawei");
 
 					createInstruT1("RIP认证", "i5-4");
 						createInstruT2("明文认证");

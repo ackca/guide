@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/k8s.svg" />
 	<title>容器-k8s-kubeadm安装</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(kubeadm_setup);
 	</script>
@@ -188,7 +188,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("配置zone文件(定义两个解析域)（dnsca）");
+					createInstruT1("配置zone文件（定义两个解析域）（dnsca）");
 						cmd = `
 							cat >/etc/named.rfc1912.zones <<'EOF'
 							zone "host.com" IN {
@@ -329,7 +329,7 @@
 							`;
 							createLinuxTxtT2(cmd);
 
-					createInstruT1("自签名根证书(10年有效期)（dnsca）");
+					createInstruT1("自签名根证书（10年有效期）（dnsca）");
 						cmd = `
 							mkdir -p /opt/certs
 
@@ -490,7 +490,7 @@
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("安装 kubeadmin、kubelet、kubectl", "i6");
-					createInstruT1("更新yum源为阿里云（所有master、node（dnsca）");
+					createInstruT1("更新yum源为阿里云（所有master、node）");
 						cmd = `
 							# 参考https://developer.aliyun.com/mirror/kubernetes
 							cat <<EOF > /etc/yum.repos.d/kubernetes.repo
@@ -505,20 +505,20 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("安装（所有master、node（dnsca）");
+					createInstruT1("安装（所有master、node）");
 						cmd = `
 							yum install -y kubelet-1.18.9 kubeadm-1.18.9 kubectl-1.18.9
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("开机启动（所有master、node（dnsca）");
+					createInstruT1("开机启动（所有master、node）");
 						cmd = `
 							systemctl enable kubelet && systemctl start kubelet
 						`;
 						createLinuxTxtT1(cmd);
 
 				createInstruT0("部署集群", "i7");
-					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master（dnsca）");
+					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master）");
 						cmd = `
 							mkdir -p /etc/kubernetes/pki
 							cd /etc/kubernetes/pki
@@ -527,7 +527,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("创建集群配置文件（任意一个master（dnsca）");
+					createInstruT1("创建集群配置文件（任意一个master）");
 						cmd = `
 							pwd
 							# 下面为输出
@@ -548,7 +548,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("初始化集群（任意一个master（dnsca）");
+					createInstruT1("初始化集群（任意一个master）");
 						cmd = `
 							kubeadm init --config=kubeadm-config.yaml --upload-certs
 						`;
@@ -556,7 +556,7 @@
 
 					createInstruT1("该master完成后，根据提示，先添加其它master，再添加node<br />");
 
-					createInstruT1("配置kubectl正常工作（所有master（dnsca）");
+					createInstruT1("配置kubectl正常工作（所有master）");
 						cmd = `
 							rm -rf /root/.kube/
 							mkdir /root/.kube/
@@ -564,7 +564,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-					createInstruT1("为node节点打标签（任意一个master（dnsca）");
+					createInstruT1("为node节点打标签（任意一个master）");
 						cmd = `
 							kubectl label node node01 node-role.kubernetes.io/node=
 							kubectl label node node02 node-role.kubernetes.io/node=
@@ -582,8 +582,8 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-				createInstruT0("安装calico（任意一个master（dnsca）", "i8");
-					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master（dnsca）");
+				createInstruT0("安装calico（任意一个master）", "i8");
+					createInstruT1("获得根证书，并根据规则修改文件名（任意一个master）");
 						cmd  = `
 							# 参考 https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises
 							kubectl apply -f calico.yaml	<a href="yaml/kubeadm_step/08_calico/calico.yaml" download="calico.yaml">下载该文件</a>
