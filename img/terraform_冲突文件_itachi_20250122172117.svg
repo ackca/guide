@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Logos" xmlns="http://www.w3.org/2000/svg" viewBox="0 7 50 58">
+	<defs>
+		<style>
+			.cls-1 {
+				fill: #7b42bc;
+				fill-rule: evenodd;
+			}
+		</style>
+	</defs>
+	<g>
+		<path class="cls-1" d="M17.3,17.51l15.5,9v18l-15.5-9v-18Z"/>
+		<path class="cls-1" d="M34.5,26.51v18l15.5-9v-18l-15.5,9Z"/>
+		<path class="cls-1" d="M0,7.51v18l15.5,9v-18L0,7.51Z"/>
+		<path class="cls-1" d="M17.3,55.51l15.5,9v-18l-15.5-9v18Z"/>
+	</g>
+</svg>

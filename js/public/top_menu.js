@@ -5738,7 +5738,7 @@
 		var navServTimer = -1;
 		var headerTimer = null;
 		// 弹下载菜单的js，注意ID，每增加菜单
-		$("#nav-header-protocol,#nav-header-network,#nav-header-china,#nav-header-vmware,#nav-header-netdevops,#nav-header-container,#nav-header-linux,#nav-header-others").hover(function (e) {
+		$("#nav-header-protocol,#nav-header-network,#nav-header-china,#nav-header-vmware,#nav-header-netdevops,#nav-header-cloud,#nav-header-linux,#nav-header-others").hover(function (e) {
 			clearTimeout(headerTimer);
 			if (navServTimer !== -1) {
 				// clearTimeout(ervTimer);

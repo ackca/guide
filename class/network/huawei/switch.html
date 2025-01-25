@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/huawei.svg"/>
 	<title>华为-交换</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(hswitch);
 	</script>
@@ -403,7 +403,7 @@
 
 				createInstruT0("vlan间通信", "i5");
 					createInstruT1("单臂路由法", "i5-1");
-						createInstruT2("创建需要通信的vlan对应子接口（虚拟）（本征vlan无需子接口，使用主接口即可）");
+						createInstruT2("创建需要通信的vlan对应子接口（本征vlan无需子接口，使用主接口即可）");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("[R1] int “f0/0。.“10。");
 							instruArr[1] = createCmdInstruSpan("“f0/0。", "与交换机相连接口号");
@@ -503,7 +503,7 @@
 								instruArr[6] = createCmdInstruSpan("outbound", "监控接口的出栈流量");
 								createCmdInstruT3(instruArr, "huawei");
 
-						createInstruT2("ERSPAN（封装的远程交换机端口分析仪，分析服务器与被监控端口通过三层相连）", "i6-1-3");
+						createInstruT2("ERSPAN（封装的远程交换机端口分析仪，分析服务器与被监控端口的交换机通过三层相连）", "i6-1-3");
 							createInstruT3("设置三层远程目的接口（监控流量从该接口发出，最终到达分析服务器）");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("[SW1] observe-port “1。 interface “g0/0/2。 destination-ip “10.1.1.1。 source-ip “192.168.10.1。");

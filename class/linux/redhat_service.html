@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../img/redhat.svg" />
 	<title>Linux-RedHat-基础服务</title>
-	<script src="../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(redhat_service);
 	</script>
@@ -187,8 +187,8 @@
 							createInstruAllTopT1("如果阻止http，但允许80/tcp，80/tcp流量 允许");
 
 							createInstruT2("<br />允许/阻止某端口", "i3-1-1");
-								instruArr[0] = createLinuxCmd("firewall-cmd --add-servic=“80/tcp。 [ --permanent ]");
-								instruArr[1] = createLinuxCmd("firewall-cmd --remove-servic=“80/tcp。 [ --permanent ]");
+								instruArr[0] = createLinuxCmd("firewall-cmd --add-port=“80/tcp。 [ --permanent ]");
+								instruArr[1] = createLinuxCmd("firewall-cmd --remove-port=“80/tcp。 [ --permanent ]");
 								instruArr[2] = createCmdInstruSpan("--add-port", "允许某端口");
 								instruArr[3] = createCmdInstruSpan("--remove-port", "阻止某端口");
 								instruArr[4] = createCmdInstruSpan("“80/tcp。", "端口号/协议");
@@ -632,6 +632,127 @@
 									EOF
 								`;
 								createLinuxTxtT3(cmd);
+
+				createInstruT0("网络代理", "i8");
+					createInstruT1("查看网络代理状态", "i8-1");
+						instruArr[0] = createLinuxCmd("echo $http_proxy");
+						instruArr[1] = createLinuxCmd("echo $https_proxy");
+						createCmdInstruT1(instruArr, "redhat");
+						createConfigImgT1("redhat_service/i8-1$1");
+
+					createInstruT1("配置网络代理", "i8-2");
+						createInstruT2("’当前shell。立即生效，重启后失效", "i8-2-1");
+							createInstruT3("配置代理");
+								cmd = `
+									export http_proxy=http://127.0.0.1:10809
+									export https_proxy=http://127.0.0.1:10809
+									export HTTP_PROXY=http://127.0.0.1:10809
+									export HTTPS_PROXY=http://127.0.0.1:10809
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("取消代理");
+								cmd = `
+									unset http_proxy
+									unset https_proxy
+									unset no_proxy
+									unset HTTP_PROXY
+									unset HTTPS_PROXY
+									unset NO_PROXY
+								`;
+								createLinuxTxtT3(cmd);
+
+						createInstruT2("重启后’全局。生效，当前不生效", "i8-2-2");
+							createInstruT3("编辑 ’/etc/environment。，添加或删除代理配置");
+								cmd = `
+									http_proxy=http://127.0.0.1:10809
+									https_proxy=http://127.0.0.1:10809
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("编辑 ’/etc/profile。、’/etc/bash.bashrc。，添加或删除代理配置");
+								cmd = `
+									export http_proxy=http://127.0.0.1:10809
+									export https_proxy=http://127.0.0.1:10809
+								`;
+								createLinuxTxtT3(cmd);
+
+						createInstruT2("’用户级。配置", "i8-2-3");
+							createInstruT3("编辑 ’~/.bashrc。 和 ’~/.bash_profile。，添加或删除代理配置");
+								cmd = `
+									export http_proxy=http://127.0.0.1:10809
+									export https_proxy=http://127.0.0.1:10809
+								`;
+								createLinuxTxtT3(cmd);
+
+							createInstruT3("使代理生效")
+								createInstruAllTopT3("添加或修改代理时，执行命令立即生效，删除代理时，需要重启生效");
+								cmd = `
+									source ~/.bashrc
+								`;
+								createLinuxTxtT3(cmd);
+
+								cmd = `
+									source ~/.bash_profile
+								`;
+								createLinuxTxtT3(cmd);
+
+
+				createInstruT0("v2ray（科学上网）", "i7");
+					createInstruT1("安装v2ray程序", "i7-1");
+						createInstruT2("命令行版v2ray，下载地址：<a class='link' href='https://github.com/v2fly/v2ray-core/releases/' target='_blank'>https://github.com/v2fly/v2ray-core/releases</a><br />");
+
+						createInstruT2("包含图形化界面的v2rayN，下载地址：<a class='link' href='https://github.com/2dust/v2rayN/releases' target='_blank'>https://github.com/2dust/v2rayN/releases</a><br />");
+
+						createInstruT2("将安装包解压，并配置推荐操作：目录名添加版本号，再用软链接连回");
+							cmd = `
+								unzip v2ray-linux-64.zip -d /usr/local/v2ray-5.22
+								ln -s /usr/local/v2ray-5.22/ /usr/local/v2ray
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("正确配置 ’/usr/local/v2ray/config.josn。（一般从图形化界面的v2ray复制），后运行 ’/usr/local/v2ray/v2ray。 即可");
+
+						createInstruT2("<br />配置v2ray开机启动");
+							createInstruAllTopT2("在启动文件 ‘/etc/rc.d/rc.local。 ，增加启动v2ray命令，增加执行权限");
+							cmd = `
+								echo "/usr/local/v2ray/v2ray run &" >> /etc/rc.d/rc.local
+								chmod +x /etc/rc.d/rc.local
+							`;
+							createLinuxTxtT2(cmd);
+
+					createInstruT1("<br />配置网络代理", "i7-2");
+						createInstruAllTopT1("因为linux的某些网络访问可能使用代理，推荐使用代理时，再手动开启");
+						createInstruAllTopT1("完成配置后，使用 ’proxy_on。 启用代理，’proxy_off。 关闭代理");
+						cmd = `
+							cat>/etc/profile.d/v2ray_proxy.sh<<EOF
+							# 开启系统代理
+							function proxy_on() {
+								export http_proxy=http://127.0.0.1:10809
+								export https_proxy=http://127.0.0.1:10809
+								export no_proxy=127.0.0.1,localhost
+								export HTTP_PROXY=http://127.0.0.1:10809
+								export HTTPS_PROXY=http://127.0.0.1:10809
+								export NO_PROXY=127.0.0.1,localhost
+								echo -e "\\033[32m[√] 已开启代理\\033[0m"
+							}
+
+							# 关闭系统代理
+							function proxy_off(){
+								unset http_proxy
+								unset https_proxy
+								unset no_proxy
+								unset HTTP_PROXY
+								unset HTTPS_PROXY
+								unset NO_PROXY
+								echo -e "\\033[31m[×] 已关闭代理\\033[0m"
+							}
+							EOF
+
+							source /etc/profile.d/v2ray_proxy.sh
+						`;
+						createLinuxTxtT1(cmd);
+
 			</script>
 		</div>
 	</div>

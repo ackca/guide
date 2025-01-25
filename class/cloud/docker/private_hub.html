@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/docker.svg"/>
 	<title>容器-docker-私有镜像仓库搭建和使用</title>
-	<script src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(private_hub);
 	</script>
@@ -25,68 +25,81 @@
 						createInstruT2("配置docker采用http方式传访问harbar");
 						createInstruAllTopT2("默认https，无需此步，无可信证书时，使用https非常繁琐，建议使用http");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
-								let instruArr = new Array();
-								instruArr[0] = createCmdSpan("\"insecure-registries\": [\"“192.168.110.133。\"],");
-								instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbar的url");
-								createCmdInstruT3(instruArr, "docker");
+								let cmd = `
+									\"insecure-registries\": [\"192.168.110.133\"]    # 192.168.110.133 harbor的ip地址或域名
+								`;
+								createLinuxTxtT3(cmd);
 								createConfigImgT3("private_hub/i2_1$1");
 
 							createInstruT3("重启相关服务");
-								instruArr[0] = createLinuxCmd("systemctl daemon-reload");
-								instruArr[1] = createLinuxCmd("systemctl restart docker");
-								createCmdInstruT3(instruArr, "docker");
+								cmd = `
+									systemctl daemon-reload
+									systemctl restart docker
+								`;
+								createLinuxTxtT3(cmd);
 
 						createInstruT2("下载离线安装包，<a class='link' target='_blank' href='https://github.com/goharbor/harbor/releases/'>https://github.com/goharbor/harbor/releases/</a>");
 
-						createInstruT2("将安装包解压");
-							instruArr = [];
-							instruArr[0] = createLinuxCmd("tar -xvf harbor-offline-installer-v2.1.1.tgz -C /usr/local/");
-							createCmdInstruT2(instruArr, "docker");
+						createInstruT2("<br />将安装包解压");
+							cmd = `
+								tar -xvf harbor-offline-installer-v2.1.1.tgz -C /usr/local/
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("推荐操作：目录名添加版本号，再用软链接连回");
-							instruArr[0] = createLinuxCmd("cd /usr/local");
-							instruArr[1] = createLinuxCmd1("mv harbor/ harbor-v2.1.1");
-							instruArr[2] = createLinuxCmd("ln -s harbor-v2.1.1/ harbor");
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								cd /usr/local
+								mv harbor/ harbor-v2.1.1
+								ln -s harbor-v2.1.1/ harbor
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("复制配置文件");
-							instruArr = [];
-							instruArr[0] = createLinuxCmd1("cd /usr/local/harbor");
-							instruArr[1] = createLinuxCmd1("cp harbor.yml.tmpl harbor.yml");
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								cd /usr/local/harbor
+								cp harbor.yml.tmpl harbor.yml
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("编辑配置文件");
 							createInstruT3("无可信https证书");
-								instruArr = [];
-								instruArr[0] = createLinuxCmd1("vim harbor.yml");
-								createCmdInstruT3(instruArr, "docker");
+								cmd = `
+									vim harbor.yml
+								`;
+								createLinuxTxtT3(cmd);
 								createConfigImgT3("private_hub/i2_1$2");
 
 							createInstruT3("有可信https证书");
-								instruArr[0] = createLinuxCmd1("vim harbor.yml");
-								createCmdInstruT3(instruArr, "docker");
+								cmd = `
+									vim harbor.yml
+								`;
+								createLinuxTxtT3(cmd);
 								createConfigImgT3("private_hub/i2_1$3");
 
 						createInstruT2("安装&启动harbor");
-							// instruArr[0] = createCmdSpan("./prepare");
-							instruArr[0] = createCmdSpan("./install.sh");
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								./install.sh
+							`;
+							createLinuxTxtT2(cmd);
 
-						createInstruT2("重启系统后harbor无法自动启动，手动添加启动脚本");
-							createInstruT3("在启动文件（ ‘/etc/rc.d/rc.local。 ）增加两行命令");
-								instruArr[0] = createLinuxCmd1("cd /usr/local/harbor");
-								instruArr[1] = createLinuxCmd("docker-compose up -d");
-								createCmdInstruT3(instruArr, "docker");
+						createInstruT2("重启系统后harbor可能无法自动启动，手动添加启动脚本");
+							createInstruT3("在启动文件 ‘/etc/rc.d/rc.local。 ，增加命令");
+								cmd = `
+									echo "docker compose -f /usr/local/harbor/docker-compose.yml up -d" >> /etc/rc.d/rc.local
+								`;
+								createLinuxTxtT3(cmd);
 
 							createInstruT3("增加执行权限");
-								instruArr = [];
-								instruArr[0] = createLinuxCmd("chmod +x /etc/rc.d/rc.local");
-								createCmdInstruT3(instruArr, "docker");
+								cmd = `
+									chmod +x /etc/rc.d/rc.local
+								`;
+								createLinuxTxtT3(cmd);
 
-						createInstruT2("安装完成后使用浏览器打开即可，默认用户名/密码：admin/Harobr12345<br /><br />");
+						createInstruT2("安装完成后使用浏览器打开即可，默认用户名/密码：admin/Harbor12345<br /><br />");
 
 					createInstruT1("上传 / 下载镜像", "i2-2");
 						createInstruT2("镜像的本地命令方式");
+							let instruArr = new Array();
 							instruArr[0] = createCmdSpan("“192.168.110.133。<b>/</b>“itachi。<b>/</b>“flask。");
 							instruArr[1] = createCmdInstruSpan("“192.168.110.133。", "harbor的url");
 							instruArr[2] = createCmdInstruSpan("“itachi。”", "harbor中的项目名");

@@ -422,6 +422,23 @@ const top_menu = `
 									<td class="logo">
 										<h3 class="cat-tit">
 											<div class="cat-ico">
+												<i class="ico-terraform">
+													<a href="rootpath/class/netdevops/tool/terraform.html">
+														<img src="rootpath/img/terraform_title.svg" />
+													</a>
+												</i>
+											</div>
+											<span></span>
+										</h3>
+									</td>
+									<td>
+										<h3 class="cat-tit">
+											<span></span>
+										</h3>
+									</td>
+									<td class="logo">
+										<h3 class="cat-tit">
+											<div class="cat-ico">
 												<i class="ico-nginx">
 													<a href="rootpath/class/netdevops/tool/nginx.html">
 														<img src="rootpath/img/nginx_title.svg" />
@@ -448,12 +465,6 @@ const top_menu = `
 											<span><a href="rootpath/class/netdevops/tool/regex.html">正则表达式</a></span>
 										</h3>
 									</td>
-<!--									<td class="logo">-->
-<!--									-->
-<!--									</td>-->
-<!--									<td>-->
-<!--									-->
-<!--									</td>-->
 								</tr>
 							</table>
 						</div>
@@ -511,7 +522,7 @@ const top_menu = `
 				</div>
 			</div>
 			<div class="cat">
-				<div class="cat-box" data-cat="container">
+				<div class="cat-box" data-cat="cloud">
 					<div class="layout">
 						<div class="cat-group">
 							<h3 class="cat-tit">
@@ -525,22 +536,22 @@ const top_menu = `
 							<ul class="cat-list">
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/docker/basic.html">基础配置</a>
+										<a href="rootpath/class/cloud/docker/basic.html">基础配置</a>
 									</div>
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/docker/compose.html">Docker Compose</a>
+										<a href="rootpath/class/cloud/docker/compose.html">Docker Compose</a>
 									</div>
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/docker/swarm.html">Docker Swarm</a>
+										<a href="rootpath/class/cloud/docker/swarm.html">Docker Swarm</a>
 									</div>
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/docker/private_hub.html">私有镜像仓库搭建和使用</a>
+										<a href="rootpath/class/cloud/docker/private_hub.html">私有镜像仓库搭建和使用</a>
 									</div>
 								</li>
 							</ul>
@@ -557,17 +568,17 @@ const top_menu = `
 							<ul class="cat-list">
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/k8s/kubeadm_step.html">kubeadm安装</a>
+										<a href="rootpath/class/cloud/k8s/kubeadm_step.html">kubeadm安装</a>
 									</div>
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/k8s/basic.html">基本操作</a>
+										<a href="rootpath/class/cloud/k8s/basic.html">基本操作</a>
 									</div>
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/container/k8s/orchestration.html">容器编排</a>
+										<a href="rootpath/class/cloud/k8s/orchestration.html">容器编排</a>
 									</div>
 								</li>
 							</ul>
@@ -667,9 +678,9 @@ const top_menu = `
 								<a href="javascript:void(0);">NetDevOps</a>
 							</h2>
 						</li>
-						<li id="nav-header-container" class="top-cat hassub" data-cat="container">
+						<li id="nav-header-cloud" class="top-cat hassub" data-cat="cloud">
 							<h2>
-								<a href="javascript:void(0);">容器</a>
+								<a href="javascript:void(0);">混合云</a>
 							</h2>
 						</li>
 						<li id="nav-header-linux" class="top-cat hassub" data-cat="linux">

@@ -156,32 +156,6 @@
 	font-size: 20px;
 }
 
-/*.mod-header-nav .top-cat-arrow*/
-/*{*/
-/*	content: "";*/
-/*	width: 20px;*/
-/*	height: 12px;*/
-/*	background-image: url(../img/sprite.png);*/
-/*	background-position: -331px -158px;*/
-/*	transition: -webkit-transform .3s ease;*/
-/*	transition: transform .3s ease;*/
-/*	transition: transform .3s ease,-webkit-transform .3s ease;*/
-/*	-webkit-transform: rotate(180deg);*/
-/*	-ms-transform: rotate(180deg);*/
-/*	transform: rotate(180deg);*/
-/*	display: inline-block;*/
-/*	vertical-align: bottom;*/
-/*	margin-left: 4px;*/
-/*}*/
-
-/*.mod-header-nav .top-cat.hassub:active .top-cat-arrow,*/
-/*.mod-header-nav .top-cat.hassub:hover .top-cat-arrow*/
-/*{*/
-/*	-webkit-transform: rotate(0deg);*/
-/*	-ms-transform: rotate(0deg);*/
-/*	transform: rotate(0deg);*/
-/*}*/
-
 .mod-header-nav .slider
 {
 	position: absolute;
@@ -474,6 +448,17 @@
 	width: 45px;
 }
 
+.mod-header .ico-terraform
+{
+
+}
+
+.mod-header .ico-terraform img
+{
+	height: 55px;
+	margin-left: 34px;
+}
+
 .mod-header .ico-nginx
 {
 
@@ -482,7 +467,7 @@
 .mod-header .ico-nginx img
 {
 	height: 50px;
-	margin-left: 35px;
+	margin-left: 32px;
 }
 
 .mod-header .ico-regex
@@ -594,22 +579,7 @@ div[data-cat~="network"] .cat-group
 
 /*分辨率较低时，aruba会被挤到下一行*/
 @media screen and (max-width:1550px) {
-	/*div[data-cat~="network"] .cat-item {*/
-	/*	min-width: 300px;*/
-	/*}*/
 
-	/*div[data-cat~="network"] .cat-group:nth-child(3) {*/
-	/*	width: 300px;*/
-	/*}*/
-
-
-	/*div[data-cat~="network"] .cat-group:nth-child(4) {*/
-	/*	width: 200px;*/
-	/*}*/
-
-	/*div[data-cat~="network"] .cat-group:nth-child(4) .cat-item {*/
-	/*	min-width: 300px;*/
-	/*}*/
 }
 
 div[data-cat~="netdevops"] .cat-group:nth-child(2) td
@@ -645,14 +615,14 @@ div[data-cat~="others"] .cat-item
 	margin-top: 20px;
 }
 
-div[data-cat~="container"] .cat-item:first-child,
+div[data-cat~="cloud"] .cat-item:first-child,
 div[data-cat~="linux"] .cat-item:first-child,
 div[data-cat~="others"] .cat-item:not(:first-child)
 {
 	margin-top: 10px;
 }
 
-div[data-cat~="container"] .cat-item:not(:first-child),
+div[data-cat~="cloud"] .cat-item:not(:first-child),
 div[data-cat~="linux"] .cat-item:not(:first-child),
 div[data-cat~="others"] .cat-item:not(:first-child)
 {
@@ -669,18 +639,3 @@ div[data-cat~="others"] .cat-tit span
 {
 	margin-left: 0;
 }
-/*div[data-cat~="others"] .cat-item*/
-/*{*/
-/*	margin-top: 50px;*/
-/*}*/
-
-/*.top_navigation .cat-group li:not(:first-child)*/
-/*{*/
-/*	margin-top: 10px;*/
-/*}*/
-
-
-/*.cat-item*/
-/*{*/
-/*	background-color: #FFFF00;*/
-/*}*/

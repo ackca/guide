@@ -85,51 +85,6 @@
 	color: #FFFF00;
 }
 
-/*.wifi5*/
-/*{*/
-/*	position: relative;*/
-/*	display: flex;*/
-/*	padding: 0!important;*/
-/*}*/
-
-/*.wifi5 div*/
-/*{*/
-/*	flex: 1;*/
-/*	padding: 0;*/
-/*	box-sizing: border-box;*/
-/*	text-align: center;*/
-/*	height: 100%;*/
-/*}*/
-
-/*.ac*/
-/*{*/
-/*	display: flex!important;*/
-/*	padding-left: 0!important;*/
-/*	padding-right: 0!important;*/
-/*	position: relative;*/
-/*}*/
-
-/*.ac::before*/
-/*{*/
-/*	content: '';*/
-/*	position: absolute;*/
-/*	left: 50%;					!* 位于容器的中间 *!*/
-/*	top: 0;*/
-/*	transform: translateX(-50%);*/
-/*	width: 2px;					!* 线条宽度 *!*/
-/*	height: 100%;				!* 线条高度 *!*/
-/*	background-color: #A0A0A0;	!* 线条颜色 *!*/
-/*}*/
-
-/*.ac div*/
-/*{*/
-/*	flex: 1;*/
-/*	padding: 0;*/
-/*	box-sizing: border-box;*/
-/*	text-align: center;*/
-/*	height: 100%;*/
-/*}*/
-
 #tWiFi1 .row:nth-child(4) .cell,		/* 频宽，换行 */
 #tWiFi1 .row:nth-child(6) .cell,		/* mimo 换行 */
 #tWiFi2 .row:nth-child(4) .cell,		/* 频宽，换行 */
