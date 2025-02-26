@@ -195,3 +195,8 @@ const nginx = {
 		}
 	},
 };
+
+
+const terraform = {
+	"i1": "安装terraform",
+};

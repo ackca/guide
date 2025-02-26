@@ -382,7 +382,6 @@
 	height: 30px;
 }
 
-
 .mod-header .ico-f5
 {
 	width: 45px;
@@ -414,11 +413,6 @@
 	width: 50px;
 }
 
-.mod-header .ico-nsx
-{
-
-}
-
 .mod-header .ico-nsx img
 {
 	width: 90px;
@@ -448,20 +442,10 @@
 	width: 45px;
 }
 
-.mod-header .ico-terraform
-{
-
-}
-
 .mod-header .ico-terraform img
 {
 	height: 55px;
 	margin-left: 34px;
-}
-
-.mod-header .ico-nginx
-{
-
 }
 
 .mod-header .ico-nginx img
@@ -475,9 +459,9 @@
 	width: 90px;
 }
 
-.mod-header .ico-docker
+.mod-header .ico-aliyun img
 {
-
+	height: 30px;
 }
 
 .mod-header .ico-docker img
@@ -485,11 +469,6 @@
 	height: 50px;
 	margin-top: -10px;
 	margin-left: 13px;
-}
-
-.mod-header .ico-k8s
-{
-
 }
 
 .mod-header .ico-k8s img
@@ -514,11 +493,6 @@
 	width: 80px;
 }
 
-.mod-header .ico-os
-{
-	/*text-align: right;*/
-}
-
 .mod-header .ico-os img
 {
 	border-radius: 20%;
@@ -527,7 +501,7 @@
 
 .ie-placeholder
 {
-	color: #aaa;
+	color: #AAAAAA;
 }
 
 @media screen and (max-width:1400px)

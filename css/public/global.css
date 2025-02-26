@@ -15,12 +15,14 @@ body::-webkit-scrollbar-thumb	/*滚动条里面小方块*/
 	background: #CFCFCF;
 }
 
-::-webkit-scrollbar {	/* 滚动条整体样式 */
+::-webkit-scrollbar	/* 滚动条整体样式 */
+{
 	width: 8px;     	/* 高宽分别对应横竖滚动条的尺寸 */
 	height: 8px;
 }
 
-::-webkit-scrollbar-thumb {	/* 滚动条里面小方块 */
+::-webkit-scrollbar-thumb /* 滚动条里面小方块 */
+{
 	border-radius: 5px;
 	background: #595B5D;
 }
@@ -30,13 +32,14 @@ body::-webkit-scrollbar-thumb	/*滚动条里面小方块*/
     background-color: transparent;	/* 设置为透明 */
 }
 
-::-webkit-scrollbar-corner {
+::-webkit-scrollbar-corner
+{
     background: transparent; /* 设置为透明 */
 }
 
 textarea
 {
-	resize: none;		/* 去年右下角调大小的箭头 */
+	resize: none;				  /* 去年右下角调大小的箭头 */
 	border-radius: 5px;
     background-clip: padding-box; /* 确保背景裁剪为圆角 */
 }
@@ -567,27 +570,32 @@ td
 	margin-left: 110px;
 }
 
-/*@media screen and (max-width:1550px) {*/
-@media screen and (max-width:1560px) {
-	.divConfigImgT0 img
-	{
-		max-width: 1430px;
-	}
+.divConfigImgT0 img
+{
+    width: auto;
+    max-width: calc(100vw - 100px); /* 限制最大宽度为 浏览器宽度 - 100px */
+    height: auto;
+}
 
-	.divConfigImgT1 img
-	{
-		max-width: 1400px;
-	}
+.divConfigImgT1 img
+{
+    width: auto;
+    max-width: calc(100vw - 130px);
+    height: auto;
+}
 
-	.divConfigImgT2 img
-	{
-		max-width: 1370px;
-	}
+.divConfigImgT2 img
+{
+    width: auto;
+    max-width: calc(100vw - 160px);
+    height: auto;
+}
 
-	.divConfigImgT3 img
-	{
-		max-width: 1340px;
-	}
+.divConfigImgT3 img
+{
+    width: auto;
+    max-width: calc(100vw - 190px);
+    height: auto;
 }
 
 .cmdTableT2 + .divConfigImgT2,

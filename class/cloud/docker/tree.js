@@ -190,6 +190,7 @@ const private_hub = {
 	"i2": {
 		"harbar": {
 			"i2-1": "安装harbar",
+			"i2-3": "自定义https证书时配置",
 			"i2-2": "上传/下载镜像",
 		}
 	},

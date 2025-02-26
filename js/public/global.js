@@ -1539,4 +1539,5 @@ $(document).ready(function () {
 			this.style.cursor = "text";
 		}
 	});
+
 });

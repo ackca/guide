@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/docker.svg"/>
-	<title>容器-docker-私有镜像仓库搭建和使用</title>
+	<title>混合云-docker-私有镜像仓库搭建和使用</title>
 	<script type="text/javascript" src="../../../js/public/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(private_hub);
@@ -21,15 +21,15 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("harbar", "i2");
-					createInstruT1("安装harbar（需要docker-compose）", "i2-1");
+					createInstruT1("安装harbar", "i2-1");
 						createInstruT2("配置docker采用http方式传访问harbar");
-						createInstruAllTopT2("默认https，无需此步，无可信证书时，使用https非常繁琐，建议使用http");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
-								let cmd = `
-									\"insecure-registries\": [\"192.168.110.133\"]    # 192.168.110.133 harbor的ip地址或域名
-								`;
-								createLinuxTxtT3(cmd);
-								createConfigImgT3("private_hub/i2_1$1");
+								createInstruAllTopT3("默认https，无需此步，无可信证书时，配置繁琐，建议使用http");
+									let cmd = `
+										\"insecure-registries\": [\"192.168.110.133\"]    # 192.168.110.133 harbor的ip地址或域名
+									`;
+									createLinuxTxtT3(cmd);
+									createConfigImgT3("private_hub/i2_1$1");
 
 							createInstruT3("重启相关服务");
 								cmd = `
@@ -96,6 +96,66 @@
 								createLinuxTxtT3(cmd);
 
 						createInstruT2("安装完成后使用浏览器打开即可，默认用户名/密码：admin/Harbor12345<br /><br />");
+
+					createInstruT1("自定义https证书时配置", "i2-3");
+						createInstruT2("Harbor配置与可信https证书时相同");
+							createInstruAllTopT2(" ");
+
+						createInstruT2("配置 系统 信任根证书（RHEL 9）");
+							createInstruAllTopT2("将根证书存入　’/etc/pki/ca-trust/source/anchors/ 。");
+							createInstruAllTopT2("更新受信任的根证书");
+							cmd = `
+								update-ca-trust
+							`;
+							createLinuxTxtT2(cmd);
+
+							createConfigImgT2("private_hub/i2_3$1");
+
+						createInstruT2("配置 docker 信任根证书");
+							createInstruAllTopT2("官方文档地址：<a class='link' href='https://goharbor.io/docs/2.0.0/install-config/configure-https/' target='_blank'>https://goharbor.io/docs/2.0.0/install-config/configure-https/</a>");
+
+							createInstruAllTopT2("下列’路径（文件名）均为固定格式。，只有域名根据实际修改");
+							createInstruAllTopT2("域名为 ’harbor.itachi.tech。");
+
+							createInstruAllTopT2("需要将’根证书。、’个人证书。、’个人证书私钥。均放入 ’/etc/docker/certs.d/“harbor.itachi.tech》 中");
+							createInstruAllTopT2("如果不使用默认的443端口，则需要配置使用的端口，如 ’/etc/docker/certs.d/“harbor.itachi.tech:8443》 ");
+							createInstruAllTopT2("’个人证书。文件名： 　　　“harbor.itachi.tech。.cert");
+							createInstruAllTopT2("’个人证书私钥。文件名： “harbor.itachi.tech。.key");
+							createInstruAllTopT2("’根证书。文件名：　　　　　 ca.crt");
+
+							createConfigImgT2("private_hub/i2_3$2");
+
+						createInstruT2("不对相应域名进行代理");
+							createInstruAllTopT2("如果docker配置了代理，例如：");
+							cmd = `
+								/etc/docker/daemon.json
+
+								{
+									"proxies": {
+										"http-proxy": "http://127.0.0.1:7897",
+										"https-proxy": "http://127.0.0.1:7897",
+										"no-proxy": "localhost,::1,127.0.0.1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+									}
+								}
+							`;
+							createLinuxTxtT2(cmd);
+
+							createInstruAllTopT2("需要对相应域名配置不代理：");
+							cmd = `
+								/etc/docker/daemon.json
+
+								{
+									"proxies": {
+										"http-proxy": "http://127.0.0.1:7897",
+										"https-proxy": "http://127.0.0.1:7897",
+										"no-proxy": "harbor.itachi.tech,localhost,::1,127.0.0.1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+									}
+								}
+							`;
+							createLinuxTxtT2(cmd);
+
+
+
 
 					createInstruT1("上传 / 下载镜像", "i2-2");
 						createInstruT2("镜像的本地命令方式");

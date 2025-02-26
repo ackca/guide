@@ -188,7 +188,7 @@
 							existing unseal keys shares. See "vault operator rekey" for more information.
 						`;
 						// createLinuxTxtT1(cmd);
-						createConfigImgT1("vault/i2-1$1~2");
+						createConfigImgT1("vault/i2_1$1~2");
 
 					createInstruT1("解封数据库", "i2-2");
 						cmd = `
@@ -247,17 +247,17 @@
 							Raft Applied Index      24
 						`;
 						// createLinuxTxtT1(cmd);
-						createConfigImgT1("vault/i2-2$1~3");
+						createConfigImgT1("vault/i2_2$1~3");
 
 					createInstruT1("登录", "i2-3");
-						createConfigImgT1("vault/i2-3$1~2");
+						createConfigImgT1("vault/i2_3$1~2");
 
 				createInstruT0("配置机密信息", "i3");
 					createInstruT1("配置engine", "i3-1");
-						createConfigImgT1("vault/i3-1$1~4");
+						createConfigImgT1("vault/i3_1$1~4");
 
 					createInstruT1("配置secret", "i3-2");
-						createConfigImgT1("vault/i3-2$1~4");
+						createConfigImgT1("vault/i3_2$1~4");
 
 
 				createInstruT0("配置策略", "i5");
@@ -270,7 +270,7 @@
 						`;
 
 					createLinuxTxtT1(cmd);
-						createConfigImgT1("vault/i5-1$1~4");
+						createConfigImgT1("vault/i5_1$1~4");
 
 					createInstruT1("生成policy对应的token", "i5-2");
 						createInstruT2("需要使用命令行生成");

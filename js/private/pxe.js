@@ -86,8 +86,8 @@ $(document).ready(function () {
 			$("#select_os_version").fadeIn(500);
 
 			if(os_type == "1") {	// windows系统
-				$("#select_os_version").append(new Option("Windows Server 2012", "Windows Server 2012"));
-				$("#select_os_version").append(new Option("Windows Server 2012 R2", "Windows Server 2012 R2"));
+				// $("#select_os_version").append(new Option("Windows Server 2012", "Windows Server 2012"));
+				// $("#select_os_version").append(new Option("Windows Server 2012 R2", "Windows Server 2012 R2"));
 				$("#select_os_version").append(new Option("Windows Server 2016", "Windows Server 2016"));
 				$("#select_os_version").append(new Option("Windows Server 2019", "Windows Server 2019"));
 				$("#select_os_version").append(new Option("Windows Server 2022", "Windows Server 2022"));
@@ -131,8 +131,8 @@ $(document).ready(function () {
 			$("#btn_generate").fadeIn(500);
 
 			if (											// 服务器系统
-				os_version == "Windows Server 2012" ||
-				os_version == "Windows Server 2012 R2" ||
+				// os_version == "Windows Server 2012" ||
+				// os_version == "Windows Server 2012 R2" ||
 				os_version == "Windows Server 2016" ||
 				os_version == "Windows Server 2019" ||
 				os_version == "Windows Server 2022"
@@ -196,27 +196,27 @@ $(document).ready(function () {
 			let windows_file = windows_xml.replace("!!os_name!!", widnows_version + " " + widnows_kind);
 
 			switch (widnows_version) {		// windows server 2012/2012 R2/2016需要密钥才能安装
-				case "Windows Server 2012":
-					if (widnows_kind == "SERVERSTANDARDCORE" || widnows_kind == "SERVERSTANDARD") {	// 标准版
-						windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>VDNYM-JBKJ7-DC4X9-BT3QR-JHRGY</Key></ProductKey>");
-					}
-
-					if (widnows_kind == "SERVERDATACENTERCORE" || widnows_kind == "SERVERDATACENTER") {	// 数据中心版
-						windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>BH9T4-4N7CW-67J3M-64J36-WW98Y</Key></ProductKey>");
-					}
-
-					break;
-
-				case "Windows Server 2012 R2":
-					if (widnows_kind == "SERVERSTANDARDCORE" || widnows_kind == "SERVERSTANDARD") {	// 标准版
-						windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>78NJB-CB3WX-GWPCM-VMKG7-94QWW</Key></ProductKey>");
-					}
-
-					if (widnows_kind == "SERVERDATACENTERCORE" || widnows_kind == "SERVERDATACENTER") {	// 数据中心版
-						windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>TVNTG-VFJQ3-FQXFP-DVCP6-D3VJ8</Key></ProductKey>");
-					}
-
-					break;
+				// case "Windows Server 2012":
+				// 	if (widnows_kind == "SERVERSTANDARDCORE" || widnows_kind == "SERVERSTANDARD") {	// 标准版
+				// 		windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>VDNYM-JBKJ7-DC4X9-BT3QR-JHRGY</Key></ProductKey>");
+				// 	}
+				//
+				// 	if (widnows_kind == "SERVERDATACENTERCORE" || widnows_kind == "SERVERDATACENTER") {	// 数据中心版
+				// 		windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>BH9T4-4N7CW-67J3M-64J36-WW98Y</Key></ProductKey>");
+				// 	}
+				//
+				// 	break;
+				//
+				// case "Windows Server 2012 R2":
+				// 	if (widnows_kind == "SERVERSTANDARDCORE" || widnows_kind == "SERVERSTANDARD") {	// 标准版
+				// 		windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>78NJB-CB3WX-GWPCM-VMKG7-94QWW</Key></ProductKey>");
+				// 	}
+				//
+				// 	if (widnows_kind == "SERVERDATACENTERCORE" || widnows_kind == "SERVERDATACENTER") {	// 数据中心版
+				// 		windows_file = windows_file.replace("!!os_license!!", "<ProductKey><Key>TVNTG-VFJQ3-FQXFP-DVCP6-D3VJ8</Key></ProductKey>");
+				// 	}
+				//
+				// 	break;
 
 				case "Windows Server 2016":
 					if (widnows_kind == "SERVERSTANDARDCORE" || widnows_kind == "SERVERSTANDARD") {	// 标准版

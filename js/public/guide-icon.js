@@ -52,6 +52,7 @@ $("#guide-icon, nav ~ ul li").click(function () {
 			$("#tOption53").animate({"width": "1370px"});
 		}
 	}
+
 	else {
 		$(".main-sidebar").animate({"width": "350px"});
 		$("#guide-icon").animate({left: "340px"});

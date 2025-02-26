@@ -527,6 +527,21 @@ const top_menu = `
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
+									<i class="ico-aliyun">
+										<a href="rootpath/class/cloud/aliyun/aliyun.html">
+											<img src="rootpath/img/aliyun_title.svg" />
+										</a>
+									</i>
+								</div>
+								<span></span>
+							</h3>
+							<ul class="cat-list">
+								<li class="cat-item"><!--占位--></li>
+							</ul>
+						</div>
+						<div class="cat-group">
+							<h3 class="cat-tit">
+								<div class="cat-ico">
 									<div class="ico-docker">
 										<img src="rootpath/img/docker_title.svg" />
 									</div>
