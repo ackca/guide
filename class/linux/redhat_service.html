@@ -93,7 +93,7 @@
 							instruArr[0] = createLinuxCmd("nmtui");
 							createCmdInstruT2(instruArr, "redhat");
 
-							createConfigImgT2("redhat_service/i2-1-2$1");
+							createConfigImgT2("redhat_service/i2_1_2$1");
 
 						createInstruKeyT2("nmcli – 命令行工具配置网络", "i2-1-3");
 							createInstruT3("配置地址");
@@ -159,10 +159,10 @@
 							createCmdInstruT2(instruArr, "redhat");
 
 							createInstruAllTopT2("直接输出的内容");
-							createConfigImgT2("redhat_service/i6-2-1$1");
+							createConfigImgT2("redhat_service/i6_2_1$1");
 
 							createInstruAllTopT2("使用jq获取部分内容");
-							createConfigImgT2("redhat_service/i6-2-2$1");
+							createConfigImgT2("redhat_service/i6_2_2$1");
 
 
 
@@ -196,7 +196,7 @@
 								instruArr[6] = createCmdInstruSpan("--permanent", "永久生效，省略则为 运行时生效");
 								createCmdInstruT2(instruArr, "redhat");
 
-								createConfigImgT2("redhat_service/i3-1-1$1~2");
+								createConfigImgT2("redhat_service/i3_1_1$1~2");
 
 							createInstruT2("<br />允许/阻止某服务", "i3-1-2");
 								instruArr = [];
@@ -208,7 +208,7 @@
 								instruArr[5] = createCmdInstruSpan("--permanent", "永久生效，省略则为 运行时生效");
 								createCmdInstruT2(instruArr, "redhat");
 
-								createConfigImgT2("redhat_service/i3-1-2$1~2");
+								createConfigImgT2("redhat_service/i3_1_2$1~2");
 
 							createInstruT2("<br />允许/阻止某协议", "i3-1-3");
 								instruArr[0] = createLinuxCmd("firewall-cmd --add-protocol=“ESP。 [ --permanent ]");
@@ -219,7 +219,7 @@
 								instruArr[5] = createCmdInstruSpan("--permanent", "永久生效，省略则为 运行时生效");
 								createCmdInstruT2(instruArr, "redhat");
 
-								createConfigImgT2("redhat_service/i3-1-3$1~2");
+								createConfigImgT2("redhat_service/i3_1_3$1~2");
 
 						createInstruT1("<br />查询功能", "i3-2");
 							createInstruT2("查看所有规则", "i3-2-1");
@@ -228,7 +228,7 @@
 								instruArr[1] = createCmdInstruSpan("--permanent", "永久生效规则，省略则为 运行时生效规则");
 								createCmdInstruT2(instruArr, "redhat");
 
-								createConfigImgT2("redhat_service/i3-2-1$1");
+								createConfigImgT2("redhat_service/i3_2_1$1");
 
 							createInstruT2("<br />具体查看某个端口（服务、协议）是否开放", "i3-2-2");
 								createInstruAllTopT2("yes为允许，no为阻止");
@@ -241,19 +241,19 @@
 								instruArr[6] = createCmdInstruSpan("--permanent", "查询永久生效规则，省略则为 查询运行时生效规则");
 								createCmdInstruT2(instruArr, "redhat");
 
-								createConfigImgT2("redhat_service/i3-2-2$1");
+								createConfigImgT2("redhat_service/i3_2_2$1");
 
 						createInstruT1("运行 / 永久 配置相互转化", "i3-3");
 							createInstruT2("运行 --> 永久", "i3-3-1");
 								instruArr = [];
 								instruArr[0] = createLinuxCmd("firewall-cmd --runtime-to-permanent");
 								createCmdInstruT2(instruArr, "redhat");
-								createConfigImgT2("redhat_service/i3-3-1$1");
+								createConfigImgT2("redhat_service/i3_3_1$1");
 
 							createInstruT2("<br />永久 --> 运行", "i3-3-2");
 								instruArr[0] = createLinuxCmd("firewall-cmd --reload");
 								createCmdInstruT2(instruArr, "redhat");
-								createConfigImgT2("redhat_service/i3-3-2$1");
+								createConfigImgT2("redhat_service/i3_3_2$1");
 
 
 				createInstruT0("DHCP服务", "i4");
@@ -370,11 +370,11 @@
 					createInstruT1("查看 / 管理地址分配", "i4-4");
 						createInstruT2("DHCPv4", "i4-4-1");
 							createInstruAllTopT2("配置文件位于 /var/lib/dhcpd/dhcpd.leases");
-							createConfigImgT2("redhat_service/i4-4-1$1")
+							createConfigImgT2("redhat_service/i4_4_1$1")
 
 						createInstruT2("DHCPv6", "i4-4-2");
 							createInstruAllTopT2("配置文件位于 /var/lib/dhcpd/dhcpd6.leases");
-							createConfigImgT2("redhat_service/i4-4-2$1");
+							createConfigImgT2("redhat_service/i4_4_2$1");
 
 				createInstruT0("DNS服务", "i5");
 					createInstruT1("安装DNS服务", "i5-1");
@@ -415,7 +415,7 @@
 						`;
 						createLinuxTxtT1(cmd);
 
-						createConfigImgT1("redhat_service/i5-2$1");
+						createConfigImgT1("redhat_service/i5_2$1");
 
 					createInstruT1("配置转发器", "i5-7");
 						createInstruAllTopT1("主配置文件（/etc/named.conf）中配置：<span class='sqlWord'>forwarders { 202.99.96.68; };</span>");
@@ -423,7 +423,7 @@
 							sed -i "/\\s*allow-query/a \\\\\\tforwarders { 202.99.96.68; };" /etc/named.conf
 						`;
 						createLinuxTxtT1(cmd);
-						createConfigImgT1("redhat_service/i5-7$1");
+						createConfigImgT1("redhat_service/i5_7$1");
 
 					createInstruT1("配置正向解析", "i5-3");
 						createInstruT2("配置区域配置文件", "i5-3-1");
@@ -517,7 +517,7 @@
 							instruArr[2] = createCmdInstruSpan("“33。", "64位网络位对应的取值，计算规则：网络位长度为n，取值为 2((128-n)/4) + 1，实质为截取字符串的起始位置");
 							instruArr[3] = createCmdInstruSpan("“40。", "64位网络位对应的取值，计算规则：网络位长度为n，取值为 2(n/4) + 8，实质为截取字符串的长度");
 							createCmdInstruT2(instruArr, "redhat");
-							createConfigImgT2("redhat_service/i5-5-1$1");
+							createConfigImgT2("redhat_service/i5_5_1$1");
 
 						createInstruT2("生成数据配置文件的IPv6地址", "i5-5-1");
 							instruArr = [];
@@ -527,7 +527,7 @@
 				//{ read v6; echo ${v6: 1}; }");
 							instruArr[1] = createCmdInstruSpan("“2001:110::20。", "反向解析的IPv6地址");
 							createCmdInstruT2(instruArr, "redhat");
-							createConfigImgT2("redhat_service/i5-5-2$1");
+							createConfigImgT2("redhat_service/i5_5_2$1");
 
 						createInstruT2("配置区域配置文件", "i5-5-3");
 							createInstruAllTopT2("配置区域配置文件 /etc/named.rfc1912.zones，新建反向解析区域");
@@ -614,7 +614,7 @@
 								`;
 								createLinuxTxtT3(cmd);
 
-								createConfigImgT3("redhat_service/i5-6-2-1$1");
+								createConfigImgT3("redhat_service/i5_6_2_1$1");
 
 							createInstruT3("配置从服务器", "i5-6-2-2");
 								createInstruAllTopT3("在主配置文件 /etc/named.conf，添加主服务器生成的密钥，并启用加密传输");
@@ -638,7 +638,7 @@
 						instruArr[0] = createLinuxCmd("echo $http_proxy");
 						instruArr[1] = createLinuxCmd("echo $https_proxy");
 						createCmdInstruT1(instruArr, "redhat");
-						createConfigImgT1("redhat_service/i8-1$1");
+						createConfigImgT1("redhat_service/i8_1$1");
 
 					createInstruT1("配置网络代理", "i8-2");
 						createInstruT2("’当前shell。立即生效，重启后失效", "i8-2-1");

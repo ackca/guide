@@ -105,7 +105,7 @@
 							instruArr[0] = createLinuxCmd("echo “RHEL7。");
 							instruArr[1] = createCmdInstruSpan("“RHEL7。", "输出内容");
 							createCmdInstruT2(instruArr, "redhat");
-							createConfigImgT2("redhat_basic/i1-1$1");
+							createConfigImgT2("redhat_basic/i1_1$1");
 
 
 						createInstruKeyT2("<br />date – 查看及设置系统的时间日期", "i1-2");
@@ -137,7 +137,7 @@
 								];
 								createHLTableT3(450, '', tBody, 'tDateFormat');
 								document.writeln("<br /><br />");
-								createConfigImgT3("redhat_basic/i1-2$1~2");
+								createConfigImgT3("redhat_basic/i1_2$1~2");
 
 							createInstruT3("设置时间日期");
 								createInstruAllTopT3("设置时间日期时，使用 -s 参数，时间日期可以分别也可以一起设置，只设置日期，时间会变为00:00:00");
@@ -145,7 +145,7 @@
 								instruArr[0] = createLinuxCmd("date -s \"“14:30。\"");
 								instruArr[1] = createCmdInstruSpan("\"“14:30。\"", "时间日期");
 								createCmdInstruT3(instruArr, "redhat");
-								createConfigImgT3("redhat_basic/i1-2$3")
+								createConfigImgT3("redhat_basic/i1_2$3")
 
 
 						createInstruKeyT2("<br />timedatectl – 查看及设置系统的时间日期", "i1-11");
@@ -154,7 +154,7 @@
 								instruArr[0] = createLinuxCmd("timdatectl [ status ]");
 								createCmdInstruT3(instruArr, "redhat");
 
-								createConfigImgT3("redhat_basic/i1-11$1");
+								createConfigImgT3("redhat_basic/i1_11$1");
 
 								createInstruAllTopT3("各行含义如下：");
 								tBody = [
@@ -172,7 +172,7 @@
 								instruArr[0] = createLinuxCmd("timedatectl set-timezone “Asia/Shanghai。");
 								instruArr[1] = createCmdInstruSpan("“Asia/Shanghai。", "时区，可以用Tab补全");
 								createCmdInstruT3(instruArr, "redhat");
-								createConfigImgT3("redhat_basic/i1-11$2");
+								createConfigImgT3("redhat_basic/i1_11$2");
 
 							createInstruT3("<br />设置时间日期");
 								createInstruAllTopT3("软硬时间一起被设置");
@@ -181,31 +181,31 @@
 								instruArr[0] = createLinuxCmd("timedatectl set-time “10:00。");
 								instruArr[1] = createCmdInstruSpan("“10:00。", "时间/日期");
 								createCmdInstruT3(instruArr, "redhat");
-								createConfigImgT3("redhat_basic/i1-11$3~4");
+								createConfigImgT3("redhat_basic/i1_11$3~4");
 
 							createInstruT3("设置时钟同步状态");
 								createInstruAllTopT3("时钟同步功能对应服务：chronyd")
 								instruArr = [];
 								instruArr[0] = createLinuxCmd("timedatectl set-ntp { true | false }")
 								createCmdInstruT3(instruArr, "redhat");
-								createConfigImgT3("redhat_basic/i1-11$5");
+								createConfigImgT3("redhat_basic/i1_11$5");
 
 
 						createInstruKeyT2("<br />reboot – 重启系统", "i1-3");
 							createInstruAllTopT2("由于重启系统涉及硬件资源的管理权限，默认只能使用 root 管理员来重启系统")
-							createConfigImgT2("redhat_basic/i1-3$1");
+							createConfigImgT2("redhat_basic/i1_3$1");
 
 
 						createInstruKeyT2("<br />poweroff – 关闭系统", "i1-4");
 							createInstruAllTopT2("由于重启系统涉及硬件资源的管理权限，默认只能使用 root 管理员来关闭系统")
-							createConfigImgT2("redhat_basic/i1-4$1");
+							createConfigImgT2("redhat_basic/i1_4$1");
 
 
 						createInstruKeyT2("<br />wget – 下载网络文件", "i1-5");
 							instruArr[0] = createLinuxCmd("wget “https://www.jd.com。");
 							instruArr[1] = createCmdInstruSpan("“https://www.jd.com。", "下载链接");
 							createCmdInstruT2(instruArr, "redhat");
-							createConfigImgT2("redhat_basic/i1-5$1");
+							createConfigImgT2("redhat_basic/i1_5$1");
 
 							createInstruAllTopT2("可选的参数如下：");
 							tBody = [
@@ -220,7 +220,7 @@
 
 
 					createInstruKeyT2("<br /><br />ps – 查看系统中的进程状态", "i1-6");
-						createConfigImgT2("redhat_basic/i1-6$1");
+						createConfigImgT2("redhat_basic/i1_6$1");
 
 						createInstruAllTopT2("直接配置输出较少，需要添加相应参数，ps命令还支持直接配置参数，无需 - ，如： ps aux");
 
@@ -231,7 +231,7 @@
 						];
 						createHLTableT2(450, '', tBody, 'tPSpara');
 						document.writeln("<br /><br />");
-						createConfigImgT2("redhat_basic/i1-6$2");
+						createConfigImgT2("redhat_basic/i1_6$2");
 
 						createInstruAllTopT2("使用 -u 时，各列的含义");
 						tBody = [
@@ -261,12 +261,12 @@
 
 
 					createInstruKeyT2("<br /><br />pstree – 以树状图的形式展示进程之间的关系", "i1-12");
-						createConfigImgT2("redhat_basic/i1-12$1");
+						createConfigImgT2("redhat_basic/i1_12$1");
 
 
 					createInstruKeyT2("<br />top – 动态地监视进程活动与系统负载等信息", "i1-7");
 						createInstruAllTopT2("类似于windows中的任务管理器")
-						createConfigImgT2("redhat_basic/i1-7$1");
+						createConfigImgT2("redhat_basic/i1_7$1");
 						createInstruAllTopT2("顶部各个参数含义如下");
 						tBody = [
 							["top - 14:30:11 up 3:16", "系统时间及系统运行时间"],
@@ -317,30 +317,30 @@
 						instruArr[0] = createLinuxCmd("pidof “ping。");
 						instruArr[1] = createCmdInstruSpan("“ping。", "进程名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i1-8$1");
+						createConfigImgT2("redhat_basic/i1_8$1");
 
 
 					createInstruKeyT2("<br />kill – 终止 PID 的服务进程", "i1-9");
 						instruArr[0] = createLinuxCmd("kill “1690。");
 						instruArr[1] = createCmdInstruSpan("“4148。", "PID");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i1-9$1");
+						createConfigImgT2("redhat_basic/i1_9$1");
 
 
 					createInstruKeyT2("<br />killall – 终止某个服务所对应的全部进程", "i1-9");
 						instruArr[0] = createLinuxCmd("killall “ping。");
 						instruArr[1] = createCmdInstruSpan("“sshd。", "服务名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i1-10$1");
+						createConfigImgT2("redhat_basic/i1_10$1");
 
 					createInstruT0("<br />系统状态检测命令", "i2");
 						createInstruKeyT2("ifconfig – 获取网卡配置与网络状态等信息", "i2-1");
-						createConfigImgT2("redhat_basic/i2-1$1");
+						createConfigImgT2("redhat_basic/i2_1$1");
 
 
 					createInstruKeyT2("<br />uname – 获取网卡配置与网络状态等信息", "i2-2");
 						createInstruAllTopT2("直接配置输出较少，一般添加 -a 参数")
-						createConfigImgT2("redhat_basic/i2-2$1");
+						createConfigImgT2("redhat_basic/i2_2$1");
 						tBody = [
 							["Linux", "内核名称"],
 							["localhost.localdomain", "主机名"],
@@ -353,7 +353,7 @@
 
 
 					createInstruKeyT2("<br /><br />uptime – 查看系统的负载信息", "i2-3");
-						createConfigImgT2("redhat_basic/i2-3$1");
+						createConfigImgT2("redhat_basic/i2_3$1");
 						createInstruAllTopT2("与 top 命令的第一行信息相同");
 						tBody = [
 							["top - 14:30:11 up 3:16", "系统时间及系统运行时间"],
@@ -365,16 +365,16 @@
 
 					createInstruKeyT2("<br /><br /><br />free – 查看当前系统中内存的使用量信息", "i2-4");
 						createInstruAllTopT2("一般使用 -h 参数，系统会自动选择合适的内存大小单位");
-						createConfigImgT2("redhat_basic/i2-4$1");
+						createConfigImgT2("redhat_basic/i2_4$1");
 
 
 					createInstruKeyT2("<br />who – 查看当前登入主机的用户终端信息", "i2-5");
-						createConfigImgT2("redhat_basic/i2-5$1");
+						createConfigImgT2("redhat_basic/i2_5$1");
 
 
 					createInstruKeyT2("<br />last – 查看所有系统的登录记录", "i2-6");
 						createInstruAllTopT2("使用 last 命令可以查看本机的登录记录但是，由于这些信息都是以日志文件的形式保存在系统中，很可能被篡改");
-						createConfigImgT2("redhat_basic/i2-6$1");
+						createConfigImgT2("redhat_basic/i2_6$1");
 
 
 					createInstruKeyT2("<br />ping – 测试主机之间的网络连通性", "i2-9");
@@ -392,7 +392,7 @@
 						];
 						createHLTableT2(550, '', tBody, 'tPing');
 						document.writeln("<br />");
-						createConfigImgT2("redhat_basic/i2-9$1");
+						createConfigImgT2("redhat_basic/i2_9$1");
 
 
 					createInstruKeyT2("<br />tracepath – 查看数据包到达目的主机时经过的所有路由信息", "i2-10");
@@ -401,7 +401,7 @@
 						instruArr[1] = createCmdInstruSpan("-n", "一般添加 -n 参数，不对路径上的IP地址进行反向域名解析，提高速度");
 						instruArr[2] = createCmdInstruSpan("“202.99.96.68。", "测试的IP或域名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i2-10$1");
+						createConfigImgT2("redhat_basic/i2_10$1");
 
 
 					createInstruKeyT2("<br />netstat – 查看网络连接相关信息", "i2-11");
@@ -419,25 +419,25 @@
 						createHLTableT2(370, '', tBody, 'tNetstat');
 
 						createInstruAllTopT2("<br />查看Linux主机对外开放服务可以使用 netstat -ltunp");
-						createConfigImgT2("redhat_basic/i2-11$1");
+						createConfigImgT2("redhat_basic/i2_11$1");
 
 						createInstruAllTopT2("查看正在使用链接可以使用 netstat -tunp");
-						createConfigImgT2("redhat_basic/i2-11$2");
+						createConfigImgT2("redhat_basic/i2_11$2");
 
 
 					createInstruKeyT2("<br />history – 查看历史执行的命令", "i2-7");
-						createConfigImgT2("redhat_basic/i2-7$1");
+						createConfigImgT2("redhat_basic/i2_7$1");
 						createInstruAllTopT2("可以使用 -c 参数清空所有的命令历史记录");
-						createConfigImgT2("redhat_basic/i2-7$2");
+						createConfigImgT2("redhat_basic/i2_7$2");
 
 
 					createInstruKeyT2("<br />sosreport – 收集系统配置及架构信息", "i2-8");
-						createConfigImgT2("redhat_basic/i2-8$1");
+						createConfigImgT2("redhat_basic/i2_8$1");
 
 
 			createInstruT0("<br />查找定位文件命令", "i3");
 					createInstruKeyT2("pwd – 查看用户当前所处的工作目录", "i3-1");
-						createConfigImgT2("redhat_basic/i3-1$1");
+						createConfigImgT2("redhat_basic/i3_1$1");
 
 
 					createInstruKeyT2("<br />cd – 切换工作目录", "i3-2");
@@ -446,7 +446,7 @@
 						instruArr[0] = createLinuxCmd("cd “/bin。");
 						instruArr[1] = createCmdInstruSpan("“/bin。", "目的目录");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i3-2$1");
+						createConfigImgT2("redhat_basic/i3_2$1");
 
 						createInstruAllTopT2("一些特殊的目录表示方式");
 						tBody = [
@@ -456,11 +456,11 @@
 						];
 						createHLTableT2(250, '', tBody, 'tCD');
 						document.writeln("<br />");
-						createConfigImgT2("redhat_basic/i3-2$2");
+						createConfigImgT2("redhat_basic/i3_2$2");
 
 
 					createInstruKeyT2("<br />ls – 查看目录中的文件信息", "i3-3");
-						createConfigImgT2("redhat_basic/i3-3$1");
+						createConfigImgT2("redhat_basic/i3_3$1");
 
 						createInstruAllTopT2("蓝色的表示为目录，可使用的参数如下");
 						tBody = [
@@ -469,14 +469,14 @@
 						];
 						createHLTableT2(500, '', tBody, 'tLS');
 						document.writeln("<br />");
-						createConfigImgT2("redhat_basic/i3-3$2");
+						createConfigImgT2("redhat_basic/i3_3$2");
 
 						createInstruAllTopT2("可以添加文件名，单独查看某个文件的信息");
-						createConfigImgT2("redhat_basic/i3-3$3");
+						createConfigImgT2("redhat_basic/i3_3$3");
 
 
 					createInstruKeyT2("<br />tree – 以树状图的形式列出目录内容及结构", "i3-4");
-						createConfigImgT2("redhat_basic/i3-4$1");
+						createConfigImgT2("redhat_basic/i3_4$1");
 
 
 					createInstruKeyT2("<br />find – 按照指定条件来查找文件所对应的位置", "i3-5");
@@ -505,14 +505,14 @@
 						];
 						createHLTableT2(1050, '', tBody, 'tFind');
 						document.writeln("<br />");
-						createConfigImgT2("redhat_basic/i3-5$1");
+						createConfigImgT2("redhat_basic/i3_5$1");
 
 					createInstruKeyT2("<br />grep – 在文本中执行关键词搜索", "i3-9");
 						instruArr[0] = createLinuxCmd("grep “object。 “Firepower.txt");
 						instruArr[1] = createCmdInstruSpan("“object。", "关键词");
 						instruArr[2] = createCmdInstruSpan("“Firepower.txt。", "搜索的文件名（路径）");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i3-9$1");
+						createConfigImgT2("redhat_basic/i3_9$1");
 
 						createInstruAllTopT2("可选参数如下：");
 						tBody = [
@@ -530,7 +530,7 @@
 
 						createInstruAllTopT2("第一次使用locate命令之前，记得先执行 updatedb 命令来生成索引数据库，然后再进行查找");
 
-						createConfigImgT2("redhat_basic/i3-6$1");
+						createConfigImgT2("redhat_basic/i3_6$1");
 
 						createInstruAllTopT2("生成索引数据库后，再使用locate");
 
@@ -538,21 +538,21 @@
 						instruArr[0] = createLinuxCmd("locate “startup。");
 						instruArr[1] = createCmdInstruSpan("“startup。", "部分文件名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i3-6$2");
+						createConfigImgT2("redhat_basic/i3_6$2");
 
 
 					createInstruKeyT2("<br />whereis – 按照名称快速搜索二进制程序（命令）、源代码以及帮助文件所对应的位置", "i3-7");
 						instruArr[0] = createLinuxCmd("whereis “python3。");
 						instruArr[1] = createCmdInstruSpan("“python3。", "命令名称");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i3-7$1");
+						createConfigImgT2("redhat_basic/i3_7$1");
 
 
 					createInstruKeyT2("<br />which – 指定名称快速搜索二进制程序（命令）所对应的位置", "i3-8");
 						instruArr[0] = createLinuxCmd("which “python3。");
 						instruArr[1] = createCmdInstruSpan("“python3。", "命令名称");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i3-8$1");
+						createConfigImgT2("redhat_basic/i3_8$1");
 
 
 			createInstruT0("<br />文本文件编辑命令", "i4");
@@ -561,7 +561,7 @@
 						instruArr[1] = createCmdInstruSpan("-n", "显示行号");
 						instruArr[2] = createCmdInstruSpan("“anaconda-ks.cfg。", "文件名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i4-1$1~2");
+						createConfigImgT2("redhat_basic/i4_1$1~2");
 
 
 					createInstruKeyT2("<br />more – 查看纯文本文件（内容较多的）", "i4-2");
@@ -570,7 +570,7 @@
 						instruArr[1] = createCmdInstruSpan("“anaconda-ks.cfg。", "文件名");
 						createCmdInstruT2(instruArr, "redhat");
 						createInstruAllTopT2("使用more时，首次查看一页的内容，之后每按一次回车，多显示一行内容，每按一次空格，显示一页内容");
-						createConfigImgT2("redhat_basic/i4-2$1");
+						createConfigImgT2("redhat_basic/i4_2$1");
 
 
 					createInstruKeyT2("<br />head – 查看纯文本文档的前n行", "i4-3");
@@ -578,7 +578,7 @@
 						instruArr[1] = createCmdInstruSpan("“8。", "查看的行数");
 						instruArr[2] = createCmdInstruSpan("“anaconda-ks.cfg。", "文件名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i4-3$1");
+						createConfigImgT2("redhat_basic/i4_3$1");
 
 
 					createInstruKeyT2("<br />tail – 查看纯文本文档的后n行或持续刷新内容", "i4-4");
@@ -587,20 +587,20 @@
 							instruArr[1] = createCmdInstruSpan("“5。", "查看的行数");
 							instruArr[2] = createCmdInstruSpan("“anaconda-ks.cfg。", "文件名");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i4-3$1");
+							createConfigImgT3("redhat_basic/i4_3$1");
 
 						createInstruT3("持续刷新");
 							instruArr = [];
 							instruArr[0] = createLinuxCmd("tail -f “/var/log/messages。");
 							instruArr[1] = createCmdInstruSpan("“anaconda-ks.cfg。", "文件名");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i4-4$2");
+							createConfigImgT3("redhat_basic/i4_4$2");
 
 
 					createInstruKeyT2("<br />tr – 改变文本文件中的内容", "i4-5");
 						createInstruAllTopT2("将通过管道符号传递的内容通过相应的规则进行改变，只是改变后输出，不直接影响原文件");
 						createInstruAllTopT2("改变的规则可以通过正则表达式实现，如将文件中的小写字母改为大写");
-						createConfigImgT2("redhat_basic/i4-5$1");
+						createConfigImgT2("redhat_basic/i4_5$1");
 
 
 					createInstruKeyT2("<br />wc – 统计指定文本的行数、字数、字节数", "i4-6");
@@ -608,7 +608,7 @@
 						instruArr[0] = createLinuxCmd("wc “anaconda-ks.cfg。");
 						instruArr[1] = createCmdInstruSpan("“anaconda-ks.cfg。", "文件名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i4-6$1");
+						createConfigImgT2("redhat_basic/i4_6$1");
 
 						createInstruAllTopT2("不添加参数则默认输出 行数 字数 字节数 文件名");
 						createInstruAllTopT2("独立输出使用有参数如下：<br />");
@@ -623,7 +623,7 @@
 					createInstruKeyT2("<br /><br />stat – 查看文件的具体存储信息和各类时间信息", "i4-7");
 						instruArr[0] = createLinuxCmd("stat “anaconda-ks.cfg。");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i4-7$1");
+						createConfigImgT2("redhat_basic/i4_7$1");
 						tBody = [
 							["Acces", "访问时间，最后一次查看文件内容的时间"],
 							["Modify", "修改时间，最后一次修改文件内容的时间"],
@@ -638,7 +638,7 @@
 						instruArr[2] = createCmdInstruSpan("-f", "表示提取的的列数（从1列开始）");
 						createCmdInstruT2(instruArr, "redhat");
 						createInstruAllTopT2("如下例子所示，以 : 分隔，提取第1列中的字符，即提取用户名");
-						createConfigImgT2("redhat_basic/i4-8$1");
+						createConfigImgT2("redhat_basic/i4_8$1");
 
 
 					createInstruKeyT2("<br />diff – 比较多个文本文件的差异", "i4-9");
@@ -648,7 +648,7 @@
 						instruArr[3] = createCmdInstruSpan("ASA1.txt", "文件1");
 						instruArr[4] = createCmdInstruSpan("ASA2.txt", "文件1");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i4-9$1");
+						createConfigImgT2("redhat_basic/i4_9$1");
 
 
 					createInstruKeyT2("<br />uniq – 去除文本中连续的重复行", "i4-10");
@@ -656,7 +656,7 @@
 						instruArr[0] = createLinuxCmd("uniq “ASA1.txt。");
 						instruArr[1] = createCmdInstruSpan("“ASA1.txt。", "文件名（路径）");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i4-10$1");
+						createConfigImgT2("redhat_basic/i4_10$1");
 
 
 					createInstruKeyT2("<br />sort – 命令用于对文本内容进行再排序", "i4-11");
@@ -665,7 +665,7 @@
 						createCmdInstruT2(instruArr, "redhat");
 
 						createInstruAllTopT2("默认的排序方式如下：");
-						createConfigImgT2("redhat_basic/i4-11$1");
+						createConfigImgT2("redhat_basic/i4_11$1");
 
 						createInstruAllTopT2("可选参数为：");
 						tBody = [
@@ -680,7 +680,7 @@
 						createHLTableT2(300, '', tBody, 'tSort');
 
 						createInstruAllTopT2("<br />一个复杂的例子，/etc/passwd中的部分内容，以第三列进行排序");
-						createConfigImgT2("redhat_basic/i4-11$2");
+						createConfigImgT2("redhat_basic/i4_11$2");
 
 
 			createInstruT0("<br />文件目录管理命令", "i5");
@@ -690,7 +690,7 @@
 							instruArr[0] = createLinuxCmd("touch “rhel.txt。");
 							instruArr[1] = createCmdInstruSpan("“rhel.txt。", "文件名");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-1$1");
+							createConfigImgT3("redhat_basic/i5_1$1");
 
 						createInstruT3("修改文件的时间");
 							instruArr[0] = createLinuxCmd("touch { -a | -m | -d } “rhel.txt。");
@@ -699,7 +699,7 @@
 							instruArr[3] = createCmdInstruSpan("-d", "同时修改 atime 与 mtime");
 							instruArr[4] = createCmdInstruSpan("“rhel.txt。", "文件名");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-1$2");
+							createConfigImgT3("redhat_basic/i5_1$2");
 
 
 					createInstruKeyT2("mkdir – 创建空白的目录", "i5-2");
@@ -708,14 +708,14 @@
 							instruArr[0] = createLinuxCmd("mkdir “fw。");
 							instruArr[1] = createCmdInstruSpan("“fw。", "目录");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-2$1");
+							createConfigImgT3("redhat_basic/i5_2$1");
 
 						createInstruT3("创建多层目录");
 							instruArr[0] = createLinuxCmd("mkdir -p “fw/cisco/asa。");
 							instruArr[1] = createCmdInstruSpan("-p", "创建多层目录，添加 -p 参数");
 							instruArr[2] = createCmdInstruSpan("“fw/cisco/asa。", "多层目录");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-2$2");
+							createConfigImgT3("redhat_basic/i5_2$2");
 
 
 					createInstruKeyT2("<br />cp – 复制文件或目录", "i5-3");
@@ -724,7 +724,7 @@
 							instruArr[1] = createCmdInstruSpan("“ASA1.txt。", "源文件名");
 							instruArr[2] = createCmdInstruSpan("“Firepower.txt。", "目的文件名");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-3$1");
+							createConfigImgT3("redhat_basic/i5_3$1");
 
 						createInstruT3("复制目录");
 							instruArr[0] = createLinuxCmd("cp -r “fw。 “ap。");
@@ -732,7 +732,7 @@
 							instruArr[2] = createCmdInstruSpan("“fw。", "源目录");
 							instruArr[3] = createCmdInstruSpan("“ap。", "目的目录");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-3$2");
+							createConfigImgT3("redhat_basic/i5_3$2");
 
 						createInstruT3("其它可选参数");
 							tBody = [
@@ -752,14 +752,14 @@
 							instruArr[1] = createCmdInstruSpan("“ASA1.txt。", "起始文件（路径）");
 							instruArr[2] = createCmdInstruSpan("“/ASA1.txt。。", "新文件（路径）");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-4$1");
+							createConfigImgT3("redhat_basic/i5_4$1");
 
 						createInstruT3("重命名文件");
 							instruArr[0] = createLinuxCmd("mv “ASA2.txt。 “ISE.txt。");
 							instruArr[1] = createCmdInstruSpan("“ASA2.txt。", "源文件（路径）");
 							instruArr[2] = createCmdInstruSpan("“ISE.txt。", "目的文件（路径）");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i5-4$2");
+							createConfigImgT3("redhat_basic/i5_4$2");
 
 
 					createInstruKeyT2("<br /><br />rm – 删除文件或目录", "i5-5");
@@ -769,7 +769,7 @@
 						instruArr[3] = createCmdInstruSpan("“ISE.txt。", "文件名（路径）");
 						instruArr[4] = createCmdInstruSpan("“fw。", "目录名（路径）");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i5-5$1~2");
+						createConfigImgT2("redhat_basic/i5_5$1~2");
 
 
 					createInstruKeyT2("<br /><br />dd – 按指定大小和个数的数据块来复制文件或转换文件", "i5-6");
@@ -780,7 +780,7 @@
 						instruArr[3] = createCmdInstruSpan("bs=“2。", "每块复制的文件大小");
 						instruArr[4] = createCmdInstruSpan("count=“1。", "复制次数");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i5-6$1");
+						createConfigImgT2("redhat_basic/i5_6$1");
 
 
 					createInstruKeyT2("<br /><br />file – 查看文件的类型", "i5-7");
@@ -788,7 +788,7 @@
 						instruArr[0] = createLinuxCmd("file “centos.txt。");
 						instruArr[1] = createCmdInstruSpan("“centos.txt。", "文件名（路径）");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i5-7$1");
+						createConfigImgT2("redhat_basic/i5_7$1");
 
 
 			createInstruT0("<br />打包压缩命令", "i6");
@@ -815,12 +815,12 @@
 					createInstruKeyT2("<br />压缩时一般使用 <span class='spanY'>-czvf</span> 参数", "i6-1-2");
 						instruArr[0] = createLinuxCmd("tar -czvf “压缩文件名。 “被压缩文件名或目录名。");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i6-1$1");
+						createConfigImgT2("redhat_basic/i6_1$1");
 
 					createInstruKeyT2("解压缩时一般使用 <span class='spanY'>-xzvf</span> 参数，不解压到当前目录则使用 <span class='spanY'>-C</span>", "i6-1-3");
 						instruArr[0] = createLinuxCmd("tar -xzvf “被压缩文件名。 [ -C “目录名。 ]");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i6-1$2");
+						createConfigImgT2("redhat_basic/i6_1$2");
 
 
 			createInstruT0("<br />重定向<br />", "i7");
@@ -838,7 +838,7 @@
 
 			createInstruT0("<br />vi/vim文本编辑器", "i8");
 					createInstruT2("模式切换", "i8-1");
-						createConfigImgT2("redhat_basic/i8-1$1");
+						createConfigImgT2("redhat_basic/i8_1$1");
 						createInstruAllTopT2("a、i、o的区别如下");
 						tBody = [
 							['a', '插入位置为光标下一位'],
@@ -885,14 +885,14 @@
 						instruArr[0] = createLinuxCmd("id “root。");
 						instruArr[1] = createCmdInstruSpan("“root。", "用户名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i9-1$1");
+						createConfigImgT2("redhat_basic/i9_1$1");
 
 
 					createInstruKeyT2("<br />useradd – 创建用户账户", "i9-2");
 						instruArr[0] = createLinuxCmd("useradd “itachi。");
 						instruArr[1] = createCmdInstruSpan("“root。", "用户名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i9-2$1");
+						createConfigImgT2("redhat_basic/i9_2$1");
 
 					createInstruAllTopT2("可选的参数如下：");
 						tBody = [
@@ -907,14 +907,14 @@
 						createHLTableT2(580, '', tBody, 'tUseradd');
 
 						createInstruAllTopT2("<br />如下所示，创建一个名为itachi设置用户基本组和家目录，修改后的解释器表示该用户不能用于登录linux系统");
-						createConfigImgT2("redhat_basic/i9-2$2");
+						createConfigImgT2("redhat_basic/i9_2$2");
 
 
 					createInstruKeyT2("<br />groupadd – 创建用户组", "i9-3");
 						instruArr[0] = createLinuxCmd("groupadd “uchiha。");
 						instruArr[1] = createCmdInstruSpan("“root。", "用户名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i9-3$1");
+						createConfigImgT2("redhat_basic/i9_3$1");
 
 
 					createInstruKeyT2("<br />usermod – 修改用户的属性", "i9-4");
@@ -937,7 +937,7 @@
 						createHLTableT2(800, '', tBody, 'tUsermod');
 
 						createInstruAllTopT2("<br />如下所示，将用户 itachi 添加到组 uchiha 中<br />");
-						createConfigImgT2("redhat_basic/i9-4$1");
+						createConfigImgT2("redhat_basic/i9_4$1");
 
 
 					createInstruKeyT2("<br />passwd – 修改用户的密码、过期时间等信息", "i9-5");
@@ -956,17 +956,17 @@
 						createHLTableT2(950, '', tBody, 'tPasswd');
 
 						createInstruAllTopT2("<br />修改自己的密码，直接输入 passwd 即可");
-						createConfigImgT2("redhat_basic/i9-5$1");
+						createConfigImgT2("redhat_basic/i9_5$1");
 
 						createInstruAllTopT2("<br />修改其它用户的密码，使用 passwd “用户名。");
-						createConfigImgT2("redhat_basic/i9-5$2");
+						createConfigImgT2("redhat_basic/i9_5$2");
 
 
 					createInstruKeyT2("<br />userdel – 删除已有的用户账户", "i9-6");
 						instruArr[0] = createLinuxCmd("userdel “itachi。");
 						instruArr[1] = createCmdInstruSpan("“itachi。", "用户名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i9-6$1");
+						createConfigImgT2("redhat_basic/i9_6$1");
 
 						createInstruAllTopT2("可选的参数如下：");
 						tBody = [
@@ -981,16 +981,16 @@
 						instruArr[0] = createLinuxCmd("su [ ”｝-》 ] “itachi。");
 						instruArr[1] = createCmdInstruSpan("“itachi。", "用户名");
 						createCmdInstruT2(instruArr, "redhat");
-						createConfigImgT2("redhat_basic/i9-7$1");
+						createConfigImgT2("redhat_basic/i9_7$1");
 						createInstruAllTopT2("root切换到其它用户无需输入密码，其它用户切换则需要输入密码");
-						createConfigImgT2("redhat_basic/i9-7$2");
+						createConfigImgT2("redhat_basic/i9_7$2");
 
 
 					createInstruKeyT2("<br />sudo – 普通用户赋予额外的权限", "i9-8");
 						createInstruT3("root配置普通用户的sudo权限");
 							createInstruAllTopT3("默认情况下，普通用户没有额外权限，通过 visudo 进行配置");
 
-							createConfigImgT3("redhat_basic/i9-8-1$1");
+							createConfigImgT3("redhat_basic/i9_8_1$1");
 
 							createInstruAllTopT3("在文件的100行，为配置示例，root：进行命令授权用户，三个ALL从左到右依次的含义为：");
 
@@ -1002,7 +1002,7 @@
 							createHLTableT3(1000, '', tBody, 'tSudo1');
 
 							createInstruAllTopT3("<br />如下所示，赋予itachi重启服务器的权限，由于使用sudo时默认需要输入用户的密码，为了方便，不再输入");
-							createConfigImgT3("redhat_basic/i9-8-1$2");
+							createConfigImgT3("redhat_basic/i9_8_1$2");
 
 						createInstruT3("用户使用sudo");
 							instruArr[0] = createLinuxCmd("sudo [ “参数。 ] [ “reboot。 ]");
@@ -1019,7 +1019,7 @@
 							];
 							createHLTableT3(650, '', tBody, 'tSudo2');
 							document.writeln("<br />");
-							createConfigImgT3("redhat_basic/i9-8-2$1");
+							createConfigImgT3("redhat_basic/i9_8_2$1");
 
 
 			createInstruT0("<br />文件权限相关命令", "i10");
@@ -1031,7 +1031,7 @@
 
 							createInstruAllTopT3("passwd命令添加上特殊权限 SUID，使普通用户临时获得程序所有者的身份，修改shadow文件");
 
-							createConfigImgT3("redhat_basic/i10-1-1$1");
+							createConfigImgT3("redhat_basic/i10_1_1$1");
 
 
 						createInstruKeyT3("<br />SUID", "i10-1-2");
@@ -1045,7 +1045,7 @@
 
 							createInstruAllTopT3("这种情况下，用到的就是SGID的第二个功能，即在某个目录中创建的文件自动继承该目录的用户组（只可以对目录进行设置）");
 
-							createConfigImgT3("redhat_basic/i10-1-2$1");
+							createConfigImgT3("redhat_basic/i10_1_2$1");
 
 
 						createInstruKeyT3("<br />SBIT – 目录中的文件就只能被其所有者删除", "i10-1-3");
@@ -1055,7 +1055,7 @@
 
 							createInstruAllTopT3("默认情况下，/tmp 就被赋予了SBIT权限");
 
-							createConfigImgT3("redhat_basic/i10-1-3$1");
+							createConfigImgT3("redhat_basic/i10_1_3$1");
 
 
 					createInstruKeyT2("<br />chmod – 管理文件权限", "i10-4");
@@ -1078,7 +1078,7 @@
 
 							createInstruAllTopT3("<br />如下所示，对所有人赋予执行hello.py的权限");
 
-							createConfigImgT3("redhat_basic/i10-4-1$1");
+							createConfigImgT3("redhat_basic/i10_4_1$1");
 
 
 						createInstruT3("<br /><br />数字方式配置权限", "i10-4-2");
@@ -1096,7 +1096,7 @@
 
 							createInstruAllTopT3("<br />如下所示，对所有人赋予执行hello.py的权限");
 
-							createConfigImgT3("redhat_basic/i10-4-2$1");
+							createConfigImgT3("redhat_basic/i10_4_2$1");
 
 
 					createInstruT2("<br />chown – 管理文件所属", "i10-5");
@@ -1117,7 +1117,7 @@
 						];
 						createHLTableT2(550, '', tBody, 'tChown');
 						document.writeln("<br />");
-						createConfigImgT2("redhat_basic/i10-5$1");
+						createConfigImgT2("redhat_basic/i10_5$1");
 
 					createInstruT2("<br />文件的隐藏属性", "i10-2");
 						createInstruKeyT3("chattr – 管理隐藏属性", "i10-2-1");
@@ -1146,7 +1146,7 @@
 							];
 							createHLTableT3(960, '', tBody, 'tChattr');
 							document.writeln("<br />");
-							createConfigImgT3("redhat_basic/i10-2-1$1");
+							createConfigImgT3("redhat_basic/i10_2_1$1");
 
 
 						createInstruKeyT3("<br />lsattr – 查看隐藏属性", "i10-2-2");
@@ -1155,7 +1155,7 @@
 							instruArr[1] = createCmdInstruSpan("-a", "列出目录中的所有文件，包括隐藏文件");
 							instruArr[2] = createCmdInstruSpan("“ap。", "文件/目录，省略则查看当前目录下所有");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i10-2-2$1");
+							createConfigImgT3("redhat_basic/i10_2_2$1");
 
 
 					createInstruT2("<br />文件访问控制列表", "i10-3");
@@ -1173,29 +1173,29 @@
 							instruArr = [];
 							instruArr[0] = createLinuxCmd("setfacl -Rm u”:。itachi”:。rwx /root");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i10-3-1$1");
+							createConfigImgT3("redhat_basic/i10_3_1$1");
 
 
 							createInstruAllTopT3("<br />查看权限时，如果最后出现 ‘<b>+</b>。 说明添加了ACL");
-							createConfigImgT3("redhat_basic/i10-3-1$2");
+							createConfigImgT3("redhat_basic/i10_3_1$2");
 
 
 							createInstruAllTopT3("<br />赋权限的对象包括u(user)、g(group)、o(other)、m(mask)");
 							createInstruAllTopT3("mask为最高限制，对user、group、other赋予的权限如果超过mask的限制，则无效");
-							createConfigImgT3("redhat_basic/i10-3-1$3");
+							createConfigImgT3("redhat_basic/i10_3_1$3");
 
 
 							createInstruAllTopT3("<br />删除权限时，不能只删除某条权限（比如只删除写的权限），需要如下基于对象的方式删除");
 							instruArr[0] = createLinuxCmd("setfacl -x u”:。itachi /root");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i10-3-1$4");
+							createConfigImgT3("redhat_basic/i10_3_1$4");
 
 
 							createInstruKeyT3("<br />getfacl – 查看文件的ACL权限规则", "i10-3-2");
 							instruArr[0] = createLinuxCmd("getfacl “/root。");
 							instruArr[1] = createCmdInstruSpan("“/root。", "文件/目录");
 							createCmdInstruT3(instruArr, "redhat");
-							createConfigImgT3("redhat_basic/i10-3-2$1");
+							createConfigImgT3("redhat_basic/i10_3_2$1");
 
 			</script>
 		</div>
