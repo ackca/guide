@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-IPv6</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(ipv6);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/ipv6.css">
+<!--	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/ipv6.css">-->
 </head>
 <body>
 	<div class="container-fluid">
@@ -138,7 +138,7 @@
 						["FF02::2", "所有路由器", ""],
 						["FF02::1:2", "所有DHCP代理", "所有DHCP服务器及中继代理监听的地址"],
 					];
-					createHLTableT0(1100, tHeader, tBody, "tV6address");
+					createHLTableT0(1000, tHeader, tBody, "tV6address");
 
 				createInstruT0("IPv6特定地址的构成方式", "i5");
 					createInstruT1("IPv6组播mac地址", "i5-1");

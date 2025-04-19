@@ -77,6 +77,7 @@ const certs_mgmt = {
 		"添加受信任的根证书": {
 			"i1-1": "Windows系统",
 			"i1-2": "RHEL 7/8/9",
+			"i1-3": "docker、containerd",
 		}
 	},
 

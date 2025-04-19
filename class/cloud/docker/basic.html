@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/docker.svg"/>
 	<title>混合云-docker-基础配置</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(basic);
 	</script>
@@ -23,65 +23,84 @@
 				createInstruT0("安装docker（Rocky 9.1 在线）", "i1");
 					createInstruAllTopT0("官方文档地址：<a class='link' href='https://docs.docker.com/engine/install/' target='_blank'>https://docs.docker.com/engine/install/</a>");
 						createInstruT2("删除原有组件");
-							let instruArr = new Array();
-							instruArr[0] = createLinuxCmd(
-								"dnf remove docker \\ " +
-						                    "docker-client \\ " +
-						                    "docker-client-latest \\ " +
-						                    "docker-common \\ " +
-						                    "docker-latest \\ " +
-						                    "docker-latest-logrotate \\ " +
-						                     "docker-logrotate \\ " +
-						                    "docker-engine \\ " +
-						                    "podman \\ " +
-						                    "runc"
-							);
-							createCmdInstruT2(instruArr, "docker");
+							let cmd = `
+								dnf remove docker \\
+										   docker-client \\
+										   docker-client-latest \\
+										   docker-common \\
+										   docker-latest \\
+										   docker-latest-logrotate \\
+										   docker-logrotate \\
+										   docker-engine \\
+										   podman \\
+										   runc
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("配置国内镜像（阿里云）");
-							instruArr[0] = createLinuxCmd(
-								"dnf config-manager --add-repo \\ " +
-									"https://mirrors.aliyun.com/docker-ce/linux/rhel/docker-ce.repo"
-							);
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								dnf config-manager --add-repo \\
+												   https://mirrors.aliyun.com/docker-ce/linux/rhel/docker-ce.repo
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("安装相关组件");
-							instruArr[0] = createLinuxCmd("dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin");
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("启用服务");
-							instruArr[0] = createLinuxCmd("systemctl enable --now docker");
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								systemctl enable --now docker
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("配置镜像加速服务");
-							createInstruAllTopT2("登录阿里云后，选择镜像加速服务，找到镜像加速器，粘贴相应配置即可（不同账号不同）<br/>");
-							createConfigImgT2("basic/i1$1");
+							// createInstruAllTopT2("登录阿里云后，选择镜像加速服务，找到镜像加速器，粘贴相应配置即可（不同账号不同）<br/>");
+							// createConfigImgT2("basic/i1$1");
+							cmd = `
+								mkdir -p /etc/docker
+								tee /etc/docker/daemon.json <<EOF
+								{
+									"registry-mirrors": ["hub.itachi.tech"]
+								}
+								EOF
+
+								systemctl daemon-reload
+								systemctl restart docker
+							`;
+							createLinuxTxtT2(cmd);
 
 						createInstruT2("配置镜像代理");
-							let cmd = `
+							cmd = `
 								mkdir -p /etc/docker
-								tee /etc/docker/daemon.json <<-'EOF'
+								tee /etc/docker/daemon.json <<EOF
 								{
 									"proxies": {
 										"http-proxy": "http://127.0.0.1:7897",
 										"https-proxy": "http://127.0.0.1:7897",
-										"no-proxy": "localhost,::1,127.0.0.1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+										"no-proxy": "localhost,::1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 									}
 								}
 								EOF
+
 								systemctl daemon-reload
 								systemctl restart docker
 							`;
 							createLinuxTxtT2(cmd);
 
 						createInstruT2("验证安装");
-							instruArr[0] = createLinuxCmd("docker run hello-world");
-							createCmdInstruT2(instruArr, "docker");
+							cmd = `
+								docker run hello-world
+							`;
+							createLinuxTxtT2(cmd);
 							createConfigImgT2("basic/i1$2");
 
 
 				createInstruT0("镜像相关配置", "i2");
 						createInstruT2("从docker hub下载镜像", "i2-1");
+							let instruArr = new Array();
 							instruArr[0] = createLinuxCmd("docker pull “centos。[”:。“7。]");
 							instruArr[1] = createCmdInstruSpan("“centos。", "镜像名");
 							instruArr[2] = createCmdInstruSpan("“7。", "镜像版本，默认为最新（lastest）");
@@ -143,6 +162,7 @@
 				createInstruT0("容器相关配置", "i3");
 					createInstruT1("运行容器", "i3-1");
 						createInstruT2("运行容器", "i3-1-1");
+						instruArr = new Array()
 							instruArr[0] = createLinuxCmd("docker run --name “itachi。 -d -it -e “IF。”=。“eth0。 “centos。[”:。“7。]");
 							instruArr[1] = createCmdInstruSpan("--name “itachi。", "为容器起名，itachi为容器名，不配置会自动起一个");
 							instruArr[2] = createCmdInstruSpan("-d", "后台运行容器");

@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/cert.png" />
-	<title>NetDevOps-证书服务-系统证书管理</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<title>NetDevOps-证书服务-证书管理</title>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(certs_mgmt);
 	</script>
@@ -21,10 +21,26 @@
 					createInstruT1("RHEL 7/8/9", "i1-2");
 						createInstruAllTopT1("将根证书存入　’/etc/pki/ca-trust/source/anchors/ 。");
 						createInstruAllTopT1("更新受信任的根证书");
-						let instruArr = new Array();
-						instruArr[0] = createLinuxCmd("update-ca-trust");
-						createCmdInstruT1(instruArr, "redhat_cert");
-						createConfigImgT1("certs_mgmt/i1_2$1");
+
+						let cmd = `
+							update-ca-trust
+						`;
+						createLinuxTxtT2(cmd);
+						createConfigImgT2("certs_mgmt/i1_2$1");
+
+					createInstruT1("docker、containerd", "i1-3");
+						createInstruAllTopT1("均需要先添加系统信任");
+						createInstruAllTopT1("docker、containerd信任方式基本一致，只是路径不同");
+						createInstruAllTopT1("下列’路径（文件名）均为固定格式。，只有域名根据实际修改");
+						createInstruAllTopT1("域名为 ’harbor.itachi.tech。");
+
+						createInstruAllTopT1("需要将’根证书。放入 ");
+						createInstruAllTopT1("　　‘docker。：　　　’/etc/‘docker。/certs.d/“harbor.itachi.tech》中");
+						createInstruAllTopT1("　　‘containerd。：’/etc/‘containerd。/certs.d/“harbor.itachi.tech》中");
+						createInstruAllTopT1("如果不使用默认的443端口，则需要配置使用的端口，如 ’/etc/docker/certs.d/“harbor.itachi.tech:8443》");
+						createInstruAllTopT1("‘根证书。文件名：’ca.crt。");
+
+						createConfigImgT1("certs_mgmt/i1_3$1");
 
 				createInstruT0("windows证书管理工具", "i2");
 					createInstruT1("当前用户证书管理：<span style='color: #FFFFFF'>certmgr.msc</span>", "i2-1");

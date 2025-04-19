@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-ICMPv4</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(icmpv4);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-	<script type="text/javascript" src="../../../js/private/icmp4.js"></script>
-	<link rel="stylesheet" href="../../../css/private/protocol/icmp4.css">
+<!--	<script type="text/javascript" src="../../../js/private/icmp4.js"></script>-->
+<!--	<link rel="stylesheet" href="../../../css/private/protocol/icmp4.css">-->
 </head>
 <body>
 	<div class="container-fluid">
@@ -26,9 +26,9 @@
 			</script><br class="both"/>
 		</div>
 
-		<div class="divBG" style="background-color: #494A5F;width: 800px;height: 10px"></div>
+		<div class="divBGv4" style="background-color: #494A5F;width: 800px;height: 10px"></div>
 
-		<div id="zwTable" class="HLTableS2" style="width: 800px">
+		<div id="zwTablev4" class="HLTableS2" style="width: 800px">
 			<div class="table">
 				<div class="row header">
 					<div class="cell">类型</div>
@@ -199,10 +199,10 @@
 	<script type="text/javascript">
 		$(window).scroll(function(){
 			if($(window).scrollTop() > 1100 && $(window).scrollTop() < 3050 ) {
-				$("#zwTable, .divBG").css("display","block");
+				$("#zwTablev4, .divBGv4").css("display","block");
 			}
 			else {
-				$("#zwTable, .divBG").css("display","none");
+				$("#zwTablev4, .divBGv4").css("display","none");
 			}
 		});
 	</script>

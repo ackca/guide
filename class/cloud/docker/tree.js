@@ -194,6 +194,7 @@ const private_hub = {
 			"i2-2": "上传/下载镜像",
 		}
 	},
+
 	"i1": {
 		"docker-registry": {
 			"i1-1": "安装docker-registry",
@@ -201,4 +202,6 @@ const private_hub = {
 			"i1-3": "上传/下载镜像",
 		}
 	},
+
+	"i3": "配置私有镜像加速器",
 }

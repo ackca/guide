@@ -4,14 +4,26 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-DNS</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(dns);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/dns.css">
+<!--	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/dns.css">-->
+	<style type="text/css">
+		.divProtocolExplain img
+		{
+			margin-top: 20px;
+			margin-bottom: 25px;
+		}
+
+		.divSJT1
+		{
+			margin-left: 50px;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -108,7 +120,7 @@
 							["SRV", "33", "服务器选择"],
 							["*", "255", "所有缓存记录"]
 						];
-						createHLTableT1(500, tHeader, tBody);
+						createHLTableT1(500, tHeader, tBody, "tDNS");
 
 
 					createInstruT1("<br /><br />DNS报文头部字段说明<br />", "i2-4");

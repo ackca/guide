@@ -1,0 +1,3599 @@
+body, html
+{
+	font-size: 1.03em;
+	padding: 0;
+	margin: 0;
+	background-color: #3A3B4C;
+	color: #F8F8F2;
+	font-weight: 500;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body::-webkit-scrollbar-thumb	/*滚动条里面小方块*/
+{
+	background: #CFCFCF;
+}
+
+::-webkit-scrollbar	/* 滚动条整体样式 */
+{
+	width: 8px;     	/* 高宽分别对应横竖滚动条的尺寸 */
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb /* 滚动条里面小方块 */
+{
+	border-radius: 5px;
+	background: #595B5D;
+}
+
+::-webkit-scrollbar-corner
+{
+    background-color: transparent;	/* 设置为透明 */
+}
+
+::-webkit-scrollbar-corner
+{
+    background: transparent; /* 设置为透明 */
+}
+
+textarea
+{
+	resize: none;				  /* 去年右下角调大小的箭头 */
+	border-radius: 5px;
+    background-clip: padding-box; /* 确保背景裁剪为圆角 */
+}
+
+textarea::-webkit-scrollbar-corner
+{
+    background-color: #212529;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+textarea::-webkit-scrollbar-track
+{
+  background-color: #282923;
+}
+
+.main-sidebar
+{
+	position: fixed;
+	top: 62px;
+	left: 0;
+	height: 100%;
+	min-height: 100%;
+	width: 350px;
+	z-index: 10;
+	background-color: #1C232F;
+	overflow: auto;
+}
+
+#divCommand
+{
+	position: relative;
+	margin-left: 380px;
+	/*display: inline-block;*/
+    /*vertical-align: top;*/
+}
+
+.instruT0, .instruT1, .instruT2, .instruT3,
+.cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
+.cmdInstruAllBottomT0, .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
+.cmdInstruAllTopImgT2, .cmdInstruAllTopImgT3
+{
+	display: block;
+	letter-spacing: 1px;
+}
+
+.instruT0
+{
+	color: #0080FF;
+	font-size: 35px;
+}
+
+.instruT1
+{
+	color: #A6E22E;
+	/*color: #FF6EFF;*/
+	font-size: 26px;
+	margin-left: 30px;
+	margin-top: 20px;
+}
+
+.instruT2
+{
+	color: #FF6EFF;
+	/*color: #63B72B;*/
+	/*font-weight: bold;*/
+	font-size: 22px;
+	margin-left: 60px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.instruT3
+{
+	color: #FD971F;
+	margin-left: 90px;
+	line-height: 60px;
+	font-size: 20px;
+}
+
+.instruT2 + .instruT2
+{
+	margin-top: -10px;
+}
+
+.instruT0 + .divConfigImgT0,
+.instruT1 + .divConfigImgT1,
+.instruT1 + .cmdTableT1
+{
+	margin-top: 20px;
+}
+
+.instruT3 + .txtDivWrap
+{
+	margin-top: 0;
+}
+
+.instruT1 a, .instruT2 a, .instruT3 a
+{
+	font-weight: normal;
+	color: #AC80FF;
+	/*font-size: 70%;*/
+}
+
+span .link
+{
+	color: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+.linuxCMD
+{
+	color: #FD971F;
+	margin-top: 5px;
+	font-size: 22px;
+}
+
+.txtDivWrap
+{
+	position: relative;
+	margin-top: 16px;
+	margin-bottom: 50px;
+}
+
+.txtDivT0
+{
+	margin-left: 20px;
+	min-width: calc(100vw - 430px);
+	max-width: calc(100vw - 430px);
+}
+
+.txtDivT1
+{
+	margin-left: 50px;
+	min-width: calc(100vw - 460px);
+	max-width: calc(100vw - 460px);
+}
+
+.txtDivT2
+{
+	margin-left: 80px;
+	min-width: calc(100vw - 490px);
+	max-width: calc(100vw - 490px);
+}
+
+.txtDivT3
+{
+	margin-left: 110px;
+	min-width: calc(100vw - 520px);
+	max-width: calc(100vw - 520px);
+}
+
+.txtDivT0, .txtDivT1, .txtDivT2, .txtDivT3
+{
+	font-family: Consolas, SFMono-Regular, Menlo, Monaco,  "Liberation Mono", "Courier New", monospace;
+	font-size: 20px;
+	background-color: #282923;
+	padding-top: 12px;
+	padding-left: 18px;
+	padding-right: 88px;
+	padding-bottom: 12px;
+	width: fit-content;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	border-radius: 10px;
+	line-height: 1.6;
+	position: relative;
+
+
+	/*word-wrap: break-word;	!* 在单词内部进行换行 *!*/
+    /*word-break: break-all;	!* 在任意字符处进行换行 *!*/
+    /*white-space: normal;	!* 允许内容自动换行 *!*/
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.txtDivT0 a, .txtDivT1 a, .txtDivT2 a, .txtDivT3 a
+{
+	color: #AE81FF;
+	font-weight: bold;
+}
+
+.headersT1, .headersT2, .headersT3
+{
+	font-family: Consolas, SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace;
+	font-size: 20px!important;
+	background-color: #282923;
+	border-radius: 5px;
+	line-height: 1.6;
+	margin-bottom: 50px;
+	padding-top: 8px;
+	padding-left: 8px;
+	padding-right: 30px;
+	padding-bottom: 8px;
+	width:fit-content;
+}
+
+.headersT1 span, .headersT2 span, .headersT3 span
+{
+	font-size: 20px;
+}
+
+.headersT1 tr td:first-child,
+.headersT2 tr td:first-child,
+.headersT3 tr td:first-child
+{
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+.headersT1 .spanZS, .headersT2 .spanZS, .headersT3 .spanZS
+{
+	font-size: 18px;
+}
+
+.headersT1
+{
+	margin-left: 50px;
+}
+
+.headersT2
+{
+	margin-left: 80px;
+}
+
+.headersT3
+{
+	margin-left: 110px;
+}
+
+.headersT1 tr td:nth-child(2),
+.headersT2 tr td:nth-child(2),
+.headersT3 tr td:nth-child(2)
+{
+	padding-left: 10px;
+}
+
+.headersT1 tr td:nth-child(3),
+.headersT2 tr td:nth-child(3),
+.headersT3 tr td:nth-child(3)
+{
+	padding-left: 40px;
+}
+
+.headersT1 + .headersT1,
+.headersT2 + .headersT2,
+.headersT3 + .headersT3
+{
+	margin-top: -30px;
+}
+
+.cmdInstruAllTopT1 + .headersT1,
+.cmdInstruAllTopT2 + .headersT2,
+.cmdInstruAllTopT3 + .headersT3
+{
+	margin-top: 20px;
+}
+
+.headersT1 + .cmdInstruAllTopT1,
+.headersT2 + .cmdInstruAllTopT2,
+.headersT3 + .cmdInstruAllTopT3
+{
+	margin-top: -40px;
+}
+
+h4
+{
+	font-size: 22px;
+}
+
+.linuxPara
+{
+	color: #8000FF;
+}
+
+.cmd, .cmdInstru,
+.cmdInstruAllTopT0, .cmdInstruAllTopT1, .cmdInstruAllTopT2, .cmdInstruAllTopT3,
+.cmdInstruAllBottomT0, .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3,
+.cmdInstruAllTopImgT2, .cmdInstruAllTopImgT3
+{
+	font-size: 20px;
+}
+
+.cmd
+{
+	line-height: 40px;
+	padding-left: 0;
+}
+
+.cmdMode
+{
+	font-size: 18px;
+	color: #8AA4AF;
+}
+
+.cmdArubaPath
+{
+	font-size: 18px;
+	color: #7F6FCF;
+}
+
+.cmdInstru
+{
+	text-indent: 2em;
+	line-height: 40px;
+}
+
+.cmdInstruAllBottomT0, .cmdInstruAllBottomT1, .cmdInstruAllBottomT2, .cmdInstruAllBottomT3
+{
+	line-height: 40px;
+}
+
+.variable, .variableZN
+{
+	font-style: italic;
+	/*background-color: #829BA5*/
+	background-color: #667382;
+	font-family: inherit;
+	padding-left: 2px;
+	padding-right: 3px;
+	position: relative;
+	/*opacity: 50%;*/
+}
+
+.variableZN, .explainZN, .spanBold
+{
+	font-size: 22px;
+}
+
+.spanR
+{
+	color: #F92672;
+}
+
+.spanBlue
+{
+	color: #63D8EE;
+}
+
+.hwSysname
+{
+	font-size: 18px;
+}
+
+.spanBold
+{
+	font-weight: bold;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.spanInstruKeyword
+{
+	color: #F8F8F2;
+	margin-right: 2px;
+}
+
+.cmdTableT0, .cmdTableT1, .cmdTableT2, .cmdTableT3
+{
+	border-collapse: collapse;
+}
+
+.cmdTableT0
+{
+	margin-bottom: 30px;
+}
+
+.cmdTableT1
+{
+	margin-bottom: 30px;
+	margin-left: 40px;
+}
+
+.cmdTableT2
+{
+	margin-bottom: 50px;
+	margin-left: 70px;
+}
+
+.cmdTableT3
+{
+	margin-left: 100px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+.cmdInstruAllTopT1 + .cmdTableT1,
+.cmdInstruAllTopT2 + .cmdTableT2,
+.cmdInstruAllTopT3 + .cmdTableT3
+{
+	margin-top: 20px;
+}
+
+.cmdInstruAllTopT2, .cmdInstruAllBottomT2
+{
+	margin-left: 80px;
+	/*margin-top: 7px;*/
+	/*margin-bottom: 7px;*/
+	margin-top: 20px;
+}
+
+.cmdInstruAllTopT0
+{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.cmdInstruAllTopT1
+{
+	margin-left: 60px;
+	margin-top: 20px;
+}
+
+.cmdInstruAllTopT3, .cmdInstruAllBottomT3
+{
+	margin-left: 110px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.cmdTableT2 + .divConfigImgT2,
+.cmdTableT3 + .divConfigImgT3
+{
+	margin-top: -30px;
+}
+
+.cmdInstruAllTopT1 + .divConfigImgT1,
+.cmdInstruAllTopT2 + .divConfigImgT2,
+.cmdInstruAllTopT3 + .divConfigImgT3
+{
+	margin-top: 15px;
+}
+
+.instruT2 + .cmdInstruAllTopT2
+{
+	margin-top: 7px;
+}
+
+.divConfigImgT1 + br + br + .divConfigImgT1,
+.divConfigImgT1 + br + br + .cmdInstruAllTopT1,
+.divConfigImgT2 + br + br + .cmdInstruAllTopT2,
+.divConfigImgT2 + br + br + .divSJT2,
+.divConfigImgT3 + br + br + .cmdInstruAllTopT3,
+.instruT2 + br + .instruT2,
+.instruT2 + .instruT3,
+.cmdTableT2 + .cmdInstruAllTopT2,
+.cmdTableT3 + .cmdInstruAllTopT3,
+.txtDivWrap + .cmdInstruAllTopT1,
+.txtDivWrap + .txtDivWrap,
+.txtDivWrap + .divConfigImgT1,
+.txtDivWrap + .divConfigImgT2,
+.txtDivWrap + .divConfigImgT3
+{
+	margin-top: -20px;
+}
+
+.cmdTableT2 + .txtDivWrap,
+.cmdTableT3 + .txtDivWrap,
+.divConfigImgT2 + br + br + .divConfigImgT2
+{
+	margin-top: -25px;
+}
+
+.divConfigImgT2 + br + br + .cmdTableT2
+{
+	margin-top: -35px;
+}
+
+
+.cmdInstruAllBottomT0
+{
+	margin-left: 20px;
+}
+
+.cmdInstruAllBottomT1
+{
+	margin-left: 60px;
+}
+
+.cmdInstruAllBottomT2
+{
+	margin-top: -35px;
+	/*margin-bottom: 50px;*/
+}
+
+.cmdInstruAllBottomT2 + .cmdInstruAllBottomT2
+{
+	/*margin-top: -35px;*/
+	/*!*margin-bottom: 50px;*!*/
+	margin-top: inherit;
+}
+
+.cmdInstruAllBottomT3
+{
+	margin-top: -60px;
+	margin-bottom: 50px;
+}
+
+.tdCliLogo
+{
+	width: 85px;
+	text-align: center;
+	padding-left: 0;
+	border-right: solid 3px #0080FF;
+	/*border-right: solid 3px #E6DB74;*/
+}
+
+.imgBrand
+{
+	height: 30px;
+}
+
+.imgBrand.huawei, .imgBrand.f5
+{
+	height: 35px;
+}
+
+.imgBrand.h3c
+{
+	height: 15px;
+}
+
+.imgBrand.vmware, .imgBrand.docker, .imgBrand.k8s, .imgBrand.vault
+{
+	height: 40px;
+}
+
+.imgBrand.cfssl
+{
+	height: 25px;
+}
+
+td
+{
+	padding-left: 10px;
+}
+
+.divider
+{
+	height: 10px;
+}
+
+.tdcmdInstru1
+{
+	vertical-align: top;
+	width: 10px;
+	white-space: nowrap;
+}
+
+.tdcmdInstru2
+{
+	text-indent: 0;
+	word-wrap: break-word;
+	word-break: break-all;
+	padding-left: 0;
+}
+
+.divConfigImgT0
+{
+	margin-left: 20px;
+}
+
+.divConfigImgT1
+{
+	margin-left: 50px;
+}
+
+.divConfigImgT2
+{
+	margin-left: 80px;
+}
+
+.divConfigImgT3
+{
+	margin-left: 110px;
+}
+
+.divConfigImgT0 img
+{
+    width: auto;
+    max-width: calc(100vw - 100px); /* 限制最大宽度为 浏览器宽度 - 100px */
+    height: auto;
+}
+
+.divConfigImgT1 img
+{
+    width: auto;
+    max-width: calc(100vw - 130px);
+    height: auto;
+}
+
+.divConfigImgT2 img
+{
+    width: auto;
+    max-width: calc(100vw - 160px);
+    height: auto;
+}
+
+.divConfigImgT3 img
+{
+    width: auto;
+    max-width: calc(100vw - 190px);
+    height: auto;
+}
+
+
+.divLogo
+{
+	width: 85px;
+	flex: none;
+	text-align: center;
+	border-right: solid 3px #0080FF
+}
+
+.divLogo img
+{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 30px;
+}
+
+.list-group-item
+{
+	border: 0;
+	padding: 3px 10px 3px 5px;
+	display: inline;
+}
+
+.list-group-item:first-child
+{
+	border-top-left-radius: .3rem;
+	border-top-right-radius: .3rem;
+	border-bottom-left-radius: .3rem;
+	border-bottom-right-radius: .3rem
+}
+
+.breadcrumb-item
+{
+	font-size: 1.3em;
+}
+
+.breadcrumb-item li, .breadcrumb-item a
+{
+	color: #33CC33;
+}
+
+.breadcrumb-item+.breadcrumb-item::before
+{
+	content: '>';
+}
+
+.breadcrumb-item a:hover
+{
+	text-decoration: underline;
+	color: #0056B3;
+}
+
+.divExplainT2
+{
+	margin-left: 80px;
+}
+
+.divExplainT3
+{
+	margin-left: 100px;
+}
+
+.tableCMD tr td:nth-child(1)
+{
+	font-size: 24px;
+	border-left: solid 3px #0000FF;
+}
+
+.tableCMD tr td:nth-child(2)
+{
+	font-size: 20px;
+}
+
+.tableCMD tr
+{
+	height: 50px;
+}
+
+.tableOption, .tableExplain
+{
+	border-collapse: collapse;
+	font-size: 20px;
+}
+
+.tableOption tr
+{
+	height: 50px;
+}
+
+.tableExplain tr
+{
+	height: 35px;
+}
+
+.tableOption td, .tableExplain th, .tableExplain td
+{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.tableOption th
+{
+	background-color: #D9D9D9;
+	text-align: center;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.tableOption tbody tr:nth-child(odd) td
+{
+	background-color: #F5F5F5;
+}
+
+.spanT
+{
+	/*color: #63D8EE;*/
+	color: #F92672;
+	/*font-size: 18px;*/
+	/*line-height: 1.6em;*/
+}
+
+.spanV
+{
+	color: #E7DB74;
+	/*font-size: 18px;*/
+	/*line-height: 1.6em;*/
+}
+
+.spanG
+{
+	color: #00B050;
+}
+
+.span3
+{
+	color: #F29900;
+}
+
+.spanW
+{
+	color: #FFFFFF;
+}
+
+.spanNum
+{
+	color: #AC80FF;
+}
+
+.spanZS, .divZS
+{
+	font-weight: bold;
+	font-size: 17px;
+	color: #74705D;
+	line-height: 1.6em;
+}
+
+.spanFGF
+{
+	color: #F8F8F2;
+}
+
+.spanOutput
+{
+	color: #A3A3A3;
+}
+
+.divFile
+{
+	background-color: #282923;
+	padding: 12px 18px 15px 15px;
+	min-width: 700px;
+	width: fit-content;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	margin-left: 20px;
+	border-radius: 5px
+}
+
+.sqlKeyword
+{
+	color: #79C4F0;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.sqlWord
+{
+	color: #FF6A6A;
+}
+
+.linuxCMD_cmd
+{
+	color: #67D8EF;
+}
+
+.linuxCMD_Para
+{
+	color: #FD9622;
+	font-style: italic;
+}
+
+.linuxCMD_pipeline
+{
+	color: #F92467;
+}
+
+.divSJT0
+{
+	margin-left: 15px;
+}
+
+.divSJT1
+{
+	margin-left: 50px;
+}
+
+.divSJT2
+{
+	margin-left: 80px;
+}
+
+.divSJT3
+{
+	margin-left: 110px;
+}
+
+.cmdInstruAllTopT1 + .divSJT1,
+.cmdInstruAllTopT2 + .divSJT2,
+.cmdInstruAllTopT3 + .divSJT3
+{
+	margin-top: 15px;
+}
+
+.cmdInstruAllTopT1 + .divSJT1,
+.cmdInstruAllTopT2 + .divSJT2,
+.cmdInstruAllTopT3 + .divSJT3
+{
+	margin-top: 15px;
+}
+
+.spanY
+{
+	color: #FFFF00;
+}
+
+.spanYH
+{
+	color: #E7DB74;
+}
+
+.spanObj
+{
+	color: #FFFFFF;
+}
+
+.divGet
+{
+	position: absolute;
+	/*position: fixed;*/
+	top: 5px;
+	right: 10px;
+	color: #AFB1B3;
+	font-size: 20px;
+	transform: rotateY(180deg);
+	z-index: 10;
+}
+
+.divGet i
+{
+	padding: 6px;
+	cursor: pointer;
+	border-radius: 13px;
+}
+
+.divGet i:hover
+{
+	background-color: #4C5052;
+	color: #FFFFFF;
+}
+
+.divGet i:active
+{
+	background-color: #5C6164;
+}
+
+.copySuccess
+{
+	position: absolute;
+	top: 25px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
+	font-size: 18px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 2px;
+	border-radius: 5px;
+	display: none;
+	z-index: 10;
+}
+
+.copySuccess img
+{
+	width: 22px;
+	margin-top: -3px;
+}
+
+.divProtocolExplain
+{
+	margin-left: 20px;
+}
+
+.divProtocolExplain dl
+{
+	line-height: 40px;
+	font-size: 20px;
+}
+
+.divProtocolExplain  dt
+{
+	color: #FFC000;
+	font-weight: normal;
+}
+
+.divProtocolExplain dd
+{
+	margin-left: 40px;
+	margin-bottom: 30px;
+}
+
+.divProtocolExplain ul
+{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.divProtocolExplain li
+{
+    background-image: url("../../img/icon.svg");
+    background-repeat: no-repeat;
+	background-size: 22px;
+	background-position-y: 11px;
+    padding-left: 35px;
+    margin-top: 20px;
+}
+
+.divProtocolExplain li:nth-child(1)
+{
+    margin-top: 0px;
+}
+
+.divProtocolWord
+{
+	padding-top: 30px;
+	width: 100%;
+	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
+	position: fixed;
+	text-align: center;
+	z-index: 5;
+	margin-top: 24.5px;
+	/*margin-top: 15px;*/
+}
+
+.protocolSX
+{
+	font-size: 70px;
+	text-align: right;
+	height: 100px;
+	line-height: 100px;
+}
+
+.protocolQC
+{
+	font-size: 25px;
+	padding-left: 20px;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.protocolZW
+{
+	font-size: 22px;
+	padding-left: 20px;
+	text-align: left;
+	vertical-align: top;
+}
+
+#protocolStructure
+{
+	margin-top: -10px;
+}
+
+.tableProtocolExplain
+{
+	margin-left: 20px;
+	margin-top: 20px;
+	border: solid 2px #D5D6E2;
+	border-collapse: collapse;
+}
+
+.tableProtocolExplain th
+{
+	border: solid 2px #D5D6E2;
+	text-align: center;
+	line-height: 30px;
+}
+
+.tableProtocolExplain td
+{
+	border: solid 2px #D5D6E2;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	line-height: 30px;
+}
+
+.divProtocolStruct
+{
+	cursor: pointer;
+}
+
+#divProtocol
+{
+	display: none;
+
+	position: fixed;
+    top: 0;
+    right: 0;
+
+	flex-direction: column;
+    box-sizing: border-box;
+	cursor: move;
+    background-color: #3A3B4C;
+    z-index: 100;
+}
+
+#close
+{
+    position: absolute;
+    right: 5px;
+	font-weight: bold;
+	line-height: 37px;
+    text-align: center;
+    color: #A9C7CE;
+    font-size: 25px;
+	z-index: 300;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#close:hover
+{
+    background-color: #1C232F;
+	color: #FFFFFF;
+}
+
+#protocolImg
+{
+    margin-top: 25px;
+    z-index: 200;
+	opacity: 1.0;
+}
+
+#hidden
+{
+	width: 1010px;
+	height: 559px;
+    position: fixed;
+    top: 0;
+    left: 0;
+	z-index: 100;
+}
+
+.divConfigImgT0[imgDescribe]:hover,
+.divConfigImgT1[imgDescribe]:hover,
+.divConfigImgT2[imgDescribe]:hover,
+.divConfigImgT3[imgDescribe]:hover
+{
+	cursor: pointer;
+}
+
+.markColor1
+{
+	color: #F92672;
+}
+
+.markColor2
+{
+	color: #AE81FF;
+}
+
+.markColor3
+{
+	color: #0080FF;
+}
+
+.markColor4
+{
+	color: #A5E12E;
+}
+
+.markColor5
+{
+	color: #E6DB74;
+}
+
+.markColor6
+{
+	color: #FD971F;
+}
+
+.markColor7
+{
+	color: #D50000;
+}
+
+.markColor8
+{
+	color: #00FFFF;
+}
+
+.markColor9
+{
+	color: #EEEE00;
+}
+
+.markColor10
+{
+	color: #72C373;
+}
+
+.markColor11
+{
+	color: #5A5D6F;
+	font-weight: bold;
+}
+
+#guide-icon
+{
+	top: 55px;
+	left: 340px;
+	cursor: pointer;
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	transform: rotate(45deg);
+	background-color: transparent;
+	z-index: 10;
+
+	border-radius: 0 50% 50%;
+	transition: border-radius .5s
+}
+
+#guide-icon > div
+{
+	transform: rotate(-45deg);
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+#guide-icon span
+{
+	display: block;
+	background-color: #A9C7CE;
+	width: 22px;
+	height: 3px;
+	margin: 3px 0;
+	transition: .5s
+}
+
+#guide-icon span.open:nth-child(1)
+{
+	transform: rotate(45deg) translate(3px, 3px);
+}
+
+#guide-icon span.open:nth-child(2)
+{
+	transform: rotate(-45deg) translate(3px, -3px);
+}
+
+#guide-icon span.open:nth-child(3)
+{
+	display: none;
+}
+
+#guide-icon:hover
+{
+	background-color: #1E282C;
+	background-position: left;
+}
+
+#guide-icon:hover span
+{
+	background-color: #FAFAFA;
+}
+
+.link_down_file
+{
+	font-size: 18px;
+}
+
+
+/*----------↓↓↓ 协议编号 ↓↓↓-------------------------------------------------------------------------------------------*/
+
+.divProtocol
+{
+	text-align: center;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.divProtocol a
+{
+	text-decoration: none;
+}
+
+@media screen and (max-width:1550px)
+{
+	.divProtocol
+	{
+		margin-left: 30px;
+		margin-right: 30px;
+		margin-top: 80px;
+	}
+}
+
+@media screen and (min-width:1551px)
+{
+	.divProtocol
+	{
+		margin: 80px auto;
+		max-width: 1500px;
+	}
+}
+
+.l7tcp, .l7udp
+{
+	font-size: 40px;
+	background-color: #0008FF;
+	color: #FFFFFF
+}
+
+.l7tcp
+{
+	background-color: #0008FF;
+}
+
+.l7udp
+{
+	background-color: #FFC000;
+}
+
+.tcp, .udp
+{
+	border-radius: 8px;
+	line-height: 36px;
+	font-size: 16px;
+	height: 44px;
+}
+
+.tcp
+{
+	border: solid 4px #0008FF;
+	margin-right: 7px;
+}
+
+.udp
+{
+	border: solid 4px #FFC000;
+	margin-left: 7px;
+}
+
+.c1
+{
+	background-color: #9933FF;
+}
+
+.c2
+{
+	background-color: #00CC00;
+}
+
+.c3
+{
+	background-color: #00CCFF;
+}
+
+.c4
+{
+	background-color: #0008FF;
+}
+
+.c5
+{
+	background-color: #FF0000;
+}
+
+.c6
+{
+	background-color: #FFC000;
+}
+
+.l4
+{
+	border-radius: 6px;
+	line-height: 35px;
+	font-size: 16px;
+	height: 35px;
+}
+
+.l3
+{
+	border-radius: 6px;
+	line-height: 40px;
+	font-size: 16px;
+	height: 40px;
+}
+
+.l2
+{
+	border-radius: 6px;
+	line-height: 40px;
+	font-size: 16px;
+	height: 40px;
+}
+
+.two-row-l7
+{
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.two-row-l7 table, .two-row-l3 table
+{
+	margin: 0 auto;
+}
+
+.two-row-l7 td
+{
+	height: 18px;
+	padding-left: 0;
+	text-align: left;
+}
+
+.two-row-l3
+{
+	font-size: 13px;
+	line-height: 20px;
+}
+
+.two-row-l3 td
+{
+	height: 20px;
+	padding-left: 0;
+	text-align: left;
+}
+
+.divProtocol .col-lg-1,
+.divProtocol .col-lg-2,
+.divProtocol .col-lg-3,
+.divProtocol .col-lg-6
+{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.divProtocol .row a:link
+{
+	color: #FFFFFF;
+}
+
+.divProtocol .row a:visited
+{
+	color: #FFFFFF;
+}
+
+.divProtocol .row a:hover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+/*Radius*/
+.divProtocol .col-lg-4
+{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.macsec
+{
+	font-size: 15px;
+}
+
+#jg
+{
+	background-color: #3A3B4C;
+}
+
+@media (max-width: 992px) {
+	#jt_up, #jt_down, #jg
+	{
+		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	#jt_up, #jt_down, #jg
+	{
+		position: absolute;
+		left: 50%;
+		width: 24px;
+		margin-left: -12px;
+	}
+
+	#jt_down
+	{
+		transform:rotate(180deg);
+	}
+}
+
+/*----------↑↑↑ 协议编号 ↑↑↑-------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ ARP ↓↓↓-----------------------------------------------------------------------------------------------*/
+
+#tARP .row.header .cell
+{
+	vertical-align: middle;
+}
+
+#tARP .row:nth-child(n+2) .cell:nth-child(n+2)
+{
+	padding-left: 30px;
+}
+
+/*----------↑↑↑ ARP ↑↑↑-----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ IPv6 ↓↓↓----------------------------------------------------------------------------------------------*/
+
+#tV6address .row:nth-child(4) .cell
+{/*前缀与地址分隔线——上半*/
+	border-bottom: solid 2px #FF6A6A;
+}
+
+#tV6address .row:nth-child(5) .cell
+{/*前缀与地址分隔线——下半*/
+	border-top: solid 2px #FF6A6A;
+}
+
+#tV6address .row.header .cell:nth-child(1),
+#tV6address .row.header .cell:nth-child(2),
+#tV6address .row.header .cell:nth-child(3)
+{
+	text-align: center;
+	padding-left: 0;
+}
+
+#tV6address .row.header .cell:nth-child(1),
+#tV6address .row.header .cell:nth-child(2)
+{
+	width: 220px;
+}
+
+#tV6address .row .cell:nth-child(2)
+{
+	font-weight: bold;
+}
+
+/*----------↑↑↑ IPv6 ↑↑↑----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ ICMPv4 ↓↓↓--------------------------------------------------------------------------------------------*/
+
+#tICMPv4Type .cell:nth-child(1)
+{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#tICMPv4Type .row:nth-child(n+2) .cell  /* 表格内容颜色修改为一致 */
+{                                       /* 添加表格线 */
+	border-right: solid 2px #A0A0A0;
+	border-bottom: solid 2px #A0A0A0;
+	background-color: #5A5D6F;
+}
+
+#tICMPv4Type .row:nth-child(n+2):hover .cell  /* 修改高亮颜色 */
+{
+	background-color: #CBCFFF;
+}
+
+#tICMPv4Type .row:nth-child(n+2):hover .cell:nth-child(-n+2)
+{
+	color: #8000FF;
+}
+
+#tICMPv4Type .row:nth-child(n+2) .cell:nth-child(1)
+{
+	font-weight: bold;
+	color: #FFFF00;
+}
+
+#tICMPv4Type .row:nth-child(n+2) .cell:nth-child(2)
+{
+	color: #FFFF00;
+}
+
+/* 去掉被合并的列单元格的下边框 */
+#tICMPv4Type .row:nth-child(3) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(4) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(5) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(6) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(7) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(8) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(9) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(10) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(11) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(12) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(13) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(14) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(15) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(16) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(17) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(18) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(21) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(22) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(23) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(24) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(29) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(30) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(32) > .cell:nth-child(1),
+#tICMPv4Type .row:nth-child(33) > .cell:nth-child(1)
+{
+	border-bottom-color: #5A5D6F;
+}
+
+/* 去掉最下侧的表格线 */
+#tICMPv4Type .row:last-child .cell
+{
+	border-bottom: 0;
+}
+
+#tICMPv4Type .row.header .cell,
+#tICMPv4Type .row:nth-child(3) .cell:nth-child(2),
+#tICMPv4Type .row:nth-child(21) .cell:nth-child(2),
+#tICMPv4Type .row:nth-child(29) .cell:nth-child(2),
+#tICMPv4Type .row:nth-child(32) .cell:nth-child(2)
+{
+	border-right: 0;
+}
+
+#tICMPv4Type .row .cell,
+#zwTable .row .cell
+{
+	text-align: center;
+	width: 80px;
+}
+
+#tICMPv4Type .row .cell:nth-child(3),
+#zwTable .row .cell:nth-child(3)
+{
+	width: auto;
+}
+
+#tICMPv4Type .row.header .cell:nth-child(3),
+#zwTable .row.header .cell:nth-child(3)
+{
+	text-align: center;
+	padding-left: inherit;
+}
+
+#tICMPv4Type .row .cell:nth-child(3)
+{
+	text-align: left;
+	padding-left: 10px;
+}
+
+/* 去掉最右侧的表格线 */
+#tICMPv4Type .row .cell:last-child
+{
+	border-right: 0;
+}
+
+#zwTablev4
+{
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
+}
+
+#zwTablev4, .divBGv4
+{
+	position: fixed;
+	z-index: 10;
+	top: 162px;
+	left: 407px;
+	display: none;
+}
+
+#zwTablev4 .cell
+{
+	border-bottom: 0;
+}
+
+/*----------↑↑↑ ICMPv4 ↑↑↑--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ ICMPv6 ↓↓↓--------------------------------------------------------------------------------------------*/
+
+/* -----ICMPv6 Type Code对应关系表格开始----- */
+#tICMPv6Type .row:nth-child(n+2) .cell
+{
+	border-right: solid 2px #A0A0A0;
+	border-bottom: solid 2px #A0A0A0;
+	background-color: #5A5D6F;
+}
+
+#tICMPv6Type .row:nth-child(n+2):hover .cell
+{
+	background-color: #CBCFFF;
+}
+
+#tICMPv6Type .row:nth-child(n+2):hover .cell:nth-child(-n+2)
+{
+	color: #8000FF;
+}
+
+#tICMPv6Type .row:nth-child(n+2) .cell:nth-child(1)
+{
+	font-weight: bold;
+	color: #FFFF00;
+}
+
+#tICMPv6Type .row:nth-child(n+2) .cell:nth-child(2)
+{
+	color: #FFFF00;
+}
+
+#tICMPv6Type .row:nth-child(2) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(3) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(4) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(5) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(6) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(7) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(8) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(11) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(12) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(14) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(15) > .cell:nth-child(1),
+#tICMPv6Type .row:nth-child(16) > .cell:nth-child(1)
+{
+	border-bottom-color: #5A5D6F;
+}
+
+#tICMPv6Type .row:last-child .cell
+{
+	border-bottom: 0;
+}
+
+#tICMPv6Type .row:nth-child(2) > .cell:nth-child(2),
+#tICMPv6Type .row:nth-child(11) > .cell:nth-child(2),
+#tICMPv6Type .row:nth-child(14) > .cell:nth-child(2)
+{
+	border-right: 0;
+}
+
+#tICMPv6Type .row .cell:nth-child(1)
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#tICMPv6Type .row .cell
+{
+	border-right: solid 1px #A0A0A0;
+}
+
+#tICMPv6Type .row.header .cell
+{
+	border-right: 0;
+}
+
+#tICMPv6Type .row .cell
+{
+	text-align: center;
+	width: 80px;
+}
+
+#tICMPv6Type .row .cell:nth-child(3)
+{
+	width: auto;
+	border-right: 0;
+}
+
+#tICMPv6Type .row.header .cell:nth-child(1), #zwTable .row.header .cell:nth-child(1)
+{
+	width: 110px;
+}
+
+#zwTable .row.header .cell:nth-child(2)
+{
+	width: 80px;
+}
+
+#tICMPv6Type .row.header .cell:nth-child(3)
+{
+	text-align: center;
+	padding-left: inherit;
+}
+
+#tICMPv6Type .row .cell:nth-child(3)
+{
+	text-align: left;
+	padding-left: 10px;
+}
+/* -----ICMPv6 Type Code对应关系表格结束----- */
+/* ---------------------------------------------------------------------- */
+/* -----ICMPv6选项表格表格开始----- */
+#tOptions .row.header .cell:nth-child(1)
+{
+	width: 80px;
+}
+
+#tOptions .row.header .cell:nth-child(2)
+{
+	width: 450px;
+	padding-left: 0;
+	text-align: center;
+}
+
+#tOptions .row .cell:nth-child(1)
+{
+	text-align: center;
+	padding-left: 0;
+}
+
+#tOptions .row .cell:nth-child(2)
+{
+	text-align: left;
+	padding-left: 10px;
+}
+/* -----ICMPv6选项表格表格结束----- */
+/* ---------------------------------------------------------------------- */
+/* -----NA报文的标志位表格开始----- */
+#tNAFlags
+{
+	margin-top: 20px;
+}
+
+#tNAFlags .row.header .cell:nth-child(1)
+{
+	width: 120px;
+}
+
+#tNAFlags .row.header .cell:nth-child(2)
+{
+	width: 80px;
+}
+
+#tNAFlags .cell
+{
+	border: 0;
+}
+
+
+#tNAFlags .row .cell:nth-child(2)
+{
+	text-align: center;
+}
+
+#tNAFlags .row .cell:nth-child(3)
+{
+	padding-left: 10px;
+}
+/* -----NA报文的标志位表格结束----- */
+
+
+#zwTablev6
+{
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
+}
+
+#zwTablev6, .divBGv6
+{
+	position: fixed;
+	z-index: 10;
+	top: 162px;
+	left: 407px;
+	display: none;
+}
+
+#zwTablev6 .cell
+{
+	border-bottom: 0;
+}
+
+/*----------↑↑↑ ICMPv6 ↑↑↑--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ TCP ↓↓↓-----------------------------------------------------------------------------------------------*/
+
+.TCP_flags
+{
+	margin-left: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#tTCPoptions .cell:nth-child(1),
+#tTCPoptions .cell:nth-child(2)
+{
+	width: 120px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	line-height: 1.5;
+}
+
+#tTCPoptions .cell:nth-child(3)
+{
+	vertical-align: middle;
+}
+
+#tTCPoptions .row .cell:nth-child(1),
+#tTCPoptions .row .cell:nth-child(2)
+{
+	padding-left: 0;
+	text-align: center;
+}
+
+#tTCPoptions .row.header .cell:nth-child(1),
+#tTCPoptions .row.header .cell:nth-child(2)
+{
+	padding-left: inherit;
+}
+
+/*----------↑↑↑ TCP ↑↑↑-----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ DHCPv4 ↓↓↓--------------------------------------------------------------------------------------------*/
+
+#tOption53 .row .cell
+{
+	vertical-align: middle;
+	line-height: 1.5;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#tOption53 .row.header .cell
+{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#tOption53 .row.header .cell:nth-child(3)
+{
+	text-align: center;
+}
+
+#tOption53 .protocolDivTable .row .cell:nth-child(1)
+{
+	width: 100px;
+}
+
+#tOption53 .row .cell:nth-child(2)
+{
+	width: 100px;
+	text-align: center;
+}
+
+#tOption53 .row .cell:nth-child(3)
+{
+	padding-right: 10px;
+}
+
+#tOption53 .row.header .cell:nth-child(3)
+{
+	padding-right: inherit;
+}
+
+#tOtherOption .row .cell:nth-child(1)
+{
+	/*width: 130px;*/
+}
+
+#tOtherOption .row .cell
+{
+	padding-left: 50px;
+}
+
+#tOtherOption .row.header .cell
+{
+	padding-left: inherit;
+}
+
+/*----------↑↑↑ DHCPv4 ↑↑↑--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ DHCPv6 ↓↓↓--------------------------------------------------------------------------------------------*/
+
+#tRAFlag .row:nth-child(n+2) .cell:nth-child(-n+3),
+#tV6V4 .row:nth-child(n+2) .cell:nth-child(-n+3)
+{
+	font-weight: bold;
+	color: #FFFF00;;
+}
+
+#tRAFlag .row:nth-child(n+2):hover .cell:nth-child(-n+3),
+#tV6V4 .row:nth-child(n+2):hover .cell:nth-child(-n+3)
+{
+	font-weight: bold;
+	color: #8000FF;
+}
+
+#tRAFlag .cell,
+#tV6V4 .cell
+{
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+#tRAFlag .row.header .cell:nth-child(1),
+#tRAFlag .row.header .cell:nth-child(2),
+#tRAFlag .row.header .cell:nth-child(3)
+{
+	width: 120px;
+}
+
+#tRAFlag .row .cell:nth-child(1),
+#tRAFlag .row .cell:nth-child(2),
+#tRAFlag .row .cell:nth-child(3)
+{
+	text-align: center;
+}
+
+#tV6V4 .row.header .cell:nth-child(1)
+{
+	width: 100px;
+}
+
+#tV6V4 .row.header .cell:nth-child(2), #tV6V4 .row.header .cell:nth-child(3)
+{
+	width: 150px;
+}
+
+#tV6V4 .row .cell:nth-child(1), #tV6V4 .row .cell:nth-child(2), #tV6V4 .row .cell:nth-child(3)
+{
+	text-align: center;
+	padding-left: 0;
+}
+
+#tV6V4 .row .cell:nth-child(4)
+{
+	padding-left: 10px;
+}
+
+/*----------↑↑↑ DHCPv6 ↑↑↑--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ DNS ↓↓↓-----------------------------------------------------------------------------------------------*/
+
+#tDNS .row .cell:nth-child(2)
+{
+	width: 70px;
+	padding-left: 25px;
+}
+
+#tDNS .row.header .cell:nth-child(2)
+{
+	padding-left: inherit;
+}
+
+#tDNS .row .cell:nth-child(3)
+{
+	padding-left: 20px;
+}
+
+#tDNS .row.header .cell:nth-child(3)
+{
+	padding-left: inherit;
+}
+
+/*----------↑↑↑ DNS ↑↑↑-----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ HTTP ↓↓↓----------------------------------------------------------------------------------------------*/
+
+#tMethod .cell:nth-child(1)
+{
+	width: 160px;
+}
+
+#tStatus1 .cell:nth-child(1),
+#tStatus2 .cell:nth-child(1)
+{
+	width: 100px;
+}
+
+#tStatus2 .cell:nth-child(2)
+{
+	font-weight: bold;
+}
+
+#tStatus1 .row:nth-child(4) .cell:nth-child(1),
+#tStatus1 .row:nth-child(4) .cell:nth-child(2)
+{
+	vertical-align: middle;
+}
+
+#tStatus1 .row:nth-child(4) .cell:nth-child(3)
+{
+	line-height: 30px;
+}
+
+#tStatus2 .row:nth-child(5) .cell,  /* 2XX状态码结束 */
+#tStatus2 .row:nth-child(10) .cell, /* 3XX状态码结束 */
+#tStatus2 .row:nth-child(16) .cell  /* 4XX状态码结束 */
+{
+	border-bottom: solid 2px #FF6A6A;
+}
+
+#tStatus2 .row:nth-child(6) .cell,  /* 3XX状态码开始 */
+#tStatus2 .row:nth-child(11) .cell, /* 4XX状态码开始 */
+#tStatus2 .row:nth-child(17) .cell  /* 5XX状态码开始 */
+{
+	border-top: solid 1px #FF6A6A;
+}
+
+#tHeaders .row:nth-child(n+2) .cell
+{
+	border-right: solid 2px #A0A0A0;
+	border-bottom: solid 2px #A0A0A0;
+	background-color: #5A5D6F;
+}
+
+#tHeaders .row:nth-child(n+2):hover .cell
+{
+	background-color: #CBCFFF;
+}
+
+#tHeaders .row:nth-child(2) > .cell:nth-child(1),
+#tHeaders .row:nth-child(3) > .cell:nth-child(1),
+#tHeaders .row:nth-child(4) > .cell:nth-child(1),
+#tHeaders .row:nth-child(5) > .cell:nth-child(1),
+#tHeaders .row:nth-child(6) > .cell:nth-child(1),
+#tHeaders .row:nth-child(8) > .cell:nth-child(1),
+#tHeaders .row:nth-child(9) > .cell:nth-child(1),
+#tHeaders .row:nth-child(10) > .cell:nth-child(1),
+#tHeaders .row:nth-child(11) > .cell:nth-child(1),
+#tHeaders .row:nth-child(12) > .cell:nth-child(1),
+#tHeaders .row:nth-child(13) > .cell:nth-child(1),
+#tHeaders .row:nth-child(14) > .cell:nth-child(1),
+#tHeaders .row:nth-child(16) > .cell:nth-child(1),
+#tHeaders .row:nth-child(17) > .cell:nth-child(1),
+#tHeaders .row:nth-child(19) > .cell:nth-child(1),
+#tHeaders .row:nth-child(20) > .cell:nth-child(1),
+#tHeaders .row:nth-child(21) > .cell:nth-child(1),
+#tHeaders .row:nth-child(22) > .cell:nth-child(1),
+#tHeaders .row:nth-child(23) > .cell:nth-child(1),
+#tHeaders .row:nth-child(24) > .cell:nth-child(1)
+{
+	border-bottom-color: #5A5D6F;
+}
+
+#tHeaders .row .cell:last-child
+{
+	border-right: 0;
+}
+
+#tHeaders .row:last-child .cell
+{
+	border-bottom: 0;
+}
+
+#tHeaders .row .cell:nth-child(2),
+#tHeaders .row .cell:nth-child(3)
+{
+	padding-left: 10px;
+}
+
+#tHeaders .row .cell:nth-child(1)
+{
+	font-size: 20px;
+}
+
+#tHeaders .row .cell:nth-child(2)
+{
+	font-weight: bold;
+}
+
+/*----------↑↑↑ HTTP ↑↑↑----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ syslog ↓↓↓--------------------------------------------------------------------------------------------*/
+
+#tFacility .row .cell:nth-child(1),
+#tSeverity .row .cell:nth-child(1)
+{
+	width: 80px;
+	padding-left: 20px;
+}
+
+#tFacility .row .cell:nth-child(2),
+#tSeverity .row .cell:nth-child(2)
+{
+	padding-left: 20px;
+}
+
+#tFacility .row.header .cell,
+#tSeverity .row.header .cell
+{
+	padding-left: inherit;
+}
+
+/*----------↑↑↑ syslog ↑↑↑--------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ wifi ↓↓↓----------------------------------------------------------------------------------------------*/
+
+#tWiFi1 .row.header .cell,				  	/* 表格表头，多行 */
+#tWiFi2 .row.header .cell
+{
+	line-height: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#tWiFi1 .row .cell,  	/* 添加表格线 */
+#tWiFi2 .row .cell
+{
+	border-bottom: solid 2px #A0A0A0;
+}
+
+
+#tWiFi1 .row.header .cell,			/* 去掉多余的表格线 */
+#tWiFi2 .row.header .cell,
+#tWiFi1 .row:last-child .cell,
+#tWiFi2 .row:last-child .cell
+{
+	border-bottom: 0;
+}
+
+#tWiFi1 .header.row .cell,
+#tWiFi2 .header.row .cell
+{
+	background-color: #6C7AE0!important;
+}
+
+#tWiFi1 .row .cell:nth-child(1),
+#tWiFi2 .row .cell:nth-child(1)
+{
+	background-color: #5A5D6F;
+}
+
+#tWiFi1 .row .cell:nth-child(2)
+{
+	background-color: #426CA5;
+}
+
+#tWiFi1 .row .cell:nth-child(3)
+{
+	background-color: #4FA8A8;
+}
+
+#tWiFi1 .row .cell:nth-child(4),
+#tWiFi2 .row .cell:nth-child(2)
+{
+	background-color: #56963D;
+}
+
+#tWiFi1 .row .cell:nth-child(5),
+#tWiFi2 .row .cell:nth-child(3)
+{
+	background-color: #A8963D;
+}
+
+#tWiFi1 .row .cell:nth-child(6),
+#tWiFi2 .row .cell:nth-child(4)
+{
+	background-color: #CC7832;
+}
+
+#tWiFi1 .row .cell:last-child,			/* 去掉最右侧的表格线 */
+#tWiFi2 .row .cell:last-child
+{
+	border-right: 0;
+}
+
+#tWiFi1 .row:hover .cell,
+#tWiFi2 .row:hover .cell
+{
+	color: inherit;
+}
+
+#tWiFi1 .row.header:hover .cell,
+#tWiFi2 .row.header:hover .cell
+{
+	color: #FFFFFF;
+}
+
+#tWiFi1 .row:hover .cell:nth-child(1),
+#tWiFi2 .row:hover .cell:nth-child(1)
+{
+	color: #FFFF00;
+}
+
+#tWiFi1 .row:nth-child(4) .cell,		/* 频宽，换行 */
+#tWiFi1 .row:nth-child(6) .cell,		/* mimo 换行 */
+#tWiFi2 .row:nth-child(4) .cell,		/* 频宽，换行 */
+#tWiFi2 .row:nth-child(6) .cell			/* mimo 换行 */
+{
+	vertical-align: middle;
+	line-height: 30px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+/*----------↑↑↑ wifi ↑↑↑----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 华为园区网交换机 ↓↓↓-----------------------------------------------------------------------------------*/
+
+#tHybrid
+{
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 10px;
+	background-color: #494A5F;
+	width: 900px;
+	font-family: Poppins-Regular;
+	font-size: 18px;
+	margin-left: 70px;
+}
+
+#tHybrid tbody>tr:first-of-type>th:first-of-type
+{
+	border-top-left-radius: 10px;
+}
+
+#tHybrid tbody>tr:first-of-type>th:last-of-type
+{
+	border-top-right-radius: 10px;
+}
+
+#tHybrid tbody>tr:nth-child(8)>td:first-of-type
+{
+	border-bottom-left-radius: 10px;
+}
+
+#tHybrid tbody>tr:last-of-type>td:last-of-type
+{
+	border-bottom-right-radius: 10px;
+}
+
+#tHybrid th
+{
+	color: #FFFFFF;
+	background-color: #6C7AE0;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	text-align: center;
+	font-size: 23px;
+}
+
+#tHybrid td
+{
+	font-family: Poppins-Regular;
+	font-size: 18px;
+	color: #FFFFF;
+	background-color: #5A5D6F;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: solid 1px #A0A0A0;
+}
+
+#tHybrid td:hover
+{
+	cursor: pointer;
+}
+
+#tHybrid .c21, #tHybrid .c81
+{
+	font-size: 23px;
+	text-align: center;
+	padding: 0px;
+	font-weight: bold;
+	border-left: 0;
+}
+
+#tHybrid tr:nth-child(2) td
+{
+	border-top: 0;
+}
+
+#tHybrid .c81, #tHybrid .c102, #tHybrid .c113, #tHybrid .c123
+{
+	border-bottom: 0;
+}
+
+#tHybrid tr td:last-child
+{
+	border-right: 0;
+}
+
+/*----------↑↑↑ 华为园区网交换机 ↑↑↑-----------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ nmap ↓↓↓----------------------------------------------------------------------------------------------*/
+
+#tStatus .cell:nth-child(1)
+{
+	width: 220px;
+}
+
+#tTCP .cell:nth-child(1)
+{
+	width: 280px;
+}
+
+#tUDP .cell:nth-child(1)
+{
+	width: 250px;
+}
+
+#tTCP .cell:nth-child(2),
+#tUDP .cell:nth-child(2)
+{
+	padding-left: 70px;
+}
+
+#tTCP .header .cell,
+#tUDP .header .cell
+{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#tTCP .header .cell:nth-child(2),
+#tUDP .header .cell:nth-child(2)
+{
+	padding-left: inherit;
+}
+
+#tTCP .row:nth-child(5) .cell,
+#tUDP .row:nth-child(4) .cell,
+#tUDP .row:nth-child(5) .cell
+{
+	line-height: 25px;
+	vertical-align: middle;
+}
+
+#tTCPfiltered .cell:nth-child(1),
+#tUDPfiltered .cell:nth-child(1)
+{
+	font-weight: normal;
+	width: 130px;
+}
+
+/*----------↑↑↑ nmap ↑↑↑----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ linux 基础命令 ↓↓↓-------------------------------------------------------------------------------------*/
+
+#tUname .cell:nth-child(1)
+{
+	width: 450px;
+}
+
+#tTOP1 .cell:nth-child(1),
+#tUptime .cell:nth-child(1)
+{
+	width: 350px;
+}
+
+#tTimdatectl .cell:nth-child(1)
+{
+	width: 320px;
+}
+
+#tSystemctl .cell:nth-child(1)
+{
+	width: 280px;
+}
+
+#tVim3 .cell:nth-child(1)
+{
+	width: 270px;
+}
+
+#tFind .cell:nth-child(1)
+{
+	width: 230px;
+}
+
+#tSudo1 .cell:nth-child(1)
+{
+	width: 210px;
+}
+
+#tPSU .cell:nth-child(1),
+#tPSSTAT .cell:nth-child(1),
+#tTOP2 .cell:nth-child(1)
+{
+	width: 170px;
+}
+
+#tPing .cell:nth-child(1)
+{
+	width: 150px;
+}
+
+#tVim2 .cell:nth-child(1),
+#tStat .cell:nth-child(1)
+{
+	width: 130px;
+}
+
+#tPasswd .cell:nth-child(1)
+{
+	width: 40px;
+}
+
+#tDateFormat .cell:nth-child(1),
+.HLTableS1 .cell:nth-child(1)
+{
+	width: 80px;
+}
+
+#tDateFormat, #tUname, #tWC
+{
+	margin-top: -20px;
+}
+
+#tRedirect .cell:nth-child(1)
+{
+	font-weight: inherit;
+	width: 290px;
+}
+
+#tRedirect .cell:nth-child(2)
+{
+	width: 185px;
+}
+
+#tRedirect .cell span
+{
+	color: #FF6A6A;
+	font-weight: bold;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#tUsermod .cell:nth-child(1)
+{
+	width: 100px;
+}
+
+#tPasswd .cell:nth-child(1)
+{
+	width: 110px;
+}
+
+#tSudo1 .row:nth-child(3) .cell
+{
+	vertical-align: middle;
+	line-height: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.protocolDivTable .cell:nth-child(1)
+{
+	font-weight: bold;
+	color: #FFFF00;
+	width: 100px;
+}
+
+.protocolDivTable .row:hover .cell:nth-child(1)
+{
+	font-weight: bold;
+	color: #8000FF;
+}
+
+.treeview
+{
+	white-space: nowrap;
+}
+
+.sys
+{
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 25px;
+	font-weight: bolder;
+	text-align: center!important;
+	padding-top: 3px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 3px;
+	border-radius: 7px;
+	display: inline-block;
+	min-width: 115px;
+}
+
+.sys_des
+{
+	font-size: 20px;
+	margin-left: 30px;
+	padding-top: 5px;
+}
+
+.linux_systems .row
+{
+	height: 70px;
+}
+
+.linux_systems .row div:nth-child(1)
+{
+	text-align: right;
+}
+
+._
+{
+	font-size: 40px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #282923;
+	min-width: inherit;
+	margin-top: -15px;
+}
+
+._bin
+{
+	background-color: #259E92;
+}
+
+._boot
+{
+	background-color: #FA693D;
+}
+
+._dev
+{
+	background-color: #83B5C2;
+}
+
+._etc
+{
+	background-color: #C7B573;
+}
+
+._home
+{
+	background-color: #E27E6A;
+}
+
+._lib
+{
+	background-color: #DA5C2B;
+}
+
+._media
+{
+	background-color: #869449;
+}
+
+._mnt
+{
+	background-color: #6F1F24;
+}
+
+._opt
+{
+	background-color: #EDC5C4;
+}
+
+._proc
+{
+	background-color: #FB8371;
+}
+
+._root
+{
+	background-color: #ABACA4;
+}
+
+._run
+{
+	background-color: #FB7E5C;
+}
+
+._sbin
+{
+	background-color: #94B2BC;
+}
+
+._srv
+{
+	background-color: #7A5758;
+}
+
+/*----------↑↑↑ linux 基础命令 ↑↑↑-------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ F5 理论原理 ↓↓↓----------------------------------------------------------------------------------------*/
+
+#npath span, #snat span, #gw span, #inpath span
+{
+	display: block;
+	margin-top: 20px;
+	font-size: 20px;
+}
+
+#npath div, #snat div, #gw div, #inpath div
+{
+	float: left;
+}
+
+#npath div:nth-child(2)
+{
+	width: 550px;
+	margin-left: -120px;
+	margin-top: 50px;
+}
+
+#snat div:nth-child(2)
+{
+	width: 500px;
+	margin-left: -120px;
+	margin-top: 50px;
+}
+
+#inpath div:nth-child(2)
+{
+	margin-top: 50px;
+}
+
+.lb
+{
+	color: #A6E22E;
+}
+
+/*----------↑↑↑ F5 理论原理 ↑↑↑----------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ pxe ↓↓↓-----------------------------------------------------------------------------------------------*/
+
+.os_options
+{
+	margin: 80px auto;
+}
+
+.os_options label
+{
+	margin-bottom: 10px;
+}
+
+.os_options select,
+.os_options input,
+.os_options textarea
+{
+	width: 1000px;
+	margin-bottom: 20px;
+}
+
+#btn_generate
+{
+	width: 1000px;
+	height: 60px;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
+.form-select
+{
+	height: 55px;
+}
+
+#lb_os_version, #select_os_version,
+#lb_os_kind, #select_os_kind,
+#lb_os_hostname, #input_os_hostname,
+#div_is_auto_login,
+#lb_os_password, #input_os_password,
+#lb_install, #select_install,
+#lb_partition, #select_partition,
+#lb_partition_install, #select_partition_install,
+#btn_generate, #txt_auto_install,
+#btn_download, #btn_copy
+{
+	display: none;
+}
+
+#txt_auto_install
+{
+	display: none;
+	resize: none;		/* 去年右下角调大小的箭头 */
+}
+
+#txt_auto_install::-webkit-scrollbar {	/* 滚动条整体样式 */
+	background-color: #212529;
+}
+
+#btn_download, #btn_copy
+{
+	width: 300px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.div_auto_txt
+{
+	position: relative;
+}
+
+/*----------↑↑↑ pxe ↑↑↑-----------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 正则表达式测试 ↓↓↓-------------------------------------------------------------------------------------*/
+
+.runoob-page-content
+{
+	margin-top: 80px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 15px;
+}
+
+[contentEditable=false]:empty:not(:focus):before
+{
+	content:attr(data-text);
+	color: #9A9A9A;
+}
+
+#compiler
+{
+	background-color: #29404E;
+}
+
+.card
+{
+	/*border-color: #2C3B41;*/
+	/*border-width: 4px;*/
+	margin-top: 20px;
+	border: 0;
+}
+
+.card-body
+{
+	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
+	padding: 0;
+}
+
+#flags
+{
+	padding: 4px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 4px;
+	border-radius: 4px;
+	box-sizing:border-box;
+	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
+}
+
+/*#exp, */
+#txt
+{
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+	color: #FFFFFF;
+	/*background-color: #494A5F;*/
+	background-color: #3A3B4C;
+}
+
+.runoob-regex-test
+{
+	border-radius: 5px;
+	background-color: #F2F2F2;
+	padding: 0;
+}
+
+#txt, #textSour, #textMatchResult, #textReplaceResult
+{
+	font-size: 22px;
+	font-family: Consolas, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+}
+
+#txt
+{
+	min-height: 100px;
+	background: #252525;
+	border: 0;
+}
+
+#txt ol li:first-child
+{
+	opacity: 0.5;
+}
+
+#txt:focus
+{
+	border-color: #66AFE9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+#txt i, #txt b
+{
+	border-radius: 4px;
+	font-style: normal;
+	font-weight: normal;
+}
+
+#txt i
+{
+	background: #062C34;
+	box-shadow: 0 0 0 1px #0099FF
+}
+
+#txt b
+{
+	background: #3B233C;
+	box-shadow: 0 0 0 1px #CE51A2;
+}
+
+.input_regex
+{
+	background-color: #121212;
+	color: #FFFFFF;
+	border: 0;
+	font-size: 18px;
+}
+
+.input_regex:hover, .input_regex:valid
+{
+	background-color: #121212;
+	color: #FFFFFF;
+}
+
+.input_regex:read-only
+{
+	background-color: #272A2C;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+
+.dropdown-menu
+{
+	background-color: #198754;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.dropdown-menu li
+{
+	color: #FFFFFF;
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.dropdown-menu li:hover
+{
+	background-color: #CBCFFF;
+	color: #8000FF;
+	border-radius: 5px;
+}
+
+.input-group-text
+{
+	background-color: #272A2C;
+	color: #FFFFFF;
+	border: 0;
+	font-size: 18px;
+}
+
+.form-check-label strong
+{
+	margin-left: 2px;
+}
+
+#menu2
+{
+	margin-left: 20px;
+}
+
+.runoob-page-content ul input[type="checkbox"]
+{
+	accent-color: #8000FF;
+	/*zoom: 150%;*/
+}
+
+#grammar
+{
+	width: 100%;
+	/*height: auto;*/
+	padding-left: 50px;
+	position: fixed;
+	opacity: 1.0;
+	z-index: 8;
+	/*background-color: #00B050;*/
+	background-color: #494A5F;
+	overflow-y: auto;
+	display: none;
+	left: 0;
+	right: 0;
+	top: 80px;
+	bottom: 0;
+	margin: auto;
+	/*max-width: 1200px;*/
+}
+
+#grammar::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+}
+
+#grammar::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	background: #676767;
+}
+
+#tGrammar
+{
+	margin-top: 20px;
+}
+
+#tGrammar .cell:nth-child(1)
+{
+	width: 140px;
+}
+
+#tGrammar .row:nth-child(25) .cell:nth-child(2),
+#tGrammar .row:nth-child(26) .cell:nth-child(2),
+#tGrammar .row:nth-child(27) .cell:nth-child(2),
+#tGrammar .row:nth-child(28) .cell:nth-child(2)
+{
+    line-height: 35px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#tGrammar .row:nth-child(25) .cell:nth-child(1),
+#tGrammar .row:nth-child(26) .cell:nth-child(1),
+#tGrammar .row:nth-child(27) .cell:nth-child(1),
+#tGrammar .row:nth-child(28) .cell:nth-child(1)
+{
+    vertical-align: middle;
+}
+
+.regex_group
+{
+	font-size: 40px;
+}
+
+.group1
+{
+	font-size: 80px;
+	color: #0080FF;
+}
+
+.group2
+{
+	font-size: 60px;
+	color: #A6E22E;
+}
+
+.group3
+{
+	font-weight: bold;
+	color: #FF6EFF;
+	font-size: 50px;
+}
+
+.group_result
+{
+	font-size: 30px;
+	line-height: 60px;
+}
+
+.group_result span
+{
+	color: #63D8EE;
+}
+
+.span25
+{
+	font-size: 25px;
+	color: #FFFFFF!important;
+}
+
+.spanSpace
+{
+	letter-spacing: 2.4px;
+}
+
+#regex_group_close
+{
+    top: 80px;
+    right: 20px;
+	font-size: 25px;
+	font-weight: bold;
+	line-height: 37px;
+	text-align: center;
+    cursor: pointer;
+    position: fixed;
+	color: #A9C7CE;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+
+#regex_group_close:hover
+{
+	background-color: #1C232F;
+	color: #FFFFFF;
+}
+
+
+.input-group > .input-group-append > .input-group-text
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group > .input-group-prepend > .input-group-text
+{
+	padding: .5rem 1rem;
+	line-height: 1.5;
+	border-radius: .3rem;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input-group > .input-group-append > .input-group-text
+{
+	padding: .5rem 1rem;
+	line-height: 1.5;
+	border-radius: .3rem;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-inline, .form-group
+{
+    display: flex;
+    align-items: center;
+}
+
+
+.gammar
+{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#textPattern::placeholder,
+#textReplace::placeholder,
+#textReplaceResult::placeholder
+{
+	color: #6C757D;
+}
+
+
+#btnReplace
+{
+	margin-left: 20px;
+}
+
+#textSour
+{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.card-body .row > :not(:first-child)
+{
+	margin-top: 20px;
+}
+
+/*----------↑↑↑ 正则表达式测试 ↑↑↑-------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 网页证书编辑 ↓↓↓---------------------------------------------------------------------------------------*/
+
+.certs_edit_type
+{
+	color: #0080FF;
+	margin-bottom: 30px;
+}
+
+#divCommand .inputfile
+{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label
+{
+	/*max-width: 80%;*/
+	font-size: 1.25rem;
+	font-weight: 700;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	display: inline-block;
+	overflow: hidden;
+	color: #9831FF;
+	border: solid 1px #9831FF;
+	background-color: #FFFFFF;
+	padding: 0;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label
+{
+	outline: dotted 1px #000000;
+	outline: -webkit-focus-ring-color auto 5px;
+	border-color: #7300E6;
+}
+
+.inputfile + label:hover
+{
+	border-color: #7300E6;
+}
+
+.inputfile + label svg
+{
+	width: 1em;
+	height: 1em;
+	vertical-align: middle;
+	fill: currentColor;
+	margin-top: -0.25em;
+	/* 4px */
+	margin-right: 0.25em;
+	/* 4px */
+}
+
+.inputfile + label span
+{
+	width: 500px;
+	min-height: 2em;
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label strong
+{
+	height: 100%;
+	color: #FFFFFF;
+	background-color: #9831FF;
+	display: inline-block;
+	padding: 0.625rem 1.25rem;
+}
+
+.inputfile:focus + label strong,
+.inputfile.has-focus + label strong,
+.inputfile + label:hover strong
+{
+	background-color: #7300E6;
+}
+
+.txt_base64
+{
+	background-color: #282923;
+	color: #F8F8F2;
+	border: 0;
+	font-size: 22px;
+	font-family: Consolas, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+	width: 900px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	/*overflow-x: hidden;	!* 隐藏水平滚动条 *!*/
+	/*overflow-y: auto;	!* 当内容超出时显示垂直滚动条 *!*/
+	resize: none;		/* 去掉右下角调大小的箭头 */
+}
+
+.txt_base64:hover, .txt_base64:valid,
+.txt_base64:focus:not(:hover)
+{
+	background-color: #282923;
+	color: #F8F8F2;
+}
+
+.get_certs
+{
+	border-radius: 0;
+	margin-left: 10px;
+	margin-top: -10px;
+	height: 100%;
+
+	font-size: 1.25rem;
+	font-weight: bolder;
+	height: 100%;
+	display: inline-block;
+	padding: 0.35rem 1rem;
+
+}
+
+.certs div:nth-child(1)
+{
+	/*font-weight: bold;*/
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+}
+
+.div_password
+{
+	font-weight: 700;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	color: #9831FF;
+	padding: 0;
+	position: relative;
+	display: inline-flex;
+}
+
+.span_password
+{
+	margin-right: 0;
+	font-size: 1.25rem;
+	color: #F1E5E6;
+	background-color: #9831FF;
+	font-weight: bolder;
+	height: 100%;
+	display: inline-block;
+	padding: 0.4rem 1.25rem;
+}
+
+.txt_password
+{
+	margin-left: 0;
+	width: 300px;
+	font-size: 1.25rem;
+	min-height: 2em;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	vertical-align: middle;
+	padding-left: 1rem;
+	padding-right: 2.7rem;
+	font-weight: 700;
+}
+
+.eye_password
+{
+	position: absolute;
+	font-size: 1.3rem;
+	cursor: pointer;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #9831FF;
+}
+
+.div_password button
+{
+	margin-left: 50px;
+	font-size: 1.25rem;
+	font-weight: bolder;
+	height: 100%;
+	display: inline-block;
+	padding: 0.35rem 1rem;
+}
+
+.div_isEncry
+{
+	font-size: 1.2rem;
+	vertical-align: bottom;
+}
+
+.divbase64
+{
+	position: relative;
+	display: inline-block;
+}
+
+.divGet
+{
+	right: 12px;
+	display: flex;
+}
+
+/*----------↑↑↑ 网页证书编辑 ↑↑↑---------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 海贼王动画目录 ↓↓↓-------------------------------------------------------------------------------------*/
+
+#zwTableOP
+{
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
+	top: 99px;
+}
+
+#zwTableOP .cell:nth-child(1),
+#tOP th:nth-child(1)
+{
+	width: 160px;
+}
+
+#zwTableOP .cell:nth-child(3),
+#tOP th:nth-child(3)
+{
+	width: 160px;
+}
+
+#zwTableOP .cell:nth-child(4),
+#tOP th:nth-child(4)
+{
+	width: 220px;
+}
+
+.divBGOP
+{
+	background-color: #3A3B4C;
+	height: 60px;
+	top: 50px;
+}
+
+#zwTableOP, .divBGOP
+{
+	width: calc(100vw - 400px);
+	position: fixed;
+	z-index: 10;
+	left: 380px;
+}
+
+
+#zwTableOP .row.header .cell
+{
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#tOP
+{
+	margin-left: 18px;
+	letter-spacing: 1px;
+	width: calc(100vw - 400px);
+}
+
+#tOP .chapter
+{
+	text-align: left;
+	color: #FFFF00;
+	font-size: 24px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+#tOP table
+{
+	border-collapse: collapse;
+	border: solid 2px #808080;
+	font-size: 18px;
+	margin-top: 61px;
+	width: calc(100vw - 400px);
+}
+
+#tOP td
+{
+	border:solid 2px #808080;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background-color: #5A5D6F;
+	color: #FFFFFF;
+}
+
+#tOP td:nth-child(1)
+{
+	text-align: left;
+	padding-left: 20px;
+}
+
+#tOP td:nth-last-child(4)
+{
+	text-align: center;
+	padding-left: 1px;
+}
+
+.section
+{
+	text-align: left!important;
+	padding-left: 20px;
+}
+
+/*----------↑↑↑ 海贼王动画目录 ↑↑↑-------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 高亮表格 ↓↓↓-------------------------------------------------------------------------------------------*/
+
+.HLTableS1 .row>*,
+.HLTableS2 .row>*
+{
+	width: inherit;
+}
+
+.HLTableS1, .HLTableS2
+{
+	border-radius: 10px;
+	overflow: hidden;
+	letter-spacing: 1px;
+}
+
+.table
+{
+	/*width: 100%;*/
+	display: table;
+	margin: 0;
+}
+
+.HLTableS1 span,
+.HLTableS2 span
+{
+	background-color: inherit;
+}
+
+.HLTableS1 .row,
+.HLTableS2 .row
+{
+	display: table-row;
+	background-color: #5A5D6F;
+	/*width: 100% !important;*/
+}
+
+.row.header
+{
+	color: #A0A0A0;
+	background: #6C7AE0;
+}
+
+.row .cell
+{
+	display: table-cell;
+	font-family: Poppins-Regular;
+	font-size: 18px;
+	color: #FFFFFF;
+	line-height: 1.2;
+
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.row .cell:nth-child(1)
+{
+	padding-left: 20px;
+}
+
+.row.header .cell
+{
+	font-family: Poppins-Regular;
+	font-size: 20px;
+	color: #FFFFFF;
+	line-height: 1.2;
+	font-weight: unset !important;
+
+	padding-top: 19px;
+	padding-bottom: 19px;
+	text-align: center;
+	padding-left: 0;
+	vertical-align: middle;
+}
+
+.HLTableS1 .row:hover,
+.HLTableS2 .row:hover
+{
+	background-color: #CBCFFF;
+	cursor: pointer;
+}
+
+.row:hover .cell
+{
+	color: #000000;
+}
+
+.row.header:hover
+{
+	background-color: #6C7AE0;
+}
+
+.row.header:hover .cell
+{
+	color: #FFFFFF;
+}
+
+.HLTableS1 .cell:nth-child(1),
+.HLTableS2 .row:nth-child(n+2) .cell:nth-child(1)
+{
+	font-weight: bold;
+	color: #FFFF00;
+}
+
+.HLTableS1 .row:hover .cell:nth-child(1),
+.HLTableS2 .row:nth-child(n+2):hover .cell:nth-child(1)
+{
+	color: #8000FF;
+}
+
+.HLTableS1 .row:nth-child(even),
+.HLTableS2 .row:nth-child(odd)
+{
+	background-color: #76798B;
+}
+
+.HLTableS1 .row:nth-child(even):hover,
+.HLTableS2 .row:nth-child(odd):hover
+{
+	background-color: #CBCFFF;
+}
+
+.HLTableS2 .row.header
+{
+	background-color: #6C7AE0;
+}
+
+.HLTableS2 .row.header:hover
+{
+	background-color: #6C7AE0;
+}
+
+/* bootstarp内容冲突 */
+.table>:not(caption)>*>*
+{
+	color: inherit;
+	background-color: inherit;
+}

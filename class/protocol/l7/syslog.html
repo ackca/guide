@@ -4,14 +4,20 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>协议-syslog</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(syslog);
 		document.onmouseup = function () {
 			document.onmousemove = null;
 		};
 	</script>
-	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/syslog.css">
+<!--	<link rel="stylesheet" type="text/css" href="../../../css/private/protocol/syslog.css">-->
+	<style type="text/css">
+		.divProtocolExplain span
+		{
+			font-size: 30px;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -77,7 +83,7 @@
 						["22", "local use 6  (local6)"],
 						["23", "local use 7  (local7)"],
 					];
-					createHLTableT0(550, tHeader, tBody);
+					createHLTableT0(550, tHeader, tBody, "tFacility");
 					document.writeln("");
 
 				createInstruT0("<br /><br />Severity取值对应关系<br />", "i3");
@@ -95,7 +101,7 @@
 						["6", "<b>Informational: </b>informational messages"],
 						["7", "<b>Debug: </b>debug-level messages"],
 					];
-					createHLTableT0(550, tHeader, tBody);
+					createHLTableT0(550, tHeader, tBody, "tSeverity");
 
 
 				createInstruT0("syslog 报文实例<br />", "i4");

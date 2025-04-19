@@ -1,0 +1,628 @@
+.top_navigation, .top_navigation dd, .top_navigation dt, .top_navigation h1,
+.top_navigation h2, .top_navigation h3, .top_navigation h4, .top_navigation h5,
+.top_navigation h6, .top_navigation li, .top_navigation p, .top_navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+.top_navigation h1, .top_navigation h2, .top_navigation h3,
+.top_navigation h4, .top_navigation h5, .top_navigation h6
+{
+	font-size: 130%;
+	font-weight: 400;
+}
+
+.top_navigation dd, .top_navigation li, .top_navigation ul
+{
+	list-style: none;
+}
+
+.top_navigation img
+{
+	border: none;
+	outline: none;
+}
+
+.top_navigation table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.top_navigation a
+{
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+	color: inherit;
+}
+
+.top_navigation input
+{
+	outline: none;
+}
+
+.top_navigation em
+{
+	font-style: normal;
+}
+
+.top_navigation
+{
+	z-index: 11;
+	position: relative;
+	font: 12px/1.5 microsoft yahei,arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+	background-color: #323232;/*#333333*/
+	min-width: 1200px;
+	color: #323232;
+	/*min-height: 100%;*/
+	box-sizing: border-box;
+}
+
+.top_navigation button, .top_navigation input,
+.top_navigation select, .top_navigation textarea
+{
+	font-size: 1em;
+	font-family: inherit;
+}
+
+.clearfix:after, .clearfix:before
+{
+	content: '';
+	display: table;
+	font: 0/0 a;
+}
+
+.clearfix:after
+{
+	clear: both;
+}
+
+.fixed-bar .backtop:before
+{
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+.mod-header
+{
+	width: 100%;
+	font-size: 14px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	z-index: 10;
+	transition: background .3s ease;
+}
+
+.mod-header .layout
+{
+	min-width: 1200px;
+	width: auto;
+	position: relative;
+	/*display:flex;*/
+	/*justify-content:center;*/
+}
+
+.mod-header-nav
+{
+	position: relative;
+	/*float: left;*/
+	margin: 0 auto;
+	width: 1070px;
+}
+
+.mod-header-nav li
+{
+	position:relative;
+	float: left;
+	line-height: 1;
+}
+
+.mod-header-nav a:hover
+{
+	text-decoration: none;
+}
+
+.mod-header-nav .top-cat
+{
+	text-align: center;
+	padding: 20px 16px;
+	margin-right: 30px;
+}
+
+.mod-header-nav .top-cat:first-child
+{
+	margin: 0 30px;
+}
+
+.mod-header-nav .top-cat h2
+{
+	position: relative;
+}
+
+.mod-header-nav .top-cat h2 a
+{
+	padding: 0;
+	position: relative;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.mod-header-nav .slider
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	height: 3px;
+	background-color: #FFFFFF;
+	transition: width .3s ease-out,-webkit-transform .3s ease-out;
+	transition: transform .3s ease-out,width .3s ease-out;
+	transition: transform .3s ease-out,width .3s ease-out,-webkit-transform .3s ease-out;
+}
+
+.mod-header.active, .mod-header.hover, .mod-header:hover
+{
+	background-color: #2C3B41;
+}
+
+.mod-header .cat
+{
+	position: relative;
+}
+
+
+.mod-header .cat .layout
+{
+	min-width: 0;
+}
+
+.mod-header .cat-ico
+{
+	display: inline-block;
+	width: 49px;
+}
+
+.mod-header .cat-box
+{
+	color: #FFFFFF;
+	font-size: 0;
+	box-sizing: border-box;
+	/*padding: 0 0 0 220px;*/
+	background-color: rgba(44,59,65,.95);
+	position: absolute;
+	width: 100%;
+	top: 60px;
+	left: 0;
+	text-align: center;
+	transition: -webkit-transform .3s ease-out;
+	transition: transform .3s ease-out;
+	transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+	-webkit-transform: scaleY(0);
+	-ms-transform: scaleY(0);
+	transform: scaleY(0);
+	-webkit-transform-origin: center top;
+	-ms-transform-origin: center top;
+	transform-origin: center top;
+}
+
+.mod-header .cat-box.active,.mod-header .cat-box:hover
+{
+	-webkit-transform: scaleY(1);
+	-ms-transform: scaleY(1);
+	transform: scaleY(1);
+}
+
+.mod-header .cat-group
+{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 14px;
+	margin-left: 30px;
+	padding: 20px 0;
+	text-align: left;
+}
+
+.mod-header .cat-group:first-child
+{
+	margin-left: 0;
+}
+
+.mod-header .cat-tit
+{
+	font-size: 22px;
+	padding-bottom: 7px;
+}
+
+.mod-header .cat-tit i
+{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 16px;
+}
+
+.mod-header .cat-item
+{
+	display: block;
+	min-width: 300px;
+	box-sizing: border-box;
+	margin-left: 25px;
+	margin-top: 5px;
+	padding: 7px 50px 7px 50px;
+	/*padding: 7px 0 7px 50px;*/
+	margin-bottom: 4px;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.mod-header .cat-item:hover
+{
+	background-color: #1E282C;
+}
+
+.mod-header .cat-item a
+{
+	color: #FFFFFF;
+}
+
+.mod-header .cat-item a:hover
+{
+	color: #1070E1;
+}
+
+.mod-header .cat-item-sub
+{
+	margin-top: 7px;
+	font-size: 14px;
+}
+
+.mod-header .cat-item-sub a
+{
+	display: inline-block;
+	vertical-align: middle;
+	color: #A3A3A3;
+	margin-top: 4px;
+	padding-right: 24px;
+	line-height: 22px;
+}
+
+.mod-header .cat-item-sub a:last-child
+{
+	padding-right: 0;
+}
+
+.mod-header .cat-item-sub a.disabled
+{
+	color: #A3A3A3;
+	cursor: default;
+	pointer-events: none;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)";
+}
+
+.mod-header .cat-item-row
+{
+	display: table-row;
+}
+
+.mod-header .cat-item-row a
+{
+	display: table-cell;
+}
+
+.mod-header .cat-tag
+{
+	display: inline-block;
+	vertical-align: middle;
+	width: 28px;
+	height: 12px;
+	margin-left: 6px;
+	margin-top: -2px;
+}
+
+.mod-header .cat-tit span
+{
+	margin-left: 20px;
+}
+
+.mod-header .ico-cisco
+{
+	width: 60px;
+	height: 32px;
+	margin-bottom: 12px;
+}
+
+.mod-header .ico-cisco img
+{
+	height: 32px;
+}
+
+.mod-header .ico-okta
+{
+
+}
+
+.mod-header .ico-okta img
+{
+	height: 45px;
+	filter: invert(95%);
+}
+
+.inner-aruba
+{
+	/*border-top: solid 2px red;*/
+	margin-top: 20px;
+}
+
+.inner-aruba h3,
+.inner-aruba ul
+{
+	margin-left: -24px;
+}
+
+.mod-header .ico-aruba
+{
+	width: 148px;
+	height: 37px;
+	margin-left: 72px;
+	margin-bottom: 7px;
+}
+
+.ico-aruba img
+{
+	height: 30px;
+}
+
+.ico-one_piece img,
+.ico-conan img
+{
+	width: 170px;
+}
+
+.mod-header .ico-f5
+{
+	width: 45px;
+	height: 45px;
+	margin-bottom: -1px;
+}
+
+.mod-header .ico-h3c
+{
+	height: 45px;
+	margin-bottom: 1px;
+}
+
+.mod-header .ico-h3c img
+{
+	height: 20px;
+	margin-top: 10px;
+	margin-left: -20px;
+}
+
+.mod-header .ico-huawei
+{
+	width: 45px;
+	height: 46px;
+}
+
+.mod-header .ico-vsphere
+{
+	width: 50px;
+}
+
+.mod-header .ico-nsx img
+{
+	width: 90px;
+	margin-left: 76px;
+	margin-bottom: 20px;
+}
+
+.mod-header .ico-velocloud
+{
+	width: 150px;
+	margin-left: -100px;
+	margin-top: -20px;
+}
+
+.mod-header .ico-mysql
+{
+	width: 60px;
+}
+
+.mod-header .ico-cert
+{
+	width: 50px;
+}
+
+.mod-header .ico-gitlab
+{
+	width: 45px;
+}
+
+.mod-header .ico-terraform img
+{
+	height: 55px;
+	margin-left: 34px;
+}
+
+.mod-header .ico-nginx img
+{
+	height: 50px;
+	margin-left: 32px;
+}
+
+.mod-header .ico-regex
+{
+	width: 90px;
+}
+
+.mod-header .ico-aliyun img
+{
+	height: 30px;
+}
+
+.mod-header .ico-docker img
+{
+	height: 50px;
+	margin-top: -10px;
+	margin-left: 13px;
+}
+
+.mod-header .ico-k8s img
+{
+	height: 40px;
+	margin-left: 23px;
+}
+
+.mod-header .ico-vault
+{
+	width: 50px;
+}
+
+.mod-header .ico-redhat
+{
+	width: 190px;
+	margin-left: 5px;
+}
+
+.mod-header .ico-nmap
+{
+	width: 80px;
+}
+
+.mod-header .ico-os img
+{
+	border-radius: 20%;
+	width: 60px;
+}
+
+.ie-placeholder
+{
+	color: #AAAAAA;
+}
+
+@media screen and (max-width:1400px)
+{
+	.mod-header .cat-box
+	{
+		padding: 0 0 0 18px;
+	}
+
+	.mod-header .cat-group
+	{
+		margin-left: 6px;
+	}
+}
+
+.top_navigation
+{
+	top: 0;
+	left: 0;
+	position:fixed;
+	width: 100%;
+	height: 62px;
+}
+
+div[data-cat~="protocol"] .cat-item:not(:first-child)
+{
+	margin-top: 50px;
+}
+
+div[data-cat~="protocol"] .cat-item-sub
+{
+	margin-top: 20px;
+}
+
+div[data-cat~="protocol"] .cat-item-main span
+{
+	font-size: 22px;
+}
+
+div[data-cat~="protocol"] .cat-item-row a
+{
+	font-size: 20px;
+}
+
+div[data-cat~="network"] .cat-group
+{
+	margin-left: 10px;
+}
+
+/*分辨率较低时，aruba会被挤到下一行*/
+@media screen and (max-width:1550px) {
+
+}
+
+div[data-cat~="netdevops"] .cat-group:nth-child(2) td
+{
+	padding-left: 0;
+}
+
+div[data-cat~="netdevops"] .logo i
+{
+	margin-right: 0;
+}
+
+div[data-cat~="netdevops"] .cat-item
+{
+	min-width: inherit;
+}
+
+div[data-cat~="netdevops"] .logo
+{
+	width: 150px;
+	text-align: right;
+}
+
+div[data-cat~="netdevops"] tr:not(:first-child) td,
+div[data-cat~="others"] tr:not(:first-child) td
+{
+	padding-top: 50px;
+}
+
+div[data-cat~="netdevops"] .cat-item,
+div[data-cat~="others"] .cat-item
+{
+	margin-top: 20px;
+}
+
+div[data-cat~="cloud"] .cat-item:first-child,
+div[data-cat~="linux"] .cat-item:first-child,
+div[data-cat~="others"] .cat-item:not(:first-child)
+{
+	margin-top: 10px;
+}
+
+div[data-cat~="cloud"] .cat-item:not(:first-child),
+div[data-cat~="linux"] .cat-item:not(:first-child),
+div[data-cat~="others"] .cat-item:not(:first-child)
+{
+	margin-top: 20px;
+}
+
+div[data-cat~="others"] .logo
+{
+	width: 180px;
+	text-align: right;
+}
+
+div[data-cat~="others"] .cat-tit span
+{
+	margin-left: 0;
+}
+
+.anime
+{
+	float: right;
+	margin-left: 0!important;
+	margin-right: 20px;
+}

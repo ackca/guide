@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/docker.svg"/>
 	<title>混合云-docker-私有镜像仓库搭建和使用</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(private_hub);
 	</script>
@@ -24,7 +24,7 @@
 					createInstruT1("安装harbar", "i2-1");
 						createInstruT2("配置docker采用http方式传访问harbar");
 							createInstruT3("修改 /etc/docker/daemon.json 文件，使用http访问");
-								createInstruAllTopT3("默认https，无需此步，无可信证书时，配置繁琐，建议使用http");
+								createInstruAllTopT3("docker默认https通过获取镜像，有可信证书时，harbor应配置为https，无需此步");
 									let cmd = `
 										\"insecure-registries\": [\"192.168.110.133\"]    # 192.168.110.133 harbor的ip地址或域名
 									`;
@@ -77,6 +77,7 @@
 								createConfigImgT3("private_hub/i2_1$3");
 
 						createInstruT2("安装&启动harbor");
+							createInstruAllTopT2("使用过程中如果修改了harbor.yml，需要执行install.sh，修改才能生效");
 							cmd = `
 								./install.sh
 							`;
@@ -118,14 +119,17 @@
 							createInstruAllTopT2("域名为 ’harbor.itachi.tech。");
 
 							createInstruAllTopT2("需要将’根证书。、’个人证书。、’个人证书私钥。均放入 ’/etc/docker/certs.d/“harbor.itachi.tech》 中");
-							createInstruAllTopT2("如果不使用默认的443端口，则需要配置使用的端口，如 ’/etc/docker/certs.d/“harbor.itachi.tech:8443》 ");
+							createInstruAllTopT2("如果不使用默认的443端口，则需要配置使用的端口，如 ’/etc/docker/certs.d/“harbor.itachi.tech‘:8443。》 ");
 							createInstruAllTopT2("’个人证书。文件名： 　　　“harbor.itachi.tech。.cert");
 							createInstruAllTopT2("’个人证书私钥。文件名： “harbor.itachi.tech。.key");
 							createInstruAllTopT2("’根证书。文件名：　　　　　 ca.crt");
 
 							createConfigImgT2("private_hub/i2_3$2");
 
-						createInstruT2("不对相应域名进行代理");
+							createInstruAllTopT2("实测：路径和根证书是必须的，个人证书和个人证书私钥可以不放入");
+
+
+						createInstruT2("<br />不对相应域名进行代理");
 							createInstruAllTopT2("如果docker配置了代理，例如：");
 							cmd = `
 								/etc/docker/daemon.json
@@ -134,7 +138,7 @@
 									"proxies": {
 										"http-proxy": "http://127.0.0.1:7897",
 										"https-proxy": "http://127.0.0.1:7897",
-										"no-proxy": "localhost,::1,127.0.0.1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+										"no-proxy": "localhost,::1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 									}
 								}
 							`;
@@ -148,13 +152,11 @@
 									"proxies": {
 										"http-proxy": "http://127.0.0.1:7897",
 										"https-proxy": "http://127.0.0.1:7897",
-										"no-proxy": "harbor.itachi.tech,localhost,::1,127.0.0.1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+										"no-proxy": "harbor.itachi.tech,localhost,::1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 									}
 								}
 							`;
 							createLinuxTxtT2(cmd);
-
-
 
 
 					createInstruT1("上传 / 下载镜像", "i2-2");
@@ -226,6 +228,44 @@
 							instruArr[1] = createCmdInstruSpan("push | pull", "上传 / 下载");
 							instruArr[2] = createCmdInstruSpan("“192.168.110.133:5000。”/“flask。", "镜像名");
 							createCmdInstruT2(instruArr, "docker");
+
+				createInstruT0("配置私有镜像加速器", "i3");
+						createInstruT2("项目地址：<a class='link' target='_blank' href='https://github.com/dqzboy/Docker-Proxy'>https://github.com/dqzboy/Docker-Proxy</a>");
+
+						createInstruT2("<br />使用安装好docker，可以科学上网的Linux执行脚本按向导部署");
+							cmd = `
+								bash ./DockerProxy_Install.sh    <a class="link_down_file" href="files/private_hub/DockerProxy_Install.sh">下载该文件</a>
+							`;
+							createLinuxTxtT2(cmd);
+							createConfigImgT2("private_hub/i3$1");
+
+						createInstruT2("安装好后，加速器运行在51000端口，http方式，添加http方式访问");
+							cmd = `
+								cat /etc/docker/daemon.json
+								# 下面为输出
+								{
+								    "proxies": {
+								        "http-proxy": "http://127.0.0.1:10809",
+								        "https-proxy": "http://127.0.0.1:10809",
+								        "no-proxy": "localhost,::1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+								    },
+								    "insecure-registries": ["127.0.0.1:51000"]
+								}
+								# 输出结束
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("测试加速器");
+							cmd = `
+								systemctl daemon-reload
+								systemctl reload docker
+
+								docker pull 127.0.0.1:51000/library/nginx
+							`;
+							createLinuxTxtT2(cmd);
+
+						createInstruT2("<br />后续可使用Nginx等Web服务器通过https方式代理51000端口<br />");
+
 			</script>
 		</div>
 	</div>

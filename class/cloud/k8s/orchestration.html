@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/k8s.svg" />
 	<title>混合云-k8s-基本操作</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(orchestration);
 	</script>
@@ -15,9 +15,9 @@
 		<div id="divCommand">
 			<script type="text/javascript">
 				createInstruT0("资源限制", "i1");
-					createInstruAllTopT1("资源限制位置ds或dp配置文件中，容器的下一级")
-					createInstruAllTopT1("共两种类型 requests（保证），limits（限制）")
-					createInstruAllTopT1("cpu还支持毫核限制，1=1000m，内存为常规的方式")
+					createInstruAllTopT0("资源限制位置ds或dp配置文件中，容器的下一级")
+					createInstruAllTopT0("共两种类型 requests（保证），limits（限制）")
+					createInstruAllTopT0("cpu还支持毫核限制，1=1000m，内存为常规的方式")
 					let yaml = `
 						apiVersion: apps/v1
 						kind: Deployment
@@ -46,7 +46,7 @@
 												cpu: 4
 												memory: 2Gi
 					`;
-					createYAMLT1(yaml);
+					createYAMLT0(yaml);
 
 				createInstruT0("亲和与反亲和", "i2");
 					createInstruT1("准备配置亲和", "i2-4");
@@ -54,18 +54,19 @@
 							createInstruT3("查看节点");
 								let cmd = `
 									kubectl get node
-									# 以下为输出
+									# 下面为输出
 									NAME       STATUS   ROLES    AGE     VERSION
 									node01     Ready    node     7d14h   v1.18.9
 									node02     Ready    node     7d14h   v1.18.9
 									node03     Ready    node     7d14h   v1.18.9
+									# 输出结束
 								`;
 								createLinuxTxtT3(cmd);
 
 							createInstruT3("查看节点标签");
 								cmd = `
 									kubectl get node node01 --show-labels
-									# 以下为输出，为了查看方便，调整了格式
+									# 下面为输出，为了查看方便，调整了格式
 									NAME     STATUS   ROLES   AGE     VERSION   LABELS
 									node01   Ready    node    7d14h   v1.18.9   beta.kubernetes.io/arch=amd64,
 																				beta.kubernetes.io/os=linux,
@@ -74,6 +75,7 @@
 																				kubernetes.io/os=linux,
 																				node-role.kubernetes.io/node=,
 																				rack=1
+									# 输出结束
 								`;
 								createLinuxTxtT3(cmd);
 
@@ -286,12 +288,12 @@
 						instruArr[1] = createCmdInstruSpan("“node01。", "查看污点的节点名");
 						createCmdInstruT1(instruArr, "k8s");
 
-					createInstruT1("删除污点<br />", "i3-3");
+					createInstruT1("<br />删除污点<br />", "i3-3");
 						instruArr[0] = createLinuxCmd("kubectl taint nodes “node01。” 。“disk。”-。", 3);
 						instruArr[1] = createCmdInstruSpan("“node01。", "删除污点的节点名");
 						createCmdInstruT1(instruArr, "k8s");
 
-					createInstruT1("pod容忍污点", "i3-4");
+					createInstruT1("<br />pod容忍污点", "i3-4");
 						yaml = `
 							apiVersion: apps/v1
 							kind: Deployment
@@ -327,7 +329,7 @@
 						instruArr[2] = createCmdInstruSpan("“index.html。", "configmap对应的文件");
 						createCmdInstruT1(instruArr, "k8s");
 
-					createInstruT1("查看configmap", "i5-2");
+					createInstruT1("<br />查看configmap", "i5-2");
 						createInstruT2("查看configmap列表", "i5-2-1");
 							instruArr = [];
 							instruArr[0] = createCmdSpan("kubectl get cm");
@@ -470,6 +472,7 @@
 								  ├─cl-root xfs               ba590539-8425-43ed-9108-9ddf62a61c9d   /
 								  └─cl-swap swap              c6fe0169-8472-4b3b-a7bc-22cca65d40a6
 								sdb	### 无FSTYPE信息
+								# 输出结束
 							`;
 							createLinuxTxtT2(cmd);
 
@@ -490,6 +493,7 @@
 								rook-discover-4xc4x                   1/1     Running   0          44s
 								rook-discover-dxnfq                   1/1     Running   0          44s
 								rook-discover-l57sn                   1/1     Running   0          44s
+								# 输出结束
 
 								kubectl apply -f cluster.yaml	<a href="yaml/orchestration/06_storage/operator.yaml" download="operator.yaml">下载该文件</a>
 
@@ -542,6 +546,7 @@
 								rook-discover-4xc4x                                1/1     Running     1          11h
 								rook-discover-dxnfq                                1/1     Running     1          11h
 								rook-discover-l57sn                                1/1     Running     1          11h
+								# 输出结束
 							`;
 							createLinuxTxtT2(cmd);
 

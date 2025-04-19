@@ -5,11 +5,29 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../img/redhat.svg" />
 	<title>Linux-RedHat-基础服务</title>
-	<script type="text/javascript" src="../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(redhat_service);
 	</script>
-	<link rel="stylesheet" type="text/css" href="../../css/private/redhat_basic.css">
+<!--	<link rel="stylesheet" type="text/css" href="../../css/private/redhat_basic.css">-->
+	<style type="text/css">
+		.HLTableS1, .HLTableS2
+		{
+			border-radius: 5px;
+		}
+
+		.treeview
+		{
+			white-space: nowrap;
+		}
+
+		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(3) .cmd,
+		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(5) .cmd,
+		#i3-2-2 + .cmdInstruAllTopT2 + .cmdTableT2 tr:nth-child(7) .cmd
+		{
+			line-height: 0;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -20,26 +38,26 @@
 					instruArr[0] = createLinuxCmd("systemctl “操作。 “服务。");
 					createCmdInstruT1(instruArr, "redhat");
 
-					createInstruAllTopT1("可选的操作如下：");
-					let tBody = [
-						["start", "启动服务"],
-						["stop", "停止服务"],
-						["restart", "重启服务"],
-						["enable", "服务开机自启"],
-						["disable", "关闭服务开机自启"],
-						["status", "查看服务状态"],
-						["list-units --type=service", "列举所有已启动服务"],
-					];
-					createHLTableT1(550, '', tBody, 'tSystemctl');
+					createInstruT2("可选的操作如下：");
+						let tBody = [
+							["start", "启动服务"],
+							["stop", "停止服务"],
+							["restart", "重启服务"],
+							["enable", "服务开机自启"],
+							["disable", "关闭服务开机自启"],
+							["status", "查看服务状态"],
+							["list-units --type=service", "列举所有已启动服务"],
+						];
+						createHLTableT2(500, '', tBody, 'tSystemctl');
 
-					createInstruAllTopT1("<br />启动、开机启用docker");
-					createConfigImgT1("redhat_service/i1$1");
+					createInstruT2("<br />启动、开机启用docker");
+						createConfigImgT2("redhat_service/i1$1");
 
-					createInstruAllTopT1("查看docker状态");
-					createConfigImgT1("redhat_service/i1$2");
+					createInstruT2("查看docker状态");
+						createConfigImgT2("redhat_service/i1$2");
 
-					createInstruAllTopT1("查看所有已启动服务");
-					createConfigImgT1("redhat_service/i1$3");
+					createInstruT2("查看所有已启动服务");
+						createConfigImgT2("redhat_service/i1$3");
 
 
 				createInstruT0("网络管理", "i2");
@@ -619,7 +637,7 @@
 							createInstruT3("配置从服务器", "i5-6-2-2");
 								createInstruAllTopT3("在主配置文件 /etc/named.conf，添加主服务器生成的密钥，并启用加密传输");
 								cmd = `
-									cat >>/etc/named.conf <<'EOF'
+									cat >>/etc/named.conf <<EOF
 
 									server 192.168.100.100 {	# 主服务器地址
 										keys { transfer-key; }; # 密钥名
@@ -697,7 +715,11 @@
 								`;
 								createLinuxTxtT3(cmd);
 
-
+					createInstruT1("测试网络代理", "i8-3");
+						cmd = `
+							curl -x http://127.0.0.1:10809 https://www.google.com
+						`;
+						createLinuxTxtT1(cmd);
 				createInstruT0("v2ray（科学上网）", "i7");
 					createInstruT1("安装v2ray程序", "i7-1");
 						createInstruT2("命令行版v2ray，下载地址：<a class='link' href='https://github.com/v2fly/v2ray-core/releases/' target='_blank'>https://github.com/v2fly/v2ray-core/releases</a><br />");

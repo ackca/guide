@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/cert.png" />
 	<title>NetDevOps-证书服务-CFSSL</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(cfssl);
 	</script>
@@ -39,6 +39,7 @@
 								which cfssl
 								# 下面为输出
 								/usr/bin/cfssl
+								# 输出结束
 							`;
 							createLinuxTxtT2(cmd);
 
@@ -47,6 +48,7 @@
 								which cfssljson
 								# 下面为输出
 								/usr/bin/cfssljson
+								# 输出结束
 							`;
 							createLinuxTxtT2(cmd);
 
@@ -55,6 +57,7 @@
 								which cfssl-certinfo
 								# 下面为输出
 								/usr/bin/cfssl-certinfo
+								# 输出结束
 							`;
 							createLinuxTxtT2(cmd);
 
@@ -102,21 +105,23 @@
 
 							cd /opt/certs/
 							cfssl gencert -initca ca-csr.json | cfssljson -bare ca
-							# 以下是输出
+							# 下面为输出
 							2021/01/09 23:48:43 [INFO] generating a new CA key and certificate from CSR
 							2021/01/09 23:48:43 [INFO] generate received request
 							2021/01/09 23:48:43 [INFO] received CSR
 							2021/01/09 23:48:43 [INFO] generating key: rsa-4096
 							2021/01/09 23:48:46 [INFO] encoded CSR
 							2021/01/09 23:48:46 [INFO] signed certificate with serial number 246970… # 省略冗长的序列号
+							# 输出结束
 
 							ll
-							# 以下是输出
+							# 下面为输出
 							总用量 16
 							-rw-r--r-- 1 root root 1700  1月   9 23:48 ca.csr       # 证书请求
 							-rw-r--r-- 1 root root  336  1月   9 23:45 ca-csr.json
 							-rw------- 1 root root 3243  1月   9 23:48 ca-key.pem   # 根的私钥
 							-rw-r--r-- 1 root root 2061  1月   9 23:48 ca.pem       # 根证书
+							# 输出结束
 						`;
 						createLinuxTxtT1(cmd);
 
@@ -261,6 +266,7 @@
 								2023/03/30 16:50:41 [INFO] generating key: rsa-2048
 								2023/03/30 16:50:41 [INFO] encoded CSR
 								2023/03/30 16:50:41 [INFO] signed certificate with serial number 272845… # 省略冗长的序列号
+								# 输出结束
 
 								ll | grep web
 
@@ -269,6 +275,7 @@
 								-rw-r--r--. 1 root root 1078  3月  30 16:50 web-server.csr		# 证书请求
 								-rw-------. 1 root root 1675  3月  30 16:50 web-server-key.pem	# 证书私钥
 								-rw-r--r--. 1 root root 1785  3月  30 16:50 web-server.pem		# 证书
+								# 输出结束
 							`;
 							createLinuxTxtT2(cmd);
 
@@ -296,12 +303,14 @@
 
 							# 下面为输出
 							2023/09/11 15:27:30 [INFO] signed certificate with serial number 626807… # 省略冗长的序列号
+							# 输出结束
 
 							ll | grep PAN-P.itachi.tech
 
 							# 下面为输出
 							-rw-r--r--. 1 root root 1085  9月  11 15:27 PAN-P.itachi.tech.csr	# 证书请求
 							-rw-r--r--. 1 root root 1233  9月  11 15:27 PAN-P.itachi.tech.pem	# 证书
+							# 输出结束
 						`;
 						createLinuxTxtT1(cmd);
 

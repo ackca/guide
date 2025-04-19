@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/k8s.svg" />
+	<title>混合云-k8s-kubeadm安装</title>
+	<script type="text/javascript" src="../../../js/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(kubeadm_setup);
+	</script>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("前期准备（所有节点）", "i1");
+					createInstruT1("系统组件配置", "i1-1");
+						createInstruT2("关闭SELinux");
+
+							let cmd = `
+								mkdir -p /etc/docker
+								tee /etc/docker/daemon.json <<EOF
+								{
+								    "proxies": {
+								        "http-proxy": "http://127.0.0.1:7897",
+								        "https-proxy": "http://127.0.0.1:7897",
+								        "no-proxy": "localhost,::1,10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+								    }
+								}
+								EOF
+								systemctl daemon-reload
+								systemctl restart docker
+							`;
+							createLinuxTxtT2(cmd);
+
+
+
+			</script>
+
+
+		</div>
+	</div>
+</body>
+</html>

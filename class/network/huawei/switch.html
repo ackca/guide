@@ -5,12 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="icon" href="../../../img/huawei.svg"/>
 	<title>华为-交换</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation(hswitch);
 	</script>
-	<script type="text/javascript" src="../../../js/private/hswitch.js"></script>
-	<link rel="stylesheet" href="../../../css/private/hswitch.css">
+<!--	<script type="text/javascript" src="../../../js/private/hswitch.js"></script>-->
+<!--	<link rel="stylesheet" href="../../../css/private/hswitch.css">-->
 </head>
 <body>
 	<div class="container-fluid">
@@ -142,7 +142,7 @@
 
 						createInstruT2("hybrid接口对流量的处理方式");
 							const tHybrid = `
-								<table class="tHybrid">
+								<table id="tHybrid">
 									<tr>
 										<th class="c11">数据帧流向</th>
 										<th class="c12">数据帧类型</th>

@@ -5,12 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="shortcut icon" href="../../../img/regex_ico.svg" />
 	<title>NetDevOps-tool-正则表达式</title>
-	<script type="text/javascript" src="../../../js/public/head.js"></script>
+	<script type="text/javascript" src="../../../js/head.js"></script>
 	<script type="text/javascript">
 		window.onload = createNavigation("");
 	</script>
-	<link rel="stylesheet" type="text/css" href="../../../css/private/regex.css">
-	<script type="text/javascript" src="../../../js/private/regex_gammar.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../../css/global.css">
+<!--	<link rel="stylesheet" type="text/css" href="../../../css/private/regex.css">-->
+<!--	<script type="text/javascript" src="../../../js/private/regex_gammar.js"></script>-->
 </head>
 <body>
 	<div id="grammar">
@@ -98,7 +99,7 @@
 														<i class="fa fa-exclamation-triangle" aria-hidden="true" style="display:none; color: red;">&nbsp;&nbsp;</i>/
 													</span>
 												</div>
-												<input type="text" class="form-control font-weight-bold text-primary" placeholder="在此输入正则表达式" save="text" id="textPattern">
+												<input type="text" class="form-control font-weight-bold text-primary input_regex" placeholder="在此输入正则表达式" save="text" id="textPattern">
 												<div class="input-group-append">
 													<span class="input-group-text" style="font-size: 22px!important;font-weight: bold;">/
 														<label class="marked" id="regFlag">g</label>
@@ -147,7 +148,7 @@
 								</form>
 							</div>
 							<div class="col-md-12">
-								<textarea rows="6" id="textSour" save="text" placeholder="在此输入待匹配文本" class="form-control"></textarea>
+								<textarea rows="6" id="textSour" save="text" placeholder="在此输入待匹配文本" class="form-control input_regex"></textarea>
 							</div>
 							<div class="col-md-12">
 								<div class="runoob-regex-test">
@@ -155,7 +156,7 @@
 								</div>
 							</div>
 							<div class="col-md-12">
-								<textarea rows="6" readonly="readonly" placeholder="匹配结果..." id="textMatchResult" class="form-control"></textarea>
+								<textarea rows="6" readonly="readonly" placeholder="匹配结果..." id="textMatchResult" class="form-control input_regex"></textarea>
 							</div>
 							<div class="col-md-12">
 								<form class="form-inline">
@@ -164,7 +165,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">替换文本：</span>
 											</div>
-											<input type="text" id="textReplace" name="textReplace" class="form-control" placeholder="在此输入替换文本">
+											<input type="text" id="textReplace" name="textReplace" class="form-control input_regex" placeholder="在此输入替换文本">
 										</div>
 
 									</div>
@@ -174,7 +175,7 @@
 								</form>
 							</div>
 							<div class="col-md-12">
-								<textarea rows="6" readonly="readonly" id="textReplaceResult" class="form-control" placeholder="替换结果..."></textarea>
+								<textarea rows="6" readonly="readonly" id="textReplaceResult" class="form-control input_regex" placeholder="替换结果..."></textarea>
 							</div>
 						</div>
 					</div>
@@ -182,6 +183,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="../../../js/private/regex.js"></script>
+	<script type="text/javascript" src="../../../js/regex.js"></script>
 </body>
 </html>
