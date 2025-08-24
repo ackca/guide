@@ -45,7 +45,11 @@ function createNavigation(tree, offset = 74.5) {
 		}
 
 		if (uri.indexOf("/guide/class/anime/one_piece") >= 0) {
-			offset = 162;
+			offset = 151;
+		}
+		
+		if (uri.indexOf("/guide/class/anime/inuyasha") >= 0) {
+			offset = 90;
 		}
 	}
 	document.write(htmlText);
@@ -62,11 +66,17 @@ function createNavigation(tree, offset = 74.5) {
 	$(document).ready(function () {
 		// 每个instruT0前都会有两个<br />，将第一个T0下移位置补回
 		$("#" + firstT0).css("margin-top", "-49.5px");
+
 		if (uri.indexOf("/guide/class/protocol") >= 0) {
 			$("#divCommand").before("<div style='height: 135px'></div>");
 		}
 		else {
-			$("#divCommand").before("<div style='height: 74px'></div>");
+			if (uri.indexOf("/guide/class/anime") >= 0) {
+				$("#divCommand").before("<div class='divOffset'></div>");
+			}
+			else {
+				$("#divCommand").before("<div style='height: 74px'></div>");
+			}
 		}
 
 		if (uri.indexOf("#") > 0) {
@@ -253,18 +263,21 @@ function createLinuxTxtT3(cmds) {
 	document.writeln(initTXT(cmds, "LinuxTxt", "T3"));
 }
 
-function createLinuxTxtMarkT1(cmds, mark_list) {
-	let htmlText = initTXT(cmds, "LinuxTxt", "T1");
+function createNetworkTxtMarkT1(cmds, mark_list = "") {
+	// 使用Linux配置文本的方案整理格式，但会将第一个词加颜色，网络设备不需要，去掉对应class
+	let htmlText = initTXT(cmds, "LinuxTxt", "T1").replaceAll(" class='linuxCMD_cmd'", "");
 	cmdMark(htmlText, mark_list);
 }
 
-function createLinuxTxtMarkT2(cmds, mark_list) {
-	let htmlText = initTXT(cmds, "LinuxTxt", "T2");
+function createNetworkTxtMarkT2(cmds, mark_list = "") {
+	// 使用Linux配置文本的方案整理格式，但会将第一个词加颜色，网络设备不需要，去掉对应class
+	let htmlText = initTXT(cmds, "LinuxTxt", "T2").replaceAll(" class='linuxCMD_cmd'", "");
 	cmdMark(htmlText, mark_list);
 }
 
-function createLinuxTxtMarkT3(cmds, mark_list) {
-	let htmlText = initTXT(cmds, "LinuxTxt", "T3");
+function createNetworkTxtMarkT3(cmds, mark_list = "") {
+	// 使用Linux配置文本的方案整理格式，但会将第一个词加颜色，网络设备不需要，去掉对应class
+	let htmlText = initTXT(cmds, "LinuxTxt", "T3").replaceAll(" class='linuxCMD_cmd'", "");
 	cmdMark(htmlText, mark_list);
 }
 
@@ -468,9 +481,9 @@ function removeLabel(htmlText) {
 		if (htmlCmds[i].indexOf("输出结束") >= 0) {
 			endNumOutput.push(i);
 		}
-		console.log(htmlCmds)
-		console.log(startNumOutput)
-		console.log(endNumOutput)
+		// console.log(htmlCmds)
+		// console.log(startNumOutput)
+		// console.log(endNumOutput)
 	}
 
 	for (let i = 0; i < startNumEOF.length; i++) {

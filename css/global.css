@@ -3349,117 +3349,6 @@ td
 
 /*----------↑↑↑ 网页证书编辑 ↑↑↑---------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------*/
-/*----------↓↓↓ 海贼王动画目录 ↓↓↓-------------------------------------------------------------------------------------*/
-
-#zwTableOP
-{
-	/*border-top-right-radius: 10px;*/
-	/*border-top-left-radius: 10px;*/
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-	border: 0;
-	overflow: hidden;
-	letter-spacing: 1px;
-	top: 99px;
-}
-
-#zwTableOP .cell:nth-child(1),
-#tOP th:nth-child(1)
-{
-	width: 160px;
-}
-
-#zwTableOP .cell:nth-child(3),
-#tOP th:nth-child(3)
-{
-	width: 160px;
-}
-
-#zwTableOP .cell:nth-child(4),
-#tOP th:nth-child(4)
-{
-	width: 220px;
-}
-
-.divBGOP
-{
-	background-color: #3A3B4C;
-	height: 60px;
-	top: 50px;
-}
-
-#zwTableOP, .divBGOP
-{
-	width: calc(100vw - 400px);
-	position: fixed;
-	z-index: 10;
-	left: 380px;
-}
-
-
-#zwTableOP .row.header .cell
-{
-	text-align: center;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-#tOP
-{
-	margin-left: 18px;
-	letter-spacing: 1px;
-	width: calc(100vw - 400px);
-}
-
-#tOP .chapter
-{
-	text-align: left;
-	color: #FFFF00;
-	font-size: 24px;
-	height: 50px;
-	line-height: 50px;
-	font-weight: bold;
-}
-
-#tOP table
-{
-	border-collapse: collapse;
-	border: solid 2px #808080;
-	font-size: 18px;
-	margin-top: 61px;
-	width: calc(100vw - 400px);
-}
-
-#tOP td
-{
-	border:solid 2px #808080;
-	height: 45px;
-	line-height: 45px;
-	text-align: center;
-	background-color: #5A5D6F;
-	color: #FFFFFF;
-}
-
-#tOP td:nth-child(1)
-{
-	text-align: left;
-	padding-left: 20px;
-}
-
-#tOP td:nth-last-child(4)
-{
-	text-align: center;
-	padding-left: 1px;
-}
-
-.section
-{
-	text-align: left!important;
-	padding-left: 20px;
-}
-
-/*----------↑↑↑ 海贼王动画目录 ↑↑↑-------------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------*/
 /*----------↓↓↓ 高亮表格 ↓↓↓-------------------------------------------------------------------------------------------*/
 
 .HLTableS1 .row>*,
@@ -3596,4 +3485,191 @@ td
 {
 	color: inherit;
 	background-color: inherit;
+}
+
+/*----------↑↑↑ 高亮表格 ↑↑↑-------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛通用部分 ↓↓↓-----------------------------------------------------------------------------------*/
+.divBJJT
+{
+	margin-top: 74px;
+}
+
+
+.divBJJT .breadcrumb-item.active
+{
+	color: #FFFFFF;
+}
+
+.divBJJT-yearList .breadcrumb-item a
+{
+	color: #8AA4AF;
+	text-decoration: none;
+}
+
+.divBJJT-yearList .breadcrumb-item a:hover
+{
+	text-decoration: underline;
+}
+
+/*----------↑↑↑ 百家讲坛通用部分 ↑↑↑-----------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛首页 ↓↓↓---------------------------------------------------------------------------------------*/
+
+/*----------↑↑↑ 百家讲坛首页 ↑↑↑---------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛各年列表 ↓↓↓-----------------------------------------------------------------------------------*/
+
+/*----------↑↑↑ 百家讲坛各年列表 ↑↑↑-----------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛各个节目详情 ↓↓↓--------------------------------------------------------------------------------*/
+
+
+/*----------↑↑↑ 百家讲坛各个节目详情 ↑↑↑--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 动漫目录通用部分 ↓↓↓-----------------------------------------------------------------------------------*/
+.divBG
+{
+	background-color: #3A3B4C;
+	height: 60px;
+	top: 50px;
+
+	width: calc(100vw - 300px);
+	position: fixed;
+	z-index: 10;
+	left: 330px;
+}
+
+.animeT table
+{
+	border-collapse: collapse;
+	border: solid 2px #808080;
+	font-size: 18px;
+}
+
+.animeT td
+{
+	border:solid 2px #808080;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background-color: #5A5D6F;
+	color: #FFFFFF;
+}
+
+.animeT td:nth-child(1)
+{
+	text-align: left;
+	padding-left: 20px;
+}
+
+.animeT .chapter
+{
+	text-align: left;
+	color: #FFFF00;
+	font-size: 24px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+.section
+{
+	text-align: left!important;
+	padding-left: 20px;
+}
+
+/*----------↑↑↑ 动漫目录通用部分 ↑↑↑-----------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 海贼王动画目录 ↓↓↓-------------------------------------------------------------------------------------*/
+#zwTableOP
+{
+	/*border-top-right-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border: 0;
+	overflow: hidden;
+	letter-spacing: 1px;
+	top: 89px;
+}
+
+#zwTableOP .cell:nth-child(1),
+#tOP th:nth-child(1)
+{
+	width: 160px;
+}
+
+#zwTableOP .cell:nth-child(3),
+#tOP th:nth-child(3)
+{
+	width: 174px;
+}
+
+#zwTableOP .cell:nth-child(4),
+#tOP th:nth-child(4)
+{
+	width: 220px;
+}
+
+#zwTableOP
+{
+	width: calc(100vw - 360px);
+	position: fixed;
+	z-index: 10;
+	left: 330px;
+}
+
+
+#zwTableOP .row.header .cell
+{
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#tOP
+{
+	margin-left: 18px;
+	/*margin-top: -31px;*/
+	letter-spacing: 1px;
+	width: calc(100vw - 360px);
+}
+
+#tOP td:nth-last-child(4)
+{
+	text-align: center;
+	padding-left: 1px;
+}
+
+/*----------↑↑↑ 海贼王动画目录 ↑↑↑-------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 犬夜叉动画目录 ↓↓↓-------------------------------------------------------------------------------------*/
+
+#tIYS
+{
+	width: 500px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.zwTableIYS
+{
+	position: fixed;
+	/*margin-top: 74px;*/
+	top: 90px;
+	left: 50%;
+	margin-left: 125px;
+	transform: translateX(-50%);
+
+	text-align: left;
+	color: #FFFF00;
+	font-size: 24px;
+	line-height: 52px;
+	font-weight: bold;
+	z-index: 10;
+	width: 500px;
+	border: solid 2px #808080;
+	background-color:  #5A5D6F;
+	padding-left: 20px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 }

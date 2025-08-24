@@ -223,7 +223,7 @@
 								 no ipv6 nd other-config-flag
 								 no ipv6 nd managed-config-flag
 							`;
-							createLinuxTxtT2(cmd);
+							createNetworkTxtMarkT2(cmd);
 
 						createInstruT2("Stateless DHCP模式");
 							cmd = `
@@ -232,7 +232,7 @@
 								 ipv6 nd other-config-flag
 								 no ipv6 nd managed-config-flag
 							`;
-							createLinuxTxtT2(cmd);
+							createNetworkTxtMarkT2(cmd);
 
 						createInstruT2("Stateful DHCP模式");
 							cmd = `
@@ -241,7 +241,7 @@
 								 no ipv6 nd other-config-flag
 								 ipv6 nd managed-config-flag
 							`;
-							createLinuxTxtT2(cmd);
+							createNetworkTxtMarkT2(cmd);
 
 
 				createInstruT0("动态主机配置协议（DHCP）", "i2");

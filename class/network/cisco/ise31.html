@@ -235,7 +235,7 @@
 							permit udp any host 10.1.20.241 eq 8906
 							permit udp any host 10.1.20.241 eq 8909
 						`;
-						createLinuxTxtT1(cmd);
+						createNetworkTxtMarkT1(cmd);
 						createConfigImgT1("ISE31/i11_2$1");
 
 					createInstruT1("配置认证前的授权结果", "i11-3");
@@ -304,7 +304,7 @@
 								permit udp any host 10.1.20.241 eq 8906
 								permit udp any host 10.1.20.241 eq 8909
 							`;
-							createLinuxTxtT2(cmd);
+							createNetworkTxtMarkT2(cmd);
 							createConfigImgT2("ISE31/i11_2$1");
 							createConfigImgT2("ISE31/i11_3$1");
 
@@ -376,7 +376,7 @@
 							tunnel-group DefaultWEBVPNGroup general-attributes
 							 authentication-server-group ISE
 						`;
-						createLinuxTxtT1(cmd);
+						createNetworkTxtMarkT1(cmd);
 
 					createInstruT1("配置ISE", "i16-2");
 						createInstruT2("配置授权结果", "i16-2-1");

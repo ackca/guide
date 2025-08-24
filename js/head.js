@@ -659,31 +659,91 @@ const top_menu = `
 								</tr>
 							</table>
 						</div>
-						<div class="cat-group anime">
-							<table>
-								<tr>
-									<td class="logo">
-										<h3 class="cat-tit">
-											<i class="ico-one_piece">
-												<a href="rootpath/class/anime/one_piece.html">
-													<img src="rootpath/img/one_piece.png" />
-												</a>
-											</i>
-										</h3>
-									</td>
-								</tr>
-								<tr>
-									<td class="logo">
-										<h3 class="cat-tit">
-											<i class="ico-conan">
-												<a href="rootpath/class/anime/conan.html">
-													<img src="rootpath/img/conan.png" />
-												</a>
-											</i>
-										</h3>
-									</td>
-								</tr>
-							</table>
+					</div>
+				</div>
+			</div>
+			<div class="cat">
+				<div class="cat-box" data-cat="animes">
+					<div class="layout">
+						<div class="cat-group animes">
+							<div class="row">
+								<div class="col logo">
+									<h3 class="cat-tit">
+										<i class="ico-bjjt">
+											<a href="rootpath/class/bjjt/bjjt.html">
+												<img src="rootpath/img/bjjt.jpg" />
+											</a>
+										</i>
+									</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-2 offset-1 logo">
+									<h3 class="cat-tit">
+										<i class="ico-one_piece">
+											<a href="rootpath/class/anime/one_piece.html">
+												<img src="rootpath/img/one_piece.svg" title="海贼王" />
+											</a>
+										</i>
+									</h3>
+								</div>
+								<div class="col-2 logo">
+									<h3 class="cat-tit">
+										<i class="ico-conan">
+											<a href="rootpath/class/anime/conan.html">
+												<img src="rootpath/img/detective_conan.svg" title="名侦探柯南" />
+											</a>
+										</i>
+									</h3>
+								</div>
+								<div class="col-2 logo">
+									<h3 class="cat-tit">
+										<i class="ico-naruto">
+											<a href="rootpath/class/anime/naruto.html">
+												<img src="rootpath/img/naruto.svg" title="火影忍者" />
+											</a>
+										</i>
+									</h3>
+								</div>
+								<div class="col-2 logo">
+									<h3 class="cat-tit">
+										<i class="ico-dragon_ball">
+											<a href="rootpath/class/anime/dragon_ball.html">
+												<img src="rootpath/img/dragon_ball.png" title="七龙珠" />
+											</a>
+										</i>
+									</h3>
+								</div>
+								<div class="col-2 logo">
+									<h3 class="cat-tit">
+										<i class="ico-inuyasha">
+											<a href="rootpath/class/anime/inuyasha.html">
+												<img src="rootpath/img/inuyasha.png" title="犬夜叉" />
+											</a>
+										</i>
+									</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-2 offset-1 logo">
+									<h3 class="cat-tit">
+										<i class="ico-digital_monster">
+											<a href="rootpath/class/anime/digital_monster.html">
+												<img src="rootpath/img/digital_monster.png" title="数码宝贝" />
+											</a>
+										</i>
+									</h3>
+								</div>
+								<div class="col-2 logo">
+									<h3 class="cat-tit">
+										<i class="ico-digital_monster">
+											<a href="rootpath/class/anime/let's&go.html">
+												<img src="rootpath/img/let's&go.png" title="四驱兄弟" />
+											</a>
+										</i>
+									</h3>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -731,6 +791,11 @@ const top_menu = `
 								<a href="javascript:void(0);">其它</a>
 							</h2>
 						</li>
+						<li id="nav-header-animes" class="top-cat hassub" data-cat="animes">
+							<h2>
+								<a href="javascript:void(0);">动　漫</a>
+							</h2>
+						</li>
 					</ul>
 					<i class="jmod-nav-slider slider hidden" style="transform: translateX(0px);"></i>
 				</div>
@@ -765,10 +830,12 @@ const path_num = uri.split("/").length - 1 - 2;
 
 document.write(head.replace(/rootpath\//g, "../".repeat(path_num)));
 
+
 // 某些页面不包含左侧的导航树
 if (
 	uri != "/guide/index.html" &&
-	uri != "/guide/class/pxe/pxe.html"
+	uri != "/guide/class/pxe/pxe.html" &&
+	uri.indexOf("/guide/class/bjjt") < 0
 ) {
 	document.write(treeJS);
 }

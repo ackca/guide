@@ -1,11 +1,10 @@
 /*! jQuery v1.12.0 | (c) jQuery Foundation | jquery.org/license */
 !function (a, b) {
 	"object" == typeof module && "object" == typeof module.exports ? module.exports = a.document ? b(a, !0) : function (a) {
-			if (!a.document)
-				throw new Error("jQuery requires a window with a document");
-			return b(a)
-		}
-		: b(a)
+		if (!a.document)
+			throw new Error("jQuery requires a window with a document");
+		return b(a)
+	} : b(a)
 }("undefined" != typeof window ? window : this, function (a, b) {
 	var c = []
 		, d = a.document
@@ -89,8 +88,7 @@
 							f = a && n.isArray(a) ? a : []) : f = a && n.isPlainObject(a) ? a : {},
 							g[d] = n.extend(j, f, c)) : void 0 !== c && (g[d] = c));
 			return g
-		}
-		,
+		},
 		n.extend({
 			expando: "jQuery" + (m + Math.random()).replace(/\D/g, ""),
 			isReady: !0,
@@ -4388,51 +4386,51 @@
 	n.ajaxPrefilter(function (a) {
 		a.crossDomain && (a.contents.script = !1)
 	}),
-		n.ajaxSetup({
-			accepts: {
-				script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
-			},
-			contents: {
-				script: /\b(?:java|ecma)script\b/
-			},
-			converters: {
-				"text script": function (a) {
-					return n.globalEval(a),
-						a
+
+	n.ajaxSetup({
+		accepts: {
+			script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+		},
+		contents: {
+			script: /\b(?:java|ecma)script\b/
+		},
+		converters: {
+			"text script": function (a) {
+				return n.globalEval(a),
+					a
+			}
+		}
+	}),
+	n.ajaxPrefilter("script", function (a) {
+		void 0 === a.cache && (a.cache = !1),
+		a.crossDomain && (a.type = "GET",
+			a.global = !1)
+	}),
+	n.ajaxTransport("script", function (a) {
+		if (a.crossDomain) {
+			var b, c = d.head || n("head")[0] || d.documentElement;
+			return {
+				send: function (e, f) {
+					b = d.createElement("script"),
+						b.async = !0,
+					a.scriptCharset && (b.charset = a.scriptCharset),
+						b.src = a.url,
+						b.onload = b.onreadystatechange = function (a, c) {
+							(c || !b.readyState || /loaded|complete/.test(b.readyState)) && (b.onload = b.onreadystatechange = null,
+							b.parentNode && b.parentNode.removeChild(b),
+								b = null,
+							c || f(200, "success"))
+						}
+						,
+						c.insertBefore(b, c.firstChild)
+				},
+				abort: function () {
+					b && b.onload(void 0, !0)
 				}
 			}
-		}),
-		n.ajaxPrefilter("script", function (a) {
-			void 0 === a.cache && (a.cache = !1),
-			a.crossDomain && (a.type = "GET",
-				a.global = !1)
-		}),
-		n.ajaxTransport("script", function (a) {
-			if (a.crossDomain) {
-				var b, c = d.head || n("head")[0] || d.documentElement;
-				return {
-					send: function (e, f) {
-						b = d.createElement("script"),
-							b.async = !0,
-						a.scriptCharset && (b.charset = a.scriptCharset),
-							b.src = a.url,
-							b.onload = b.onreadystatechange = function (a, c) {
-								(c || !b.readyState || /loaded|complete/.test(b.readyState)) && (b.onload = b.onreadystatechange = null,
-								b.parentNode && b.parentNode.removeChild(b),
-									b = null,
-								c || f(200, "success"))
-							}
-							,
-							c.insertBefore(b, c.firstChild)
-					},
-					abort: function () {
-						b && b.onload(void 0, !0)
-					}
-				}
-			}
-		});
-	var ic = []
-		, jc = /(=)\?(?=&|$)|\?\?/;
+		}
+	});
+	var ic = []	, jc = /(=)\?(?=&|$)|\?\?/;
 	n.ajaxSetup({
 		jsonp: "callback",
 		jsonpCallback: function () {
@@ -4441,51 +4439,52 @@
 				a
 		}
 	}),
-		n.ajaxPrefilter("json jsonp", function (b, c, d) {
-			var e, f, g,
-				h = b.jsonp !== !1 && (jc.test(b.url) ? "url" : "string" == typeof b.data && 0 === (b.contentType || "").indexOf("application/x-www-form-urlencoded") && jc.test(b.data) && "data");
-			return h || "jsonp" === b.dataTypes[0] ? (e = b.jsonpCallback = n.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback,
-				h ? b[h] = b[h].replace(jc, "$1" + e) : b.jsonp !== !1 && (b.url += (Eb.test(b.url) ? "&" : "?") + b.jsonp + "=" + e),
-				b.converters["script json"] = function () {
-					return g || n.error(e + " was not called"),
-						g[0]
-				}
-				,
-				b.dataTypes[0] = "json",
-				f = a[e],
-				a[e] = function () {
-					g = arguments
-				}
-				,
-				d.always(function () {
-					void 0 === f ? n(a).removeProp(e) : a[e] = f,
-					b[e] && (b.jsonpCallback = c.jsonpCallback,
-						ic.push(e)),
-					g && n.isFunction(f) && f(g[0]),
-						g = f = void 0
-				}),
-				"script") : void 0
-		}),
-		l.createHTMLDocument = function () {
-			if (!d.implementation.createHTMLDocument)
-				return !1;
-			var a = d.implementation.createHTMLDocument("");
-			return a.body.innerHTML = "<form></form><form></form>",
-			2 === a.body.childNodes.length
-		}(),
-		n.parseHTML = function (a, b, c) {
-			if (!a || "string" != typeof a)
-				return null;
-			"boolean" == typeof b && (c = b,
-				b = !1),
-				b = b || (l.createHTMLDocument ? d.implementation.createHTMLDocument("") : d);
-			var e = x.exec(a)
-				, f = !c && [];
-			return e ? [b.createElement(e[1])] : (e = ja([a], b, f),
-			f && f.length && n(f).remove(),
-				n.merge([], e.childNodes))
-		}
-	;
+
+	n.ajaxPrefilter("json jsonp", function (b, c, d) {
+		var e, f, g,
+			h = b.jsonp !== !1 && (jc.test(b.url) ? "url" : "string" == typeof b.data && 0 === (b.contentType || "").indexOf("application/x-www-form-urlencoded") && jc.test(b.data) && "data");
+		return h || "jsonp" === b.dataTypes[0] ? (e = b.jsonpCallback = n.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback,
+			h ? b[h] = b[h].replace(jc, "$1" + e) : b.jsonp !== !1 && (b.url += (Eb.test(b.url) ? "&" : "?") + b.jsonp + "=" + e),
+			b.converters["script json"] = function () {
+				return g || n.error(e + " was not called"),
+					g[0]
+			}
+			,
+			b.dataTypes[0] = "json",
+			f = a[e],
+			a[e] = function () {
+				g = arguments
+			}
+			,
+			d.always(function () {
+				void 0 === f ? n(a).removeProp(e) : a[e] = f,
+				b[e] && (b.jsonpCallback = c.jsonpCallback,
+					ic.push(e)),
+				g && n.isFunction(f) && f(g[0]),
+					g = f = void 0
+			}),
+			"script") : void 0
+	}),
+	l.createHTMLDocument = function () {
+		if (!d.implementation.createHTMLDocument)
+			return !1;
+		var a = d.implementation.createHTMLDocument("");
+		return a.body.innerHTML = "<form></form><form></form>",
+		2 === a.body.childNodes.length
+	}(),
+	n.parseHTML = function (a, b, c) {
+		if (!a || "string" != typeof a)
+			return null;
+		"boolean" == typeof b && (c = b,
+			b = !1),
+			b = b || (l.createHTMLDocument ? d.implementation.createHTMLDocument("") : d);
+		var e = x.exec(a)
+			, f = !c && [];
+		return e ? [b.createElement(e[1])] : (e = ja([a], b, f),
+		f && f.length && n(f).remove(),
+			n.merge([], e.childNodes))
+	};
+
 	var kc = n.fn.load;
 	n.fn.load = function (a, b, c) {
 		if ("string" != typeof a && kc)
@@ -5707,38 +5706,49 @@
 		}],
 	3: [function (require, module, exports) {
 		"use strict";
-		var _network = require("../network");
-		var _utils = require("../utils");
-		var _constants = require("../constants");
-		var URL_UER_INFO = "/cgi-bin/user_getinfo";
-		if (window._isLoginUser) {
-			setLogin()
-		} else {
-			// (0,
-			// _network.fetch)(URL_UER_INFO, {
-			//     needLogin: false
-			// }).then(function(res) {
-			//     setLogin()
-			// }).catch(function(err) {if(err.response.ret===_constants.ERRCODE.USER_NOTEXIST){setLogin()}if(err.response.ret===_constants.ERRCODE.NOLOGIN){$(".jmod-header-try").removeClass("hidden")}
-			// })
-		}
-
-		function setLogin() {
-			var name = (0,
-				_utils.getUin)();
-			if (name) {
-				$(".jmod-header-user").removeClass("hidden");
-				$(".jmod-header-login").addClass("hidden");
-				$(".jmod-header-try").addClass("hidden");
-				$(".jmod-header-console").removeClass("hidden");
-				$(".jmod-header-name").text(name)
-			}
-		}
+		// var _network = require("../network");
+		// var _utils = require("../utils");
+		// var _constants = require("../constants");
+		// var URL_UER_INFO = "/cgi-bin/user_getinfo";
+		// if (window._isLoginUser) {
+		// 	setLogin()
+		// } else {
+		// 	// (0,
+		// 	// _network.fetch)(URL_UER_INFO, {
+		// 	//     needLogin: false
+		// 	// }).then(function(res) {
+		// 	//     setLogin()
+		// 	// }).catch(function(err) {if(err.response.ret===_constants.ERRCODE.USER_NOTEXIST){setLogin()}if(err.response.ret===_constants.ERRCODE.NOLOGIN){$(".jmod-header-try").removeClass("hidden")}
+		// 	// })
+		// }
+		//
+		// function setLogin() {
+		// 	var name = (0,
+		// 		_utils.getUin)();
+		// 	if (name) {
+		// 		$(".jmod-header-user").removeClass("hidden");
+		// 		$(".jmod-header-login").addClass("hidden");
+		// 		$(".jmod-header-try").addClass("hidden");
+		// 		$(".jmod-header-console").removeClass("hidden");
+		// 		$(".jmod-header-name").text(name)
+		// 	}
+		// }
 
 		var navServTimer = -1;
 		var headerTimer = null;
+
 		// 弹下载菜单的js，注意ID，每增加菜单
-		$("#nav-header-protocol,#nav-header-network,#nav-header-china,#nav-header-vmware,#nav-header-netdevops,#nav-header-cloud,#nav-header-linux,#nav-header-others").hover(function (e) {
+		$(
+			"#nav-header-protocol," +
+			"#nav-header-network," +
+			"#nav-header-china," +
+			"#nav-header-vmware," +
+			"#nav-header-netdevops," +
+			"#nav-header-cloud," +
+			"#nav-header-linux," +
+			"#nav-header-others," +
+			"#nav-header-animes"
+		).hover(function (e) {
 			clearTimeout(headerTimer);
 			if (navServTimer !== -1) {
 				// clearTimeout(ervTimer);
@@ -5755,10 +5765,11 @@
 				var $target = $(e.currentTarget);
 				var cat = $target.data("cat");
 				$(".cat").find("[data-cat=" + cat + "]").removeClass("active");
-				$target.removeClass("active")
+				$target.removeClass("active");
+
 			}, 200);
 			headerTimer = setTimeout(function () {
-				$(".mod-header").removeClass("hover")
+				$(".mod-header").removeClass("hover");
 			}, 500)
 		});
 		////////////////////////////////////////////////////////////////////////////////////
@@ -5768,8 +5779,10 @@
 			$navSlider.removeClass("hidden");
 			navSlide($(e.currentTarget))
 		}, function (e) {
-			$navSlider.addClass("hidden")
+			// $navSlider.addClass("hidden")
 		});
+		// });
+
 
 		function navSlide(node) {
 			var pos = node.offset().left - headerNav.offset().left;
@@ -5779,36 +5792,35 @@
 			})
 		}
 
-	}
-		, {
-			"../constants": 1,
-			"../network": 2,
-			"../utils": 5
-		}],
+	}],
+		// , {
+		// 	"../constants": 1,
+		// 	"../network": 2,
+		// 	"../utils": 5
+		// }],
 	4: [function (require, module, exports) {
-		"use strict";
-		Object.defineProperty(exports, "__esModule", {
-			value: true
+			"use strict";
+			Object.defineProperty(exports, "__esModule", {
+				value: true
 		});
 		var setItem = exports.setItem = function setItem(name, item) {
-				name = "ai-" + name;
-				try {
-					localStorage.setItem(name, item)
-				} catch (e) {
-				}
+			name = "ai-" + name;
+			try {
+				localStorage.setItem(name, item)
 			}
-		;
+			catch (e) {
+			}
+		};
 		var getItem = exports.getItem = function getItem(name) {
-				name = "ai-" + name;
-				var item = void 0;
-				try {
-					item = localStorage.getItem(name)
-				} catch (e) {
-					item = null
-				}
-				return item
+			name = "ai-" + name;
+			var item = void 0;
+			try {
+				item = localStorage.getItem(name)
+			} catch (e) {
+				item = null
 			}
-		;
+			return item
+		};
 		var storage = {
 			setItem: setItem,
 			getItem: getItem
@@ -5816,200 +5828,200 @@
 		window._aiCommon = window._aiCommon || {};
 		window._aiCommon.storage = storage;
 
-	}
-		, {}],
+	}, {}],
 	5: [function (require, module, exports) {
 		"use strict";
 		Object.defineProperty(exports, "__esModule", {
 			value: true
 		});
+
 		var calValLength = exports.calValLength = function calValLength(str) {
-				return str.replace(/(\r\n|\n|\r)/g, "-").length
-			}
-		;
+			return str.replace(/(\r\n|\n|\r)/g, "-").length
+		};
+
 		var ieVer = exports.ieVer = function ieVer() {
-				var ret = {};
-				var ua = navigator.userAgent.toLowerCase();
-				var s = void 0;
-				(s = ua.match(/rv:([\d.]+)\) like gecko/)) ? ret.ie = s[1] : (s = ua.match(/msie ([\d.]+)/)) ? ret.ie = s[1] : 0;
-				if (ret.ie)
-					return ret.ie
-			}
-		;
+			var ret = {};
+			var ua = navigator.userAgent.toLowerCase();
+			var s = void 0;
+			(s = ua.match(/rv:([\d.]+)\) like gecko/)) ? ret.ie = s[1] : (s = ua.match(/msie ([\d.]+)/)) ? ret.ie = s[1] : 0;
+			if (ret.ie)
+				return ret.ie
+		};
+
 		var isIE = exports.isIE = function isIE(ver) {
-				var b = document.createElement("b");
-				b.innerHTML = "\x3c!--[if IE " + ver + "]><i></i><![endif]--\x3e";
-				return b.getElementsByTagName("i").length === 1
-			}
-		;
+			var b = document.createElement("b");
+			b.innerHTML = "\x3c!--[if IE " + ver + "]><i></i><![endif]--\x3e";
+			return b.getElementsByTagName("i").length === 1
+		};
+
 		var parseQuery = exports.parseQuery = function parseQuery(url) {
-				var array = url.split("?");
-				var query = {};
-				var path = array[0];
-				var querystring = array[1];
-				if (querystring) {
-					var seg = querystring.split("&");
-					var len = seg.length;
-					var s = void 0;
-					for (var i = 0; i < len; i++) {
-						if (!seg[i]) {
-							continue
-						}
-						s = seg[i].split("=");
-						query[decodeURIComponent(s[0])] = decodeURIComponent(s[1])
+			var array = url.split("?");
+			var query = {};
+			var path = array[0];
+			var querystring = array[1];
+			if (querystring) {
+				var seg = querystring.split("&");
+				var len = seg.length;
+				var s = void 0;
+				for (var i = 0; i < len; i++) {
+					if (!seg[i]) {
+						continue
 					}
-				}
-				return {
-					path: path,
-					query: query
+					s = seg[i].split("=");
+					query[decodeURIComponent(s[0])] = decodeURIComponent(s[1])
 				}
 			}
-		;
+			return {
+				path: path,
+				query: query
+			}
+		};
+
 		var getCookie = exports.getCookie = function getCookie(name) {
-				var regx = new RegExp("(^|;|\\s+)" + name + "=(.*?)(;|$)");
-				var cookieMatch = document.cookie.match(regx);
-				var r = cookieMatch && cookieMatch.length > 2 ? cookieMatch[2] : "";
-				return decodeURIComponent(r)
-			}
+			var regx = new RegExp("(^|;|\\s+)" + name + "=(.*?)(;|$)");
+			var cookieMatch = document.cookie.match(regx);
+			var r = cookieMatch && cookieMatch.length > 2 ? cookieMatch[2] : "";
+			return decodeURIComponent(r)
+		}
 		;
 		var getToken = exports.getToken = function getToken() {
-				var skey = getCookie("skey") || "";
-				var hash = 5381;
-				for (var i = 0; i < skey.length; i++) {
-					hash += (hash << 5) + skey.charCodeAt(i)
-				}
-				return hash & 2147483647
+			var skey = getCookie("skey") || "";
+			var hash = 5381;
+			for (var i = 0; i < skey.length; i++) {
+				hash += (hash << 5) + skey.charCodeAt(i)
 			}
-		;
+			return hash & 2147483647
+		};
+
 		var getUin = exports.getUin = function getUin() {
-				var u = getCookie("uin");
-				if (!u) {
-					return 0
-				}
-				u = /^o(\d+)$/.exec(u);
-				if (u && (u = parseInt(u[1], 10) + 0) > 1e4) {
-					return u
-				}
+			var u = getCookie("uin");
+			if (!u) {
 				return 0
 			}
-		;
+			u = /^o(\d+)$/.exec(u);
+			if (u && (u = parseInt(u[1], 10) + 0) > 1e4) {
+				return u
+			}
+			return 0
+		};
+
 		var appendUrlParam = exports.appendUrlParam = function appendUrlParam(url, param, forHash) {
-				if (!url) {
-					return ""
-				}
-				if (!param) {
-					return url
-				}
-				var p = [];
-				for (var k in param) {
-					if (param.hasOwnProperty(k)) {
-						p.push(encodeURIComponent(k) + "=" + encodeURIComponent(param[k]))
-					}
-				}
-				p = p.join("&");
-				var hash = url.split("#");
-				url = hash[0].split("?");
-				hash = hash[1] ? "#" + hash[1] : "";
-				param = url[1] ? "?" + url[1] : "";
-				url = url[0];
-				var v = forHash ? hash : param;
-				v = v ? v.lastIndexOf("&") === v.length - 1 ? v + p : v + "&" + p : "?" + p;
-				if (forHash) {
-					hash = v
-				} else {
-					param = v
-				}
-				return url + param + hash
+			if (!url) {
+				return ""
 			}
-		;
-		var getUrlParam = exports.getUrlParam = function getUrlParam(key) {
-				var curUrl = window.location.href;
-				var queryString = curUrl.split("#")[0].split("?")[1] + "&" + curUrl.split("#")[1];
-				var paramValue = "";
-				if (queryString) {
-					queryString = queryString.split("&");
-					for (var i = 0, len = queryString.length, param; i < len; i++) {
-						param = queryString[i].split("=");
-						if (decodeURIComponent(param[0]) === key) {
-							paramValue = param[1] ? decodeURIComponent(param[1]) : ""
-						}
-					}
-				}
-				return paramValue
-			}
-		;
-		var htmlEncode = exports.htmlEncode = function htmlEncode(str) {
-				return String(str).replace(/&/g, "&amp;").replace(/\x22/g, "&quot;").replace(/\x27/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-			}
-		;
-		var clearProtocol = exports.clearProtocol = function clearProtocol(url) {
-				var replaceBegin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-				if (!url) {
-					return
-				}
-				var reg = "";
-				if (replaceBegin) {
-					reg = /^https?:\/\/([\-a-zA-Z0-9\.]*)/i
-				} else {
-					reg = /https?:\/\/([\-a-zA-z0-9\.]*)/gi
-				}
-				url = url.replace(reg, function (w, w1) {
-					return "//" + w1
-				});
+			if (!param) {
 				return url
 			}
-		;
-		var guid = exports.guid = function guid() {
-				function s4() {
-					return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1)
+			var p = [];
+			for (var k in param) {
+				if (param.hasOwnProperty(k)) {
+					p.push(encodeURIComponent(k) + "=" + encodeURIComponent(param[k]))
 				}
-
-				return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4()
 			}
-		;
+			p = p.join("&");
+			var hash = url.split("#");
+			url = hash[0].split("?");
+			hash = hash[1] ? "#" + hash[1] : "";
+			param = url[1] ? "?" + url[1] : "";
+			url = url[0];
+			var v = forHash ? hash : param;
+			v = v ? v.lastIndexOf("&") === v.length - 1 ? v + p : v + "&" + p : "?" + p;
+			if (forHash) {
+				hash = v
+			} else {
+				param = v
+			}
+			return url + param + hash
+		};
+
+		var getUrlParam = exports.getUrlParam = function getUrlParam(key) {
+			var curUrl = window.location.href;
+			var queryString = curUrl.split("#")[0].split("?")[1] + "&" + curUrl.split("#")[1];
+			var paramValue = "";
+			if (queryString) {
+				queryString = queryString.split("&");
+				for (var i = 0, len = queryString.length, param; i < len; i++) {
+					param = queryString[i].split("=");
+					if (decodeURIComponent(param[0]) === key) {
+						paramValue = param[1] ? decodeURIComponent(param[1]) : ""
+					}
+				}
+			}
+			return paramValue
+		};
+
+		var htmlEncode = exports.htmlEncode = function htmlEncode(str) {
+			return String(str).replace(/&/g, "&amp;").replace(/\x22/g, "&quot;").replace(/\x27/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+		};
+
+		var clearProtocol = exports.clearProtocol = function clearProtocol(url) {
+			var replaceBegin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+			if (!url) {
+				return
+			}
+			var reg = "";
+			if (replaceBegin) {
+				reg = /^https?:\/\/([\-a-zA-Z0-9\.]*)/i
+			} else {
+				reg = /https?:\/\/([\-a-zA-z0-9\.]*)/gi
+			}
+			url = url.replace(reg, function (w, w1) {
+				return "//" + w1
+			});
+			return url
+		};
+
+		var guid = exports.guid = function guid() {
+			function s4() {
+				return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1)
+			}
+
+			return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4()
+		};
+
 		var ie10N11CaseStyleHandle = exports.ie10N11CaseStyleHandle = function ie10N11CaseStyleHandle($case) {
-				if (+ieVer() > 9) {
-					var grayscale = function grayscale(el) {
-						var canvas = document.createElement("canvas");
-						var w = canvas.width = el.width;
-						var h = canvas.height = el.height;
-						var ctx = canvas.getContext("2d");
-						ctx.drawImage(el, 0, 0);
-						var imgData = ctx.getImageData(0, 0, w, h);
-						var d = imgData.data;
-						for (var i = 0, len = d.length; i < len; i += 4) {
-							var r = d[i];
-							var g = d[i + 1];
-							var b = d[i + 2];
-							d[i] = d[i + 1] = d[i + 2] = (r + g + b) / 3
-						}
-						ctx.putImageData(imgData, 0, 0);
-						return canvas.toDataURL("image/*")
-					};
-					var rightBGI = "";
-					var grayBRI = "";
-					rightBGI = $case.find(".jmod-ico").css("background-image").slice(5, -2);
-					var imgTarget = new Image;
-					imgTarget.crossOrigin = "Anonymous";
-					imgTarget.src = rightBGI;
-					$(imgTarget).one("load", function () {
-						grayBRI = grayscale(imgTarget)
-					});
+			if (+ieVer() > 9) {
+				var grayscale = function grayscale(el) {
+					var canvas = document.createElement("canvas");
+					var w = canvas.width = el.width;
+					var h = canvas.height = el.height;
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(el, 0, 0);
+					var imgData = ctx.getImageData(0, 0, w, h);
+					var d = imgData.data;
+					for (var i = 0, len = d.length; i < len; i += 4) {
+						var r = d[i];
+						var g = d[i + 1];
+						var b = d[i + 2];
+						d[i] = d[i + 1] = d[i + 2] = (r + g + b) / 3
+					}
+					ctx.putImageData(imgData, 0, 0);
+					return canvas.toDataURL("image/*")
+				};
+				var rightBGI = "";
+				var grayBRI = "";
+				rightBGI = $case.find(".jmod-ico").css("background-image").slice(5, -2);
+				var imgTarget = new Image;
+				imgTarget.crossOrigin = "Anonymous";
+				imgTarget.src = rightBGI;
+				$(imgTarget).one("load", function () {
+					grayBRI = grayscale(imgTarget)
+				});
+				$case.find(".jmod-ico").map(function (index, item) {
+					if (index === 0) {
+						return
+					}
+					$(item).css("background-image", 'url("' + grayBRI + '")')
+				});
+				$case.find(".jmod-ico").on("mouseenter", function (e) {
 					$case.find(".jmod-ico").map(function (index, item) {
-						if (index === 0) {
-							return
-						}
 						$(item).css("background-image", 'url("' + grayBRI + '")')
 					});
-					$case.find(".jmod-ico").on("mouseenter", function (e) {
-						$case.find(".jmod-ico").map(function (index, item) {
-							$(item).css("background-image", 'url("' + grayBRI + '")')
-						});
-						$(e.target).css("background-image", "url(" + rightBGI + ")")
-					})
-				}
+					$(e.target).css("background-image", "url(" + rightBGI + ")")
+				})
 			}
-		;
+		};
+
 		var utils = {
 			calValLength: calValLength,
 			parseQuery: parseQuery,
@@ -6027,11 +6039,20 @@
 		};
 		window._aiCommon = window._aiCommon || {};
 		window._aiCommon.utils = utils;
-
-	}
-		, {}]
+	}, {}]
 }, {}, [1, 2, 4, 5, 3]);
 
 $("#toggle-sidebar").click(function () {
 	$(".main-sidebar").toggleClass("toggled");
+});
+
+
+$(".cat-box").on("mouseleave", function() {
+	$(".jmod-nav-slider").addClass("hidden");
+});
+
+$(document).on('mouseleave', function(e) {
+    if (!e.relatedTarget) {
+        $(".jmod-nav-slider").addClass("hidden");
+    }
 });

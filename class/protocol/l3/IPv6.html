@@ -141,26 +141,26 @@
 					createHLTableT0(1000, tHeader, tBody, "tV6address");
 
 				createInstruT0("IPv6特定地址的构成方式", "i5");
-					createInstruT1("IPv6组播mac地址", "i5-1");
-						createInstruAllTopT1("前24位固定为33:33:FF，后24位为对应的IPv6组播地址的后24位");
+						createInstruT2("IPv6组播mac地址", "i5-1");
+							createInstruAllTopT2("前24位固定为33:33:FF，后24位为对应的IPv6组播地址的后24位");
 
-					createInstruT1("<br /><br />请求节点组播地址（Solicited-Node Address）", "i5-2");
-						createInstruAllTopT1("前104位固定为FF02::1:FF，后24位为被请求节点的IPv6地址的后24位");
+						createInstruT2("<br /><br />请求节点组播地址（Solicited-Node Address）", "i5-2");
+							createInstruAllTopT2("前104位固定为FF02::1:FF，后24位为被请求节点的IPv6地址的后24位");
 
-					createInstruT1("<br /><br />EUI-64算法", "i5-3");
-						createInstruAllTopT1("共64位地址，其中前（后）24位后设备mac地址的前（后）24位，中间16位为FFFE");
+						createInstruT2("<br /><br />EUI-64算法", "i5-3");
+							createInstruAllTopT2("共64位地址，其中前（后）24位后设备mac地址的前（后）24位，中间16位为FFFE");
 
-						createInstruAllTopT1("随后第7位取反（如果原始为0，则变为1，如果原始为1，则变为0）");
+							createInstruAllTopT2("随后第7位取反（如果原始为0，则变为1，如果原始为1，则变为0）");
 
-					createInstruT1("<br /><br />链路本地地址（Link-local address）", "i5-4");
-						createInstruAllTopT1("前64位固定为FE80::，后64位根据EUI-64计算得到");
+						createInstruT2("<br /><br />链路本地地址（Link-local address）", "i5-4");
+							createInstruAllTopT2("前64位固定为FE80::，后64位根据EUI-64计算得到");
 
-					createInstruT1("<br /><br />无状态自动配置地址（SLAAC-Stateless Address Configuration）", "i5-5");
-						createInstruAllTopT1("前64位与路由器的IPv6地址前64位相同，后64位存在两种方式");
+						createInstruT2("<br /><br />无状态自动配置地址（SLAAC-Stateless Address Configuration）", "i5-5");
+							createInstruAllTopT2("前64位与路由器的IPv6地址前64位相同，后64位存在两种方式");
 
-						createInstruAllTopT1("　　第一种：采用EUI-64方式计算得到");
+							createInstruAllTopT2("　　第一种：采用EUI-64方式计算得到");
 
-						createInstruAllTopT1("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
+							createInstruAllTopT2("　　第二种：采用Stable Privacy方式计算得到（RFC4941），实质为随机生成的地址");
 
 				createInstruT0("IPv6伪首部<br />", "i6");
 					createConfigImgT0("IPv6/IPv6伪首部", "IPv6伪首部");
