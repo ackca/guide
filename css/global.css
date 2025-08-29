@@ -3489,41 +3489,6 @@ td
 
 /*----------↑↑↑ 高亮表格 ↑↑↑-------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------*/
-/*----------↓↓↓ 百家讲坛通用部分 ↓↓↓-----------------------------------------------------------------------------------*/
-.divBJJT
-{
-	margin-top: 74px;
-}
-
-
-.divBJJT .breadcrumb-item.active
-{
-	color: #FFFFFF;
-}
-
-.divBJJT-yearList .breadcrumb-item a
-{
-	color: #8AA4AF;
-	text-decoration: none;
-}
-
-.divBJJT-yearList .breadcrumb-item a:hover
-{
-	text-decoration: underline;
-}
-
-/*----------↑↑↑ 百家讲坛通用部分 ↑↑↑-----------------------------------------------------------------------------------*/
-/*----------↓↓↓ 百家讲坛首页 ↓↓↓---------------------------------------------------------------------------------------*/
-
-/*----------↑↑↑ 百家讲坛首页 ↑↑↑---------------------------------------------------------------------------------------*/
-/*----------↓↓↓ 百家讲坛各年列表 ↓↓↓-----------------------------------------------------------------------------------*/
-
-/*----------↑↑↑ 百家讲坛各年列表 ↑↑↑-----------------------------------------------------------------------------------*/
-/*----------↓↓↓ 百家讲坛各个节目详情 ↓↓↓--------------------------------------------------------------------------------*/
-
-
-/*----------↑↑↑ 百家讲坛各个节目详情 ↑↑↑--------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------*/
 /*----------↓↓↓ 动漫目录通用部分 ↓↓↓-----------------------------------------------------------------------------------*/
 .divBG
 {
@@ -3532,6 +3497,7 @@ td
 	top: 50px;
 
 	width: calc(100vw - 300px);
+	/*width: 100%;*/
 	position: fixed;
 	z-index: 10;
 	left: 330px;
@@ -3642,7 +3608,6 @@ td
 /*----------↑↑↑ 海贼王动画目录 ↑↑↑-------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*----------↓↓↓ 犬夜叉动画目录 ↓↓↓-------------------------------------------------------------------------------------*/
-
 #tIYS
 {
 	width: 500px;
@@ -3673,3 +3638,402 @@ td
 	border-top-left-radius: 7px;
 	border-top-right-radius: 7px;
 }
+
+/*----------↑↑↑ 犬夜叉动画目录 ↑↑↑-------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛通用部分 ↓↓↓-----------------------------------------------------------------------------------*/
+.divBJJT
+{
+	margin-top: 74px;
+	font-weight: normal;
+}
+
+
+.divBJJT .breadcrumb-item.active
+{
+	color: #FFFFFF;
+}
+
+.divBJJT .breadcrumb-item a
+{
+	color: #8AA4AF;
+	text-decoration: none;
+}
+
+.divBJJT .breadcrumb-item a:hover
+{
+	text-decoration: underline;
+}
+
+.bjjtOffset
+{
+	height: 37px;
+}
+
+.programImg
+{
+	display: flex;
+	justify-content: center;
+}
+
+.programImg img
+{
+	border: solid 2px #575959;
+	max-width: 100%;
+	max-height: 100%;
+	height: auto;
+	width: auto;
+	box-sizing: border-box;
+}
+
+/*----------↑↑↑ 百家讲坛通用部分 ↑↑↑-----------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛首页 ↓↓↓---------------------------------------------------------------------------------------*/
+.divBJJT-index
+{
+	width: 1150px;
+}
+
+.divBJJT-index .row
+{
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.divEachYear
+{
+	border: solid 3px #495057;
+	background-color: #1C232F;
+	margin-bottom: 20px;
+}
+
+.divBJJT-index .rowYear
+{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.rowYear .col:first-child
+{
+	/*text-align: left;*/
+	font-weight: bold;
+}
+
+.rowYear .col:last-child
+{
+	text-align: right;
+}
+
+.rowYear a
+{
+	color: inherit;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.rowYear a:hover
+{
+	text-decoration: underline;
+}
+
+.divBJJT-index .programImg
+{
+	/*display: flex;*/
+	/*width: 100%;*/
+	height: 180px;
+	/*justify-content: center;*/
+	/*align-items: center;*/
+}
+
+.divBJJT-index .programImg img
+{
+	/*border: solid 2px #575959;*/
+	/*max-width: 100%;*/
+	/*max-height: 100%;*/
+	/*height: auto;*/
+	/*width: auto;*/
+	/*box-sizing: border-box;*/
+}
+
+.divBJJT-index .programWord
+{
+	margin-top: 15px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.divBJJT-index .carousel-control-next,
+.divBJJT-index .carousel-control-prev
+{
+	width: 40px;
+}
+
+.divBJJT-index .carousel-indicators
+{
+	margin-left: 0;
+	margin-right: 0;
+	top: 180px;
+}
+
+.divBJJT-index .programWord a
+{
+	color: inherit;
+	text-decoration: none;
+	position: relative;
+	z-index: 5;
+}
+
+.divBJJT-index .programWord a:hover
+{
+	text-decoration: underline;
+}
+
+/*----------↑↑↑ 百家讲坛首页 ↑↑↑---------------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛各年列表 ↓↓↓-----------------------------------------------------------------------------------*/
+.divBJJT-yearList
+{
+	width: 1000px;
+}
+
+.divEachYearList
+{
+	/*text-align: left;*/
+	background-color: #1C232F;
+	border: solid 3px #495057;
+	width: 975.4px;
+	/*margin-top: 30px;*/
+}
+
+.yearList
+{
+	padding-top: 10px;
+	padding-right: 10px;
+	margin-bottom: 30px;
+}
+
+.yearTitle
+{
+	font-size: 40px;
+	text-align: center;
+	font-weight: bold;
+	letter-spacing: 2px;
+	margin-bottom: 10px;
+	color: #FFC000;
+}
+
+.yearListImg
+{
+	/*display: flex;*/
+	height: 180px;
+	/*justify-content: center;*/
+    /*align-items: center;*/
+	/*overflow: hidden;*/
+}
+
+.yearListImg img
+{
+	margin-left: 20px;
+	/*max-width: 100%;*/
+    /*max-height: 100%;*/
+    /*width: auto;*/
+    /*height: auto;*/
+    /*border: solid 3px #495057;  !* 边框包裹图片 *!*/
+    /*box-sizing: border-box;  !* 边框计入尺寸 *!*/
+}
+
+.yearListWord
+{
+	font-weight: normal;
+}
+
+.yearListWord a
+{
+	font-weight: bold;
+	font-size: 20px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.yearListWord a:hover
+{
+	text-decoration: underline;
+}
+
+.yearListWord .row
+{
+	height: 30px;
+}
+
+/* 对应文字为 播出时间、主讲人、简介 的3个单元格，相当于字典的key */
+.yearListWord>:nth-child(2)>:nth-child(1),
+.yearListWord>:nth-child(3)>:nth-child(1),
+.yearListWord>:nth-child(4)>:nth-child(1)
+{
+	width: 100px;
+	padding-right: 0
+}
+
+/* 对应文字为 播出时间、主讲人、简介 3个单元格右侧的内容单元格，相当于字典的value */
+.yearListWord>:nth-child(2)>:nth-child(2),
+.yearListWord>:nth-child(3)>:nth-child(2),
+.yearListWord>:nth-child(4)>:nth-child(2)
+{
+	padding-left: 0
+}
+
+.zwBJJT
+{
+	position: fixed;
+	z-index: 10;
+}
+
+.zwYearTitle
+{
+	width: 975.4px;
+	background-color: #1C232F;
+	border: solid 3px #495057;
+	padding-bottom: 10px;
+	border-bottom: none;
+	margin-top: -5px;
+}
+
+.divBG-BJJT
+{
+	top: 50px;
+	width: 100%;
+	left: 0;
+}
+
+/*----------↑↑↑ 百家讲坛各年列表 ↑↑↑-----------------------------------------------------------------------------------*/
+/*----------↓↓↓ 百家讲坛各个节目详情 ↓↓↓--------------------------------------------------------------------------------*/
+.divBJJT-program
+{
+	width: 1200px;
+}
+
+.divBJJT-program nav
+{
+	position: fixed;
+	z-index: 10;
+}
+
+.divBJJT-program-top
+{
+	background-color: #1C232F;
+	border: solid 3px #495057;
+	padding-top: 15px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.divBJJT-program-top .programImg
+{
+	/*display: flex;*/
+	height: 200px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*overflow: hidden;*/
+}
+
+.divBJJT-program-top .programImg img
+{
+	/*max-width: 100%;*/
+    /*max-height: 100%;*/
+    /*width: auto;*/
+    /*height: auto;*/
+    /*border: solid 3px #3C8DBC;  !* 边框包裹图片 *!*/
+    /*box-sizing: border-box;  !* 边框计入尺寸 *!*/
+}
+
+.divBJJT-program .programWord
+{
+	/*text-align: left;*/
+	padding-left: 25px;
+}
+
+.divBJJT-program .programWord .row
+{
+	font-size: 20px;
+	line-height: 40px;
+}
+
+/*每个节目的节目名*/
+.divBJJT-program .programWord>:nth-child(1)
+{
+	font-size: 35px;
+	/*height: inherit;*/
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* 对应文字为 播出时间、主讲人、简介 的3个单元格，相当于字典的key */
+.divBJJT-program .programWord>:nth-child(2)>:nth-child(1),
+.divBJJT-program .programWord>:nth-child(3)>:nth-child(1),
+.divBJJT-program .programWord>:nth-child(4)>:nth-child(1)
+{
+	width: 100px;
+	padding: 0
+}
+
+/* 对应文字为 播出时间、主讲人、简介 3个单元格右侧的内容单元格，相当于字典的value */
+.divBJJT-program .programWord>:nth-child(2)>:nth-child(2),
+.divBJJT-program .programWord>:nth-child(3)>:nth-child(2),
+.divBJJT-program .programWord>:nth-child(4)>:nth-child(2)
+{
+	padding-left: 0
+}
+
+.divBJJT-program-jj
+{
+	margin-top: 10px;
+	/*text-align: left;*/
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.divBJJT-program-detail
+{
+	background-color: #1C232F;
+	border: solid 3px #495057;
+	/*text-align: left;*/
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 0;
+	font-size: 18px;
+	line-height: 30px;
+	margin-top: 20px;
+}
+
+.divBJJT-program-detail-single
+{
+	margin-bottom: 40px;
+}
+
+.divBJJT-program-detail-single>:nth-child(1)
+{
+	font-size: 20px;
+	/*line-height: inherit;*/
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+/* 对应文字为 播出时间、主讲人、简介 的3个单元格，相当于字典的key */
+.divBJJT-program-detail-single>:nth-child(2)>:nth-child(1),
+.divBJJT-program-detail-single>:nth-child(3)>:nth-child(1),
+.divBJJT-program-detail-single>:nth-child(4)>:nth-child(1)
+{
+	width: 115px;
+	padding-right: 0
+}
+
+/* 对应文字为 播出时间、主讲人、简介 3个单元格右侧的内容单元格，相当于字典的value */
+.divBJJT-program-detail-single>:nth-child(2)>:nth-child(2),
+.divBJJT-program-detail-single>:nth-child(3)>:nth-child(2),
+.divBJJT-program-detail-single>:nth-child(4)>:nth-child(2)
+{
+	padding-left: 0
+}
+
+/*----------↑↑↑ 百家讲坛各个节目详情 ↑↑↑--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/

@@ -1,0 +1,137 @@
+body
+{
+	margin:0;
+	padding-top:10px;
+	background-color:#C7EDCC
+}
+
+.wrap
+{
+	margin:0 auto;
+	width:790px;
+}
+
+.wrap a:link
+{
+	font-size:13px;
+	color:black;
+	text-decoration:none;
+}
+
+.wrap a:visited
+{
+	font-size:13px;
+	color:black;
+	text-decoration:none;
+}
+
+.wrap a:hover
+{
+	font-size:13px;
+	color:black;
+	text-decoration:underline;
+}
+
+.totoalMes
+{
+	background-color:#F2F2F2;
+	margin-top:5px;
+	padding-left:15px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+.imgLeft
+{
+	float:left;
+	padding:2px;
+	border:solid 2px #00CCCC;
+	margin-bottom:10px;
+}
+
+.imgLeft img
+{
+	width:180px;
+	height:210px;
+}
+
+.mesRight
+{
+	float:left;
+}
+
+.wordIntruduce
+{
+	float:left;
+	font-size:18px;
+	line-height:30px;
+	margin-left:10px;
+}
+
+.mesIntruduce
+{
+	float:left;
+	font-size:18px;
+	line-height:30px;
+}
+
+.divDetail
+{
+	clear:both;
+	width:750px;
+	font-size:18px;
+	line-height:26px;
+}
+
+.divDetail span
+{
+	margin-left:36px;
+}
+
+.divIntroduce
+{
+	background-color:white;
+	padding-top:20px;
+	padding-left:10px;
+}
+
+.introcudeEach
+{
+	clear:both;
+}
+
+.eachTitle
+{
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+.eachLeft
+{
+	float:left;
+	font-size:18px;
+	line-height:26px;
+	margin-top:10px;
+}
+
+.eachRight
+{
+	float:left;
+	font-size:18px;
+	line-height:26px;
+	width:670px;
+	margin-bottom:30px;
+	margin-top:10px;
+}
+
+.spanIntroduce
+{
+	background:url("../detailBack.jpg") repeat-x;
+	padding-left:10px;
+	height:30px;
+	font-size:16px;
+	line-height:30px;
+	font-weight:bold;
+	display:block;
+}

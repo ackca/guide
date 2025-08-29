@@ -1,0 +1,111 @@
+body
+{
+	margin:0;
+	background-color:#C7EDCC
+}
+
+.wrap a:link
+{
+	font-size:13px;
+	color:black;
+	text-decoration:none;
+}
+
+.wrap a:visited
+{
+	font-size:13px;
+	color:black;
+	text-decoration:none;
+}
+
+.wrap a:hover
+{
+	font-size:13px;
+	color:black;
+	text-decoration:underline;
+}
+
+.divAll
+{
+	clear:both;
+}
+
+.imgLeft img
+{
+	width:115px;
+	height:130px;
+}
+
+.imgLeft
+{
+	float:left;
+	margin-left:30px;
+	margin-bottom:35px;
+	padding:2px;
+	border:solid 2px #D9D9D9;
+}
+
+.wordCentry
+{
+	float:left;
+	margin-left:20px;
+	margin-top:5px;
+}
+
+.wordCentry a:link
+{
+	font-weight:bold;
+	font-size:15px;
+	color:black;
+	text-decoration:none;
+}
+
+.wordCentry a:visited
+{
+	font-weight:bold;
+	font-size:15px;
+	color:black;
+	text-decoration:none;
+}
+
+.wordCentry a:hover
+{
+	font-weight:bold;
+	font-size:15px;
+	color:black;
+	text-decoration:underline;
+}
+
+.title 
+{
+	font-weight:bold;
+	font-size:12px;
+}
+
+.divIntruduce
+{
+	margin-top:5px;
+}
+
+.wordIntruduce
+{
+	float:left;
+	font-size:12px;
+	line-height:20px;
+}
+
+.mesIntruduce
+{
+	float:left;
+	width:480px;
+	font-size:15px;
+	line-height:22px;
+}
+
+.wrap
+{
+	margin:0 auto;
+	width:730px;
+	background-color:white;
+	padding-top:10px;
+}

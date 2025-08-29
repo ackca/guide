@@ -1,0 +1,84 @@
+body
+{
+	margin:0;
+	background-color:#C7EDCC
+}
+
+.wrap
+{
+	margin:0 auto;
+	width:1000px;
+	padding-top:20px;
+}
+
+.eachYear
+{
+	border:solid 2px #D5DADF;
+	width:940px;
+	height:280px;
+	background-color:white;
+	margin-top:8px
+}
+
+.eachYearTop
+{		
+	background:url("../yearListBack.jpg") repeat-x;
+	height:40px;
+	padding-top:15px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.eachYearTop span
+{
+	font-size:23px;
+	color:#6C3C2C;
+	font-weight:bold;
+}
+
+.eachYearTop a
+{
+	float:right;
+	font-weight:bold;
+}
+
+.wrap a:link
+{
+	color:black;
+	text-decoration:none;
+}
+
+.wrap a:visited
+{
+	color:black;
+	text-decoration:none;
+}
+
+.wrap a:hover
+{
+	color:black;
+	text-decoration:underline;
+}
+
+
+.imgList div
+{
+	float:left;
+	margin-left:12px;
+	width:142px;
+	text-align:center;
+}
+
+.imgList img
+{
+	border:solid 2px #D5DADF;
+	height:170px;
+	width:140px;
+	margin-bottom:10px;
+}
+
+
+.imgList a
+{
+	font-size:14px;
+}

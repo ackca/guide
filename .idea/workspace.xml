@@ -4,168 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="更新图片名">
-      <change afterPath="$PROJECT_DIR$/class/cloud/k8s/kubeadm_step_test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/sidebar-menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/top_menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/regex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/sidebar-menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/top_menu.js" afterDir="false" />
+    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="改动较多，先上传">
+      <change afterPath="$PROJECT_DIR$/class/bjjt/bjjtDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class/bjjt/bjjtYear.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/aliyun/aliyun.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/aliyun/aliyun.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/docker/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/docker/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/docker/compose.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/docker/compose.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/docker/config_img/private_hub/i2_3$2.png" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/docker/config_img/private_hub/i2_3$2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/docker/private_hub.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/docker/private_hub.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/docker/swarm.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/docker/swarm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/docker/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/docker/tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/k8s/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/k8s/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/k8s/kubeadm_step.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/k8s/kubeadm_step.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/k8s/orchestration.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/k8s/orchestration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/cloud/k8s/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/cloud/k8s/tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/config_img/redhat_basic/新建文件夹/redhat_basic_i11-1-1$1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/config_img/redhat_basic/新建文件夹/redhat_basic_i11-1-2$1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/config_img/redhat_basic/新建文件夹/redhat_basic_i18-1$1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/config_img/redhat_basic/新建文件夹/redhat_basic_i18-2$1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/config_img/redhat_basic/新建文件夹/redhat_basic_i18-3$1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/redhat_basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/linux/redhat_basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/redhat_service.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/linux/redhat_service.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/linux/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/linux/tree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/2001~2003/bjjt2001~2003.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/htmlText.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/htmlText.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/netdevops/pki/certs_edit1.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/certs_edit1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/certs_edit2.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/certs_edit2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/certs_edit3.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/certs_edit3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/certs_mgmt.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/certs_mgmt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/certsrv.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/certsrv.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/cfssl.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/cfssl.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/openssl.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/openssl.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/tool/gitlab.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/tool/gitlab.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/tool/mysql8.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/tool/mysql8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/tool/nginx.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/tool/nginx.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/tool/regex.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/tool/regex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/tool/terraform.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/tool/terraform.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/tool/vault.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/tool/vault.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/aruba/clearpass.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/aruba/clearpass.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/aruba/config_img/clearpass/i8$2 - 副本.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/aruba/config_img/clearpass/i8$4 - 副本.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/aruba/wireless.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/aruba/wireless.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/aruba/wireless_basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/aruba/wireless_basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/aireos.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/aireos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/asa.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/asa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/c9800.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/c9800.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/catalyst.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/catalyst.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/dynamic_routing.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/dynamic_routing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/firepower.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/firepower.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/ios-xe.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/ios-xe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/ise21.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/ise21.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/ise31.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/ise31.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/ise_switch.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/ise_switch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/ise_windows.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/ise_windows.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/mobility_express.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/mobility_express.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/nexus.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/nexus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/other_routing.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/other_routing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/sdwan.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/sdwan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/umbrella.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/umbrella.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/vpn_asa.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/vpn_asa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/vpn_firepower.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/vpn_firepower.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/cisco/vpn_router.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/cisco/vpn_router.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/f5/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/f5/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/f5/config_img/others/i2_3_1$14 - 副本.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/f5/ltm.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/f5/ltm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/f5/others.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/f5/others.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/h3c/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/h3c/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/h3c/switch.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/h3c/switch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/huawei/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/huawei/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/huawei/dynamic_routing.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/huawei/dynamic_routing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/huawei/other_routing.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/huawei/other_routing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/huawei/switch.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/huawei/switch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/huawei/vpn.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/huawei/vpn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/network/okta/okta.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/network/okta/okta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/nmap/nmap.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/nmap/nmap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/one_piece/one_piece.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/one_piece/tree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l2/802.1Q.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l2/802.1Q.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l2/802.3.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l2/802.3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l2/ethernet.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l2/ethernet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l2/wifi.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l2/wifi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l3/ARP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l3/ARP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l3/IPv4.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l3/IPv4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l3/IPv6.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l3/IPv6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l4/ICMPv4.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l4/ICMPv4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l4/ICMPv6.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l4/ICMPv6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l4/TCP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l4/TCP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l4/UDP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l4/UDP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/DHCPv4.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/DHCPv4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/DHCPv6.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/DHCPv6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/DNS.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/DNS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/FTP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/FTP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/HTTP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/HTTP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/NTP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/NTP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/TFTP.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/TFTP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/VXLAN.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/VXLAN.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/protocol/l7/syslog.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/protocol/l7/syslog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/pxe/pxe.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/pxe/pxe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/pxe/tree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/vmware/NSX-T3.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/vmware/NSX-T3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/vmware/SDWAN.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/vmware/SDWAN.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/vmware/vsphere7.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/vmware/vsphere7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/certs_edit.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/hswitch.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/ltm_basic.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/nmap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/one_piece.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/dhcpv4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/dhcpv6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/dns.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/http.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/icmp4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/icmp6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/ipv6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/syslog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/tcp.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/protocol/wifi.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/pxe.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/redhat_basic.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/redhat_service.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/private/regex.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/HLTable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/guide-icon.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/sidebar-menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/public/top_menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/certs_edit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/forge.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/forge.min.js.bak" beforeDir="false" afterPath="$PROJECT_DIR$/js/forge.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/hswitch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/http.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/icmp4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/icmp6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/pxe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/regex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/private/regex_gammar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/certs_edit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/forge.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/global.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/guide-icon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/head.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/sidebar-menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/top_menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/public/top_menu_words.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -392,6 +240,37 @@
       <workItem from="1745028214814" duration="890000" />
       <workItem from="1745037165731" duration="19000" />
       <workItem from="1745044161443" duration="5735000" />
+      <workItem from="1756028447691" duration="115000" />
+      <workItem from="1756037688636" duration="774000" />
+      <workItem from="1756038472954" duration="8000" />
+      <workItem from="1756088703370" duration="11000" />
+      <workItem from="1756101326483" duration="10273000" />
+      <workItem from="1756113209928" duration="11000" />
+      <workItem from="1756124482583" duration="601000" />
+      <workItem from="1756128579105" duration="2236000" />
+      <workItem from="1756170723665" duration="1950000" />
+      <workItem from="1756175683890" duration="77000" />
+      <workItem from="1756187985915" duration="5161000" />
+      <workItem from="1756194394221" duration="7074000" />
+      <workItem from="1756210269849" duration="5905000" />
+      <workItem from="1756252309266" duration="842000" />
+      <workItem from="1756253381610" duration="229000" />
+      <workItem from="1756258103252" duration="4235000" />
+      <workItem from="1756274026228" duration="10241000" />
+      <workItem from="1756287555951" duration="245000" />
+      <workItem from="1756288740464" duration="19000" />
+      <workItem from="1756291125281" duration="20000" />
+      <workItem from="1756297010555" duration="899000" />
+      <workItem from="1756302241023" duration="91000" />
+      <workItem from="1756338745996" duration="8000" />
+      <workItem from="1756339328416" duration="6000" />
+      <workItem from="1756360197659" duration="416000" />
+      <workItem from="1756361952182" duration="6200000" />
+      <workItem from="1756368253104" duration="3059000" />
+      <workItem from="1756374903882" duration="275000" />
+      <workItem from="1756383248278" duration="235000" />
+      <workItem from="1756427203032" duration="1032000" />
+      <workItem from="1756429051277" duration="82000" />
     </task>
     <task id="LOCAL-00001" summary="主要更新自定义证书的harbor">
       <option name="closed" value="true" />
@@ -409,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740560989029</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="改动较多，先上传">
+      <option name="closed" value="true" />
+      <created>1756028553308</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756028553308</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,6 +305,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="主要更新自定义证书的harbor" />
     <MESSAGE value="更新图片名" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新图片名" />
+    <MESSAGE value="改动较多，先上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="改动较多，先上传" />
   </component>
 </project>
