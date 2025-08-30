@@ -20,18 +20,42 @@
 		
 		<script type="text/javascript">
 			// console.log(createBJJT_YearList("2001~2003", bjjt0103));
-			document.write(createBJJT_YearList("2001~2003", bjjtDB["bjjt0103"])
+			document.write(
+				createBJJT_YearList("2001~2003", bjjtDB["bjjt0103"])
 					.replace(">文明的发动机——科学", ">文明的发动机<br />——科学")
 					.replace(">社会的源动力——经济", ">社会的源动力<br />——经济")
 					.replace(">企业的方向盘——管理", ">企业的方向盘<br />——管理")
 					.replace(">时代的加速器——数字", ">时代的加速器<br />——数字")
 
 			);
+			
 			document.write(createBJJT_YearList("2004", bjjtDB["bjjt2004"]));
+			
 			document.write(
-					createBJJT_YearList("2005", bjjtDB["bjjt2005"])
+				createBJJT_YearList("2005", bjjtDB["bjjt2005"])
 					.replace(">孔庆东看金庸的武侠小说", ">孔庆东看<br />金庸的武侠小说")
 			);
+
+			document.write(
+				createBJJT_YearList("2006", bjjtDB["bjjt2006"])
+					.replace(">唐史系列01：玄武门之变", ">唐史系列01：<br />玄武门之变")
+			);
+
+			document.write(
+				createBJJT_YearList("2007", bjjtDB["bjjt2007"])
+					.replace(">王立群读《史记》汉武帝", ">王立群读《史记》<br />汉武帝")
+					.replace(">唐史系列02：贞观之治", ">唐史系列02：<br />贞观之治")
+			);
+
+			document.write(
+				createBJJT_YearList("2008", bjjtDB["bjjt2008"])
+					.replace(">周汝昌眼中的四大名著", ">周汝昌眼中的<br />四大名著")
+					.replace(">唐史系列03：唐高宗真相", ">唐史系列03：<br />唐高宗真相")
+					.replace(">王立群读《史记》秦始皇", ">王立群读《史记》<br />秦始皇")
+			);
+			// $(".divBJJT-index").children("div").get().reverse().forEach(function(el) {
+			//     $(".divBJJT-index").append(el);
+			// });
 		</script>
 	
 	</div>

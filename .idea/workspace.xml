@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="改动较多，先上传">
-      <change afterPath="$PROJECT_DIR$/class/bjjt/bjjtDetail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/class/bjjt/bjjtYear.html" afterDir="false" />
+    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="2005年，先上传">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/2001~2003/bjjt2001~2003.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/anime/naruto.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/naruto.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/htmlText.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/htmlText.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/netdevops/pki/certs_edit1.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/netdevops/pki/certs_edit1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -271,6 +268,11 @@
       <workItem from="1756383248278" duration="235000" />
       <workItem from="1756427203032" duration="1032000" />
       <workItem from="1756429051277" duration="82000" />
+      <workItem from="1756457158820" duration="735000" />
+      <workItem from="1756461202848" duration="207000" />
+      <workItem from="1756463771365" duration="47000" />
+      <workItem from="1756542976597" duration="293000" />
+      <workItem from="1756547601688" duration="149000" />
     </task>
     <task id="LOCAL-00001" summary="主要更新自定义证书的harbor">
       <option name="closed" value="true" />
@@ -296,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756028553308</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2005年，先上传">
+      <option name="closed" value="true" />
+      <created>1756457203608</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756457203608</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,6 +316,7 @@
     <MESSAGE value="主要更新自定义证书的harbor" />
     <MESSAGE value="更新图片名" />
     <MESSAGE value="改动较多，先上传" />
-    <option name="LAST_COMMIT_MESSAGE" value="改动较多，先上传" />
+    <MESSAGE value="2005年，先上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="2005年，先上传" />
   </component>
 </project>

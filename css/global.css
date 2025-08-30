@@ -3756,7 +3756,7 @@ td
 
 .divBJJT-index .programWord
 {
-	margin-top: 15px;
+	margin-top: 21px;
 	font-size: 16px;
 	margin-bottom: 10px;
 	text-align: center;
@@ -3772,7 +3772,7 @@ td
 {
 	margin-left: 0;
 	margin-right: 0;
-	top: 180px;
+	top: 183px;
 }
 
 .divBJJT-index .programWord a
@@ -3817,7 +3817,7 @@ td
 	text-align: center;
 	font-weight: bold;
 	letter-spacing: 2px;
-	margin-bottom: 10px;
+/*	margin-bottom: 10px;*/
 	color: #FFC000;
 }
 
@@ -3864,6 +3864,12 @@ td
 	height: 30px;
 }
 
+/* 每个节目的标题 */
+.yearListWord>:nth-child(1)
+{
+	margin-bottom: 8px;
+}
+
 /* 对应文字为 播出时间、主讲人、简介 的3个单元格，相当于字典的key */
 .yearListWord>:nth-child(2)>:nth-child(1),
 .yearListWord>:nth-child(3)>:nth-child(1),
@@ -3908,7 +3914,7 @@ td
 /*----------↓↓↓ 百家讲坛各个节目详情 ↓↓↓--------------------------------------------------------------------------------*/
 .divBJJT-program
 {
-	width: 1200px;
+/*	width: 1200px;*/
 }
 
 .divBJJT-program nav
@@ -3960,7 +3966,7 @@ td
 /*每个节目的节目名*/
 .divBJJT-program .programWord>:nth-child(1)
 {
-	font-size: 35px;
+	font-size: 30px;
 	/*height: inherit;*/
 	font-weight: bold;
 	margin-bottom: 10px;
