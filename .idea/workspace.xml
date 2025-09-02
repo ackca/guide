@@ -4,13 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="2005年，先上传">
+    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="2008年，先上传">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/anime/naruto.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/naruto.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/htmlText.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/htmlText.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/bjjtDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjtDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/bjjtYear.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjtYear.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/《红楼梦》丝绸密码.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将_曹操.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将_诸葛亮.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将_邓艾.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/司马光_第二部.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_曾巩.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_柳宗元.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_欧阳修.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_王安石.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_韩愈.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/国史通鉴_春秋战国篇.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/国史通鉴_第一部.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/塞北三朝_辽.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/大隋风云_上部.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/崇祯那些年_第二部.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/成败论乾隆_下.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/末代皇族的新生_下.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/玄奘西游记.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/img/玄奘西游记.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/甲午甲午.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/解读《弟子规》.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/img/解读《弟子规》.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/跟司马懿学管理.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/郝万山说健康_第二部.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/郦波评说曾国藩家训_上部.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/风云唐太宗_上.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_宋江.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_李逵.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_林冲.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_武松.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_鲁智深.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,6 +303,12 @@
       <workItem from="1756463771365" duration="47000" />
       <workItem from="1756542976597" duration="293000" />
       <workItem from="1756547601688" duration="149000" />
+      <workItem from="1756560740068" duration="1532000" />
+      <workItem from="1756599226331" duration="1259000" />
+      <workItem from="1756603595649" duration="16000" />
+      <workItem from="1756604460326" duration="2359000" />
+      <workItem from="1756778158312" duration="28000" />
+      <workItem from="1756797117721" duration="4522000" />
     </task>
     <task id="LOCAL-00001" summary="主要更新自定义证书的harbor">
       <option name="closed" value="true" />
@@ -306,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756457203608</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2008年，先上传">
+      <option name="closed" value="true" />
+      <created>1756560836131</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1756560836131</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +361,7 @@
     <MESSAGE value="更新图片名" />
     <MESSAGE value="改动较多，先上传" />
     <MESSAGE value="2005年，先上传" />
-    <option name="LAST_COMMIT_MESSAGE" value="2005年，先上传" />
+    <MESSAGE value="2008年，先上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="2008年，先上传" />
   </component>
 </project>

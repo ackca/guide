@@ -23,7 +23,11 @@
 			bjjtYear = "bjjt" + year;
 		}
 
-		document.write(createBJJT_ProgramDetail(year, bjjtDB[bjjtYear], programName));
+		document.write(
+			createBJJT_ProgramDetail(year, bjjtDB[bjjtYear], programName)
+				.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")  // 2013
+				.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")  // 2014
+		);
 	</script>
 </body>
 </html>

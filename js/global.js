@@ -1067,14 +1067,15 @@ function addSQLSpan(cmd) {
 		"variables|" +
 		"where|with";
 
-	for (const sElement of reg = "/"
-		+ "(^(" + sql_keyword + ") )|"
-		+ "( (" + sql_keyword + ")$)|"
-		+ "( (" + sql_keyword + ") )|"
-		+ "(“(" + sql_keyword + ")。)" +
-		"/g") {
-	}
-	;
+	for (
+		const sElement of reg = "/"
+			+ "(^(" + sql_keyword + ") )|"
+			+ "( (" + sql_keyword + ")$)|"
+			+ "( (" + sql_keyword + ") )|"
+			+ "(“(" + sql_keyword + ")。)" +
+			"/g"
+		) {
+	};
 
 	cmd = cmd.replace(/ /g, "  ")
 	cmd = cmd.replace(eval(reg), "<span class=\"sqlKeyword\">$&</span>");

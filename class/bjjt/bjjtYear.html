@@ -22,7 +22,13 @@
 			bjjtYear = "bjjt" + year;
 		}
 
-		document.write(createBJJT_EachYearList(year, bjjtDB[bjjtYear]));
+		document.write(
+			createBJJT_EachYearList(year, bjjtDB[bjjtYear])
+				.replaceAll("year=2013&&programName=唐玄宗与杨贵妃", "year=2009&&programName=长恨歌")
+				.replaceAll("（重播）.jpg\" />", ".jpg\" />")
+				.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")
+				.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")
+		);
 	</script>
 </body>
 </html>

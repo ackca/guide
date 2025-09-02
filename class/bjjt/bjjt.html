@@ -9,6 +9,17 @@
 	<script type="text/javascript">
 		window.onload = createNavigation("");
 	</script>
+	<style type="text/css">
+		.carousel-control-prev-icon
+		{
+			background-image: url("../../img/chevron-compact-left.svg");
+		}
+
+		.carousel-control-next-icon
+		{
+			background-image: url("../../img/chevron-compact-right.svg");
+		}
+	</style>
 </head>
 <body>
 	<div class="container divBJJT divBJJT-index">
@@ -20,39 +31,113 @@
 		
 		<script type="text/javascript">
 			// console.log(createBJJT_YearList("2001~2003", bjjt0103));
-			document.write(
-				createBJJT_YearList("2001~2003", bjjtDB["bjjt0103"])
-					.replace(">文明的发动机——科学", ">文明的发动机<br />——科学")
-					.replace(">社会的源动力——经济", ">社会的源动力<br />——经济")
-					.replace(">企业的方向盘——管理", ">企业的方向盘<br />——管理")
-					.replace(">时代的加速器——数字", ">时代的加速器<br />——数字")
+			let htmlText = createBJJT_YearList("2001~2003", bjjtDB["bjjt0103"]);
+			for (let i = 2004; i <= 2014; i++) {
+				htmlText = htmlText + createBJJT_YearList(i.toString(), bjjtDB["bjjt" + i.toString()])
+			}
 
-			);
-			
-			document.write(createBJJT_YearList("2004", bjjtDB["bjjt2004"]));
-			
-			document.write(
-				createBJJT_YearList("2005", bjjtDB["bjjt2005"])
-					.replace(">孔庆东看金庸的武侠小说", ">孔庆东看<br />金庸的武侠小说")
-			);
+			htmlText = htmlText
+					.replace(">文明的发动机——科学", ">文明的发动机<br />——科学")                // 2001~2003
+					.replace(">社会的源动力——经济", ">社会的源动力<br />——经济")                // 2001~2003
+					.replace(">企业的方向盘——管理", ">企业的方向盘<br />——管理")                // 2001~2003
+					.replace(">时代的加速器——数字", ">时代的加速器<br />——数字")                // 2001~2003
+					.replace(">孔庆东看金庸的武侠小说", ">孔庆东看<br />金庸的武侠小说")         // 2005
+					.replace(">唐史系列01：玄武门之变", ">唐史系列01：<br />玄武门之变")         // 2006
+					.replace(">王立群读《史记》汉武帝", ">王立群读《史记》<br />汉武帝")         // 2007
+					.replace(">唐史系列02：贞观之治", ">唐史系列02：<br />贞观之治")             // 2007
+					.replace(">周汝昌眼中的四大名著", ">周汝昌眼中的<br />四大名著")             // 2008
+					.replace(">唐史系列03：唐高宗真相", ">唐史系列03：<br />唐高宗真相")         // 2008
+					.replace(">王立群读《史记》秦始皇", ">王立群读《史记》<br />秦始皇")         // 2008
+					.replaceAll(">大国医（2012年高清重播）", ">大国医<br />（2012年高清重播）")  // 2011
+					.replace(">从司马到司马——西晋的历程", ">从司马到司马<br />——西晋的历程")     // 2012
+					.replace(">王立群读宋史：宋太祖", ">王立群读宋史：<br />宋太祖")             // 2012
+					.replace(">大国医（高清重播）", ">大国医<br />（高清重播）")                 // 2012
+					.replace(">王立群读宋史：宋太宗（上）", ">王立群读宋史：<br />宋太宗（上）")  // 2013
+					.replace(">《诗经》中的不老爱情", ">《诗经》中的<br />不老爱情")             // 2014
+					.replace(">王立群读宋史：宋太宗（下）", ">王立群读宋史：<br />宋太宗（下）")  // 2014
+					.replace(">国史通鉴（春秋战国篇）", ">国史通鉴<br />（春秋战国篇）")         // 2014
+					.replace(">郝万山说健康（第二部）", ">郝万山说健康<br />（第二部）")
+					.replace(">末代皇族的新生（下部）", ">末代皇族的新生<br />（下部）")
 
-			document.write(
-				createBJJT_YearList("2006", bjjtDB["bjjt2006"])
-					.replace(">唐史系列01：玄武门之变", ">唐史系列01：<br />玄武门之变")
-			);
+					.replaceAll("img/大国医（2012年高清重播）", "img/大国医（高清重播）")        // 2011
+					.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")     // 2013
+					.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")     // 2014
 
-			document.write(
-				createBJJT_YearList("2007", bjjtDB["bjjt2007"])
-					.replace(">王立群读《史记》汉武帝", ">王立群读《史记》<br />汉武帝")
-					.replace(">唐史系列02：贞观之治", ">唐史系列02：<br />贞观之治")
-			);
+					.replaceAll(                                                             // 2011
+						"year=2011&&programName=大国医（2012年高清重播）",
+						"year=2012&&programName=大国医（高清重播）"
+					)
 
-			document.write(
-				createBJJT_YearList("2008", bjjtDB["bjjt2008"])
-					.replace(">周汝昌眼中的四大名著", ">周汝昌眼中的<br />四大名著")
-					.replace(">唐史系列03：唐高宗真相", ">唐史系列03：<br />唐高宗真相")
-					.replace(">王立群读《史记》秦始皇", ">王立群读《史记》<br />秦始皇")
-			);
+
+			document.write(htmlText);
+
+			// document.write(
+			// 	createBJJT_YearList("2001~2003", bjjtDB["bjjt0103"])
+			// 		.replace(">文明的发动机——科学", ">文明的发动机<br />——科学")
+			// 		.replace(">社会的源动力——经济", ">社会的源动力<br />——经济")
+			// 		.replace(">企业的方向盘——管理", ">企业的方向盘<br />——管理")
+			// 		.replace(">时代的加速器——数字", ">时代的加速器<br />——数字")
+			//
+			// );
+			//
+			// document.write(createBJJT_YearList("2004", bjjtDB["bjjt2004"]));
+			//
+			// document.write(
+			// 	createBJJT_YearList("2005", bjjtDB["bjjt2005"])
+			// 		.replace(">孔庆东看金庸的武侠小说", ">孔庆东看<br />金庸的武侠小说")
+			// );
+			//
+			// document.write(
+			// 	createBJJT_YearList("2006", bjjtDB["bjjt2006"])
+			// 		.replace(">唐史系列01：玄武门之变", ">唐史系列01：<br />玄武门之变")
+			// );
+			//
+			// document.write(
+			// 	createBJJT_YearList("2007", bjjtDB["bjjt2007"])
+			// 		.replace(">王立群读《史记》汉武帝", ">王立群读《史记》<br />汉武帝")
+			// 		.replace(">唐史系列02：贞观之治", ">唐史系列02：<br />贞观之治")
+			// );
+			//
+			// document.write(
+			// 	createBJJT_YearList("2008", bjjtDB["bjjt2008"])
+			// 		.replace(">周汝昌眼中的四大名著", ">周汝昌眼中的<br />四大名著")
+			// 		.replace(">唐史系列03：唐高宗真相", ">唐史系列03：<br />唐高宗真相")
+			// 		.replace(">王立群读《史记》秦始皇", ">王立群读《史记》<br />秦始皇")
+			// );
+			//
+			// document.write(createBJJT_YearList("2009", bjjtDB["bjjt2009"]));
+			//
+			// document.write(createBJJT_YearList("2010", bjjtDB["bjjt2010"]));
+			//
+			// document.write(
+			// 	createBJJT_YearList("2011", bjjtDB["bjjt2011"])
+			// 		.replace(">大国医（2012年有高清重播，转至重播页面）", ">大国医")
+			// 		.replaceAll("year=2011&&programName=大国医（2012年有高清重播，转至重播页面）", "year=2012&&programName=大国医")
+			// 		.replace("<img src=\"img/大国医（2012年有高清重播，转至重播页面）.jpg\">", "<img src=\"img/大国医.jpg\">")
+			// 			      // <img src="img/大国医（2012年有高清重播，转至重播页面）.jpg">
+			//
+			// );
+			//
+			// document.write(
+			// 	createBJJT_YearList("2012", bjjtDB["bjjt2012"])
+			// 		.replace(">从司马到司马——西晋的历程", ">从司马到司马<br />——西晋的历程")
+			// 		.replace(">王立群读宋史：宋太祖", ">王立群读宋史：<br />宋太祖")
+			// );
+			//
+			// // console.log(createBJJT_YearList("2013", bjjtDB["bjjt2013"]));
+			// document.write(
+			// 	createBJJT_YearList("2013", bjjtDB["bjjt2013"])
+			// 		.replace(">王立群读宋史：宋太宗（上）", ">王立群读宋史<br />宋太宗（上）")
+			// 		// .replace(">司马光（第一部）：从砸缸少年到政坛新星", ">司马光（第一部）：<br />从砸缸少年到政坛新星")
+			// 		.replaceAll("year=2013&&programName=唐玄宗与杨贵妃", "year=2009&&programName=长恨歌")
+			// 		// .replace(">从司马到司马——西晋的历程", ">从司马到司马<br />——西晋的历程")
+			// 		// .replace(">王立群读宋史：宋太祖", ">王立群读宋史：<br />宋太祖")
+			// );
+			//
+			// document.write(
+			// 	createBJJT_YearList("2014", bjjtDB["bjjt2014"])
+			// );
+
 			// $(".divBJJT-index").children("div").get().reverse().forEach(function(el) {
 			//     $(".divBJJT-index").append(el);
 			// });
