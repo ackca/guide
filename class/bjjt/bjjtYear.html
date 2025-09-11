@@ -22,13 +22,63 @@
 			bjjtYear = "bjjt" + year;
 		}
 
-		document.write(
-			createBJJT_EachYearList(year, bjjtDB[bjjtYear])
-				.replaceAll("year=2013&&programName=唐玄宗与杨贵妃", "year=2009&&programName=长恨歌")
-				.replaceAll("（重播）.jpg\" />", ".jpg\" />")
-				.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")
-				.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")
-		);
+		// console.log(createBJJT_EachYearList(year, bjjtDB[bjjtYear]));
+		let htmlText = createBJJT_EachYearList(year, bjjtDB[bjjtYear])
+						.replace(/(img\/\S+)（\d+年高清重播）.jpg/g, "$1（高清重播）.jpg")
+						.replaceAll("（重播）.jpg\" />", ".jpg\" />")
+						.replace(/img\/党史故事100讲（\S+）/g, "img/党史故事100讲")
+						// 各个篇章的党史故事100讲，均使用党史故事100讲.jpg
+
+						.replaceAll(																// 2007
+								"year=2007&&programName=武则天（2013年高清重播）",
+								"year=2013&&programName=女皇武则天"
+						)
+						.replaceAll(																// 2008
+							"year=2008&&programName=王立群读《史记》秦始皇（2011年高清重播）",
+							"year=2011&&programName=王立群读《史记》秦始皇（高清重播）"
+						)
+
+						.replaceAll(																// 2010
+							"year=2010&&programName=军旅作家王树增讲长征（重播）",
+							"year=2008&&programName=军旅作家王树增讲长征"
+						)
+						.replaceAll(																// 2011
+							"year=2011&&programName=大国医（2012年高清重播）",
+							"year=2012&&programName=大国医（高清重播）"
+						)
+						.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")		// 2013
+						.replaceAll("year=2013&&programName=唐玄宗与杨贵妃", "year=2009&&programName=长恨歌")	// 2013
+						.replaceAll(																// 2014
+							"year=2014&&programName=百家姓（第二部）（重播）",
+							"year=2014&&programName=百家姓（第二部）"
+						)
+						.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")		// 2014
+						.replaceAll(																// 2014
+							"year=2014&&programName=三国名将（曹操）（重播）",
+							"year=2014&&programName=三国名将（曹操）"
+						)
+						.replaceAll(																// 2014
+							"year=2014&&programName=三国名将（诸葛亮）（重播）",
+							"year=2014&&programName=三国名将（诸葛亮）"
+						)
+						.replaceAll(																// 2015
+							"year=2015&&programName=百家姓（第三部）（2016年高清重播）",
+							"year=2016&&programName=百家姓（第三部）（高清重播）"
+						);
+
+		if (year == "2016") {
+			htmlText = htmlText.replace("img/端午时节话屈原", "img/端午时节话屈原（2016）");
+		}
+
+		if (year == "2017") {
+			htmlText = htmlText.replace("img/镇馆之宝", "img/镇馆之宝（2017）");
+		}
+
+		if (year == "2018") {
+			htmlText = htmlText.replace("img/我们的大学", "img/我们的大学（2018）");
+		}
+
+		document.write(htmlText);
 	</script>
 </body>
 </html>

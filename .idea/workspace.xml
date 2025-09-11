@@ -4,43 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="2008年，先上传">
+    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="2014年，先上传">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjt.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjt.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjtDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjtDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/bjjt/bjjtYear.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/bjjtYear.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/《红楼梦》丝绸密码.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将_曹操.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将_诸葛亮.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将_邓艾.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/司马光_第二部.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_曾巩.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_柳宗元.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_欧阳修.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_王安石.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/唐宋八大家_韩愈.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/国史通鉴_春秋战国篇.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/国史通鉴_第一部.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/塞北三朝_辽.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/大隋风云_上部.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/崇祯那些年_第二部.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/成败论乾隆_下.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/末代皇族的新生_下.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/玄奘西游记.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/img/玄奘西游记.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/甲午甲午.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/解读《弟子规》.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/img/解读《弟子规》.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/跟司马懿学管理.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/郝万山说健康_第二部.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/郦波评说曾国藩家训_上部.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/风云唐太宗_上.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_宋江.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_李逵.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_林冲.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_武松.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/bjjt/img/鲍鹏山新说《水浒》_鲁智深.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将（吴国篇）.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将（曹操）.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将（诸葛亮）.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/三国名将（邓艾）.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/国史通鉴（春秋战国篇）.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/国史通鉴（第一部）.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/武则天.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/class/bjjt/img/武则天.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/bjjt/img/王立群读《史记》秦始皇.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +286,38 @@
       <workItem from="1756603595649" duration="16000" />
       <workItem from="1756604460326" duration="2359000" />
       <workItem from="1756778158312" duration="28000" />
-      <workItem from="1756797117721" duration="4522000" />
+      <workItem from="1756797117721" duration="7284000" />
+      <workItem from="1756814458076" duration="1917000" />
+      <workItem from="1756816585464" duration="12000" />
+      <workItem from="1756817085808" duration="48000" />
+      <workItem from="1756871280518" duration="10000" />
+      <workItem from="1756943250405" duration="18000" />
+      <workItem from="1756965972132" duration="1396000" />
+      <workItem from="1756967602502" duration="1830000" />
+      <workItem from="1756970899606" duration="460000" />
+      <workItem from="1756990114869" duration="577000" />
+      <workItem from="1757035359270" duration="605000" />
+      <workItem from="1757052114897" duration="895000" />
+      <workItem from="1757079057366" duration="13000" />
+      <workItem from="1757116589997" duration="8000" />
+      <workItem from="1757141524662" duration="3706000" />
+      <workItem from="1757151063392" duration="353000" />
+      <workItem from="1757163747976" duration="8000" />
+      <workItem from="1757203913241" duration="536000" />
+      <workItem from="1757208154156" duration="10000" />
+      <workItem from="1757224861481" duration="138000" />
+      <workItem from="1757232497828" duration="564000" />
+      <workItem from="1757251467017" duration="33000" />
+      <workItem from="1757295581829" duration="15000" />
+      <workItem from="1757298989381" duration="134000" />
+      <workItem from="1757310805598" duration="657000" />
+      <workItem from="1757382797978" duration="599000" />
+      <workItem from="1757401058933" duration="10000" />
+      <workItem from="1757425584275" duration="22000" />
+      <workItem from="1757467351868" duration="13000" />
+      <workItem from="1757483617613" duration="308000" />
+      <workItem from="1757548642730" duration="271000" />
+      <workItem from="1757572593910" duration="112000" />
     </task>
     <task id="LOCAL-00001" summary="主要更新自定义证书的harbor">
       <option name="closed" value="true" />
@@ -350,7 +359,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756560836131</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="2014年，先上传">
+      <option name="closed" value="true" />
+      <created>1756801859405</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756801859405</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +379,7 @@
     <MESSAGE value="改动较多，先上传" />
     <MESSAGE value="2005年，先上传" />
     <MESSAGE value="2008年，先上传" />
-    <option name="LAST_COMMIT_MESSAGE" value="2008年，先上传" />
+    <MESSAGE value="2014年，先上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="2014年，先上传" />
   </component>
 </project>

@@ -23,11 +23,25 @@
 			bjjtYear = "bjjt" + year;
 		}
 
-		document.write(
-			createBJJT_ProgramDetail(year, bjjtDB[bjjtYear], programName)
-				.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")  // 2013
-				.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")  // 2014
-		);
+		let htmlText = createBJJT_ProgramDetail(year, bjjtDB[bjjtYear], programName)
+						.replaceAll("img/王立群读宋史：宋太宗（上）", "img/王立群读宋史：宋太宗")	// 2013
+						.replaceAll("img/王立群读宋史：宋太宗（下）", "img/王立群读宋史：宋太宗")	// 2014
+						.replace(/img\/党史故事100讲（\S+）/g, "img/党史故事100讲");
+						// 各个篇章的党史故事100讲，均使用党史故事100讲.jpg
+
+		if (year == "2016") {
+			htmlText = htmlText.replace("img/端午时节话屈原", "img/端午时节话屈原（2016）");
+		}
+
+		if (year == "2017") {
+			htmlText = htmlText.replace("img/镇馆之宝", "img/镇馆之宝（2017）");
+		}
+
+		if (year == "2018") {
+			htmlText = htmlText.replace("img/我们的大学", "img/我们的大学（2018）");
+		}
+		
+		document.write(htmlText);
 	</script>
 </body>
 </html>

@@ -3646,8 +3646,8 @@ td
 {
 	margin-top: 74px;
 	font-weight: normal;
+	margin-bottom: 20px;
 }
-
 
 .divBJJT .breadcrumb-item.active
 {
@@ -3674,6 +3674,7 @@ td
 {
 	display: flex;
 	justify-content: center;
+    /*align-items: center;*/
 }
 
 .programImg img
@@ -3681,9 +3682,10 @@ td
 	border: solid 2px #575959;
 	max-width: 100%;
 	max-height: 100%;
-	height: auto;
-	width: 100%;
 	box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* 保持比例缩放，大图缩小，小图放大 */
 }
 
 /*----------↑↑↑ 百家讲坛通用部分 ↑↑↑-----------------------------------------------------------------------------------*/
@@ -3784,6 +3786,7 @@ td
 .divBJJT-yearList
 {
 	width: 1000px;
+	/*margin-bottom: 20px;*/
 }
 
 .divEachYearList
@@ -3989,7 +3992,7 @@ td
 	font-size: 18px;
 	line-height: 30px;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 }
 
 .divBJJT-program-detail-single
@@ -4000,7 +4003,7 @@ td
 /*最后一集*/
 .divBJJT-program-detail>:last-child
 {
-	margin-bottom: inherit;
+	margin-bottom: 20px;
 }
 
 .divBJJT-program-detail-single>:nth-child(1)
