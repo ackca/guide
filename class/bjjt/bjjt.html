@@ -32,7 +32,7 @@
 		<script type="text/javascript">
 			// console.log(createBJJT_YearList("2001~2003", bjjt0103));
 			let htmlText = createBJJT_YearList("2001~2003", bjjtDB["bjjt0103"]);
-			for (let i = 2004; i <= 2020; i++) {
+			for (let i = 2004; i <= 2023; i++) {
 				switch(i) {
 					case 2016: {
 						htmlText = htmlText + createBJJT_YearList(i.toString(), bjjtDB["bjjt" + i.toString()])
@@ -115,6 +115,12 @@
 					.replace(">丝路上的古城（第二部）", ">丝路上的古城<br />（第二部）")			// 2019
 					.replace(">评说《资治通鉴》（第二部）", ">评说《资治通鉴》<br />（第二部）")			// 2019
 					.replace(">党史故事100讲（建国篇）", ">党史故事100讲<br />（建国篇）")			// 2019
+					.replace(">现代文明之城——深圳", ">现代文明之城<br />——深圳")					// 2020
+					.replace(">评说《资治通鉴》（第三部）", ">评说《资治通鉴》<br />（第三部）")			// 2021
+					.replace(">重温经典古诗文（第一部）", ">重温经典古诗文<br />（第一部）")			// 2021
+					.replace(">长江边的名城（第一部）", ">长江边的名城<br />（第一部）")			// 2021
+					.replace(">历史关头——红色纪念馆之旅", ">历史关头——<br />红色纪念馆之旅")		// 2021
+					.replace(">舌尖上的历史（第二部）", ">舌尖上的历史<br />（第二部）")		// 2022
 
 					.replace("img/王立群读《史记》秦始皇（2011年高清重播）", "img/王立群读《史记》秦始皇（高清重播）")	// 2008
 					.replace("img/大国医（2012年高清重播）", "img/大国医（高清重播）")				// 2011
@@ -139,6 +145,14 @@
 					.replaceAll(																// 2011
 						"year=2015&&programName=百家姓（第三部）（2016年高清重播）",
 						"year=2016&&programName=百家姓（第三部）（高清重播）"
+					)
+					.replaceAll(																// 2019
+						"year=2019&&programName=丝路上的古城（2020年完整版）",
+						"year=2020&&programName=丝路上的古城"
+					)
+					.replaceAll(																// 2019
+						"year=2019&&programName=国史通鉴·宋辽金元篇（上部）（2021年完整版）",
+						"year=2021&&programName=国史通鉴·宋元时代"
 					);
 
 			document.write(htmlText);

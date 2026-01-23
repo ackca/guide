@@ -1418,9 +1418,24 @@
 								"itachi-external-portal-aaa-profile",
 								"itachi-external-protal-ssid-profile",
 								"itachi-external-portal-virtual-ap",
-							]
-							createNetworkTxtMarkT1(cmd, mark_list);
+							];
 
+
+						cmd = `
+							aaa
+							 authentication-scheme itachi-portal
+							  authentication-mode local ldap
+
+							 authorization-scheme itachi-portal-author-scheme
+							  authorization-mode local ldap
+						`;
+
+						mark_list = [
+							"itachi-portal",
+							"itachi-portal-author-scheme",
+						];
+
+						createNetworkTxtMarkT1(cmd, mark_list);
 						createInstruT1("配置详解", "i11-3");
 							createInstruT2("启用重定向功能", "i11-3-1");
 								instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # firewall");
@@ -1566,6 +1581,15 @@
 									instruArr[1] = createCmdInstruSpan("“10.1.12.14。", "客户端IP");
 									createCmdInstruT3(instruArr, "aruba");
 
+// ldap-server template itachi-LDAP-AD
+//  ldap-server authentication 10.1.1.11 636 ssl
+//  ldap-server authentication manager cn=administrator,cn=users %^%#lTR9&J0+&>d~.y70XL,IGt;vEU*H&CqdLN:sq#M=%^%#
+//  undo ldap-server authentication base-dn dc=my-domain,dc=com
+//  ldap-server authentication base-dn dc=itachi,dc=tech
+//  ldap-server server-type ad-ldap
+//  ldap-server group-filter ou
+//  ldap-server user-filter sAMAccountName
+//  ldap-server pki-realm CA-itachi.tech
 			</script>
 		</div>
 	</div>

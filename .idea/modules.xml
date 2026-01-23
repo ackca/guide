@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/guide.iml" filepath="$PROJECT_DIR$/.idea/guide.iml" />
+      <module fileurl="file://D:/network/huawei_wireless/.idea/huawei_wireless.iml" filepath="D:/network/huawei_wireless/.idea/huawei_wireless.iml" />
     </modules>
   </component>
 </project>

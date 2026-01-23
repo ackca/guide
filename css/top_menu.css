@@ -370,6 +370,8 @@
 {
 	/*border-top: solid 2px red;*/
 	margin-top: 20px;
+	padding: 0!important;
+	margin-top: 40px;
 }
 
 .inner-aruba h3,
@@ -391,11 +393,21 @@
 	height: 30px;
 }
 
+.ico-nps
+{
+	margin-left: 10px;
+}
+
 .mod-header .ico-f5
 {
 	width: 45px;
 	height: 45px;
 	margin-bottom: -1px;
+}
+
+.inner-f5
+{
+	margin-top: 10px;
 }
 
 .mod-header .ico-h3c

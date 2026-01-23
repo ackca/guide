@@ -148,9 +148,9 @@ const top_menu = `
 										<span>ISE</span>
 									</div>
 									<div class="cat-item-sub">
-										<a href="rootpath/class/network/cisco/ise_switch.html">交换机配置</a>
 										<a href="rootpath/class/network/cisco/ise31.html">ISE 3.1</a>
 										<a href="rootpath/class/network/cisco/ise21.html">ISE 2.1</a>
+										<a href="rootpath/class/network/cisco/ise_switch.html">交换机配置</a>
 										<a href="rootpath/class/network/cisco/ise_windows.html">windows</a>
 									</div>
 								</li>
@@ -196,7 +196,7 @@ const top_menu = `
 									</i>
 								</div>
 								<span></span>
-							</h3>
+							</h3>						
 							<div class="cat-group inner-aruba">
 								<h3 class="cat-tit">
 									<div class="cat-ico">
@@ -228,30 +228,42 @@ const top_menu = `
 						</div>
 						<div class="cat-group">
 							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<div class="ico-f5">
-										<img src="rootpath/img/f5.svg" />
+								<a href="rootpath/class/network/nps/nps.html">
+									<div class="cat-ico">
+										<i class="ico-nps">
+											<img src="rootpath/img/nps.png" />
+										</i>
 									</div>
-								</div>
-								<span>F5</span>
+									<span style="font-size: 20px;margin-left: 30px">NPS，微软Radius服务</span>
+								</a>
 							</h3>
-							<ul class="cat-list">
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<a href="rootpath/class/network/f5/basic.html">理论原理</a>
+							<div class="cat-group inner-f5">
+								<h3 class="cat-tit">
+									<div class="cat-ico">
+										<div class="ico-f5">
+											<img src="rootpath/img/f5.svg" />
+										</div>
 									</div>
-								</li>
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<a href="rootpath/class/network/f5/ltm.html">LTM</a>
-									</div>
-								</li>
-								<li class="cat-item">
-									<div class="cat-item-main">
-										<a href="rootpath/class/network/f5/others.html">其它功能</a>
-									</div>
-								</li>
-							</ul>
+									<span>F5</span>
+								</h3>
+								<ul class="cat-list">
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/network/f5/basic.html">理论原理</a>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/network/f5/ltm.html">LTM</a>
+										</div>
+									</li>
+									<li class="cat-item">
+										<div class="cat-item-main">
+											<a href="rootpath/class/network/f5/others.html">其它功能</a>
+										</div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -299,6 +311,11 @@ const top_menu = `
 								<li class="cat-item">
 									<div class="cat-item-main">
 										<a href="#">防火墙</a>
+									</div>
+								</li>
+								<li class="cat-item">
+									<div class="cat-item-main">
+										<a href="rootpath/class/network/huawei/wireless.html">无线配置</a>
 									</div>
 								</li>
 								<li class="cat-item">
@@ -521,21 +538,21 @@ const top_menu = `
 			<div class="cat">
 				<div class="cat-box" data-cat="cloud">
 					<div class="layout">
-						<div class="cat-group">
-							<h3 class="cat-tit">
-								<div class="cat-ico">
-									<i class="ico-aliyun">
-										<a href="rootpath/class/cloud/aliyun/aliyun.html">
-											<img src="rootpath/img/aliyun_title.svg" />
-										</a>
-									</i>
-								</div>
-								<span></span>
-							</h3>
-							<ul class="cat-list">
-								<li class="cat-item"><!--占位--></li>
-							</ul>
-						</div>
+<!--						<div class="cat-group">-->
+<!--							<h3 class="cat-tit">-->
+<!--								<div class="cat-ico">-->
+<!--									<i class="ico-aliyun">-->
+<!--										<a href="rootpath/class/cloud/aliyun/aliyun.html">-->
+<!--											<img src="rootpath/img/aliyun_title.svg" />-->
+<!--										</a>-->
+<!--									</i>-->
+<!--								</div>-->
+<!--								<span></span>-->
+<!--							</h3>-->
+<!--							<ul class="cat-list">-->
+<!--								<li class="cat-item">&lt;!&ndash;占位&ndash;&gt;</li>-->
+<!--							</ul>-->
+<!--						</div>-->
 						<div class="cat-group">
 							<h3 class="cat-tit">
 								<div class="cat-ico">
@@ -814,7 +831,7 @@ const head = `
 	<link rel="stylesheet" type="text/css" href="rootpath/css/top_menu.css">
 	<link rel="stylesheet" type="text/css" href="rootpath/css/global.css">
 	<script type="text/javascript" src="rootpath/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="rootpath/js/jquery.min.js"></script>
+	<script type="text/javascript" src="rootpath/js/jquery-4.0.0.min.js"></script>
 	<script type="text/javascript" src="rootpath/js/forge.min.js"></script>
 	<script type="text/javascript" src="rootpath/js/global.js"></script>
 `;

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="../../../img/huawei.svg"/>
+	<title>华为-无线配置</title>
+	<script type="text/javascript" src="../../../js/head.js"></script>
+	<script type="text/javascript">
+		window.onload = createNavigation(wireless);
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="divCommand">
+			<script type="text/javascript">
+				createInstruT0("初始化AC（CLI）", "i1");
+					createConfigImgT0("wireless/i1_1$1");
+
+				createInstruT0("系统管理", "i2");
+					createInstruT1("启用SSH/Web网管", "i2-1");
+						createInstruAllTopT1("使用某个协议时，需要在对应接口启用该协议");
+						let instruArr = new Array();
+						instruArr[0] = createCmdSpan("[AC-1] ssh server-source -i { “Vlanif 10。 | all }");
+						instruArr[1] = createCmdSpan("[AC-1] http secure-server server-source -i { “Vlanif 10。 | all }");
+						instruArr[2] = createCmdInstruSpan("“Vlanif 10。", "启用对应协议的接口");
+						instruArr[3] = createCmdInstruSpan("all", "所有接口均启用");
+						createCmdInstruT1(instruArr, "huawei");
+
+					createInstruT1("基本系统配置", "i2-2");
+						createInstruT2("配置DNS", "i2-2-1");
+							createInstruT3("启用域名解析");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] dns resolve");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置DNS服务器");
+								instruArr[0] = createCmdSpan("[AC-1] dns server “10.1.1.11。");
+								instruArr[1] = createCmdInstruSpan("“10.1.1.11。", "DNS服务器地址，支持多个");
+								createCmdInstruT3(instruArr, "huawei");
+
+						createInstruT2("配置NTP", "i2-2-2");
+							createInstruT3("启用NTP");
+								instruArr[0] = createCmdSpan("[AC-1] ntp-service source-interface “Vlanif 10。");
+								instruArr[1] = createCmdInstruSpan("“Vlanif 10。", "启用NTP的接口");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置NTP服务器地址");
+								instruArr[0] = createCmdSpan("[AC-1] ntp-service unicast-server url “ntp.aliyun.com。");
+								instruArr[1] = createCmdInstruSpan("“ntp.aliyun.com。", "NTP服务器域名");
+								createCmdInstruT3(instruArr, "huawei");
+
+					createInstruT1("证书相关配置", "i2-3");
+						createInstruT2("上传证书", "i2-3-1");
+							createConfigImgT2("wireless/i1_4_1$1~3");
+
+						createInstruT2("配置SSL策略", "i2-3-2");
+							createConfigImgT2("wireless/i1_4_2$1~3");
+
+						createInstruT2("修改设备Web网管的SSL策略", "i2-3-3");
+							instruArr[0] = createCmdSpan("[AC-1] http secure-server ssl-policy “itachi-mgmt-https。");
+							instruArr[1] = createCmdInstruSpan("“itachi-mgmt-https。", "SSL策略名");
+							createCmdInstruT2(instruArr, "huawei");
+
+				createInstruT0("关联外部服务器", "i10");
+					createInstruT1("Radius服务器", "i10-1");
+						createInstruT2("关联Radius服务器", "i10-1-1");
+							createInstruT3("GUI", "i10-1-1-1");
+								createConfigImgT3("wireless/i6_3_1$1~5");
+
+							createInstruT3("CLI", "i10-1-1-2");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] radius-server template “itachi-NPS。");
+								instruArr[1] = createCmdInstruSpan("“itachi-NPS。", "radius服务器模板名");
+								instruArr[2] = createCmdSpan("[AC-1-radius-itachi-NPS] radius-server authentication “10.1.1.11。 1812");
+								instruArr[3] = createCmdSpan("[AC-1-radius-itachi-NPS] radius-server accounting “10.1.1.11。 1813");
+								instruArr[4] = createCmdInstruSpan("“10.1.1.11。", "外置Radius服务器的IP或域名");
+								instruArr[5] = createCmdSpan("[AC-1-radius-itachi-NPS] radius-server shared-key cipher “Cisc0123。");
+								instruArr[6] = createCmdInstruSpan("“Cisc0123。", "与外置Radius服务器的预共享密钥");
+								createCmdInstruT3(instruArr, "huawei");
+
+						createInstruT2("测试连通性（CLI）", "i10-1-2");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] test-aaa “user1。 “Cisc0123。 radius-template “itachi-NPS。 pap ");
+							instruArr[1] = createCmdInstruSpan("“user1。", "用户名");
+							instruArr[2] = createCmdInstruSpan("“Cisc0123。", "密码");
+							instruArr[3] = createCmdInstruSpan("“itachi-NPS。", "radius服务器模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
+					createInstruT1("LDAP（AD）服务器", "i10-2");
+						createInstruT2("上传根证书", "i10-2-1");
+							createInstruAllTopT2("与上传个人证书方式相同，选择根证书即可");
+							createConfigImgT2("wireless/i10_2_1$1");
+
+						createInstruT2("关联LDAP（AD）服务器", "i10-2-2");
+							createConfigImgT2("wireless/i10_2_2$1~3");
+
+						createInstruT2("测试连通性（CLI）", "i10-2-3");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] test-aaa “user1。 “Cisc0123。 ldap-template “itachi-LDAP-AD。");
+							instruArr[1] = createCmdInstruSpan("“user1。", "用户名");
+							instruArr[2] = createCmdInstruSpan("“Cisc0123。", "密码");
+							instruArr[3] = createCmdInstruSpan("“itachi-LDAP-AD。", "LDAP（AD）服务器模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
+							createInstruAllTopT2("AC支持的算法安全性较低，AD端需要降");
+								let cmd = `
+									Enable-TlsCipherSuite -Name "TLS_RSA_WITH_AES_256_CBC_SHA256" -Position 0
+									Enable-TlsCipherSuite -Name "TLS_RSA_WITH_AES_128_CBC_SHA256" -Position 1
+									Enable-TlsCipherSuite -Name "TLS_RSA_WITH_AES_256_CBC_SHA" -Position 2
+									Enable-TlsCipherSuite -Name "TLS_RSA_WITH_AES_128_CBC_SHA" -Position 3
+								`;
+
+								createNetworkTxtT2(cmd);
+
+
+				createInstruT0("AP关联", "i3");
+					createInstruT1("初始配置", "i3-1");
+						createInstruT2("关闭AP的DTLS认证");
+							createInstruAllTopT2("当AP版本低于V200R021C00，AP无法上线，暂时关闭DTLS认证");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] capwap dtls no-auth enable");
+								createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置AP的DTLS认证密钥");
+							instruArr[0] = createCmdSpan("[AC-1] capwap dtls psk “Cisc0123。");
+							instruArr[1] = createCmdInstruSpan("“Cisc0123。", "认证密钥");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("启用AP关联");
+							instruArr[0] = createCmdSpan("[AC-1] capwap source interface “Vlanif 10。");
+							instruArr[1] = createCmdInstruSpan("“Vlanif 10。", "用于关联AP的接口");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("启用AP关联后续配置");
+							createInstruAllTopT2("第一条配置：登录瘦AP的用户名");
+							createInstruAllTopT2("第二条配置：登录瘦AP的密码");
+							createInstruAllTopT2("第三条配置：确认密码");
+							createInstruAllTopT2("第四条配置：网络故障，AP发送临时的SSID用于管理，该SSID的预共享密钥");
+							createInstruAllTopT2("第五条配置：确认预共享密钥");
+							createConfigImgT2("wireless/i3_1$1");
+
+					createInstruT1("AP关联到控制器（GUI）", "i3-2");
+						createConfigImgT1("wireless/i3_2$1~10");
+
+					createInstruT1("AP关联到控制器（CLI）", "i3-3");
+						createInstruT2("查看AP状态", "i3-3-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] display ap all");
+							createCmdInstruT2(instruArr, "huawei");
+							createConfigImgT2("wireless/i3_3_1$1");
+
+						createInstruT2("配置AP组", "i3-3-2");
+							instruArr[0] = createCmdSpan("[AC-1] wlan");
+							instruArr[1] = createCmdSpan("[AC-1-wlan-view] ap-group name “itachi-ap-group。");
+							instruArr[2] = createCmdInstruSpan("“itachi-ap-group。", "AP组名");
+							instruArr[3] = createCmdSpan("[AC-1-wlan-ap-group-itachi-ap-group] scene “indoor-low-density。")
+							instruArr[4] = createCmdInstruSpan("“indoor-low-density。", "ap使用场景，可选，对应为室内稀疏覆盖场景，在GUI中配置方便");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("AP加入AP组", "i3-3-3");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1-wlan-view] ap-mac “94a4-f93e-2b50。");
+							instruArr[1] = createCmdInstruSpan("“94a4-f93e-2b50。", "AP的mac地址");
+							instruArr[2] = createCmdSpan("[AC-1-wlan-ap-0] ap-group “itachi-ap-group。");
+							instruArr[3] = createCmdInstruSpan("“itachi-ap-group。", "AP组名");
+							createCmdInstruT2(instruArr, "huawei");
+							createConfigImgT2("wireless/i3_3_3$1");
+
+					createInstruT1("启用AP的DTLS认证（AP版本低于V200R021C00）<br />", "i3-4");
+						instruArr = [];
+						instruArr[0] = createCmdSpan("[AC-1] undo capwap dtls no-auth enable");
+						createCmdInstruT1(instruArr, "huawei");
+
+				createInstruT0("PSK（SAE）认证", "i4");
+					createInstruT1("CLI配置总览", "i4-1");
+						cmd = `
+							wlan
+							  ssid-profile name itachi-WPA3-ssid-profile
+							    ssid itachi-WPA3
+
+							  security-profile name itachi-WPA3-secuirty-profile
+							    security wpa3 sae pass-phrase Cisc0123 aes
+							y
+
+							  vap-profile name itachi-WPA3-vap-profile
+							    service-vlan vlan-id 40
+							    ssid-profile itachi-WPA3-ssid-profile
+							    security-profile itachi-WPA3-secuirty-profile
+
+							  ap-group name itachi-ap-group
+							    vap-profile itachi-WPA3-vap-profile wlan 1 radio all
+						`;
+
+						let mark_list = [
+							"itachi-WPA3-ssid-profile",
+							"itachi-WPA3-secuirty-profile",
+							"itachi-WPA3-vap-profile",
+							"itachi-ap-group"
+						];
+
+						createNetworkTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i4-2");
+						createInstruT2("配置ssid profile", "i4-2-1");
+							instruArr[0] = createCmdSpan("[AC-1] wlan");
+							instruArr[1] = createCmdSpan("[AC-1-wlan-view] ssid-profile name “itachi-WPA3-ssid-profile。");
+							instruArr[2] = createCmdInstruSpan("“itachi-WPA3-ssid-profile。", "ssid profile名");
+							instruArr[3] = createCmdSpan("[AC-1-wlan-ssid-prof-itachi-WPA3-ssid-profile] ssid “itachi-WPA3。");
+							instruArr[4] = createCmdInstruSpan("“itachi-WPA3。", "SSID");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置security profile", "i4-2-2");
+							instruArr[0] = createCmdSpan("[AC-1-wlan-view] security-profile name “itachi-WPA3-secuirty-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-WPA3-secuirty-profile。", "security profile名");
+							instruArr[2] = createCmdSpan("　　仅WPA3：");
+							instruArr[3] = createCmdSpan("[AC-1-wlan-sec-prof-itachi-WPA3-secuirty-profile] security wpa3 sae pass-phrase “Cisc0123。 aes");
+							instruArr[4] = createCmdSpan("　　WPA3和WPA2：");
+							instruArr[5] = createCmdSpan("[AC-1-wlan-sec-prof-itachi-WPA3-secuirty-profile] security wpa2-wpa3 psk-sae pass-phrase “Cisc0123。 aes");
+							instruArr[6] = createCmdSpan("　　仅WPA2：");
+							instruArr[7] = createCmdSpan("[AC-1-wlan-sec-prof-itachi-WPA3-secuirty-profile] security wpa2 psk pass-phrase “Cisc0123。 aes");
+							instruArr[8] = createCmdInstruSpan("“Cisc0123。", "WPA3的SAE或WPA2的PSK");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置vap profile", "i4-2-3");
+							instruArr[0] = createCmdSpan("[AC-1-wlan-view] vap-profile name “itachi-WPA3-vap-profile。");
+							instruArr[1] = createCmdInstruSpan("“Cisc0123。", "vap profile名");
+							instruArr[2] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-WPA3-vap-profile] forward-mode { direct-forward | tunnel }");
+							instruArr[3] = createCmdInstruSpan("direct-forward", "直接转发（默认）");
+							instruArr[4] = createCmdInstruSpan("tunnel", "隧道转发");
+							instruArr[5] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-WPA3-vap-profile] service-vlan { vlan-id “40。 | vlan-pool “itachi-client-vlan-pool。 }");
+							instruArr[6] = createCmdInstruSpan("40", "关联vlan时的vlan ID");
+							instruArr[7] = createCmdInstruSpan("“itachi-client-vlan-pool。", "关联vlan pool时的vlan pool名");
+							instruArr[8] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-WPA3-vap-profile] security-profile “itachi-WPA3-secuirty-profile。");
+							instruArr[9] = createCmdInstruSpan("itachi-WPA3-secuirty-profile", "关联的secuirty profile名");
+							instruArr[10] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-WPA3-vap-profile] ssid-profile “itachi-WPA3-ssid-profile。");
+							instruArr[11] = createCmdInstruSpan("itachi-WPA3-ssid-profile", "关联的ssid profile名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置vap关联到ap group", "i4-2-4");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1-wlan-view] ap-group name “itachi-ap-group。");
+							instruArr[1] = createCmdInstruSpan("“itachi-ap-group。", "ap group名");
+							instruArr[2] = createCmdSpan("[AC-1-wlan-ap-group-itachi-ap-group] vap-profile “itachi-WPA3-vap-profile。 wlan “1。 radio all");
+							instruArr[3] = createCmdInstruSpan("“itachi-WPA3-vap-profile。", "vap profile名");
+							instruArr[4] = createCmdInstruSpan("wlan “1。", "wlan ID，如果该ID已经被使用，系统会有提示");
+							createCmdInstruT2(instruArr, "huawei");
+
+					createInstruT1("GUI配置", "i4-3");
+						createConfigImgT1("wireless/i4_3$1~7");
+
+
+				createInstruT0("外置Radius服务器", "i6");
+					createInstruT1("CLI配置总览", "i6-1");
+						cmd = `
+							radius-server template itachi-NPS
+							  radius-server authentication 10.1.1.11 1812
+							  radius-server accounting 10.1.1.11 1813
+							  radius-server shared-key cipher Cisc0123
+
+							aaa
+							  authentication-scheme itachi-dot1x-authen-scheme
+							    authentication-mode radius
+
+							  accounting-scheme itachi-dot1x-account-scheme
+							    accounting-mode radius
+							    accounting start-fail online
+
+							dot1x-access-profile name itachi-dot1x-access-profile
+
+							authentication-profile name itachi-authen-profile
+							  dot1x-access-profile itachi-dot1x-access-profile
+							  authentication-scheme itachi-dot1x-authen-scheme
+							  accounting-scheme itachi-dot1x-account-scheme
+							  radius-server itachi-NPS
+
+							wlan
+							  ssid-profile name itachi-dot1x-ssid-profile
+							    ssid itachi-dot1x
+
+							  security-profile name itachi-dot1x-secuirty-profile
+							    security wpa2 dot1x aes
+
+							  vap-profile name itachi-vap-profile
+							    service-vlan vlan-id 40
+							    security-profile itachi-dot1x-secuirty-profile
+							    ssid-profile itachi-dot1x-ssid-profile
+							    authentication-profile itachi-authen-profile
+
+							  ap-group name itachi-ap-group
+							    vap-profile itachi-vap-profile wlan 1 radio all
+						`;
+
+						mark_list = [
+							"itachi-NPS",
+							"itachi-dot1x-authen-scheme",
+							"itachi-dot1x-account-scheme",
+							"itachi-dot1x-access-profile",
+							"itachi-authen-profile",
+							"itachi-dot1x-ssid-profile",
+							"itachi-dot1x-secuirty-profile",
+							"itachi-vap-profile",
+						];
+
+						createNetworkTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i6-2");
+						createInstruT2("添加外置Radius服务器", "i6-2-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] radius-server template “itachi-NPS。");
+							instruArr[1] = createCmdInstruSpan("“itachi-NPS。", "radius服务器模板名");
+							instruArr[2] = createCmdSpan("[AC-1-radius-itachi-NPS] radius-server authentication “10.1.1.11。 1812");
+							instruArr[3] = createCmdSpan("[AC-1-radius-itachi-NPS] radius-server accounting “10.1.1.11。 1813");
+							instruArr[4] = createCmdInstruSpan("“10.1.1.11。", "外置Radius服务器的IP或域名");
+							instruArr[5] = createCmdSpan("[AC-1-radius-itachi-NPS] radius-server shared-key cipher “Cisc0123。");
+							instruArr[6] = createCmdInstruSpan("“Cisc0123。", "与外置Radius服务器的预共享密钥");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("测试连通性", "i6-2-2");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] test-aaa “user1。 “Cisc0123。 radius-template “itachi-NPS。 pap ");
+							instruArr[1] = createCmdInstruSpan("“user1。", "用户名");
+							instruArr[2] = createCmdInstruSpan("“Cisc0123。", "密码");
+							instruArr[3] = createCmdInstruSpan("“itachi-NPS。", "radius服务器模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置认证计划", "i6-2-3");
+							instruArr[0] = createCmdSpan("[AC-1] aaa");
+							instruArr[1] = createCmdSpan("[AC-1-aaa] authentication-scheme “itachi-dot1x-authen-scheme。");
+							instruArr[2] = createCmdInstruSpan("“itachi-dot1x-authen-scheme。", "认证计划名");
+							instruArr[3] = createCmdSpan("[AC-1-aaa-authen-itachi-dot1x-authen-scheme] authentication-mode radius");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置审计计划", "i6-2-4");
+							instruArr[0] = createCmdSpan("[AC-1-aaa] accounting-scheme “itachi-dot1x-account-scheme。");
+							instruArr[1] = createCmdInstruSpan("“itachi-dot1x-account-scheme。", "审计计划名");
+							instruArr[2] = createCmdSpan("[AC-1-aaa-accounting-itachi-dot1x-account-scheme] accounting-mode radius");
+							instruArr[3] = createCmdSpan("[AC-1-aaa-accounting-itachi-dot1x-account-scheme] accounting start-fail online");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置802.1x接入profile", "i6-2-5");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] dot1x-access-profile name “itachi-dot1x-access-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-dot1x-access-profile。", "802.1x接入模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置认证profile，关联上述策略", "i6-2-6");
+							instruArr[0] = createCmdSpan("[AC-1] authentication-profile name “itachi-authen-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-authen-profile。", "认证profile名");
+							instruArr[2] = createCmdSpan("[AC-1-authentication-profile-itachi-authen-profile] dot1x-access-profile “itachi-dot1x-access-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-dot1x-access-profile。", "关联的802.1x接入profile名");
+							instruArr[4] = createCmdSpan("[AC-1-authentication-profile-itachi-authen-profile] authentication-scheme “itachi-dot1x-authen-scheme。");
+							instruArr[5] = createCmdInstruSpan("“itachi-dot1x-authen-scheme。", "关联的认证计划名");
+							instruArr[6] = createCmdSpan("[AC-1-authentication-profile-itachi-authen-profile] accounting-scheme “itachi-dot1x-account-scheme。");
+							instruArr[7] = createCmdInstruSpan("“itachi-dot1x-account-scheme。", "关联的审计计划名");
+							instruArr[8] = createCmdSpan("[AC-1-authentication-profile-itachi-authen-profile] radius-server “itachi-NPS。");
+							instruArr[9] = createCmdInstruSpan("“itachi-NPS。", "关联的radius服务器模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("WLAN相关配置", "i6-2-7");
+							createInstruT3("配置ssid profile", "i6-2-7-1");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] wlan");
+								instruArr[1] = createCmdSpan("[AC-1-wlan-view] ssid-profile name “itachi-dot1x-ssid-profile。");
+								instruArr[2] = createCmdInstruSpan("“itachi-dot1x-ssid-profile。", "ssid profile名");
+								instruArr[3] = createCmdSpan("[AC-1-wlan-ssid-prof-itachi-dot1x-ssid-profile] ssid “itachi-dot1x。");
+								instruArr[4] = createCmdInstruSpan("“itachi-dot1x。", "ssid");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置security profile", "i6-2-7-2");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] security-profile name “itachi-dot1x-secuirty-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-dot1x-secuirty-profile。", "security profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-sec-prof-itachi-dot1x-secuirty-profile] security “wpa2。 dot1x aes");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置vap profile", "i6-2-7-3");
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] vap-profile name “itachi-vap-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-vap-profile。", "vap profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-vap-profile] service-vlan vlan-id “40。");
+								instruArr[3] = createCmdInstruSpan("“40。", "客户端vlan");
+								instruArr[4] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-vap-profile] security-profile “itachi-dot1x-secuirty-profile。");
+								instruArr[5] = createCmdInstruSpan("“itachi-dot1x-secuirty-profile。", "关联的security profile名");
+								instruArr[6] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-vap-profile] ssid-profile “itachi-dot1x-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-dot1x-ssid-profile。", "关联的ssid profile名");
+								instruArr[8] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-vap-profile] authentication-profile “itachi-authen-profile。");
+								instruArr[9] = createCmdInstruSpan("“itachi-authen-profile。", "关联的authentication profile名");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("关联vap关联到ap group", "i6-2-7-4");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] ap-group name “itachi-ap-group。");
+								instruArr[1] = createCmdInstruSpan("“itachi-ap-groupe。", "ap group名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-ap-group-itachi-ap-group] vap-profile “itachi-vap-profile。 wlan “1。 radio all");
+								instruArr[3] = createCmdInstruSpan("“itachi-vap-profile。", "vap profile名");
+								instruArr[4] = createCmdInstruSpan("wlan “1。", "wlan ID，如果该ID已经被使用，系统会有提示");
+								createCmdInstruT2(instruArr, "huawei");
+
+					createInstruT1("GUI配置", "i6-3-1");
+						createInstruT2("配置外置Radius服务器", "i6-1-3-1");
+							createConfigImgT2("wireless/i6_3_1$1~5");
+
+						createInstruT2("配置WLAN", "i6-3-2");
+							createConfigImgT2("wireless/i6_3_2$1~3");
+
+				createInstruT0("内置EAP服务器", "i7");
+					createInstruT1("CLI配置总览", "i7-1");
+						cmd = `
+							eap-server-template name itachi-local-eap
+							  local-eap-server authentication method eap-peap eap-tls
+							  local-eap-server authentication certificate ca format pem filename ac.itachi.tech_key_ca1.cer
+							  local-eap-server authentication certificate local format pem filename ac1.itachi.tech_key_local.cer
+							  local-eap-server authentication private-key format pkcs12 filename ac1.itachi.tech.p12 password Cisc0123
+
+							local-eap-server authentication eap-server-template itachi-local-eap
+
+							aaa
+							  authentication-scheme itachi-local-EAP-authen-scheme
+							    authentication-mode local
+
+							dot1x-access-profile name itachi-dot1x-access-profile
+
+							authentication-profile name itachi-local-EAP-authen-profile
+							  dot1x-access-profile itachi-dot1x-access-profile
+							  authentication-scheme itachi-local-EAP-authen-scheme
+
+							wlan
+							  ssid-profile name itachi-local-EAP-ssid-profile
+							    ssid itachi-local-EAP
+
+							  security-profile name itachi-local-EAP-security-profile
+							    security wpa2 dot1x aes
+
+							  vap-profile name itachi-local-EAP-vap-profile
+							    service-vlan vlan-id 40
+							    security-profile itachi-local-EAP-security-profile
+							    ssid-profile itachi-local-EAP-ssid-profile
+							    authentication-profile itachi-local-EAP-authen-profile
+
+							  ap-group name itachi-ap-group
+							    vap-profile itachi-local-EAP-vap-profile wlan 1 radio all
+						`;
+
+						mark_list = [
+							"itachi-local-eap",
+							"itachi-local-EAP-authen-scheme",
+							"itachi-dot1x-access-profile",
+							"itachi-local-EAP-authen-profile",
+							"itachi-local-EAP-ssid-profile",
+							"itachi-local-EAP-security-profile",
+							"itachi-local-EAP-vap-profile",
+						];
+
+						createNetworkTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i7-2");
+						createInstruT2("添加内置EAP服务器", "i7-2-1");
+							createInstruT3("配置内置EAP服务器模板", "i7-2-1-1");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] eap-server-template name “itachi-local-eap");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-eap。", "内置EAP服务器模板名");
+								instruArr[2] = createCmdSpan("[AC-1-eap-server-template-itachi-local-eap] local-eap-server authentication method “eap-peap eap-tls。");
+								instruArr[3] = createCmdInstruSpan("“eap-peap eap-tls。", "EAP模式");
+								instruArr[4] = createCmdSpan("[AC-1-eap-server-template-itachi-local-eap] local-eap-server authentication certificate ca format “pem。 filename “ac.itachi.tech_key_ca1.cer。");
+								instruArr[5] = createCmdSpan("[AC-1-eap-server-template-itachi-local-eap] local-eap-server authentication certificate local format “pem。 filename “ac1.itachi.tech_key_local.cer。");
+								instruArr[6] = createCmdSpan("[AC-1-eap-server-template-itachi-local-eap] local-eap-server authentication private-key format “pkcs12。 filename “ac1.itachi.tech.p12。 password “Cisc0123。");
+								instruArr[7] = createCmdInstruSpan("“ac.itachi.tech_key_ca1.cer。", "根证书名");
+								instruArr[8] = createCmdInstruSpan("“ac1.itachi.tech_key_local.cer。", "个人证书名");
+								instruArr[9] = createCmdInstruSpan("“ac1.itachi.tech.p12。", "存放个人证书私钥的p12打包证书名");
+								instruArr[10] = createCmdInstruSpan("“pem。", "根证书（个人证书）格式");
+								instruArr[11] = createCmdInstruSpan("“pkcs12。", "存放个人证书私钥的证书格式");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置内置EAP服务器", "i7-2-1-2");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] local-eap-server authentication eap-server-template “itachi-local-eap。");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-eap。", "内置EAP服务器模板名");
+								createCmdInstruT3(instruArr, "huawei");
+
+						createInstruT2("配置认证计划", "i7-2-2");
+							instruArr[0] = createCmdSpan("[AC-1] aaa");
+							instruArr[1] = createCmdSpan("[AC-1-aaa] authentication-scheme “itachi-local-EAP-authen-scheme。");
+							instruArr[2] = createCmdInstruSpan("“itachi-local-EAP-authen-scheme。", "认证计划名");
+							instruArr[3] = createCmdSpan("[AC-1-aaa-authen-itachi-local-EAP-authen-scheme] authentication-mode local");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置802.1x接入profile", "i7-2-3");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] dot1x-access-profile name “itachi-dot1x-access-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-dot1x-access-profile。", "802.1x接入profile名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置认证profile，关联上述策略", "i7-2-4");
+							instruArr[0] = createCmdSpan("[AC-1] authentication-profile name “itachi-local-EAP-authen-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-local-EAP-authen-profile。", "认证profile名");
+							instruArr[2] = createCmdSpan("[AC-1-authentication-profile-itachi-local-EAP-authen-profile] dot1x-access-profile “itachi-dot1x-access-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-dot1x-access-profile。", "802.1x接入profile名");
+							instruArr[4] = createCmdSpan("[AC-1-authentication-profile-itachi-local-EAP-authen-profile] authentication-scheme “itachi-local-EAP-authen-scheme。");
+							instruArr[5] = createCmdInstruSpan("“itachi-local-EAP-authen-scheme。", "认证计划");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("WLAN相关配置", "i7-2-5");
+							createInstruT3("配置ssid profile", "i7-2-5-1");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] wlan");
+								instruArr[1] = createCmdSpan("[AC-1-wlan-view] ssid-profile name “itachi-local-EAP-ssid-profile。");
+								instruArr[2] = createCmdInstruSpan("“itachi-local-EAP-ssid-profile。", "ssid profile名");
+								instruArr[3] = createCmdSpan("[AC-1-wlan-ssid-prof-itachi-local-EAP-ssid-profile] ssid “itachi-local-EAP。");
+								instruArr[4] = createCmdInstruSpan("“itachi-local-EAP。", "ssid");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置security profile", "i7-2-5-2");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] security-profile name “itachi-local-EAP-security-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-EAP-security-profile。", "security profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-sec-prof-itachi-local-EAP-security-profile] security “wpa2。 dot1x aes");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置vap profile", "i7-2-5-3");
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] vap-profile name “itachi-local-EAP-vap-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-local-EAP-vap-profile。", "vap profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-local-EAP-vap-profile] service-vlan vlan-id “40。");
+								instruArr[3] = createCmdInstruSpan("“40。", "客户端vlan");
+								instruArr[4] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-local-EAP-vap-profile] security-profile “itachi-local-EAP-security-profile。");
+								instruArr[5] = createCmdInstruSpan("“itachi-local-EAP-security-profile。", "关联的security profile名");
+								instruArr[6] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-local-EAP-vap-profile] ssid-profile “itachi-local-EAP-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-local-EAP-ssid-profile。", "关联的ssid profile名");
+								instruArr[8] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-local-EAP-vap-profile] authentication-profile “itachi-local-EAP-authen-profile。");
+								instruArr[9] = createCmdInstruSpan("“itachi-local-EAP-authen-profile。", "关联的authentication profile名");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("关联vap关联到ap group", "i7-2-5-4");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] ap-group name “itachi-ap-group。");
+								instruArr[1] = createCmdInstruSpan("“itachi-ap-groupe。", "ap group名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-ap-group-itachi-ap-group] vap-profile “itachi-local-EAP-vap-profile。 wlan “1。 radio all");
+								instruArr[3] = createCmdInstruSpan("“itachi-local-EAP-vap-profile。", "vap profile名");
+								instruArr[4] = createCmdInstruSpan("wlan “1。", "wlan ID，如果该ID已经被使用，系统会有提示");
+								createCmdInstruT3(instruArr, "huawei");
+
+					createInstruT1("GUI配置", "i7-3");
+						createInstruT2("配置内置EAP服务器", "i7-3-1");
+							createConfigImgT2("wireless/i7_3_1$1~5");
+
+						createInstruT2("配置WLAN", "i7-3-2");
+							createConfigImgT2("wireless/i7_3_2$1~3");
+
+
+				createInstruT0("网页认证", "i8");
+					createInstruT1("CLI配置总览", "i8-1");
+						cmd = `
+							portal local-server ip 10.1.255.1
+							portal local-server https ssl-policy itachi-portal-https port 8433
+							portal local-server url portal.itachi.tech
+							y
+
+							portal-access-profile name itachi-portal-access-profile
+							  portal local-server enable
+
+							free-rule-template name itachi-to-dns
+							  free-rule 1 destination ip 10.1.1.11 mask 255.255.255.255 udp destination-port 53
+
+							aaa
+							  authentication-scheme itachi-portal-authen-scheme
+							    authentication-mode local
+
+							authentication-profile name itachi-portal-authen-profile
+							  portal-access-profile itachi-portal-access-profile
+							  free-rule-template itachi-to-dns
+							  authentication-scheme itachi-portal-authen-scheme
+
+							wlan
+							  ssid-profile name itachi-portal-ssid-profile
+							    ssid itachi-portal
+
+							  security-profile name itachi-portal-security-profile
+							    security open
+
+							  vap-profile name itachi-portal-vap-profile
+							    service-vlan vlan-id 40
+							    security-profile itachi-portal-security-profile
+							    ssid-profile itachi-portal-ssid-profile
+							    authentication-profile itachi-portal-authen-profile
+
+							  ap-group name itachi-ap-group
+							    vap-profile itachi-portal-vap-profile wlan 1 radio all
+						`;
+
+						mark_list = [
+							"itachi-portal-access-profile",
+							"itachi-to-dns",
+							"itachi-portal-authen-scheme",
+							"itachi-portal-authen-profile",
+							"itachi-portal-ssid-profile",
+							"itachi-portal-security-profile",
+							"itachi-portal-vap-profile",
+						];
+
+						createNetworkTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i8-2");
+						createInstruT2("配置内置portal服务器", "i8-2-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] portal local-server ip “10.1.255.1。");
+							instruArr[1] = createCmdInstruSpan("“10.1.255.1。", "portal服务器地址，客户端需要可达，一般采用环回接口");
+							instruArr[2] = createCmdSpan("[AC-1] portal local-server https ssl-policy “itachi-portal-https。 port “8433。");
+							instruArr[3] = createCmdInstruSpan("“itachi-portal-https。", "认证页面的ssl策略");
+							instruArr[4] = createCmdInstruSpan("“8433。", "认证页面端口，默认即为4433");
+							instruArr[5] = createCmdSpan("[AC-1] portal local-server url “portal.itachi.tech。");
+							instruArr[6] = createCmdInstruSpan("“portal.itachi.tech。", "认证页面url，不配置则使用IP");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置网页认证接入profile", "i8-2-2");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] portal-access-profile name “itachi-portal-access-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-portal-access-profile。", "网页认证接入profile名");
+							instruArr[2] = createCmdSpan("[AC-1-portal-access-profile-itachi-portal-access-profile] portal local-server enable");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置免认证规则", "i8-2-3");
+							instruArr[0] = createCmdSpan("[AC-1] free-rule-template name “itachi-to-dns。");
+							instruArr[1] = createCmdInstruSpan("“itachi-to-dns。", "免认证规则名");
+							instruArr[2] = createCmdSpan("[AC-1-free-rule-itachi-to-dns] free-rule “1。 destination ip “10.1.1.11。 mask 255.255.255.255 udp destination-port 53");
+							instruArr[3] = createCmdInstruSpan("“1。", "规则条目编号");
+							instruArr[4] = createCmdInstruSpan("“10.1.1.11。", "DNS服务器地址");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置认证计划", "i8-2-4");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1-aaa]authentication-scheme “itachi-portal-authen-scheme。");
+							instruArr[1] = createCmdInstruSpan("“itachi-portal-authen-scheme。", "认证认证名");
+							instruArr[2] = createCmdSpan("[AC-1-aaa-authen-itachi-portal-authen-scheme] authentication-mode local");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置认证profile，关联上述策略", "i8-2-5");
+							instruArr[0] = createCmdSpan("[AC-1] authentication-profile name “itachi-portal-authen-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-portal-authen-profile。", "认证profile名");
+							instruArr[2] = createCmdSpan("[AC-1-authentication-profile-itachi-portal-authen-profile]  portal-access-profile “itachi-portal-access-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-portal-access-profile。", "网页认证接入profile名");
+							instruArr[4] = createCmdSpan("[AC-1-authentication-profile-itachi-portal-authen-profile]  free-rule-template “itachi-to-dns。");
+							instruArr[5] = createCmdInstruSpan("“itachi-to-dns。", "免认证规则名");
+							instruArr[6] = createCmdSpan("[AC-1-authentication-profile-itachi-portal-authen-profile]  authentication-scheme “itachi-portal-authen-scheme。");
+							instruArr[7] = createCmdInstruSpan("“itachi-portal-authen-scheme。", "认证计划名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("WLAN相关配置", "i8-2-6");
+							createInstruT3("配置ssid profile", "ii8-2-6-1");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] wlan");
+								instruArr[1] = createCmdSpan("[AC-1-wlan-view] ssid-profile name “itachi-portal-ssid-profile。");
+								instruArr[2] = createCmdInstruSpan("“itachi-portal-ssid-profile。", "ssid profile名");
+								instruArr[3] = createCmdSpan("[AC-1-wlan-ssid-prof-itachi-portal-ssid-profile] ssid “itachi-portal。");
+								instruArr[4] = createCmdInstruSpan("“itachi-portal。", "ssid");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置security profile", "i8-2-6-2");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] security-profile name “itachi-portal-security-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-portal-security-profile。", "security profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-sec-prof-portal-EAP-security-profile] security open");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置vap profile", "i8-2-6-3");
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] vap-profile name “itachi-portal-vap-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-portal-vap-profile。", "vap profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-local-EAP-vap-profile] service-vlan vlan-id “40。");
+								instruArr[3] = createCmdInstruSpan("“40。", "客户端vlan");
+								instruArr[4] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-portal-vap-profile] security-profile “itachi-portal-security-profile。");
+								instruArr[5] = createCmdInstruSpan("“itachi-portal-security-profile。", "关联的security profile名");
+								instruArr[6] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-portal-vap-profile] ssid-profile “itachi-portal-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-portal-ssid-profile。", "关联的ssid profile名");
+								instruArr[8] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-portal-vap-profile] authentication-profile “itachi-portal-authen-profile。");
+								instruArr[9] = createCmdInstruSpan("“itachi-portal-authen-profile。", "关联的authentication profile名");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("关联vap关联到ap group", "i8-2-6-4");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] ap-group name “itachi-ap-group。");
+								instruArr[1] = createCmdInstruSpan("“itachi-ap-groupe。", "ap group名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-ap-group-itachi-ap-group] vap-profile “itachi-portal-vap-profile。 wlan “1。 radio all");
+								instruArr[3] = createCmdInstruSpan("“itachi-portal-vap-profile。", "vap profile名");
+								instruArr[4] = createCmdInstruSpan("wlan “1。", "wlan ID，如果该ID已经被使用，系统会有提示");
+								createCmdInstruT3(instruArr, "huawei");
+
+
+					createInstruT1("GUI配置", "i8-3");
+						createInstruT2("配置内置portal服务器", "i8-3-1");
+							createConfigImgT2("wireless/i8_3_1$1~3");
+
+						createInstruT2("配置配置免认证规则模板", "i8-3-2");
+							createInstruAllTopT2("放行去往DNS服务器的流量");
+							createConfigImgT2("wireless/i8_3_2$1~5");
+
+					createInstruT1("使用LDAP（AD）服务器作为认证源", "i8-4");
+						createInstruT2("认证方式修改为PAP", "i8-4-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] portal local-server authentication-method pap");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("认证计划添加LDAP方式", "i8-4-2");
+							instruArr[0] = createCmdSpan("[AC-1] aaa");
+							instruArr[1] = createCmdSpan("[AC-1-aaa] authentication-scheme “itachi-portal-authen-scheme。");
+							instruArr[2] = createCmdInstruSpan("“itachi-portal-authen-scheme。", "认证计划名");
+							instruArr[3] = createCmdSpan("[AC-1-aaa-authen-itachi-portal-authen-scheme] authentication-mode local ldap");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("认证profile添加LDAP模板", "i8-4-3");
+							instruArr[0] = createCmdSpan("[AC-1] authentication-profile name “itachi-portal-authen-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-portal-authen-scheme。", "认证profile名");
+							instruArr[2] = createCmdSpan("[AC-1-authentication-profile-itachi-portal-authen-profile] ldap-server “itachi-LDAP-AD。");
+							instruArr[3] = createCmdInstruSpan("“itachi-LDAP-AD。", "LDAP模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
+
+
+
+
+				createInstruT0("MAC地址认证", "i9");
+					createInstruT1("CLI配置总览", "i9-1");
+						cmd = `
+							aaa
+							  local-user 90DE-8092-24FF password cipher Cisc0123
+							  local-user 90DE-8092-24FF service-type 8021x
+							y
+							  authentication-scheme itachi-mac-auth-local
+							    authentication-mode local
+
+							mac-access-profile name itachi-mac-access-profile
+							  mac-authen username macaddress format with-hyphen password cipher Cisc0123
+
+							authentication-profile name itachi-mac-authen-profile
+							  mac-access-profile itachi-mac-access-profile
+							  authentication-scheme itachi-mac-auth-local
+
+							wlan
+							  ssid-profile name itachi-mac-auth-ssid-profile
+							    ssid itachi-mac-auth-ssid
+
+							  security-profile name itachi-mac-auth-security-profile
+							    security open
+
+							  vap-profile name itachi-mac-auth-vap-profile
+							    service-vlan vlan-id 40
+							    security-profile itachi-mac-auth-security-profile
+							    ssid-profile itachi-mac-auth-ssid-profile
+							    authentication-profile itachi-mac-authen-profile
+
+							  ap-group name itachi-ap-group
+							    vap-profile itachi-mac-auth-vap-profile wlan 1 radio all
+						`;
+
+						mark_list = [
+							"itachi-mac-auth-local",
+							"itachi-mac-access-profile",
+							"itachi-mac-authen-profile",
+							"itachi-mac-auth-ssid-profile",
+							"itachi-mac-auth-security-profile",
+							"itachi-mac-auth-vap-profile",
+						]
+						createNetworkTxtMarkT1(cmd, mark_list);
+
+					createInstruT1("CLI配置详解", "i9-2");
+						createInstruT2("配置客户端MAC地址", "i9-2-1");
+							createInstruAllTopT2("采用用户名为mac地址的本地用户方式配置");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1] aaa");
+							instruArr[1] = createCmdSpan("[AC-1-aaa] local-user “90DE-8092-24FF。 password cipher “Cisc0123。");
+							instruArr[2] = createCmdInstruSpan("“90DE-8092-24FF。", "客户端MAC地址");
+							instruArr[3] = createCmdInstruSpan("“Cisc0123。", "任意一个密码，所有mac地址相同，且与对应mac-access-profile相同");
+							instruArr[4] = createCmdSpan("[AC-1-aaa] local-user “90DE-8092-24FF。 service-type 8021x");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置本地认证策略", "i9-2-2");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[AC-1-aaa] authentication-scheme “itachi-mac-auth-local。");
+							instruArr[1] = createCmdInstruSpan("“itachi-mac-auth-local。", "认证策略名");
+							instruArr[2] = createCmdSpan("[AC-1-aaa-authen-itachi-mac-auth-local] authentication-mode local");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置mac access profile", "i9-2-3");
+							instruArr[0] = createCmdSpan("[AC-1-aaa] mac-access-profile name “itachi-mac-access-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-mac-access-profile。", "mac access profil名");
+							instruArr[2] = createCmdSpan("[AC-1-mac-access-profile-itachi-mac-access-profile] mac-authen username macaddress format { with-hyphen | without-hyphen } password cipher “Cisc0123。");
+							instruArr[3] = createCmdInstruSpan("with-hyphen", "1111-2222-3333格式的mac地址，与上述mac格式保持一致");
+							instruArr[4] = createCmdInstruSpan("without-hyphen", "111122223333格式的mac地址，与上述mac格式保持一致");
+							instruArr[5] = createCmdInstruSpan("“Cisc0123。", "mac地址对应的密码");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("配置认证profile", "i9-2-4");
+							instruArr[0] = createCmdSpan("[AC-1] authentication-profile name “itachi-mac-authen-profile。");
+							instruArr[1] = createCmdInstruSpan("“itachi-mac-authen-profile。", "authentication profile名");
+							instruArr[2] = createCmdSpan("[AC-1-authentication-profile-itachi-mac-authen-profile] mac-access-profile “itachi-mac-access-profile。");
+							instruArr[3] = createCmdInstruSpan("“itachi-mac-access-profile。", "对应的mac access profile名");
+							instruArr[4] = createCmdSpan("[AC-1-authentication-profile-itachi-mac-authen-profile] authentication-scheme “itachi-mac-auth-local。");
+							instruArr[5] = createCmdInstruSpan("“itachi-mac-auth-local。", "对应的本地认证策略名");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("WLAN相关配置", "i9-2-5");
+							createInstruT3("配置ssid profile", "i9-2-5-1");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1] wlan");
+								instruArr[1] = createCmdSpan("[AC-1-wlan-view] ssid-profile name “itachi-mac-auth-ssid-profile。");
+								instruArr[2] = createCmdInstruSpan("“itachi-mac-auth-ssid-profile。", "ssid profile名");
+								instruArr[3] = createCmdSpan("[AC-1-wlan-ssid-prof-itachi-mac-auth-ssid-profile] ssid “itachi-mac-auth-ssid。");
+								instruArr[4] = createCmdInstruSpan("“itachi-mac-auth-ssid。", "ssid");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置security profile", "i9-2-5-2");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] security-profile name “itachi-mac-auth-security-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-mac-auth-security-profile。", "security profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-sec-prof-itachi-mac-auth-security-profile] security open");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("配置vap profile", "i9-2-5-3");
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] vap-profile name “itachi-mac-auth-vap-profile。");
+								instruArr[1] = createCmdInstruSpan("“itachi-mac-auth-vap-profile。", "vap profile名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-mac-auth-vap-profile] service-vlan vlan-id “40。");
+								instruArr[3] = createCmdInstruSpan("“40。", "客户端vlan");
+								instruArr[4] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-mac-auth-vap-profile] security-profile “itachi-mac-auth-security-profile。");
+								instruArr[5] = createCmdInstruSpan("“itachi-mac-auth-security-profile。", "security profile名");
+								instruArr[6] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-mac-auth-vap-profile] ssid-profile “itachi-mac-auth-ssid-profile。");
+								instruArr[7] = createCmdInstruSpan("“itachi-mac-auth-ssid-profile。", "ssid profile名");
+								instruArr[8] = createCmdSpan("[AC-1-wlan-vap-prof-itachi-mac-auth-vap-profile] authentication-profile “itachi-mac-authen-profile。");
+								instruArr[9] = createCmdInstruSpan("“itachi-mac-authen-profile。", "authentication profile名");
+								createCmdInstruT3(instruArr, "huawei");
+
+							createInstruT3("vap profile关联到ap group", "i9-2-5-4");
+								instruArr = [];
+								instruArr[0] = createCmdSpan("[AC-1-wlan-view] ap-group name “itachi-ap-group");
+								instruArr[1] = createCmdInstruSpan("“itachi-ap-group。", "ap group名");
+								instruArr[2] = createCmdSpan("[AC-1-wlan-ap-group-itachi-ap-group] vap-profile “itachi-mac-auth-vap-profile。 wlan “1。 radio 0");
+								instruArr[3] = createCmdInstruSpan("“itachi-mac-auth-vap-profile。", "vap profile名");
+								instruArr[4] = createCmdInstruSpan("wlan “1。", "wlan ID，如果该ID已经被使用，系统会有提示");
+								createCmdInstruT3(instruArr, "huawei");
+			</script>
+	</div>
+</div></body>
+</html>

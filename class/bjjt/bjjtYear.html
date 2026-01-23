@@ -26,8 +26,14 @@
 		let htmlText = createBJJT_EachYearList(year, bjjtDB[bjjtYear])
 						.replace(/(img\/\S+)（\d+年高清重播）.jpg/g, "$1（高清重播）.jpg")
 						.replaceAll("（重播）.jpg\" />", ".jpg\" />")
-						.replace(/img\/党史故事100讲（\S+）/g, "img/党史故事100讲")
+						.replaceAll("（重播） .jpg\" />", ".jpg\" />")
 						// 各个篇章的党史故事100讲，均使用党史故事100讲.jpg
+						.replace(/img\/党史故事100讲（\S+）/g, "img/党史故事100讲")
+						// 所有党史故事100讲的重播均不跳转
+						.replace(
+							/bjjtDetail.html\?year=\d{4}&&programName=党史故事100讲（重播）/g,
+							"javascript:void(0);"
+						)
 
 						.replaceAll(																// 2007
 								"year=2007&&programName=武则天（2013年高清重播）",
@@ -64,7 +70,44 @@
 						.replaceAll(																// 2015
 							"year=2015&&programName=百家姓（第三部）（2016年高清重播）",
 							"year=2016&&programName=百家姓（第三部）（高清重播）"
+						)
+						.replaceAll(                                                                // 2019
+							"year=2019&&programName=丝路上的古城（2020年完整版）",
+							"year=2020&&programName=丝路上的古城"
+						)
+						.replaceAll(																// 2019
+								"year=2019&&programName=国史通鉴·宋辽金元篇（上部）（2021年完整版）",
+								"year=2021&&programName=国史通鉴·宋元时代"
+						)
+						.replaceAll(																// 2020
+							"year=2020&&programName=爱上语文（重播）",
+							"year=2019&&programName=爱上语文"
+						)
+						.replaceAll(																// 2022
+							"year=2022&&programName=舌尖上的历史（第二部）（重播）",
+							"year=2022&&programName=舌尖上的历史（第二部）"
+						)
+						.replaceAll(																// 2022
+							"year=2022&&programName=诗词红楼（第二部）（重播）",
+							"year=2022&&programName=诗词红楼（第二部）"
+						)
+						.replaceAll(																// 2022
+							"year=2022&&programName=品读中华经典诗文（重播）",
+							"year=2022&&programName=品读中华经典诗文"
+						)
+						.replaceAll(																// 2022
+							"year=2022&&programName=历史关头——红色纪念馆之旅（重播）",
+							"year=2022&&programName=历史关头——红色纪念馆之旅"
+						)
+						.replaceAll(																// 2022
+							"year=2022&&programName=中国精神（第三季）（重播）",
+							"year=2021&&programName=中国精神（第三季）"
+						)
+						.replaceAll(																// 2022
+							"year=2022&&programName=诗说先秦（重播）",
+							"year=2022&&programName=诗说先秦"
 						);
+
 
 		if (year == "2016") {
 			htmlText = htmlText.replace("img/端午时节话屈原", "img/端午时节话屈原（2016）");

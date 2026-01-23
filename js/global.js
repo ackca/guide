@@ -263,21 +263,37 @@ function createLinuxTxtT3(cmds) {
 	document.writeln(initTXT(cmds, "LinuxTxt", "T3"));
 }
 
+function createNetworkTxtT1(cmds) {
+	createNetworkTxtMarkT1(cmds);
+}
+
+function createNetworkTxtT2(cmds) {
+	createNetworkTxtMarkT2(cmds);
+}
+
+function createNetworkTxtT3(cmds) {
+	createNetworkTxtMarkT3(cmds);
+}
+
 function createNetworkTxtMarkT1(cmds, mark_list = "") {
 	// 使用Linux配置文本的方案整理格式，但会将第一个词加颜色，网络设备不需要，去掉对应class
-	let htmlText = initTXT(cmds, "LinuxTxt", "T1").replaceAll(" class='linuxCMD_cmd'", "");
+	// let htmlText = initTXT(cmds, "LinuxTxt", "T1").replaceAll(" class='linuxCMD_cmd'", "");
+	let htmlText = initTXT(cmds, "NetworkTxt", "T1")
 	cmdMark(htmlText, mark_list);
 }
 
 function createNetworkTxtMarkT2(cmds, mark_list = "") {
 	// 使用Linux配置文本的方案整理格式，但会将第一个词加颜色，网络设备不需要，去掉对应class
-	let htmlText = initTXT(cmds, "LinuxTxt", "T2").replaceAll(" class='linuxCMD_cmd'", "");
+	// let htmlText = initTXT(cmds, "LinuxTxt", "T2").replaceAll(" class='linuxCMD_cmd'", "").replaceAll(" class='linuxCMD_Para'", "").replaceAll(" class='linuxCMD_pipeline'", "").replaceAll(" class='spanYH'", "");
+	let htmlText = initTXT(cmds, "NetworkTxt", "T2");
+
 	cmdMark(htmlText, mark_list);
 }
 
 function createNetworkTxtMarkT3(cmds, mark_list = "") {
 	// 使用Linux配置文本的方案整理格式，但会将第一个词加颜色，网络设备不需要，去掉对应class
-	let htmlText = initTXT(cmds, "LinuxTxt", "T3").replaceAll(" class='linuxCMD_cmd'", "");
+	// let htmlText = initTXT(cmds, "LinuxTxt", "T3").replaceAll(" class='linuxCMD_cmd'", "");
+	let htmlText = initTXT(cmds, "NetworkTxt", "T3");
 	cmdMark(htmlText, mark_list);
 }
 
@@ -364,6 +380,15 @@ function initTXT(cmds, txtT, cmdT) {
 	switch (txtT) {
 		case "LinuxTxt":
 			return createLinuxTxt(cmd_arr, htmlText);
+			break;
+
+		case "NetworkTxt":
+			// console.log(cmd_arr)
+			// let ret = ""
+			// for(let i in cmd_arr) {
+			// 	ret = ret + "<span><span class='cmd'>" + cmd_arr[i] + "</span></span>";
+			// }
+			return createNetworkTxt(cmd_arr, htmlText);
 			break;
 
 		case "YAML":
@@ -481,9 +506,6 @@ function removeLabel(htmlText) {
 		if (htmlCmds[i].indexOf("输出结束") >= 0) {
 			endNumOutput.push(i);
 		}
-		// console.log(htmlCmds)
-		// console.log(startNumOutput)
-		// console.log(endNumOutput)
 	}
 
 	for (let i = 0; i < startNumEOF.length; i++) {
@@ -507,6 +529,14 @@ function removeLabel(htmlText) {
 	}
 
 	return htmlCmds.join("<br />");
+}
+
+function createNetworkTxt(cmd_arr, htmlText) {
+	for (let i = 1; i < cmd_arr.length - 1; i++) {
+		htmlText = htmlText + "<span><span class='cmd'>" + cmd_arr[i] + "</span></span><br />";
+	}
+
+	return htmlText + "</div></div>";
 }
 
 function createYAML(cmd_arr, htmlText) {

@@ -14,26 +14,25 @@
 	<div class="container-fluid">
 		<div id="divCommand">
 			<script type="text/javascript">
-				createInstruT0("802.1x连接方式", "i1");
-					createInstruT1("有线802.1x", "i1-1");
-						createInstruT2("启用802.1x功能", "i1-1-1");
-							let cmd = `
-								services.msc
-							`;
-							createNetworkTxtMarkT2(cmd);
+				createInstruT0("有线802.1x连接方式", "i1");
+					createInstruT1("启用802.1x功能", "i1-1");
+						let cmd = `
+							services.msc
+						`;
+						createNetworkTxtMarkT1(cmd);
 
-							createConfigImgT2("dot1x_windows/i1_1_1$1~3");
+						createConfigImgT1("dot1x_windows/i1_1$1~3");
 
-						createInstruT2("802.1x认证相关配置", "i1-1-2");
-							createConfigImgT2("dot1x_windows/i1_1_2$1~2");
+					createInstruT1("802.1x认证相关配置", "i1-2");
+						createConfigImgT1("dot1x_windows/i1_2$1~2");
 
-					createInstruT1("无线802.1x", "i1-2");
-						createConfigImgT1("dot1x_windows/i1_2$1~6");
+					// createInstruT1("无线802.1x", "i1-2");
+					// 	createConfigImgT1("dot1x_windows/i1_2$1~6");
 
 				createInstruT0("EAP-TLS认证时，证书配置情况", "i2");
-					createInstruAllTopT0("认证服务端（WLC、ISE）的证书需具备 服务器身份验证 功能，对应微软证书服务器类型为 Web服务器 证书");
+					createInstruAllTopT0("认证服务端（WLC、ISE）的证书需具备 ’服务器身份验证。 功能，对应微软证书服务器类型为 ’Web服务器。 证书");
 
-					createInstruAllTopT0("认证客户端（PC）的证书需具备 客户端身份验证 功能，对应微软证书服务器类型为 用户 证书");
+					createInstruAllTopT0("认证客户端（PC）的证书需具备 ’客户端身份验证。 功能，对应微软证书服务器类型为 ’用户。 证书，同时需要信任其根证书");
 
 			</script>
 			<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

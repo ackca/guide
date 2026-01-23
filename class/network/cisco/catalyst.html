@@ -386,9 +386,9 @@
 							instruArr[1] = createCmdInstruSpan("“1。", "span进程号");
 							instruArr[2] = createCmdInstruSpan("“f0/0-2。", "被监控接口");
 							instruArr[3] = createCmdInstruSpan("vlan “2。", "被监控vlan号");
-							instruArr[4] = createCmdInstruSpan("rx", "监控接口的入栈流量");
-							instruArr[5] = createCmdInstruSpan("tx", "监控接口的出栈流量");
-							instruArr[6] = createCmdInstruSpan("both", "监控接口的入栈和出栈流量，省略时的‘默认。配置");
+							instruArr[4] = createCmdInstruSpan("rx", "监控接口（vlan）的入栈流量，监控vlan时，应只监控单向流量，rx即可");
+							instruArr[5] = createCmdInstruSpan("tx", "监控接口（vlan）的出栈流量");
+							instruArr[6] = createCmdInstruSpan("both", "监控接口（vlan）的入栈和出栈流量，省略时的‘默认。配置");
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT2("显示span信息");

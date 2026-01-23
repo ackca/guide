@@ -89,7 +89,7 @@
 							createConfigImgT2("c9800/i6_2_2$1~3");
 
 
-				createInstruT0("PSK（SAE）认证 — 中心转发", "i3-1");
+				createInstruT0("中心转发（WPA2 PSK，完整配置）", "i3-1");
 					createInstruT1("CLI配置总览", "i3-1-1");
 						let cmd = `
 							vlan 30
@@ -153,8 +153,8 @@
 							instruArr[4] = createCmdSpan("C9800(config-wireless-policy)# no shutdown");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置wlan", "i3-1-2-3");
-							createInstruT3("创建wlan");
+						createInstruT2("配置WLAN", "i3-1-2-3");
+							createInstruT3("创建WLAN");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
 								instruArr[1] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
@@ -177,7 +177,7 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
@@ -236,13 +236,13 @@
 						createInstruT2("调用向导配置无线", "i3-1-3-2");
 							createConfigImgT2("c9800/i3_1_3_2$1~3");
 
-						createInstruT2("配置wlan", "i3-1-3-3");
+						createInstruT2("配置WLAN", "i3-1-3-3");
 							createConfigImgT2("c9800/i3_1_3_3$1~3");
 
 						createInstruT2("配置policy profile", "i3-1-3-4");
 							createConfigImgT2("c9800/i3_1_3_4$1~4");
 
-						createInstruT2("配置tag policy，关联wlan和vlan", "i3-1-3-5");
+						createInstruT2("配置tag policy，关联WLAN和vlan", "i3-1-3-5");
 							createConfigImgT2("c9800/i3_1_3_5$1~5");
 
 						createInstruT2("配置ap profile", "i3-1-3-6");
@@ -257,7 +257,7 @@
 						createInstruT2("AP关联上述tag", "i3-1-3-9");
 							createConfigImgT2("c9800/i3_1_3_9$1~4");
 
-				createInstruT0("PSK（SAE）认证 — Flexconnect", "i3-2");
+				createInstruT0("Flexconnect（WPA2 PSK，完整配置）", "i3-2");
 					createInstruT1("CLI配置总览", "i3-2-1");
 						cmd = `
 							vlan 30
@@ -345,8 +345,8 @@
 							instruArr[6] = createCmdSpan("C9800(config-wireless-policy)# no shutdown");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置wlan", "i3-2-2-4");
-							createInstruT3("创建wlan");
+						createInstruT2("配置WLAN", "i3-2-2-4");
+							createInstruT3("创建WLAN");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
 								instruArr[1] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
@@ -369,12 +369,12 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("配置tag policy，关联wlan和vlan", "i3-2-2-5");
-							createInstruAllTopT2("一个tag policy可以关联多组wlan和vlan");
+						createInstruT2("配置tag policy，关联WLAN和vlan", "i3-2-2-5");
+							createInstruAllTopT2("一个tag policy可以关联多组WLAN和vlan");
 							instruArr[0] = createCmdSpan("C9800(config)# wireless tag policy “itachi-flex-tag-policy。");
 							instruArr[1] = createCmdInstruSpan("“itachi-flex-tag-policy。", "tag policy名");
 							instruArr[2] = createCmdSpan("C9800(config-policy-tag)# wlan “itachi-only-wpa2-psk。 policy “itachi-flex-policy-profile。");
@@ -432,14 +432,14 @@
 						createInstruT2("调用向导配置无线", "i3-2-3-2");
 							createConfigImgT2("c9800/i3_1_3_2$1~3");
 
-						createInstruT2("配置wlan", "i3-2-3-3");
+						createInstruT2("配置WLAN", "i3-2-3-3");
 							createConfigImgT2("c9800/i3_1_3_3$1~3");
 
 						createInstruT2("配置policy profile", "i3-2-3-4");
 							createConfigImgT2("c9800/i3_1_3_4$1");
 							createConfigImgT2("c9800/i3_2_3_4$2~4");
 
-						createInstruT2("配置tag policy，关联wlan和vlan", "i3-2-3-5");
+						createInstruT2("配置tag policy，关联WLAN和vlan", "i3-2-3-5");
 							createConfigImgT2("c9800/i3_1_3_4$1");
 							createConfigImgT2("c9800/i3_2_3_5$2~5");
 
@@ -462,9 +462,8 @@
 							createConfigImgT2("c9800/i3_1_3_10$3");
 							createConfigImgT2("c9800/i3_1_3_9$4");
 
-				createInstruT0("wlan的高级功能", "i4");
-					createInstruT1("同时支持WPA2和WPA3的wlan", "i4-1");
-						createInstruT2("CLI配置总览", "i4-1-1");
+					createInstruT1("同时支持WPA2和WPA3的WLAN", "i3-3");
+						createInstruT2("CLI配置总览", "i3-3-1");
 							cmd = `
 								wlan itachi-wpa2-wap3-psk 2 itachi-wpa2-wap3-psk
 								 no security ft adaptive
@@ -478,8 +477,8 @@
 							`;
 							createNetworkTxtMarkT2(cmd);
 
-						createInstruT2("CLI配置详解", "i4-1-2");
-							createInstruT3("创建wlan");
+						createInstruT2("CLI配置详解", "i3-3-2");
+							createInstruT3("创建WLAN");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-wpa2-wap3-psk。　“2。　“itachi-wpa2-wap3-psk。");
 								instruArr[1] = createCmdInstruSpan("“itachi-wpa2-wap3-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
@@ -518,15 +517,15 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("GUI配置", "i4-1-3");
-							createConfigImgT2("c9800/i4_1_3$1~5");
+						createInstruT2("GUI配置", "i3-3-3");
+							createConfigImgT2("c9800/i3_3_3$1~5");
 
-					createInstruT1("同时支持WPA2和WPA3的wlan", "i4-2");
-						createInstruT2("CLI配置总览", "i4-2-1");
+					createInstruT1("只支持WPA3的WLAN", "i3-4");
+						createInstruT2("CLI配置总览", "i3-4-1");
 							cmd = `
 								wlan itachi-only-wpa3-psk 3 itachi-only-wpa3-psk
 								 no security ft adaptive
@@ -540,8 +539,8 @@
 							`;
 							createNetworkTxtMarkT2(cmd);
 
-						createInstruT2("CLI配置详解", "i4-2-2");
-							createInstruT3("创建wlan");
+						createInstruT2("CLI配置详解", "i3-4-2");
+							createInstruT3("创建WLAN");
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wap3-psk。　“3。　“itachi-only-wap3-psk。");
 								instruArr[1] = createCmdInstruSpan("“itachi-only-wap3-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
 								instruArr[2] = createCmdInstruSpan("“3。", "wlan id");
@@ -579,20 +578,21 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("GUI配置", "i4-2-3");
-							createConfigImgT2("c9800/i4_1_3$1~2");
-							createConfigImgT2("c9800/i4_2_3$3~4");
-							createConfigImgT2("c9800/i4_1_3$5");
+						createInstruT2("GUI配置", "i3-4-3");
+							createConfigImgT2("c9800/i3_3_3$1~2");
+							// createConfigImgT2("c9800/i4_1_3$1~2");
+							createConfigImgT2("c9800/i3_4_3$3~4");
+							createConfigImgT2("c9800/i3_3_3$5");
 
-					createInstruT1("MPSK", "i4-3");
-						createInstruT2("MPSK说明", "i4-3-1");
+					createInstruT1("MPSK", "i3-5");
+						createInstruT2("MPSK说明", "i3-5-1");
 							createInstruAllTopT2("同一个SSID，支持多个PSK用于认证，最多5个")
 
-						createInstruT2("<br />CLI配置总览", "i4-3-2");
+						createInstruT2("<br />CLI配置总览", "i3-5-2");
 							cmd = `
 								wlan itachi-only-wpa2-psk 1 itachi-only-wpa2-psk
 								 security wpa wpa2 mpsk
@@ -605,10 +605,10 @@
 							`;
 							createNetworkTxtMarkT2(cmd);
 
-						createInstruT2("CLI配置详解", "i4-3-3");
-							createInstruT3("创建wlan");
+						createInstruT2("CLI配置详解", "i3-5-3");
+							createInstruT3("创建WLAN");
 								instruArr = [];
-								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
+								instruArr[0] = createCmdSpan("C9800(config)# WLAN “itachi-only-wpa2-psk。　“1。　“itachi-only-wpa2-psk。");
 								instruArr[1] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "‘第1个为wlan的名。，第2个为wlan的ssid，可以不相同");
 								instruArr[2] = createCmdInstruSpan("“1。", "wlan id");
 								instruArr[3] = createCmdInstruSpan("“itachi-only-wpa2-psk。", "第1个为wlan的名，‘第2个为wlan的ssid。，可以不相同");
@@ -641,26 +641,26 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm psk");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("GUI配置", "i4-3-4");
-							createConfigImgT2("c9800/i4_3_4$1~3");
+						createInstruT2("GUI配置", "i3-5-4");
+							createConfigImgT2("c9800/i3_5_4$1~3");
 
-					createInstruT1("OWE", "i4-4");
-						createInstruT2("OWE说明", "i4-4-1");
+					createInstruT1("OWE", "i3-6");
+						createInstruT2("OWE说明", "i3-6-1");
 							createInstruAllTopT2("OWE：Opportunistic Wireless Encryption，适时无线加密");
 							createInstruAllTopT2("接入WiFi时，客户端无需认证，如果客户端支持OWE技术，无线流量仍为加密流量");
 							createInstruAllTopT2("不支持则为传统的无认证不加密流量")
 
 							createInstruAllTopT2("windows系统，可能通过 ’netsh wlan show wirelesscapabilities。 查看是否支持");
-							createConfigImgT2("c9800/i4_4_1$1");
+							createConfigImgT2("c9800/i3_6_1$1");
 
 							createInstruAllTopT2("windows系统连接前后状态");
-							createConfigImgT2("c9800/i4_4_1$2~3");
+							createConfigImgT2("c9800/i3_6_1$2~3");
 
-						createInstruT2("CLI配置总览", "i4-4-2");
+						createInstruT2("CLI配置总览", "i3-6-2");
 							cmd = `
 								wlan itachi-owe-open 4 itachi-owe
 								 no security ft adaptive
@@ -684,8 +684,8 @@
 							`;
 							createNetworkTxtMarkT2(cmd);
 
-						createInstruT2("CLI配置详解", "i4-4-3");
-							createInstruT3("创建不认证的wlan");
+						createInstruT2("CLI配置详解", "i3-6-3");
+							createInstruT3("创建不认证的WLAN");
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-owe-open。　“4。　“itachi-owe。");
 								instruArr[1] = createCmdInstruSpan("“itachi-owe-open。", "不认证的wlan名");
 								instruArr[2] = createCmdInstruSpan("“4。", "wlan id");
@@ -700,18 +700,18 @@
 								instruArr[4] = createCmdSpan("C9800(config-wlan)# no security wpa akm dot1x");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("将客户端转到OWE的wlan");
+							createInstruT3("将客户端转到OWE的WLAN");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa transition-mode-wlan-id “5。");
 								instruArr[1] = createCmdInstruSpan("“5。", "OWE的wlan id");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr = [];
-								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
+								instruArr[0] = createCmdSpan("C9800(config-WLAN)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("创建OWE的wlan");
+							createInstruT3("创建OWE的WLAN");
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-owe。　“5。　“itachi-owe。");
 								instruArr[1] = createCmdInstruSpan("“itachi-owe。", "OWE的wlan名");
 								instruArr[2] = createCmdInstruSpan("“5。", "wlan id");
@@ -739,7 +739,7 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa akm sae");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("配置不认证的wlan id");
+							createInstruT3("配置不认证的WLAN id");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security wpa transition-mode-wlan-id “4。");
 								instruArr[1] = createCmdInstruSpan("“4。", "不认证的wlan id");
 								createCmdInstruT3(instruArr, "cisco");
@@ -753,14 +753,14 @@
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# security pmf mandatory");
 								createCmdInstruT3(instruArr, "cisco");
 
-							createInstruT3("启用该wlan");
+							createInstruT3("启用该WLAN");
 								instruArr[0] = createCmdSpan("C9800(config-wlan)# no shutdown");
 								createCmdInstruT3(instruArr, "cisco");
 
-						createInstruT2("GUI配置", "i4-4-4");
-							createConfigImgT2("c9800/i4_1_3$1~2");
-							createConfigImgT2("c9800/i4_4_4$1~4");
-							createConfigImgT2("c9800/i4_1_3$5");
+						createInstruT2("GUI配置", "i3-6-4");
+							createConfigImgT2("c9800/i3_3_3$1~2");
+							createConfigImgT2("c9800/i3_6_4$1~4");
+							createConfigImgT2("c9800/i3_3_3$5");
 
 				createInstruT0("ACL", "i9");
 					createInstruT1("配置ACL", "i9-1");
@@ -905,7 +905,7 @@
 							instruArr[2] = createCmdInstruSpan("“itachi-wpa2-wpa3-psk。", "该mac地址用于某个特定的wlan");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("wlan启用mac地址认证", "i5-2-3");
+						createInstruT2("WLAN启用mac地址认证", "i5-2-3");
 							createInstruAllTopT2("在相关wlan添加mac-filtering …，即可，其它配置无需修改");
 							instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-wpa2-wpa3-psk。　“2。　“itachi-wpa2-wpa3-psk。");
 							instruArr[1] = createCmdInstruSpan("“itachi-wpa2-wpa3-psk。", "启用mac地址认证的wlan");
@@ -923,7 +923,7 @@
 							createConfigImgT2("c9800/i6_2_1$1");
 							createConfigImgT2("c9800/i5_3_2$2~4");
 
-						createInstruT2("wlan启用mac地址认证", "i5-3-3");
+						createInstruT2("WLAN启用mac地址认证", "i5-3-3");
 							createConfigImgT2("c9800/i5_3_3$1");
 
 
@@ -1021,7 +1021,7 @@
 							instruArr[5] = createCmdInstruSpan("itachi-dot1x", "标记用户的wlan，仅标记，其它wlan也能使用");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置wlan", "i7-2-5");
+						createInstruT2("配置WLAN", "i7-2-5");
 							createInstruT3("配置二层安全");
 								createInstruAllTopT3("二层支持WP2和WP3，认证方式为802.1x和802.1x快速漫游");
 								createInstruAllTopT3("启用保存管理帧和快速漫游");
@@ -1046,7 +1046,7 @@
 						createInstruT2("配置EAP profile", "i7-3-1");
 							createConfigImgT2("c9800/i7_3_1$1~4");
 
-						createInstruT2("配置wlan", "i7-3-2");
+						createInstruT2("配置WLAN", "i7-3-2");
 							createConfigImgT2("c9800/i7_3_2$1~3");
 
 				createInstruT0("中心802.1x", "i8");
@@ -1129,12 +1129,12 @@
 							instruArr[3] = createCmdInstruSpan("“flex-acl。", "准备授权的acl名");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("<br />配置wlan", "i8-3-4");
+						createInstruT2("<br />配置WLAN", "i8-3-4");
 							createInstruT3("配置二层安全");
 								createInstruAllTopT3("二层支持WP2和WP3，认证方式为802.1x和802.1x快速漫游");
 								createInstruAllTopT3("启用保存管理帧和快速漫游");
 
-								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-dot1x。　“4。　“itachi-dot1x。");
+								instruArr[0] = createCmdSpan("C9800(config)# WLAN “itachi-dot1x。　“4。　“itachi-dot1x。");
 								instruArr[1] = createCmdInstruSpan("“itachi-dot1x。", "wlan名 / SSID");
 								instruArr[2] = createCmdSpan("C9800(config-wlan)# security ft");
 								instruArr[3] = createCmdSpan("C9800(config-wlan)# security wpa akm ft dot1x");
@@ -1157,7 +1157,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 						createInstruT1("GUI配置", "i8-3");
-							createInstruT2("配置wlan", "i8-3-1");
+							createInstruT2("配置WLAN", "i8-3-1");
 								createConfigImgT2("c9800/i7_3_2$1~2");
 								createConfigImgT2("c9800/i8_3_1$3");
 
@@ -1254,8 +1254,8 @@
 							instruArr[6] = createCmdInstruSpan("“portal。", "认证页面证书");
 							createCmdInstruT2(instruArr, "cisco");
 
-						createInstruT2("配置wlan采用网页认证", "i10-2-5");
-							createInstruT3("创建wlan");
+						createInstruT2("配置WLAN采用网页认证", "i10-2-5");
+							createInstruT3("创建WLAN");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-portal。　“5。　“itachi-portal。");
 								instruArr[1] = createCmdInstruSpan("“itachi-portal。", "wlan名");
@@ -1287,7 +1287,7 @@
 						createInstruT2("修改认证页面", "i10-3-1");
 							createConfigImgT2("c9800/i10_3_1$1~3");
 
-						createInstruT2("配置wlan", "i10-3-2");
+						createInstruT2("配置WLAN", "i10-3-2");
 							createConfigImgT2("c9800/i10_3_2$1~2");
 
 				createInstruT0("中心网页认证", "i11");
@@ -1379,8 +1379,8 @@
 							createInstruAllTopT2("由于C9800不支持Download ACL，认证前放行基本流量 及 重定向 两种列表均需要配置");
 							createInstruAllTopT2("10.1.1.30为ISE地址，flexconnet模式时，ACL需要在fex profile中声明");
 
-						createInstruT2("<br >配置wlan，实质是中心认证的mab，ISE配置不同区别两种认证", "i11-2-4");
-							createInstruT3("创建wlan");
+						createInstruT2("<br >配置WLAN，实质是中心认证的mab，ISE配置不同区别两种认证", "i11-2-4");
+							createInstruT3("创建WLAN");
 								instruArr = [];
 								instruArr[0] = createCmdSpan("C9800(config)# wlan “itachi-portal。　“5。　“itachi-portal。");
 								instruArr[1] = createCmdInstruSpan("“itachi-portal。", "wlan名");
@@ -1409,7 +1409,7 @@
 							createCmdInstruT2(instruArr, "cisco");
 
 					createInstruT1("GUI配置", "i11-3");
-						createInstruT2("配置wlan", "i11-3-1");
+						createInstruT2("配置WLAN", "i11-3-1");
 								createConfigImgT2("c9800/i11_3_1$1");
 
 							createInstruT2("配置policy profile", "i11-3-2");

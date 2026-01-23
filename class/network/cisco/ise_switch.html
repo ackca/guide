@@ -222,7 +222,7 @@
 								createCmdInstruT3(instruArr, "cisco");
 								createInstruAllBottomT3("<br />选配，802.1x无需此属性，一般用于SSL VPN")
 
-						createInstruT2("配置探测radius是否有正常的方式", "i2-1-8");
+						createInstruT2("配置探测radius是否正常的相关参数", "i2-1-8");
 							instruArr[0] = createCmdSpan("SW1(config)# radius-server dead-criteria time “5。 tries “3。");
 							instruArr[1] = createCmdInstruSpan("“5。", "超时时长");
 							instruArr[2] = createCmdInstruSpan("“3。", "尝试次数");
@@ -377,7 +377,7 @@
 								 dot1x pae authenticator
 								 spanning-tree portfast
 							`;
-							createLinuxTxtT1(cmd);
+							createNetworkTxtT1(cmd);
 
 					createInstruT1("交换机间链路加密", "i3-2");
 						createInstruAllTopT1("交换机间互联接口配置");
@@ -405,7 +405,7 @@
 								 revocation-check none
 								 rsakeypair DTLS
 							`;
-							createLinuxTxtT2(cmd);
+							createNetworkTxtT2(cmd);
 
                         createInstruT2("生成个人证书请求");
 							instruArr[0] = createCmdSpan("SW1(config)# crypto pki enroll “DTLS。")
