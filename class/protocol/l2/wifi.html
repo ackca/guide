@@ -8,7 +8,6 @@
 	<script type="text/javascript">
 		window.onload = createNavigation(wifi);
 	</script>
-<!--	<link rel="stylesheet" href="../../../css/private/protocol/wifi.css">-->
 </head>
 <body>
 	<div class="container-fluid">
@@ -38,7 +37,7 @@
 						["频段", "2.4GHz", "5GHz", "2.4GHz", "2.4GHz&nbsp;/&nbsp;5GHz", "5GHz"],
 						["频道宽度", "20MHz", "20MHz", "20MHz", "20，40MHz", "20，40，80MHz，<br />80+80，160MHz"],
 						["最大速度", "11Mbps", "54Mbps", "54Mbps", "600Mbps", "6.9Gbps"],
-						["MIMO", "1空间流", "1空间流", "1空间流", "SU-MIMO<br />至多4空间流", "MU-MIMO<br />至多8空间流"],
+						["MIMO", "1空间流", "1空间流", "1空间流", "SU-MIMO<br />最多4空间流", "MU-MIMO<br />最多8空间流"],
 					];
 					createHLTableT0(1000, tHeader, tBody, "tWiFi1");
 
@@ -210,6 +209,19 @@
 					createInstruAllTopT0("为了更好的支持物联网设备，OFDMA将信道划分为更小的子信道，频宽最小为2MHz");
 					createInstruAllTopT0("这样能容纳更多的设备同时进行通信，有效的支持高密度、低带宽需求的应用场景<br />");
 					createConfigImgT0("wifi/ofdma");
+
+				createInstruT0("OWE", "i7");
+					createInstruAllTopT0("OWE：Opportunistic Wireless Encryption，适时无线加密");
+					createInstruAllTopT0("该技术出现之前，如果接入wifi不认证，则无线流量不加密");
+					createInstruAllTopT0("使用OWE后，接入的客户端仍无需认证，但流量是被加密的");
+					createInstruAllTopT0("实际使用时，一般会配置2个wifi，一个OWE的，一个传统的不认证不加密的wifi，但只显示1个");
+					createInstruAllTopT0("支持OWE的设备，连接OWE的加密wifi，不支持的设备，连接不认证不加密的wifi");
+
+					createInstruAllTopT0("<br />windows系统，可能通过 ’netsh wlan show wirelesscapabilities。 查看是否支持<br />");
+					createConfigImgT0("wifi/i7$1");
+
+					createInstruAllTopT0("windows系统连接前后状态，对于OWE认证的wifi，会显示增加开放<br />");
+					createConfigImgT0("wifi/i7$2");
 
 
 

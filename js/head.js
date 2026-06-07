@@ -315,7 +315,13 @@ const top_menu = `
 								</li>
 								<li class="cat-item">
 									<div class="cat-item-main">
-										<a href="rootpath/class/network/huawei/wireless.html">无线配置</a>
+										<span>无线</span>
+									</div>
+									<div class="cat-item-sub">
+										<div class="cat-item-row">
+											<a href="rootpath/class/network/huawei/wireless.html">设备配置</a>
+											<a href="rootpath/class/network/huawei/wireless_basic.html">网络架构</a>
+										</div>
 									</div>
 								</li>
 								<li class="cat-item">

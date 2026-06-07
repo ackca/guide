@@ -454,6 +454,27 @@
 							instruArr[0] = createCmdSpan("&lt;R1> free user-interface “34。");
 							instruArr[1] = createCmdInstruSpan("“34。", "会话号，关闭对应会话");
 							createCmdInstruT2(instruArr, "huawei");
+
+				createInstruT0("关联adius服务器", "i7");
+						createInstruT2("关联Radius服务器", "i7-1");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[SW1] radius-server template “itachi-NPS。");
+							instruArr[1] = createCmdInstruSpan("“itachi-NPS。", "radius服务器模板名");
+							instruArr[2] = createCmdSpan("[SW1-radius-itachi-NPS] radius-server authentication 10.1.1.11 1812");
+							instruArr[3] = createCmdSpan("[SW1-radius-itachi-NPS] radius-server accounting 10.1.1.11 1813");
+							instruArr[4] = createCmdInstruSpan("“10.1.1.11。", "外置Radius服务器的IP或域名");
+							instruArr[5] = createCmdSpan("[SW1-radius-itachi-NPS] radius-server shared-key cipher “Cisc0123。");
+							instruArr[6] = createCmdInstruSpan("“Cisc0123。", "与外置Radius服务器的预共享密钥");
+							createCmdInstruT2(instruArr, "huawei");
+
+						createInstruT2("测试连通性", "i7-2");
+							instruArr = [];
+							instruArr[0] = createCmdSpan("[SW1] test-aaa “user1。 “Cisc0123。 radius-template “itachi-NPS。 pap ");
+							instruArr[1] = createCmdInstruSpan("“user1。", "用户名");
+							instruArr[2] = createCmdInstruSpan("“Cisc0123。", "密码");
+							instruArr[3] = createCmdInstruSpan("“itachi-NPS。", "radius服务器模板名");
+							createCmdInstruT2(instruArr, "huawei");
+
 			</script>
 		</div>
 	</div>

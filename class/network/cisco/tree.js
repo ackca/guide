@@ -1070,7 +1070,7 @@ const c9800 = {
 	},
 
 	"i3": {
-		"PSK（SAE）、OWE 认证": {
+		"PSK（SAE、PPSK）、OWE 认证": {
 			"i3-1": {
 				"中心转发<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（WPA2 PSK，完整配置）": {
 					"i3-1-1": "CLI配置总览",
@@ -1161,7 +1161,7 @@ const c9800 = {
 			},
 			"i3-6": {
 				"OWE": {
-					"i3-6-1": "OWE说明",
+					// "i3-6-1": "OWE说明",
 					"i3-6-2": "CLI配置总览",
 					"i3-6-3": "CLI配置详解",
 					"i3-6-4": "GUI配置",

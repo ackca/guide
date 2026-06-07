@@ -1420,22 +1420,8 @@
 								"itachi-external-portal-virtual-ap",
 							];
 
-
-						cmd = `
-							aaa
-							 authentication-scheme itachi-portal
-							  authentication-mode local ldap
-
-							 authorization-scheme itachi-portal-author-scheme
-							  authorization-mode local ldap
-						`;
-
-						mark_list = [
-							"itachi-portal",
-							"itachi-portal-author-scheme",
-						];
-
 						createNetworkTxtMarkT1(cmd, mark_list);
+
 						createInstruT1("配置详解", "i11-3");
 							createInstruT2("启用重定向功能", "i11-3-1");
 								instruArr[0] = createCmdSpan("(MM1) [itachi] (config) # firewall");

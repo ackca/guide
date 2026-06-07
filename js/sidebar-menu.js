@@ -4,6 +4,7 @@ $.sidebarMenu = function (menu, cmdOffset) {
 	$(menu).on("click", "li a", function (e) {
 		let $this = $(this);
 		let checkElement = $this.next();
+
 		// 当左侧导航树内容较多时，即使滚动条无法完全显示，增加了两行不显示的占位内容
 		// 当点击到占位内容时不做任何处理
 		if ($this.attr("cmd") == "zw") {

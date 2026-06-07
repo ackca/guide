@@ -1317,13 +1317,13 @@ td
 
 .tcp
 {
-	border: solid 4px #0008FF;
+	border: solid 3px #0008FF;
 	margin-right: 7px;
 }
 
 .udp
 {
-	border: solid 4px #FFC000;
+	border: solid 3px #FFC000;
 	margin-left: 7px;
 }
 
@@ -3569,20 +3569,13 @@ td
 	width: 174px;
 }
 
-#zwTableOP .cell:nth-child(4),
-#tOP th:nth-child(4)
-{
-	width: 220px;
-}
-
 #zwTableOP
 {
-	width: calc(100vw - 360px);
+	width: calc(100vw - 450px);
 	position: fixed;
 	z-index: 10;
-	left: 330px;
+	left: 430px;
 }
-
 
 #zwTableOP .row.header .cell
 {
@@ -3596,14 +3589,10 @@ td
 	margin-left: 18px;
 	/*margin-top: -31px;*/
 	letter-spacing: 1px;
-	width: calc(100vw - 360px);
+	width: calc(100vw - 451px);
 }
 
-#tOP td:nth-last-child(4)
-{
-	text-align: center;
-	padding-left: 1px;
-}
+
 
 /*----------↑↑↑ 海贼王动画目录 ↑↑↑-------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------*/

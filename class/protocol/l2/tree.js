@@ -33,5 +33,5 @@ const wifi = {
 	},
 	"i5": "MIMO",
 	"i6": "OFDMA",
-	"": "WPA3提供新安全技术",
+	"i7": "OWE",
 };

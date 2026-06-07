@@ -22,7 +22,9 @@
 }
 
 .sidebar-menu > li > a > .fa,
-.sidebar-menu > li > a > .fa-regular
+.sidebar-menu > li > a > .fa-regular,
+.sidebar-menu > li > a > div > .fa,				/* 海贼王目录添加了div */
+.sidebar-menu > li > a > div > .fa-regular		/* 海贼王目录添加了div */
 {
 	width: 25px;
 }
@@ -61,7 +63,8 @@
 	background: #1a2226;
 }
 
-.sidebar-menu li > a > .fa-angle-left
+.sidebar-menu li > a > .fa-angle-left,
+.sidebar-menu li > a > div > .fa-angle-left		/* 海贼王目录添加了div */
 {
 	width: auto;
 	height: auto;
@@ -70,7 +73,8 @@
 	margin-top: 3px;
 }
 
-.sidebar-menu li.active > a > .fa-angle-left
+.sidebar-menu li.active > a > .fa-angle-left,
+.sidebar-menu li.active > a > div > .fa-angle-left	/* 海贼王目录添加了div */
 {
 	transform: rotate(-90deg);
 }
@@ -113,7 +117,9 @@
 }
 
 .sidebar-menu .treeview-menu > li > a > .fa,
-.sidebar-menu .treeview-menu > li > a > .fa-regular
+.sidebar-menu .treeview-menu > li > a > .fa-regular,
+.sidebar-menu .treeview-menu > li > a > div > .fa,			/* 海贼王目录添加了div */
+.sidebar-menu .treeview-menu > li > a > div > .fa-regular	/* 海贼王目录添加了div */
 {
 	width: 20px;
 	margin-left: 20px;
@@ -140,7 +146,9 @@
 
 /*菜单打开后，图标改为打开的文件夹*/
 .sidebar-menu > li.active > a > .fa-folder:before,
-.menu-open > li.active > a > .fa-folder:before
+.menu-open > li.active > a > .fa-folder:before,
+.sidebar-menu > li.active > a > div > .fa-folder:before,	/* 海贼王目录添加了div */
+.menu-open > li.active > a > div > .fa-folder:before		/* 海贼王目录添加了div */
 {
     content: "\f07c";
 }

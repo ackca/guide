@@ -93,33 +93,72 @@ function createNavigation(tree, offset = 74.5) {
 				link = link + "-";
 			}
 
-			let alink = $("a[cmd='#i3-5']");
-			if (alink.length > 0) {
-				// 使用 jQuery 触发点击事件
-				alink.trigger("click");
-			}
+			// let alink = $("a[cmd='#i3-5']");
+			// if (alink.length > 0) {
+			// 	// 使用 jQuery 触发点击事件
+			// 	alink.trigger("click");
+			// }
 		}
 	});
 }
 
 function createTree(tree) {
 	let htmlText = "";
+	let uri = window.location.href.substring(window.location.href.indexOf("/guide"));
+
 	for (let key in tree) {
 		htmlText = htmlText + "<li class='treeview'>";
-		if (typeof tree[key] != "string") {
-			htmlText = htmlText + "<a href='javascript:void(0)' cmd='#" + key + "'><i class='fa fa-folder'></i><span>";
-			let key_next = "";
-			for (let key_nexts in tree[key]) {
-				key_next = key_nexts;
+		if (uri.indexOf("one_piece") < 0) {
+			if (typeof tree[key] != "string") {
+				htmlText = htmlText + "<a href='javascript:void(0)' cmd='#" + key + "'><i class='fa fa-folder'></i><span>";
+				let key_next = "";
+				for (let key_nexts in tree[key]) {
+					key_next = key_nexts;
+				}
+				htmlText = htmlText + key_next +
+					"</span><i class='fa fa-angle-left pull-right'></i></a><ul class='treeview-menu'>" +
+					createTree(tree[key][key_next]) + "</ul>";
 			}
-			htmlText = htmlText + key_next +
-				"</span><i class='fa fa-angle-left pull-right'></i></a><ul class='treeview-menu'>" +
-				createTree(tree[key][key_next]) + "</ul>";
+			else {
+				htmlText = htmlText + "<a href='javascript:void(0)' cmd='#" + key + "'>" +
+					"<i class='fa-regular fa-file-lines'></i><span>" + tree[key] +
+					"</span></a><ul class='treeview-menu'></ul>";
+			}
 		}
 		else {
-			htmlText = htmlText + "<a href='javascript:void(0)' cmd='#" + key + "'>" +
-				"<i class='fa-regular fa-file-lines'></i><span>" + tree[key] +
-				"</span></a><ul class='treeview-menu'></ul>";
+			let op = "";
+			if (typeof tree[key] != "string") {
+				htmlText = htmlText +
+					"<a href='javascript:void(0)' cmd='#" + key + "'>" +
+						"<div style='display: flex'>" +
+							"<i class='fa fa-folder'></i>";
+
+				let key_next = "";
+				for (let key_nexts in tree[key]) {
+					key_next = key_nexts;
+				}
+
+				op = key_next.split("（");
+
+				htmlText = htmlText +
+					"<span>" + op[0]  + "</span>" +
+					"<div style='margin-left: auto;width: 100px'>" + "（" + op[1] + "</div>" +
+
+					"<i class='fa fa-angle-left pull-right'></i></div></a><ul class='treeview-menu'>" +
+					createTree(tree[key][key_next]) + "</ul>";
+			}
+			else {
+				op = tree[key].split("（");
+				htmlText = htmlText +
+					"<a href='javascript:void(0)' cmd='#" + key + "'>" +
+						"<div style='display: flex'>" +
+							"<i class='fa-regular fa-file-lines'></i>" +
+							"<span>" + op[0]  + "</span>" +
+							"<div style='margin-left: auto;width: 100px'>" + "（" + op[1] + "</div>" +
+							"<div class='treeview-zw'></div>"
+						"</div>" +
+					"</a><ul class='treeview-menu'></ul>"
+			}
 		}
 		htmlText = htmlText + "</li>";
 	}
@@ -2010,7 +2049,7 @@ $(document).ready(function () {
 		["IGMP", 1, 1, "2", "", ""],
 		["TCP", 1, 1, "6", "", "class/protocol/l4/TCP.html"],
 		["UDP", 1, 1, "17", "", "class/protocol/l4/UDP.html"],
-		["IPv6", 1, 1, "41", "", "class/protocol/l3/IPv6.html"],
+		["IPv6 in IPv4", 2, 1, "41", "", ""],
 		["IPv6 Fragment header", 2, 1, "44", "", "class/protocol/l3/IPv6.html#i3-5"],
 		["GRE", 1, 1, "47", "", ""],
 		["ESP", 1, 1, "50", "", ""],
