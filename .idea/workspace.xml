@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="2020年，先上传" />
+    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="海贼王更新，先上传">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/anime/inuyasha.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/inuyasha.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/anime/one_piece.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/one_piece.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/anime/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/tree.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -396,6 +401,31 @@
       <workItem from="1769074443610" duration="1452000" />
       <workItem from="1769147298416" duration="1119000" />
       <workItem from="1780822918693" duration="19000" />
+      <workItem from="1780822982438" duration="516000" />
+      <workItem from="1780825596166" duration="51000" />
+      <workItem from="1780835195606" duration="3223000" />
+      <workItem from="1780879374764" duration="531000" />
+      <workItem from="1780881594356" duration="1902000" />
+      <workItem from="1780908195643" duration="57000" />
+      <workItem from="1780926239723" duration="174000" />
+      <workItem from="1780971402487" duration="188000" />
+      <workItem from="1783255775849" duration="11000" />
+      <workItem from="1785826258171" duration="109000" />
+      <workItem from="1785826406901" duration="15000" />
+      <workItem from="1785849252480" duration="104000" />
+      <workItem from="1785922693537" duration="4000" />
+      <workItem from="1786430686246" duration="42000" />
+      <workItem from="1787471246883" duration="408000" />
+      <workItem from="1787988035228" duration="387000" />
+      <workItem from="1788055624880" duration="121000" />
+      <workItem from="1789114014446" duration="98000" />
+      <workItem from="1789134738723" duration="6000" />
+      <workItem from="1789776623226" duration="30000" />
+      <workItem from="1789797154660" duration="7000" />
+      <workItem from="1791101400980" duration="21000" />
+      <workItem from="1791352618016" duration="725000" />
+      <workItem from="1791353857286" duration="2542000" />
+      <workItem from="1791941590382" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="主要更新自定义证书的harbor">
       <option name="closed" value="true" />
@@ -453,7 +483,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757574869689</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="海贼王更新，先上传">
+      <option name="closed" value="true" />
+      <created>1780823105511</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780823105511</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,6 +505,7 @@
     <MESSAGE value="2008年，先上传" />
     <MESSAGE value="2014年，先上传" />
     <MESSAGE value="2020年，先上传" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020年，先上传" />
+    <MESSAGE value="海贼王更新，先上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="海贼王更新，先上传" />
   </component>
 </project>
