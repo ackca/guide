@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="海贼王更新，先上传">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/anime/inuyasha.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/inuyasha.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/anime/one_piece.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/one_piece.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/anime/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/class/anime/tree.js" afterDir="false" />
-    </list>
+    <list default="true" id="7862bc61-f384-4bfb-a777-b9bcc5a1f3ff" name="更改" comment="海贼王更新，先上传" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -426,6 +421,7 @@
       <workItem from="1791352618016" duration="725000" />
       <workItem from="1791353857286" duration="2542000" />
       <workItem from="1791941590382" duration="6000" />
+      <workItem from="1795680149268" duration="93000" />
     </task>
     <task id="LOCAL-00001" summary="主要更新自定义证书的harbor">
       <option name="closed" value="true" />
